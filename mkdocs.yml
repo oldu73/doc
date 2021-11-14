@@ -1,0 +1,8 @@
+site_name: Doc
+
+nav:
+    - Home: 'index.md'
+    - MkDocs:
+        - 'Getting Started': 'mkdocs/getting-started.md'
+    - Git:
+        - 'Misc': 'git/misc.md'
