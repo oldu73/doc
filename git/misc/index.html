@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Getting Started - Doc</title>
+        <title>Misc - Doc</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -36,21 +36,21 @@
                             <li class="navitem">
                                 <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">MkDocs <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Getting Started</a>
+    <a href="../../mkdocs/getting-started/" class="dropdown-item">Getting Started</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Git <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../git/misc/" class="dropdown-item">Misc</a>
+    <a href="./" class="dropdown-item active">Misc</a>
 </li>
                                 </ul>
                             </li>
@@ -63,12 +63,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
+                                <a rel="prev" href="../../mkdocs/getting-started/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../git/misc/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -90,21 +90,9 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#mkdocs-getting-started" class="nav-link">MkDocs - Getting Started</a>
+            <li class="nav-item" data-level="1"><a href="#git-misc" class="nav-link">Git - Misc</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#installation" class="nav-link">Installation</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#initialize-current-folder" class="nav-link">Initialize current folder</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#build-documentation" class="nav-link">Build documentation</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#deploy-to-github" class="nav-link">Deploy to github</a>
+            <li class="nav-item" data-level="2"><a href="#cache-token" class="nav-link">cache token</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -115,22 +103,14 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="mkdocs-getting-started">MkDocs - Getting Started</h1>
-<h2 id="installation">Installation</h2>
-<pre><code>$ pip install mkdocs
+<h1 id="git-misc">Git - Misc</h1>
+<h2 id="cache-token">cache token</h2>
+<p>to cache token (use token instead of password) (for 15 minutes, by default).</p>
+<p>src: <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">github</a></p>
+<pre><code>$ git config credential.helper cache
 </code></pre>
-<p>check</p>
-<pre><code>$ mkdocs --version
-</code></pre>
-<h2 id="initialize-current-folder">Initialize current folder</h2>
-<pre><code>$ mkdocs new .
-</code></pre>
-<h2 id="build-documentation">Build documentation</h2>
-<pre><code>$ mkdocs build
-</code></pre>
-<h2 id="deploy-to-github">Deploy to github</h2>
-<p>First synchronize current folder with corresponding github repository.</p>
-<pre><code>$ mkdocs gh-deploy
+<p>or for 1 hour</p>
+<pre><code>$ git config credential.helper 'cache --timeout=3600'
 </code></pre></div>
             </div>
         </div>
