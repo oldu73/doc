@@ -6,3 +6,9 @@ nav:
         - 'Getting Started': 'mkdocs/getting-started.md'
     - Git:
         - 'Misc': 'git/misc.md'
+    - ElasticSearch:
+            - 'Misc': 'elasticsearch/misc.md'
+
+
+# $ mkdocs build
+# $ mkdocs gh-deploy
