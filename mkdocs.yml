@@ -8,7 +8,8 @@ nav:
         - 'Misc': 'git/misc.md'
     - ElasticSearch:
             - 'Misc': 'elasticsearch/misc.md'
-
+    - Intellij:
+            - 'Misc': 'intellij/misc.md'
 
 # $ mkdocs build
 # $ mkdocs gh-deploy
