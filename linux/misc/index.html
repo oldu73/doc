@@ -119,7 +119,27 @@
             
             <li class="nav-item" data-level="1"><a href="#linux-misc" class="nav-link">Linux - Misc</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#diff" class="nav-link">diff</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#mean-of-a-column" class="nav-link">Mean of a column</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#median-of-a-column" class="nav-link">Median of a column</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#get-nth-column-from-file-with-field-separated-values" class="nav-link">Get nth column from file with field separated values</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#list-files" class="nav-link">List files</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#uniq-values-in-a-file-sorted-and-counted-first-sort-is-mandatory" class="nav-link">Uniq values in a file, sorted and counted (first sort is mandatory)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -131,7 +151,7 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="linux-misc">Linux - Misc</h1>
-<h3 id="diff">diff</h3>
+<h2 id="diff">diff</h2>
 <p>Difference of 2 commands output</p>
 <pre><code>$ diff &lt;(ls test1) &lt;(ls test2)
 </code></pre>
@@ -142,7 +162,7 @@ $ sort all.txt &gt; allSorted.txt
 
 $ diff --new-line-format=&quot;&quot; --unchanged-line-format=&quot;&quot;  allSorted.txt okSorted.txt
 </code></pre>
-<h3 id="mean-of-a-column">Mean of a column</h3>
+<h2 id="mean-of-a-column">Mean of a column</h2>
 <p>test.txt (warning on empty lines (maybe at the end))</p>
 <pre><code>1
 3
@@ -151,7 +171,7 @@ $ diff --new-line-format=&quot;&quot; --unchanged-line-format=&quot;&quot;  allS
 <pre><code>$ cat test.txt | awk '{ total += $1 } END { print total/NR }'
 3.66667
 </code></pre>
-<h3 id="median-of-a-column">Median of a column</h3>
+<h2 id="median-of-a-column">Median of a column</h2>
 <p>test.txt (warning on empty lines (maybe at the end))</p>
 <pre><code>1 
 3 
@@ -183,7 +203,7 @@ END {
 $ cat test.txt | awk '{if($1 &gt; 11) print $1}' | wc -l
 3
 </code></pre>
-<h3 id="get-nth-column-from-file-with-field-separated-values">Get nth column from file with field separated values</h3>
+<h2 id="get-nth-column-from-file-with-field-separated-values">Get nth column from file with field separated values</h2>
 <p>test.txt</p>
 <pre><code>column 1 row 1;column 2 row 1;column 3 row 1
 column 1 row 2;column 2 row 2;column 3 row 2
@@ -194,7 +214,7 @@ column 2 row 1
 column 2 row 2
 column 2 row 3
 </code></pre>
-<h4 id="conditional">Conditional</h4>
+<h3 id="conditional">Conditional</h3>
 <pre><code>$ cat test.txt | awk -F ';' '{if($1 == &quot;column 1 row 2&quot;) print $2}'
 column 2 row 2
 </code></pre>
@@ -202,7 +222,7 @@ column 2 row 2
 <p>Sorted by sizes and human readable</p>
 <pre><code>$ ll -S -h
 </code></pre>
-<h3 id="uniq-values-in-a-file-sorted-and-counted-first-sort-is-mandatory">Uniq values in a file, sorted and counted (first sort is mandatory)</h3>
+<h2 id="uniq-values-in-a-file-sorted-and-counted-first-sort-is-mandatory">Uniq values in a file, sorted and counted (first sort is mandatory)</h2>
 <p>test.txt</p>
 <pre><code>1
 71
