@@ -10,6 +10,8 @@ nav:
             - 'Misc': 'elasticsearch/misc.md'
     - Intellij:
             - 'Misc': 'intellij/misc.md'
+    - Linux:
+            - 'Misc': 'linux/misc.md'
 
 # $ mkdocs build
 # $ mkdocs gh-deploy
