@@ -1,4 +1,6 @@
-# Git - Misc
+# Git
+
+***
 
 ### cache token
 
@@ -15,3 +17,5 @@ or for 1 hour
 ```
 $ git config credential.helper 'cache --timeout=3600'
 ```
+
+***

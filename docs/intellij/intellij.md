@@ -1,4 +1,6 @@
-# Intellij - Misc
+# Intellij
+
+***
 
 ### Search for ; and replace with ;\r\n
 
@@ -8,3 +10,5 @@ line to compare files.
 replace ; enable regex by ;\r\n
 
 To revert, do it in Notepad++ with a record sequence
+
+***

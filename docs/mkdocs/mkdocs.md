@@ -1,4 +1,6 @@
-# MkDocs - Getting Started
+# MkDocs
+
+***
 
 ### Installation
 
@@ -12,17 +14,23 @@ check
 $ mkdocs --version
 ```
 
+***
+
 ### Initialize current folder
 
 ```
 $ mkdocs new .
 ```
 
+***
+
 ### Build documentation
 
 ```
 $ mkdocs build
 ```
+
+***
 
 ### Deploy to github
 
@@ -31,3 +39,5 @@ First synchronize current folder with corresponding github repository.
 ```
 $ mkdocs gh-deploy
 ```
+
+***

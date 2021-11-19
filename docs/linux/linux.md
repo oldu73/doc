@@ -1,6 +1,23 @@
-# Linux - Misc
+# Linux
 
-## diff
+***
+
+## Where is a program
+
+How to know where reside a program, e.g. ls?
+
+```
+$ which ls
+/usr/bin/ls
+
+$ env
+
+$ env | grep PATH
+```
+
+***
+
+## Difference
 
 Difference of 2 commands output
 
@@ -18,6 +35,8 @@ $ sort all.txt > allSorted.txt
 $ diff --new-line-format="" --unchanged-line-format=""  allSorted.txt okSorted.txt
 ```
 
+***
+
 ## Mean of a column
 
 test.txt (warning on empty lines (maybe at the end))
@@ -31,6 +50,8 @@ test.txt (warning on empty lines (maybe at the end))
 $ cat test.txt | awk '{ total += $1 } END { print total/NR }'
 3.66667
 ```
+
+***
 
 ## Median of a column
 
@@ -66,6 +87,7 @@ $ cat test.txt | awk -f median.awk
 ```
 
 Check equal number of values below and above median
+
 ```
 $ cat test.txt | awk '{if($1 < 11) print $1}' | wc -l
 3
@@ -73,7 +95,12 @@ $ cat test.txt | awk '{if($1 > 11) print $1}' | wc -l
 3
 ```
 
-## Get nth column from file with field separated values
+***
+
+## Get nth column from file
+
+Get nth column from file with field separated values
+
 test.txt
 ```
 column 1 row 1;column 2 row 1;column 3 row 1
@@ -95,6 +122,8 @@ $ cat test.txt | awk -F ';' '{if($1 == "column 1 row 2") print $2}'
 column 2 row 2
 ```
 
+***
+
 ## List files
 
 Sorted by sizes and human readable
@@ -102,7 +131,12 @@ Sorted by sizes and human readable
 $ ll -S -h
 ```
 
-## Uniq values in a file, sorted and counted (first sort is mandatory)
+***
+
+## Uniq values in a file
+
+Uniq values in a file, sorted and counted (first sort is mandatory)
+
 test.txt
 ```
 1
@@ -130,6 +164,7 @@ $ cat test.txt | sort | uniq -c
 ```
 
 sorted output
+
 ```
 $ cat test.txt | sort | uniq -c | sort
       1 11
@@ -142,6 +177,7 @@ $ cat test.txt | sort | uniq -c | sort
 ```
 
 revert sorted output
+
 ```
 $ cat test.txt | sort | uniq -c | sort -r
       3 22
@@ -152,3 +188,5 @@ $ cat test.txt | sort | uniq -c | sort -r
       1 3
       1 11
 ```
+
+***

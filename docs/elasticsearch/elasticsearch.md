@@ -1,4 +1,6 @@
-# ElasticSearch - Misc
+# ElasticSearch
+
+***
 
 ### Update boolean field
 
@@ -19,3 +21,5 @@ to update
 request _update POST
 
 {"doc":{"deleted":false}}
+
+***
