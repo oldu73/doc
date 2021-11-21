@@ -318,31 +318,18 @@
             
             <li class="nav-item" data-level="1"><a href="#echo-0_4" class="nav-link">echo $0</a>
               <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#echo-0-check-which-shell-binsh" class="nav-link">echo $0   // check which shell (/bin/sh)</a>
+            <li class="nav-item" data-level="2"><a href="#alpine" class="nav-link">Alpine</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#apk-update_2" class="nav-link">apk update</a>
+            <li class="nav-item" data-level="2"><a href="#available-image" class="nav-link">Available image</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#apk-add-bash_1" class="nav-link">apk add bash</a>
+            <li class="nav-item" data-level="2"><a href="#none-running-container" class="nav-link">None running container</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="1"><a href="#bash_1" class="nav-link">bash</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#echo-0-check-which-shell-bash" class="nav-link">echo $0   // check which shell (bash)</a>
-              <ul class="nav flex-column">
             <li class="nav-item" data-level="2"><a href="#ubuntu" class="nav-link">Ubuntu</a>
               <ul class="nav flex-column">
               </ul>
@@ -1045,42 +1032,54 @@ $ docker run --name test3 -d redis</p>
 <h3 id="_65"></h3>
 <p>$ docker run redis</p>
 <p>$ docker run -d redis</p>
-<h3 id="_66"></h3>
-<p>$ docker run alpine</p>
-<p>-i, interactive mode
-$ docker run -i alpine
-ls</p>
-<p>.
+<hr />
+<h2 id="alpine">Alpine</h2>
+<pre><code>$ docker run alpine
+</code></pre>
+<p>-i, interactive mode</p>
+<pre><code>$ docker run -i alpine
+ls
+
+.
 .
 dev
 etc
 home
 .
 .
-.</p>
-<p>exit</p>
-<p>-t, terminal -&gt; prompt
-$ docker run -it alpine (= docker run -it alpine sh)</p>
-<h1 id="echo-0-check-which-shell-binsh">echo $0   // check which shell (/bin/sh)</h1>
-<h1 id="apk-update_2">apk update</h1>
-<h1 id="apk-add-bash_1">apk add bash</h1>
-<h1 id="bash_1">bash</h1>
-<h1 id="echo-0-check-which-shell-bash">echo $0   // check which shell (bash)</h1>
+.
+
+exit
+</code></pre>
+<p>-t, terminal -&gt; prompt</p>
+<pre><code>$ docker run -it alpine (= docker run -it alpine sh)
+
+$c echo $0  // check which shell (/bin/sh)
+$c apk update
+$c apk add bash
+$c bash
+$c echo $0  // check which shell (bash)
+</code></pre>
 <p>start in foreground mode</p>
-<p>$ docker run alpine ping google.ch
-$ docker run alpine echo hello</p>
+<pre><code>$ docker run alpine ping google.ch
+$ docker run alpine echo hello
+</code></pre>
 <p>start in background mode (-d = detach (!= daemon))</p>
-<p>docker run -d alpine ping google.fr
-35934c147b56911427c4dd9f6e7e3a08a0a822bd938033df3e489620e2f2f1e8
-docker logs 35934c147b56911427c4dd9f6e7e3a08a0a822bd938033df3e489620e2f2f1e8
-$ docker logs 8e86d993e07d09c2b78ad4352eae390db2ce585561a4bc096250bdc977a80d8b --follow</p>
-<h3 id="_67"></h3>
-<p>show available image(s)
-$ docker images</p>
-<h3 id="_68"></h3>
-<p>check none running container with (-a show all containers (default shows just running)):
-$ docker container ls -a</p>
-<p>// wip pointer</p>
+<pre><code>$ docker run -d alpine ping google.fr
+3593...
+docker logs 3593...
+$ docker logs 8e86... --follow
+</code></pre>
+<hr />
+<h2 id="available-image">Available image</h2>
+<p>show available image(s)</p>
+<pre><code>$ docker images
+</code></pre>
+<hr />
+<h2 id="none-running-container">None running container</h2>
+<p>check none running container with (-a show all containers (default shows just running)):</p>
+<pre><code>$ docker container ls -a
+</code></pre>
 <hr />
 <h2 id="ubuntu">Ubuntu</h2>
 <pre><code>$ docker run -it ubuntu bash
