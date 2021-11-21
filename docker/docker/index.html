@@ -365,7 +365,7 @@
 <h1 id="docker">Docker</h1>
 <hr />
 <p>$ = console</p>
-<p># = console inside container</p>
+<p>$c = console inside container</p>
 <hr />
 <p>Project server node to return a minimal page in a browser at localhost address,
 with Express (which is a Node.js framework)</p>
@@ -1085,14 +1085,14 @@ $ docker container ls -a</p>
 <h2 id="ubuntu">Ubuntu</h2>
 <pre><code>$ docker run -it ubuntu bash
 </code></pre>
-<pre><code># cat /etc/os-release 
+<pre><code>$c cat /etc/os-release 
 
 NAME=&quot;Ubuntu&quot;
 VERSION=&quot;20.04.3 LTS (Focal Fossa)&quot;
 ...
 </code></pre>
 <p>to exit container and stop it</p>
-<pre><code># ctrl + d
+<pre><code>$c ctrl + d
 </code></pre>
 <p>then to start/stop it again, e.g container name is 'trusting_yalow'</p>
 <pre><code>$ docker start trusting_yalow
@@ -1103,7 +1103,7 @@ $ docker stop trusting_yalow
 <pre><code>$ docker attach trusting_yalow
 </code></pre>
 <p>to detach from a docker container without stopping it</p>
-<pre><code># ctrl + p + q
+<pre><code>$c ctrl + p + q
 </code></pre>
 <hr />
 <h2 id="hello-world">Hello, world!</h2>
