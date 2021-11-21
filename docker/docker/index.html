@@ -318,6 +318,46 @@
             
             <li class="nav-item" data-level="1"><a href="#echo-0_4" class="nav-link">echo $0</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#pauseunpause-a-container" class="nav-link">Pause/unpause a container</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#rename-a-container" class="nav-link">Rename a container</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#postgres-with-environnement-variable" class="nav-link">Postgres with environnement variable</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#stop-container" class="nav-link">Stop container</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#suppress-all" class="nav-link">Suppress all</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#remove-image" class="nav-link">Remove image</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#remove-container" class="nav-link">Remove container</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#image-images" class="nav-link">Image, images</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#help" class="nav-link">Help</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#redis" class="nav-link">Redis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#alpine" class="nav-link">Alpine</a>
               <ul class="nav flex-column">
               </ul>
@@ -964,74 +1004,94 @@ OCI runtime exec failed: exec failed: container_linux.go:380: starting container
 <p>$ docker exec -it alpine001 sh</p>
 <h1 id="echo-0_4">echo $0</h1>
 <p>sh</p>
-<h3 id="_52"></h3>
-<p>pause/unpause a container</p>
-<p>$ docker container start -ai alpine001</p>
-<p>$ docker container pause alpine001</p>
-<p>$ docker container unpause alpine001</p>
-<h3 id="_53"></h3>
+<h2 id="pauseunpause-a-container">Pause/unpause a container</h2>
+<pre><code>$ docker container start -ai alpine001
+
+$ docker container pause alpine001
+
+$ docker container unpause alpine001
+</code></pre>
+<hr />
+<h2 id="rename-a-container">Rename a container</h2>
 <p>rename a container named "beautiful_leakey"</p>
-<p>$ docker container rename beautiful_leakey alpine001</p>
-<p>not allowed to rename image</p>
-<h3 id="_54"></h3>
-<p>$ docker run -d --name mongo mongo
+<pre><code>$ docker container rename beautiful_leakey alpine001
+
+not allowed to rename image
+</code></pre>
+<hr />
+<h2 id="postgres-with-environnement-variable">Postgres with environnement variable</h2>
+<pre><code>$ docker run -d --name mongo mongo
 $ docker run -d --name redis redis
-$ docker run -d --name postgres postgres</p>
-<p>$ docker logs postgres</p>
-<p>Error: ...</p>
-<p>$ docker container rm postgres</p>
-<p>$ docker container run --name postgres -d -e POSTGRES_HOST_AUTH_METHOD=trust postgres</p>
-<h3 id="_55"></h3>
+$ docker run -d --name postgres postgres
+
+$ docker logs postgres
+
+Error: ...
+
+$ docker container rm postgres
+
+$ docker container run --name postgres -d -e POSTGRES_HOST_AUTH_METHOD=trust postgres
+</code></pre>
+<hr />
+<h2 id="stop-container">Stop container</h2>
 <p>Stop all running container at once</p>
-<p>docker stop $(docker ps -aq)</p>
-<h3 id="_56"></h3>
-<p>$ docker create alpine</p>
-<p>$ docker create -it alpine</p>
-<p>$ docker container start naughty_wilson</p>
-<p>$ docker attach naughty_wilson</p>
-<p>$ docker container stop naughty_wilson</p>
-<p>attach terminal</p>
-<p>$ docker container start -ai naughty_wilson</p>
-<p>$ docker container restart naughty_wilson</p>
-<p>$ docker container kill naughty_wilson</p>
-<h3 id="_57"></h3>
-<p>Une image est dite dangling si elle n'est pas taguée et qu'aucune autre image ne dépend d'elle</p>
-<h3 id="_58"></h3>
+<pre><code>docker stop $(docker ps -aq)
+</code></pre>
+<hr />
+<h2 id="suppress-all">Suppress all</h2>
 <p>!Suppress all not used (stopped container(s) and not used for the rest)!</p>
-<p>$ docker system prune -a</p>
-<h3 id="_59"></h3>
-<p>remove unused images (dangling)</p>
-<p>$ docker image prune -a</p>
-<h3 id="_60"></h3>
-<p>remove image</p>
-<p>$ docker image rm NAME_OR_ID</p>
-<h3 id="_61"></h3>
-<p>remove all stopped container</p>
-<p>$ docker container prune</p>
-<h3 id="_62"></h3>
-<p>try to remove a up container (running)</p>
+<pre><code>$ docker system prune -a
+</code></pre>
+<hr />
+<h2 id="remove-image">Remove image</h2>
+<pre><code>$ docker image rm NAME_OR_ID
+</code></pre>
+<p>remove unused images (dangling = image is not tagged and no other image depends on it)</p>
+<pre><code>$ docker image prune -a
+</code></pre>
+<hr />
+<h2 id="remove-container">Remove container</h2>
+<p>try to remove a running container</p>
 <p>Launch a background test named redis container with:</p>
-<p>$ docker run --name test -d redis</p>
+<pre><code>$ docker run --name test -d redis
+</code></pre>
 <p>then try to remove it with:</p>
-<p>$ docker container rm test</p>
-<p>Error - Stop the container before attempting removal or force remove</p>
+<pre><code>$ docker container rm test
+
+Error - Stop the container before attempting removal or force remove
+</code></pre>
 <p>Force remove running container:</p>
-<p>$ docker container rm -f test</p>
-<p>$ docker run --name test1 -d redis
+<pre><code>$ docker container rm -f test
+
+$ docker run --name test1 -d redis
 $ docker run --name test2 -d redis
-$ docker run --name test3 -d redis</p>
-<p>$ docker container rm -f test1 test2 test3</p>
-<h3 id="_63"></h3>
-<p>$ docker images</p>
-<p>$ docker image ls redis</p>
-<h3 id="_64"></h3>
+$ docker run --name test3 -d redis
+
+$ docker container rm -f test1 test2 test3
+</code></pre>
+<p>remove all stopped container</p>
+<pre><code>$ docker container prune
+</code></pre>
+<hr />
+<h2 id="image-images">Image, images</h2>
+<pre><code>$ docker images
+
+$ docker image ls redis
+</code></pre>
+<hr />
+<h2 id="help">Help</h2>
 <p>to get help, simply type:</p>
-<p>$ docker</p>
+<pre><code>$ docker
+</code></pre>
 <p>help on a command:</p>
-<p>$ docker ps --help</p>
-<h3 id="_65"></h3>
-<p>$ docker run redis</p>
-<p>$ docker run -d redis</p>
+<pre><code>$ docker ps --help
+</code></pre>
+<hr />
+<h2 id="redis">Redis</h2>
+<pre><code>$ docker run redis
+
+$ docker run -d redis
+</code></pre>
 <hr />
 <h2 id="alpine">Alpine</h2>
 <pre><code>$ docker run alpine
