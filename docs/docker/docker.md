@@ -4,7 +4,7 @@
 
 $ = console
 
-\# = console inside container
+$c = console inside container
 
 ***
 
@@ -499,22 +499,22 @@ $ docker build --progress=plain --no-cache -t node-test-007:latest .
 #5 0.281 Hello, world!
 #5 DONE 0.3s
 
-###
+## List only container names
 
 To list only names of all containers:
 
 $ docker ps -a --format='{{.Names}}'
 
-###
+## ENV
 
 'ENV', environment variable:
 
 Dockerfile:
+- Base image
+- Test environment variable
 
-# Base image
 FROM alpine
 
-# Test environment variable
 ENV DIR=/app
 WORKDIR ${DIR}/back
 
@@ -526,10 +526,10 @@ then..
 
 $ docker run -it node-test-006 sh
 
-# pwd
+$c pwd
 /app/back
 
-###
+## RUN
 
 RUN exist in 'exec' and 'shell' mode (which is 'sh' by default).
 
@@ -541,7 +541,7 @@ shell:
 
 RUN echo "Bonjour !"
 
-###
+## CMD
 
 Remove CMD line to test container in interactive mode, then build:
 
@@ -552,25 +552,25 @@ Don't forget to mention image tag after ':' as long as it ain't 'latest',
 and to mention the shell at the end, 'sh':
 
 $ docker run -it node-test-005:test sh
-/app #
+/app $c
 
 As we can see, we are directly in 'app' folder.
 And by typing 'echo $0' to check shell is indeed, 'sh':
 
-# echo $0
+$c echo $0
 sh
 
 And check 'node' version:
 
-# node --version
+$c node --version
 v14.18.1
 
 And test 'app.js' (in app.js -> console.log('Hi test 005');):
 
-# node app.js
+$c node app.js
 Hi test 005
 
-###
+## WORKDIR
 
 WORKDIR define working directory in image:
 
@@ -588,35 +588,35 @@ WORKDIR can be changed during the Dockerfile by being filled in again.
 
 WORKDIR can create folders if they do not exist (this saves us a mkdir).
 
-###
+## FROM
 
 Only one FROM command by Dockerfile
 
-###
+## VS Code Dockerfile command
 
 VS Code, in a Dockerfile, hit ctrl+space to get a list of available commands.
 
 Shortcut available due to Docker Microsoft extension installed in VS Code.
 
-###
+## ADD source destination
 
 ADD source destination, similar to COPY but from URL or compressed file.
 
 If it's a compressed file it will be automatically uncompressed.
 
-###
+## Copy context
 
 Dockerfile context is current folder.
 
 Could not COPY file from parent folder.
 
-###
+## Remove image with pattern
 
 Remove all images that contain a pattern:
 
 $ docker image rm $(docker images --format "{{.Repository}}" | grep node-test-00)
 
-###
+## Optimize cache
 
 Optimizing cache.
 
@@ -644,7 +644,7 @@ RUN apt-get update && apt-get install -y \
 	that we are in a non-interactive environment for the installation.
 	This avoids the prompts requested by some programs during installation (eg Git).
 
-###
+## Invalidate cache
 
 !Important!
 
@@ -658,7 +658,7 @@ To not use a cache, you have to do:
 
 docker build --no-cache -t test .
 
-###
+## Inspect Go template
 
 docker inspect with Go template for format parameter.
 e.g. to retrieve CMD:
@@ -672,7 +672,7 @@ Show the history of an image:
 
 $ docker image history node-test-001
 
-###
+## Image size
 
 node image = 900 MB/3 min VS alpine + node install = 50 MB/30 sec => ???
 
@@ -682,7 +682,7 @@ Intermediate steps are cached by Docker.
 
 Second build of node based image takes now only around 3 seconds.
 
-###
+## Dockerfile build image
 
 Docker file, steps to build an image.
 
@@ -698,7 +698,7 @@ Instructions:
 
 You can't run commands in an image, so you need intermediate container.
 
-###
+## Dockerfile context
 
 !! Warning !!
 
@@ -712,7 +712,7 @@ or here to test, in a separate folder.
 If you create your Dockerfile directly in the root / directory,
 your entire hard drive is sent as context to the daemon!
 
-###
+## APK
 
 apk = Alpine Package Management
 
@@ -731,7 +731,7 @@ apt update && apt install
 Furthermore, you also have || which is the logical or, and also ;
 which is just a separator which doesn't care what happen to the command before.
 
-###
+## Dockerfile
 
 Create a new folder docker-test.
 
@@ -748,20 +748,26 @@ Then, create a new file, in folder, with VS Code, named:
 
 Dockerfile
 
+Base image
+
+Install node
+
+Copy js file from local folder to container.
+
+If folder does not exist, it will be created.
+
 Type following commands in newly created Dockerfile file
 (exactly respect the case and do not add any extensions):
 
-# Base image
 FROM alpine
 
-# Install node
 RUN apk add --update nodejs
 
-# Copy js file from local folder to container.
-# If folder does not exist, it will be created.
 COPY ./app.js /app/
 
-# Command to launch node with app.js in folder app
+## Node
+
+Command to launch node with app.js in folder app
 CMD ["node", "app/app.js"]
 
 Then from terminal, build command with -t argument to name:tag image
@@ -793,11 +799,11 @@ Test app.js on host machine (if node is installed):
 $ node app.js 
 Hello, world!
 
-###
+## VS Code
 
 VS Code install Microsoft Docker extension
 
-###
+## Docker file in short
 
 My image -> Docker file =:
 
@@ -807,21 +813,19 @@ My image -> Docker file =:
 
 - Action
 
-###
+## Add/del Alpine package
 
 A base image (e.g. Alpine) is not based on any other image.
 
-###
-
 Add or del package in Alpine
 
-# apk update
+$c apk update
 
-# apk add grep
+$c apk add grep
 
-# apk del grep
+$c apk del grep
 
-###
+## Running container as a running process
 
 To demonstrate running container is just a running process on host machine
 
@@ -853,101 +857,149 @@ Running:
 See that container isn't running anymore:
 $ docker container ls
 
-###
+***
 
-Show docker disk usage:
+// wip pointer
 
+***
+
+## Disk usage
+
+Show docker disk usage
+
+```
 $ docker system df
+```
 
-Show detailed information on space usage, -v, --verbose:
+Show detailed information on space usage, -v, --verbose
 
+```
 docker system df -v
+```
 
-###
+***
+
+## Consumed resource
 
 to see live consuming resources of running containers:
 
+```
 $ docker container stats
+```
 
-###
+***
 
-to inspect all configuration of a container:
+## Inspect
+
+to inspect all configuration of a container
+
+```
 $ docker container inspect alpinetest001
+```
 
-###
+***
+
+## Running process
 
 Show running process in a container from host
 
+```
 $ docker container top alpinetest001
+```
 
 See the difference from inside the container
 
+```
 $ docker attach alpine001
+```
 1. update
-# apk update
-
+```
+$c apk update
+```
 2. add bash
-# apk add bash
-
+```
+$c apk add bash
+```
 3. test bash
-# bash
-# echo $0
+```
+$c bash
+$c echo $0
 bash
 ctrl+p+q
+```
 
+```
 $ docker exec -it alpinetest001 bash
+```
 
 if ps not present, install it with:
-# apk update && apk add procps
+
+```
+$c apk update && apk add procps
+```
 
 then:
-# ps -ef
+
+```
+$c ps -ef
 UID        PID  PPID  C STIME TTY          TIME CMD
 root         1     0  0 16:15 pts/0    00:00:00 /bin/sh
 root        16     1  0 16:27 pts/0    00:00:00 bash
 root        17     0  0 16:28 pts/1    00:00:00 bash
 root        31    17  0 16:33 pts/1    00:00:00 ps -ef
+```
 
 sh and bash does not have parent process ID (PPID) = '0' because of container isolation,
 container does not see running processes of host machine neither the ones belonging to other containers.
 
-###
+***
+
+## Modified file
 
 Show modified file in a container:
 
 A = added, D = deleted, C = modified
 
+```
 $ docker container diff alpinetest001
 A /test
 A /test/test1.txt
 A /test/test2.txt
 C /root
 A /root/.ash_history
+```
 
-###
+***
 
-copy file from host to container
+## Copy file
 
-$ docker cp path container:path
-e.g.:
+copy file from host to container, docker cp path container:path
+
+```
 docker cp test1.txt alpinetest001:test
+```
 
-copy file from container to host
+copy file from container to host, docker cp container:path path
 
-$ docker cp container:path path
-e.g.:
+```
 docker cp alpinetest001:test/test2.txt .
+```
 
-###
+***
+
+## Execute command in container
 
 Execute a command in a container without using terminal
 
+```
 $ docker container exec alpine001 mkdir testdir
 
 $ docker container exec alpine001 touch /testdir/hello.txt
+```
 
 other e.g.
 
+```
 $ docker run -d --name redis001 redis
 
 $ docker exec -it redis001 redis-cli
@@ -957,49 +1009,69 @@ redis command:
 set cle 42
 get cle
 exit
+```
+
+***
+
+## Get shell in container
 
 Get a shell, in a no matter which running container it is:
 
+```
 $ docker exec -it redis001 bash
-# echo $0
+$c echo $0
 bash
+```
 
 if bash not installed in container (e.g. with alpine) you may use sh instead:
 (if both presents, both works (e.g. redis)
 
+```
 $ docker exec -it redis001 sh
-# echo $0
+$c echo $0
 sh
+```
 
+```
 $ docker run -it -d --name alpine001 alpine
 
 $ docker exec -it alpine001 bash
 OCI runtime exec failed: exec failed: container_linux.go:380: starting container process caused: exec: "bash": executable file not found in $PATH: unknown
 
 $ docker exec -it alpine001 sh
-# echo $0
+$c echo $0
 sh
+```
 
-###
+***
 
-pause/unpause a container
+## Pause/unpause a container
 
+```
 $ docker container start -ai alpine001
 
 $ docker container pause alpine001
 
 $ docker container unpause alpine001
+```
 
-###
+***
+
+## Rename a container
 
 rename a container named "beautiful_leakey"
 
+```
 $ docker container rename beautiful_leakey alpine001
 
 not allowed to rename image
+```
 
-###
+***
 
+## Postgres with environnement variable
+
+```
 $ docker run -d --name mongo mongo
 $ docker run -d --name redis redis
 $ docker run -d --name postgres postgres
@@ -1011,77 +1083,65 @@ Error: ...
 $ docker container rm postgres
 
 $ docker container run --name postgres -d -e POSTGRES_HOST_AUTH_METHOD=trust postgres
+```
 
-###
+***
+
+## Stop container
 
 Stop all running container at once
 
+```
 docker stop $(docker ps -aq)
+```
 
-###
+***
 
-$ docker create alpine
-
-$ docker create -it alpine
-
-$ docker container start naughty_wilson
-
-$ docker attach naughty_wilson
-
-$ docker container stop naughty_wilson
-
-attach terminal
-
-$ docker container start -ai naughty_wilson
-
-$ docker container restart naughty_wilson
-
-$ docker container kill naughty_wilson
-
-###
-
-Une image est dite dangling si elle n'est pas taguée et qu'aucune autre image ne dépend d'elle
-
-###
+## Suppress all
 
 !Suppress all not used (stopped container(s) and not used for the rest)!
 
+```
 $ docker system prune -a
+```
 
-###
+***
 
-remove unused images (dangling)
+## Remove image
 
-$ docker image prune -a
-
-###
-
-remove image
-
+```
 $ docker image rm NAME_OR_ID
+```
 
-###
+remove unused images (dangling = image is not tagged and no other image depends on it)
 
-remove all stopped container
+```
+$ docker image prune -a
+```
 
-$ docker container prune
+***
 
-###
+## Remove container
 
-try to remove a up container (running)
+try to remove a running container
 
 Launch a background test named redis container with:
 
+```
 $ docker run --name test -d redis
+```
 
 then try to remove it with:
 
+```
 $ docker container rm test
 
 Error - Stop the container before attempting removal or force remove
+```
 
 Force remove running container:
 
+```
 $ docker container rm -f test
 
 $ docker run --name test1 -d redis
@@ -1089,36 +1149,62 @@ $ docker run --name test2 -d redis
 $ docker run --name test3 -d redis
 
 $ docker container rm -f test1 test2 test3
+```
 
-###
+remove all stopped container
 
+```
+$ docker container prune
+```
+
+***
+
+## Image, images
+
+```
 $ docker images
 
 $ docker image ls redis
+```
 
-###
+***
+## Help
 
 to get help, simply type:
 
+```
 $ docker
+```
 
 help on a command:
 
+```
 $ docker ps --help
+```
 
-###
+***
 
+## Redis
+
+```
 $ docker run redis
 
 $ docker run -d redis
+```
 
-###
+***
 
+## Alpine
+
+```
 $ docker run alpine
+```
 
 -i, interactive mode
+
+```
 $ docker run -i alpine
-ls
+$c ls
 
 .
 .
@@ -1130,39 +1216,53 @@ home
 .
 
 exit
+```
 
 -t, terminal -> prompt
+
+```
 $ docker run -it alpine (= docker run -it alpine sh)
 
-# echo $0	// check which shell (/bin/sh)
-# apk update
-# apk add bash
-# bash
-# echo $0	// check which shell (bash)
+$c echo $0	// check which shell (/bin/sh)
+$c apk update
+$c apk add bash
+$c bash
+$c echo $0	// check which shell (bash)
+```
 
 start in foreground mode
 
+```
 $ docker run alpine ping google.ch
 $ docker run alpine echo hello
+```
 
 start in background mode (-d = detach (!= daemon))
 
-docker run -d alpine ping google.fr
-35934c147b56911427c4dd9f6e7e3a08a0a822bd938033df3e489620e2f2f1e8
-docker logs 35934c147b56911427c4dd9f6e7e3a08a0a822bd938033df3e489620e2f2f1e8
-$ docker logs 8e86d993e07d09c2b78ad4352eae390db2ce585561a4bc096250bdc977a80d8b --follow
+```
+$ docker run -d alpine ping google.fr
+3593...
+docker logs 3593...
+$ docker logs 8e86... --follow
+```
 
-###
+***
+## Available image
 
 show available image(s)
-$ docker images
 
-###
+```
+$ docker images
+```
+
+***
+
+## None running container
 
 check none running container with (-a show all containers (default shows just running)):
+```
 $ docker container ls -a
-
-// wip pointer
+```
 
 ***
 
@@ -1173,7 +1273,7 @@ $ docker run -it ubuntu bash
 ```
 
 ```
-# cat /etc/os-release 
+$c cat /etc/os-release 
 
 NAME="Ubuntu"
 VERSION="20.04.3 LTS (Focal Fossa)"
@@ -1183,7 +1283,7 @@ VERSION="20.04.3 LTS (Focal Fossa)"
 to exit container and stop it
 
 ```
-# ctrl + d
+$c ctrl + d
 ```
 
 then to start/stop it again, e.g container name is 'trusting_yalow'
@@ -1203,7 +1303,7 @@ $ docker attach trusting_yalow
 to detach from a docker container without stopping it
 
 ```
-# ctrl + p + q
+$c ctrl + p + q
 ```
 
 ***
