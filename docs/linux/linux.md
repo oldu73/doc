@@ -2,6 +2,41 @@
 
 ***
 
+## Search between timestamp
+
+```
+$ sed -rne '/10:50/,/11:05/ p' file
+```
+
+## Highlight search result
+
+```
+$ grep --color=always -z pattern file | less -R
+```
+
+always to transmit color through pipe  
+-z to show everything, not only the matching pattern  
+-R to avoid showing esc char instead of color
+
+## Delete history
+
+```
+1003  25-04-2016 17:54:52 echo "Command 1"
+1004  25-04-2016 17:54:54 echo "Command 2"
+1005  25-04-2016 17:54:57 echo "Command 3"
+1006  25-04-2016 17:54:59 echo "Command 4"
+1007  25-04-2016 17:55:01 echo "Command 5"
+1008  25-04-2016 17:55:03 echo "Command 6"
+1009  25-04-2016 17:55:07 echo "Command 7"
+1010  25-04-2016 17:55:09 echo "Command 8"
+1011  25-04-2016 17:55:11 echo "Command 9"
+1012  25-04-2016 17:55:14 echo "Command 10"
+```
+
+```
+$ for h in $(seq 1006 1008); do history -d 1006; done
+```
+
 ## Where is a program
 
 How to know where reside a program, e.g. ls?
