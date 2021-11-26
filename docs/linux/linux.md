@@ -8,6 +8,8 @@
 $ sed -rne '/10:50/,/11:05/ p' file
 ```
 
+Put existing time range in file (10:50 - 11:05).
+
 ## Highlight search result
 
 ```
