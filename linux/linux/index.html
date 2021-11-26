@@ -128,6 +128,18 @@
             
             <li class="nav-item" data-level="1"><a href="#linux" class="nav-link">Linux</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#search-between-timestamp" class="nav-link">Search between timestamp</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#highlight-search-result" class="nav-link">Highlight search result</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#delete-history" class="nav-link">Delete history</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#where-is-a-program" class="nav-link">Where is a program</a>
               <ul class="nav flex-column">
               </ul>
@@ -165,6 +177,29 @@
 
 <h1 id="linux">Linux</h1>
 <hr />
+<h2 id="search-between-timestamp">Search between timestamp</h2>
+<pre><code>$ sed -rne '/10:50/,/11:05/ p' file
+</code></pre>
+<h2 id="highlight-search-result">Highlight search result</h2>
+<pre><code>$ grep --color=always -z pattern file | less -R
+</code></pre>
+<p>always to transmit color through pipe<br />
+-z to show everything, not only the matching pattern<br />
+-R to avoid showing esc char instead of color</p>
+<h2 id="delete-history">Delete history</h2>
+<pre><code>1003  25-04-2016 17:54:52 echo &quot;Command 1&quot;
+1004  25-04-2016 17:54:54 echo &quot;Command 2&quot;
+1005  25-04-2016 17:54:57 echo &quot;Command 3&quot;
+1006  25-04-2016 17:54:59 echo &quot;Command 4&quot;
+1007  25-04-2016 17:55:01 echo &quot;Command 5&quot;
+1008  25-04-2016 17:55:03 echo &quot;Command 6&quot;
+1009  25-04-2016 17:55:07 echo &quot;Command 7&quot;
+1010  25-04-2016 17:55:09 echo &quot;Command 8&quot;
+1011  25-04-2016 17:55:11 echo &quot;Command 9&quot;
+1012  25-04-2016 17:55:14 echo &quot;Command 10&quot;
+</code></pre>
+<pre><code>$ for h in $(seq 1006 1008); do history -d 1006; done
+</code></pre>
 <h2 id="where-is-a-program">Where is a program</h2>
 <p>How to know where reside a program, e.g. ls?</p>
 <pre><code>$ which ls
