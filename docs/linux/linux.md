@@ -2,6 +2,51 @@
 
 ***
 
+## grep patterns from a file
+
+-f option
+
+```
+$ grep -f patterns_file *.log
+```
+
+***
+
+## for list of file
+
+For list of file in current folder, do operation.
+Here we want to have file name, cat content and separate result with a new line
+
+```
+$ ll *.txt
+
+1.txt
+2.txt
+3.txt
+4.txt
+5.txt
+
+
+$ for f in {2..4}.txt; do echo "$f"; cat "$f"; printf "\n"; done
+
+2.txt
+jkl
+mno
+pqr
+
+3.txt
+stu
+vwx
+yza
+
+4.txt
+bcd
+efg
+hij
+```
+
+***
+
 ## Search between timestamp
 
 ```
@@ -9,6 +54,8 @@ $ sed -rne '/10:50/,/11:05/ p' file
 ```
 
 Put existing time range in file (10:50 - 11:05).
+
+***
 
 ## Highlight search result
 
@@ -19,6 +66,8 @@ $ grep --color=always -z pattern file | less -R
 always to transmit color through pipe  
 -z to show everything, not only the matching pattern  
 -R to avoid showing esc char instead of color
+
+***
 
 ## Delete history
 
@@ -38,6 +87,8 @@ always to transmit color through pipe
 ```
 $ for h in $(seq 1006 1008); do history -d 1006; done
 ```
+
+***
 
 ## Where is a program
 

@@ -3,17 +3,19 @@ site_name: Doc
 nav:
     - Home: 'index.md'
     - MkDocs:
-        - 'Misc': 'mkdocs/mkdocs.md'
+        - 'MkDocs - Misc': 'mkdocs/mkdocs.md'
     - Git:
-        - 'Misc': 'git/git.md'
+        - 'Git - Misc': 'git/git.md'
     - ElasticSearch:
-        - 'Misc': 'elasticsearch/elasticsearch.md'
+        - 'ElasticSearch - Misc': 'elasticsearch/elasticsearch.md'
     - Intellij:
-        - 'Misc': 'intellij/intellij.md'
+        - 'Intellij - Misc': 'intellij/intellij.md'
     - Linux:
-        - 'Misc': 'linux/linux.md'
+        - 'Linux - Misc': 'linux/linux.md'
     - Docker:
-        - 'Misc': 'docker/docker.md'
+        - 'Docker - Misc': 'docker/docker.md'
+    - VS Code:
+        - 'VS Code - Misc': 'vscode/vscode.md'
 
 # $ mkdocs build
 # $ mkdocs gh-deploy
