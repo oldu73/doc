@@ -22,10 +22,20 @@ $ cat error.log | sed -nr 's/.*DATA : (.*) WITH.*/\1/p'
 
 ## grep patterns from a file
 
--f option
+-f option, maybe -oF options also
 
 ```
 $ grep -f patterns_file *.log
+
+or
+
+$ grep -oFf patterns.txt *.log
+```
+
+If result's count's not OK, check by not found pattern (-h option to hide filename in output)
+
+```
+$ grep -hoFf patterns.txt *.log | grep -vFf - patterns.txt
 ```
 
 ***
