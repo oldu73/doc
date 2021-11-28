@@ -13,7 +13,7 @@ In error.log
 .
 ```
 
-Get data between "DATA :" and " WITH" (hex raw data)
+Get data between "DATA : " and " WITH" (hex raw data)
 ```
 $ cat error.log | sed -nr 's/.*DATA : (.*) WITH.*/\1/p'
 ```
