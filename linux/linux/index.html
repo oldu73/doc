@@ -211,8 +211,15 @@
 </code></pre>
 <hr />
 <h2 id="grep-patterns-from-a-file">grep patterns from a file</h2>
-<p>-f option</p>
+<p>-f option, maybe -oF options also</p>
 <pre><code>$ grep -f patterns_file *.log
+
+or
+
+$ grep -oFf patterns.txt *.log
+</code></pre>
+<p>If result's count's not OK, check by not found pattern (-h option to hide filename in output)</p>
+<pre><code>$ grep -hoFf patterns.txt *.log | grep -vFf - patterns.txt
 </code></pre>
 <hr />
 <h2 id="for-list-of-file">for list of file</h2>
