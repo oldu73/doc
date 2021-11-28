@@ -137,6 +137,10 @@
             
             <li class="nav-item" data-level="1"><a href="#linux" class="nav-link">Linux</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#get-data-between-two-patterns" class="nav-link">get data between two patterns</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#grep-patterns-from-a-file" class="nav-link">grep patterns from a file</a>
               <ul class="nav flex-column">
               </ul>
@@ -193,6 +197,18 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="linux">Linux</h1>
+<hr />
+<h2 id="get-data-between-two-patterns">get data between two patterns</h2>
+<p>In error.log</p>
+<pre><code>.
+.
+05:59:30.024 [nioEventLoopGroup-3-5] ERROR c.l.d.c.ConnectorServerHandlerTCP.parseAndSendMessageTeltonika(177) - class java.util.concurrent.ExecutionException FOR RAW DATA : 0000017d55747fb00003f5380c1be045ce00000000000000000804ef005000c8024503034230fc430f8d440000011007e0fca600 WITH STACKTRACE : {}
+.
+.
+</code></pre>
+<p>Get data between "DATA :" and " WITH" (hex raw data)</p>
+<pre><code>$ cat error.log | sed -nr 's/.*DATA : (.*) WITH.*/\1/p'
+</code></pre>
 <hr />
 <h2 id="grep-patterns-from-a-file">grep patterns from a file</h2>
 <p>-f option</p>
