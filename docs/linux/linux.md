@@ -2,6 +2,24 @@
 
 ***
 
+## get data between two patterns
+
+In error.log
+```
+.
+.
+05:59:30.024 [nioEventLoopGroup-3-5] ERROR c.l.d.c.ConnectorServerHandlerTCP.parseAndSendMessageTeltonika(177) - class java.util.concurrent.ExecutionException FOR RAW DATA : 0000017d55747fb00003f5380c1be045ce00000000000000000804ef005000c8024503034230fc430f8d440000011007e0fca600 WITH STACKTRACE : {}
+.
+.
+```
+
+Get data between "DATA :" and " WITH" (hex raw data)
+```
+$ cat error.log | sed -nr 's/.*DATA : (.*) WITH.*/\1/p'
+```
+
+***
+
 ## grep patterns from a file
 
 -f option
