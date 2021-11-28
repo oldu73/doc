@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Misc - Doc</title>
+        <title>Linux - Misc - Doc</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -41,7 +41,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../mkdocs/mkdocs/" class="dropdown-item">Misc</a>
+    <a href="../../mkdocs/mkdocs/" class="dropdown-item">MkDocs - Misc</a>
 </li>
                                 </ul>
                             </li>
@@ -50,7 +50,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../git/git/" class="dropdown-item">Misc</a>
+    <a href="../../git/git/" class="dropdown-item">Git - Misc</a>
 </li>
                                 </ul>
                             </li>
@@ -59,7 +59,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../elasticsearch/elasticsearch/" class="dropdown-item">Misc</a>
+    <a href="../../elasticsearch/elasticsearch/" class="dropdown-item">ElasticSearch - Misc</a>
 </li>
                                 </ul>
                             </li>
@@ -68,7 +68,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../intellij/intellij/" class="dropdown-item">Misc</a>
+    <a href="../../intellij/intellij/" class="dropdown-item">Intellij - Misc</a>
 </li>
                                 </ul>
                             </li>
@@ -77,7 +77,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Misc</a>
+    <a href="./" class="dropdown-item active">Linux - Misc</a>
 </li>
                                 </ul>
                             </li>
@@ -86,7 +86,16 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../docker/docker/" class="dropdown-item">Misc</a>
+    <a href="../../docker/docker/" class="dropdown-item">Docker - Misc</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">VS Code <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../vscode/vscode/" class="dropdown-item">VS Code - Misc</a>
 </li>
                                 </ul>
                             </li>
@@ -128,6 +137,14 @@
             
             <li class="nav-item" data-level="1"><a href="#linux" class="nav-link">Linux</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#grep-patterns-from-a-file" class="nav-link">grep patterns from a file</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#for-list-of-file" class="nav-link">for list of file</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#search-between-timestamp" class="nav-link">Search between timestamp</a>
               <ul class="nav flex-column">
               </ul>
@@ -177,16 +194,53 @@
 
 <h1 id="linux">Linux</h1>
 <hr />
+<h2 id="grep-patterns-from-a-file">grep patterns from a file</h2>
+<p>-f option</p>
+<pre><code>$ grep -f patterns_file *.log
+</code></pre>
+<hr />
+<h2 id="for-list-of-file">for list of file</h2>
+<p>For list of file in current folder, do operation.
+Here we want to have file name, cat content and separate result with a new line</p>
+<pre><code>$ ll *.txt
+
+1.txt
+2.txt
+3.txt
+4.txt
+5.txt
+
+
+$ for f in {2..4}.txt; do echo &quot;$f&quot;; cat &quot;$f&quot;; printf &quot;\n&quot;; done
+
+2.txt
+jkl
+mno
+pqr
+
+3.txt
+stu
+vwx
+yza
+
+4.txt
+bcd
+efg
+hij
+</code></pre>
+<hr />
 <h2 id="search-between-timestamp">Search between timestamp</h2>
 <pre><code>$ sed -rne '/10:50/,/11:05/ p' file
 </code></pre>
 <p>Put existing time range in file (10:50 - 11:05).</p>
+<hr />
 <h2 id="highlight-search-result">Highlight search result</h2>
 <pre><code>$ grep --color=always -z pattern file | less -R
 </code></pre>
 <p>always to transmit color through pipe<br />
 -z to show everything, not only the matching pattern<br />
 -R to avoid showing esc char instead of color</p>
+<hr />
 <h2 id="delete-history">Delete history</h2>
 <pre><code>1003  25-04-2016 17:54:52 echo &quot;Command 1&quot;
 1004  25-04-2016 17:54:54 echo &quot;Command 2&quot;
@@ -201,6 +255,7 @@
 </code></pre>
 <pre><code>$ for h in $(seq 1006 1008); do history -d 1006; done
 </code></pre>
+<hr />
 <h2 id="where-is-a-program">Where is a program</h2>
 <p>How to know where reside a program, e.g. ls?</p>
 <pre><code>$ which ls
