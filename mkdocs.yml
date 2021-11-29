@@ -16,6 +16,9 @@ nav:
         - 'Docker - Misc': 'docker/docker.md'
     - VS Code:
         - 'VS Code - Misc': 'vscode/vscode.md'
+    - Windows:
+        - 'Windows - Misc': 'windows/windows.md'
+
 
 # $ mkdocs build
 # $ mkdocs gh-deploy
