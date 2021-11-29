@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>ElasticSearch - Misc - Doc</title>
+        <title>Windows - Misc - Doc</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -54,12 +54,12 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ElasticSearch <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">ElasticSearch - Misc</a>
+    <a href="../../elasticsearch/elasticsearch/" class="dropdown-item">ElasticSearch - Misc</a>
 </li>
                                 </ul>
                             </li>
@@ -99,12 +99,12 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Windows <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../windows/windows/" class="dropdown-item">Windows - Misc</a>
+    <a href="./" class="dropdown-item active">Windows - Misc</a>
 </li>
                                 </ul>
                             </li>
@@ -117,12 +117,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../git/git/" class="nav-link">
+                                <a rel="prev" href="../../vscode/vscode/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../intellij/intellij/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -144,8 +144,20 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#elasticsearch" class="nav-link">ElasticSearch</a>
+            <li class="nav-item" data-level="1"><a href="#windows" class="nav-link">Windows</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#find-process-that-uses-a-port" class="nav-link">find process that uses a port</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#grep-equivalent" class="nav-link">grep equivalent</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#kill-process" class="nav-link">kill process</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -153,18 +165,33 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="elasticsearch">ElasticSearch</h1>
+<h1 id="windows">Windows</h1>
 <hr />
-<h3 id="update-boolean-field">Update boolean field</h3>
-<p>Chrome plugin ElasticSearch Head</p>
-<p>local: http://localhost:9200/</p>
-<p>Other request tab</p>
-<p>URL http://localhost:9200/index/doc/id</p>
-<p>to check</p>
-<p>empty GET</p>
-<p>to update</p>
-<p>request _update POST</p>
-<p>{"doc":{"deleted":false}}</p>
+<h2 id="find-process-that-uses-a-port">find process that uses a port</h2>
+<p>Open CMD prompt as admin</p>
+<pre><code>C:\&gt; netstat -ano -p tcp | find &quot;50307&quot;
+</code></pre>
+<p>Last column shows the PID that uses the port</p>
+<pre><code>C:\&gt; netstat --help
+
+-a Displays all connections and listening ports.
+
+-n Displays addresses and port numbers in numerical form.
+
+-o Displays the owning process ID associated with each connection.
+</code></pre>
+<p>In PowerShell</p>
+<pre><code>C:\&gt; Get-Process -Id (Get-NetTCPConnection -LocalPort 50307).OwningProcess
+</code></pre>
+<hr />
+<h2 id="grep-equivalent">grep equivalent</h2>
+<p>find "50307" or findstr 50307</p>
+<pre><code>C:\&gt; netstat -ano -p tcp | findstr 50307
+</code></pre>
+<hr />
+<h2 id="kill-process">kill process</h2>
+<pre><code>C:\&gt; taskkill /F /PID pid_number
+</code></pre>
 <hr /></div>
             </div>
         </div>
