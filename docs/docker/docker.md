@@ -8,6 +8,8 @@ $c = console inside container
 
 ***
 
+## Project server node
+
 Project server node to return a minimal page in a browser at localhost address,
 with Express (which is a Node.js framework)
   
@@ -24,6 +26,7 @@ In the app.js file we just have an Express route which will send in JSON format 
 
 folder: - /mnt/c/tmp/docker/node-server
 
+```
 $ touch package.json
 edit package.json
 
@@ -33,7 +36,9 @@ edit package.json
         "express": "4.17.1"
     }
 }
+```
 
+```
 $ touch app.js
 edit app.js
 
@@ -46,11 +51,15 @@ app.get('*', (req, res) => {
 })
 
 app.listen(80);
+```
 
+```
 $ touch Dockerfile
+```
 
 Browse a bit docker hub and look for alpine tagged image more lighter (169MB) than the official one (latest) (992MB)
 
+```
 FROM node:alpine
 
 WORKDIR /app
@@ -60,66 +69,80 @@ COPY . .
 RUN npm install
 
 CMD ["nodemon", "app.js"]
+```
 
 then..
 
+```
 $ docker build -t myapp .
 
 $ docker image ls
 
 $ docker run --rm myapp
+```
 
 path error
 
 to debug, run in interactive mode with sh to override Dockerfile CMD
 
+```
 $ docker run --rm -it myapp sh
 
-/app # env
+/app $c env
 
-/app # nodemon
+/app $c nodemon
 sh: nodemon: not found
 
-# cd node_modules/.bin/
+$c cd node_modules/.bin/
 /app/node_modules/.bin # ls
 is-ci      mime       nodemon
 
-/app # ./node_modules/.bin/nodemon app.js
+/app $c ./node_modules/.bin/nodemon app.js
+```
 
 Fix the Docker file with adding value to image's path
 
+```
 ..
 
 ENV PATH=$PATH:/app/node_modules/.bin
 ..
+```
 
+```
 $ docker build -t myapp .
 
 $ docker run --rm -it myapp sh
-/app # env | grep PATH
+/app $c env | grep PATH
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/app/node_modules/.bin
 
-/app # nodemon app.js
+/app $c nodemon app.js
+```
 
 Now it's OK
 
+```
 $ docker run --rm myapp
+```
 
 Try "localhost" in a browser -> does not work and it's normal because default behavior does not allow
 to communicate with a container.
 
-###
+***
+
+## export/import
 
 for container
 docker container export/import
 
+```
 $ docker build -t mynode .
 
 $ docker run -it mynode sh
 
-# touch hello.txt
+$c touch hello.txt
 
-# exit
+$c exit
 
 $ docker container ps -a
 CONTAINER ID   IMAGE
@@ -138,17 +161,21 @@ REPOSITORY                                      TAG
 nodetest                                        latest
 
 $ docker image inspect nodetest:latest
+```
 
 Only one layer because exporting a container is like creating an image from a file system.
 
 It's not possible to relaunch a container directly from another exported container.
 You must first create an image with import.
 
-###
+***
+
+## tar
 
 for image
 docker image save/load <-> tar
 
+```
 $ docker build -t mynode:0.1 .
 
 $ docker image ls
@@ -156,47 +183,66 @@ REPOSITORY                                      TAG       IMAGE ID       CREATED
 mynode                                          0.1       c68e7a86d468   8 seconds ago   48MB
 
 $ docker image save -o monimage.tar mynode
+```
+
 (to compress with gzip: docker save mon_image | gzip > mon_image.tar.gz)
 
+```
 $ tar -tvf monimage.tar
 
 $ docker image prune -a
 
 $ docker image load < monimage.tar
+```
+
 or
+
+```
 $ docker image load -i mon_image.tar
 
 $ docker run --rm mynode:0.1
 hello node-test-012
+```
 
-###
+***
+
+## Crypter identifiants
 
 Crypter ses identifiants GNU/Linux
 
+```
 $ sudo apt install pass
 
 $ gpg2 --gen-key
+```
 
 Entrez bien votre nom et votre email lorsqu'ils sont demandés. Puis faites :
 
+```
 $ wget https://github.com/docker/docker-credential-helpers/releases/download/v0.6.3/docker-credential-pass-v0.6.3-amd64.tar.gz && tar -xf docker-credential-pass-v0.6.3-amd64.tar.gz && chmod +x docker-credential-pass && sudo mv docker-credential-pass /usr/local/bin/
 
 $ pass init "VOTRE NOM
 
 $ nano ~/.docker/config.json
+```
 
 Puis :
 
+```
 {
     "credsStore": "pass"
 }
+```
 
 $ docker login
 
-###
+***
+
+## Push image
 
 Push image to docker hub
 
+```
 $ docker login
 
 $ docker build -t oldu73/mynode .
@@ -208,10 +254,11 @@ $ docker image prune -a
 $ docker run --rm oldu73/mynode
 
 $ docker logout
+```
 
-###
+***
 
-Docker hub
+## Docker hub
 
 docker image pull
 
@@ -223,6 +270,7 @@ docker search
 
 https://hub.docker.com/
 
+```
 $ docker pull node
 
 $ docker image ls
@@ -231,23 +279,26 @@ node                                            latest    7220633f01cd   7 days 
 
 $ docker run -it --rm node sh
 
-# ls
+$c ls
 
-# node -v1
+$c node -v1
 
-# mkdir app
+$c mkdir app
 
-# cd app
+$c cd app
 
-# echo "console.log('Hello, world!');" > app.js
+$c echo "console.log('Hello, world!');" > app.js
 
-# node app.js
+$c node app.js
+```
 
----
+***
 
-Image Variants
+## Image Variants
 
+```
 $ docker pull node:slim
+```
 
 node:latest = 992MB
 
@@ -255,53 +306,68 @@ VS
 
 node:slim = 242MB
 
-###
+***
+
+## tag
 
 tag to tag image after build
 
+```
 $ docker image tag mynode:latest mynode:1.0
+```
 
-###
+***
 
-history
+## history
 
 Show the history of an image
 
+```
 $ docker history mynode:latest 
 IMAGE          CREATED         CREATED BY                                      SIZE      COMMENT
 1a8f184ef896   8 minutes ago   sh                                              42.4MB
 14119a10abf4   2 months ago    /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B
 <missing>      2 months ago    /bin/sh -c #(nop) ADD file:aad4290d27580cc1a…   5.6MB
+```
 
-###
+***
 
-logs
+## logs
 
+```
 $ docker container logs redis-4.0-001
+```
 
 -f to follow
 -t timestamp
 
-###
+***
 
-COMMIT
+## COMMIT
 
 Snapshot a container to image
 
+```
 $ docker run -it alpine sh
 
 # mkdir app
+```
 
 open a new terminal to copy app.js "manually" to app folder
 
+```
 $ docker container cp app.js ed6:/app/
+```
 
 then from inside container install node.js
 
-# apk add --update nodejs
+```
+$c apk add --update nodejs
+```
 
 then quit container and from host terminal
 
+```
 $ docker container commit -c 'CMD ["node", "/app/app.js"]' ed6 mynode
 
 $ docker image ls
@@ -311,14 +377,20 @@ mynode                                          latest    1a8f184ef896   6 secon
 
 $ docker run --rm mynode
 hello node-test-010
+```
 
-###
+***
+
+## LABEL
 
 LABEL to add meta information
 
+```
 LABEL MAINTAINER=oldu73@gmail.com
 LABEL version=1.0
+```
 
+```
 $ docker build -t node10 .
 
 $ docker image inspect node10:latest | less
@@ -330,21 +402,25 @@ $ docker image inspect node10:latest | less
                 "version": "1.0"
             }
 ..
+```
 
-###
+***
 
-ENV
+## ENV
 
 key value
 
 Usable in container, available as environment variable:
 
+```
 ENV environment=production
+```
 
+```
 $ docker build -t node10 .
 
 $ docker run -it node10 sh
-/app # env
+/app $c env
 HOSTNAME=ac68969910b7
 SHLVL=1
 HOME=/root
@@ -352,28 +428,36 @@ environment=production
 TERM=xterm
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 PWD=/app
+```
 
-###
+***
 
-ARG
+## ARG
 
 Argument available at build time only:
 
+```
 ARG folder
 ARG file
+```
 
 then
 
+```
 WORKDIR $folder
 COPY $file .
+```
 
 then
 
+```
 $ docker build --build-arg folder=/app --build-arg file=app.js -t node-test-008 .
+```
 
 then if you try to retriev ARGs by typing env inside the container
 you do not retrieve it because they are available only at build time:
 
+```
 $ docker run --rm -it node-test-008 sh
 /app # env
 HOSTNAME=22cc31c49889
@@ -382,16 +466,23 @@ HOME=/root
 TERM=xterm
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 PWD=/app
+```
 
 You may also put a default value:
 
+```
 ARG folder=/app
+```
 
 then
 
+```
 $ docker build --build-arg file=app.js -t node-test-008 .
+```
 
-###
+***
+
+## Override entry point
 
 You can still override the entry point with the --entrypoint option:
 
@@ -401,109 +492,156 @@ or
 
 $ docker run -it --entrypoint="/bin/sh" node:test
 
-###
+***
+
+## Docker default entry point
 
 By default, Docker has a default entry point which is "/bin/sh -c" but does not have a default command.
 
+```
 $ man sh -> /-c
 
--c               Read commands from the command_string operand instead
-                 of from the standard input.  Special parameter 0 will
-                 be set from the command_name operand and the posi‐
-                 tional parameters ($1, $2, etc.)  set from the re‐
-                 maining argument operands.
+-c
 
-###
+Read commands from the command_string operand instead
+of from the standard input.  Special parameter 0 will
+be set from the command_name operand and the positional
+parameters ($1, $2, etc.)  set from the remaining argument operands.
+```
+
+***
+
+## ENTRYPOINT and CMD
 
 May have ENTRYPOINT and CMD:
 
+```
 ENTRYPOINT ["echo"]
 CMD ["hello"]
+```
 
+```
 $ docker run --rm node:test                                               
 hello
+```
 
 then you may override hello in run parameter:
 
+```
 $ docker run --rm node:test world
 world
+```
 
-###
+***
+
+## exec form
 
 [] exec form -> recommended
 
 .. shell form, like you would type the command in a terminal
 
-###
+***
+
+## ENTRYPOINT instead CMD
 
 ENTRYPOINT instead CMD avoid availability for end user to replace Dockerfile CMD by typing one
 at the end of run terminal command:
 
+```
 ENTRYPOINT ["node", "app.js"]
+```
 
 in Dockerfile, then:
 
+```
 $ docker run --rm node:test
 Bonjour
+```
 
 or
 
+```
 $ docker run --rm node:test echo test
 Bonjour
+```
 
 same same ;-), echo test at the end is not taking under consideration
 
-###
+***
+
+## Command at the end of run
 
 Typing a command at the end of the run command replace the one in Dockerfile:
 
+```
 $ docker run --rm node:test echo test
 test
+```
 
 even if "CMD ["node", "app.js"]" in Dockerfile
 
-###
+***
+
+## Remove dangling images
 
 Remove dangling (<none>) images:
+
+```
 $ docker image prune
+```
 
 For removing dangling and ununsed images:
-$ docker image prune -a
 
-###
+```
+$ docker image prune -a
+```
+
+***
+
+## Docker build no output
 
 Docker build not showing any output from commands(Dockerfile RUN):
 
 Dockerfile
 
+```
 ..
 RUN echo hello
+```
 
 Don't show anything in console at build.
 
 Use legacy mode by adding 'DOCKER_BUILDKIT=0' in front of docker build:
 
+```
 $ DOCKER_BUILDKIT=0 docker build -t test:latest .
 
 ..
 Step 2/2 : RUN echo hello
  ---> Running in 3d9c96daa522
 hello
+```
 
 or (new fashion) with "--progress=plain --no-cache" after build command:
 
+```
 $ docker build --progress=plain --no-cache -t node-test-007:latest .
 
-#5 [3/5] RUN echo "Hello, world!"
-#5 sha256:54040767d950b92027e2e377a0938fd42b89a34fa5d76e3ce281deacda0f1959
-#5 0.281 Hello, world!
-#5 DONE 0.3s
+[3/5] RUN echo "Hello, world!"
+sha256:54040767d950b92027e2e377a0938fd42b89a34fa5d76e3ce281deacda0f1959
+0.281 Hello, world!
+DONE 0.3s
+```
+
+***
 
 ## List only container names
 
 To list only names of all containers:
 
 $ docker ps -a --format='{{.Names}}'
+
+***
 
 ## ENV
 
@@ -513,21 +651,29 @@ Dockerfile:
 - Base image
 - Test environment variable
 
+```
 FROM alpine
 
 ENV DIR=/app
 WORKDIR ${DIR}/back
+```
 
 then..
 
+```
 $ docker build -t node-test-006:latest .
+```
 
 then..
 
+```
 $ docker run -it node-test-006 sh
 
 $c pwd
 /app/back
+```
+
+***
 
 ## RUN
 
@@ -535,62 +681,90 @@ RUN exist in 'exec' and 'shell' mode (which is 'sh' by default).
 
 exec:
 
+```
 RUN ["/bin/bash", "-c", "echo Bonjour !"]
+```
 
 shell:
 
+```
 RUN echo "Bonjour !"
+```
+
+***
 
 ## CMD
 
 Remove CMD line to test container in interactive mode, then build:
 
+```
 $ docker build -t node-test-005:test .
+```
 
 Launch a container in interactive mode with sh as shell.
 Don't forget to mention image tag after ':' as long as it ain't 'latest',
 and to mention the shell at the end, 'sh':
 
+```
 $ docker run -it node-test-005:test sh
 /app $c
+```
 
 As we can see, we are directly in 'app' folder.
 And by typing 'echo $0' to check shell is indeed, 'sh':
 
+```
 $c echo $0
 sh
+```
 
 And check 'node' version:
 
+```
 $c node --version
 v14.18.1
+```
 
 And test 'app.js' (in app.js -> console.log('Hi test 005');):
 
+```
 $c node app.js
 Hi test 005
+```
+
+***
 
 ## WORKDIR
 
 WORKDIR define working directory in image:
 
+```
 WORKDIR /app
+```
 
 Then, for COPY command, no need to specify destination directory:
 
+```
 COPY ./app.js .
+```
 
 Also for CMD:
 
+```
 CMD ["node", "app.js"]
+```
 
 WORKDIR can be changed during the Dockerfile by being filled in again.
 
 WORKDIR can create folders if they do not exist (this saves us a mkdir).
 
+***
+
 ## FROM
 
 Only one FROM command by Dockerfile
+
+***
 
 ## VS Code Dockerfile command
 
@@ -598,11 +772,15 @@ VS Code, in a Dockerfile, hit ctrl+space to get a list of available commands.
 
 Shortcut available due to Docker Microsoft extension installed in VS Code.
 
+***
+
 ## ADD source destination
 
 ADD source destination, similar to COPY but from URL or compressed file.
 
 If it's a compressed file it will be automatically uncompressed.
+
+***
 
 ## Copy context
 
@@ -610,11 +788,17 @@ Dockerfile context is current folder.
 
 Could not COPY file from parent folder.
 
+***
+
 ## Remove image with pattern
 
 Remove all images that contain a pattern:
 
+```
 $ docker image rm $(docker images --format "{{.Repository}}" | grep node-test-00)
+```
+
+***
 
 ## Optimize cache
 
@@ -625,12 +809,14 @@ Only the RUN, COPY, and ADD instructions create new layers and increase the size
 It is therefore necessary to avoid multiplying the RUN commands, and try to group all the necessary
 commands in a single RUN instruction (multi-line separator '\'):
 
+```
 FROM ubuntu
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     git \
     nodejs \
     && rm -rf /var/lib/apt/lists/*
+```
 
 - It's recommended to put one installation by line, alphabetically sorted.
 
@@ -643,6 +829,8 @@ RUN apt-get update && apt-get install -y \
 - ENV DEBIAN_FRONTEND=noninteractive allows us to specify to the Debian Package Manager (APT)
 	that we are in a non-interactive environment for the installation.
 	This avoids the prompts requested by some programs during installation (eg Git).
+
+***
 
 ## Invalidate cache
 
@@ -658,19 +846,29 @@ To not use a cache, you have to do:
 
 docker build --no-cache -t test .
 
+***
+
 ## Inspect Go template
 
 docker inspect with Go template for format parameter.
 e.g. to retrieve CMD:
 
+```
 $ docker inspect --format='{{.Config.Cmd}}' node-test-001
 [node app/app.js]
+```
+
+***
 
 ###
 
 Show the history of an image:
 
+```
 $ docker image history node-test-001
+```
+
+***
 
 ## Image size
 
@@ -681,6 +879,8 @@ First build of node based image takes around 3 minutes.
 Intermediate steps are cached by Docker.
 
 Second build of node based image takes now only around 3 seconds.
+
+***
 
 ## Dockerfile build image
 
@@ -698,6 +898,8 @@ Instructions:
 
 You can't run commands in an image, so you need intermediate container.
 
+***
+
 ## Dockerfile context
 
 !! Warning !!
@@ -711,6 +913,8 @@ or here to test, in a separate folder.
 
 If you create your Dockerfile directly in the root / directory,
 your entire hard drive is sent as context to the daemon!
+
+***
 
 ## APK
 
@@ -730,6 +934,8 @@ apt update && apt install
 
 Furthermore, you also have || which is the logical or, and also ;
 which is just a separator which doesn't care what happen to the command before.
+
+***
 
 ## Dockerfile
 
@@ -759,11 +965,15 @@ If folder does not exist, it will be created.
 Type following commands in newly created Dockerfile file
 (exactly respect the case and do not add any extensions):
 
+```
 FROM alpine
 
 RUN apk add --update nodejs
 
 COPY ./app.js /app/
+```
+
+***
 
 ## Node
 
@@ -773,35 +983,51 @@ CMD ["node", "app/app.js"]
 Then from terminal, build command with -t argument to name:tag image
 . to mention path of Dockerfile in current directory:
 
+```
 $ docker build -t node-test-001:latest .
+```
 
 To check:
 
+```
 $ docker images (or $ docker image ls)
+```
 
 To test:
 
+```
 $ docker run node-test-001
 Hello, world!
+```
 
 To auto delete container after execution, use –rm option:
 
+```
 $ docker run --rm node-test-001
 Hello, world!
+```
 
 Check if node is installed on host machine:
 
+```
 $ node --version
 v14.16.1
+```
 
 Test app.js on host machine (if node is installed):
 
+```
 $ node app.js 
 Hello, world!
+```
+
+***
 
 ## VS Code
 
 VS Code install Microsoft Docker extension
+
+***
 
 ## Docker file in short
 
@@ -813,53 +1039,79 @@ My image -> Docker file =:
 
 - Action
 
-## Add/del Alpine package
+***
+
+## Add Alpine package
+
+Add/del Alpine package
 
 A base image (e.g. Alpine) is not based on any other image.
 
 Add or del package in Alpine
 
+```
 $c apk update
 
 $c apk add grep
 
 $c apk del grep
+```
 
-## Running container as a running process
+***
+
+## Running container
+
+Running container as a running process
 
 To demonstrate running container is just a running process on host machine
 
+```
 $ docker run -d redis
+```
 
 In contrary of a virtual machine (VM) a container is "just" a running process
 sharing Linux kernel on host machine.
 
 SRC: - https://stackoverflow.com/questions/64787125/why-doesnt-htop-show-my-docker-processes-using-wsl2
 To see running process on WSL use command prompt (would be "$ sudo ps -ef | grep redis" on a Linux machine):
->wsl -d docker-desktop top
-(or >wsl -d docker-desktop ps -ef)
+
+```
+C:\> wsl -d docker-desktop top
+(or C:\> wsl -d docker-desktop ps -ef)
+```
 
 If you want htop, you need to install it first:
->wsl -d docker-desktop apk update 
->wsl -d docker-desktop apk add htop
+
+```
+C:\> wsl -d docker-desktop apk update 
+C:\> wsl -d docker-desktop apk add htop
 
 ... 0% redis-server *:6379
+```
 
 To kill a process on host machine, WSL:
->wsl -d docker-desktop killall redis-server
+
+```
+C:\> wsl -d docker-desktop killall redis-server
+```
 
 To kill a process on host machine, Linux:
+
+```
 $ sudo killall redis-server
+```
 
 Running:
-> wsl -d docker-desktop htop
+
+```
+C:\> wsl -d docker-desktop htop
+```
 
 See that container isn't running anymore:
+
+```
 $ docker container ls
-
-***
-
-// wip pointer
+```
 
 ***
 
@@ -1168,6 +1420,7 @@ $ docker image ls redis
 ```
 
 ***
+
 ## Help
 
 to get help, simply type:
@@ -1247,6 +1500,7 @@ $ docker logs 8e86... --follow
 ```
 
 ***
+
 ## Available image
 
 show available image(s)
