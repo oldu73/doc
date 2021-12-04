@@ -1,5 +1,8 @@
 site_name: Doc
 
+theme:
+  name: material
+
 nav:
     - Home: 'index.md'
     - MkDocs:
