@@ -281,6 +281,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#material-for-mkdocs-theme" class="md-nav__link">
+    Material for MkDocs (theme)
+  </a>
+  
+    <nav class="md-nav" aria-label="Material for MkDocs (theme)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation_1" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -742,6 +769,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#material-for-mkdocs-theme" class="md-nav__link">
+    Material for MkDocs (theme)
+  </a>
+  
+    <nav class="md-nav" aria-label="Material for MkDocs (theme)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation_1" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -757,24 +811,34 @@
 
 <h1 id="mkdocs">MkDocs</h1>
 <hr />
-<h3 id="installation">Installation</h3>
+<h2 id="installation">Installation</h2>
 <pre><code>$ pip install mkdocs
 </code></pre>
 <p>check</p>
 <pre><code>$ mkdocs --version
 </code></pre>
 <hr />
-<h3 id="initialize-current-folder">Initialize current folder</h3>
+<h2 id="initialize-current-folder">Initialize current folder</h2>
 <pre><code>$ mkdocs new .
 </code></pre>
 <hr />
-<h3 id="build-documentation">Build documentation</h3>
+<h2 id="build-documentation">Build documentation</h2>
 <pre><code>$ mkdocs build
 </code></pre>
 <hr />
-<h3 id="deploy-to-github">Deploy to github</h3>
+<h2 id="deploy-to-github">Deploy to github</h2>
 <p>First synchronize current folder with corresponding github repository.</p>
 <pre><code>$ mkdocs gh-deploy
+</code></pre>
+<hr />
+<h2 id="material-for-mkdocs-theme">Material for MkDocs (theme)</h2>
+<h3 id="installation_1">Installation</h3>
+<pre><code>$ pip install mkdocs-material
+</code></pre>
+<h3 id="configuration">Configuration</h3>
+<p>Simply add the following lines to ==mkdocs.yml== to enable the theme.</p>
+<pre><code>theme:
+  name: material
 </code></pre>
 <hr />
 
