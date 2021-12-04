@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Docker - Basis - Doc</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Doc</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">MkDocs <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../mkdocs/mkdocs/" class="dropdown-item">MkDocs - Misc</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Git <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../git/git/" class="dropdown-item">Git - Misc</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ElasticSearch <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../elasticsearch/elasticsearch/" class="dropdown-item">ElasticSearch - Misc</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Intellij <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../intellij/intellij/" class="dropdown-item">Intellij - Misc</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Linux <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../linux/linux/" class="dropdown-item">Linux - Misc</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Docker <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../0-docker-misc/" class="dropdown-item">Docker - Misc</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Docker - Basis</a>
+</li>
+                                    
+<li>
+    <a href="../2-docker-dockerfile/" class="dropdown-item">Docker - Dockerfile</a>
+</li>
+                                    
+<li>
+    <a href="../3-docker-dockerhub/" class="dropdown-item">Docker - Docker Hub</a>
+</li>
+                                    
+<li>
+    <a href="../4-docker-nodeserverimage/" class="dropdown-item">Docker - Node Server Image</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">VS Code <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../vscode/vscode/" class="dropdown-item">VS Code - Misc</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Windows <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../windows/windows/" class="dropdown-item">Windows - Misc</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../0-docker-misc/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../2-docker-dockerfile/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#docker-1-basis" class="nav-link">Docker - 1 - Basis</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#node" class="nav-link">Node</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#vs-code" class="nav-link">VS Code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#docker-file-in-short" class="nav-link">Docker file in short</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#add-alpine-package" class="nav-link">Add Alpine package</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#running-container" class="nav-link">Running container</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#disk-usage" class="nav-link">Disk usage</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#consumed-resource" class="nav-link">Consumed resource</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#inspect" class="nav-link">Inspect</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#running-process" class="nav-link">Running process</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#modified-file" class="nav-link">Modified file</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#copy-file" class="nav-link">Copy file</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#execute-command-in-container" class="nav-link">Execute command in container</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#get-shell-in-container" class="nav-link">Get shell in container</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pauseunpause-a-container" class="nav-link">Pause/unpause a container</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#rename-a-container" class="nav-link">Rename a container</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#postgres-with-environnement-variable" class="nav-link">Postgres with environnement variable</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#stop-container" class="nav-link">Stop container</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#suppress-all" class="nav-link">Suppress all</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#remove-image" class="nav-link">Remove image</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#remove-container" class="nav-link">Remove container</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#image-images" class="nav-link">Image, images</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#help" class="nav-link">Help</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#redis" class="nav-link">Redis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#alpine" class="nav-link">Alpine</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#available-image" class="nav-link">Available image</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#none-running-container" class="nav-link">None running container</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#ubuntu" class="nav-link">Ubuntu</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#hello-world" class="nav-link">Hello, world!</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#info" class="nav-link">Info</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="docker-1-basis">Docker - 1 - Basis</h1>
+<hr />
+<h2 id="node">Node</h2>
+<p>Command to launch node with app.js in folder app
+CMD ["node", "app/app.js"]</p>
+<p>Then from terminal, build command with -t argument to name:tag image
+. to mention path of Dockerfile in current directory:</p>
+<pre><code>$ docker build -t node-test-001:latest .
+</code></pre>
+<p>To check:</p>
+<pre><code>$ docker images (or $ docker image ls)
+</code></pre>
+<p>To test:</p>
+<pre><code>$ docker run node-test-001
+Hello, world!
+</code></pre>
+<p>To auto delete container after execution, use –rm option:</p>
+<pre><code>$ docker run --rm node-test-001
+Hello, world!
+</code></pre>
+<p>Check if node is installed on host machine:</p>
+<pre><code>$ node --version
+v14.16.1
+</code></pre>
+<p>Test app.js on host machine (if node is installed):</p>
+<pre><code>$ node app.js 
+Hello, world!
+</code></pre>
+<hr />
+<h2 id="vs-code">VS Code</h2>
+<p>VS Code install Microsoft Docker extension</p>
+<hr />
+<h2 id="docker-file-in-short">Docker file in short</h2>
+<p>My image -&gt; Docker file =:</p>
+<ul>
+<li>
+<p>Base image</p>
+</li>
+<li>
+<p>Modification</p>
+</li>
+<li>
+<p>Action</p>
+</li>
+</ul>
+<hr />
+<h2 id="add-alpine-package">Add Alpine package</h2>
+<p>Add/del Alpine package</p>
+<p>A base image (e.g. Alpine) is not based on any other image.</p>
+<p>Add or del package in Alpine</p>
+<pre><code>$c apk update
+
+$c apk add grep
+
+$c apk del grep
+</code></pre>
+<hr />
+<h2 id="running-container">Running container</h2>
+<p>Running container as a running process</p>
+<p>To demonstrate running container is just a running process on host machine</p>
+<pre><code>$ docker run -d redis
+</code></pre>
+<p>In contrary of a virtual machine (VM) a container is "just" a running process
+sharing Linux kernel on host machine.</p>
+<p>SRC: - https://stackoverflow.com/questions/64787125/why-doesnt-htop-show-my-docker-processes-using-wsl2
+To see running process on WSL use command prompt (would be "$ sudo ps -ef | grep redis" on a Linux machine):</p>
+<pre><code>C:\&gt; wsl -d docker-desktop top
+(or C:\&gt; wsl -d docker-desktop ps -ef)
+</code></pre>
+<p>If you want htop, you need to install it first:</p>
+<pre><code>C:\&gt; wsl -d docker-desktop apk update 
+C:\&gt; wsl -d docker-desktop apk add htop
+
+... 0% redis-server *:6379
+</code></pre>
+<p>To kill a process on host machine, WSL:</p>
+<pre><code>C:\&gt; wsl -d docker-desktop killall redis-server
+</code></pre>
+<p>To kill a process on host machine, Linux:</p>
+<pre><code>$ sudo killall redis-server
+</code></pre>
+<p>Running:</p>
+<pre><code>C:\&gt; wsl -d docker-desktop htop
+</code></pre>
+<p>See that container isn't running anymore:</p>
+<pre><code>$ docker container ls
+</code></pre>
+<hr />
+<h2 id="disk-usage">Disk usage</h2>
+<p>Show docker disk usage</p>
+<pre><code>$ docker system df
+</code></pre>
+<p>Show detailed information on space usage, -v, --verbose</p>
+<pre><code>docker system df -v
+</code></pre>
+<hr />
+<h2 id="consumed-resource">Consumed resource</h2>
+<p>to see live consuming resources of running containers:</p>
+<pre><code>$ docker container stats
+</code></pre>
+<hr />
+<h2 id="inspect">Inspect</h2>
+<p>to inspect all configuration of a container</p>
+<pre><code>$ docker container inspect alpinetest001
+</code></pre>
+<hr />
+<h2 id="running-process">Running process</h2>
+<p>Show running process in a container from host</p>
+<pre><code>$ docker container top alpinetest001
+</code></pre>
+<p>See the difference from inside the container</p>
+<pre><code>$ docker attach alpine001
+</code></pre>
+<ol>
+<li>update</li>
+</ol>
+<pre><code>$c apk update
+</code></pre>
+<ol>
+<li>add bash</li>
+</ol>
+<pre><code>$c apk add bash
+</code></pre>
+<ol>
+<li>test bash</li>
+</ol>
+<pre><code>$c bash
+$c echo $0
+bash
+ctrl+p+q
+</code></pre>
+<pre><code>$ docker exec -it alpinetest001 bash
+</code></pre>
+<p>if ps not present, install it with:</p>
+<pre><code>$c apk update &amp;&amp; apk add procps
+</code></pre>
+<p>then:</p>
+<pre><code>$c ps -ef
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 16:15 pts/0    00:00:00 /bin/sh
+root        16     1  0 16:27 pts/0    00:00:00 bash
+root        17     0  0 16:28 pts/1    00:00:00 bash
+root        31    17  0 16:33 pts/1    00:00:00 ps -ef
+</code></pre>
+<p>sh and bash does not have parent process ID (PPID) = '0' because of container isolation,
+container does not see running processes of host machine neither the ones belonging to other containers.</p>
+<hr />
+<h2 id="modified-file">Modified file</h2>
+<p>Show modified file in a container:</p>
+<p>A = added, D = deleted, C = modified</p>
+<pre><code>$ docker container diff alpinetest001
+A /test
+A /test/test1.txt
+A /test/test2.txt
+C /root
+A /root/.ash_history
+</code></pre>
+<hr />
+<h2 id="copy-file">Copy file</h2>
+<p>copy file from host to container, docker cp path container:path</p>
+<pre><code>docker cp test1.txt alpinetest001:test
+</code></pre>
+<p>copy file from container to host, docker cp container:path path</p>
+<pre><code>docker cp alpinetest001:test/test2.txt .
+</code></pre>
+<hr />
+<h2 id="execute-command-in-container">Execute command in container</h2>
+<p>Execute a command in a container without using terminal</p>
+<pre><code>$ docker container exec alpine001 mkdir testdir
+
+$ docker container exec alpine001 touch /testdir/hello.txt
+</code></pre>
+<p>other e.g.</p>
+<pre><code>$ docker run -d --name redis001 redis
+
+$ docker exec -it redis001 redis-cli
+
+redis command:
+
+set cle 42
+get cle
+exit
+</code></pre>
+<hr />
+<h2 id="get-shell-in-container">Get shell in container</h2>
+<p>Get a shell, in a no matter which running container it is:</p>
+<pre><code>$ docker exec -it redis001 bash
+$c echo $0
+bash
+</code></pre>
+<p>if bash not installed in container (e.g. with alpine) you may use sh instead:
+(if both presents, both works (e.g. redis)</p>
+<pre><code>$ docker exec -it redis001 sh
+$c echo $0
+sh
+</code></pre>
+<pre><code>$ docker run -it -d --name alpine001 alpine
+
+$ docker exec -it alpine001 bash
+OCI runtime exec failed: exec failed: container_linux.go:380: starting container process caused: exec: &quot;bash&quot;: executable file not found in $PATH: unknown
+
+$ docker exec -it alpine001 sh
+$c echo $0
+sh
+</code></pre>
+<hr />
+<h2 id="pauseunpause-a-container">Pause/unpause a container</h2>
+<pre><code>$ docker container start -ai alpine001
+
+$ docker container pause alpine001
+
+$ docker container unpause alpine001
+</code></pre>
+<hr />
+<h2 id="rename-a-container">Rename a container</h2>
+<p>rename a container named "beautiful_leakey"</p>
+<pre><code>$ docker container rename beautiful_leakey alpine001
+
+not allowed to rename image
+</code></pre>
+<hr />
+<h2 id="postgres-with-environnement-variable">Postgres with environnement variable</h2>
+<pre><code>$ docker run -d --name mongo mongo
+$ docker run -d --name redis redis
+$ docker run -d --name postgres postgres
+
+$ docker logs postgres
+
+Error: ...
+
+$ docker container rm postgres
+
+$ docker container run --name postgres -d -e POSTGRES_HOST_AUTH_METHOD=trust postgres
+</code></pre>
+<hr />
+<h2 id="stop-container">Stop container</h2>
+<p>Stop all running container at once</p>
+<pre><code>docker stop $(docker ps -aq)
+</code></pre>
+<hr />
+<h2 id="suppress-all">Suppress all</h2>
+<p>!Suppress all not used (stopped container(s) and not used for the rest)!</p>
+<pre><code>$ docker system prune -a
+</code></pre>
+<hr />
+<h2 id="remove-image">Remove image</h2>
+<pre><code>$ docker image rm NAME_OR_ID
+</code></pre>
+<p>remove unused images (dangling = image is not tagged and no other image depends on it)</p>
+<pre><code>$ docker image prune -a
+</code></pre>
+<hr />
+<h2 id="remove-container">Remove container</h2>
+<p>try to remove a running container</p>
+<p>Launch a background test named redis container with:</p>
+<pre><code>$ docker run --name test -d redis
+</code></pre>
+<p>then try to remove it with:</p>
+<pre><code>$ docker container rm test
+
+Error - Stop the container before attempting removal or force remove
+</code></pre>
+<p>Force remove running container:</p>
+<pre><code>$ docker container rm -f test
+
+$ docker run --name test1 -d redis
+$ docker run --name test2 -d redis
+$ docker run --name test3 -d redis
+
+$ docker container rm -f test1 test2 test3
+</code></pre>
+<p>remove all stopped container</p>
+<pre><code>$ docker container prune
+</code></pre>
+<hr />
+<h2 id="image-images">Image, images</h2>
+<pre><code>$ docker images
+
+$ docker image ls redis
+</code></pre>
+<hr />
+<h2 id="help">Help</h2>
+<p>to get help, simply type:</p>
+<pre><code>$ docker
+</code></pre>
+<p>help on a command:</p>
+<pre><code>$ docker ps --help
+</code></pre>
+<hr />
+<h2 id="redis">Redis</h2>
+<pre><code>$ docker run redis
+
+$ docker run -d redis
+</code></pre>
+<hr />
+<h2 id="alpine">Alpine</h2>
+<pre><code>$ docker run alpine
+</code></pre>
+<p>-i, interactive mode</p>
+<pre><code>$ docker run -i alpine
+$c ls
+
+.
+.
+dev
+etc
+home
+.
+.
+.
+
+exit
+</code></pre>
+<p>-t, terminal -&gt; prompt</p>
+<pre><code>$ docker run -it alpine (= docker run -it alpine sh)
+
+$c echo $0  // check which shell (/bin/sh)
+$c apk update
+$c apk add bash
+$c bash
+$c echo $0  // check which shell (bash)
+</code></pre>
+<p>start in foreground mode</p>
+<pre><code>$ docker run alpine ping google.ch
+$ docker run alpine echo hello
+</code></pre>
+<p>start in background mode (-d = detach (!= daemon))</p>
+<pre><code>$ docker run -d alpine ping google.fr
+3593...
+docker logs 3593...
+$ docker logs 8e86... --follow
+</code></pre>
+<hr />
+<h2 id="available-image">Available image</h2>
+<p>show available image(s)</p>
+<pre><code>$ docker images
+</code></pre>
+<hr />
+<h2 id="none-running-container">None running container</h2>
+<p>check none running container with (-a show all containers (default shows just running)):</p>
+<pre><code>$ docker container ls -a
+</code></pre>
+<hr />
+<h2 id="ubuntu">Ubuntu</h2>
+<pre><code>$ docker run -it ubuntu bash
+</code></pre>
+<pre><code>$c cat /etc/os-release 
+
+NAME=&quot;Ubuntu&quot;
+VERSION=&quot;20.04.3 LTS (Focal Fossa)&quot;
+...
+</code></pre>
+<p>to exit container and stop it</p>
+<pre><code>$c ctrl + d
+</code></pre>
+<p>then to start/stop it again, e.g container name is 'trusting_yalow'</p>
+<pre><code>$ docker start trusting_yalow
+
+$ docker stop trusting_yalow
+</code></pre>
+<p>then to bash into it</p>
+<pre><code>$ docker attach trusting_yalow
+</code></pre>
+<p>to detach from a docker container without stopping it</p>
+<pre><code>$c ctrl + p + q
+</code></pre>
+<hr />
+<h2 id="hello-world">Hello, world!</h2>
+<pre><code>$ docker run hello-world
+</code></pre>
+<hr />
+<h2 id="info">Info</h2>
+<pre><code>$ docker info
+</code></pre>
+<hr /></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
