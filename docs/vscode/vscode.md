@@ -2,6 +2,12 @@
 
 ***
 
+## Deplace line
+
+Alt + Up/down keys
+
+***
+
 ## Duplicate line
 
 If you want to copy the line to the line above itself, press Shift + Alt + Up Arrow Key.

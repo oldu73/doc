@@ -16,16 +16,16 @@ nav:
     - Linux:
         - 'Linux - Misc': 'linux/linux.md'
     - Docker:
-        - 'Docker - Misc': 'docker/0-docker-misc.md'
-        - 'Docker - Basis': 'docker/1-docker-basis.md'
-        - 'Docker - Dockerfile': 'docker/2-docker-dockerfile.md'
-        - 'Docker - Docker Hub': 'docker/3-docker-dockerhub.md'
-        - 'Docker - Node Server Image': 'docker/4-docker-nodeserverimage.md'
+        - 'Docker - 1 - Misc': 'docker/1-docker-misc.md'
+        - 'Docker - 2 - Basis': 'docker/2-docker-basis.md'
+        - 'Docker - 3 - Docker File': 'docker/3-docker-dockerfile.md'
+        - 'Docker - 4 - Docker Hub': 'docker/4-docker-dockerhub.md'
+        - 'Docker - 5 - Node Server Image': 'docker/5-docker-nodeserverimage.md'
+        - 'Docker - 6 - Data Persistence': 'docker/6-docker-datapersistence.md'
     - VS Code:
         - 'VS Code - Misc': 'vscode/vscode.md'
     - Windows:
         - 'Windows - Misc': 'windows/windows.md'
-
 
 # $ mkdocs build
 # $ mkdocs gh-deploy
