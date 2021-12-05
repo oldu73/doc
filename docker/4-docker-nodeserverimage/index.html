@@ -550,8 +550,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#project-server-node" class="md-nav__link">
-    Project server node
+  <a href="#dockerignore" class="md-nav__link">
+    .dockerignore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimization" class="md-nav__link">
+    Optimization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redirect-port" class="md-nav__link">
+    Redirect port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#port" class="md-nav__link">
+    Port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-server-project" class="md-nav__link">
+    Node server project
   </a>
   
 </li>
@@ -694,8 +722,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#project-server-node" class="md-nav__link">
-    Project server node
+  <a href="#dockerignore" class="md-nav__link">
+    .dockerignore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimization" class="md-nav__link">
+    Optimization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redirect-port" class="md-nav__link">
+    Redirect port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#port" class="md-nav__link">
+    Port
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-server-project" class="md-nav__link">
+    Node server project
   </a>
   
 </li>
@@ -715,8 +771,99 @@
 
 <h1 id="docker-4-node-server-image">Docker - 4 - Node Server Image</h1>
 <hr />
-<h2 id="project-server-node">Project server node</h2>
-<p>Project server node to return a minimal page in a browser at localhost address,
+<h2 id="dockerignore">.dockerignore</h2>
+<p>In current project folder, create a new file named ".dockerignore"</p>
+<p>Add also a sample text file "hello.txt" file that maybe contain "to be ignored" sentence.</p>
+<p>Re-build image</p>
+<pre><code>$ docker build -t myapp .
+</code></pre>
+<p>Launch it in interactive mode with sh</p>
+<pre><code>$ docker run --rm -it myapp sh
+</code></pre>
+<p>ls/cat hello.txt file in container output respectively presence/content of hello.txt file.</p>
+<p>Now list hello.txt file in .dockerignore file</p>
+<pre><code># for current folder
+hello.txt
+
+# for first level of folder
+*/hello.txt
+
+# for everywhere
+**/hello.txt
+</code></pre>
+<p>Re-build image</p>
+<p>Re-launch it in interactive mode</p>
+<p>ls output does not contain hello.txt file anymore</p>
+<hr />
+<h2 id="optimization">Optimization</h2>
+<p>Let's say we change listening port of Node server project from 80 to 70</p>
+<p>file app.js</p>
+<pre><code>const express = require('express');
+
+const app = express();
+
+app.get('*', (req, res) =&gt; {
+    res.status(200).json('Hello, world!');
+})
+
+app.listen(70);
+
+</code></pre>
+<p>Re-build image</p>
+<pre><code>$ docker build -t myapp .
+
+=&gt; [4/4] RUN npm install 7.1s
+</code></pre>
+<p>What we observe here is that NPM install is run again although only listening port in app.js has been modified.</p>
+<p>To avoid this behavior, Docker file should be modified accordingly.</p>
+<p>Split COPY instruction in two, before and after "RUN npm install" to not invalidate cache for dependencies (package.json).</p>
+<p>Dockerfile</p>
+<pre><code>FROM node:alpine
+
+WORKDIR /app
+
+COPY ./package.json .
+
+RUN npm install
+
+COPY . .
+
+ENV PATH=$PATH:/app/node_modules/.bin
+
+CMD [&quot;nodemon&quot;, &quot;app.js&quot;]
+</code></pre>
+<p>And now, on build image after changing listening port in app.js</p>
+<pre><code>$ docker build -t myapp .
+
+=&gt; [4/4] RUN npm install 0.0s
+</code></pre>
+<hr />
+<h2 id="redirect-port">Redirect port</h2>
+<p>Redirect port from host to container</p>
+<pre><code>docker run ... -p &lt;hostport&gt;:&lt;containerport&gt; ...
+</code></pre>
+<p>-p option:</p>
+<p>-p, --publish list Publish a container's port(s) to the host</p>
+<p>To fix Node server project, add missing port redirection to run command:</p>
+<pre><code>$ docker run --rm -p 80:80 myapp
+</code></pre>
+<p>Many containers may listen on same port number because they're isolated.</p>
+<pre><code>$ docker run --rm -d -p 81:80 myapp
+
+$ docker run --rm -d -p 82:80 myapp
+</code></pre>
+<p>On the other hand, on the host, only one forwarding on a port is possible. One port = one application!</p>
+<p>Without opening port, a container may access to Internet.</p>
+<p>Outgoing traffic is possible.</p>
+<p>By default, all incoming traffic is blocked, all ports are closed by default.</p>
+<hr />
+<h2 id="port">Port</h2>
+<p>http 80</p>
+<p>https 443</p>
+<p>ssh 22</p>
+<hr />
+<h2 id="node-server-project">Node server project</h2>
+<p>Node server project to return a minimal page in a browser at localhost address,
 with Express (which is a Node.js framework)</p>
 <p>Our image should have Node.js and its npm package manager.
 It should have several dependencies: nodemon and express.
