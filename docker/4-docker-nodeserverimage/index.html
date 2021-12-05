@@ -550,6 +550,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#stats" class="md-nav__link">
+    Stats
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detach-mode" class="md-nav__link">
+    Detach mode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dockerignore" class="md-nav__link">
     .dockerignore
   </a>
@@ -722,6 +736,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#stats" class="md-nav__link">
+    Stats
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detach-mode" class="md-nav__link">
+    Detach mode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dockerignore" class="md-nav__link">
     .dockerignore
   </a>
@@ -771,6 +799,26 @@
 
 <h1 id="docker-4-node-server-image">Docker - 4 - Node Server Image</h1>
 <hr />
+<h2 id="stats">Stats</h2>
+<p>Show resource usage statistic</p>
+<p>Maybe tried with Node server project running</p>
+<pre><code>$ docker run --rm -d --name appnode -p 80:80 myapp
+</code></pre>
+<p>Then</p>
+<pre><code>$ docker stats
+</code></pre>
+<p>After, open a browser at http://localhost/ address</p>
+<p>Click a lot on refresh button to see CPU % growing in stats terminal's live view.</p>
+<hr />
+<h2 id="detach-mode">Detach mode</h2>
+<p>-d option</p>
+<pre><code>$ docker run --rm -d --name appnode -p 80:80 myapp
+</code></pre>
+<p>--rm to remove container automatically after stop</p>
+<p>Then to go back inside running detached container</p>
+<pre><code>$ docker exec -it appnode sh
+</code></pre>
+<hr />
 <h2 id="dockerignore">.dockerignore</h2>
 <p>In current project folder, create a new file named ".dockerignore"</p>
 <p>Add also a sample text file "hello.txt" file that maybe contain "to be ignored" sentence.</p>
@@ -790,6 +838,10 @@ hello.txt
 
 # for everywhere
 **/hello.txt
+
+# exception with !
+**/*.txt
+!README.txt
 </code></pre>
 <p>Re-build image</p>
 <p>Re-launch it in interactive mode</p>
