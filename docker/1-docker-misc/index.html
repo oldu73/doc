@@ -13,7 +13,7 @@
     
     
       
-        <title>Docker - Docker Hub - Doc</title>
+        <title>Docker - Misc - Doc</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker-3-docker-hub" class="md-skip">
+        <a href="#docker-1-misc" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker - Docker Hub
+              Docker - Misc
             
           </span>
         </div>
@@ -458,11 +458,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../0-docker-misc/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Docker - Misc
       </a>
+      
     </li>
   
 
@@ -474,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-docker-basis/" class="md-nav__link">
+      <a href="../2-docker-basis/" class="md-nav__link">
         Docker - Basis
       </a>
     </li>
@@ -488,7 +498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-docker-dockerfile/" class="md-nav__link">
+      <a href="../3-docker-dockerfile/" class="md-nav__link">
         Docker - Dockerfile
       </a>
     </li>
@@ -500,80 +510,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Docker - Docker Hub
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../4-docker-dockerhub/" class="md-nav__link">
         Docker - Docker Hub
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#exportimport" class="md-nav__link">
-    export/import
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tar" class="md-nav__link">
-    tar
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#encrypt-identifiers" class="md-nav__link">
-    Encrypt identifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#push-image" class="md-nav__link">
-    Push image
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-hub" class="md-nav__link">
-    Docker hub
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -585,8 +526,22 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-docker-nodeserverimage/" class="md-nav__link">
+      <a href="../5-docker-nodeserverimage/" class="md-nav__link">
         Docker - Node Server Image
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-docker-datapersistence/" class="md-nav__link">
+        Docker - Data Persistence
       </a>
     </li>
   
@@ -715,49 +670,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#exportimport" class="md-nav__link">
-    export/import
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tar" class="md-nav__link">
-    tar
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#encrypt-identifiers" class="md-nav__link">
-    Encrypt identifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#push-image" class="md-nav__link">
-    Push image
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker-hub" class="md-nav__link">
-    Docker hub
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -769,127 +681,10 @@
               
                 
 
-<h1 id="docker-3-docker-hub">Docker - 3 - Docker Hub</h1>
+<h1 id="docker-1-misc">Docker - 1 - Misc</h1>
 <hr />
-<h2 id="exportimport">export/import</h2>
-<p>for container
-docker container export/import</p>
-<pre><code>$ docker build -t mynode .
-
-$ docker run -it mynode sh
-
-$c touch hello.txt
-
-$c exit
-
-$ docker container ps -a
-CONTAINER ID   IMAGE
-3d8e43e502b0   mynode
-
-$ docker container export -o mycontainer.tar 3d8
-
-$ tar -tvf mycontainer.tar
-
-$ docker container rm 3d8
-
-$ docker image import mycontainer.tar nodetest
-
-$ docker images
-REPOSITORY                                      TAG
-nodetest                                        latest
-
-$ docker image inspect nodetest:latest
-</code></pre>
-<p>Only one layer because exporting a container is like creating an image from a file system.</p>
-<p>It's not possible to relaunch a container directly from another exported container.
-You must first create an image with import.</p>
-<hr />
-<h2 id="tar">tar</h2>
-<p>for image
-docker image save/load &lt;-&gt; tar</p>
-<pre><code>$ docker build -t mynode:0.1 .
-
-$ docker image ls
-REPOSITORY                                      TAG       IMAGE ID       CREATED         SIZE  
-mynode                                          0.1       c68e7a86d468   8 seconds ago   48MB
-
-$ docker image save -o monimage.tar mynode
-</code></pre>
-<p>(to compress with gzip: docker save mon_image | gzip &gt; mon_image.tar.gz)</p>
-<pre><code>$ tar -tvf monimage.tar
-
-$ docker image prune -a
-
-$ docker image load &lt; monimage.tar
-</code></pre>
-<p>or</p>
-<pre><code>$ docker image load -i mon_image.tar
-
-$ docker run --rm mynode:0.1
-hello node-test-012
-</code></pre>
-<hr />
-<h2 id="encrypt-identifiers">Encrypt identifiers</h2>
-<p>Encrypt your identifiers GNU/Linux</p>
-<pre><code>$ sudo apt install pass
-
-$ gpg2 --gen-key
-</code></pre>
-<p>Enter your name and email when requested. Then do:</p>
-<pre><code>$ wget https://github.com/docker/docker-credential-helpers/releases/download/v0.6.3/docker-credential-pass-v0.6.3-amd64.tar.gz &amp;&amp; tar -xf docker-credential-pass-v0.6.3-amd64.tar.gz &amp;&amp; chmod +x docker-credential-pass &amp;&amp; sudo mv docker-credential-pass /usr/local/bin/
-
-$ pass init &quot;YOUR NAME&quot;
-
-$ nano ~/.docker/config.json
-</code></pre>
-<p>then:</p>
-<pre><code>{
-    &quot;credsStore&quot;: &quot;pass&quot;
-}
-</code></pre>
-<p>$ docker login</p>
-<hr />
-<h2 id="push-image">Push image</h2>
-<p>Push image to docker hub</p>
-<pre><code>$ docker login
-
-$ docker build -t oldu73/mynode .
-
-$ docker image push oldu73/mynode
-
-$ docker image prune -a
-
-$ docker run --rm oldu73/mynode
-
-$ docker logout
-</code></pre>
-<hr />
-<h2 id="docker-hub">Docker hub</h2>
-<p>docker image pull</p>
-<p>docker image push</p>
-<p>docker image pull/push <username>/<repertoire>:[tag]</p>
-<p>docker search</p>
-<p>https://hub.docker.com/</p>
-<pre><code>$ docker pull node
-
-$ docker image ls
-REPOSITORY                                      TAG       IMAGE ID       CREATED         SIZE
-node                                            latest    7220633f01cd   7 days ago      992MB
-
-$ docker run -it --rm node sh
-
-$c ls
-
-$c node -v1
-
-$c mkdir app
-
-$c cd app
-
-$c echo &quot;console.log('Hello, world!');&quot; &gt; app.js
-
-$c node app.js
-</code></pre>
+<p>$ = console</p>
+<p>$c = console inside container</p>
 <hr />
 
               
@@ -904,7 +699,7 @@ $c node app.js
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../2-docker-dockerfile/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Docker - Dockerfile" rel="prev">
+        <a href="../../linux/linux/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Linux - Misc" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -913,20 +708,20 @@ $c node app.js
               <span class="md-footer__direction">
                 Previous
               </span>
-              Docker - Dockerfile
+              Linux - Misc
             </div>
           </div>
         </a>
       
       
         
-        <a href="../4-docker-nodeserverimage/" class="md-footer__link md-footer__link--next" aria-label="Next: Docker - Node Server Image" rel="next">
+        <a href="../2-docker-basis/" class="md-footer__link md-footer__link--next" aria-label="Next: Docker - Basis" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Docker - Node Server Image
+              Docker - Basis
             </div>
           </div>
           <div class="md-footer__button md-icon">

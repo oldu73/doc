@@ -13,7 +13,7 @@
     
     
       
-        <title>Docker - Basis - Doc</title>
+        <title>Docker - Dockerfile - Doc</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker-1-basis" class="md-skip">
+        <a href="#docker-3-docker-file" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker - Basis
+              Docker - Dockerfile
             
           </span>
         </div>
@@ -460,8 +460,22 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-docker-misc/" class="md-nav__link">
+      <a href="../1-docker-misc/" class="md-nav__link">
         Docker - Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-docker-basis/" class="md-nav__link">
+        Docker - Basis
       </a>
     </li>
   
@@ -484,12 +498,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Docker - Basis
+          Docker - Dockerfile
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Docker - Basis
+        Docker - Dockerfile
       </a>
       
         
@@ -508,204 +522,252 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    Node
+  <a href="#image-variants" class="md-nav__link">
+    Image Variants
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#vs-code" class="md-nav__link">
-    VS Code
+  <a href="#tag" class="md-nav__link">
+    tag
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker-file-in-short" class="md-nav__link">
-    Docker file in short
+  <a href="#history" class="md-nav__link">
+    history
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-alpine-package" class="md-nav__link">
-    Add Alpine package
+  <a href="#logs" class="md-nav__link">
+    logs
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-container" class="md-nav__link">
-    Running container
+  <a href="#commit" class="md-nav__link">
+    COMMIT
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#disk-usage" class="md-nav__link">
-    Disk usage
+  <a href="#label" class="md-nav__link">
+    LABEL
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#consumed-resource" class="md-nav__link">
-    Consumed resource
+  <a href="#env" class="md-nav__link">
+    ENV
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#inspect" class="md-nav__link">
-    Inspect
+  <a href="#arg" class="md-nav__link">
+    ARG
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-process" class="md-nav__link">
-    Running process
+  <a href="#override-entry-point" class="md-nav__link">
+    Override entry point
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#modified-file" class="md-nav__link">
-    Modified file
+  <a href="#docker-default-entry-point" class="md-nav__link">
+    Docker default entry point
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#copy-file" class="md-nav__link">
-    Copy file
+  <a href="#entrypoint-and-cmd" class="md-nav__link">
+    ENTRYPOINT and CMD
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#execute-command-in-container" class="md-nav__link">
-    Execute command in container
+  <a href="#exec-form" class="md-nav__link">
+    exec form
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-shell-in-container" class="md-nav__link">
-    Get shell in container
+  <a href="#entrypoint-instead-cmd" class="md-nav__link">
+    ENTRYPOINT instead CMD
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pauseunpause-a-container" class="md-nav__link">
-    Pause/unpause a container
+  <a href="#command-at-the-end-of-run" class="md-nav__link">
+    Command at the end of run
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#rename-a-container" class="md-nav__link">
-    Rename a container
+  <a href="#remove-dangling-images" class="md-nav__link">
+    Remove dangling images
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#postgres-with-environnement-variable" class="md-nav__link">
-    Postgres with environnement variable
+  <a href="#docker-build-no-output" class="md-nav__link">
+    Docker build no output
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stop-container" class="md-nav__link">
-    Stop container
+  <a href="#list-only-container-names" class="md-nav__link">
+    List only container names
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#suppress-all" class="md-nav__link">
-    Suppress all
+  <a href="#env_1" class="md-nav__link">
+    ENV
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#remove-image" class="md-nav__link">
-    Remove image
+  <a href="#run" class="md-nav__link">
+    RUN
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#remove-container" class="md-nav__link">
-    Remove container
+  <a href="#cmd" class="md-nav__link">
+    CMD
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#image-images" class="md-nav__link">
-    Image, images
+  <a href="#workdir" class="md-nav__link">
+    WORKDIR
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#help" class="md-nav__link">
-    Help
+  <a href="#from" class="md-nav__link">
+    FROM
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#redis" class="md-nav__link">
-    Redis
+  <a href="#vs-code-dockerfile-command" class="md-nav__link">
+    VS Code Dockerfile command
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#alpine" class="md-nav__link">
-    Alpine
+  <a href="#add-source-destination" class="md-nav__link">
+    ADD source destination
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#available-image" class="md-nav__link">
-    Available image
+  <a href="#copy-context" class="md-nav__link">
+    Copy context
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#none-running-container" class="md-nav__link">
-    None running container
+  <a href="#remove-image-with-pattern" class="md-nav__link">
+    Remove image with pattern
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ubuntu" class="md-nav__link">
-    Ubuntu
+  <a href="#optimize-cache" class="md-nav__link">
+    Optimize cache
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#hello-world" class="md-nav__link">
-    Hello, world!
+  <a href="#invalidate-cache" class="md-nav__link">
+    Invalidate cache
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#info" class="md-nav__link">
-    Info
+  <a href="#inspect-go-template" class="md-nav__link">
+    Inspect Go template
+  </a>
+  
+    <nav class="md-nav" aria-label="Inspect Go template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-size" class="md-nav__link">
+    Image size
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile-build-image" class="md-nav__link">
+    Dockerfile build image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile-context" class="md-nav__link">
+    Dockerfile context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apk" class="md-nav__link">
+    APK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    Dockerfile
   </a>
   
 </li>
@@ -725,21 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-docker-dockerfile/" class="md-nav__link">
-        Docker - Dockerfile
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../3-docker-dockerhub/" class="md-nav__link">
+      <a href="../4-docker-dockerhub/" class="md-nav__link">
         Docker - Docker Hub
       </a>
     </li>
@@ -753,8 +801,22 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-docker-nodeserverimage/" class="md-nav__link">
+      <a href="../5-docker-nodeserverimage/" class="md-nav__link">
         Docker - Node Server Image
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-docker-datapersistence/" class="md-nav__link">
+        Docker - Data Persistence
       </a>
     </li>
   
@@ -890,204 +952,252 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    Node
+  <a href="#image-variants" class="md-nav__link">
+    Image Variants
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#vs-code" class="md-nav__link">
-    VS Code
+  <a href="#tag" class="md-nav__link">
+    tag
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker-file-in-short" class="md-nav__link">
-    Docker file in short
+  <a href="#history" class="md-nav__link">
+    history
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-alpine-package" class="md-nav__link">
-    Add Alpine package
+  <a href="#logs" class="md-nav__link">
+    logs
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-container" class="md-nav__link">
-    Running container
+  <a href="#commit" class="md-nav__link">
+    COMMIT
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#disk-usage" class="md-nav__link">
-    Disk usage
+  <a href="#label" class="md-nav__link">
+    LABEL
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#consumed-resource" class="md-nav__link">
-    Consumed resource
+  <a href="#env" class="md-nav__link">
+    ENV
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#inspect" class="md-nav__link">
-    Inspect
+  <a href="#arg" class="md-nav__link">
+    ARG
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#running-process" class="md-nav__link">
-    Running process
+  <a href="#override-entry-point" class="md-nav__link">
+    Override entry point
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#modified-file" class="md-nav__link">
-    Modified file
+  <a href="#docker-default-entry-point" class="md-nav__link">
+    Docker default entry point
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#copy-file" class="md-nav__link">
-    Copy file
+  <a href="#entrypoint-and-cmd" class="md-nav__link">
+    ENTRYPOINT and CMD
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#execute-command-in-container" class="md-nav__link">
-    Execute command in container
+  <a href="#exec-form" class="md-nav__link">
+    exec form
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-shell-in-container" class="md-nav__link">
-    Get shell in container
+  <a href="#entrypoint-instead-cmd" class="md-nav__link">
+    ENTRYPOINT instead CMD
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pauseunpause-a-container" class="md-nav__link">
-    Pause/unpause a container
+  <a href="#command-at-the-end-of-run" class="md-nav__link">
+    Command at the end of run
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#rename-a-container" class="md-nav__link">
-    Rename a container
+  <a href="#remove-dangling-images" class="md-nav__link">
+    Remove dangling images
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#postgres-with-environnement-variable" class="md-nav__link">
-    Postgres with environnement variable
+  <a href="#docker-build-no-output" class="md-nav__link">
+    Docker build no output
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stop-container" class="md-nav__link">
-    Stop container
+  <a href="#list-only-container-names" class="md-nav__link">
+    List only container names
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#suppress-all" class="md-nav__link">
-    Suppress all
+  <a href="#env_1" class="md-nav__link">
+    ENV
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#remove-image" class="md-nav__link">
-    Remove image
+  <a href="#run" class="md-nav__link">
+    RUN
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#remove-container" class="md-nav__link">
-    Remove container
+  <a href="#cmd" class="md-nav__link">
+    CMD
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#image-images" class="md-nav__link">
-    Image, images
+  <a href="#workdir" class="md-nav__link">
+    WORKDIR
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#help" class="md-nav__link">
-    Help
+  <a href="#from" class="md-nav__link">
+    FROM
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#redis" class="md-nav__link">
-    Redis
+  <a href="#vs-code-dockerfile-command" class="md-nav__link">
+    VS Code Dockerfile command
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#alpine" class="md-nav__link">
-    Alpine
+  <a href="#add-source-destination" class="md-nav__link">
+    ADD source destination
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#available-image" class="md-nav__link">
-    Available image
+  <a href="#copy-context" class="md-nav__link">
+    Copy context
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#none-running-container" class="md-nav__link">
-    None running container
+  <a href="#remove-image-with-pattern" class="md-nav__link">
+    Remove image with pattern
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ubuntu" class="md-nav__link">
-    Ubuntu
+  <a href="#optimize-cache" class="md-nav__link">
+    Optimize cache
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#hello-world" class="md-nav__link">
-    Hello, world!
+  <a href="#invalidate-cache" class="md-nav__link">
+    Invalidate cache
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#info" class="md-nav__link">
-    Info
+  <a href="#inspect-go-template" class="md-nav__link">
+    Inspect Go template
+  </a>
+  
+    <nav class="md-nav" aria-label="Inspect Go template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-size" class="md-nav__link">
+    Image size
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile-build-image" class="md-nav__link">
+    Dockerfile build image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile-context" class="md-nav__link">
+    Dockerfile context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apk" class="md-nav__link">
+    APK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    Dockerfile
   </a>
   
 </li>
@@ -1105,379 +1215,418 @@
               
                 
 
-<h1 id="docker-1-basis">Docker - 1 - Basis</h1>
+<h1 id="docker-3-docker-file">Docker - 3 - Docker File</h1>
 <hr />
-<h2 id="node">Node</h2>
-<p>Command to launch node with app.js in folder app
-CMD ["node", "app/app.js"]</p>
-<p>Then from terminal, build command with -t argument to name:tag image
-. to mention path of Dockerfile in current directory:</p>
-<pre><code>$ docker build -t node-test-001:latest .
+<h2 id="image-variants">Image Variants</h2>
+<pre><code>$ docker pull node:slim
 </code></pre>
-<p>To check:</p>
-<pre><code>$ docker images (or $ docker image ls)
-</code></pre>
-<p>To test:</p>
-<pre><code>$ docker run node-test-001
-Hello, world!
-</code></pre>
-<p>To auto delete container after execution, use –rm option:</p>
-<pre><code>$ docker run --rm node-test-001
-Hello, world!
-</code></pre>
-<p>Check if node is installed on host machine:</p>
-<pre><code>$ node --version
-v14.16.1
-</code></pre>
-<p>Test app.js on host machine (if node is installed):</p>
-<pre><code>$ node app.js 
-Hello, world!
+<p>node:latest = 992MB</p>
+<p>VS</p>
+<p>node:slim = 242MB</p>
+<hr />
+<h2 id="tag">tag</h2>
+<p>tag to tag image after build</p>
+<pre><code>$ docker image tag mynode:latest mynode:1.0
 </code></pre>
 <hr />
-<h2 id="vs-code">VS Code</h2>
-<p>VS Code install Microsoft Docker extension</p>
+<h2 id="history">history</h2>
+<p>Show the history of an image</p>
+<pre><code>$ docker history mynode:latest 
+IMAGE          CREATED         CREATED BY                                      SIZE      COMMENT
+1a8f184ef896   8 minutes ago   sh                                              42.4MB
+14119a10abf4   2 months ago    /bin/sh -c #(nop)  CMD [&quot;/bin/sh&quot;]              0B
+&lt;missing&gt;      2 months ago    /bin/sh -c #(nop) ADD file:aad4290d27580cc1a…   5.6MB
+</code></pre>
 <hr />
-<h2 id="docker-file-in-short">Docker file in short</h2>
-<p>My image -&gt; Docker file =:</p>
-<ul>
-<li>
-<p>Base image</p>
-</li>
-<li>
-<p>Modification</p>
-</li>
-<li>
-<p>Action</p>
-</li>
-</ul>
+<h2 id="logs">logs</h2>
+<pre><code>$ docker container logs redis-4.0-001
+</code></pre>
+<p>-f to follow
+-t timestamp</p>
 <hr />
-<h2 id="add-alpine-package">Add Alpine package</h2>
-<p>Add/del Alpine package</p>
-<p>A base image (e.g. Alpine) is not based on any other image.</p>
-<p>Add or del package in Alpine</p>
-<pre><code>$c apk update
+<h2 id="commit">COMMIT</h2>
+<p>Snapshot a container to image</p>
+<pre><code>$ docker run -it alpine sh
 
-$c apk add grep
+# mkdir app
+</code></pre>
+<p>open a new terminal to copy app.js "manually" to app folder</p>
+<pre><code>$ docker container cp app.js ed6:/app/
+</code></pre>
+<p>then from inside container install node.js</p>
+<pre><code>$c apk add --update nodejs
+</code></pre>
+<p>then quit container and from host terminal</p>
+<pre><code>$ docker container commit -c 'CMD [&quot;node&quot;, &quot;/app/app.js&quot;]' ed6 mynode
 
-$c apk del grep
+$ docker image ls
+REPOSITORY                                      TAG       IMAGE ID       CREATED          SIZE
+mynode                                          latest    1a8f184ef896   6 seconds ago    48MB
+..
+
+$ docker run --rm mynode
+hello node-test-010
 </code></pre>
 <hr />
-<h2 id="running-container">Running container</h2>
-<p>Running container as a running process</p>
-<p>To demonstrate running container is just a running process on host machine</p>
-<pre><code>$ docker run -d redis
+<h2 id="label">LABEL</h2>
+<p>LABEL to add meta information</p>
+<pre><code>LABEL MAINTAINER=oldu73@gmail.com
+LABEL version=1.0
 </code></pre>
-<p>In contrary of a virtual machine (VM) a container is "just" a running process
-sharing Linux kernel on host machine.</p>
-<p>SRC: - https://stackoverflow.com/questions/64787125/why-doesnt-htop-show-my-docker-processes-using-wsl2
-To see running process on WSL use command prompt (would be "$ sudo ps -ef | grep redis" on a Linux machine):</p>
-<pre><code>C:\&gt; wsl -d docker-desktop top
-(or C:\&gt; wsl -d docker-desktop ps -ef)
-</code></pre>
-<p>If you want htop, you need to install it first:</p>
-<pre><code>C:\&gt; wsl -d docker-desktop apk update 
-C:\&gt; wsl -d docker-desktop apk add htop
+<pre><code>$ docker build -t node10 .
 
-... 0% redis-server *:6379
-</code></pre>
-<p>To kill a process on host machine, WSL:</p>
-<pre><code>C:\&gt; wsl -d docker-desktop killall redis-server
-</code></pre>
-<p>To kill a process on host machine, Linux:</p>
-<pre><code>$ sudo killall redis-server
-</code></pre>
-<p>Running:</p>
-<pre><code>C:\&gt; wsl -d docker-desktop htop
-</code></pre>
-<p>See that container isn't running anymore:</p>
-<pre><code>$ docker container ls
+$ docker image inspect node10:latest | less
+
+/oldu
+
+..
+    &quot;MAINTAINER&quot;: &quot;oldu73@gmail.com&quot;,
+                &quot;version&quot;: &quot;1.0&quot;
+            }
+..
 </code></pre>
 <hr />
-<h2 id="disk-usage">Disk usage</h2>
-<p>Show docker disk usage</p>
-<pre><code>$ docker system df
+<h2 id="env">ENV</h2>
+<p>key value</p>
+<p>Usable in container, available as environment variable:</p>
+<pre><code>ENV environment=production
 </code></pre>
-<p>Show detailed information on space usage, -v, --verbose</p>
-<pre><code>docker system df -v
+<pre><code>$ docker build -t node10 .
+
+$ docker run -it node10 sh
+/app $c env
+HOSTNAME=ac68969910b7
+SHLVL=1
+HOME=/root
+environment=production
+TERM=xterm
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/app
 </code></pre>
 <hr />
-<h2 id="consumed-resource">Consumed resource</h2>
-<p>to see live consuming resources of running containers:</p>
-<pre><code>$ docker container stats
+<h2 id="arg">ARG</h2>
+<p>Argument available at build time only:</p>
+<pre><code>ARG folder
+ARG file
+</code></pre>
+<p>then</p>
+<pre><code>WORKDIR $folder
+COPY $file .
+</code></pre>
+<p>then</p>
+<pre><code>$ docker build --build-arg folder=/app --build-arg file=app.js -t node-test-008 .
+</code></pre>
+<p>then if you try to retriev ARGs by typing env inside the container
+you do not retrieve it because they are available only at build time:</p>
+<pre><code>$ docker run --rm -it node-test-008 sh
+/app # env
+HOSTNAME=22cc31c49889
+SHLVL=1
+HOME=/root
+TERM=xterm
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/app
+</code></pre>
+<p>You may also put a default value:</p>
+<pre><code>ARG folder=/app
+</code></pre>
+<p>then</p>
+<pre><code>$ docker build --build-arg file=app.js -t node-test-008 .
 </code></pre>
 <hr />
-<h2 id="inspect">Inspect</h2>
-<p>to inspect all configuration of a container</p>
-<pre><code>$ docker container inspect alpinetest001
+<h2 id="override-entry-point">Override entry point</h2>
+<p>You can still override the entry point with the --entrypoint option:</p>
+<p>$ docker run --rm --entrypoint="echo" node:test "Hi, earth ;)"</p>
+<p>or</p>
+<p>$ docker run -it --entrypoint="/bin/sh" node:test</p>
+<hr />
+<h2 id="docker-default-entry-point">Docker default entry point</h2>
+<p>By default, Docker has a default entry point which is "/bin/sh -c" but does not have a default command.</p>
+<pre><code>$ man sh -&gt; /-c
+
+-c
+
+Read commands from the command_string operand instead
+of from the standard input.  Special parameter 0 will
+be set from the command_name operand and the positional
+parameters ($1, $2, etc.)  set from the remaining argument operands.
 </code></pre>
 <hr />
-<h2 id="running-process">Running process</h2>
-<p>Show running process in a container from host</p>
-<pre><code>$ docker container top alpinetest001
+<h2 id="entrypoint-and-cmd">ENTRYPOINT and CMD</h2>
+<p>May have ENTRYPOINT and CMD:</p>
+<pre><code>ENTRYPOINT [&quot;echo&quot;]
+CMD [&quot;hello&quot;]
 </code></pre>
-<p>See the difference from inside the container</p>
-<pre><code>$ docker attach alpine001
+<pre><code>$ docker run --rm node:test                                               
+hello
 </code></pre>
-<ol>
-<li>update</li>
-</ol>
-<pre><code>$c apk update
-</code></pre>
-<ol>
-<li>add bash</li>
-</ol>
-<pre><code>$c apk add bash
-</code></pre>
-<ol>
-<li>test bash</li>
-</ol>
-<pre><code>$c bash
-$c echo $0
-bash
-ctrl+p+q
-</code></pre>
-<pre><code>$ docker exec -it alpinetest001 bash
-</code></pre>
-<p>if ps not present, install it with:</p>
-<pre><code>$c apk update &amp;&amp; apk add procps
-</code></pre>
-<p>then:</p>
-<pre><code>$c ps -ef
-UID        PID  PPID  C STIME TTY          TIME CMD
-root         1     0  0 16:15 pts/0    00:00:00 /bin/sh
-root        16     1  0 16:27 pts/0    00:00:00 bash
-root        17     0  0 16:28 pts/1    00:00:00 bash
-root        31    17  0 16:33 pts/1    00:00:00 ps -ef
-</code></pre>
-<p>sh and bash does not have parent process ID (PPID) = '0' because of container isolation,
-container does not see running processes of host machine neither the ones belonging to other containers.</p>
-<hr />
-<h2 id="modified-file">Modified file</h2>
-<p>Show modified file in a container:</p>
-<p>A = added, D = deleted, C = modified</p>
-<pre><code>$ docker container diff alpinetest001
-A /test
-A /test/test1.txt
-A /test/test2.txt
-C /root
-A /root/.ash_history
+<p>then you may override hello in run parameter:</p>
+<pre><code>$ docker run --rm node:test world
+world
 </code></pre>
 <hr />
-<h2 id="copy-file">Copy file</h2>
-<p>copy file from host to container, docker cp path container:path</p>
-<pre><code>docker cp test1.txt alpinetest001:test
-</code></pre>
-<p>copy file from container to host, docker cp container:path path</p>
-<pre><code>docker cp alpinetest001:test/test2.txt .
-</code></pre>
+<h2 id="exec-form">exec form</h2>
+<p>[] exec form -&gt; recommended</p>
+<p>.. shell form, like you would type the command in a terminal</p>
 <hr />
-<h2 id="execute-command-in-container">Execute command in container</h2>
-<p>Execute a command in a container without using terminal</p>
-<pre><code>$ docker container exec alpine001 mkdir testdir
-
-$ docker container exec alpine001 touch /testdir/hello.txt
+<h2 id="entrypoint-instead-cmd">ENTRYPOINT instead CMD</h2>
+<p>ENTRYPOINT instead CMD avoid availability for end user to replace Dockerfile CMD by typing one
+at the end of run terminal command:</p>
+<pre><code>ENTRYPOINT [&quot;node&quot;, &quot;app.js&quot;]
 </code></pre>
-<p>other e.g.</p>
-<pre><code>$ docker run -d --name redis001 redis
-
-$ docker exec -it redis001 redis-cli
-
-redis command:
-
-set cle 42
-get cle
-exit
+<p>in Dockerfile, then:</p>
+<pre><code>$ docker run --rm node:test
+Bonjour
 </code></pre>
+<p>or</p>
+<pre><code>$ docker run --rm node:test echo test
+Bonjour
+</code></pre>
+<p>same same ;-), echo test at the end is not taking under consideration</p>
 <hr />
-<h2 id="get-shell-in-container">Get shell in container</h2>
-<p>Get a shell, in a no matter which running container it is:</p>
-<pre><code>$ docker exec -it redis001 bash
-$c echo $0
-bash
+<h2 id="command-at-the-end-of-run">Command at the end of run</h2>
+<p>Typing a command at the end of the run command replace the one in Dockerfile:</p>
+<pre><code>$ docker run --rm node:test echo test
+test
 </code></pre>
-<p>if bash not installed in container (e.g. with alpine) you may use sh instead:
-(if both presents, both works (e.g. redis)</p>
-<pre><code>$ docker exec -it redis001 sh
-$c echo $0
-sh
-</code></pre>
-<pre><code>$ docker run -it -d --name alpine001 alpine
-
-$ docker exec -it alpine001 bash
-OCI runtime exec failed: exec failed: container_linux.go:380: starting container process caused: exec: &quot;bash&quot;: executable file not found in $PATH: unknown
-
-$ docker exec -it alpine001 sh
-$c echo $0
-sh
-</code></pre>
+<p>even if "CMD ["node", "app.js"]" in Dockerfile</p>
 <hr />
-<h2 id="pauseunpause-a-container">Pause/unpause a container</h2>
-<pre><code>$ docker container start -ai alpine001
-
-$ docker container pause alpine001
-
-$ docker container unpause alpine001
+<h2 id="remove-dangling-images">Remove dangling images</h2>
+<p>Remove dangling (<none>) images:</p>
+<pre><code>$ docker image prune
 </code></pre>
-<hr />
-<h2 id="rename-a-container">Rename a container</h2>
-<p>rename a container named "beautiful_leakey"</p>
-<pre><code>$ docker container rename beautiful_leakey alpine001
-
-not allowed to rename image
-</code></pre>
-<hr />
-<h2 id="postgres-with-environnement-variable">Postgres with environnement variable</h2>
-<pre><code>$ docker run -d --name mongo mongo
-$ docker run -d --name redis redis
-$ docker run -d --name postgres postgres
-
-$ docker logs postgres
-
-Error: ...
-
-$ docker container rm postgres
-
-$ docker container run --name postgres -d -e POSTGRES_HOST_AUTH_METHOD=trust postgres
-</code></pre>
-<hr />
-<h2 id="stop-container">Stop container</h2>
-<p>Stop all running container at once</p>
-<pre><code>docker stop $(docker ps -aq)
-</code></pre>
-<hr />
-<h2 id="suppress-all">Suppress all</h2>
-<p>!Suppress all not used (stopped container(s) and not used for the rest)!</p>
-<pre><code>$ docker system prune -a
-</code></pre>
-<hr />
-<h2 id="remove-image">Remove image</h2>
-<pre><code>$ docker image rm NAME_OR_ID
-</code></pre>
-<p>remove unused images (dangling = image is not tagged and no other image depends on it)</p>
+<p>For removing dangling and ununsed images:</p>
 <pre><code>$ docker image prune -a
 </code></pre>
 <hr />
-<h2 id="remove-container">Remove container</h2>
-<p>try to remove a running container</p>
-<p>Launch a background test named redis container with:</p>
-<pre><code>$ docker run --name test -d redis
+<h2 id="docker-build-no-output">Docker build no output</h2>
+<p>Docker build not showing any output from commands(Dockerfile RUN):</p>
+<p>Dockerfile</p>
+<pre><code>..
+RUN echo hello
 </code></pre>
-<p>then try to remove it with:</p>
-<pre><code>$ docker container rm test
+<p>Don't show anything in console at build.</p>
+<p>Use legacy mode by adding 'DOCKER_BUILDKIT=0' in front of docker build:</p>
+<pre><code>$ DOCKER_BUILDKIT=0 docker build -t test:latest .
 
-Error - Stop the container before attempting removal or force remove
+..
+Step 2/2 : RUN echo hello
+ ---&gt; Running in 3d9c96daa522
+hello
 </code></pre>
-<p>Force remove running container:</p>
-<pre><code>$ docker container rm -f test
+<p>or (new fashion) with "--progress=plain --no-cache" after build command:</p>
+<pre><code>$ docker build --progress=plain --no-cache -t node-test-007:latest .
 
-$ docker run --name test1 -d redis
-$ docker run --name test2 -d redis
-$ docker run --name test3 -d redis
-
-$ docker container rm -f test1 test2 test3
-</code></pre>
-<p>remove all stopped container</p>
-<pre><code>$ docker container prune
+[3/5] RUN echo &quot;Hello, world!&quot;
+sha256:54040767d950b92027e2e377a0938fd42b89a34fa5d76e3ce281deacda0f1959
+0.281 Hello, world!
+DONE 0.3s
 </code></pre>
 <hr />
-<h2 id="image-images">Image, images</h2>
-<pre><code>$ docker images
+<h2 id="list-only-container-names">List only container names</h2>
+<p>To list only names of all containers:</p>
+<p>$ docker ps -a --format='{{.Names}}'</p>
+<hr />
+<h2 id="env_1">ENV</h2>
+<p>'ENV', environment variable:</p>
+<p>Dockerfile:
+- Base image
+- Test environment variable</p>
+<pre><code>FROM alpine
 
-$ docker image ls redis
+ENV DIR=/app
+WORKDIR ${DIR}/back
 </code></pre>
-<hr />
-<h2 id="help">Help</h2>
-<p>to get help, simply type:</p>
-<pre><code>$ docker
+<p>then..</p>
+<pre><code>$ docker build -t node-test-006:latest .
 </code></pre>
-<p>help on a command:</p>
-<pre><code>$ docker ps --help
-</code></pre>
-<hr />
-<h2 id="redis">Redis</h2>
-<pre><code>$ docker run redis
+<p>then..</p>
+<pre><code>$ docker run -it node-test-006 sh
 
-$ docker run -d redis
+$c pwd
+/app/back
 </code></pre>
 <hr />
-<h2 id="alpine">Alpine</h2>
-<pre><code>$ docker run alpine
+<h2 id="run">RUN</h2>
+<p>RUN exist in 'exec' and 'shell' mode (which is 'sh' by default).</p>
+<p>exec:</p>
+<pre><code>RUN [&quot;/bin/bash&quot;, &quot;-c&quot;, &quot;echo Bonjour !&quot;]
 </code></pre>
-<p>-i, interactive mode</p>
-<pre><code>$ docker run -i alpine
-$c ls
+<p>shell:</p>
+<pre><code>RUN echo &quot;Bonjour !&quot;
+</code></pre>
+<hr />
+<h2 id="cmd">CMD</h2>
+<p>Remove CMD line to test container in interactive mode, then build:</p>
+<pre><code>$ docker build -t node-test-005:test .
+</code></pre>
+<p>Launch a container in interactive mode with sh as shell.
+Don't forget to mention image tag after ':' as long as it ain't 'latest',
+and to mention the shell at the end, 'sh':</p>
+<pre><code>$ docker run -it node-test-005:test sh
+/app $c
+</code></pre>
+<p>As we can see, we are directly in 'app' folder.
+And by typing 'echo $0' to check shell is indeed, 'sh':</p>
+<pre><code>$c echo $0
+sh
+</code></pre>
+<p>And check 'node' version:</p>
+<pre><code>$c node --version
+v14.18.1
+</code></pre>
+<p>And test 'app.js' (in app.js -&gt; console.log('Hi test 005');):</p>
+<pre><code>$c node app.js
+Hi test 005
+</code></pre>
+<hr />
+<h2 id="workdir">WORKDIR</h2>
+<p>WORKDIR define working directory in image:</p>
+<pre><code>WORKDIR /app
+</code></pre>
+<p>Then, for COPY command, no need to specify destination directory:</p>
+<pre><code>COPY ./app.js .
+</code></pre>
+<p>Also for CMD:</p>
+<pre><code>CMD [&quot;node&quot;, &quot;app.js&quot;]
+</code></pre>
+<p>WORKDIR can be changed during the Dockerfile by being filled in again.</p>
+<p>WORKDIR can create folders if they do not exist (this saves us a mkdir).</p>
+<hr />
+<h2 id="from">FROM</h2>
+<p>Only one FROM command by Dockerfile</p>
+<hr />
+<h2 id="vs-code-dockerfile-command">VS Code Dockerfile command</h2>
+<p>VS Code, in a Dockerfile, hit ctrl+space to get a list of available commands.</p>
+<p>Shortcut available due to Docker Microsoft extension installed in VS Code.</p>
+<hr />
+<h2 id="add-source-destination">ADD source destination</h2>
+<p>ADD source destination, similar to COPY but from URL or compressed file.</p>
+<p>If it's a compressed file it will be automatically uncompressed.</p>
+<hr />
+<h2 id="copy-context">Copy context</h2>
+<p>Dockerfile context is current folder.</p>
+<p>Could not COPY file from parent folder.</p>
+<hr />
+<h2 id="remove-image-with-pattern">Remove image with pattern</h2>
+<p>Remove all images that contain a pattern:</p>
+<pre><code>$ docker image rm $(docker images --format &quot;{{.Repository}}&quot; | grep node-test-00)
+</code></pre>
+<hr />
+<h2 id="optimize-cache">Optimize cache</h2>
+<p>Optimizing cache.</p>
+<p>Only the RUN, COPY, and ADD instructions create new layers and increase the size of an image.</p>
+<p>It is therefore necessary to avoid multiplying the RUN commands, and try to group all the necessary
+commands in a single RUN instruction (multi-line separator '\'):</p>
+<pre><code>FROM ubuntu
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update &amp;&amp; apt-get install -y \
+    git \
+    nodejs \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+</code></pre>
+<ul>
+<li>
+<p>It's recommended to put one installation by line, alphabetically sorted.</p>
+</li>
+<li>
+<p>!! It is mandatory to put apt-get update and apt-get install in the same RUN statement.
+    Otherwise you will have serious cache problems.!!</p>
+</li>
+<li>
+<p>For images using Ubuntu or Debian, it is recommended to remove /var/lib/apt/ lists
+    which contains the APT cache with all available packages in order to reduce the size of the image.</p>
+</li>
+<li>
+<p>ENV DEBIAN_FRONTEND=noninteractive allows us to specify to the Debian Package Manager (APT)
+    that we are in a non-interactive environment for the installation.
+    This avoids the prompts requested by some programs during installation (eg Git).</p>
+</li>
+</ul>
+<hr />
+<h2 id="invalidate-cache">Invalidate cache</h2>
+<p>!Important!</p>
+<p>Invalidate cache at build.</p>
+<p>If you have following instruction in Dockerfile it will be run only once at first build then cached:</p>
+<p>RUN apt update &amp;&amp; apt dist-upgrade -y</p>
+<p>To not use a cache, you have to do:</p>
+<p>docker build --no-cache -t test .</p>
+<hr />
+<h2 id="inspect-go-template">Inspect Go template</h2>
+<p>docker inspect with Go template for format parameter.
+e.g. to retrieve CMD:</p>
+<pre><code>$ docker inspect --format='{{.Config.Cmd}}' node-test-001
+[node app/app.js]
+</code></pre>
+<hr />
+<h3 id="_1"></h3>
+<p>Show the history of an image:</p>
+<pre><code>$ docker image history node-test-001
+</code></pre>
+<hr />
+<h2 id="image-size">Image size</h2>
+<p>node image = 900 MB/3 min VS alpine + node install = 50 MB/30 sec =&gt; ???</p>
+<p>First build of node based image takes around 3 minutes.</p>
+<p>Intermediate steps are cached by Docker.</p>
+<p>Second build of node based image takes now only around 3 seconds.</p>
+<hr />
+<h2 id="dockerfile-build-image">Dockerfile build image</h2>
+<p>Docker file, steps to build an image.</p>
+<p>Instructions:
+- FROM  // pull image from docker hub   \
+                                            = layer
+- RUN   // add node                     /</p>
+<blockquote>
+<p>new image/running intermediate container
+- COPY                                  /   = layer
+new image/running intermediate container
+- CMD
+constructed image resulting from the different images, layers, and intermediate containers</p>
+</blockquote>
+<p>You can't run commands in an image, so you need intermediate container.</p>
+<hr />
+<h2 id="dockerfile-context">Dockerfile context</h2>
+<p>!! Warning !!</p>
+<p>Create a Dockerfile then build image in a dedicated folder for your application
+Otherwise, all files/folders contained in where you build image will be sent to the
+daemon at build time as the context.</p>
+<p>It is for this reason that you must create the Dockerfile in the folder of your application,
+or here to test, in a separate folder.</p>
+<p>If you create your Dockerfile directly in the root / directory,
+your entire hard drive is sent as context to the daemon!</p>
+<hr />
+<h2 id="apk">APK</h2>
+<p>apk = Alpine Package Management</p>
+<p>It is the equivalent of APT for Debian distributions
+and therefore in particular for Ubuntu</p>
+<p>apk add --update actually allows you to do apk update first, then apk add.</p>
+<p>Debian equivalent of:</p>
+<p>apt update &amp;&amp; apt install</p>
+<p>&amp;&amp; lets you do something based on whether the previous command completed successfully
+- that's why you tend to see it chained as do_something &amp;&amp; do_something_else_that_depended_on_something.</p>
+<p>Furthermore, you also have || which is the logical or, and also ;
+which is just a separator which doesn't care what happen to the command before.</p>
+<hr />
+<h2 id="dockerfile">Dockerfile</h2>
+<p>Create a new folder docker-test.</p>
+<p>Open it with VS Code.</p>
+<p>In this example we gonna crate a node image (based on Alpine, not on official node image)
+to simply test console log in a js file.</p>
+<p>Create a new file named, with VS Code, 'app.js' and type in it:</p>
+<p>console.log('Hello, world!');</p>
+<p>Then, create a new file, in folder, with VS Code, named:</p>
+<p>Dockerfile</p>
+<p>Base image</p>
+<p>Install node</p>
+<p>Copy js file from local folder to container.</p>
+<p>If folder does not exist, it will be created.</p>
+<p>Type following commands in newly created Dockerfile file
+(exactly respect the case and do not add any extensions):</p>
+<pre><code>FROM alpine
 
-.
-.
-dev
-etc
-home
-.
-.
-.
+RUN apk add --update nodejs
 
-exit
-</code></pre>
-<p>-t, terminal -&gt; prompt</p>
-<pre><code>$ docker run -it alpine (= docker run -it alpine sh)
-
-$c echo $0  // check which shell (/bin/sh)
-$c apk update
-$c apk add bash
-$c bash
-$c echo $0  // check which shell (bash)
-</code></pre>
-<p>start in foreground mode</p>
-<pre><code>$ docker run alpine ping google.ch
-$ docker run alpine echo hello
-</code></pre>
-<p>start in background mode (-d = detach (!= daemon))</p>
-<pre><code>$ docker run -d alpine ping google.fr
-3593...
-docker logs 3593...
-$ docker logs 8e86... --follow
-</code></pre>
-<hr />
-<h2 id="available-image">Available image</h2>
-<p>show available image(s)</p>
-<pre><code>$ docker images
-</code></pre>
-<hr />
-<h2 id="none-running-container">None running container</h2>
-<p>check none running container with (-a show all containers (default shows just running)):</p>
-<pre><code>$ docker container ls -a
-</code></pre>
-<hr />
-<h2 id="ubuntu">Ubuntu</h2>
-<pre><code>$ docker run -it ubuntu bash
-</code></pre>
-<pre><code>$c cat /etc/os-release 
-
-NAME=&quot;Ubuntu&quot;
-VERSION=&quot;20.04.3 LTS (Focal Fossa)&quot;
-...
-</code></pre>
-<p>to exit container and stop it</p>
-<pre><code>$c ctrl + d
-</code></pre>
-<p>then to start/stop it again, e.g container name is 'trusting_yalow'</p>
-<pre><code>$ docker start trusting_yalow
-
-$ docker stop trusting_yalow
-</code></pre>
-<p>then to bash into it</p>
-<pre><code>$ docker attach trusting_yalow
-</code></pre>
-<p>to detach from a docker container without stopping it</p>
-<pre><code>$c ctrl + p + q
-</code></pre>
-<hr />
-<h2 id="hello-world">Hello, world!</h2>
-<pre><code>$ docker run hello-world
-</code></pre>
-<hr />
-<h2 id="info">Info</h2>
-<pre><code>$ docker info
+COPY ./app.js /app/
 </code></pre>
 <hr />
 
@@ -1493,7 +1642,7 @@ $ docker stop trusting_yalow
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../0-docker-misc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Docker - Misc" rel="prev">
+        <a href="../2-docker-basis/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Docker - Basis" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1502,20 +1651,20 @@ $ docker stop trusting_yalow
               <span class="md-footer__direction">
                 Previous
               </span>
-              Docker - Misc
+              Docker - Basis
             </div>
           </div>
         </a>
       
       
         
-        <a href="../2-docker-dockerfile/" class="md-footer__link md-footer__link--next" aria-label="Next: Docker - Dockerfile" rel="next">
+        <a href="../4-docker-dockerhub/" class="md-footer__link md-footer__link--next" aria-label="Next: Docker - Docker Hub" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Docker - Dockerfile
+              Docker - Docker Hub
             </div>
           </div>
           <div class="md-footer__button md-icon">
