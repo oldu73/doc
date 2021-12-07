@@ -2,6 +2,14 @@
 
 ***
 
+## Copy specific files from a text list of files
+
+```
+$ rsync -a sourcefolder --files-from=list.txt destinationfolder
+```
+
+***
+
 ## get data between two patterns
 
 In error.log
