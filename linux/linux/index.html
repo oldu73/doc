@@ -446,29 +446,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#copy-specific-files-from-a-text-list-of-files" class="md-nav__link">
-    Copy specific files from a text list of files
+  <a href="#copy-files-from-list" class="md-nav__link">
+    Copy files from list
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#get-data-between-two-patterns" class="md-nav__link">
-    get data between two patterns
+    Get data between two patterns
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#grep-patterns-from-a-file" class="md-nav__link">
-    grep patterns from a file
+    Grep patterns from a file
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#for-list-of-file" class="md-nav__link">
-    for list of file
+    For list of file
   </a>
   
 </li>
@@ -812,29 +812,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#copy-specific-files-from-a-text-list-of-files" class="md-nav__link">
-    Copy specific files from a text list of files
+  <a href="#copy-files-from-list" class="md-nav__link">
+    Copy files from list
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#get-data-between-two-patterns" class="md-nav__link">
-    get data between two patterns
+    Get data between two patterns
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#grep-patterns-from-a-file" class="md-nav__link">
-    grep patterns from a file
+    Grep patterns from a file
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#for-list-of-file" class="md-nav__link">
-    for list of file
+    For list of file
   </a>
   
 </li>
@@ -937,11 +937,12 @@
 
 <h1 id="linux">Linux</h1>
 <hr />
-<h2 id="copy-specific-files-from-a-text-list-of-files">Copy specific files from a text list of files</h2>
+<h2 id="copy-files-from-list">Copy files from list</h2>
+<p>Copy specific files from a text list of files</p>
 <pre><code>$ rsync -a sourcefolder --files-from=list.txt destinationfolder
 </code></pre>
 <hr />
-<h2 id="get-data-between-two-patterns">get data between two patterns</h2>
+<h2 id="get-data-between-two-patterns">Get data between two patterns</h2>
 <p>In error.log</p>
 <pre><code>.
 .
@@ -953,7 +954,7 @@
 <pre><code>$ cat error.log | sed -nr 's/.*DATA : (.*) WITH.*/\1/p'
 </code></pre>
 <hr />
-<h2 id="grep-patterns-from-a-file">grep patterns from a file</h2>
+<h2 id="grep-patterns-from-a-file">Grep patterns from a file</h2>
 <p>-f option, maybe -oF options also</p>
 <pre><code>$ grep -f patterns_file *.log
 
@@ -965,7 +966,7 @@ $ grep -oFf patterns.txt *.log
 <pre><code>$ grep -hoFf patterns.txt *.log | grep -vFf - patterns.txt
 </code></pre>
 <hr />
-<h2 id="for-list-of-file">for list of file</h2>
+<h2 id="for-list-of-file">For list of file</h2>
 <p>For list of file in current folder, do operation.
 Here we want to have file name, cat content and separate result with a new line</p>
 <pre><code>$ ll *.txt
