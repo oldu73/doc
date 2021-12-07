@@ -2,7 +2,9 @@
 
 ***
 
-## Copy specific files from a text list of files
+## Copy files from list
+
+Copy specific files from a text list of files
 
 ```
 $ rsync -a sourcefolder --files-from=list.txt destinationfolder
@@ -10,7 +12,7 @@ $ rsync -a sourcefolder --files-from=list.txt destinationfolder
 
 ***
 
-## get data between two patterns
+## Get data between two patterns
 
 In error.log
 ```
@@ -28,7 +30,7 @@ $ cat error.log | sed -nr 's/.*DATA : (.*) WITH.*/\1/p'
 
 ***
 
-## grep patterns from a file
+## Grep patterns from a file
 
 -f option, maybe -oF options also
 
@@ -48,7 +50,7 @@ $ grep -hoFf patterns.txt *.log | grep -vFf - patterns.txt
 
 ***
 
-## for list of file
+## For list of file
 
 For list of file in current folder, do operation.
 Here we want to have file name, cat content and separate result with a new line
