@@ -2,6 +2,19 @@
 
 ***
 
+## Grep lines before after match
+
+-B before
+-A after
+
+Stick ne lines just after option
+
+```
+$ grep -B2 -A3 pattern infile.txt
+```
+
+***
+
 ## Copy files from list
 
 Copy specific files from a text list of files
