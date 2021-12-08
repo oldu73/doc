@@ -4,7 +4,7 @@
 
 ## Grep lines before after match
 
--B before
+-B before  
 -A after
 
 Stick ne lines just after option
