@@ -539,9 +539,74 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Docker - 6 - Data Persistence
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Docker - 6 - Data Persistence
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volumes" class="md-nav__link">
+    Volumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bind-mount" class="md-nav__link">
+    Bind mount
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tmpfs" class="md-nav__link">
+    TMPFS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bind-mount_1" class="md-nav__link">
+    Bind mount
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -670,6 +735,55 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volumes" class="md-nav__link">
+    Volumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bind-mount" class="md-nav__link">
+    Bind mount
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tmpfs" class="md-nav__link">
+    TMPFS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bind-mount_1" class="md-nav__link">
+    Bind mount
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -683,15 +797,46 @@
 
 <h1 id="docker-6-data-persistence">Docker - 6 - Data Persistence</h1>
 <hr />
-<ol>
-<li>
-<p>..</p>
-</li>
-<li>
-<p>..</p>
-</li>
-</ol>
-<p>Add chapter/section numbers</p>
+<h2 id="introduction">Introduction</h2>
+<p>Container =
+- writable layer (this layer is deleted if the container no longer exists)
+- image layer(s) (read)</p>
+<p>Writable layers use UnionFS, slow read write performance, not adapted to host database.</p>
+<p>To persist data, 3 possibilities:</p>
+<h3 id="volumes">Volumes</h3>
+<p>On Filesystem but managed by Docker, accessible through Docker CLI), mostly advised to use (in /var/lib/docker/volumes/ (not on WSL) but never access it directly.
+Volumes are stored on but isolated from host machine.</p>
+<p>Create a volume with Docker CLI command</p>
+<pre><code>docker volume create
+</code></pre>
+<h3 id="bind-mount">Bind mount</h3>
+<p>Manged by Filesystem and accessible from outside of Docker, not recommended.
+Bind mounts are regular folder and files stored on host machine.</p>
+<h3 id="tmpfs">TMPFS</h3>
+<p>Temporary File System -&gt; RAM.
+TMPFS are used to store temporary not persisted data, sensitive information like secret.</p>
+<hr />
+<h2 id="bind-mount_1">Bind mount</h2>
+<p>Adapted for:
+- Sharing configuration files between host and container.
+- Development environment to share source code and alow live reload.</p>
+<p>Recommend syntax</p>
+<pre><code>docker run --mount type=bind,source=&lt;url&gt;,target=&lt;url&gt; image
+</code></pre>
+<pre><code>$ mkdir data
+$ cd data
+$ touch hello.txt
+$ cd ..
+$ docker run --mount type=bind,source=&quot;$(pwd)&quot;/data,target=/data -it alpine sh
+$c ls
+.. data ..
+$c cd data
+$c ls
+hello.txt
+</code></pre>
+<p>Search for Mounts section with inspect CLI command to see mounting details:</p>
+<pre><code>docker container inspect containerName
+</code></pre>
 
               
             </article>
