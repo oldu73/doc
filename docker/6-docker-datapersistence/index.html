@@ -864,8 +864,47 @@ hello.txt
 <pre><code>docker container inspect containerName
 </code></pre>
 <h3 id="development-environment">Development environment</h3>
-<p>Set up of a development environnement for a node server application (c.f. <a href="../5-docker-nodeserverimage/#node-server-project">Node server project</a>).<br />
-The goal here is to have changes available in container and automatically reloaded by nodemon.</p>
+<p>Set up of a development environnement for a node server application (c.f. <a href="../5-docker-nodeserverimage/#node-server-project">Node server project</a>).  </p>
+<p>The goal here is to have changes available from host machine (IDE) in container and automatically reloaded by nodemon.</p>
+<p>!!Warning!! A common mistake is to bind the root folder of a project.</p>
+<p>E.g. in case of node context, if we do so, the node_modules folder created/populated in container image by "RUN npm install" instruction from Dockerfile will be erased. To avoid this unwanted behavior, it's mostly advised to move the source code files modified through IDE on host machine in a dedicated folder (e.g. src).</p>
+<p>On host machine:</p>
+<pre><code>$ mkdir node-server
+$ cd node-server
+$ mkdir src
+$ cd src
+$ touch app.js
+$ cd ..
+</code></pre>
+<p>src/app.js:</p>
+<pre><code>const express = require('express');
+
+const app = express();
+
+app.get('*', (req, res) =&gt; {
+    res.status(200).json('Hello, world!');
+})
+
+app.listen(80);
+</code></pre>
+<p>Dockerfile (in root folder, "node-server"):</p>
+<pre><code>FROM node:alpine
+WORKDIR /app
+COPY ./package.json .
+RUN npm install
+COPY . .
+ENV PATH=$PATH:/app/node_modules/.bin
+CMD [&quot;nodemon&quot;, &quot;-L&quot;, &quot;src/app.js&quot;]
+</code></pre>
+<p>!! Warning !! In above Dockerfile we use <strong>-L</strong> option for --legacy-watch because in some containerized environnement, application may not restart automatically after file's change.</p>
+<p>Build image:</p>
+<pre><code>$ docker build -t myapp .
+</code></pre>
+<p>Start a container with new image version:</p>
+<pre><code>$ docker run --rm -p 80:80 --mount type=bind,source=&quot;$(pwd)/src&quot;,target=/app/src myapp
+</code></pre>
+<p>Now try to edit 'src/app.js' file on host machine to observe nodemon restart in terminal.<br />
+You may also observe the changes on your browser at 'localhost' address, after refresh.</p>
 
               
             </article>
