@@ -60,3 +60,19 @@ theme:
 ```
 
 ***
+
+## Link
+
+A double dash section title like below
+
+\## Node server project
+
+Should be referenced like below to be used in a link:  
+
+\#node-server-project
+
+To link this section from another markdown file:  
+
+\[Node server project\](otherFile.md#node-server-project)
+
+***
