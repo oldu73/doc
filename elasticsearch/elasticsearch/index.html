@@ -350,9 +350,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#update-boolean-field" class="md-nav__link">
-    Update boolean field
+  <a href="#update-field" class="md-nav__link">
+    Update field
   </a>
+  
+    <nav class="md-nav" aria-label="Update field">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-head" class="md-nav__link">
+    Plugin Head
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kibana-56" class="md-nav__link">
+    Kibana 5.6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -708,9 +728,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#update-boolean-field" class="md-nav__link">
-    Update boolean field
+  <a href="#update-field" class="md-nav__link">
+    Update field
   </a>
+  
+    <nav class="md-nav" aria-label="Update field">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugin-head" class="md-nav__link">
+    Plugin Head
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kibana-56" class="md-nav__link">
+    Kibana 5.6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -729,8 +769,9 @@
 
 <h1 id="elasticsearch">ElasticSearch</h1>
 <hr />
-<h3 id="update-boolean-field">Update boolean field</h3>
-<p>Chrome plugin ElasticSearch Head</p>
+<h2 id="update-field">Update field</h2>
+<h3 id="plugin-head">Plugin Head</h3>
+<p>Update boolean field with Chrome plugin ElasticSearch Head</p>
 <p>local: http://localhost:9200/</p>
 <p>Other request tab</p>
 <p>URL http://localhost:9200/index/doc/id</p>
@@ -739,6 +780,23 @@
 <p>to update</p>
 <p>request _update POST</p>
 <p>{"doc":{"deleted":false}}</p>
+<h3 id="kibana-56">Kibana 5.6</h3>
+<p>Browse to Dev Tools, Console</p>
+<p>to get:</p>
+<pre><code>GET _index/_type/_id
+</code></pre>
+<p>to update:</p>
+<pre><code>POST _index/_type/_id/_update
+{
+    &quot;doc&quot;: {
+        &quot;field&quot;:&quot;value&quot;
+        or
+        &quot;field&quot;:99
+        or
+        &quot;field&quot;:false
+    }
+}
+</code></pre>
 <hr />
 
               
