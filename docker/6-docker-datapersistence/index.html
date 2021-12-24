@@ -617,6 +617,46 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#volumes_1" class="md-nav__link">
+    Volumes
+  </a>
+  
+    <nav class="md-nav" aria-label="Volumes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    Create
+  </a>
+  
+    <nav class="md-nav" aria-label="Create">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-new-volume" class="md-nav__link">
+    Create new volume
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-new-container-with-bind-volume" class="md-nav__link">
+    Create new container with bind volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -808,6 +848,46 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#volumes_1" class="md-nav__link">
+    Volumes
+  </a>
+  
+    <nav class="md-nav" aria-label="Volumes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    Create
+  </a>
+  
+    <nav class="md-nav" aria-label="Create">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-new-volume" class="md-nav__link">
+    Create new volume
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-new-container-with-bind-volume" class="md-nav__link">
+    Create new container with bind volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -905,6 +985,51 @@ CMD [&quot;nodemon&quot;, &quot;-L&quot;, &quot;src/app.js&quot;]
 </code></pre>
 <p>Now try to edit 'src/app.js' file on host machine to observe nodemon restart in terminal.<br />
 You may also observe the changes on your browser at 'localhost' address, after refresh.</p>
+<hr />
+<h2 id="volumes_1">Volumes</h2>
+<p>docker volume
+- create
+- inspect
+- ls
+- rm
+- prune</p>
+<p>old syntax (not advised, c.f. bind)</p>
+<pre><code>docker run -v &lt;volume-name&gt;:&lt;container-url&gt; image
+</code></pre>
+<p>new syntax</p>
+<pre><code>docker run --mount type=volume,source=&lt;volume-name&gt;,target=&lt;url&gt; image
+</code></pre>
+<h3 id="create">Create</h3>
+<h4 id="create-new-volume">Create new volume</h4>
+<pre><code>$ docker volume create mydata
+mydata
+
+$ docker volume ls
+DRIVER    VOLUME NAME
+local     mydata
+
+$ docker volume inspect mydata
+[
+    {
+        &quot;CreatedAt&quot;: &quot;2021-12-24T06:15:34Z&quot;,
+        &quot;Driver&quot;: &quot;local&quot;,
+        &quot;Labels&quot;: {},
+        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/mydata/_data&quot;,
+        &quot;Name&quot;: &quot;mydata&quot;,
+        &quot;Options&quot;: {},
+        &quot;Scope&quot;: &quot;local&quot;
+    }
+]
+</code></pre>
+<p>WSL2 volumes are not in /var/lib/docker/volumes/mydata/_data</p>
+<p>You can find WSL2 volumes under a hidden network share. Open Windows Explorer, and type <strong>\\wsl$</strong> into the location bar. Hit enter, and it should display your WSL volumes, including the ones for Docker for Windows.</p>
+<p>WSL2 volumes, in Windows Explorer bar</p>
+<pre><code>\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes
+</code></pre>
+<h4 id="create-new-container-with-bind-volume">Create new container with bind volume</h4>
+<pre><code class="language-console">docker run --mount type=volume,source=mydata,target=/data -it alpine sh
+</code></pre>
+<hr />
 
               
             </article>
