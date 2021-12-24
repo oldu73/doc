@@ -2,6 +2,25 @@
 
 ***
 
+## Package
+
+### List installed
+```
+$ apt list --installed
+```
+
+### Info
+```
+$ apt-cache show packagename
+```
+
+### Remove
+```
+$ sudo apt-get --purge autoremove packagename
+```
+
+***
+
 ## Switch user to root
 
 Switch current user to root
