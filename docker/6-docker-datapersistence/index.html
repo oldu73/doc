@@ -634,15 +634,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-new-volume" class="md-nav__link">
-    Create new volume
+  <a href="#new-volume" class="md-nav__link">
+    New volume
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-new-container-with-bind-volume" class="md-nav__link">
-    Create new container with bind volume
+  <a href="#new-container-with-bind-volume" class="md-nav__link">
+    New container with bind volume
   </a>
   
 </li>
@@ -865,15 +865,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-new-volume" class="md-nav__link">
-    Create new volume
+  <a href="#new-volume" class="md-nav__link">
+    New volume
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-new-container-with-bind-volume" class="md-nav__link">
-    Create new container with bind volume
+  <a href="#new-container-with-bind-volume" class="md-nav__link">
+    New container with bind volume
   </a>
   
 </li>
@@ -1000,7 +1000,7 @@ You may also observe the changes on your browser at 'localhost' address, after r
 <pre><code>docker run --mount type=volume,source=&lt;volume-name&gt;,target=&lt;url&gt; image
 </code></pre>
 <h3 id="create">Create</h3>
-<h4 id="create-new-volume">Create new volume</h4>
+<h4 id="new-volume">New volume</h4>
 <pre><code>$ docker volume create mydata
 mydata
 
@@ -1026,8 +1026,8 @@ $ docker volume inspect mydata
 <p>WSL2 volumes, in Windows Explorer bar</p>
 <pre><code>\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes
 </code></pre>
-<h4 id="create-new-container-with-bind-volume">Create new container with bind volume</h4>
-<pre><code class="language-console">docker run --mount type=volume,source=mydata,target=/data -it alpine sh
+<h4 id="new-container-with-bind-volume">New container with bind volume</h4>
+<pre><code class="language-console">$ docker run --mount type=volume,source=mydata,target=/data -it alpine sh
 </code></pre>
 <hr />
 
