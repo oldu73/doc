@@ -2,6 +2,15 @@
 
 ***
 
+## Switch user to root
+
+Switch current user to root
+```
+$ sudo su -
+```
+
+***
+
 ## Grep lines before after match
 
 -B before  

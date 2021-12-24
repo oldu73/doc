@@ -117,3 +117,65 @@ $ docker run --rm -p 80:80 --mount type=bind,source="$(pwd)/src",target=/app/src
 
 Now try to edit 'src/app.js' file on host machine to observe nodemon restart in terminal.  
 You may also observe the changes on your browser at 'localhost' address, after refresh.
+
+***
+
+## Volumes
+
+docker volume
+- create
+- inspect
+- ls
+- rm
+- prune
+
+old syntax (not advised, c.f. bind)
+```
+docker run -v <volume-name>:<container-url> image
+```
+
+new syntax
+```
+docker run --mount type=volume,source=<volume-name>,target=<url> image
+```
+
+### Create
+
+#### New volume
+```
+$ docker volume create mydata
+mydata
+
+$ docker volume ls
+DRIVER    VOLUME NAME
+local     mydata
+
+$ docker volume inspect mydata
+[
+    {
+        "CreatedAt": "2021-12-24T06:15:34Z",
+        "Driver": "local",
+        "Labels": {},
+        "Mountpoint": "/var/lib/docker/volumes/mydata/_data",
+        "Name": "mydata",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+```
+
+WSL2 volumes are not in /var/lib/docker/volumes/mydata/_data
+
+You can find WSL2 volumes under a hidden network share. Open Windows Explorer, and type **\\\wsl$** into the location bar. Hit enter, and it should display your WSL volumes, including the ones for Docker for Windows.
+
+WSL2 volumes, in Windows Explorer bar
+```
+\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes
+```
+
+#### New container with bind volume
+```console
+$ docker run --mount type=volume,source=mydata,target=/data -it alpine sh
+```
+
+***
