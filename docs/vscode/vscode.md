@@ -2,7 +2,26 @@
 
 ***
 
-## Deplace line
+## Switch terminals
+
+Alt+up/down left/right arrows to switch between split terminals.
+
+***
+
+## Code snippet shortcut
+
+Ctrl+space
+
+Console code block in markdown file:  
+Ctrl+space, then select fenced codeblock, then select console
+
+```console
+$ ...
+```
+
+***
+
+## Move line
 
 Alt + Up/down keys
 

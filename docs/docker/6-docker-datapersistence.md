@@ -176,6 +176,39 @@ WSL2 volumes, in Windows Explorer bar
 #### New container with bind volume
 ```console
 $ docker run --mount type=volume,source=mydata,target=/data -it alpine sh
+$c cd data
+$c touch hello.txt
+$c echo 123 > hello.txt
+ctrl+d
+$ docker rm containername
+$ docker run --mount type=volume,source=mydata,target=/data -it alpine sh
+$c cd data
+$c cat hello.txt
+123
 ```
+
+### Share and backup
+
+#### Share volume between containers
+
+```console
+$ docker run --mount type=volume,source=mydata,target=/data --name firstcont -it alpine sh
+$c1 cd data
+In another terminal
+$ docker run --mount type=volume,source=mydata,target=/data --name secondcont -it alpine sh
+$c2 cd data
+$c2 touch new.txt
+$c1 ls
+hello.txt  new.txt
+```
+
+Another way is volume from container
+```console
+$ docker run --volumes-from firstcont --name thirdcont -it alpine sh
+```
+
+#### Backup volume
+
+From 3:30 in video
 
 ***
