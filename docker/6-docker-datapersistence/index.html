@@ -652,6 +652,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#share-and-backup" class="md-nav__link">
+    Share and backup
+  </a>
+  
+    <nav class="md-nav" aria-label="Share and backup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#share-volume-between-containers" class="md-nav__link">
+    Share volume between containers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-volume" class="md-nav__link">
+    Backup volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -883,6 +910,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#share-and-backup" class="md-nav__link">
+    Share and backup
+  </a>
+  
+    <nav class="md-nav" aria-label="Share and backup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#share-volume-between-containers" class="md-nav__link">
+    Share volume between containers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-volume" class="md-nav__link">
+    Backup volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1028,7 +1082,32 @@ $ docker volume inspect mydata
 </code></pre>
 <h4 id="new-container-with-bind-volume">New container with bind volume</h4>
 <pre><code class="language-console">$ docker run --mount type=volume,source=mydata,target=/data -it alpine sh
+$c cd data
+$c touch hello.txt
+$c echo 123 &gt; hello.txt
+ctrl+d
+$ docker rm containername
+$ docker run --mount type=volume,source=mydata,target=/data -it alpine sh
+$c cd data
+$c cat hello.txt
+123
 </code></pre>
+<h3 id="share-and-backup">Share and backup</h3>
+<h4 id="share-volume-between-containers">Share volume between containers</h4>
+<pre><code class="language-console">$ docker run --mount type=volume,source=mydata,target=/data --name firstcont -it alpine sh
+$c1 cd data
+In another terminal
+$ docker run --mount type=volume,source=mydata,target=/data --name secondcont -it alpine sh
+$c2 cd data
+$c2 touch new.txt
+$c1 ls
+hello.txt  new.txt
+</code></pre>
+<p>Another way is volume from container</p>
+<pre><code class="language-console">$ docker run --volumes-from firstcont --name thirdcont -it alpine sh
+</code></pre>
+<h4 id="backup-volume">Backup volume</h4>
+<p>From 3:30 in video</p>
 <hr />
 
               
