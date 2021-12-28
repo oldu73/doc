@@ -297,7 +297,7 @@ CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS                     PO
 ```
 
 With 'TMPFS' if container is in an 'Exited' status, data aren't persisted.  
-Relaunch container to observe that data aren't available anymore
+Relaunch container to observe that data aren't available anymore.
 ```console
 $ docker start -ai musing_wilbur
 $c cd data

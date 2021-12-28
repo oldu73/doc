@@ -22,6 +22,7 @@ nav:
         - 'Docker - 4 - Docker Hub': 'docker/4-docker-dockerhub.md'
         - 'Docker - 5 - Node Server Image': 'docker/5-docker-nodeserverimage.md'
         - 'Docker - 6 - Data Persistence': 'docker/6-docker-datapersistence.md'
+        - 'Docker - 7 - Network': 'docker/7-docker-network.md'
     - VS Code:
         - 'VS Code - Misc': 'vscode/vscode.md'
     - Windows:
