@@ -280,3 +280,29 @@ Enter in connection field:
 mongodb://localhost:27018
 
 ***
+
+## TMPFS
+
+Rarely used, uniquely to keep data in RAM, e.g. secret or status data, works only on Linux system.
+```console
+$ docker run --mount type=tmpfs,target=/data -it alpine sh
+$c cd data
+$c touch secret.txt
+$c ls
+secret.txt
+$c exit
+$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS                     PORTS     NAMES
+58f104d6a051   alpine    "sh"      2 minutes ago   Exited (0) 5 seconds ago             musing_wilbur
+```
+
+With 'TMPFS' if container is in an 'Exited' status, data aren't persisted.  
+Relaunch container to observe that data aren't available anymore
+```console
+$ docker start -ai musing_wilbur
+$c cd data
+$c ls
+(empty)
+```
+
+***
