@@ -623,19 +623,6 @@
     Create bridge
   </a>
   
-    <nav class="md-nav" aria-label="Create bridge">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -647,7 +634,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1_1" class="md-nav__link">
+  <a href="#sub-chapter-y1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -841,19 +828,6 @@
     Create bridge
   </a>
   
-    <nav class="md-nav" aria-label="Create bridge">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -865,7 +839,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1_1" class="md-nav__link">
+  <a href="#sub-chapter-y1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -906,9 +880,9 @@ LAN = Local</p>
 <p>3 methods:<br />
 - Bridge, sub-segment<br />
 - Host, merge host machine network<br />
-- Overlay (Docker Swarm)<br />
-- (MACVLAN)<br />
-- (Others)  </p>
+- Overlay, Docker Swarm<br />
+(- MACVLAN)<br />
+(- Others)  </p>
 <h3 id="bridge-mainly-used">Bridge (mainly used)</h3>
 <p>Grouped by sub-segment.<br />
 Docker as bridge manager.<br />
@@ -989,11 +963,55 @@ $c ping alpine1
 </code></pre>
 <hr />
 <h2 id="create-bridge">Create bridge</h2>
-<h3 id="sub-chapter-y1">Sub chapter y.1</h3>
-<p>...</p>
+<p>Create a network, make two containers communicate through it and use container name instead of ip addresses.</p>
+<p>Create network, default driver = bridge</p>
+<pre><code class="language-console">$ docker network create mynet
+
+$ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+266b7ae5e9d7   bridge    bridge    local
+ada5f50a5c41   host      host      local
+0a85e3670d62   mynet     bridge    local
+119b5f46e464   none      null      local
+</code></pre>
+<p>Use network with a named (important for name resolution over the network) container</p>
+<pre><code class="language-console">$ docker run --rm --network mynet --name server1 -d alpine ping google.ch
+
+$ docker inspect mynet
+
+&quot;Containers&quot;: {
+            &quot;249b952ab5db2ac4f3077e1a7fb89582eedaa02c236a92a7e15fc5cee73d3292&quot;: {
+                &quot;Name&quot;: &quot;server1&quot;,
+                &quot;EndpointID&quot;: &quot;48284c2119158a9ebf9d67b3eee0c74c58ede079ba173b769f5b791f2f507abb&quot;,
+                &quot;MacAddress&quot;: &quot;02:42:ac:12:00:02&quot;,
+                &quot;IPv4Address&quot;: &quot;172.18.0.2/16&quot;,
+                &quot;IPv6Address&quot;: &quot;&quot;
+            }
+        }
+
+$ docker run --rm -it --network mynet --name server2 alpine sh
+
+$c ping server1
+PING server1 (172.18.0.2): 56 data bytes
+64 bytes from 172.18.0.2: seq=0 ttl=64 time=0.079 ms
+64 bytes from 172.18.0.2: seq=1 ttl=64 time=0.166 ms
+</code></pre>
+<p>From another terminal</p>
+<pre><code class="language-console">$ docker exec -it server1 sh
+$c ping server2
+PING server2 (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.125 ms
+64 bytes from 172.18.0.3: seq=1 ttl=64 time=0.496 ms
+</code></pre>
+<p>Remove network</p>
+<pre><code class="language-console">$ docker network rm mynet
+</code></pre>
+<p>Remove all network at once</p>
+<pre><code class="language-console">$ docker network prune
+</code></pre>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
-<h3 id="sub-chapter-y1_1">Sub chapter y.1</h3>
+<h3 id="sub-chapter-y1">Sub chapter y.1</h3>
 <p>...</p>
 <hr />
 
