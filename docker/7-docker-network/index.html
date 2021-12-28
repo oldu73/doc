@@ -612,16 +612,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-2" class="md-nav__link">
-    Chapter 2
+  <a href="#bridge" class="md-nav__link">
+    Bridge
   </a>
   
-    <nav class="md-nav" aria-label="Chapter 2">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-y" class="md-nav__link">
+    Chapter y
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter y">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-21" class="md-nav__link">
-    Sub chapter 2.1
+  <a href="#sub-chapter-y1" class="md-nav__link">
+    Sub chapter y.1
   </a>
   
 </li>
@@ -803,16 +810,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-2" class="md-nav__link">
-    Chapter 2
+  <a href="#bridge" class="md-nav__link">
+    Bridge
   </a>
   
-    <nav class="md-nav" aria-label="Chapter 2">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-y" class="md-nav__link">
+    Chapter y
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter y">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-21" class="md-nav__link">
-    Sub chapter 2.1
+  <a href="#sub-chapter-y1" class="md-nav__link">
+    Sub chapter y.1
   </a>
   
 </li>
@@ -865,8 +879,77 @@ Containers will be straight forward connected to local network.</p>
 <h3 id="overlay-swarm">Overlay (Swarm)</h3>
 <p>To establish communication between Docker Daemons.</p>
 <hr />
-<h2 id="chapter-2">Chapter 2</h2>
-<h3 id="sub-chapter-21">Sub chapter 2.1</h3>
+<h2 id="bridge">Bridge</h2>
+<pre><code class="language-console">$ docker network
+$ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+266b7ae5e9d7   bridge    bridge    local
+ada5f50a5c41   host      host      local
+119b5f46e464   none      null      local
+
+$ docker network inspect bridge
+...
+&quot;Containers&quot;: {},
+...
+
+$ ifconfig
+...
+docker0:
+...
+
+$ docker run --rm -it alpine sh
+</code></pre>
+<p>in a second terminal</p>
+<pre><code class="language-console">$ docker network inspect bridge
+...
+&quot;Containers&quot;: {
+            &quot;04d3d4540a17d21ea7db83779e8de1716e6e3a4122e1f2c2f66c60d25a094656&quot;: {
+                &quot;Name&quot;: &quot;stoic_wozniak&quot;,
+                &quot;EndpointID&quot;: &quot;2ed11c55d850ed3cc4eec221f705dad2a9679a016934cd991cd96da86d2dfcbd&quot;,
+                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,
+                &quot;IPv4Address&quot;: &quot;172.17.0.2/16&quot;,
+                &quot;IPv6Address&quot;: &quot;&quot;
+            }
+}
+...
+
+$ docker run --rm -it alpine sh
+</code></pre>
+<p>in a third terminal</p>
+<pre><code class="language-console">$ docker network inspect bridge
+&quot;Containers&quot;: {
+            &quot;04d3d4540a17d21ea7db83779e8de1716e6e3a4122e1f2c2f66c60d25a094656&quot;: {  
+                &quot;Name&quot;: &quot;stoic_wozniak&quot;,
+                &quot;EndpointID&quot;: &quot;2ed11c55d850ed3cc4eec221f705dad2a9679a016934cd991cd96da86d2dfcbd&quot;,
+                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,
+                &quot;IPv4Address&quot;: &quot;172.17.0.2/16&quot;,
+                &quot;IPv6Address&quot;: &quot;&quot;
+            },
+            &quot;76ff8f56718ae5244eabe03092f7a0227aa2e42249bf2ab1c8f91a9faf76c715&quot;: {  
+                &quot;Name&quot;: &quot;admiring_driscoll&quot;,
+                &quot;EndpointID&quot;: &quot;684e6a570db46dadd9bdf53bf383ea069fa626fc16b7ab26c11e604415c00b25&quot;,
+                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:03&quot;,
+                &quot;IPv4Address&quot;: &quot;172.17.0.3/16&quot;,
+                &quot;IPv6Address&quot;: &quot;&quot;
+            }
+}
+</code></pre>
+<p>in second terminal</p>
+<pre><code class="language-console">$c ping google.ch
+$c ping 172.17.0.2
+</code></pre>
+<p>Be aware that ip address maybe attributed randomly by Docker.<br />
+To use name on default network, use <strong>--name</strong> and <strong>--link</strong> (deprecated) options on run command then you may ping by name instead of ip address (only for default bridge network).</p>
+<p>in first terminal</p>
+<pre><code class="language-console">$ docker run --rm --name alpine1 -it alpine sh
+</code></pre>
+<p>in second terminal</p>
+<pre><code class="language-console">$ docker run --rm --link alpine1 -it alpine sh
+$c ping alpine1
+</code></pre>
+<hr />
+<h2 id="chapter-y">Chapter y</h2>
+<h3 id="sub-chapter-y1">Sub chapter y.1</h3>
 <p>...</p>
 <hr />
 
