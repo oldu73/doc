@@ -225,12 +225,58 @@ $ docker run --mount type=volume,source=restore,target=/data --mount type=bind,s
 
 To not have a folder data in a folder data, use tar with option --strip-components 1
 ```console
-docker run --mount type=volume,source=restore,target=/data --mount type=bind,source="$(pwd)",target=/backup -it alpine tar -xf /backup/backup.tar --strip-components 1 -C /data
+$ docker run --mount type=volume,source=restore,target=/data --mount type=bind,source="$(pwd)",target=/backup -it alpine tar -xf /backup/backup.tar --strip-components 1 -C /data
 ```
 
 Check volume correctly restored
 ```console
 $ docker container run -it --rm --mount source=restore,target=/data alpine sh
 ```
+
+### Volume to persist a database (mongo)
+For mongo db it consist of mounting a volume with folder /data/db in mongo container
+```console
+$ docker volume create mydb
+$ docker run --mount type=volume,source=mydb,target=/data/db -d --name mongocontainer1 mongo
+$ docker exec -it mongocontainer1 sh
+$c mongo
+> use test
+switched to db test
+> db.user.insertOne({ name: 'jean' })
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("61caeae2df845609f1835264")
+}
+> db.user.findOne()
+{ "_id" : ObjectId("61caeae2df845609f1835264"), "name" : "jean" }
+> exit
+bye
+$c exit
+$ docker container stop mongocontainer1
+$ docker container rm mongocontainer1
+```
+
+Container is removed but database is persisted in a volume.
+```console
+$ docker run --mount type=volume,source=mydb,target=/data/db -d --name mongocontainer2 mongo
+$ docker exec -it mongocontainer1 sh
+$c mongo
+> use test
+switched to db test
+> db.user.findOne()
+{ "_id" : ObjectId("61caeae2df845609f1835264"), "name" : "jean" }
+```
+
+#### Compass GUI to browse mongo db
+
+Should run container with opened port (default 27017).  
+If port is already used on host machine, you may use 27018 for example
+
+```console
+$ docker run -p 27018:27017 --mount type=volume,source=mydb,target=/data/db -d --name mongocontainer3 mongo
+```
+
+Enter in connection field:  
+mongodb://localhost:27018
 
 ***
