@@ -686,6 +686,26 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#volume-to-persist-a-database-mongo" class="md-nav__link">
+    Volume to persist a database (mongo)
+  </a>
+  
+    <nav class="md-nav" aria-label="Volume to persist a database (mongo)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compass-gui-to-browse-mongo-db" class="md-nav__link">
+    Compass GUI to browse mongo db
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -951,6 +971,26 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#volume-to-persist-a-database-mongo" class="md-nav__link">
+    Volume to persist a database (mongo)
+  </a>
+  
+    <nav class="md-nav" aria-label="Volume to persist a database (mongo)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compass-gui-to-browse-mongo-db" class="md-nav__link">
+    Compass GUI to browse mongo db
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1132,11 +1172,48 @@ $ docker run --mount type=volume,source=mydata,target=/data --mount type=bind,so
 $ docker run --mount type=volume,source=restore,target=/data --mount type=bind,source=&quot;$(pwd)&quot;/backup,target=/backup alpine tar -xf /backup/mydata.tar.gz -C /data
 </code></pre>
 <p>To not have a folder data in a folder data, use tar with option --strip-components 1</p>
-<pre><code class="language-console">docker run --mount type=volume,source=restore,target=/data --mount type=bind,source=&quot;$(pwd)&quot;,target=/backup -it alpine tar -xf /backup/backup.tar --strip-components 1 -C /data
+<pre><code class="language-console">$ docker run --mount type=volume,source=restore,target=/data --mount type=bind,source=&quot;$(pwd)&quot;,target=/backup -it alpine tar -xf /backup/backup.tar --strip-components 1 -C /data
 </code></pre>
 <p>Check volume correctly restored</p>
 <pre><code class="language-console">$ docker container run -it --rm --mount source=restore,target=/data alpine sh
 </code></pre>
+<h3 id="volume-to-persist-a-database-mongo">Volume to persist a database (mongo)</h3>
+<p>For mongo db it consist of mounting a volume with folder /data/db in mongo container</p>
+<pre><code class="language-console">$ docker volume create mydb
+$ docker run --mount type=volume,source=mydb,target=/data/db -d --name mongocontainer1 mongo
+$ docker exec -it mongocontainer1 sh
+$c mongo
+&gt; use test
+switched to db test
+&gt; db.user.insertOne({ name: 'jean' })
+{
+        &quot;acknowledged&quot; : true,
+        &quot;insertedId&quot; : ObjectId(&quot;61caeae2df845609f1835264&quot;)
+}
+&gt; db.user.findOne()
+{ &quot;_id&quot; : ObjectId(&quot;61caeae2df845609f1835264&quot;), &quot;name&quot; : &quot;jean&quot; }
+&gt; exit
+bye
+$c exit
+$ docker container stop mongocontainer1
+$ docker container rm mongocontainer1
+</code></pre>
+<p>Container is removed but database is persisted in a volume.</p>
+<pre><code class="language-console">$ docker run --mount type=volume,source=mydb,target=/data/db -d --name mongocontainer2 mongo
+$ docker exec -it mongocontainer1 sh
+$c mongo
+&gt; use test
+switched to db test
+&gt; db.user.findOne()
+{ &quot;_id&quot; : ObjectId(&quot;61caeae2df845609f1835264&quot;), &quot;name&quot; : &quot;jean&quot; }
+</code></pre>
+<h4 id="compass-gui-to-browse-mongo-db">Compass GUI to browse mongo db</h4>
+<p>Should run container with opened port (default 27017).<br />
+If port is already used on host machine, you may use 27018 for example</p>
+<pre><code class="language-console">$ docker run -p 27018:27017 --mount type=volume,source=mydb,target=/data/db -d --name mongocontainer3 mongo
+</code></pre>
+<p>Enter in connection field:<br />
+mongodb://localhost:27018</p>
 <hr />
 
               
