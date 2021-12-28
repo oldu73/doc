@@ -653,11 +653,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#share-and-backup" class="md-nav__link">
-    Share and backup
+  <a href="#share-backup-restore" class="md-nav__link">
+    Share Backup Restore
   </a>
   
-    <nav class="md-nav" aria-label="Share and backup">
+    <nav class="md-nav" aria-label="Share Backup Restore">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -670,6 +670,13 @@
           <li class="md-nav__item">
   <a href="#backup-volume" class="md-nav__link">
     Backup volume
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore-volume" class="md-nav__link">
+    Restore volume
   </a>
   
 </li>
@@ -911,11 +918,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#share-and-backup" class="md-nav__link">
-    Share and backup
+  <a href="#share-backup-restore" class="md-nav__link">
+    Share Backup Restore
   </a>
   
-    <nav class="md-nav" aria-label="Share and backup">
+    <nav class="md-nav" aria-label="Share Backup Restore">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -928,6 +935,13 @@
           <li class="md-nav__item">
   <a href="#backup-volume" class="md-nav__link">
     Backup volume
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore-volume" class="md-nav__link">
+    Restore volume
   </a>
   
 </li>
@@ -1092,7 +1106,7 @@ $c cd data
 $c cat hello.txt
 123
 </code></pre>
-<h3 id="share-and-backup">Share and backup</h3>
+<h3 id="share-backup-restore">Share Backup Restore</h3>
 <h4 id="share-volume-between-containers">Share volume between containers</h4>
 <pre><code class="language-console">$ docker run --mount type=volume,source=mydata,target=/data --name firstcont -it alpine sh
 $c1 cd data
@@ -1107,7 +1121,22 @@ hello.txt  new.txt
 <pre><code class="language-console">$ docker run --volumes-from firstcont --name thirdcont -it alpine sh
 </code></pre>
 <h4 id="backup-volume">Backup volume</h4>
-<p>From 3:30 in video</p>
+<p>Compress a volume to a bind folder with tar</p>
+<pre><code class="language-console">$ mkdir backup
+$ docker run --mount type=volume,source=mydata,target=/data --mount type=bind,source=&quot;$(pwd)&quot;/backup,target=/backup alpine tar -czf /backup/mydata.tar.gz /data
+</code></pre>
+<h4 id="restore-volume">Restore volume</h4>
+<p>Extract an archive from a bind folder to a volume</p>
+<pre><code class="language-console">$ docker volume create restore
+
+$ docker run --mount type=volume,source=restore,target=/data --mount type=bind,source=&quot;$(pwd)&quot;/backup,target=/backup alpine tar -xf /backup/mydata.tar.gz -C /data
+</code></pre>
+<p>To not have a folder data in a folder data, use tar with option --strip-components 1</p>
+<pre><code class="language-console">docker run --mount type=volume,source=restore,target=/data --mount type=bind,source=&quot;$(pwd)&quot;,target=/backup -it alpine tar -xf /backup/backup.tar --strip-components 1 -C /data
+</code></pre>
+<p>Check volume correctly restored</p>
+<pre><code class="language-console">$ docker container run -it --rm --mount source=restore,target=/data alpine sh
+</code></pre>
 <hr />
 
               
