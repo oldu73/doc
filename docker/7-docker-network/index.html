@@ -578,16 +578,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chapter-1" class="md-nav__link">
-    Chapter 1
+  <a href="#introduction" class="md-nav__link">
+    Introduction
   </a>
   
-    <nav class="md-nav" aria-label="Chapter 1">
+    <nav class="md-nav" aria-label="Introduction">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-1" class="md-nav__link">
-    Sub chapter 1
+  <a href="#bridge-mainly-used" class="md-nav__link">
+    Bridge (mainly used)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-linux-only-rarely-used" class="md-nav__link">
+    Host (Linux only, rarely used)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlay-swarm" class="md-nav__link">
+    Overlay (Swarm)
   </a>
   
 </li>
@@ -601,6 +615,19 @@
   <a href="#chapter-2" class="md-nav__link">
     Chapter 2
   </a>
+  
+    <nav class="md-nav" aria-label="Chapter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sub-chapter-21" class="md-nav__link">
+    Sub chapter 2.1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -742,16 +769,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chapter-1" class="md-nav__link">
-    Chapter 1
+  <a href="#introduction" class="md-nav__link">
+    Introduction
   </a>
   
-    <nav class="md-nav" aria-label="Chapter 1">
+    <nav class="md-nav" aria-label="Introduction">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-1" class="md-nav__link">
-    Sub chapter 1
+  <a href="#bridge-mainly-used" class="md-nav__link">
+    Bridge (mainly used)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-linux-only-rarely-used" class="md-nav__link">
+    Host (Linux only, rarely used)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlay-swarm" class="md-nav__link">
+    Overlay (Swarm)
   </a>
   
 </li>
@@ -765,6 +806,19 @@
   <a href="#chapter-2" class="md-nav__link">
     Chapter 2
   </a>
+  
+    <nav class="md-nav" aria-label="Chapter 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sub-chapter-21" class="md-nav__link">
+    Sub chapter 2.1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -783,10 +837,36 @@
 
 <h1 id="docker-7-network">Docker - 7 - Network</h1>
 <hr />
-<h2 id="chapter-1">Chapter 1</h2>
-<h3 id="sub-chapter-1">Sub chapter 1</h3>
+<h2 id="introduction">Introduction</h2>
+<p>WAN = Internet<br />
+LAN = Local</p>
+<p>docker network
+- ls
+- create
+- rm
+- inspect
+- connect
+- disconnect
+- prune
+- --network | --net</p>
+<p>3 methods:
+- Bridge, sub-segment
+- Host, merge host machine network
+- Overlay (Docker Swarm) 
+- (MACVLAN)
+- (Others)</p>
+<h3 id="bridge-mainly-used">Bridge (mainly used)</h3>
+<p>Grouped by sub-segment.<br />
+Docker as bridge manager.<br />
+By default a container belongs to named "bridge" (Docker0) network.</p>
+<h3 id="host-linux-only-rarely-used">Host (Linux only, rarely used)</h3>
+<p>IP addresses for containers defined by router like for host machine.
+Containers will be straight forward connected to local network.</p>
+<h3 id="overlay-swarm">Overlay (Swarm)</h3>
+<p>To establish communication between Docker Daemons.</p>
 <hr />
 <h2 id="chapter-2">Chapter 2</h2>
+<h3 id="sub-chapter-21">Sub chapter 2.1</h3>
 <p>...</p>
 <hr />
 
