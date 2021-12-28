@@ -2,6 +2,21 @@
 
 ***
 
+## Compress Decompress
+### Compress (czf)
+\- c compress, -z zip, -f file
+```console
+$ tar -czf /targetfolder/targetfile.tar.gz /sourcefolder
+```
+
+### Decompress (xzf)
+\- x extract, -z zip, -f file
+```console
+$ tar -xzf targetfile.tar.gz
+```
+
+***
+
 ## Package
 
 ### List installed

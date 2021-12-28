@@ -187,7 +187,7 @@ $c cat hello.txt
 123
 ```
 
-### Share and backup
+### Share Backup Restore
 
 #### Share volume between containers
 
@@ -209,6 +209,28 @@ $ docker run --volumes-from firstcont --name thirdcont -it alpine sh
 
 #### Backup volume
 
-From 3:30 in video
+Compress a volume to a bind folder with tar
+```console
+$ mkdir backup
+$ docker run --mount type=volume,source=mydata,target=/data --mount type=bind,source="$(pwd)"/backup,target=/backup alpine tar -czf /backup/mydata.tar.gz /data
+```
+
+#### Restore volume
+Extract an archive from a bind folder to a volume
+```console
+$ docker volume create restore
+
+$ docker run --mount type=volume,source=restore,target=/data --mount type=bind,source="$(pwd)"/backup,target=/backup alpine tar -xf /backup/mydata.tar.gz -C /data
+```
+
+To not have a folder data in a folder data, use tar with option --strip-components 1
+```console
+docker run --mount type=volume,source=restore,target=/data --mount type=bind,source="$(pwd)",target=/backup -it alpine tar -xf /backup/backup.tar --strip-components 1 -C /data
+```
+
+Check volume correctly restored
+```console
+$ docker container run -it --rm --mount source=restore,target=/data alpine sh
+```
 
 ***
