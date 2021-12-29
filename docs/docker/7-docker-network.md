@@ -244,14 +244,20 @@ In 'node-server' folder.
 
 File 'package.json' add mongo dependencies (browse for "npm mongodb" -> MongoDB NodeJS Driver, to check version)
 ```json
+
 {
     "dependencies": {
       "express": "^4.17.1",
       "mongodb": "^3.6.2",
-      "nodemon": "^2.0.6"
+      "nodemon": "^2.0.6",
+      "console-stamp": "^3.0.3"
     }
 }
+
 ```
+
+"console-stamp" is to add timestamp in logs
+
 ^version “Compatible with version”, will update you to all future minor/patch versions, without incrementing the major version. ^2.3.4 will use releases from 2.3.4 to <3.0.0.
 
 Dockerfile
@@ -272,6 +278,7 @@ $ docker build -t node-server .
 
 Application is in js file 'node-server/src/app.js'
 ```javascript
+
 const express = require("express");
 
 const app = express();
@@ -302,6 +309,9 @@ $ docker container port server
 
 Modify 'app.js' file as follow
 ```javascript
+
+require( 'console-stamp' )( console );  // to add timestamp in logs
+
 const express = require("express");
 
 const MongoClient = require('mongodb').MongoClient;
