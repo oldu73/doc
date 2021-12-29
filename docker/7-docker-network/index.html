@@ -1208,14 +1208,18 @@ $c exit
 <p>We should use the mongo javascript driver in our application to allow connection to the db.</p>
 <p>In 'node-server' folder.</p>
 <p>File 'package.json' add mongo dependencies (browse for "npm mongodb" -&gt; MongoDB NodeJS Driver, to check version)</p>
-<pre><code class="language-json">{
+<pre><code class="language-json">
+{
     &quot;dependencies&quot;: {
       &quot;express&quot;: &quot;^4.17.1&quot;,
       &quot;mongodb&quot;: &quot;^3.6.2&quot;,
-      &quot;nodemon&quot;: &quot;^2.0.6&quot;
+      &quot;nodemon&quot;: &quot;^2.0.6&quot;,
+      &quot;console-stamp&quot;: &quot;^3.0.3&quot;
     }
 }
+
 </code></pre>
+<p>"console-stamp" is to add timestamp in logs</p>
 <p>^version “Compatible with version”, will update you to all future minor/patch versions, without incrementing the major version. ^2.3.4 will use releases from 2.3.4 to &lt;3.0.0.</p>
 <p>Dockerfile</p>
 <pre><code>FROM node:alpine
@@ -1230,7 +1234,8 @@ CMD [&quot;nodemon&quot;, &quot;-L&quot;, &quot;src/app.js&quot;]
 <pre><code class="language-console">$ docker build -t node-server .
 </code></pre>
 <p>Application is in js file 'node-server/src/app.js'</p>
-<pre><code class="language-javascript">const express = require(&quot;express&quot;);
+<pre><code class="language-javascript">
+const express = require(&quot;express&quot;);
 
 const app = express();
 
@@ -1252,7 +1257,10 @@ Observe live change availability by editing "Hello, world!" response in 'app.js'
 </code></pre>
 <h4 id="development-server-configuration">Development Server configuration</h4>
 <p>Modify 'app.js' file as follow</p>
-<pre><code class="language-javascript">const express = require(&quot;express&quot;);
+<pre><code class="language-javascript">
+require( 'console-stamp' )( console );  // to add timestamp in logs
+
+const express = require(&quot;express&quot;);
 
 const MongoClient = require('mongodb').MongoClient;
 
