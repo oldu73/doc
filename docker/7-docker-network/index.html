@@ -645,12 +645,32 @@
     Node server development
   </a>
   
+    <nav class="md-nav" aria-label="Node server development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#development-environnement-setup" class="md-nav__link">
+    Development Environnement setup
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
+  <a href="#development-server-configuration" class="md-nav__link">
+    Development Server configuration
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production" class="md-nav__link">
+    Production
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -668,7 +688,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1_1" class="md-nav__link">
+  <a href="#sub-chapter-y1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -932,12 +952,32 @@
     Node server development
   </a>
   
+    <nav class="md-nav" aria-label="Node server development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#development-environnement-setup" class="md-nav__link">
+    Development Environnement setup
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
+  <a href="#development-server-configuration" class="md-nav__link">
+    Development Server configuration
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production" class="md-nav__link">
+    Production
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -955,7 +995,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1_1" class="md-nav__link">
+  <a href="#sub-chapter-y1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -1163,6 +1203,7 @@ bye
 $c exit
 </code></pre>
 <h3 id="node-server-development">Node server development</h3>
+<h4 id="development-environnement-setup">Development Environnement setup</h4>
 <p>First step, application development with bind mount.</p>
 <p>We should use the mongo javascript driver in our application to allow connection to the db.</p>
 <p>In 'node-server' folder.</p>
@@ -1209,11 +1250,51 @@ Observe live change availability by editing "Hello, world!" response in 'app.js'
 <pre><code class="language-console">$ docker container port server
 80/tcp -&gt; 0.0.0.0:80
 </code></pre>
-<h3 id="sub-chapter-y1">Sub chapter y.1</h3>
-<p>...</p>
+<h4 id="development-server-configuration">Development Server configuration</h4>
+<p>Modify 'app.js' file as follow</p>
+<pre><code class="language-javascript">const express = require(&quot;express&quot;);
+
+const MongoClient = require('mongodb').MongoClient;
+
+let count;
+
+MongoClient.connect('mongodb://db', { useUnifiedTopology: true }, (err, client) =&gt; {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('CONNEXION DB OK!');
+    count = client.db('test').collection(&quot;count&quot;);
+  }
+});
+
+const app = express();
+
+app.get('/', (req, res) =&gt; {
+  console.log('request url: ' + req.url);
+  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) =&gt; {
+    const value = doc.value;
+    res.status(200).json(value.count);
+  })
+});
+
+app.get('*', (req, res) =&gt; {
+  res.end();
+});
+
+app.listen(80);
+
+</code></pre>
+<h4 id="production">Production</h4>
+<p>Rebuild node server image with released app.js in it (above development has been erased by bind mount)</p>
+<p>In 'node-server' folder</p>
+<pre><code class="language-console">$ docker build -t node-server .
+</code></pre>
+<p>If 'node-server' container is still running, remove it and then</p>
+<pre><code class="language-console">$ docker run --name server --network mynet -d -p 80:80 node-server
+</code></pre>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
-<h3 id="sub-chapter-y1_1">Sub chapter y.1</h3>
+<h3 id="sub-chapter-y1">Sub chapter y.1</h3>
 <p>...</p>
 <hr />
 
