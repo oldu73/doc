@@ -1141,9 +1141,10 @@ PING server2 (172.18.0.3): 56 data bytes
 <pre><code class="language-console">$ docker volume create mydb
 $ docker run --name db --mount type=volume,source=mydb,target=/data/db -d mongo
 </code></pre>
-<p>Network and connect</p>
+<p>Network and connect (and disconnect from default bridge)</p>
 <pre><code class="language-console">$ docker network create mynet
 $ docker network connect mynet db
+$ docker network disconnect bridge db
 </code></pre>
 <p>Create db and collection to handle and initialize the counter</p>
 <pre><code class="language-console">$ docker exec -it db sh
@@ -1168,12 +1169,13 @@ $c exit
 <p>File 'package.json' add mongo dependencies (browse for "npm mongodb" -&gt; MongoDB NodeJS Driver, to check version)</p>
 <pre><code class="language-json">{
     &quot;dependencies&quot;: {
-        &quot;nodemon&quot;: &quot;2.0.15&quot;,
-        &quot;express&quot;: &quot;4.17.2&quot;,
-        &quot;mongodb&quot;: &quot;4.2.2&quot;
+      &quot;express&quot;: &quot;^4.17.1&quot;,
+      &quot;mongodb&quot;: &quot;^3.6.2&quot;,
+      &quot;nodemon&quot;: &quot;^2.0.6&quot;
     }
 }
 </code></pre>
+<p>^version “Compatible with version”, will update you to all future minor/patch versions, without incrementing the major version. ^2.3.4 will use releases from 2.3.4 to &lt;3.0.0.</p>
 <p>Dockerfile</p>
 <pre><code>FROM node:alpine
 WORKDIR /app
@@ -1203,6 +1205,10 @@ app.listen(80);
 </code></pre>
 <p>Browse to 'localhost'.<br />
 Observe live change availability by editing "Hello, world!" response in 'app.js' file and refreshing 'localhost' page in internet browser.</p>
+<p>Check that port '80' is published for 'server' container</p>
+<pre><code class="language-console">$ docker container port server
+80/tcp -&gt; 0.0.0.0:80
+</code></pre>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
 <p>...</p>
 <hr />
