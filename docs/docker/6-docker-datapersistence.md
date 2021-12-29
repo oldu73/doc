@@ -61,7 +61,7 @@ docker container inspect containerName
 
 ### Development environment
 
-Set up of a development environnement for a node server application (c.f. [Node server project](5-docker-nodeserverimage.md#node-server-project)).  
+Set up of a development environnement for a node server application (c.f. [Node server project](5-docker-nodeserver.md#node-server-project)).  
 
 The goal here is to have changes available from host machine (IDE) in container and automatically reloaded by nodemon.
 
