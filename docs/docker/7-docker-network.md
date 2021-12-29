@@ -232,7 +232,9 @@ bye
 $c exit
 ```
 
-### Node server development
+### Node server Development
+
+#### Development Environnement setup
 
 First step, application development with bind mount.
 
@@ -296,9 +298,56 @@ $ docker container port server
 80/tcp -> 0.0.0.0:80
 ```
 
-### Sub chapter y.1
+#### Development Server configuration
 
-...
+Modify 'app.js' file as follow
+```javascript
+const express = require("express");
+
+const MongoClient = require('mongodb').MongoClient;
+
+let count;
+
+MongoClient.connect('mongodb://db', { useUnifiedTopology: true }, (err, client) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('CONNEXION DB OK!');
+    count = client.db('test').collection("count");
+  }
+});
+
+const app = express();
+
+app.get('/', (req, res) => {
+  console.log('request url: ' + req.url);
+  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) => {
+    const value = doc.value;
+    res.status(200).json(value.count);
+  })
+});
+
+app.get('*', (req, res) => {
+  res.end();
+});
+
+app.listen(80);
+
+```
+
+### Node server Production
+
+Rebuild node server image with released app.js in it (above development has been erased by bind mount)
+
+In 'node-server' folder
+```console
+$ docker build -t node-server .
+```
+
+If 'node-server' container is still running, remove it and then
+```console
+$ docker run --name server --network mynet -d -p 80:80 node-server
+```
 
 ***
 
