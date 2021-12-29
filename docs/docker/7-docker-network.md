@@ -361,10 +361,40 @@ $ docker run --name server --network mynet -d -p 80:80 node-server
 
 ***
 
-## Chapter y
+## Host
 
-### Sub chapter y.1
+C.f. [Bridge section](##bridge) for initial setup.
 
-...
+Reset 'app.js' to
+```javascript
+
+const express = require("express");
+
+const app = express();
+
+app.get("*", (req, res) => {
+  res.status(200).json("Hello, world!");
+});
+
+app.listen(80);
+
+```
+
+Rebuild 'node-server' image
+```console
+$ docker build -t node-server .
+```
+
+Relaunch server but on local network, this time, no need to publish port
+```console
+$ docker run --network host node-server
+```
+
+Do not work on WSL (Windows Subsystem for Linux), neither MacOs.
+
+To not use any network
+```console
+$ docker run --network none node-server
+```
 
 ***
