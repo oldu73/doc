@@ -680,22 +680,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-y" class="md-nav__link">
-    Chapter y
+  <a href="#host" class="md-nav__link">
+    Host
   </a>
-  
-    <nav class="md-nav" aria-label="Chapter y">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -987,22 +974,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-y" class="md-nav__link">
-    Chapter y
+  <a href="#host" class="md-nav__link">
+    Host
   </a>
-  
-    <nav class="md-nav" aria-label="Chapter y">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1301,9 +1275,31 @@ app.listen(80);
 <pre><code class="language-console">$ docker run --name server --network mynet -d -p 80:80 node-server
 </code></pre>
 <hr />
-<h2 id="chapter-y">Chapter y</h2>
-<h3 id="sub-chapter-y1">Sub chapter y.1</h3>
-<p>...</p>
+<h2 id="host">Host</h2>
+<p>C.f. 'Bridge' section for initial setup.</p>
+<p>Reset 'app.js' to</p>
+<pre><code class="language-javascript">
+const express = require(&quot;express&quot;);
+
+const app = express();
+
+app.get(&quot;*&quot;, (req, res) =&gt; {
+  res.status(200).json(&quot;Hello, world!&quot;);
+});
+
+app.listen(80);
+
+</code></pre>
+<p>Rebuild 'node-server' image</p>
+<pre><code class="language-console">$ docker build -t node-server .
+</code></pre>
+<p>Relaunch server but on local network, this time, no need to publish port</p>
+<pre><code class="language-console">$ docker run --network host node-server
+</code></pre>
+<p>Do not work on WSL (Windows Subsystem for Linux), neither MacOs.</p>
+<p>To not use any network</p>
+<pre><code class="language-console">$ docker run --network none node-server
+</code></pre>
 <hr />
 
               
