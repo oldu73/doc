@@ -516,8 +516,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-docker-nodeserverimage/" class="md-nav__link">
-        Docker - 05 - Node Server Image
+      <a href="../5-docker-nodeserver/" class="md-nav__link">
+        Docker - 05 - Node Server
       </a>
     </li>
   
@@ -747,8 +747,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../8-docker-compose-use/" class="md-nav__link">
-        Docker - 08 - Compose - Use
+      <a href="../8-compose-use/" class="md-nav__link">
+        Compose - 08 - Use
       </a>
     </li>
   
@@ -761,8 +761,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../9-docker-compose-dockerfile/" class="md-nav__link">
-        Docker - 09 - Compose - Dockerfile
+      <a href="../9-compose-dockerfile/" class="md-nav__link">
+        Compose - 09 - Dockerfile
       </a>
     </li>
   
@@ -775,8 +775,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../10-docker-compose-services/" class="md-nav__link">
-        Docker - 10 - Compose - Services
+      <a href="../10-compose-services/" class="md-nav__link">
+        Compose - 10 - Services
       </a>
     </li>
   
@@ -789,8 +789,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../11-docker-compose-production/" class="md-nav__link">
-        Docker - 11 - Compose - Production
+      <a href="../11-compose-production/" class="md-nav__link">
+        Compose - 11 - Production
       </a>
     </li>
   
@@ -1184,7 +1184,7 @@ hello.txt
 <pre><code>docker container inspect containerName
 </code></pre>
 <h3 id="development-environment">Development environment</h3>
-<p>Set up of a development environnement for a node server application (c.f. <a href="../5-docker-nodeserverimage/#node-server-project">Node server project</a>).  </p>
+<p>Set up of a development environnement for a node server application (c.f. <a href="../5-docker-nodeserver/#node-server-project">Node server project</a>).  </p>
 <p>The goal here is to have changes available from host machine (IDE) in container and automatically reloaded by nodemon.</p>
 <p>!!Warning!! A common mistake is to bind the root folder of a project.</p>
 <p>E.g. in case of node context, if we do so, the node_modules folder created/populated in container image by "RUN npm install" instruction from Dockerfile will be erased. To avoid this unwanted behavior, it's mostly advised to move the source code files modified through IDE on host machine in a dedicated folder (e.g. src).</p>
@@ -1380,7 +1380,7 @@ $c ls
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../5-docker-nodeserverimage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Docker - 05 - Node Server Image" rel="prev">
+        <a href="../5-docker-nodeserver/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Docker - 05 - Node Server" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1389,7 +1389,7 @@ $c ls
               <span class="md-footer__direction">
                 Previous
               </span>
-              Docker - 05 - Node Server Image
+              Docker - 05 - Node Server
             </div>
           </div>
         </a>
