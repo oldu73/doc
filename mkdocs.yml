@@ -27,6 +27,8 @@ nav:
         - 'VS Code - Misc': 'vscode/vscode.md'
     - Windows:
         - 'Windows - Misc': 'windows/windows.md'
+    - MongoDB:
+        - 'MongoDB - Misc': 'mongodb/mongodb.md'
 
 # $ mkdocs build
 # $ mkdocs gh-deploy

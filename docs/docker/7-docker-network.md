@@ -187,6 +187,121 @@ $ docker network prune
 
 ***
 
+## Connect a Node.js server with MongoDB
+
+Goal: - display a counter in a browser at 'localhost' address.  
+
+Architecture:  
+- Image - MongoDB  
+- Image - Node.js  
+- Volumes - mydb { count: x }  
+- Container - server  
+- Container - db  
+- Network - mynet  
+- Port 80 open to listen to request (count++) from a browser at 'localhost' address  
+
+### MongoDB
+Volume and container
+```console
+$ docker volume create mydb
+$ docker run --name db --mount type=volume,source=mydb,target=/data/db -d mongo
+```
+
+Network and connect (and disconnect from default bridge)
+```console
+$ docker network create mynet
+$ docker network connect mynet db
+$ docker network disconnect bridge db
+```
+
+Create db and collection to handle and initialize the counter
+```console
+$ docker exec -it db sh
+$c mongo
+> use test
+switched to db test
+> db.count.insertOne({count:0})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("61cc2517094e32ba7f98bb31")
+}
+> db.count.find()
+{ "_id" : ObjectId("61cc2517094e32ba7f98bb31"), "count" : 0 }
+> exit
+bye
+$c exit
+```
+
+### Node server development
+
+First step, application development with bind mount.
+
+We should use the mongo javascript driver in our application to allow connection to the db.
+
+In 'node-server' folder.
+
+File 'package.json' add mongo dependencies (browse for "npm mongodb" -> MongoDB NodeJS Driver, to check version)
+```json
+{
+    "dependencies": {
+      "express": "^4.17.1",
+      "mongodb": "^3.6.2",
+      "nodemon": "^2.0.6"
+    }
+}
+```
+^version “Compatible with version”, will update you to all future minor/patch versions, without incrementing the major version. ^2.3.4 will use releases from 2.3.4 to <3.0.0.
+
+Dockerfile
+```
+FROM node:alpine
+WORKDIR /app
+COPY ./package.json .
+RUN npm install
+COPY . .
+ENV PATH=$PATH:/app/node_modules/.bin
+CMD ["nodemon", "-L", "src/app.js"]
+```
+
+Build image in 'node-server' folder
+```console
+$ docker build -t node-server .
+```
+
+Application is in js file 'node-server/src/app.js'
+```javascript
+const express = require("express");
+
+const app = express();
+
+app.get("*", (req, res) => {
+  res.status(200).json("Hello, world!");
+});
+
+app.listen(80);
+
+```
+
+To develop application use a bind mount
+```console
+$ docker run --name server --mount type=bind,source="$(pwd)"/src,target=/app/src -p 80:80 --network mynet node-server
+```
+
+Browse to 'localhost'.  
+Observe live change availability by editing "Hello, world!" response in 'app.js' file and refreshing 'localhost' page in internet browser.
+
+Check that port '80' is published for 'server' container
+```console
+$ docker container port server
+80/tcp -> 0.0.0.0:80
+```
+
+### Sub chapter y.1
+
+...
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
