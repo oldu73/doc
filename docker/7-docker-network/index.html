@@ -626,6 +626,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#connect-a-nodejs-server-with-mongodb" class="md-nav__link">
+    Connect a Node.js server with MongoDB
+  </a>
+  
+    <nav class="md-nav" aria-label="Connect a Node.js server with MongoDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mongodb" class="md-nav__link">
+    MongoDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-server-development" class="md-nav__link">
+    Node server development
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-chapter-y1" class="md-nav__link">
+    Sub chapter y.1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -634,7 +668,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
+  <a href="#sub-chapter-y1_1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -756,6 +790,54 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          MongoDB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MongoDB" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          MongoDB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mongodb/mongodb/" class="md-nav__link">
+        MongoDB - Misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -831,6 +913,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#connect-a-nodejs-server-with-mongodb" class="md-nav__link">
+    Connect a Node.js server with MongoDB
+  </a>
+  
+    <nav class="md-nav" aria-label="Connect a Node.js server with MongoDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mongodb" class="md-nav__link">
+    MongoDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-server-development" class="md-nav__link">
+    Node server development
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-chapter-y1" class="md-nav__link">
+    Sub chapter y.1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -839,7 +955,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
+  <a href="#sub-chapter-y1_1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -1010,8 +1126,88 @@ PING server2 (172.18.0.3): 56 data bytes
 <pre><code class="language-console">$ docker network prune
 </code></pre>
 <hr />
-<h2 id="chapter-y">Chapter y</h2>
+<h2 id="connect-a-nodejs-server-with-mongodb">Connect a Node.js server with MongoDB</h2>
+<p>Goal: - display a counter in a browser at 'localhost' address.  </p>
+<p>Architecture:<br />
+- Image - MongoDB<br />
+- Image - Node.js<br />
+- Volumes - mydb { count: x }<br />
+- Container - server<br />
+- Container - db<br />
+- Network - mynet<br />
+- Port 80 open to listen to request (count++) from a browser at 'localhost' address  </p>
+<h3 id="mongodb">MongoDB</h3>
+<p>Volume and container</p>
+<pre><code class="language-console">$ docker volume create mydb
+$ docker run --name db --mount type=volume,source=mydb,target=/data/db -d mongo
+</code></pre>
+<p>Network and connect</p>
+<pre><code class="language-console">$ docker network create mynet
+$ docker network connect mynet db
+</code></pre>
+<p>Create db and collection to handle and initialize the counter</p>
+<pre><code class="language-console">$ docker exec -it db sh
+$c mongo
+&gt; use test
+switched to db test
+&gt; db.count.insertOne({count:0})
+{
+        &quot;acknowledged&quot; : true,
+        &quot;insertedId&quot; : ObjectId(&quot;61cc2517094e32ba7f98bb31&quot;)
+}
+&gt; db.count.find()
+{ &quot;_id&quot; : ObjectId(&quot;61cc2517094e32ba7f98bb31&quot;), &quot;count&quot; : 0 }
+&gt; exit
+bye
+$c exit
+</code></pre>
+<h3 id="node-server-development">Node server development</h3>
+<p>First step, application development with bind mount.</p>
+<p>We should use the mongo javascript driver in our application to allow connection to the db.</p>
+<p>In 'node-server' folder.</p>
+<p>File 'package.json' add mongo dependencies (browse for "npm mongodb" -&gt; MongoDB NodeJS Driver, to check version)</p>
+<pre><code class="language-json">{
+    &quot;dependencies&quot;: {
+        &quot;nodemon&quot;: &quot;2.0.15&quot;,
+        &quot;express&quot;: &quot;4.17.2&quot;,
+        &quot;mongodb&quot;: &quot;4.2.2&quot;
+    }
+}
+</code></pre>
+<p>Dockerfile</p>
+<pre><code>FROM node:alpine
+WORKDIR /app
+COPY ./package.json .
+RUN npm install
+COPY . .
+ENV PATH=$PATH:/app/node_modules/.bin
+CMD [&quot;nodemon&quot;, &quot;-L&quot;, &quot;src/app.js&quot;]
+</code></pre>
+<p>Build image in 'node-server' folder</p>
+<pre><code class="language-console">$ docker build -t node-server .
+</code></pre>
+<p>Application is in js file 'node-server/src/app.js'</p>
+<pre><code class="language-javascript">const express = require(&quot;express&quot;);
+
+const app = express();
+
+app.get(&quot;*&quot;, (req, res) =&gt; {
+  res.status(200).json(&quot;Hello, world!&quot;);
+});
+
+app.listen(80);
+
+</code></pre>
+<p>To develop application use a bind mount</p>
+<pre><code class="language-console">$ docker run --name server --mount type=bind,source=&quot;$(pwd)&quot;/src,target=/app/src -p 80:80 --network mynet node-server
+</code></pre>
+<p>Browse to 'localhost'<br />
+Observe live change availability by editing "Hello, world!" response in 'app.js' file and refreshing 'localhost' page in internet browser.</p>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
+<p>...</p>
+<hr />
+<h2 id="chapter-y">Chapter y</h2>
+<h3 id="sub-chapter-y1_1">Sub chapter y.1</h3>
 <p>...</p>
 <hr />
 
