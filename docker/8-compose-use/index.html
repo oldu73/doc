@@ -599,6 +599,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#first-use" class="md-nav__link">
+    First use
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -853,6 +860,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#first-use" class="md-nav__link">
+    First use
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -900,9 +914,74 @@
 <p>Docker Compose, talking about service.</p>
 <p>One Application = (is composed of) Many Services (containers that communicate with each others).</p>
 <p>Docker Compose is a CLI that read 'docker-compose.yml' file.</p>
-<p>First, install Docker Compose and check installation and version by typing in a terminal</p>
+<p>First, install Docker Compose and check installation and version by typing in a terminal:</p>
 <pre><code class="language-console">$ docker-compose version
 </code></pre>
+<hr />
+<h2 id="first-use">First use</h2>
+<p>'docker-compose ..' command(s) always refer to folder from where command is launched and context of 'docker-compose.yml' file contained in folder.</p>
+<p>Yaml format configuration file.<br />
+Yaml syntax is based on an indented key value format.</p>
+<pre><code class="language-console"> $ touch docker-compose.yml
+</code></pre>
+<p>First, mention version to use to ensure retro-compatibility.
+To determine which version to specify in 'docker-compose.yml' file header, refer to docker engine version that run on your host machine:</p>
+<pre><code class="language-console">$ docker version
+...
+Server: Docker Engine - Community
+ Engine:
+  Version:          20.10.11
+...
+</code></pre>
+<p>Then refer to documentation<br />
+<a href="https://docs.docker.com/compose/compose-file/">Compose file - Reference and guidelines</a></p>
+<p>Second, specify service(s).</p>
+<p>docker-compose.yml</p>
+<pre><code>
+version: '3.8'
+
+services:
+  myalpine:
+    image: alpine
+
+</code></pre>
+<pre><code class="language-console">$ docker-compose up
+</code></pre>
+<p>Alternative to go straight in service's container:</p>
+<pre><code class="language-console">$ docker-compose run myapline
+$c
+</code></pre>
+<p>In another console:</p>
+<pre><code class="language-console">$ docker-compose ps
+$ docker-compose ps -a
+$ docker-compose down
+</code></pre>
+<p>Particularity of 'docker-compose down' command is to suppress (don't just stop) all container and network that was launched by previous 'docker-compose up' command.</p>
+<p>Default command is the one defined in image, for 'alpine' it's '/bin/sh'.</p>
+<p>To overwrite default command, specify it in 'docker-compose.yml' file:</p>
+<pre><code>
+version: '3.8'
+
+services:
+  myalpine:
+    image: alpine
+    command: ls
+
+</code></pre>
+<p>Or by adding command directly after service name in run command:</p>
+<pre><code class="language-console">$ docker-compose run myalpine ls
+</code></pre>
+<p>Or with entry point in exec form (instead of shell) in 'docker-compose.yml' file:</p>
+<pre><code>
+version: '3.8'
+
+services:
+  myalpine:
+    image: alpine
+    entrypoint: [&quot;ls&quot;]
+
+</code></pre>
+<p>Or 'command: ["ls"]' instead of 'entrypoint: ["ls"]'</p>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
