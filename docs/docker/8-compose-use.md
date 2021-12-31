@@ -57,13 +57,11 @@ Second, specify service(s).
 
 docker-compose.yml:
 ```
-
 version: '3.8'
 
 services:
   myalpine:
     image: alpine
-
 ```
 
 ```console
@@ -89,14 +87,12 @@ Anonymous volumes are never reused by Docker Compose. It launches new ones each 
 Default command is the one defined in image, for 'alpine' it's '/bin/sh'.  
 To overwrite default command, specify it in 'docker-compose.yml' file:
 ```
-
 version: '3.8'
 
 services:
   myalpine:
     image: alpine
     command: ls
-
 ```
 
 Or by adding command directly after service name in run command:
@@ -106,17 +102,158 @@ $ docker-compose run myalpine ls
 
 Or with entry point in exec form (instead of shell) in 'docker-compose.yml' file:
 ```
-
 version: '3.8'
 
 services:
   myalpine:
     image: alpine
     entrypoint: ["ls"]
-
 ```
 
 Or 'command: ["ls"]' instead of 'entrypoint: ["ls"]'
+
+***
+
+## Custom image
+
+```console
+$ touch Dockerfile
+```
+
+Dockerfile:
+```
+FROM alpine
+CMD ["/bin/sh"]
+```
+
+docker-compose.yml
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    build: .
+```
+
+```console
+$ docker-compose build
+```
+
+Have a look to VS Code Docker plugin to have a synthetic view of all Docker ecosystem components, containers, images, network, etc.
+
+### Context and Dockerfile
+
+Specify a context and Dockerfile:
+```console
+$ mkdir backend
+$ cp Dockerfile backend/DockerfileBackend
+```
+
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+```
+
+### Arguments
+
+Passing arguments, e.g. create a folder at build, 'Dockerfile' receive args from 'docker-compose.yml'.  
+DockerfileBackend:
+```
+FROM alpine
+ARG FOLDER
+RUN mkdir $FOLDER
+CMD ["/bin/sh"]
+```
+
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        - FOLDER=test
+```
+
+Note the 'arg' indentation with '-' for an array of values (yaml syntax).
+
+test:
+```console
+$ docker-compose build
+$ docker-compose run b
+$c ls
+.. test ..
+```
+
+Instead of list (- FOLDER=), e.g. for 'args' you may also use an object instead (FOLDER:).
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+```
+
+test:
+```console
+$ docker-compose build
+$ docker-compose run b
+$c ls
+.. myfolder ..
+```
+
+### Labels
+
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        - FOLDER=test
+      labels:
+        - EMAIL=toto@test.com
+```
+
+test:
+```console
+$ docker-compose build
+$ docker image inspect compose_b:latest | grep EMAIL
+                "EMAIL": "toto@test.com"
+```
 
 ***
 
