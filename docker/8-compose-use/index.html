@@ -606,6 +606,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#custom-image" class="md-nav__link">
+    Custom image
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-and-dockerfile" class="md-nav__link">
+    Context and Dockerfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    Labels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -867,6 +901,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#custom-image" class="md-nav__link">
+    Custom image
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-and-dockerfile" class="md-nav__link">
+    Context and Dockerfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arguments" class="md-nav__link">
+    Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    Labels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -937,13 +1005,11 @@ Server: Docker Engine - Community
 <a href="https://docs.docker.com/compose/compose-file/">Compose file - Reference and guidelines</a></p>
 <p>Second, specify service(s).</p>
 <p>docker-compose.yml:</p>
-<pre><code>
-version: '3.8'
+<pre><code>version: '3.8'
 
 services:
   myalpine:
     image: alpine
-
 </code></pre>
 <pre><code class="language-console">$ docker-compose up
 </code></pre>
@@ -960,29 +1026,137 @@ $ docker-compose down
 Anonymous volumes are never reused by Docker Compose. It launches new ones each time if declared in configuration.</p>
 <p>Default command is the one defined in image, for 'alpine' it's '/bin/sh'.<br />
 To overwrite default command, specify it in 'docker-compose.yml' file:</p>
-<pre><code>
-version: '3.8'
+<pre><code>version: '3.8'
 
 services:
   myalpine:
     image: alpine
     command: ls
-
 </code></pre>
 <p>Or by adding command directly after service name in run command:</p>
 <pre><code class="language-console">$ docker-compose run myalpine ls
 </code></pre>
 <p>Or with entry point in exec form (instead of shell) in 'docker-compose.yml' file:</p>
-<pre><code>
-version: '3.8'
+<pre><code>version: '3.8'
 
 services:
   myalpine:
     image: alpine
     entrypoint: [&quot;ls&quot;]
-
 </code></pre>
 <p>Or 'command: ["ls"]' instead of 'entrypoint: ["ls"]'</p>
+<hr />
+<h2 id="custom-image">Custom image</h2>
+<pre><code class="language-console">$ touch Dockerfile
+</code></pre>
+<p>Dockerfile:</p>
+<pre><code>FROM alpine
+CMD [&quot;/bin/sh&quot;]
+</code></pre>
+<p>docker-compose.yml</p>
+<pre><code>version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    build: .
+</code></pre>
+<pre><code class="language-console">$ docker-compose build
+</code></pre>
+<p>Have a look to VS Code Docker plugin to have a synthetic view of all Docker ecosystem components, containers, images, network, etc.</p>
+<h3 id="context-and-dockerfile">Context and Dockerfile</h3>
+<p>Specify a context and Dockerfile:</p>
+<pre><code class="language-console">$ mkdir backend
+$ cp Dockerfile backend/DockerfileBackend
+</code></pre>
+<p>docker-compose.yml:</p>
+<pre><code>version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+</code></pre>
+<h3 id="arguments">Arguments</h3>
+<p>Passing arguments, e.g. create a folder at build, 'Dockerfile' receive args from 'docker-compose.yml'.<br />
+DockerfileBackend:</p>
+<pre><code>FROM alpine
+ARG FOLDER
+RUN mkdir $FOLDER
+CMD [&quot;/bin/sh&quot;]
+</code></pre>
+<p>docker-compose.yml:</p>
+<pre><code>version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        - FOLDER=test
+</code></pre>
+<p>Note the 'arg' indentation with '-' for an array of values (yaml syntax).</p>
+<p>test:</p>
+<pre><code class="language-console">$ docker-compose build
+$ docker-compose run b
+$c ls
+.. test ..
+</code></pre>
+<p>Instead of list (- FOLDER=), e.g. for 'args' you may also use an object instead (FOLDER:).
+docker-compose.yml:</p>
+<pre><code>version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+</code></pre>
+<p>test:</p>
+<pre><code class="language-console">$ docker-compose build
+$ docker-compose run b
+$c ls
+.. myfolder ..
+</code></pre>
+<h3 id="labels">Labels</h3>
+<p>docker-compose.yml:</p>
+<pre><code>version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        - FOLDER=test
+      labels:
+        - EMAIL=toto@test.com
+</code></pre>
+<p>test:</p>
+<pre><code class="language-console">$ docker-compose build
+$ docker image inspect compose_b:latest | grep EMAIL
+                &quot;EMAIL&quot;: &quot;toto@test.com&quot;
+</code></pre>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
