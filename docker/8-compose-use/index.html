@@ -956,9 +956,10 @@ $c
 $ docker-compose ps -a
 $ docker-compose down
 </code></pre>
-<p>Particularity of 'docker-compose down' command is to suppress (don't just stop) all container and network that was launched by previous 'docker-compose up' command.</p>
-<p>Default command is the one defined in image, for 'alpine' it's '/bin/sh'.</p>
-<p>To overwrite default command, specify it in 'docker-compose.yml' file:</p>
+<p>Particularity of 'docker-compose down' command is to suppress (don't just stop) all container and network that was launched by previous 'docker-compose up' command.<br />
+Anonymous volumes are never reused by Docker Compose. It launches new ones each time if declared in configuration.</p>
+<p>Default command is the one defined in image, for 'alpine' it's '/bin/sh'.<br />
+To overwrite default command, specify it in 'docker-compose.yml' file:</p>
 <pre><code>
 version: '3.8'
 
