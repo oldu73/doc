@@ -640,6 +640,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ports" class="md-nav__link">
+    Ports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#volumes" class="md-nav__link">
+    Volumes
+  </a>
+  
+    <nav class="md-nav" aria-label="Volumes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bind" class="md-nav__link">
+    Bind
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volumes_1" class="md-nav__link">
+    Volumes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -935,6 +969,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ports" class="md-nav__link">
+    Ports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#volumes" class="md-nav__link">
+    Volumes
+  </a>
+  
+    <nav class="md-nav" aria-label="Volumes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bind" class="md-nav__link">
+    Bind
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volumes_1" class="md-nav__link">
+    Volumes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -1155,6 +1223,185 @@ services:
 $ docker image inspect compose_b:latest | grep EMAIL
                 &quot;EMAIL&quot;: &quot;toto@test.com&quot;
 </code></pre>
+<hr />
+<h2 id="ports">Ports</h2>
+<p>docker-compose.yml:</p>
+<pre><code>version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+        - 80:80
+</code></pre>
+<hr />
+<h2 id="volumes">Volumes</h2>
+<h3 id="bind">Bind</h3>
+<pre><code class="language-console">$ mkdir data
+$ touch data/hello.txt
+</code></pre>
+<p>DockerfileBackend.yml</p>
+<pre><code>FROM alpine
+ARG FOLDER
+WORKDIR /app
+RUN mkdir $FOLDER
+CMD [&quot;/bin/sh&quot;]
+</code></pre>
+<p>docker-compose.yml:</p>
+<pre><code>version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+</code></pre>
+<p>test:</p>
+<pre><code class="language-console">$ docker-compose build
+$ docker-compose run b
+$c cd data
+$c ls
+$c exit 
+</code></pre>
+<h3 id="volumes_1">Volumes</h3>
+<p>docker-compose.yml:</p>
+<pre><code>version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+
+volumes:
+  datavolume:
+</code></pre>
+<p>test:</p>
+<pre><code class="language-console">$ docker-compose build
+$ docker-compose run b
+[+] Running 1/0
+ ⠿ Volume &quot;compose_datavolume&quot;  Created
+$c ls
+data        datavolume  myfolder
+$c exit 
+</code></pre>
+<p>Volume option external to avoid docker-compose to create volume if it does not exist.
+docker-compose.yml:</p>
+<pre><code>version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+
+volumes:
+  datavolume:
+    external: true
+</code></pre>
+<p>Before testing remove previously created volumes.
+test:</p>
+<pre><code class="language-console">$ docker-compose run b
+external volume &quot;&quot; not found
+</code></pre>
+<p>To create anonymous volume, omit source option.
+docker-compose.yml:</p>
+<pre><code>version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+
+volumes:
+  datavolume:
+</code></pre>
+<p>test:</p>
+<pre><code class="language-console">$ docker-compose build
+$ docker-compose run b
+$c ls
+data                 datavolume           datavolumeanonymous  myfolder
+</code></pre>
+<p>Docker Compose does not always use the same anonymous volume for a service.<br />
+Therefore, it is advisable to use:</p>
+<pre><code class="language-console">$ docker-compose down -v
+</code></pre>
+<p>to remove it.</p>
+<p>-v, --volumes volumes    Remove named volumes declared in the volumes section of the Compose file and    <br />
+                          anonymous volumes attached to containers.</p>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
