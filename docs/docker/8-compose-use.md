@@ -257,6 +257,215 @@ $ docker image inspect compose_b:latest | grep EMAIL
 
 ***
 
+## Ports
+
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+        - 80:80
+```
+
+***
+
+## Volumes
+
+### Bind
+
+```console
+$ mkdir data
+$ touch data/hello.txt
+```
+
+DockerfileBackend.yml:
+```
+FROM alpine
+ARG FOLDER
+WORKDIR /app
+RUN mkdir $FOLDER
+CMD ["/bin/sh"]
+```
+
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+```
+
+test:
+```console
+$ docker-compose build
+$ docker-compose run b
+$c cd data
+$c ls
+$c exit 
+```
+
+### Volumes
+
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+
+volumes:
+  datavolume:
+```
+
+test:
+```console
+$ docker-compose build
+$ docker-compose run b
+[+] Running 1/0
+ ⠿ Volume "compose_datavolume"  Created
+$c ls
+data        datavolume  myfolder
+$c exit 
+```
+
+Volume option external to avoid docker-compose to create volume if it does not exist.  
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+
+volumes:
+  datavolume:
+    external: true
+```
+
+Before testing remove previously created volumes.  
+test:
+```console
+$ docker-compose run b
+external volume "" not found
+```
+
+To create anonymous volume, omit source option.  
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+
+volumes:
+  datavolume:
+```
+
+test:
+```console
+$ docker-compose build
+$ docker-compose run b
+$c ls
+data                 datavolume           datavolumeanonymous  myfolder
+```
+
+Docker Compose does not always use the same anonymous volume for a service.  
+Therefore, it is advisable to use:
+```console
+$ docker-compose down -v
+```
+to remove it.
+
+-v, --volumes volumes, Remove named volumes declared in the volumes section of the Compose file and anonymous volumes attached to containers.
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
