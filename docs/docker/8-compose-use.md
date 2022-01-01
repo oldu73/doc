@@ -466,6 +466,249 @@ to remove it.
 
 ***
 
+## Environment Variables
+
+### from cli
+
+```console
+$ docker-compose run b
+$c env
+HOSTNAME=0b9907714155
+SHLVL=1
+HOME=/root
+TERM=xterm
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/app
+```
+
+Add environnement variable from command line, value from host machine:
+```console
+$ docker-compose run -e USER b
+$c env | grep USER
+USER=toto
+```
+
+By default, by not specifying a value, docker-compose search on host machine environnement variable and if find one that match, pass it (e.g. here with USER that do exist on host machine and has a value).
+
+Add environnement variable from command line with specified value:
+```console
+$ docker-compose run -e USER=tintin b
+$c env | grep USER
+USER=tintin
+```
+
+### from compose file
+
+Without specifying a value (comes from host machine).  
+docker-compose.yml:
+```console
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    environment:
+      - USER
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+
+volumes:
+  datavolume:
+```
+
+test:
+```console
+$ docker-compose build
+$ docker-compose run b
+$c env | grep USER
+USER=toto
+```
+
+By specifying a value.  
+docker-compose.yml:
+```console
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    environment:
+      - USER=tintin
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+
+volumes:
+  datavolume:
+```
+
+test:
+```console
+$ docker-compose build
+$ docker-compose run b
+$c env | grep USER
+USER=tintin
+```
+
+### from .env file
+
+If value of environment variable is not specified, docker compose search for corresponding value in host machine, if not found, search then in '.env' file.  
+.env:
+```
+NODE_ENV=development
+```
+
+docker-compose.yml:
+```console
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    environment:
+      - NODE_ENV
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+
+volumes:
+  datavolume:
+```
+
+test:
+```console
+$ docker-compose build
+$ docker-compose run b
+$c env | grep NODE_ENV
+NODE_ENV=development
+```
+
+By specifying an environnement file, all variables contained in it will be imported in container.  
+.env:
+```
+NODE_ENV=development
+TEST_ENV=test
+```
+
+docker-compose.yml:
+```console
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ["ls"]
+  b:
+    env_file:
+      - .env
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+
+volumes:
+  datavolume:
+```
+
+test:
+```console
+$ docker-compose build
+$ docker-compose run b
+$c env | grep _ENV
+TEST_ENV=test
+NODE_ENV=development
+```
+
+You may have many environnement files.  
+
+You may specify env file in command line, works only with 'up':
+```console
+$ docker-compose --env-file ./.env up
+```
+
+You may use both 'env_file' and 'environnement' for same service.
+
+You may specify compose project name instead of current folder with, e.g. in .env file:
+```
+COMPOSE_PROJECT_NAME=myproject
+```
+
+***
+
+## Network
+
+### Sub chapter y.1
+
+...
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
