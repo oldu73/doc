@@ -674,6 +674,60 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment Variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-cli" class="md-nav__link">
+    from cli
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-compose-file" class="md-nav__link">
+    from compose file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-env-file" class="md-nav__link">
+    from .env file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network" class="md-nav__link">
+    Network
+  </a>
+  
+    <nav class="md-nav" aria-label="Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sub-chapter-y1" class="md-nav__link">
+    Sub chapter y.1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -682,7 +736,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
+  <a href="#sub-chapter-y1_1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -1003,6 +1057,60 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment Variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-cli" class="md-nav__link">
+    from cli
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-compose-file" class="md-nav__link">
+    from compose file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-env-file" class="md-nav__link">
+    from .env file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network" class="md-nav__link">
+    Network
+  </a>
+  
+    <nav class="md-nav" aria-label="Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sub-chapter-y1" class="md-nav__link">
+    Sub chapter y.1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -1011,7 +1119,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
+  <a href="#sub-chapter-y1_1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -1402,8 +1510,209 @@ Therefore, it is advisable to use:</p>
 <p>to remove it.</p>
 <p>-v, --volumes volumes, Remove named volumes declared in the volumes section of the Compose file and anonymous volumes attached to containers.</p>
 <hr />
-<h2 id="chapter-y">Chapter y</h2>
+<h2 id="environment-variables">Environment Variables</h2>
+<h3 id="from-cli">from cli</h3>
+<pre><code class="language-console">$ docker-compose run b
+$c env
+HOSTNAME=0b9907714155
+SHLVL=1
+HOME=/root
+TERM=xterm
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/app
+</code></pre>
+<p>Add environnement variable from command line, value from host machine:</p>
+<pre><code class="language-console">$ docker-compose run -e USER b
+$c env | grep USER
+USER=toto
+</code></pre>
+<p>By default, by not specifying a value, docker-compose search on host machine environnement variable and if find one that match, pass it (e.g. here with USER that do exist on host machine and has a value).</p>
+<p>Add environnement variable from command line with specified value:</p>
+<pre><code class="language-console">$ docker-compose run -e USER=tintin b
+$c env | grep USER
+USER=tintin
+</code></pre>
+<h3 id="from-compose-file">from compose file</h3>
+<p>Without specifying a value (comes from host machine).<br />
+docker-compose.yml:</p>
+<pre><code class="language-console">version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    environment:
+      - USER
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+
+volumes:
+  datavolume:
+</code></pre>
+<p>test:</p>
+<pre><code class="language-console">$ docker-compose build
+$ docker-compose run b
+$c env | grep USER
+USER=toto
+</code></pre>
+<p>By specifying a value.<br />
+docker-compose.yml:</p>
+<pre><code class="language-console">version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    environment:
+      - USER=tintin
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+
+volumes:
+  datavolume:
+</code></pre>
+<p>test:</p>
+<pre><code class="language-console">$ docker-compose build
+$ docker-compose run b
+$c env | grep USER
+USER=tintin
+</code></pre>
+<h3 id="from-env-file">from .env file</h3>
+<p>If value of environment variable is not specified, docker compose search for corresponding value in host machine, if not found, search then in '.env' file.<br />
+.env:</p>
+<pre><code>NODE_ENV=development
+</code></pre>
+<p>docker-compose.yml:</p>
+<pre><code class="language-console">version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    environment:
+      - NODE_ENV
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+
+volumes:
+  datavolume:
+</code></pre>
+<p>test:</p>
+<pre><code class="language-console">$ docker-compose build
+$ docker-compose run b
+$c env | grep NODE_ENV
+NODE_ENV=development
+</code></pre>
+<p>By specifying an environnement file, all variables contained in it will be imported in container.<br />
+.env:</p>
+<pre><code>NODE_ENV=development
+TEST_ENV=test
+</code></pre>
+<p>docker-compose.yml:</p>
+<pre><code class="language-console">version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: [&quot;ls&quot;]
+  b:
+    env_file:
+      - .env
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+
+volumes:
+  datavolume:
+</code></pre>
+<p>test:</p>
+<pre><code class="language-console">$ docker-compose build
+$ docker-compose run b
+$c env | grep _ENV
+TEST_ENV=test
+NODE_ENV=development
+</code></pre>
+<p>You may have many environnement files.  </p>
+<p>You may specify env file in command line, works only with 'up':</p>
+<pre><code class="language-console">$ docker-compose --env-file ./.env up
+</code></pre>
+<p>You may use both 'env_file' and 'environnement' for same service.</p>
+<p>You may specify compose project name instead of current folder with, e.g. in .env file:</p>
+<pre><code>COMPOSE_PROJECT_NAME=myproject
+</code></pre>
+<hr />
+<h2 id="network">Network</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
+<p>...</p>
+<hr />
+<h2 id="chapter-y">Chapter y</h2>
+<h3 id="sub-chapter-y1_1">Sub chapter y.1</h3>
 <p>...</p>
 <hr />
 
