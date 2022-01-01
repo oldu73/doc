@@ -1323,7 +1323,7 @@ $c ls
 data        datavolume  myfolder
 $c exit 
 </code></pre>
-<p>Volume option external to avoid docker-compose to create volume if it does not exist.
+<p>Volume option external to avoid docker-compose to create volume if it does not exist.<br />
 docker-compose.yml:</p>
 <pre><code>version: '3.8'
 
@@ -1353,12 +1353,12 @@ volumes:
   datavolume:
     external: true
 </code></pre>
-<p>Before testing remove previously created volumes.
+<p>Before testing remove previously created volumes.<br />
 test:</p>
 <pre><code class="language-console">$ docker-compose run b
 external volume &quot;&quot; not found
 </code></pre>
-<p>To create anonymous volume, omit source option.
+<p>To create anonymous volume, omit source option.<br />
 docker-compose.yml:</p>
 <pre><code>version: '3.8'
 
