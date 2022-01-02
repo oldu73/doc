@@ -1006,9 +1006,58 @@ b_1  | 64 bytes from 192.168.48.2: seq=3 ttl=64 time=0.200 ms
 
 ## Sample application
 
-### Sub chapter y.1
+Node.js application that increment a counter in a MongoDB.
 
-...
+### MongoDB
+
+We provide volume to handle db data, so, preamble is to "manually" create the needed volume:
+```console
+$ docker volume create mydb
+```
+
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  db:
+    image: mongo
+    volumes:
+      - type: volume
+        source: mydb
+        target: /data/db
+volumes:
+  mydb:
+    external: true
+```
+
+We run db individually to initialize it:
+```console
+$ docker-compose run -d db
+39cf..
+$ docker container exec -it 39cf sh
+$c mongo
+> use test
+> db.count.insertOne({ count: 0 })
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("61d1a03ac9a303a408034aca")
+}
+> db.count.findOne()
+{ "_id" : ObjectId("61d1a03ac9a303a408034aca"), "count" : 0 }
+> exit
+bye
+$c exit
+$ docker container stop 39cf
+```
+
+In MongoDB, volume that contain the database may not be mounted anywhere.  
+MongoDB will specifically search for database in '/data/db' folder.
+
+No need to open specific port(s) for containers that run on same network.  
+By default all ports are available for containers that run on same network.
+
+### Node.js
 
 ***
 
