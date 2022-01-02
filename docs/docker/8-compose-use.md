@@ -703,6 +703,309 @@ COMPOSE_PROJECT_NAME=myproject
 
 ## Network
 
+### Default
+
+By default docker compose create a network with folder name as a prefix, or with value of 'COMPOSE_PROJECT_NAME' key in project's environnement variable:
+```console
+$ docker-compose up
+[+] Running 4/4
+ ⠿ Network myproject_default      Created
+ ..
+```
+
+Note that containers using the network appear in the list ($ docker network inspect myproject_default) only when they are running.
+
+Below, we make a test with ping, note that we use shell form (instead of exec (cause:  executable file not found in $PATH: unknown)).  
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ping b
+  b:
+    command: ping a
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+
+volumes:
+  datavolume:
+```
+
+test:
+```console
+$ docker-compose up
+[+] Running 2/2
+ ⠿ Container myproject_a_1  Recreated                                                                                                                 0.2s
+ ⠿ Container myproject_b_1  Recreated                                                                                                                 0.2s 
+Attaching to a_1, b_1
+a_1  | PING b (172.29.0.3): 56 data bytes
+b_1  | PING a (172.29.0.2): 56 data bytes
+a_1  | 64 bytes from 172.29.0.3: seq=0 ttl=64 time=188.846 ms
+b_1  | 64 bytes from 172.29.0.2: seq=0 ttl=64 time=0.152 ms
+```
+
+### Links
+
+Links from a container to another one.  
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ping b
+  b:
+    links:
+      - "a:containerA"
+    command: ping containerA
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+
+volumes:
+  datavolume:
+```
+
+test:
+```console
+$ docker-compose up                                                                                       
+[+] Running 3/2
+ ⠿ Network myproject_default  Created                                                                                                                 0.0s 
+ ⠿ Container myproject_a_1    Created                                                                                                                 0.8s 
+ ⠿ Container myproject_b_1    Created                                                                                                                 0.1s
+Attaching to a_1, b_1
+b_1  | PING containerA (172.31.0.2): 56 data bytes
+b_1  | 64 bytes from 172.31.0.2: seq=0 ttl=64 time=0.078 ms
+b_1  | 64 bytes from 172.31.0.2: seq=1 ttl=64 time=0.190 ms
+b_1  | 64 bytes from 172.31.0.2: seq=2 ttl=64 time=0.220 ms
+a_1  | PING b (172.31.0.3): 56 data bytes
+a_1  | 64 bytes from 172.31.0.3: seq=0 ttl=64 time=0.407 ms
+b_1  | 64 bytes from 172.31.0.2: seq=3 ttl=64 time=0.305 ms
+```
+
+test to ping a and containerA from b:
+```console
+$ docker-compose up -d
+$ docker-compose exec b sh
+$c ping a
+PING a (172.31.0.2): 56 data bytes
+64 bytes from 172.31.0.2: seq=0 ttl=64 time=0.181 ms
+..
+$c ping containerA
+PING containerA (172.31.0.2): 56 data bytes
+64 bytes from 172.31.0.2: seq=0 ttl=64 time=0.287 ms
+```
+
+### Name
+
+Give network a name to replace the default one.
+
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ping b
+  b:
+    links:
+      - "a:containerA"
+    command: ping containerA
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+
+volumes:
+  datavolume:
+networks:
+  default:
+    name: mynetwork
+```
+
+test:
+```console
+$ docker-compose up
+[+] Running 3/3
+ ⠿ Network mynetwork        Created                                                                                                                0.0s
+ ⠿ Container myproject_a_1  Created                                                                                                                0.8s
+ ⠿ Container myproject_b_1  Created                                                                                                                2.4s
+Attaching to a_1, b_1
+b_1  | PING containerA (192.168.0.2): 56 data bytes
+b_1  | 64 bytes from 192.168.0.2: seq=0 ttl=64 time=0.081 ms
+b_1  | 64 bytes from 192.168.0.2: seq=1 ttl=64 time=0.088 ms
+b_1  | 64 bytes from 192.168.0.2: seq=2 ttl=64 time=0.122 ms
+a_1  | PING b (192.168.0.3): 56 data bytes
+a_1  | 64 bytes from 192.168.0.3: seq=0 ttl=64 time=0.339 ms
+```
+
+### Networks
+
+Link container to many networks with adding list in service configuration.  
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ping b
+
+  b:
+    links:
+      - "a:containerA"
+    command: ping containerA
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+    networks:
+      - 'othernetwork'
+
+volumes:
+  datavolume:
+networks:
+  default:
+    name: mynetwork
+```
+
+test:
+```console
+$ docker-compose up
+service "b" refers to undefined network othernetwork: invalid compose project
+```
+
+Error due to othernetwork missing.  
+We add it to networks section in configuration file and then to services.  
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+  a:
+    image: alpine
+    command: ping b
+    networks:
+      - 'othernetwork'
+
+  b:
+    links:
+      - "a:containerA"
+    command: ping containerA
+    build:
+      context: ./backend
+      dockerfile: DockerfileBackend
+      args:
+        FOLDER: myfolder
+      labels:
+        - EMAIL=toto@test.com
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /app/data
+      - type: volume
+        source: datavolume
+        target: /app/datavolume
+      - type: volume
+        target: /app/datavolumeanonymous
+    networks:
+      - 'othernetwork'
+
+volumes:
+  datavolume:
+networks:
+  default:
+    name: mynetwork
+  othernetwork:
+    driver: bridge
+```
+
+test:
+```console
+$ docker-compose up
+[+] Running 3/3
+ ⠿ Network myproject_othernetwork  Created                                                                                                          0.0s 
+ ⠿ Container myproject_a_1         Created                                                                                                          0.1s 
+ ⠿ Container myproject_b_1         Created                                                                                                          0.1s 
+Attaching to a_1, b_1
+b_1  | PING containerA (192.168.48.2): 56 data bytes
+b_1  | 64 bytes from 192.168.48.2: seq=0 ttl=64 time=0.122 ms
+b_1  | 64 bytes from 192.168.48.2: seq=1 ttl=64 time=0.051 ms
+b_1  | 64 bytes from 192.168.48.2: seq=2 ttl=64 time=0.196 ms
+a_1  | PING b (192.168.48.3): 56 data bytes
+a_1  | 64 bytes from 192.168.48.3: seq=0 ttl=64 time=0.252 ms
+b_1  | 64 bytes from 192.168.48.2: seq=3 ttl=64 time=0.200 ms
+```
+
+***
+
+## Sample application
+
 ### Sub chapter y.1
 
 ...
