@@ -2336,7 +2336,7 @@ app.get('*', (req, res) =&gt; {
 
 app.listen(80);
 </code></pre>
-<p>server_1 logs:</p>
+<p>server_1 logs (to see environnement variables):</p>
 <pre><code class="language-console">..
 server_1  |   env: {
 server_1  |     NODE_VERSION: '17.3.0',
@@ -2349,6 +2349,7 @@ server_1  |     PWD: '/app'
 server_1  |   }
 ..
 </code></pre>
+<p>By refreshing Internet browser's page at localhost address, we may observer that application is now running fine.</p>
 <p>Now we stop application by hitting 'Ctrl+c'.</p>
 <p>Below is described a second manner (more secure, therefor, advised to use) to authenticate to 'db' service from 'sever' service through environnement variables.</p>
 <p>.env:</p>
