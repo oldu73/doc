@@ -757,8 +757,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
+  <a href="#mongodb" class="md-nav__link">
+    MongoDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodejs" class="md-nav__link">
+    Node.js
   </a>
   
 </li>
@@ -777,7 +784,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1_1" class="md-nav__link">
+  <a href="#sub-chapter-y1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -1181,8 +1188,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
+  <a href="#mongodb" class="md-nav__link">
+    MongoDB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodejs" class="md-nav__link">
+    Node.js
   </a>
   
 </li>
@@ -1201,7 +1215,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1_1" class="md-nav__link">
+  <a href="#sub-chapter-y1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -2061,11 +2075,51 @@ b_1  | 64 bytes from 192.168.48.2: seq=3 ttl=64 time=0.200 ms
 </code></pre>
 <hr />
 <h2 id="sample-application">Sample application</h2>
-<h3 id="sub-chapter-y1">Sub chapter y.1</h3>
-<p>...</p>
+<p>Node.js application that increment a counter in a MongoDB.</p>
+<h3 id="mongodb">MongoDB</h3>
+<p>We provide volume to handle db data, so, preamble is to "manually" create the needed volume:</p>
+<pre><code class="language-console">$ docker volume create mydb
+</code></pre>
+<p>docker-compose.yml:</p>
+<pre><code>version: '3.8'
+
+services:
+  db:
+    image: mongo
+    volumes:
+      - type: volume
+        source: mydb
+        target: /data/db
+volumes:
+  mydb:
+    external: true
+</code></pre>
+<p>We run db individually to initialize it:</p>
+<pre><code class="language-console">$ docker-compose run -d db
+39cf..
+$ docker container exec -it 39cf sh
+$c mongo
+&gt; use test
+&gt; db.count.insertOne({ count: 0 })
+{
+        &quot;acknowledged&quot; : true,
+        &quot;insertedId&quot; : ObjectId(&quot;61d1a03ac9a303a408034aca&quot;)
+}
+&gt; db.count.findOne()
+{ &quot;_id&quot; : ObjectId(&quot;61d1a03ac9a303a408034aca&quot;), &quot;count&quot; : 0 }
+&gt; exit
+bye
+$c exit
+$ docker container stop 39cf
+</code></pre>
+<p>In MongoDB, volume that contain the database may not be mounted anywhere.<br />
+MongoDB will specifically search for database in '/data/db' folder.</p>
+<p>No need to open specific port(s) for containers that run on same network.<br />
+By default all ports are available for containers that run on same network.</p>
+<h3 id="nodejs">Node.js</h3>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
-<h3 id="sub-chapter-y1_1">Sub chapter y.1</h3>
+<h3 id="sub-chapter-y1">Sub chapter y.1</h3>
 <p>...</p>
 <hr />
 
