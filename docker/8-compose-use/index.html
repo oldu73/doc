@@ -770,6 +770,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    Authentication
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1197,6 +1204,13 @@
           <li class="md-nav__item">
   <a href="#nodejs" class="md-nav__link">
     Node.js
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    Authentication
   </a>
   
 </li>
@@ -2117,6 +2131,316 @@ MongoDB will specifically search for database in '/data/db' folder.</p>
 <p>No need to open specific port(s) for containers that run on same network.<br />
 By default all ports are available for containers that run on same network.</p>
 <h3 id="nodejs">Node.js</h3>
+<p>Dockerfile:</p>
+<pre><code>FROM node:alpine
+WORKDIR /app
+COPY ./package.json .
+RUN npm install
+COPY . .
+ENV PATH=$PATH:/app/node_modules/.bin
+CMD [&quot;nodemon&quot;, &quot;-L&quot;, &quot;src/app.js&quot;]
+</code></pre>
+<p>docker-compose.yml:</p>
+<pre><code>version: '3.8'
+
+services:
+
+  db:
+    image: mongo
+    volumes:
+      - type: volume
+        source: mydb
+        target: /data/db
+
+  server:
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./src
+        target: /app/src
+
+volumes:
+  mydb:
+    external: true
+</code></pre>
+<p>\src\app.js:</p>
+<pre><code class="language-javascript">require( 'console-stamp' )( console );  // to add timestamp in logs
+
+const express = require(&quot;express&quot;);
+
+const MongoClient = require('mongodb').MongoClient;
+
+let count;
+
+MongoClient.connect('mongodb://db', { useUnifiedTopology: true }, (err, client) =&gt; {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('CONNEXION DB OK!');
+    count = client.db('test').collection(&quot;count&quot;);
+  }
+});
+
+const app = express();
+
+app.get('/', (req, res) =&gt; {
+  console.log('request url: ' + req.url);
+  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) =&gt; {
+    const value = doc.value;
+    res.status(200).json(value.count);
+  })
+});
+
+app.get('*', (req, res) =&gt; {
+  res.end();
+});
+
+app.listen(80);
+</code></pre>
+<p>In a terminal:</p>
+<pre><code class="language-console">$ docker-compose up
+..
+server_1  | [02.01.2022 17:10.30.697] [LOG]   CONNEXION DB OK!
+..
+</code></pre>
+<p>In a browser:</p>
+<pre><code>http://localhost/
+</code></pre>
+<h3 id="authentication">Authentication</h3>
+<p>We add authentication through environnement variable to MongoDB.</p>
+<p>Clear docker environnement and recreate database volume:</p>
+<pre><code class="language-console">$ docker container prune
+$ docker volume prune
+$ docker volume create mydb
+</code></pre>
+<p><a href="https://hub.docker.com/_/mongo#:~:text=mongo/mongod.conf-,Environment%20Variables,-When%20you%20start">Have a look to MongoDB official image on Docker Hub</a><br />
+What's interesting us here is to set the two following environnement variables:<br />
+- MONGO_INITDB_ROOT_USERNAME<br />
+- MONGO_INITDB_ROOT_PASSWORD  </p>
+<pre><code class="language-console">$ touch .env
+</code></pre>
+<p>.env:</p>
+<pre><code>MONGO_INITDB_ROOT_USERNAME=toto
+MONGO_INITDB_ROOT_PASSWORD=123
+</code></pre>
+<p>docker-compose.yml:</p>
+<pre><code>version: '3.8'
+
+services:
+
+  db:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    image: mongo
+    volumes:
+      - type: volume
+        source: mydb
+        target: /data/db
+
+  server:
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./src
+        target: /app/src
+
+volumes:
+  mydb:
+    external: true
+</code></pre>
+<p>In a terminal, set up db with authenticated user and then create a new user 'tintin' with password '456' and role 'readWrite' on db 'test':</p>
+<pre><code class="language-console">$ docker-compose run -d db
+bad88..
+$ docker exec -it bad88 sh
+$c mongo
+&gt; use test
+&gt; db.count.insertOne({ count: 0 })
+.. error.. command insert requires authentication..
+&gt; use admin
+&gt; db.auth({ user: 'toto', pwd: '123' })
+1
+&gt; use test
+&gt; db.count.insertOne({ count: 0 })
+{
+        &quot;acknowledged&quot; : true,
+        &quot;insertedId&quot; : ObjectId(&quot;61d1e40276df2cfd1b903a8f&quot;)
+}
+&gt; db.count.findOne()
+{ &quot;_id&quot; : ObjectId(&quot;61d1e40276df2cfd1b903a8f&quot;), &quot;count&quot; : 0 }
+&gt; use admin
+switched to db admin
+&gt; db.createUser({ user: 'tintin', pwd: '456', roles: [{ role: 'readWrite', db: 'test' }] })
+Successfully added user: {
+        &quot;user&quot; : &quot;tintin&quot;,
+        &quot;roles&quot; : [
+                {
+                        &quot;role&quot; : &quot;readWrite&quot;,
+                        &quot;db&quot; : &quot;test&quot;        
+                }
+        ]
+}
+&gt; exit
+bye
+$c exit
+$ docker stop bad88
+</code></pre>
+<p>Check that connection to db is OK ('CONNECTION DB OK!' in logs), but we cannot access data (trying to refresh 'localhost' in Internet browser), due to unauthenticated connection:</p>
+<pre><code class="language-console">$ docker-compose up
+..
+server_1  | [02.01.2022 19:47.14.606] [LOG]   CONNECTION DB OK!
+..
+server_1  | MongoError: command findAndModify requires authentication
+..
+</code></pre>
+<p>We can authenticate with many different ways.</p>
+<p>By specifying (hard coded) user password directly in 'app.js' file ('mongodb://tintin:456@db').<br />
+We also add a 'console.log(process)' to have environnement variables in logs.<br />
+app.js:</p>
+<pre><code class="language-javascript">require( 'console-stamp' )( console );  // to add timestamp in logs
+
+const express = require(&quot;express&quot;);
+
+const MongoClient = require('mongodb').MongoClient;
+
+let count;
+
+console.log(process) // to have environnement variables in logs
+
+MongoClient.connect('mongodb://tintin:456@db', { useUnifiedTopology: true }, (err, client) =&gt; {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('CONNECTION DB OK!');
+    count = client.db('test').collection(&quot;count&quot;);
+  }
+});
+
+const app = express();
+
+app.get('/', (req, res) =&gt; {
+  console.log('request url: ' + req.url);
+  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) =&gt; {
+    const value = doc.value;
+    res.status(200).json(value.count);
+  })
+});
+
+app.get('*', (req, res) =&gt; {
+  res.end();
+});
+
+app.listen(80);
+</code></pre>
+<p>server_1 logs:</p>
+<pre><code class="language-console">..
+server_1  |   env: {
+server_1  |     NODE_VERSION: '17.3.0',
+server_1  |     HOSTNAME: 'fbdb8ee68893',
+server_1  |     YARN_VERSION: '1.22.17',
+server_1  |     SHLVL: '1',
+server_1  |     HOME: '/root',
+server_1  |     PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/app/node_modules/.bin',
+server_1  |     PWD: '/app'
+server_1  |   }
+..
+</code></pre>
+<p>Now we stop application by hitting 'Ctrl+c'.</p>
+<p>Below is described a second manner (more secure, therefor, advised to use) to authenticate to 'db' service from 'sever' service through environnement variables.</p>
+<p>.env:</p>
+<pre><code>MONGO_INITDB_ROOT_USERNAME=toto
+MONGO_INITDB_ROOT_PASSWORD=123
+
+MONGO_USER_NAME=tintin
+MONGO_USER_PASSWORD=456
+</code></pre>
+<p>docker-compose.yml:</p>
+<pre><code>version: '3.8'
+
+services:
+
+  db:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    image: mongo
+    volumes:
+      - type: volume
+        source: mydb
+        target: /data/db
+
+  server:
+    environment:
+      - MONGO_USER_NAME
+      - MONGO_USER_PASSWORD
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./src
+        target: /app/src
+
+volumes:
+  mydb:
+    external: true
+</code></pre>
+<p>app.js:</p>
+<pre><code class="language-javascript">require( 'console-stamp' )( console );  // to add timestamp in logs
+
+const express = require(&quot;express&quot;);
+
+const MongoClient = require('mongodb').MongoClient;
+
+let count;
+
+console.log(process.env) // to have environnement variables in logs
+
+MongoClient.connect(`mongodb://${ process.env.MONGO_USER_NAME }:${ process.env.MONGO_USER_PASSWORD }@db`, { useUnifiedTopology: true }, (err, client) =&gt; {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('CONNECTION DB OK!');
+    count = client.db('test').collection(&quot;count&quot;);
+  }
+});
+
+const app = express();
+
+app.get('/', (req, res) =&gt; {
+  console.log('request url: ' + req.url);
+  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) =&gt; {
+    const value = doc.value;
+    res.status(200).json(value.count);
+  })
+});
+
+app.get('*', (req, res) =&gt; {
+  res.end();
+});
+
+app.listen(80);
+</code></pre>
+<p>To test, type below command in a terminal and refresh Internet browser's page at 'localhost' address:</p>
+<pre><code class="language-console">$ docker-compose up
+..
+server_1  | [02.01.2022 20:32.25.069] [LOG]   {
+server_1  |   NODE_VERSION: '17.3.0',
+server_1  |   HOSTNAME: 'e9e18205ee72',
+server_1  |   YARN_VERSION: '1.22.17',
+server_1  |   SHLVL: '1',
+server_1  |   HOME: '/root',
+server_1  |   PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/app/node_modules/.bin',
+server_1  |   MONGO_USER_PASSWORD: '456',
+server_1  |   PWD: '/app',
+server_1  |   MONGO_USER_NAME: 'tintin'
+server_1  | }
+..
+</code></pre>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
