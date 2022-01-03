@@ -1522,6 +1522,24 @@ app.get('*', (req, res) => {
 app.listen(80);
 ```
 
+For testing purpose (different restart modes) avoid using nodemon.  
+Dockerfile:
+```
+FROM node:alpine
+WORKDIR /app
+COPY ./package.json .
+RUN npm install
+COPY . .
+ENV PATH=$PATH:/app/node_modules/.bin
+CMD ["node", "src/app.js"]
+```
+
+Terminal:
+```console
+$ docker-compose down
+$ docker-compose build --no-cache
+```
+
 #### no
 
 docker-compose.yml (restart: "no"):
@@ -1574,13 +1592,110 @@ http://localhost/err
 You may observe in logs:
 ```console
 ..
-server_1  | [nodemon] clean exit - waiting for changes before restart
+server_1 exited with code 0
 ..
+```
+
+In another terminal:
+```console
+$ docker ps -a
+CONTAINER ID   IMAGE                COMMAND                  CREATED              STATUS
+63c2040a78c6   node-server_server   "docker-entrypoint.s…"   About a minute ago   Exited (0) About a minute ago     
+2d8b795bf1ed   mongo                "docker-entrypoint.s…"   7 minutes ago        Up About a minute
 ```
 
 And server isn't available anymore.
 
-(video: 04:42)
+#### always
+
+docker-compose.yml (restart: always):
+```
+version: '3.8'
+
+services:
+
+  db:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    image: mongo
+    volumes:
+      - type: volume
+        source: mydb
+        target: /data/db
+
+  server:
+    environment:
+      - MONGO_USER_NAME
+      - MONGO_USER_PASSWORD
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./src
+        target: /app/src
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  mydb:
+    external: true
+```
+
+Terminal:
+```console
+$ docker-compose up
+```
+
+In an Internet browser, navigate alternatively to following addresses and observe in logs server exit and restart automatically:
+```
+http://localhost/
+http://localhost/err
+```
+
+Terminal:
+```console
+..
+server_1  | [03.01.2022 16:24.28.780] [LOG]   CONNECTION DB OK!
+..
+server_1 exited with code 0
+..
+server_1  | [03.01.2022 16:27.10.339] [LOG]   CONNECTION DB OK!
+..
+```
+
+In another terminal:
+```console
+$ docker-compose ps
+NAME                   COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1       "docker-entrypoint.s…"   db                  running             27017/tcp
+node-server_server_1   "docker-entrypoint.s…"   server              running             0.0.0.0:80->80/tcp
+```
+
+If we "manually" stop 'server' container from another terminal with below command:
+```console
+$ docker-compose stop server
+```
+
+And then restart the Docker daemon, we may observe the 'server' that has restart automatically due to his 'always' restart policy and 'db' is down because, for now, he hasn't any restart policy defined in docker-compose yaml configuration file.
+
+#### on-failure
+
+(video: 09:36)
+
+docker-compose.yml (restart: on-failure):
+```
+
+```
+
+#### unless-stopped
+
+docker-compose.yml (restart: unless-stopped):
+```
+
+```
 
 ***
 
@@ -1589,5 +1704,23 @@ And server isn't available anymore.
 ### Sub chapter y.1
 
 ...
+
+MongoDB
+Node.js
+
+docker-compose.yml:
+```
+
+```
+
+Terminal:
+```console
+$ 
+```
+
+Dockerfile:
+```
+
+```
 
 ***
