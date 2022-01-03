@@ -2792,13 +2792,172 @@ node-server_server_1   &quot;docker-entrypoint.s…&quot;   server              
 </code></pre>
 <p>And then restart the Docker daemon, we may observe the 'server' that has restart automatically due to his 'always' restart policy and 'db' is down because, for now, he hasn't any restart policy defined in docker-compose yaml configuration file.</p>
 <h4 id="on-failure">on-failure</h4>
-<p>(video: 09:36)</p>
 <p>docker-compose.yml (restart: on-failure):</p>
-<pre><code>
+<pre><code>version: '3.8'
+
+services:
+
+  db:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    image: mongo
+    volumes:
+      - type: volume
+        source: mydb
+        target: /data/db
+
+  server:
+    environment:
+      - MONGO_USER_NAME
+      - MONGO_USER_PASSWORD
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./src
+        target: /app/src
+    depends_on:
+      - db
+    restart: on-failure
+
+volumes:
+  mydb:
+    external: true
+</code></pre>
+<p>Terminal:</p>
+<pre><code class="language-console">$ docker-compose down
+$ docker-compose up -d
+$ docker-compose ps
+NAME                   COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1       &quot;docker-entrypoint.s…&quot;   db                  running             27017/tcp
+node-server_server_1   &quot;docker-entrypoint.s…&quot;   server              running             0.0.0.0:80-&gt;80/tcp
+</code></pre>
+<p>Browse to:</p>
+<pre><code>http://localhost/err
+</code></pre>
+<p>In app.js exit code is '0' = no error, therefore container does not restart automatically:</p>
+<pre><code class="language-console">$ docker-compose ps
+NAME                   COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1       &quot;docker-entrypoint.s…&quot;   db                  running             27017/tcp
+node-server_server_1   &quot;docker-entrypoint.s…&quot;   server              exited (0)
+</code></pre>
+<p>Modify exit code of 'err' route to app.js with '1', app.js:</p>
+<pre><code class="language-javascript">require( 'console-stamp' )( console );  // to add timestamp in logs
+
+const express = require(&quot;express&quot;);
+
+const MongoClient = require('mongodb').MongoClient;
+
+let count;
+
+console.log(process.env) // to have environnement variables in logs
+
+MongoClient.connect(`mongodb://${ process.env.MONGO_USER_NAME }:${ process.env.MONGO_USER_PASSWORD }@db`, { useUnifiedTopology: true }, (err, client) =&gt; {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('CONNECTION DB OK!');
+    count = client.db('test').collection(&quot;count&quot;);
+  }
+});
+
+const app = express();
+
+app.get('/err', (req, res) =&gt; {
+  process.exit(1);
+});
+
+app.get('/', (req, res) =&gt; {
+  console.log('request url: ' + req.url);
+  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) =&gt; {
+    const value = doc.value;
+    res.status(200).json(value.count);
+  })
+});
+
+app.get('*', (req, res) =&gt; {
+  res.end();
+});
+
+app.listen(80);
+</code></pre>
+<p>Terminal:</p>
+<pre><code class="language-console">$ docker-compose down
+$ docker-compose up -d
+$ docker-compose ps
+NAME                   COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1       &quot;docker-entrypoint.s…&quot;   db                  running             27017/tcp
+node-server_server_1   &quot;docker-entrypoint.s…&quot;   server              running             0.0.0.0:80-&gt;80/tcp
+</code></pre>
+<p>Browse to:</p>
+<pre><code>http://localhost/err
+</code></pre>
+<p>In app.js exit code is '1' = error, therefore container restart automatically:</p>
+<pre><code class="language-console">$ docker-compose ps
+NAME                   COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1       &quot;docker-entrypoint.s…&quot;   db                  running             27017/tcp
+node-server_server_1   &quot;docker-entrypoint.s…&quot;   server              running             0.0.0.0:80-&gt;80/tcp
 </code></pre>
 <h4 id="unless-stopped">unless-stopped</h4>
+<p>Will always restart except if stopped "manually" with 'docker-compose stop server', then restart Docker daemon, then stopped 'server' container will not restart.</p>
 <p>docker-compose.yml (restart: unless-stopped):</p>
-<pre><code>
+<pre><code>version: '3.8'
+
+services:
+
+  db:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    image: mongo
+    volumes:
+      - type: volume
+        source: mydb
+        target: /data/db
+
+  server:
+    environment:
+      - MONGO_USER_NAME
+      - MONGO_USER_PASSWORD
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./src
+        target: /app/src
+    depends_on:
+      - db
+    restart: unless-stopped
+
+volumes:
+  mydb:
+    external: true
+</code></pre>
+<p>Terminal:</p>
+<pre><code class="language-console">$ docker-compose down
+$ docker-compose up -d
+$ docker-compose ps
+NAME                   COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1       &quot;docker-entrypoint.s…&quot;   db                  running             27017/tcp
+node-server_server_1   &quot;docker-entrypoint.s…&quot;   server              running             0.0.0.0:80-&gt;80/tcp
+$ docker-compose stop server
+$ docker-compose ps
+NAME                   COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1       &quot;docker-entrypoint.s…&quot;   db                  running             27017/tcp
+node-server_server_1   &quot;docker-entrypoint.s…&quot;   server              exited (137)
+</code></pre>
+<p>Restart Docker daemon, then:</p>
+<pre><code class="language-console">$ docker-compose ps
+NAME                   COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1       &quot;docker-entrypoint.s…&quot;   db                  exited (255)        27017/tcp
+node-server_server_1   &quot;docker-entrypoint.s…&quot;   server              exited (137)
+</code></pre>
+<p>We may observe that 'server' container hasn't restarted automatically due to fact it has been "manually" stopped before Docker daemon restart.</p>
+<p>Note that you can change the restart configuration of an already running container by doing:</p>
+<pre><code class="language-console">$ docker container update --restart unless-stopped ID
 </code></pre>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
