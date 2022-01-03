@@ -812,6 +812,27 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#always" class="md-nav__link">
+    always
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-failure" class="md-nav__link">
+    on-failure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unless-stopped" class="md-nav__link">
+    unless-stopped
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1286,6 +1307,27 @@
           <li class="md-nav__item">
   <a href="#no" class="md-nav__link">
     no
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#always" class="md-nav__link">
+    always
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-failure" class="md-nav__link">
+    on-failure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unless-stopped" class="md-nav__link">
+    unless-stopped
   </a>
   
 </li>
@@ -2620,6 +2662,20 @@ app.get('*', (req, res) =&gt; {
 
 app.listen(80);
 </code></pre>
+<p>For testing purpose (different restart modes) avoid using nodemon.<br />
+Dockerfile:</p>
+<pre><code>FROM node:alpine
+WORKDIR /app
+COPY ./package.json .
+RUN npm install
+COPY . .
+ENV PATH=$PATH:/app/node_modules/.bin
+CMD [&quot;node&quot;, &quot;src/app.js&quot;]
+</code></pre>
+<p>Terminal:</p>
+<pre><code class="language-console">$ docker-compose down
+$ docker-compose build --no-cache
+</code></pre>
 <h4 id="no">no</h4>
 <p>docker-compose.yml (restart: "no"):</p>
 <pre><code>version: '3.8'
@@ -2664,15 +2720,100 @@ $ docker-compose up
 </code></pre>
 <p>You may observe in logs:</p>
 <pre><code class="language-console">..
-server_1  | [nodemon] clean exit - waiting for changes before restart
+server_1 exited with code 0
 ..
 </code></pre>
+<p>In another terminal:</p>
+<pre><code class="language-console">$ docker ps -a
+CONTAINER ID   IMAGE                COMMAND                  CREATED              STATUS
+63c2040a78c6   node-server_server   &quot;docker-entrypoint.s…&quot;   About a minute ago   Exited (0) About a minute ago     
+2d8b795bf1ed   mongo                &quot;docker-entrypoint.s…&quot;   7 minutes ago        Up About a minute
+</code></pre>
 <p>And server isn't available anymore.</p>
-<p>(video: 04:42)</p>
+<h4 id="always">always</h4>
+<p>docker-compose.yml (restart: always):</p>
+<pre><code>version: '3.8'
+
+services:
+
+  db:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    image: mongo
+    volumes:
+      - type: volume
+        source: mydb
+        target: /data/db
+
+  server:
+    environment:
+      - MONGO_USER_NAME
+      - MONGO_USER_PASSWORD
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./src
+        target: /app/src
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  mydb:
+    external: true
+</code></pre>
+<p>Terminal:</p>
+<pre><code class="language-console">$ docker-compose up
+</code></pre>
+<p>In an Internet browser, navigate alternatively to following addresses and observe in logs server exit and restart automatically:</p>
+<pre><code>http://localhost/
+http://localhost/err
+</code></pre>
+<p>Terminal:</p>
+<pre><code class="language-console">..
+server_1  | [03.01.2022 16:24.28.780] [LOG]   CONNECTION DB OK!
+..
+server_1 exited with code 0
+..
+server_1  | [03.01.2022 16:27.10.339] [LOG]   CONNECTION DB OK!
+..
+</code></pre>
+<p>In another terminal:</p>
+<pre><code class="language-console">$ docker-compose ps
+NAME                   COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1       &quot;docker-entrypoint.s…&quot;   db                  running             27017/tcp
+node-server_server_1   &quot;docker-entrypoint.s…&quot;   server              running             0.0.0.0:80-&gt;80/tcp
+</code></pre>
+<p>If we "manually" stop 'server' container from another terminal with below command:</p>
+<pre><code class="language-console">$ docker-compose stop server
+</code></pre>
+<p>And then restart the Docker daemon, we may observe the 'server' that has restart automatically due to his 'always' restart policy and 'db' is down because, for now, he hasn't any restart policy defined in docker-compose yaml configuration file.</p>
+<h4 id="on-failure">on-failure</h4>
+<p>docker-compose.yml (restart: on-failure):</p>
+<pre><code>
+</code></pre>
+<h4 id="unless-stopped">unless-stopped</h4>
+<p>docker-compose.yml (restart: unless-stopped):</p>
+<pre><code>
+</code></pre>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
 <p>...</p>
+<p>MongoDB
+Node.js</p>
+<p>docker-compose.yml:</p>
+<pre><code>
+</code></pre>
+<p>Terminal:</p>
+<pre><code class="language-console">$ 
+</code></pre>
+<p>Dockerfile:</p>
+<pre><code>
+</code></pre>
 <hr />
 
               
