@@ -1415,6 +1415,175 @@ server_1  | }
 
 ***
 
+## Depends and Restart
+
+### Depends
+
+Specify containers up priority order (depends_on).  
+E.g. in our application we want that server (Node.js application) start only once database (MongoDB) container is up.
+
+docker-compose.yml:
+```
+version: '3.8'
+
+services:
+
+  db:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    image: mongo
+    volumes:
+      - type: volume
+        source: mydb
+        target: /data/db
+
+  server:
+    environment:
+      - MONGO_USER_NAME
+      - MONGO_USER_PASSWORD
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./src
+        target: /app/src
+    depends_on:
+      - db
+
+volumes:
+  mydb:
+    external: true
+```
+
+In a terminal, type below command and you may observe, in logs, that, first, we have database logs, then server logs:
+```console
+$ docker-compose up
+
+Attaching to db_1, server_1
+db_1      | ..
+db_1      | ..
+..
+
+server_1  | ..
+server_1  | ..
+..
+```
+
+### Restart
+
+restart:  
+- **"no"** (between quotes because without it has a yaml signification), default value, never restart automatically.  
+- **always** restart if container stop from inside or Docker daemon restart, but not with a 'docker-compose stop' command.  
+- **on-failure** restart container only on quit with error code.  
+- **unless-stopped** always restart unless stopped manually with a 'docker-compose stop' command.  
+
+To test it we add a '/err' route to the server to exit the process (process.exit(errorCode)).  
+app.js:
+```javascript
+require( 'console-stamp' )( console );  // to add timestamp in logs
+
+const express = require("express");
+
+const MongoClient = require('mongodb').MongoClient;
+
+let count;
+
+console.log(process.env) // to have environnement variables in logs
+
+MongoClient.connect(`mongodb://${ process.env.MONGO_USER_NAME }:${ process.env.MONGO_USER_PASSWORD }@db`, { useUnifiedTopology: true }, (err, client) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('CONNECTION DB OK!');
+    count = client.db('test').collection("count");
+  }
+});
+
+const app = express();
+
+app.get('/err', (req, res) => {
+  process.exit(0);
+});
+
+app.get('/', (req, res) => {
+  console.log('request url: ' + req.url);
+  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) => {
+    const value = doc.value;
+    res.status(200).json(value.count);
+  })
+});
+
+app.get('*', (req, res) => {
+  res.end();
+});
+
+app.listen(80);
+```
+
+#### no
+
+docker-compose.yml (restart: "no"):
+```
+version: '3.8'
+
+services:
+
+  db:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    image: mongo
+    volumes:
+      - type: volume
+        source: mydb
+        target: /data/db
+
+  server:
+    environment:
+      - MONGO_USER_NAME
+      - MONGO_USER_PASSWORD
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./src
+        target: /app/src
+    depends_on:
+      - db
+    restart: "no"
+
+volumes:
+  mydb:
+    external: true
+```
+
+Test:
+```console
+$ docker-compose down
+$ docker-compose up
+```
+
+Navigate in Internet browser to:
+```
+http://localhost/err
+```
+
+You may observe in logs:
+```console
+..
+server_1  | [nodemon] clean exit - waiting for changes before restart
+..
+```
+
+And server isn't available anymore.
+
+(video: 04:42)
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
