@@ -844,6 +844,61 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#other-commands" class="md-nav__link">
+    Other commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Other commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top" class="md-nav__link">
+    top
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    misc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-push" class="md-nav__link">
+    pull push
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-chapter-y1" class="md-nav__link">
+    Sub chapter y.1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -852,7 +907,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
+  <a href="#sub-chapter-y1_1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -1343,6 +1398,61 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#other-commands" class="md-nav__link">
+    Other commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Other commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top" class="md-nav__link">
+    top
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    misc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-push" class="md-nav__link">
+    pull push
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-chapter-y1" class="md-nav__link">
+    Sub chapter y.1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -1351,7 +1461,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
+  <a href="#sub-chapter-y1_1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -2960,8 +3070,109 @@ node-server_server_1   &quot;docker-entrypoint.s…&quot;   server              
 <pre><code class="language-console">$ docker container update --restart unless-stopped ID
 </code></pre>
 <hr />
-<h2 id="chapter-y">Chapter y</h2>
+<h2 id="other-commands">Other commands</h2>
+<p>First:</p>
+<pre><code class="language-console">$ docker-compose up -d
+</code></pre>
+<h3 id="logs">logs</h3>
+<p>View output from containers:</p>
+<pre><code class="language-console">$ docker-compose logs
+..
+db_1  | ..
+server_1  | ..
+..
+</code></pre>
+<p>To follow -f option, to show timestamps -t options:</p>
+<pre><code class="language-console">$ docker-compose logs -f -t
+</code></pre>
+<p>'Ctrl+c' does not stop containers, stop only logs display:</p>
+<pre><code class="language-console">$ Ctrl+c
+$ docker-compose ps
+NAME                   COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1       &quot;docker-entrypoint.s…&quot;   db                  running             27017/tcp
+node-server_server_1   &quot;docker-entrypoint.s…&quot;   server              running             0.0.0.0:80-&gt;80/tcp
+</code></pre>
+<h3 id="top">top</h3>
+<p>Display the running processes:</p>
+<pre><code class="language-console">$ docker-compose top
+</code></pre>
+<h3 id="misc">misc</h3>
+<p>Stop a container:</p>
+<pre><code class="language-console">$ docker-compose stop server
+
+$ docker-compose ps
+NAME                   COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1       &quot;docker-entrypoint.s…&quot;   db                  running             27017/tcp
+node-server_server_1   &quot;docker-entrypoint.s…&quot;   server              exited (137)
+</code></pre>
+<p>Remove a stopped container:</p>
+<pre><code class="language-console">$ docker-compose rm server
+
+$ docker-compose ps
+NAME                COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1    &quot;docker-entrypoint.s…&quot;   db                  running             27017/tcp
+</code></pre>
+<p>Remove a running container (+ -f to avoid confirm's need):</p>
+<pre><code class="language-console">$ docker-compose rm -s server
+</code></pre>
+<p>Remove anonym volumes belonging to container:</p>
+<pre><code class="language-console">$ docker-compose rm -v db
+</code></pre>
+<p>After removing a container, to get it back (+ -d):</p>
+<pre><code class="language-console">$ docker-compose up
+</code></pre>
+<p>Port mapping information and entering ip allowed (0.0.0.0 for all entering ip address allowed):</p>
+<pre><code class="language-console">$ docker-compose port server 80
+0.0.0.0:80
+</code></pre>
+<p>Means, outside port 80 is mapped to inside port 80 and all ip addresses allowed.</p>
+<h3 id="config">config</h3>
+<p>Let see environnement variables replaced with found values and configuration that will then be used to build the stack:</p>
+<pre><code class="language-console">$ docker-compose config
+
+services:
+  db:
+    environment:
+      MONGO_INITDB_ROOT_PASSWORD: &quot;123&quot;
+      MONGO_INITDB_ROOT_USERNAME: toto
+    image: mongo
+    restart: unless-stopped
+    volumes:
+    - type: volume
+      source: mydb
+      target: /data/db
+  server:
+    build:
+      context: .
+    depends_on:
+      db:
+        condition: service_started
+    environment:
+      MONGO_USER_NAME: tintin
+      MONGO_USER_PASSWORD: &quot;456&quot;
+    ports:
+    - mode: ingress
+      target: 80
+      published: 80
+      protocol: tcp
+    restart: unless-stopped
+    volumes:
+    - type: bind
+      source: /mnt/c/git/doc/test/docker/node-server/src
+      target: /app/src
+volumes:
+  mydb:
+    name: mydb
+    external: true
+</code></pre>
+<h3 id="pull-push">pull push</h3>
+<p>pull: get latest images of containers that compose the stack.
+push: if image has been modified with custom Dockerfile, let us push it to Docker Hub.</p>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
+<p>...</p>
+<hr />
+<h2 id="chapter-y">Chapter y</h2>
+<h3 id="sub-chapter-y1_1">Sub chapter y.1</h3>
 <p>...</p>
 <p>MongoDB
 Node.js</p>
