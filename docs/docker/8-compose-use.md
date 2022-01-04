@@ -1879,28 +1879,134 @@ $ docker container update --restart unless-stopped ID
 
 ***
 
-## Chapter y
+## Other commands
 
-### Sub chapter y.1
-
-...
-
-MongoDB
-Node.js
-
-docker-compose.yml:
-```
-
-```
-
-Terminal:
+First:
 ```console
-$ 
+$ docker-compose up -d
 ```
 
-Dockerfile:
+### logs
+
+View output from containers:
+```console
+$ docker-compose logs
+..
+db_1  | ..
+server_1  | ..
+..
 ```
 
+To follow -f option, to show timestamps -t options:
+```console
+$ docker-compose logs -f -t
 ```
+
+'Ctrl+c' does not stop containers, stop only logs display:
+```console
+$ Ctrl+c
+$ docker-compose ps
+NAME                   COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1       "docker-entrypoint.s…"   db                  running             27017/tcp
+node-server_server_1   "docker-entrypoint.s…"   server              running             0.0.0.0:80->80/tcp
+```
+
+### top
+
+Display the running processes:
+```console
+$ docker-compose top
+```
+
+### misc
+
+Stop a container:
+```console
+$ docker-compose stop server
+
+$ docker-compose ps
+NAME                   COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1       "docker-entrypoint.s…"   db                  running             27017/tcp
+node-server_server_1   "docker-entrypoint.s…"   server              exited (137)
+```
+
+Remove a stopped container:
+```console
+$ docker-compose rm server
+
+$ docker-compose ps
+NAME                COMMAND                  SERVICE             STATUS              PORTS
+node-server_db_1    "docker-entrypoint.s…"   db                  running             27017/tcp
+```
+
+Remove a running container (+ -f to avoid confirm's need):
+```console
+$ docker-compose rm -s server
+```
+
+Remove anonym volumes belonging to container:
+```console
+$ docker-compose rm -v db
+```
+
+After removing a container, to get it back (+ -d):
+```console
+$ docker-compose up
+```
+
+Port mapping information and entering ip allowed (0.0.0.0 for all entering ip address allowed):
+```console
+$ docker-compose port server 80
+0.0.0.0:80
+```
+
+Means, outside port 80 is mapped to inside port 80 and all ip addresses allowed.
+
+### config
+
+Let see environnement variables replaced with found values and configuration that will then be used to build the stack:
+```console
+$ docker-compose config
+
+services:
+  db:
+    environment:
+      MONGO_INITDB_ROOT_PASSWORD: "123"
+      MONGO_INITDB_ROOT_USERNAME: toto
+    image: mongo
+    restart: unless-stopped
+    volumes:
+    - type: volume
+      source: mydb
+      target: /data/db
+  server:
+    build:
+      context: .
+    depends_on:
+      db:
+        condition: service_started
+    environment:
+      MONGO_USER_NAME: tintin
+      MONGO_USER_PASSWORD: "456"
+    ports:
+    - mode: ingress
+      target: 80
+      published: 80
+      protocol: tcp
+    restart: unless-stopped
+    volumes:
+    - type: bind
+      source: /mnt/c/git/doc/test/docker/node-server/src
+      target: /app/src
+volumes:
+  mydb:
+    name: mydb
+    external: true
+```
+
+### pull push
+
+pull: get latest images of containers that compose the stack.
+push: if image has been modified with custom Dockerfile, let us push it to Docker Hub.
 
 ***

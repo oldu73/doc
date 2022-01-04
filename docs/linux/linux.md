@@ -2,6 +2,15 @@
 
 ***
 
+## Curl
+
+```console
+$ curl -i localhost
+$ curl -sb -H "Accept: application/json" "http://localhost" | json_pp
+```
+
+***
+
 ## Compress Decompress
 ### Compress (czf)
 \- c compress, -z zip, -f file
