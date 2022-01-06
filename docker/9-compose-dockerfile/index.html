@@ -606,6 +606,40 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#setup-of-client-application-project" class="md-nav__link">
+    Setup of client application project
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup of client application project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    Node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#react" class="md-nav__link">
+    React
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-chapter-y1" class="md-nav__link">
+    Sub chapter y.1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -614,7 +648,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
+  <a href="#sub-chapter-y1_1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -839,6 +873,40 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#setup-of-client-application-project" class="md-nav__link">
+    Setup of client application project
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup of client application project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    Node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#react" class="md-nav__link">
+    React
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sub-chapter-y1" class="md-nav__link">
+    Sub chapter y.1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -847,7 +915,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
+  <a href="#sub-chapter-y1_1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -873,11 +941,84 @@
 
 <h1 id="compose-9-dockerfile">Compose - 9 - Dockerfile</h1>
 <p>Docker Compose - Dockerfile</p>
+<p>Dockerfile and Docker Compose to set up a client application composed of:<br />
+- React<br />
+- NGINX  </p>
 <hr />
-<h2 id="chapter-y">Chapter y</h2>
+<h2 id="setup-of-client-application-project">Setup of client application project</h2>
+<h3 id="node">Node</h3>
+<p>'create-React-app' is a script to install with 'npm' will pre-configure a 'webpack' environnement and give use access to a development server and a test server and a build command for production.</p>
+<p>Role of 'NGINX' (http server) is to treat all http(s) request and return response from 'React' application to requester.</p>
+<p>In this chapter we will see two new features:<br />
+- Dockerfile multi staging, defined with many 'from'.<br />
+- Stdin_open and TTY, two new options of Docker Compose.  </p>
+<p>Prerequisite, install on host machine:<br />
+- 'nvm' - <a href="https://github.com/nvm-sh/nvm">Node Version Manager</a>
+- 'Node.js'</p>
+<p>Set/check installation with:</p>
+<pre><code class="language-console">
+Setup project root folder
+$ mkdir react-nginx
+$ cd react-nginx
+
+To install 'nvm'
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+Check
+$ nvm
+
+Get last version
+$ nvm ls-remote | tail
+.
+.
+v17.0.1
+        v17.1.0
+        v17.2.0
+        v17.3.0
+
+Install last version
+$ nvm install 17.3.0
+
+$ node -v
+v17.3.0
+
+$ node
+Welcome to Node.js v17.3.0.       
+Type &quot;.help&quot; for more information.
+&gt;
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+&gt;
+$
+
+</code></pre>
+<h3 id="react">React</h3>
+<p>Instal 'React' with 'npx' (like npm but executed once with last script release):</p>
+<pre><code class="language-console">$ npx create-react-app client
+$ cd client
+$ ls
+README.md  node_modules  package-lock.json  package.json  public  src
+$ npm start
+!really slow on WSL2 :(
+.
+.
+Compiled successfully!
+
+You can now view client in the browser.
+
+  Local:            http://localhost:3000
+</code></pre>
+<p>Browse to: - <a href="http://localhost:3000">http://localhost:3000</a></p>
+<p>WIP pointer: (video - 06:33)</p>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
 <p>...</p>
 <hr />
+<h2 id="chapter-y">Chapter y</h2>
+<h3 id="sub-chapter-y1_1">Sub chapter y.1</h3>
+<p>...</p>
+<hr />
+<p>NGINX</p>
+<p>React</p>
+<p>Node.js</p>
 
               
             </article>
