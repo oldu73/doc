@@ -24,6 +24,11 @@ $ tar -czf /targetfolder/targetfile.tar.gz /sourcefolder
 $ tar -xzf targetfile.tar.gz
 ```
 
+or gzip, -k to keep original, -d to decompress:
+```console
+$ gzip -kd file.gz
+```
+
 ***
 
 ## Package
