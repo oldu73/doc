@@ -2,6 +2,9 @@
 
 Docker Compose - Dockerfile
 
+!WSL2, advised to not use a mounted volume like '/mnt/c/' for handling a project to avoid slowness and live reload issues.
+Instead, prefer usage of a "native" WSL2 folder like for e.g. '/home/user/react-nginx'
+
 Dockerfile and Docker Compose to set up a client application composed of:  
 - React  
 - NGINX  
@@ -71,7 +74,6 @@ $ cd client
 $ ls
 README.md  node_modules  package-lock.json  package.json  public  src
 $ npm start
-!really slow on WSL2 :(
 .
 .
 Compiled successfully!
@@ -100,7 +102,7 @@ All of this just to initialize the project locally on host machine.
 
 We may now delete the 'node_modules' folder ('node_modules' folder will then be only in container initialized with dependencies through 'npm install' command in 'Dockerfile').
 
-Add a 'Dockerfile' in client project folder '/react-nginx/client':
+Add a 'Dockerfile' in client project folder '/home/user/react-nginx/client':
 ```console
 $ touch Dockerfile
 ```
