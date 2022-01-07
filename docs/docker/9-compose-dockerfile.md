@@ -100,7 +100,10 @@ All of this just to initialize the project locally on host machine.
 
 ### Dockerized
 
-We may now delete the 'node_modules' folder ('node_modules' folder will then be only in container initialized with dependencies through 'npm install' command in 'Dockerfile').
+We may now **delete the 'node_modules' folder** ('node_modules' folder will then be only in container initialized with dependencies through 'npm install' command in 'Dockerfile'):
+```console
+$ rm -rf node_modules/
+```
 
 Add a 'Dockerfile' in client project folder '/home/user/react-nginx/client':
 ```console
@@ -134,6 +137,12 @@ Browse to: - [http://localhost:3000](http://localhost:3000)
 
 ## Live reload
 
+It's important to launch **from a terminal** a based VS Code instance from root client application folder to get live reload effect that works:
+```console
+$ cd .../react-nginx/client
+$ code .
+```
+
 For development purpose, to automatically propagate local changes to container.
 
 Bind mount project folder:
@@ -145,13 +154,14 @@ $ docker run --rm --name react -p 3000:3000 --mount type=bind,src="$(pwd)",targe
 
 To avoid this unwanted behavior and keep 'node_modules' in container folder not erased by bind mount (also needed for live reload feature), we bind an anonymous volume targeted on remote container '/app/node_modules' folder.
 
-Also, to avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder we modify 'Dockerfile' as follow with giving access to 'node' user:
+Also, to avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder we modify 'Dockerfile' as follow:
 ```
 FROM node:alpine
-USER node
 WORKDIR /app
 COPY package.json .
 RUN npm install
+# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
+RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
 COPY . .
 CMD ["npm", "start"]
 ```
@@ -163,11 +173,7 @@ $ docker run --rm --name react -p 3000:3000 --mount type=bind,src="$(pwd)",targe
 
 It's advised to run with '--rm' option when using anonymous volume to suppress it automatically on stop in addition to container suppression.
 
-???
-
-Test live reload by changing text '.. save to reload ..' with e.g. 'Hello, world!" in 'src/App.js' and then observe live effect at [http://localhost:3000](http://localhost:3000) in an Internet browser.
-
-???
+Test live reload by changing text '.. save to reload.' with e.g. 'Hello, world!" in 'src/App.js' and then observe live effect at [http://localhost:3000](http://localhost:3000) in an Internet browser.
 
 ***
 
