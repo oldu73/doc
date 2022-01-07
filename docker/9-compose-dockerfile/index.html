@@ -628,6 +628,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dockerized" class="md-nav__link">
+    Dockerized
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-y" class="md-nav__link">
+    Chapter y
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter y">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#sub-chapter-y1" class="md-nav__link">
     Sub chapter y.1
   </a>
@@ -640,7 +660,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-y" class="md-nav__link">
+  <a href="#chapter-y_1" class="md-nav__link">
     Chapter y
   </a>
   
@@ -895,6 +915,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dockerized" class="md-nav__link">
+    Dockerized
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-y" class="md-nav__link">
+    Chapter y
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter y">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#sub-chapter-y1" class="md-nav__link">
     Sub chapter y.1
   </a>
@@ -907,7 +947,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-y" class="md-nav__link">
+  <a href="#chapter-y_1" class="md-nav__link">
     Chapter y
   </a>
   
@@ -1008,11 +1048,43 @@ You can now view client in the browser.
   Local:            http://localhost:3000
 </code></pre>
 <p>Browse to: - <a href="http://localhost:3000">http://localhost:3000</a></p>
-<p>WIP pointer: (video - 06:33)</p>
+<p>Test (launch tests contained in react-nginx/client/src/App.test.js):</p>
+<pre><code class="language-console">$ npm run test
+!fail on WSL2 :(
+</code></pre>
+<p>Build for production (add a build folder to the project, this is the folder to return via NGINX for client):</p>
+<pre><code class="language-console">$ npm run build
+</code></pre>
+<p>All of this just to initialize the project locally on host machine.</p>
+<h3 id="dockerized">Dockerized</h3>
+<p>We may now delete the 'node_modules' folder (node_modules folder then only in container initialized with dependencies through 'npm install' command in 'Dockerfile').</p>
+<p>Add a 'Dockerfile' in client project folder 'react-nginx/client':</p>
+<pre><code class="language-console">$ touch Dockerfile
+</code></pre>
+<p>Dockerfile:</p>
+<pre><code>FROM node:alpine
+WORKDIR /app
+COPY package.json .
+RUN npm install
+COPY . .
+CMD [&quot;npm&quot;, &quot;start&quot;]
+</code></pre>
+<p>Build docker image:</p>
+<pre><code class="language-console">$ docker build -t myreact .
+
+$ docker image ls
+REPOSITORY                        TAG       IMAGE ID       CREATED          SIZE  
+myreact                           latest    c4c1b5bb9d21   45 seconds ago   483MB
+
+$ docker run --rm --name react -p 3000:3000 myreact
+</code></pre>
+<p>Browse to: - <a href="http://localhost:3000">http://localhost:3000</a></p>
+<hr />
+<h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
 <p>...</p>
 <hr />
-<h2 id="chapter-y">Chapter y</h2>
+<h2 id="chapter-y_1">Chapter y</h2>
 <h3 id="sub-chapter-y1_1">Sub chapter y.1</h3>
 <p>...</p>
 <hr />
