@@ -1072,7 +1072,9 @@ You can now view client in the browser.
 </code></pre>
 <p>All of this just to initialize the project locally on host machine.</p>
 <h3 id="dockerized">Dockerized</h3>
-<p>We may now delete the 'node_modules' folder ('node_modules' folder will then be only in container initialized with dependencies through 'npm install' command in 'Dockerfile').</p>
+<p>We may now <strong>delete the 'node_modules' folder</strong> ('node_modules' folder will then be only in container initialized with dependencies through 'npm install' command in 'Dockerfile'):</p>
+<pre><code class="language-console">$ rm -rf node_modules/
+</code></pre>
 <p>Add a 'Dockerfile' in client project folder '/home/user/react-nginx/client':</p>
 <pre><code class="language-console">$ touch Dockerfile
 </code></pre>
@@ -1102,12 +1104,13 @@ $ docker run --rm --name react -p 3000:3000 myreact
 </code></pre>
 <p>!! =&gt; FAIL!! Why? Because when bind mount it crush all what was contained in container '/app' folder with local content and in local there isn't anymore 'node_modules' folder.</p>
 <p>To avoid this unwanted behavior and keep 'node_modules' in container folder not erased by bind mount (also needed for live reload feature), we bind an anonymous volume targeted on remote container '/app/node_modules' folder.</p>
-<p>Also, to avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder we modify 'Dockerfile' as follow with giving access to 'node' user:</p>
+<p>Also, to avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder we modify 'Dockerfile' as follow:</p>
 <pre><code>FROM node:alpine
-USER node
 WORKDIR /app
 COPY package.json .
 RUN npm install
+# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
+RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
 COPY . .
 CMD [&quot;npm&quot;, &quot;start&quot;]
 </code></pre>
