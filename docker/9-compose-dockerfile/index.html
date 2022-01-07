@@ -640,11 +640,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-y" class="md-nav__link">
-    Chapter y
+  <a href="#live-reload" class="md-nav__link">
+    Live reload
   </a>
   
-    <nav class="md-nav" aria-label="Chapter y">
+    <nav class="md-nav" aria-label="Live reload">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -660,7 +660,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-y_1" class="md-nav__link">
+  <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
   
@@ -927,11 +927,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-y" class="md-nav__link">
-    Chapter y
+  <a href="#live-reload" class="md-nav__link">
+    Live reload
   </a>
   
-    <nav class="md-nav" aria-label="Chapter y">
+    <nav class="md-nav" aria-label="Live reload">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -947,7 +947,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-y_1" class="md-nav__link">
+  <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
   
@@ -1058,7 +1058,7 @@ You can now view client in the browser.
 <p>All of this just to initialize the project locally on host machine.</p>
 <h3 id="dockerized">Dockerized</h3>
 <p>We may now delete the 'node_modules' folder ('node_modules' folder will then be only in container initialized with dependencies through 'npm install' command in 'Dockerfile').</p>
-<p>Add a 'Dockerfile' in client project folder 'react-nginx/client':</p>
+<p>Add a 'Dockerfile' in client project folder '/react-nginx/client':</p>
 <pre><code class="language-console">$ touch Dockerfile
 </code></pre>
 <p>Dockerfile:</p>
@@ -1080,11 +1080,32 @@ $ docker run --rm --name react -p 3000:3000 myreact
 </code></pre>
 <p>Browse to: - <a href="http://localhost:3000">http://localhost:3000</a></p>
 <hr />
-<h2 id="chapter-y">Chapter y</h2>
+<h2 id="live-reload">Live reload</h2>
+<p>For development purpose, to automatically propagate local changes to container.</p>
+<p>Bind mount project folder:</p>
+<pre><code class="language-console">$ docker run --rm --name react -p 3000:3000 --mount type=bind,src=&quot;$(pwd)&quot;,target=/app myreact
+</code></pre>
+<p>!! =&gt; FAIL!! Why? Because when bind mount it crush all what was contained in container '/app' folder with local content and in local there isn't anymore 'node_modules' folder.</p>
+<p>To avoid this unwanted behavior and keep 'node_modules' in container folder not erased by bind mount (also needed for live reload feature), we bind an anonymous volume targeted on remote container '/app/node_modules' folder.</p>
+<p>Also, to avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder we modify 'Dockerfile' as follow:</p>
+<pre><code>FROM node:alpine
+WORKDIR /app
+COPY package.json .
+RUN npm install
+# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
+RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
+COPY . .
+CMD [&quot;npm&quot;, &quot;start&quot;]
+</code></pre>
+<p>Bind mount project folder + anonymous volume with '/app/node_modules' as target:</p>
+<pre><code class="language-console">$ docker run --rm --name react -p 3000:3000 --mount type=bind,src=&quot;$(pwd)&quot;,target=/app --mount type=volume,target=/app/node_modules myreact
+</code></pre>
+<p>It's advised to run with '--rm' option when using anonymous volume to suppress it automatically on stop in addition to container suppression.</p>
+<p>wip pointer (video 05:40), live reload does not work with WSL -&gt; find solution!</p>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
 <p>...</p>
 <hr />
-<h2 id="chapter-y_1">Chapter y</h2>
+<h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1_1">Sub chapter y.1</h3>
 <p>...</p>
 <hr />
