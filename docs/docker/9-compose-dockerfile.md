@@ -145,14 +145,13 @@ $ docker run --rm --name react -p 3000:3000 --mount type=bind,src="$(pwd)",targe
 
 To avoid this unwanted behavior and keep 'node_modules' in container folder not erased by bind mount (also needed for live reload feature), we bind an anonymous volume targeted on remote container '/app/node_modules' folder.
 
-Also, to avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder we modify 'Dockerfile' as follow:
+Also, to avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder we modify 'Dockerfile' as follow with giving access to 'node' user:
 ```
 FROM node:alpine
+USER node
 WORKDIR /app
 COPY package.json .
 RUN npm install
-# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
-RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
 COPY . .
 CMD ["npm", "start"]
 ```
@@ -164,7 +163,15 @@ $ docker run --rm --name react -p 3000:3000 --mount type=bind,src="$(pwd)",targe
 
 It's advised to run with '--rm' option when using anonymous volume to suppress it automatically on stop in addition to container suppression.
 
-wip pointer (video 05:40), live reload does not work with WSL -> find solution!
+???
+
+Test live reload by changing text '.. save to reload ..' with e.g. 'Hello, world!" in 'src/App.js' and then observe live effect at [http://localhost:3000](http://localhost:3000) in an Internet browser.
+
+???
+
+***
+
+## Chapter y
 
 ### Sub chapter y.1
 
