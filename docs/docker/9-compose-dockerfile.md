@@ -100,7 +100,7 @@ All of this just to initialize the project locally on host machine.
 
 We may now delete the 'node_modules' folder ('node_modules' folder will then be only in container initialized with dependencies through 'npm install' command in 'Dockerfile').
 
-Add a 'Dockerfile' in client project folder 'react-nginx/client':
+Add a 'Dockerfile' in client project folder '/react-nginx/client':
 ```console
 $ touch Dockerfile
 ```
@@ -130,7 +130,39 @@ Browse to: - [http://localhost:3000](http://localhost:3000)
 
 ***
 
-## Chapter y
+## Live reload
+
+For development purpose, to automatically propagate local changes to container.
+
+Bind mount project folder:
+```console
+$ docker run --rm --name react -p 3000:3000 --mount type=bind,src="$(pwd)",target=/app myreact
+```
+
+!! => FAIL!! Why? Because when bind mount it crush all what was contained in container '/app' folder with local content and in local there isn't anymore 'node_modules' folder.
+
+To avoid this unwanted behavior and keep 'node_modules' in container folder not erased by bind mount (also needed for live reload feature), we bind an anonymous volume targeted on remote container '/app/node_modules' folder.
+
+Also, to avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder we modify 'Dockerfile' as follow:
+```
+FROM node:alpine
+WORKDIR /app
+COPY package.json .
+RUN npm install
+# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
+RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
+COPY . .
+CMD ["npm", "start"]
+```
+
+Bind mount project folder + anonymous volume with '/app/node_modules' as target:
+```console
+$ docker run --rm --name react -p 3000:3000 --mount type=bind,src="$(pwd)",target=/app --mount type=volume,target=/app/node_modules myreact
+```
+
+It's advised to run with '--rm' option when using anonymous volume to suppress it automatically on stop in addition to container suppression.
+
+wip pointer (video 05:40), live reload does not work with WSL -> find solution!
 
 ### Sub chapter y.1
 
