@@ -1098,6 +1098,10 @@ $ docker run --rm --name react -p 3000:3000 myreact
 <p>Browse to: - <a href="http://localhost:3000">http://localhost:3000</a></p>
 <hr />
 <h2 id="live-reload">Live reload</h2>
+<p>It's important to launch <strong>from a terminal</strong> a based VS Code instance from root client application folder to get live reload effect that works:</p>
+<pre><code class="language-console">$ cd .../react-nginx/client
+$ code .
+</code></pre>
 <p>For development purpose, to automatically propagate local changes to container.</p>
 <p>Bind mount project folder:</p>
 <pre><code class="language-console">$ docker run --rm --name react -p 3000:3000 --mount type=bind,src=&quot;$(pwd)&quot;,target=/app myreact
@@ -1118,9 +1122,7 @@ CMD [&quot;npm&quot;, &quot;start&quot;]
 <pre><code class="language-console">$ docker run --rm --name react -p 3000:3000 --mount type=bind,src=&quot;$(pwd)&quot;,target=/app --mount type=volume,target=/app/node_modules myreact
 </code></pre>
 <p>It's advised to run with '--rm' option when using anonymous volume to suppress it automatically on stop in addition to container suppression.</p>
-<p>???</p>
-<p>Test live reload by changing text '.. save to reload ..' with e.g. 'Hello, world!" in 'src/App.js' and then observe live effect at <a href="http://localhost:3000">http://localhost:3000</a> in an Internet browser.</p>
-<p>???</p>
+<p>Test live reload by changing text '.. save to reload.' with e.g. 'Hello, world!" in 'src/App.js' and then observe live effect at <a href="http://localhost:3000">http://localhost:3000</a> in an Internet browser.</p>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
