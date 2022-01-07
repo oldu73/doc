@@ -21,7 +21,7 @@ In this chapter we will see two new features:
 - Stdin_open and TTY, two new options of Docker Compose.  
 
 Prerequisite, install on host machine:  
-- 'nvm' - [Node Version Manager](https://github.com/nvm-sh/nvm)
+- 'nvm' - [Node Version Manager](https://github.com/nvm-sh/nvm)  
 - 'Node.js'
 
 Set/check installation with:
@@ -83,9 +83,54 @@ You can now view client in the browser.
 
 Browse to: - [http://localhost:3000](http://localhost:3000)
 
-WIP pointer: (video - 06:33)
+Test (launch tests contained in react-nginx/client/src/App.test.js):
+```console
+$ npm run test
+!fail on WSL2 :(
+```
 
+Build for production (add a build folder to the project, this is the folder to return via NGINX for client):
+```console
+$ npm run build
+```
 
+All of this just to initialize the project locally on host machine.
+
+### Dockerized
+
+We may now delete the 'node_modules' folder ('node_modules' folder will then be only in container initialized with dependencies through 'npm install' command in 'Dockerfile').
+
+Add a 'Dockerfile' in client project folder 'react-nginx/client':
+```console
+$ touch Dockerfile
+```
+
+Dockerfile:
+```
+FROM node:alpine
+WORKDIR /app
+COPY package.json .
+RUN npm install
+COPY . .
+CMD ["npm", "start"]
+```
+
+Build docker image:
+```console
+$ docker build -t myreact .
+
+$ docker image ls
+REPOSITORY                        TAG       IMAGE ID       CREATED          SIZE  
+myreact                           latest    c4c1b5bb9d21   45 seconds ago   483MB
+
+$ docker run --rm --name react -p 3000:3000 myreact
+```
+
+Browse to: - [http://localhost:3000](http://localhost:3000)
+
+***
+
+## Chapter y
 
 ### Sub chapter y.1
 
