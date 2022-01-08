@@ -11,3 +11,13 @@ Docker Compose - Services
 ...
 
 ***
+
+NGINX
+
+React
+
+Node.js
+
+webpack
+
+Docker Compose

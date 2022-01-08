@@ -356,20 +356,134 @@ docker-compose down -v
 
 ***
 
-## Chapter y
+## Production environnement
 
-### Sub chapter y.1
+### Introduction
 
-...
+NGINX return the build.
+
+NGINX intercept http request and return by default an html file.
+
+Browse [docker hub for nginx on official image page to host some simple static content](https://hub.docker.com/_/nginx#:~:text=Hosting%20some%20simple%20static%20content).
+
+Simple test:
+
+```console
+docker run --rm -p 80:80 nginx
+```
+
+Browse to [localhost](http://localhost/)
+
+In a second terminal:
+
+```console
+docker exec -it exciting_elion sh
+
+cd usr/share/nginx/html
+
+ls
+50x.html  index.html
+
+cat index.html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+.
+.
+```
+
+It's in this folder we gonna copy our application '/usr/share/nginx/html'.
+
+For more complex configuration, have a look in '/etc/nginx/conf.d' folder.
+
+### Multi stage Dockerfile
+
+Reuse a preceding builded image in next build.
+
+Goal to reach here is to put React's build folder into NGINX image.
+
+../client/Dockerfile.prod
+
+```text
+FROM node:alpine as buildstage
+WORKDIR /app
+COPY package.json .
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM nginx
+COPY --from=buildstage /app/build /usr/share/nginx/html
+EXPOSE 80
+```
+
+After second FROM above, --from=buildstage refer to first stage of image build (npm run build, output is a 'build' folder that containe production application).
+
+Build Docker image:
+
+```console
+docker build -t nginxreact -f Dockerfile.prod .
+.
+.
+ => [stage-1 2/2] COPY --from=buildstage /app/build /usr/share/nginx/html
+.
+.
+
+docker image ls
+REPOSITORY      TAG       IMAGE ID       CREATED         SIZE
+nginxreact      latest    ee3388384541   4 minutes ago   141MB
+.
+.
+<none>          <none>    1c9dc1e2c948   6 hours ago     483MB
+.
+.
+```
+
+"\<none\>" image are produced by intermediate build stage(s).
+
+Launch a container with just built image:
+
+```console
+docker run --rm -p 80:80 nginxreact
+```
+
+Browse to [localhost](http://localhost/) to observe your production application running.
+
+### Docker Compose
+
+A new Docker Compose configuration file dedicated to prodction:
+
+```console
+touch docker-compose.prod.yml
+```
+
+docker-compose.prod.yml
+
+```yaml
+version: "3.8"
+services:
+  mynginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - 80:80
+```
+
+Reset Docker content:
+
+```console
+docker system prune -a
+docker volume prune
+```
+
+Start a fresh new production application:
+
+```console
+docker-compose -f docker-compose.prod.yml up
+```
+
+Browse to [localhost](http://localhost/) to observe your production application running.
 
 ***
-
-NGINX
-
-React
-
-Node.js
-
-webpack
-
-Docker Compose
