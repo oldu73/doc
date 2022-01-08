@@ -290,8 +290,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#installation_1" class="md-nav__link">
-    Installation
+  <a href="#set-up" class="md-nav__link">
+    Set up
   </a>
   
 </li>
@@ -311,6 +311,13 @@
         <li class="md-nav__item">
   <a href="#link" class="md-nav__link">
     Link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs-code-extensions" class="md-nav__link">
+    VS Code Extensions
   </a>
   
 </li>
@@ -917,8 +924,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#installation_1" class="md-nav__link">
-    Installation
+  <a href="#set-up" class="md-nav__link">
+    Set up
   </a>
   
 </li>
@@ -942,6 +949,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#vs-code-extensions" class="md-nav__link">
+    VS Code Extensions
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -958,32 +972,32 @@
 <h1 id="mkdocs">MkDocs</h1>
 <hr />
 <h2 id="installation">Installation</h2>
-<pre><code>$ pip install mkdocs
+<pre><code class="language-console">pip install mkdocs
 </code></pre>
 <p>check</p>
-<pre><code>$ mkdocs --version
+<pre><code class="language-console">mkdocs --version
 </code></pre>
 <hr />
 <h2 id="initialize-current-folder">Initialize current folder</h2>
-<pre><code>$ mkdocs new .
+<pre><code class="language-console">mkdocs new .
 </code></pre>
 <hr />
 <h2 id="build-documentation">Build documentation</h2>
-<pre><code>$ mkdocs build
+<pre><code class="language-console">mkdocs build
 </code></pre>
 <hr />
 <h2 id="deploy-to-github">Deploy to github</h2>
 <p>First synchronize current folder with corresponding github repository.</p>
-<pre><code>$ mkdocs gh-deploy
+<pre><code class="language-console">mkdocs gh-deploy
 </code></pre>
 <hr />
 <h2 id="material-for-mkdocs-theme">Material for MkDocs (theme)</h2>
-<h3 id="installation_1">Installation</h3>
-<pre><code>$ pip install mkdocs-material
+<h3 id="set-up">Set up</h3>
+<pre><code class="language-console">pip install mkdocs-material
 </code></pre>
 <h3 id="configuration">Configuration</h3>
 <p>Simply add the following lines to mkdocs.yml to enable the theme.</p>
-<pre><code>theme:
+<pre><code class="language-yaml">theme:
   name: material
 </code></pre>
 <hr />
@@ -995,6 +1009,13 @@
 <p>To link this section from another markdown file:  </p>
 <p>[Node server project](otherFile.md#node-server-project)</p>
 <hr />
+<h2 id="vs-code-extensions">VS Code Extensions</h2>
+<p>Usefull markdown editing VS Code extension:  </p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one">Markdown All in One</a>  </li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">markdownlint</a></li>
+</ul>
+<p>Markdown All in One allow code autocompletion for inserting code block by hitting 'Ctrl+space' shortcut keys.</p>
 
               
             </article>

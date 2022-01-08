@@ -647,6 +647,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-up-docker-compose" class="md-nav__link">
+    Set up Docker Compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -656,26 +663,6 @@
         
           <li class="md-nav__item">
   <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#chapter-y_1" class="md-nav__link">
-    Chapter y
-  </a>
-  
-    <nav class="md-nav" aria-label="Chapter y">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sub-chapter-y1_1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -941,6 +928,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-up-docker-compose" class="md-nav__link">
+    Set up Docker Compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -950,26 +944,6 @@
         
           <li class="md-nav__item">
   <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#chapter-y_1" class="md-nav__link">
-    Chapter y
-  </a>
-  
-    <nav class="md-nav" aria-label="Chapter y">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sub-chapter-y1_1" class="md-nav__link">
     Sub chapter y.1
   </a>
   
@@ -997,20 +971,26 @@
 <p>Docker Compose - Dockerfile</p>
 <p>!WSL2, advised to not use a mounted volume like '/mnt/c/' for handling a project to avoid slowness and live reload issues.
 Instead, prefer usage of a "native" WSL2 folder like for e.g. '/home/user/react-nginx'</p>
-<p>Dockerfile and Docker Compose to set up a client application composed of:<br />
-- React<br />
-- NGINX  </p>
+<p>Dockerfile and Docker Compose to set up a client application composed of:  </p>
+<ul>
+<li>React  </li>
+<li>NGINX  </li>
+</ul>
 <hr />
 <h2 id="setup-of-client-application-project">Setup of client application project</h2>
 <h3 id="node">Node</h3>
 <p>'create-React-app' is a script to install with 'npm' will pre-configure a 'webpack' environnement and give use access to a development server and a test server and a build command for production.</p>
 <p>Role of 'NGINX' (http server) is to treat all http(s) request and return response from 'React' application to requester.</p>
-<p>In this chapter we will see two new features:<br />
-- Dockerfile multi staging, defined with many 'from'.<br />
-- Stdin_open and TTY, two new options of Docker Compose.  </p>
-<p>Prerequisite, install on host machine:<br />
-- 'nvm' - <a href="https://github.com/nvm-sh/nvm">Node Version Manager</a><br />
-- 'Node.js'</p>
+<p>In this chapter we will see two new features:  </p>
+<ul>
+<li>Dockerfile multi staging, defined with many 'from'.  </li>
+<li>Stdin_open and TTY, two new options of Docker Compose.  </li>
+</ul>
+<p>Prerequisite, install on host machine:  </p>
+<ul>
+<li>'nvm' - <a href="https://github.com/nvm-sh/nvm">Node Version Manager</a>  </li>
+<li>'Node.js'</li>
+</ul>
 <p>Set/check installation with:</p>
 <pre><code class="language-console">
 Setup project root folder
@@ -1068,18 +1048,18 @@ You can now view client in the browser.
 !fail on WSL2 :(
 </code></pre>
 <p>Build for production (add a build folder to the project, this is the folder to return via NGINX for client):</p>
-<pre><code class="language-console">$ npm run build
+<pre><code class="language-console">npm run build
 </code></pre>
 <p>All of this just to initialize the project locally on host machine.</p>
 <h3 id="dockerized">Dockerized</h3>
 <p>We may now <strong>delete the 'node_modules' folder</strong> ('node_modules' folder will then be only in container initialized with dependencies through 'npm install' command in 'Dockerfile'):</p>
-<pre><code class="language-console">$ rm -rf node_modules/
+<pre><code class="language-console">rm -rf node_modules/
 </code></pre>
 <p>Add a 'Dockerfile' in client project folder '/home/user/react-nginx/client':</p>
-<pre><code class="language-console">$ touch Dockerfile
+<pre><code class="language-console">touch Dockerfile
 </code></pre>
 <p>Dockerfile:</p>
-<pre><code>FROM node:alpine
+<pre><code class="language-text">FROM node:alpine
 WORKDIR /app
 COPY package.json .
 RUN npm install
@@ -1099,17 +1079,17 @@ $ docker run --rm --name react -p 3000:3000 myreact
 <hr />
 <h2 id="live-reload">Live reload</h2>
 <p>It's important to launch <strong>from a terminal</strong> a based VS Code instance from root client application folder to get live reload effect that works:</p>
-<pre><code class="language-console">$ cd .../react-nginx/client
-$ code .
+<pre><code class="language-console">cd .../react-nginx/client
+code .
 </code></pre>
 <p>For development purpose, to automatically propagate local changes to container.</p>
 <p>Bind mount project folder:</p>
-<pre><code class="language-console">$ docker run --rm --name react -p 3000:3000 --mount type=bind,src=&quot;$(pwd)&quot;,target=/app myreact
+<pre><code class="language-console">docker run --rm --name react -p 3000:3000 --mount type=bind,src=&quot;$(pwd)&quot;,target=/app myreact
 </code></pre>
 <p>!! =&gt; FAIL!! Why? Because when bind mount it crush all what was contained in container '/app' folder with local content and in local there isn't anymore 'node_modules' folder.</p>
 <p>To avoid this unwanted behavior and keep 'node_modules' in container folder not erased by bind mount (also needed for live reload feature), we bind an anonymous volume targeted on remote container '/app/node_modules' folder.</p>
 <p>Also, to avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder we modify 'Dockerfile' as follow:</p>
-<pre><code>FROM node:alpine
+<pre><code class="language-text">FROM node:alpine
 WORKDIR /app
 COPY package.json .
 RUN npm install
@@ -1119,17 +1099,37 @@ COPY . .
 CMD [&quot;npm&quot;, &quot;start&quot;]
 </code></pre>
 <p>Bind mount project folder + anonymous volume with '/app/node_modules' as target:</p>
-<pre><code class="language-console">$ docker run --rm --name react -p 3000:3000 --mount type=bind,src=&quot;$(pwd)&quot;,target=/app --mount type=volume,target=/app/node_modules myreact
+<pre><code class="language-console">docker run --rm --name react -p 3000:3000 --mount type=bind,src=&quot;$(pwd)&quot;,target=/app --mount type=volume,target=/app/node_modules myreact
 </code></pre>
 <p>It's advised to run with '--rm' option when using anonymous volume to suppress it automatically on stop in addition to container suppression.</p>
 <p>Test live reload by changing text '.. save to reload.' with e.g. 'Hello, world!" in 'src/App.js' and then observe live effect at <a href="http://localhost:3000">http://localhost:3000</a> in an Internet browser.</p>
 <hr />
+<h2 id="set-up-docker-compose">Set up Docker Compose</h2>
+<p>docker-compose.yml</p>
+<pre><code class="language-yaml">version: &quot;3.8&quot;
+services:
+  client:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+      - type: volume
+        target: /app/node_modules
+</code></pre>
+<p>Reset Docker:</p>
+<pre><code class="language-console">docker system prune -a
+docker volume prune
+</code></pre>
+<p>Start service:</p>
+<pre><code class="language-console">docker-compose up
+</code></pre>
+<p>You may observe live reload working by changing 'App.js' content and 'localhost:3000' changing accordingly.</p>
+<hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
-<p>...</p>
-<hr />
-<h2 id="chapter-y_1">Chapter y</h2>
-<h3 id="sub-chapter-y1_1">Sub chapter y.1</h3>
 <p>...</p>
 <hr />
 <p>NGINX</p>
