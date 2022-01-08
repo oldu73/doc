@@ -4,30 +4,30 @@
 
 ## Installation
 
-```
-$ pip install mkdocs
+```console
+pip install mkdocs
 ```
 
 check
 
-```
-$ mkdocs --version
+```console
+mkdocs --version
 ```
 
 ***
 
 ## Initialize current folder
 
-```
-$ mkdocs new .
+```console
+mkdocs new .
 ```
 
 ***
 
 ## Build documentation
 
-```
-$ mkdocs build
+```console
+mkdocs build
 ```
 
 ***
@@ -36,25 +36,25 @@ $ mkdocs build
 
 First synchronize current folder with corresponding github repository.
 
-```
-$ mkdocs gh-deploy
+```console
+mkdocs gh-deploy
 ```
 
 ***
 
 ## Material for MkDocs (theme)
 
-### Installation
+### Set up
 
-```
-$ pip install mkdocs-material
+```console
+pip install mkdocs-material
 ```
 
 ### Configuration
 
 Simply add the following lines to mkdocs.yml to enable the theme.
 
-```
+```yaml
 theme:
   name: material
 ```
@@ -76,3 +76,12 @@ To link this section from another markdown file:
 \[Node server project\](otherFile.md#node-server-project)
 
 ***
+
+## VS Code Extension
+
+Usefull markdown editing VS Code extensions:  
+
+- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)  
+- [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+
+Markdown All in One allow code autocompletion for inserting code block by hitting 'Ctrl+space' shortcut keys.
