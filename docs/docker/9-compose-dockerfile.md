@@ -226,6 +226,136 @@ You may observe live reload working by changing 'App.js' content and 'localhost:
 
 ***
 
+## Test during developpement
+
+Note:
+
+- [webpack](https://webpack.js.org/) is an open-source JavaScript module bundler (wikipedia).  
+- TDD (Test Driven Development).
+
+In a devellopement process it's mostly advised to continuously test in order to check that we don't brake anything.  
+To achieve this, we lauch two terminals in prallel, one with webpack for running application and this other one for automatic testing purpose.  
+It's done with same container image and duplicate services in Docker Compose configuration file, only thing that will change for second duplicated service is that we override command from Dockerfile in Docker Compose configuration file to launch test server and remove also port mapping which is useless for tests.
+
+docker-compose.yml:
+
+```yaml
+version: "3.8"
+services:
+  client:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+      - type: volume
+        target: /app/node_modules
+  test:
+    build: .
+    command: ["npm", "run", "test"]
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+      - type: volume
+        target: /app/node_modules
+```
+
+```console
+docker-compose up --build
+```
+
+In logs we may observe:
+
+```console
+.
+.
+test_1    | Tests:       1 passed, 1 total
+.
+.
+```
+
+If we duplicate one exsisting test in '.../src/App.test.js' file, we may observe live change in logs:
+
+```console
+.
+.
+test_1    | Tests:       2 passed, 2 total
+.
+.
+```
+
+To interact with test server we need a second terminal.  
+If we want to send command in test container when attaching to it we need to add two options to the test service in Docker Compose configuration file, 'stdin_open' and 'tty', both set to 'true'.
+
+docker-compose.yml:
+
+```yaml
+version: "3.8"
+services:
+  client:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+      - type: volume
+        target: /app/node_modules
+  test:
+    build: .
+    command: ["npm", "run", "test"]
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+      - type: volume
+        target: /app/node_modules
+    stdin_open: true
+    tty: true
+```
+
+In first terminal:
+
+```console
+docker-compose down -v
+docker-compose up --build
+```
+
+In second terminal:
+
+```console
+docker container ls
+
+CONTAINER ID   IMAGE           COMMAND                  CREATED              STATUS              PORTS                    NAMES
+ca16b44236ad   client_test     "docker-entrypoint.s…"   About a minute ago   Up About a minute                            client_test_1
+4633b0999f9c   client_client   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3000->3000/tcp   client_client_1
+
+docker attach client_test_1
+.
+.
+Watch Usage
+ › Press f to run only failed tests.
+ › Press o to only run tests related to changed files.
+ › Press q to quit watch mode.
+ › Press p to filter by a filename regex pattern.
+ › Press t to filter by a test name regex pattern.
+ › Press Enter to trigger a test run.
+```
+
+We may now send commands to test server in second terminal.
+
+Then, shutdown gracefully:
+
+```console
+docker-compose down -v
+```
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
@@ -239,3 +369,7 @@ NGINX
 React
 
 Node.js
+
+webpack
+
+Docker Compose
