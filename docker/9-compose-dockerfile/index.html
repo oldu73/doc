@@ -992,19 +992,18 @@ Instead, prefer usage of a "native" WSL2 folder like for e.g. '/home/user/react-
 <li>'Node.js'</li>
 </ul>
 <p>Set/check installation with:</p>
-<pre><code class="language-console">
-Setup project root folder
-$ mkdir react-nginx
-$ cd react-nginx
+<pre><code class="language-console">// Setup project root folder
+mkdir react-nginx
+cd react-nginx
 
-To install 'nvm'
-$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+// To install 'nvm'
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-Check
-$ nvm
+// Check
+nvm
 
-Get last version
-$ nvm ls-remote | tail
+// Get last version
+nvm ls-remote | tail
 .
 .
 v17.0.1
@@ -1012,28 +1011,26 @@ v17.0.1
         v17.2.0
         v17.3.0
 
-Install last version
-$ nvm install 17.3.0
+// Install last version
+nvm install 17.3.0
 
-$ node -v
+node -v
 v17.3.0
 
-$ node
+node
 Welcome to Node.js v17.3.0.       
 Type &quot;.help&quot; for more information.
 &gt;
 (To exit, press Ctrl+C again or Ctrl+D or type .exit)
 &gt;
-$
-
 </code></pre>
 <h3 id="react">React</h3>
 <p>Instal 'React' with 'npx' (like npm but executed once with last script release):</p>
-<pre><code class="language-console">$ npx create-react-app client
-$ cd client
-$ ls
+<pre><code class="language-console">npx create-react-app client
+cd client
+ls
 README.md  node_modules  package-lock.json  package.json  public  src
-$ npm start
+npm start
 .
 .
 Compiled successfully!
@@ -1044,9 +1041,9 @@ You can now view client in the browser.
 </code></pre>
 <p>Browse to: - <a href="http://localhost:3000">http://localhost:3000</a></p>
 <p>Test (launch tests contained in react-nginx/client/src/App.test.js):</p>
-<pre><code class="language-console">$ npm run test
-!fail on WSL2 :(
+<pre><code class="language-console">npm run test
 </code></pre>
+<p>!! Fail on WSL2 :(</p>
 <p>Build for production (add a build folder to the project, this is the folder to return via NGINX for client):</p>
 <pre><code class="language-console">npm run build
 </code></pre>
@@ -1067,13 +1064,13 @@ COPY . .
 CMD [&quot;npm&quot;, &quot;start&quot;]
 </code></pre>
 <p>Build docker image:</p>
-<pre><code class="language-console">$ docker build -t myreact .
+<pre><code class="language-console">docker build -t myreact .
 
-$ docker image ls
+docker image ls
 REPOSITORY                        TAG       IMAGE ID       CREATED          SIZE  
 myreact                           latest    c4c1b5bb9d21   45 seconds ago   483MB
 
-$ docker run --rm --name react -p 3000:3000 myreact
+docker run --rm --name react -p 3000:3000 myreact
 </code></pre>
 <p>Browse to: - <a href="http://localhost:3000">http://localhost:3000</a></p>
 <hr />
