@@ -661,16 +661,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-y" class="md-nav__link">
-    Chapter y
+  <a href="#production-environnement" class="md-nav__link">
+    Production environnement
   </a>
   
-    <nav class="md-nav" aria-label="Chapter y">
+    <nav class="md-nav" aria-label="Production environnement">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-stage-dockerfile" class="md-nav__link">
+    Multi stage Dockerfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    Docker Compose
   </a>
   
 </li>
@@ -949,16 +963,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-y" class="md-nav__link">
-    Chapter y
+  <a href="#production-environnement" class="md-nav__link">
+    Production environnement
   </a>
   
-    <nav class="md-nav" aria-label="Chapter y">
+    <nav class="md-nav" aria-label="Production environnement">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-stage-dockerfile" class="md-nav__link">
+    Multi stage Dockerfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    Docker Compose
   </a>
   
 </li>
@@ -1241,15 +1269,94 @@ Watch Usage
 <pre><code class="language-console">docker-compose down -v
 </code></pre>
 <hr />
-<h2 id="chapter-y">Chapter y</h2>
-<h3 id="sub-chapter-y1">Sub chapter y.1</h3>
-<p>...</p>
+<h2 id="production-environnement">Production environnement</h2>
+<h3 id="introduction">Introduction</h3>
+<p>NGINX return the build.</p>
+<p>NGINX intercept http request and return by default an html file.</p>
+<p>Browse <a href="https://hub.docker.com/_/nginx#:~:text=Hosting%20some%20simple%20static%20content">docker hub for nginx on official image page to host some simple static content</a>.</p>
+<p>Simple test:</p>
+<pre><code class="language-console">docker run --rm -p 80:80 nginx
+</code></pre>
+<p>Browse to <a href="http://localhost/">localhost</a></p>
+<p>In a second terminalà:</p>
+<pre><code class="language-console">docker exec -it exciting_elion sh
+
+cd usr/share/nginx/html
+
+ls
+50x.html  index.html
+
+cat index.html
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+.
+.
+</code></pre>
+<p>It's in this folder we gonna copy our application '/usr/share/nginx/html'.</p>
+<p>For more complex configuration, have a look in '/etc/nginx/conf.d' folder.</p>
+<h3 id="multi-stage-dockerfile">Multi stage Dockerfile</h3>
+<p>Reuse a preceding builded image in next build.</p>
+<p>Goal to reach here is to put React's build folder into NGINX image.</p>
+<p>../client/Dockerfile.prod</p>
+<pre><code class="language-text">FROM node:alpine as buildstage
+WORKDIR /app
+COPY package.json .
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM nginx
+COPY --from=buildstage /app/build /usr/share/nginx/html
+EXPOSE 80
+</code></pre>
+<p>After second FROM above, --from=buildstage refer to first stage of image build (npm run build, output is a 'build' folder that containe production application).</p>
+<p>Build Docker image:</p>
+<pre><code class="language-console">docker build -t nginxreact -f Dockerfile.prod .
+.
+.
+ =&gt; [stage-1 2/2] COPY --from=buildstage /app/build /usr/share/nginx/html
+.
+.
+
+docker image ls
+REPOSITORY      TAG       IMAGE ID       CREATED         SIZE
+nginxreact      latest    ee3388384541   4 minutes ago   141MB
+.
+.
+&lt;none&gt;          &lt;none&gt;    1c9dc1e2c948   6 hours ago     483MB
+.
+.
+</code></pre>
+<p>"\&lt;none>" image are produced by intermediate build stage(s).</p>
+<p>Launch a container with just built image:</p>
+<pre><code class="language-console">docker run --rm -p 80:80 nginxreact
+</code></pre>
+<p>Browse to <a href="http://localhost/">localhost</a> to observe your production application running.</p>
+<h3 id="docker-compose">Docker Compose</h3>
+<p>A new Docker Compose configuration file dedicated to prodction:</p>
+<pre><code class="language-console">touch docker-compose.prod.yml
+</code></pre>
+<p>docker-compose.prod.yml</p>
+<pre><code class="language-yaml">version: &quot;3.8&quot;
+services:
+  mynginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - 80:80
+</code></pre>
+<p>Reset Docker content:</p>
+<pre><code class="language-console">docker system prune -a
+docker volume prune
+</code></pre>
+<p>Start a fresh new production application:</p>
+<pre><code class="language-console">docker-compose -f docker-compose.prod.yml up
+</code></pre>
+<p>Browse to <a href="http://localhost/">localhost</a> to observe your production application running.</p>
 <hr />
-<p>NGINX</p>
-<p>React</p>
-<p>Node.js</p>
-<p>webpack</p>
-<p>Docker Compose</p>
 
               
             </article>
