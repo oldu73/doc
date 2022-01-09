@@ -620,6 +620,40 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#project-architecture" class="md-nav__link">
+    Project architecture
+  </a>
+  
+    <nav class="md-nav" aria-label="Project architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#developpement" class="md-nav__link">
+    Developpement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production" class="md-nav__link">
+    Production
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -839,6 +873,40 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#project-architecture" class="md-nav__link">
+    Project architecture
+  </a>
+  
+    <nav class="md-nav" aria-label="Project architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#developpement" class="md-nav__link">
+    Developpement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production" class="md-nav__link">
+    Production
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -873,6 +941,49 @@
 
 <h1 id="compose-10-services">Compose - 10 - Services</h1>
 <p>Docker Compose - Services</p>
+<p>Use of Docker Compose with many services.</p>
+<p>In this chapter we setup a complete development/production environnement close to what we may found in real life projects, sclable and so on.</p>
+<hr />
+<h2 id="project-architecture">Project architecture</h2>
+<p>Introduction to project architecture:</p>
+<ul>
+<li>React (Application), could be Vue.js or Angular, would be the same.  </li>
+<li>NGINX (Http request).  </li>
+<li>Node.js (API).  </li>
+<li>MongoDB (database).</li>
+</ul>
+<h3 id="developpement">Developpement</h3>
+<p>NGINX as reverse proxy follow requests:</p>
+<ul>
+<li>!= /api + == /sockjs-node (websocket for live reload feature) -&gt; React.  </li>
+<li>== /api -&gt; Node.js -&gt; MongoDB.</li>
+</ul>
+<h3 id="production">Production</h3>
+<p>NGINX as reverse proxy (on big application may also be used as a load balancer) follow requests:</p>
+<ul>
+<li>!= /api -&gt; another NGINX that handle React production build output ('build' folder).  </li>
+<li>== /api -&gt; Node.js -&gt; MongoDB.</li>
+</ul>
+<h3 id="setup">Setup</h3>
+<pre><code class="language-console">mkdir fullstack
+cd fullstack
+</code></pre>
+<p>React applicatiion:</p>
+<pre><code class="language-console">mkdir client
+</code></pre>
+<p>Node.js applicatiion:</p>
+<pre><code class="language-console">mkdir api
+</code></pre>
+<p>MongoDB database:</p>
+<pre><code class="language-console">mkdir db
+</code></pre>
+<p>NGINX as a reverse proxy, in charge of dispatching http requests:</p>
+<pre><code class="language-console">mkdir reverse-proxy
+</code></pre>
+<p>Docker Compose:</p>
+<pre><code class="language-console">touch docker-compose.dev.yml
+touch docker-compose.prod.yml
+</code></pre>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
@@ -883,6 +994,7 @@
 <p>Node.js</p>
 <p>webpack</p>
 <p>Docker Compose</p>
+<p>MongoDB</p>
 
               
             </article>
