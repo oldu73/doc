@@ -654,6 +654,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#client-configuration" class="md-nav__link">
+    Client configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -907,6 +914,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#client-configuration" class="md-nav__link">
+    Client configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -984,6 +998,105 @@ cd fullstack
 <pre><code class="language-console">touch docker-compose.dev.yml
 touch docker-compose.prod.yml
 </code></pre>
+<hr />
+<h2 id="client-configuration">Client configuration</h2>
+<p>Setting up the client configuration</p>
+<pre><code class="language-console">cd client
+npx create-react-app client
+mv client/* .
+rm -rf client
+rm -rf node_modules
+touch Dockerfile.dev
+</code></pre>
+<p>/fullstack/client/Dockerfile.dev:</p>
+<pre><code class="language-text">FROM node:alpine
+WORKDIR /app
+COPY package.json .
+RUN npm install
+# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
+RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
+COPY . .
+CMD [&quot;npm&quot;, &quot;start&quot;]
+</code></pre>
+<p>/fullstack/docker-compose.dev.yml:</p>
+<pre><code class="language-yaml">version: &quot;3.8&quot;
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - type: bind
+        source: ./client
+        target: /app
+      - type: volume
+        target: /app/node_modules
+    ports:
+      - 3000:3000
+</code></pre>
+<p>From 'fullstack' folder, we'll let '--build' option to ensure building images before starting containers:</p>
+<pre><code class="language-console">code .
+docker-compose -f docker-compose.dev.yml up --build
+</code></pre>
+<p>Test by browsing at <a href="http://localhost:3000/">localhost:3000</a></p>
+<p>We add a function to '/fullstack/client/src/App.js' file in order to get a counter from api (not ready yet but we prepare here the application in advance).</p>
+<p>/fullstack/client/src/App.js:</p>
+<pre><code class="language-javascript">import logo from './logo.svg';
+import './App.css';
+import { useState, useEffect } from 'react';
+
+function App() {
+  const [count, setCount] = useState();
+
+  useEffect(() =&gt; {
+    async function fetchCount() {
+      try {
+        const response = await fetch('/api/count')
+        if (response.ok) {
+          setCount(await response.json());
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    fetchCount();
+  }, []);
+
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;header className=&quot;App-header&quot;&gt;
+        &lt;img src={logo} className=&quot;App-logo&quot; alt=&quot;logo&quot; /&gt;
+        &lt;p&gt;
+          Edit &lt;code&gt;src/App.js&lt;/code&gt; and save to reload.
+        &lt;/p&gt;
+        &lt;p&gt;
+          Count : { count }
+        &lt;/p&gt;
+        &lt;a
+          className=&quot;App-link&quot;
+          href=&quot;https://reactjs.org&quot;
+          target=&quot;_blank&quot;
+          rel=&quot;noopener noreferrer&quot;
+        &gt;
+          Learn React
+        &lt;/a&gt;
+      &lt;/header&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+<p>In Docker Compose logs we may observe succesfull compilation:</p>
+<pre><code class="language-console">.
+.
+client_1  | webpack 5.65.0 compiled successfully in 191 ms
+</code></pre>
+<p>Test again by browsing at <a href="http://localhost:3000/">localhost:3000</a></p>
+<p>Stop/remove stack:</p>
+<pre><code class="language-console">docker-compose -f docker-compose.dev.yml down
+</code></pre>
+<p>Note: - webpack is exclusively devoted for development.</p>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
