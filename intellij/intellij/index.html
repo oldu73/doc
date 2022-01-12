@@ -398,6 +398,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#setup-project-in-wsl-folder" class="md-nav__link">
+    Setup project in WSL folder
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-window" class="md-nav__link">
+    Service window
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#search-for-and-replace-with-rn" class="md-nav__link">
     Search for ; and replace with ;\r\n
   </a>
@@ -826,6 +840,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#setup-project-in-wsl-folder" class="md-nav__link">
+    Setup project in WSL folder
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-window" class="md-nav__link">
+    Service window
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#search-for-and-replace-with-rn" class="md-nav__link">
     Search for ; and replace with ;\r\n
   </a>
@@ -846,6 +874,23 @@
                 
 
 <h1 id="intellij">Intellij</h1>
+<hr />
+<h3 id="setup-project-in-wsl-folder">Setup project in WSL folder</h3>
+<p>Fix EOL (LF vs CRLF) issue:</p>
+<ul>
+<li>git clone  </li>
+<li>select root project folder  </li>
+<li>menu File - File Properties - Line Separators - LF Unix  </li>
+<li>git rollback entire project to reset CRLF issue</li>
+</ul>
+<p><a href="https://www.jetbrains.com/help/idea/configuring-line-endings-and-line-separators.html">SRC</a></p>
+<hr />
+<h3 id="service-window">Service window</h3>
+<p>For Docker connection, maybe not opened if comes from external project.</p>
+<p>To open it manually:</p>
+<pre><code class="language-text">View | Tool Windows | Services or Alt+8
+</code></pre>
+<p><a href="https://www.jetbrains.com/help/idea/services-tool-window.html">SRC</a></p>
 <hr />
 <h3 id="search-for-and-replace-with-rn">Search for ; and replace with ;\r\n</h3>
 <p>For a file where each values are separated with ';' but need each values on a new
