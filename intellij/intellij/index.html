@@ -875,7 +875,7 @@
 
 <h1 id="intellij">Intellij</h1>
 <hr />
-<h3 id="setup-project-in-wsl-folder">Setup project in WSL folder</h3>
+<h2 id="setup-project-in-wsl-folder">Setup project in WSL folder</h2>
 <p>Fix EOL (LF vs CRLF) issue:</p>
 <ul>
 <li>git clone  </li>
@@ -884,15 +884,22 @@
 <li>git rollback entire project to reset CRLF issue</li>
 </ul>
 <p><a href="https://www.jetbrains.com/help/idea/configuring-line-endings-and-line-separators.html">SRC</a></p>
+<p>OR</p>
+<p>Terminal in a new "native" WSL folder, clone and <a href="https://stackoverflow.com/questions/9976986/force-lf-eol-in-git-repo-and-working-copy">fix CRLF issue</a>:</p>
+<ul>
+<li>git clone ptoject_url  </li>
+<li>git config core.eol lf  </li>
+<li>git config core.autocrlf input</li>
+</ul>
 <hr />
-<h3 id="service-window">Service window</h3>
+<h2 id="service-window">Service window</h2>
 <p>For Docker connection, maybe not opened if comes from external project.</p>
 <p>To open it manually:</p>
 <pre><code class="language-text">View | Tool Windows | Services or Alt+8
 </code></pre>
 <p><a href="https://www.jetbrains.com/help/idea/services-tool-window.html">SRC</a></p>
 <hr />
-<h3 id="search-for-and-replace-with-rn">Search for ; and replace with ;\r\n</h3>
+<h2 id="search-for-and-replace-with-rn">Search for ; and replace with ;\r\n</h2>
 <p>For a file where each values are separated with ';' but need each values on a new
 line to compare files.</p>
 <p>replace ; enable regex by ;\r\n</p>
