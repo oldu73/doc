@@ -2,7 +2,7 @@
 
 ***
 
-### Setup project in WSL folder
+## Setup project in WSL folder
 
 Fix EOL (LF vs CRLF) issue:
 
@@ -13,9 +13,17 @@ Fix EOL (LF vs CRLF) issue:
 
 [SRC](https://www.jetbrains.com/help/idea/configuring-line-endings-and-line-separators.html)
 
+OR
+
+Terminal in a new "native" WSL folder, clone and [fix CRLF issue](https://stackoverflow.com/questions/9976986/force-lf-eol-in-git-repo-and-working-copy):
+
+- git clone ptoject_url  
+- git config core.eol lf  
+- git config core.autocrlf input
+
 ***
 
-### Service window
+## Service window
 
 For Docker connection, maybe not opened if comes from external project.
 
@@ -29,7 +37,7 @@ View | Tool Windows | Services or Alt+8
 
 ***
 
-### Search for ; and replace with ;\r\n
+## Search for ; and replace with ;\r\n
 
 For a file where each values are separated with ';' but need each values on a new
 line to compare files.

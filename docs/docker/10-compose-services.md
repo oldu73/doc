@@ -197,6 +197,142 @@ Note: - webpack is exclusively devoted for development.
 
 ***
 
+## Set up Node.js API
+
+From project root folder: - .../fullstack
+
+```console
+cd api
+npm init -y
+npm i express nodemon mongodb
+mkdir src
+cd src
+touch index.js
+```
+
+index.js (from previous node server project)
+
+```javascript
+const express = require("express");
+
+const MongoClient = require('mongodb').MongoClient;
+
+let count;
+
+const MongUrl = process.env.NODE_ENV === 'production' ? 
+`mongodb://${ process.env.MONGO_USERNAME }:${ process.env.MONGO_PWD }@db` : 
+`mongodb://db`
+
+console.log(process.env) // to have environnement variables in logs
+
+MongoClient.connect(MongUrl, { useUnifiedTopology: true }, (err, client) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('CONNECTION DB OK!');
+    count = client.db('test').collection("count");
+  }
+});
+
+const app = express();
+
+app.get('/api/count', (req, res) => {
+  console.log('request url: ' + req.url);
+  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) => {
+    const value = doc.value;
+    res.status(200).json(value.count);
+  })
+});
+
+app.all('*', (req, res) => {
+  res.status(404).end();
+});
+
+app.listen(80);
+```
+
+.../fullstack/docker-compose.dev.yml
+
+```yaml
+version: "3.8"
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - type: bind
+        source: ./client
+        target: /app
+      - type: volume
+        target: /app/node_modules
+    ports:
+      - 3000:3000
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./api/src
+        target: /app/src
+    ports:
+      - 3001:80
+```
+
+../fullstack/api
+
+```console
+touch Dockerfile
+```
+
+.../fullstack/api/Dockerfile
+
+```text
+FROM node:alpine
+WORKDIR /app
+COPY package.json .
+RUN npm install
+# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
+RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
+COPY . .
+EXPOSE 80
+CMD ["npm", "start"]
+```
+
+.../fullstack/api/package.json
+
+```json
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongodb": "^4.3.0",
+    "nodemon": "^2.0.15"
+  }
+}
+
+```
+
+Test API in a terminal from .../fullstack/ folder
+
+```console
+code .
+docker-compose -f docker-compose.dev.yml run api
+```
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
