@@ -661,6 +661,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-up-nodejs-api" class="md-nav__link">
+    Set up Node.js API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -921,6 +928,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-up-nodejs-api" class="md-nav__link">
+    Set up Node.js API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -1097,6 +1111,119 @@ client_1  | webpack 5.65.0 compiled successfully in 191 ms
 <pre><code class="language-console">docker-compose -f docker-compose.dev.yml down
 </code></pre>
 <p>Note: - webpack is exclusively devoted for development.</p>
+<hr />
+<h2 id="set-up-nodejs-api">Set up Node.js API</h2>
+<p>From project root folder: - .../fullstack</p>
+<pre><code class="language-console">cd api
+npm init -y
+npm i express nodemon mongodb
+mkdir src
+cd src
+touch index.js
+</code></pre>
+<p>index.js (from previous node server project)</p>
+<pre><code class="language-javascript">const express = require(&quot;express&quot;);
+
+const MongoClient = require('mongodb').MongoClient;
+
+let count;
+
+const MongUrl = process.env.NODE_ENV === 'production' ? 
+`mongodb://${ process.env.MONGO_USERNAME }:${ process.env.MONGO_PWD }@db` : 
+`mongodb://db`
+
+console.log(process.env) // to have environnement variables in logs
+
+MongoClient.connect(MongUrl, { useUnifiedTopology: true }, (err, client) =&gt; {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('CONNECTION DB OK!');
+    count = client.db('test').collection(&quot;count&quot;);
+  }
+});
+
+const app = express();
+
+app.get('/api/count', (req, res) =&gt; {
+  console.log('request url: ' + req.url);
+  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) =&gt; {
+    const value = doc.value;
+    res.status(200).json(value.count);
+  })
+});
+
+app.all('*', (req, res) =&gt; {
+  res.status(404).end();
+});
+
+app.listen(80);
+</code></pre>
+<p>.../fullstack/docker-compose.dev.yml</p>
+<pre><code class="language-yaml">version: &quot;3.8&quot;
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - type: bind
+        source: ./client
+        target: /app
+      - type: volume
+        target: /app/node_modules
+    ports:
+      - 3000:3000
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./api/src
+        target: /app/src
+    ports:
+      - 3001:80
+</code></pre>
+<p>../fullstack/api</p>
+<pre><code class="language-console">touch Dockerfile
+</code></pre>
+<p>.../fullstack/api/Dockerfile</p>
+<pre><code class="language-text">FROM node:alpine
+WORKDIR /app
+COPY package.json .
+RUN npm install
+# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
+RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
+COPY . .
+EXPOSE 80
+CMD [&quot;npm&quot;, &quot;start&quot;]
+</code></pre>
+<p>.../fullstack/api/package.json</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;api&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;nodemon ./src/index.js&quot;,
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;express&quot;: &quot;^4.17.2&quot;,
+    &quot;mongodb&quot;: &quot;^4.3.0&quot;,
+    &quot;nodemon&quot;: &quot;^2.0.15&quot;
+  }
+}
+
+</code></pre>
+<p>Test API in a terminal from .../fullstack/ folder</p>
+<pre><code class="language-console">code .
+docker-compose -f docker-compose.dev.yml run api
+</code></pre>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
