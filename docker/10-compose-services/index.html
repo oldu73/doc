@@ -668,6 +668,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-up-database-service" class="md-nav__link">
+    Set up database service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -930,6 +937,13 @@
         <li class="md-nav__item">
   <a href="#set-up-nodejs-api" class="md-nav__link">
     Set up Node.js API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-database-service" class="md-nav__link">
+    Set up database service
   </a>
   
 </li>
@@ -1224,6 +1238,62 @@ CMD [&quot;npm&quot;, &quot;start&quot;]
 <pre><code class="language-console">code .
 docker-compose -f docker-compose.dev.yml run api
 </code></pre>
+<hr />
+<h2 id="set-up-database-service">Set up database service</h2>
+<p>Add db service to Docker Compose configuration file.</p>
+<p>.../fullstack/docker-compose.dev.yml:</p>
+<pre><code class="language-yaml">version: &quot;3.8&quot;
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - type: bind
+        source: ./client
+        target: /app
+      - type: volume
+        target: /app/node_modules
+    ports:
+      - 3000:3000
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./api/src
+        target: /app/src
+    ports:
+      - 3001:80
+  db:
+    image: mongo
+    volumes:
+      - type: volume
+        source: dbtest
+        target: /data/db
+volumes:
+  dbtest:
+</code></pre>
+<p>Initialize database container.</p>
+<p>From '.../fullstack' folder:</p>
+<pre><code class="language-console">docker-compose -f docker-compose.dev.yml run db
+</code></pre>
+<p>Now it should be launch and we connect on it in a second treminal:</p>
+<pre><code class="language-console">docker container exec -it fullstack_db_run_c97d6cfbd602 sh
+mongo
+use test
+db.count.insertOne({ count: 0 })
+exit
+exit
+</code></pre>
+<p>Now it's OK, we may close second terminal and 'Ctrl+c' database container.</p>
+<p>We may test application with (from '.../fullstack' folder):</p>
+<pre><code class="language-console">(code . // it's always better to have VS Code started from application root folder)
+docker-compose -f docker-compose.dev.yml up
+</code></pre>
+<p>Test application by broswsing to <a href="http://localhost:3001/api/count">http://localhost:3001/api/count</a></p>
+<p>We may also observe that React is running by browsing to <a href="http://localhost:3000/">http://localhost:3000/</a></p>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
