@@ -1495,6 +1495,7 @@ services:
 <p>Start VS Code in '.../fullstack' folder with 'code .' command and then:</p>
 <pre><code class="language-console">docker-compose -f docker-compose.prod.yml run -p 80:80 client
 </code></pre>
+<p>Browse to <a href="http://localhost/">http://localhost/</a> to validate React application is running.</p>
 <h3 id="api">API</h3>
 <p>In '.../fullstack/api/src/index.js' notice mongodb connection URL with MONGO_USERNAME and MONGO_PWD credentials that comes from process (production) environnement:</p>
 <pre><code class="language-javascript">const express = require(&quot;express&quot;);
