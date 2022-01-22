@@ -333,6 +333,81 @@ docker-compose -f docker-compose.dev.yml run api
 
 ***
 
+## Set up database service
+
+Add db service to Docker Compose configuration file.
+
+.../fullstack/docker-compose.dev.yml:
+
+```yaml
+version: "3.8"
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - type: bind
+        source: ./client
+        target: /app
+      - type: volume
+        target: /app/node_modules
+    ports:
+      - 3000:3000
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./api/src
+        target: /app/src
+    ports:
+      - 3001:80
+  db:
+    image: mongo
+    volumes:
+      - type: volume
+        source: dbtest
+        target: /data/db
+volumes:
+  dbtest:
+```
+
+Initialize database container.
+
+From '.../fullstack' folder:
+
+```console
+docker-compose -f docker-compose.dev.yml run db
+```
+
+Now it should be launch and we connect on it in a second treminal:
+
+```console
+docker container exec -it fullstack_db_run_c97d6cfbd602 sh
+mongo
+use test
+db.count.insertOne({ count: 0 })
+exit
+exit
+```
+
+Now it's OK, we may close second terminal and 'Ctrl+c' database container.
+
+We may test application with (from '.../fullstack' folder):
+
+```console
+(code . // it's always better to have VS Code started from application root folder)
+docker-compose -f docker-compose.dev.yml up
+```
+
+Test application by broswsing to [http://localhost:3001/api/count](http://localhost:3001/api/count)
+
+We may also observe that React is running by browsing to [http://localhost:3000/](http://localhost:3000/)
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
