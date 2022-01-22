@@ -682,6 +682,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-up-production-configuration" class="md-nav__link">
+    Set up production configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Set up production configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    Client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -959,6 +986,33 @@
   <a href="#set-up-the-nginx-reverse-proxy" class="md-nav__link">
     Set up the NGINX reverse proxy
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-production-configuration" class="md-nav__link">
+    Set up production configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Set up production configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client" class="md-nav__link">
+    Client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1404,6 +1458,130 @@ fullstack_reverse-proxy_1   &quot;/docker-entrypoint.…&quot;   reverse-proxy  
 <p>We now have a full functionnal development stack that maybe up with only one command:</p>
 <pre><code class="language-console">docker-compose -f docker-compose.dev.yml up
 </code></pre>
+<hr />
+<h2 id="set-up-production-configuration">Set up production configuration</h2>
+<p>Reset Docker environnemnt (if needed):</p>
+<pre><code class="language-console">docker system prune -a
+docker volume prune
+</code></pre>
+<h3 id="client">Client</h3>
+<p>From folder '.../fullstack/client':</p>
+<pre><code class="language-console">touch Dockerfile.prod
+</code></pre>
+<p>.../fullstack/client/Dockerfile.prod</p>
+<pre><code class="language-text">FROM node:alpine as build
+WORKDIR /app
+COPY package.json .
+RUN npm install
+# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
+RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
+COPY . .
+RUN npm run build
+
+FROM nginx:latest
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+</code></pre>
+<p>! Be aware of <strong>RUN</strong> npm run build, NOT CMD!</p>
+<p>.../fullstack/docker-compose.prod.yml</p>
+<pre><code class="language-yaml">version: '3.8'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+</code></pre>
+<p>Start VS Code in '.../fullstack' folder with 'code .' command and then:</p>
+<pre><code class="language-console">docker-compose -f docker-compose.prod.yml run -p 80:80 client
+</code></pre>
+<h3 id="api">API</h3>
+<p>In '.../fullstack/api/src/index.js' notice mongodb connection URL with MONGO_USERNAME and MONGO_PWD credentials that comes from process (production) environnement:</p>
+<pre><code class="language-javascript">const express = require(&quot;express&quot;);
+
+const MongoClient = require('mongodb').MongoClient;
+
+let count;
+
+const MongUrl = process.env.NODE_ENV === 'production' ? 
+`mongodb://${ process.env.MONGO_USERNAME }:${ process.env.MONGO_PWD }@db` : 
+`mongodb://db`
+
+console.log(process.env) // to have environnement variables in logs
+
+MongoClient.connect(MongUrl, { useUnifiedTopology: true }, (err, client) =&gt; {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('CONNECTION DB OK!');
+    count = client.db('test').collection(&quot;count&quot;);
+  }
+});
+
+const app = express();
+
+app.get('/api/count', (req, res) =&gt; {
+  console.log('request url: ' + req.url);
+  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) =&gt; {
+    const value = doc.value;
+    res.status(200).json(value.count);
+  })
+});
+
+app.all('*', (req, res) =&gt; {
+  res.status(404).end();
+});
+
+app.listen(80);
+</code></pre>
+<p>In '.../fullstack/api' folder:</p>
+<pre><code class="language-console">touch .env
+</code></pre>
+<p>.../fullstack/api/.env:</p>
+<pre><code class="language-text">MONGO_USERNAME=paul
+MONGO_PWD=123
+</code></pre>
+<p>We don't want that secret informations to be copied in container:</p>
+<pre><code class="language-console">touch .dockerignore
+</code></pre>
+<p>.../fullstack/api/.dockerignore:</p>
+<pre><code class="language-text">.env
+</code></pre>
+<p>.../fullstack/docker-compose.prod.yml</p>
+<pre><code class="language-yaml">version: '3.8'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    env_file:
+      - ./api/.env
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+</code></pre>
+<p>Test API with (tanks to "console.log(process.env)" in ".../fullstack/api/src/index.js" we may observe environment variables):</p>
+<pre><code class="language-console">docker-compose -f docker-compose.prod.yml run api
+{
+  .
+  .
+  .
+  MONGO_USERNAME: 'paul',
+  .
+  .
+  MONGO_PWD: '123',
+  .
+  NODE_ENV: 'production',
+  .
+  .
+}
+</code></pre>
+<p>Hit 'Ctrl+c' to stop.</p>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
