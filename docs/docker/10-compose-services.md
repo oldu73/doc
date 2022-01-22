@@ -535,6 +535,174 @@ docker-compose -f docker-compose.dev.yml up
 
 ***
 
+## Set up production configuration
+
+Reset Docker environnemnt (if needed):
+
+```console
+docker system prune -a
+docker volume prune
+```
+
+### Client
+
+From folder '.../fullstack/client':
+
+```console
+touch Dockerfile.prod
+```
+
+.../fullstack/client/Dockerfile.prod
+
+```text
+FROM node:alpine as build
+WORKDIR /app
+COPY package.json .
+RUN npm install
+# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
+RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
+COPY . .
+RUN npm run build
+
+FROM nginx:latest
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+```
+
+! Be aware of **RUN** npm run build, NOT CMD!
+
+.../fullstack/docker-compose.prod.yml
+
+```yaml
+version: '3.8'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+```
+
+Start VS Code in '.../fullstack' folder with 'code .' command and then:
+
+```console
+docker-compose -f docker-compose.prod.yml run -p 80:80 client
+```
+
+Browse to [http://localhost/](http://localhost/) to validate React application is running.
+
+### API
+
+In '.../fullstack/api/src/index.js' notice mongodb connection URL with MONGO_USERNAME and MONGO_PWD credentials that comes from process (production) environnement:
+
+```javascript
+const express = require("express");
+
+const MongoClient = require('mongodb').MongoClient;
+
+let count;
+
+const MongUrl = process.env.NODE_ENV === 'production' ? 
+`mongodb://${ process.env.MONGO_USERNAME }:${ process.env.MONGO_PWD }@db` : 
+`mongodb://db`
+
+console.log(process.env) // to have environnement variables in logs
+
+MongoClient.connect(MongUrl, { useUnifiedTopology: true }, (err, client) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('CONNECTION DB OK!');
+    count = client.db('test').collection("count");
+  }
+});
+
+const app = express();
+
+app.get('/api/count', (req, res) => {
+  console.log('request url: ' + req.url);
+  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) => {
+    const value = doc.value;
+    res.status(200).json(value.count);
+  })
+});
+
+app.all('*', (req, res) => {
+  res.status(404).end();
+});
+
+app.listen(80);
+```
+
+In '.../fullstack/api' folder:
+
+```console
+touch .env
+```
+
+.../fullstack/api/.env:
+
+```text
+MONGO_USERNAME=paul
+MONGO_PWD=123
+```
+
+We don't want that secret informations to be copied in container:
+
+```console
+touch .dockerignore
+```
+
+.../fullstack/api/.dockerignore:
+
+```text
+.env
+```
+
+.../fullstack/docker-compose.prod.yml
+
+```yaml
+version: '3.8'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    env_file:
+      - ./api/.env
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+```
+
+Test API with (tanks to "console.log(process.env)" in ".../fullstack/api/src/index.js" we may observe environment variables):
+
+```console
+docker-compose -f docker-compose.prod.yml run api
+{
+  .
+  .
+  .
+  MONGO_USERNAME: 'paul',
+  .
+  .
+  MONGO_PWD: '123',
+  .
+  NODE_ENV: 'production',
+  .
+  .
+}
+```
+
+Hit 'Ctrl+c' to stop.
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
