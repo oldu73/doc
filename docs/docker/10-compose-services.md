@@ -406,6 +406,133 @@ Test application by broswsing to [http://localhost:3001/api/count](http://localh
 
 We may also observe that React is running by browsing to [http://localhost:3000/](http://localhost:3000/)
 
+Then 'Ctrl-c' to stop stack.
+
+***
+
+## Set up the NGINX reverse proxy
+
+From '.../fullstack/reverse-proxy' folder:
+
+```console
+mkdir conf
+touch conf/dev.conf
+touch Dockerfile.dev
+```
+
+.../fullstack/reverse-proxy/Dockerfile.dev:
+
+```text
+FROM nginx:latest
+COPY ./conf/dev.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+```
+
+.../fullstack/reverse-proxy/conf/dev.conf:
+
+```text
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://client:3000;
+    }
+
+    location /api {
+        proxy_pass http://api;
+    }
+
+    location /sockjs-node {
+        proxy_pass http://client:3000;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
+```
+
+No need to specify port for api because inside stack (network), not from a host point of view, it's listenning on default http port ('80').
+
+Among HTTP standards, by default some 'headers' called 'hop-by-hop' aren't passed by proxy to server and then avoid live reload to work.
+
+To fix this, the 'sockjs-node' is a needed technical part to make live reload works.
+
+.../fullstack/docker-compose.dev.yml:
+
+```yaml
+version: "3.8"
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - type: bind
+        source: ./client
+        target: /app
+      - type: volume
+        target: /app/node_modules
+    ports:
+      - 3000:3000
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./api/src
+        target: /app/src
+    ports:
+      - 3001:80
+  db:
+    image: mongo
+    volumes:
+      - type: volume
+        source: dbtest
+        target: /data/db
+  reverse-proxy:
+    build:
+      context: ./reverse-proxy
+      dockerfile: Dockerfile.dev
+    ports:
+      - 80:80
+    depends_on:
+      - api
+      - db
+volumes:
+  dbtest:
+```
+
+Test, everything is supposed to work:
+
+```console
+docker-compose -f docker-compose.dev.yml up --build
+```
+
+In a second terminal:
+
+```console
+docker-compose -f docker-compose.dev.yml ps
+NAME                        COMMAND                  SERVICE             STATUS              PORTS
+fullstack_api_1             "docker-entrypoint.s…"   api                 running             0.0.0.0:3001->80/tcp
+fullstack_client_1          "docker-entrypoint.s…"   client              running             0.0.0.0:3000->3000/tcp
+fullstack_db_1              "docker-entrypoint.s…"   db                  running             27017/tcp
+fullstack_reverse-proxy_1   "/docker-entrypoint.…"   reverse-proxy       running             0.0.0.0:80->80/tcp
+```
+
+We may obeserve then the 4 components composing our application are running.
+
+And test by browsing to [http://localhost/](http://localhost/), note that there's not need to specify port this time thanks to NGINX that do his job as a reverse proxy by distributing requests through our application by listening on default http port ('80').
+
+By refreshing the page, you also may observe counter increasing.
+
+To test live reload edit file '.../fullstack/client/src/App.js' and observe live changes in browser window (even without refreshing the page).
+
+We now have a full functionnal development stack that maybe up with only one command:
+
+```console
+docker-compose -f docker-compose.dev.yml up
+```
+
 ***
 
 ## Chapter y
