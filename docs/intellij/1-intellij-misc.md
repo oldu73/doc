@@ -1,4 +1,4 @@
-# Intellij
+# IntelliJ - 01 - Misc
 
 ***
 
