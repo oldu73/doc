@@ -11,8 +11,9 @@ nav:
         - 'Git - Misc': 'git/git.md'
     - ElasticSearch:
         - 'ElasticSearch - Misc': 'elasticsearch/elasticsearch.md'
-    - Intellij:
-        - 'Intellij - Misc': 'intellij/intellij.md'
+    - IntelliJ:
+        - 'IntelliJ - 01 - Misc': 'intellij/1-intellij-misc.md'
+        - 'IntelliJ - 02 - WSL': 'intellij/2-intellij-wsl.md'
     - Linux:
         - 'Linux - Misc': 'linux/linux.md'
     - Docker:
