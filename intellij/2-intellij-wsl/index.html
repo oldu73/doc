@@ -13,7 +13,7 @@
     
     
       
-        <title>Intellij - Misc - Doc</title>
+        <title>IntelliJ - 02 - WSL - Doc</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#intellij" class="md-skip">
+        <a href="#intellij-02-wsl" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Intellij - Misc
+              IntelliJ - 02 - WSL
             
           </span>
         </div>
@@ -347,16 +347,30 @@
       
       
         <label class="md-nav__link" for="__nav_5">
-          Intellij
+          IntelliJ
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Intellij" data-md-level="1">
+      <nav class="md-nav" aria-label="IntelliJ" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
-          Intellij
+          IntelliJ
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-intellij-misc/" class="md-nav__link">
+        IntelliJ - 01 - Misc
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -374,12 +388,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Intellij - Misc
+          IntelliJ - 02 - WSL
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Intellij - Misc
+        IntelliJ - 02 - WSL
       </a>
       
         
@@ -398,22 +412,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setup-project-in-wsl-folder" class="md-nav__link">
-    Setup project in WSL folder
+  <a href="#test-maven" class="md-nav__link">
+    Test Maven
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#service-window" class="md-nav__link">
-    Service window
+  <a href="#firewall-rules" class="md-nav__link">
+    Firewall rules
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#search-for-and-replace-with-rn" class="md-nav__link">
-    Search for ; and replace with ;\r\n
+  <a href="#crlf-issue" class="md-nav__link">
+    CRLF issue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intellij-recipe" class="md-nav__link">
+    IntelliJ recipe
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fix-intellij" class="md-nav__link">
+    Fix IntelliJ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fix-docker" class="md-nav__link">
+    Fix Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fix-logback" class="md-nav__link">
+    Fix Logback
   </a>
   
 </li>
@@ -840,22 +882,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setup-project-in-wsl-folder" class="md-nav__link">
-    Setup project in WSL folder
+  <a href="#test-maven" class="md-nav__link">
+    Test Maven
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#service-window" class="md-nav__link">
-    Service window
+  <a href="#firewall-rules" class="md-nav__link">
+    Firewall rules
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#search-for-and-replace-with-rn" class="md-nav__link">
-    Search for ; and replace with ;\r\n
+  <a href="#crlf-issue" class="md-nav__link">
+    CRLF issue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intellij-recipe" class="md-nav__link">
+    IntelliJ recipe
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fix-intellij" class="md-nav__link">
+    Fix IntelliJ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fix-docker" class="md-nav__link">
+    Fix Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fix-logback" class="md-nav__link">
+    Fix Logback
   </a>
   
 </li>
@@ -873,37 +943,58 @@
               
                 
 
-<h1 id="intellij">Intellij</h1>
+<h1 id="intellij-02-wsl">IntelliJ - 02 - WSL</h1>
+<p>IntelliJ integration with a project hosted in a WSL2 native folder (not /mnt/c)</p>
 <hr />
-<h2 id="setup-project-in-wsl-folder">Setup project in WSL folder</h2>
-<p>Fix EOL (LF vs CRLF) issue:</p>
-<ul>
-<li>git clone  </li>
-<li>select root project folder  </li>
-<li>menu File - File Properties - Line Separators - LF Unix  </li>
-<li>git rollback entire project to reset CRLF issue</li>
-</ul>
-<p><a href="https://www.jetbrains.com/help/idea/configuring-line-endings-and-line-separators.html">SRC</a></p>
-<p>OR</p>
-<p>Terminal in a new "native" WSL folder, clone and <a href="https://stackoverflow.com/questions/9976986/force-lf-eol-in-git-repo-and-working-copy">fix CRLF issue</a>:</p>
-<ul>
-<li>git clone ptoject_url  </li>
-<li>git config core.eol lf  </li>
-<li>git config core.autocrlf input</li>
-</ul>
+<h2 id="test-maven">Test Maven</h2>
+<p>To test that maven is correctly installed and running in Linux distribution.<br />
+Setup a new maven project with a simple 'hello' class to test debug/run.</p>
 <hr />
-<h2 id="service-window">Service window</h2>
-<p>For Docker connection, maybe not opened if comes from external project.</p>
-<p>To open it manually:</p>
-<pre><code class="language-text">View | Tool Windows | Services or Alt+8
+<h2 id="firewall-rules">Firewall rules</h2>
+<p>To allow IntelliJ to communicate with WSL.</p>
+<p>SRC: - <a href="https://www.jetbrains.com/help/idea/how-to-use-wsl-development-environment-in-product.html#debugging_system_settings">set IntelliJ rules to communicate with WSL</a></p>
+<p>PowerShell (admin mode):</p>
+<pre><code class="language-text">New-NetFirewallRule -DisplayName &quot;WSL&quot; -Direction Inbound  -InterfaceAlias &quot;vEthernet (WSL)&quot;  -Action Allow
+Get-NetFirewallRule | where DisplayName -ILike &quot;idea*.exe&quot; | Remove-NetFirewallRule
 </code></pre>
-<p><a href="https://www.jetbrains.com/help/idea/services-tool-window.html">SRC</a></p>
 <hr />
-<h2 id="search-for-and-replace-with-rn">Search for ; and replace with ;\r\n</h2>
-<p>For a file where each values are separated with ';' but need each values on a new
-line to compare files.</p>
-<p>replace ; enable regex by ;\r\n</p>
-<p>To revert, do it in Notepad++ with a record sequence</p>
+<h2 id="crlf-issue">CRLF issue</h2>
+<p>After cloning a git repository maybe all files are marked as modified due to CRLF miss understanding between Windows and Linux file system.</p>
+<p>SRC: - <a href="https://stackoverflow.com/questions/9976986/force-lf-eol-in-git-repo-and-working-copy">fix CRLF issue</a></p>
+<p>From a terminal in a native (not /mnt/c) WSL folder:</p>
+<pre><code class="language-console">git clone &lt;url&gt;
+git config core.eol lf
+git config core.autocrlf input
+</code></pre>
+<hr />
+<h2 id="intellij-recipe">IntelliJ recipe</h2>
+<p>At least release "IntelliJ IDEA 2021.3.1 (Community Edition)"</p>
+<p>Open existing project:</p>
+<pre><code class="language-text">- set project SDK with the one from WSL
+- invalidate cache and restart
+- set maven (settings search for maven) to Maven home: /usr/share/maven
+</code></pre>
+<p>Note: - original Maven setting for Windows = C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.3.1\plugins\maven\lib\maven3</p>
+<hr />
+<h2 id="fix-intellij">Fix IntelliJ</h2>
+<p>Fix IntelliJ to disable one wsl experimental feature.</p>
+<p>SRC: - <a href="https://youtrack.jetbrains.com/issue/IDEA-286059">fix IntelliJ</a></p>
+<pre><code class="language-text">- press Shift-Shift to open &quot;Search everywhere&quot;
+- enter &quot;Experimental features&quot; and select the action
+- in the dialog that appears, turn off wsl.fsd.content.loader
+- restart the IDE
+</code></pre>
+<hr />
+<h2 id="fix-docker">Fix Docker</h2>
+<p>For Docker Compose to prepare context.</p>
+<p>SRC: - <a href="https://stackoverflow.com/questions/68945027/wsl2-docker-compose-unable-to-prepare-context">fix Docker</a></p>
+<hr />
+<h2 id="fix-logback">Fix Logback</h2>
+<p>In case project fail to start due to Logback issue, "Failed to create parent directories" var log.</p>
+<p>Manually create needed log folder for project and set rights accordingly:</p>
+<pre><code class="language-console">mkdir /var/log/&lt;needed project folder name for log&gt;
+sudo chmod a+rwx /var/log/&lt;needed project folder name for log&gt;
+</code></pre>
 <hr />
 
               
@@ -918,7 +1009,7 @@ line to compare files.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../elasticsearch/elasticsearch/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ElasticSearch - Misc" rel="prev">
+        <a href="../1-intellij-misc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: IntelliJ - 01 - Misc" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -927,7 +1018,7 @@ line to compare files.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              ElasticSearch - Misc
+              IntelliJ - 01 - Misc
             </div>
           </div>
         </a>
