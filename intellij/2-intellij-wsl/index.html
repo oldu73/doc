@@ -971,8 +971,8 @@ git config core.autocrlf input
 <p>At least release "IntelliJ IDEA 2021.3.1 (Community Edition)"</p>
 <p>Open existing project:</p>
 <pre><code class="language-text">- set project SDK with the one from WSL
+- set Maven home (IDE settings, search for maven) to : &quot;\\wsl$\&lt;linux distribution&gt;\usr\share\maven&quot;
 - invalidate cache and restart
-- set maven (settings search for maven) to Maven home: /usr/share/maven
 </code></pre>
 <p>Note: - original Maven setting for Windows = C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.3.1\plugins\maven\lib\maven3</p>
 <hr />
@@ -993,7 +993,7 @@ git config core.autocrlf input
 <h2 id="fix-logback">Fix Logback</h2>
 <p>In case project fail to start due to Logback issue, "Failed to create parent directories" var log.</p>
 <p>Manually create needed log folder for project and set rights accordingly:</p>
-<pre><code class="language-console">mkdir /var/log/&lt;needed project folder name for log&gt;
+<pre><code class="language-console">sudo mkdir /var/log/&lt;needed project folder name for log&gt;
 sudo chmod a+rwx /var/log/&lt;needed project folder name for log&gt;
 </code></pre>
 <hr />
