@@ -50,8 +50,8 @@ Open existing project:
 
 ```text
 - set project SDK with the one from WSL
+- set Maven home (IDE settings, search for maven) to : "\\wsl$\<linux distribution>\usr\share\maven"
 - invalidate cache and restart
-- set maven (settings search for maven) to Maven home: /usr/share/maven
 ```
 
 Note: - original Maven setting for Windows = C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.3.1\plugins\maven\lib\maven3
@@ -90,7 +90,7 @@ In case project fail to start due to Logback issue, "Failed to create parent dir
 Manually create needed log folder for project and set rights accordingly:
 
 ```console
-mkdir /var/log/<needed project folder name for log>
+sudo mkdir /var/log/<needed project folder name for log>
 sudo chmod a+rwx /var/log/<needed project folder name for log>
 ```
 
