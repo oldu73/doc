@@ -701,24 +701,242 @@ docker-compose -f docker-compose.prod.yml run api
 
 Hit 'Ctrl+c' to stop.
 
+### DB
+
+Secure the database by providing root username and password through an environment file.
+
+From folder '.../fullstack/db':
+
+```console
+touch .env
+```
+
+Get credential synthax from 'Environment Variables' section in [Mongo image on Docker Hub](https://hub.docker.com/_/mongo).
+
+In file '.../fullstack/db/.env' add credentials:
+
+```text
+MONGO_INITDB_ROOT_USERNAME=admin
+MONGO_INITDB_ROOT_PASSWORD=password
+```
+
+Provide environment file (for root user credentials) and external volume for db service in docker compose configuration file.
+
+Set up db service in '.../fullstack/docker-compose.prod.yml' file:
+
+```yaml
+version: '3.8'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    env_file:
+      - ./api/.env
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+  db:
+    image: mongo
+    volumes:
+      - type: volume
+        source: dbprod
+        target: /data/db
+    env_file:
+      - ./db/.env
+    restart: unless-stopped
+
+volumes:
+  dbprod:
+    external: true
+```
+
+Create volume 'dbprod':
+
+```console
+docker volume create dbprod
+```
+
+Run 'db' container in detached mode from '.../fullstack' folder:
+
+```console
+docker-compose -f docker-compose.prod.yml run -d db
+```
+
+Initialize database by connecting to it with root user credentials.
+
+```console
+docker container exec -it fullstack_db_run_e9fa9328e2b8 sh
+mongo
+use admin
+db.auth({ user: 'admin', pwd: 'password' })
+```
+
+Create the needed user for API access, the one described in '.env' envrionement file that reside in '.../fullstack/api' folder.
+
+```console
+db.createUser({ user: 'paul', pwd: '123', roles: [{ role: 'readWrite', db: 'test' }] })
+```
+
+Setup collection for 'count'.
+
+```console
+use test
+db.count.insertOne({ count: 0 })
+exit
+exit
+docker stop fullstack_db_run_e9fa9328e2b8
+```
+
+Now db is ready and API may communicate with it.
+
+To test, lauch complete stack with port 80 open for 'api' service (only for testing, because after, in this production context, this is the reverse proxy role to communicate on port 80).
+
+.../fullstack/docker-compose.prod.yml:
+
+```yaml
+version: '3.8'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    env_file:
+      - ./api/.env
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+    ports:
+      - 80:80
+  db:
+    image: mongo
+    volumes:
+      - type: volume
+        source: dbprod
+        target: /data/db
+    env_file:
+      - ./db/.env
+    restart: unless-stopped
+
+volumes:
+  dbprod:
+    external: true
+```
+
+Launch full stack:
+
+```console
+docker-compose -f docker-compose.prod.yml up (--build)
+```
+
+Browse to [localhost/api/count](http://localhost/api/count) and refresh page to observe counter incrementing.
+
+Hit 'Ctrl+c' to stop.
+
+Remove port 80 for 'api' service in 'docker-compose.prod.yml' file.
+
+### Reverse proxy
+
+Production configuration file in '.../fullstack/reverse-proxy/conf' folder:
+
+```console
+touch prod.conf
+```
+
+Production Docker file in '.../fullstack/reverse-proxy' folder:
+
+```console
+touch Dockerfile.prod
+```
+
+.../fullstack/reverse-proxy/Dockerfile.prod:
+
+```text
+FROM nginx:latest
+COPY ./conf/prod.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+```
+
+.../fullstack/reverse-proxy/conf/prod.conf:
+
+```text
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://client;
+    }
+    
+    location /api {
+        proxy_pass http://api;
+    }
+}
+```
+
+Add 'reverse-proxy' service in '.../fullstack/docker-compose.prod.yml' file:
+
+```yaml
+version: '3.8'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    env_file:
+      - ./api/.env
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+    depends_on:
+      - db
+  db:
+    image: mongo
+    volumes:
+      - type: volume
+        source: dbprod
+        target: /data/db
+    env_file:
+      - ./db/.env
+    restart: unless-stopped
+  reverse-proxy:
+    build:
+      context: ./reverse-proxy
+      dockerfile: Dockerfile.prod
+    ports:
+      - 80:80
+    restart: unless-stopped
+    depends_on:
+      - api
+      - db
+      - client
+
+volumes:
+  dbprod:
+    external: true
+```
+
+Test, from '.../fullstack' folder:
+
+```console
+docker-compose -f docker-compose.prod.yml down -v
+docker-compose -f docker-compose.prod.yml up --build
+```
+
+Browse to [localhost](http://localhost) and refresh page to observe counter incrementing.
+
 ***
-
-## Chapter y
-
-### Sub chapter y.1
-
-...
-
-***
-
-NGINX
-
-React
-
-Node.js
-
-webpack
-
-Docker Compose
-
-MongoDB

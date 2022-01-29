@@ -11,3 +11,15 @@ Docker Compose - Production
 ...
 
 ***
+
+NGINX
+
+React
+
+Node.js
+
+webpack
+
+Docker Compose
+
+MongoDB
