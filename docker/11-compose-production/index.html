@@ -648,6 +648,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#project-components" class="md-nav__link">
+    Project components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-architecture" class="md-nav__link">
+    Project architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -853,6 +867,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#project-components" class="md-nav__link">
+    Project components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-architecture" class="md-nav__link">
+    Project architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -887,6 +915,48 @@
 
 <h1 id="compose-11-production">Compose - 11 - Production</h1>
 <p>Docker Compose - Production</p>
+<p>Almost same components as the ones presented/used in preceding chapter <a href="../10-compose-services/">Docker Compose - Services</a>.</p>
+<p>This time all those component are going to be set to work in production, on a real server.</p>
+<h2 id="project-components">Project components</h2>
+<p>Introduction to project components:</p>
+<ul>
+<li><a href="https://certbot.eff.org/">Certbot</a>, to get your site on https:// (encrypted communications) with TLS certificate (little lock before address in Internet browser).  </li>
+<li>NGINX (Http request and reverse proxy).  </li>
+<li>React (Application), could be Vue.js or Angular, would be the same.  </li>
+<li><a href="https://pm2.keymetrics.io/">PM2</a>, process manager (load balancer) for Node.js.  </li>
+<li>Node.js (API), to get better performance it's advised to get one running instance of Node.js by CPU core (on host server).  </li>
+<li>
+<p>MongoDB (database), only one instance here (scale is out of scope here).</p>
+</li>
+<li>
+<p>GitLab</p>
+</li>
+<li>...</li>
+</ul>
+<h2 id="project-architecture">Project architecture</h2>
+<pre><code class="language-text">
+
+                                         React (build)
+                                        /
+                                       /
+                                      NGINX
+                                     /
+                                    /
+                                   !=/api
+                                  /
+--Certbot (ssl/https) -- NGINX --/
+                                 \
+                                  \
+                                   =/api
+                                    \
+                                     \
+
+</code></pre>
+<p>NGINX as reverse proxy (on big application may also be used as a load balancer) follow requests:</p>
+<ul>
+<li>!= /api -&gt; another NGINX that handle React production build output ('build' folder).  </li>
+<li>== /api -&gt; Node.js -&gt; MongoDB.</li>
+</ul>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
@@ -898,6 +968,8 @@
 <p>webpack</p>
 <p>Docker Compose</p>
 <p>MongoDB</p>
+<p>Certbot</p>
+<p>PM2</p>
 
               
             </article>
