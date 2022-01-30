@@ -935,9 +935,7 @@
 </ul>
 <h2 id="project-architecture">Project architecture</h2>
 <p>Below is a detailed schema of proposed architecture, obviously, everything in dedicated Docker containers:</p>
-<pre><code class="language-text">
-
-                          React (build)
+<pre><code class="language-text">                          React (build)
                          /
                         /
                        NGINX
@@ -947,7 +945,7 @@
                    /
 --Certbot--NGINX--/     
                   \
-                   =/api
+                   ==/api
                     \
                      \
                       PM2
@@ -963,11 +961,6 @@
                              |     MongoDB       |
                              ---------------------
 </code></pre>
-<p>NGINX as reverse proxy (on big application may also be used as a load balancer) follow requests:</p>
-<ul>
-<li>!= /api -&gt; another NGINX that handle React production build output ('build' folder).  </li>
-<li>== /api -&gt; Node.js -&gt; MongoDB.</li>
-</ul>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
