@@ -1123,14 +1123,13 @@ process.addListener('SIGINT', () =&gt; {
 <p>In production we also use LTS (Long-term support) version of alpine node image.</p>
 <p>In '.../fullstack/api/Dockerfile' file:</p>
 <pre><code class="language-text">FROM node:lts-alpine
-WORKDIR /app
-COPY package.json .
+WORKDIR &quot;/app&quot;
+COPY ./package.json ./
 RUN npm install
-# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
-RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
+RUN npm install pm2 -g
 COPY . .
+CMD [&quot;pm2-runtime&quot;, &quot;ecosystem.config.js&quot;]
 EXPOSE 80
-CMD [&quot;npm&quot;, &quot;start&quot;]
 </code></pre>
 <p>In a terminal (from '.../fullstack' folder), to tests if it's running well.</p>
 <pre><code class="language-console">docker-compose -f docker-compose.dev.yml build api
