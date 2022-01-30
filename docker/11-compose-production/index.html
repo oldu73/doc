@@ -934,23 +934,35 @@
 <li>...</li>
 </ul>
 <h2 id="project-architecture">Project architecture</h2>
+<p>Below is a detailed schema of proposed architecture:</p>
 <pre><code class="language-text">
 
-                                         React (build)
-                                        /
-                                       /
-                                      NGINX
-                                     /
-                                    /
-                                   !=/api
-                                  /
---Certbot (ssl/https) -- NGINX --/
-                                 \
-                                  \
-                                   =/api
-                                    \
-                                     \
-
+                          React (build)
+                         /
+                        /
+                       NGINX
+                      /
+                     /
+                    !=/api
+                   /
+--Certbot--NGINX--/     
+                  \
+                   =/api
+                    \
+                     \
+                      PM2
+                       \
+                        ---------------
+                                       |
+                             ---------------------
+                             |         |         |
+                         Node.js | Node.js | Node.js | ...
+                             ↑         ↑         ↑
+                             |         |         |
+                             ↓         ↓         ↓
+                             ---------------------
+                             |     MongoDB       |
+                             ---------------------
 </code></pre>
 <p>NGINX as reverse proxy (on big application may also be used as a load balancer) follow requests:</p>
 <ul>
