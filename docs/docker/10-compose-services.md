@@ -4,7 +4,7 @@ Docker Compose - Services
 
 Use of Docker Compose with many services.
 
-In this chapter we setup a complete development/production environnement close to what we may found in real life projects, sclable and so on.
+In this chapter we setup a complete development/production environnement close to what we may found in real life projects, scalable and so on.
 
 ***
 
@@ -17,7 +17,7 @@ Introduction to project architecture:
 - Node.js (API).  
 - MongoDB (database).
 
-### Developpement
+### Development
 
 NGINX as reverse proxy follow requests:
 
@@ -38,13 +38,13 @@ mkdir fullstack
 cd fullstack
 ```
 
-React applicatiion:
+React application:
 
 ```console
 mkdir client
 ```
 
-Node.js applicatiion:
+Node.js application:
 
 ```console
 mkdir api
@@ -177,7 +177,7 @@ function App() {
 export default App;
 ```
 
-In Docker Compose logs we may observe succesfull compilation:
+In Docker Compose logs we may observe successful compilation:
 
 ```console
 .
@@ -382,7 +382,7 @@ From '.../fullstack' folder:
 docker-compose -f docker-compose.dev.yml run db
 ```
 
-Now it should be launch and we connect on it in a second treminal:
+Now it should be launch and we connect on it in a second terminal:
 
 ```console
 docker container exec -it fullstack_db_run_c97d6cfbd602 sh
@@ -402,7 +402,7 @@ We may test application with (from '.../fullstack' folder):
 docker-compose -f docker-compose.dev.yml up
 ```
 
-Test application by broswsing to [http://localhost:3001/api/count](http://localhost:3001/api/count)
+Test application by browsing to [http://localhost:3001/api/count](http://localhost:3001/api/count)
 
 We may also observe that React is running by browsing to [http://localhost:3000/](http://localhost:3000/)
 
@@ -450,7 +450,7 @@ server {
 }
 ```
 
-No need to specify port for api because inside stack (network), not from a host point of view, it's listenning on default http port ('80').
+No need to specify port for api because inside stack (network), not from a host point of view, it's listening on default http port ('80').
 
 Among HTTP standards, by default some 'headers' called 'hop-by-hop' aren't passed by proxy to server and then avoid live reload to work.
 
@@ -519,7 +519,7 @@ fullstack_db_1              "docker-entrypoint.s…"   db                  runni
 fullstack_reverse-proxy_1   "/docker-entrypoint.…"   reverse-proxy       running             0.0.0.0:80->80/tcp
 ```
 
-We may obeserve then the 4 components composing our application are running.
+We may observe then the 4 components composing our application are running.
 
 And test by browsing to [http://localhost/](http://localhost/), note that there's not need to specify port this time thanks to NGINX that do his job as a reverse proxy by distributing requests through our application by listening on default http port ('80').
 
@@ -527,7 +527,7 @@ By refreshing the page, you also may observe counter increasing.
 
 To test live reload edit file '.../fullstack/client/src/App.js' and observe live changes in browser window (even without refreshing the page).
 
-We now have a full functionnal development stack that maybe up with only one command:
+We now have a full functional development stack that maybe up with only one command:
 
 ```console
 docker-compose -f docker-compose.dev.yml up
@@ -537,7 +537,7 @@ docker-compose -f docker-compose.dev.yml up
 
 ## Set up production configuration
 
-Reset Docker environnemnt (if needed):
+Reset Docker environnement (if needed):
 
 ```console
 docker system prune -a
@@ -647,7 +647,7 @@ MONGO_USERNAME=paul
 MONGO_PWD=123
 ```
 
-We don't want that secret informations to be copied in container:
+We don't want that secret information to be copied in container:
 
 ```console
 touch .dockerignore
@@ -711,7 +711,7 @@ From folder '.../fullstack/db':
 touch .env
 ```
 
-Get credential synthax from 'Environment Variables' section in [Mongo image on Docker Hub](https://hub.docker.com/_/mongo).
+Get credential syntax from 'Environment Variables' section in [Mongo image on Docker Hub](https://hub.docker.com/_/mongo).
 
 In file '.../fullstack/db/.env' add credentials:
 
@@ -777,7 +777,7 @@ use admin
 db.auth({ user: 'admin', pwd: 'password' })
 ```
 
-Create the needed user for API access, the one described in '.env' envrionement file that reside in '.../fullstack/api' folder.
+Create the needed user for API access, the one described in '.env' environnement file that reside in '.../fullstack/api' folder.
 
 ```console
 db.createUser({ user: 'paul', pwd: '123', roles: [{ role: 'readWrite', db: 'test' }] })
@@ -795,7 +795,7 @@ docker stop fullstack_db_run_e9fa9328e2b8
 
 Now db is ready and API may communicate with it.
 
-To test, lauch complete stack with port 80 open for 'api' service (only for testing, because after, in this production context, this is the reverse proxy role to communicate on port 80).
+To test, launch complete stack with port 80 open for 'api' service (only for testing, because after, in this production context, this is the reverse proxy role to communicate on port 80).
 
 .../fullstack/docker-compose.prod.yml:
 
