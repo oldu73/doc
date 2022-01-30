@@ -934,7 +934,7 @@
 <li>...</li>
 </ul>
 <h2 id="project-architecture">Project architecture</h2>
-<p>Below is a detailed schema of proposed architecture:</p>
+<p>Below is a detailed schema of proposed architecture, obviously, everything in dedicated Docker containers:</p>
 <pre><code class="language-text">
 
                           React (build)
@@ -958,7 +958,6 @@
                              |         |         |
                          Node.js | Node.js | Node.js | ...
                              ↑         ↑         ↑
-                             |         |         |
                              ↓         ↓         ↓
                              ---------------------
                              |     MongoDB       |
