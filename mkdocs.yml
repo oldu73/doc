@@ -35,7 +35,7 @@ nav:
     - MongoDB:
         - 'MongoDB - Misc': 'mongodb/mongodb.md'
     - Redis:
-        - 'Redis - Misc': 'redis/1-redis-misc.md'
+        - 'Redis - 01 - Misc': 'redis/1-redis-misc.md'
 
 # $ mkdocs build
 # $ mkdocs gh-deploy
