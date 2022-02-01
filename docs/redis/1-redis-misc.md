@@ -48,6 +48,14 @@ DEL mykey
 keys *
 ```
 
+### Monitor
+
+[Source](https://redis.io/commands/MONITOR)
+
+```console
+redis-cli monitor
+```
+
 ### Quit
 
 ```console
