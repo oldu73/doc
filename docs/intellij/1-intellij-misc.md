@@ -17,7 +17,7 @@ OR
 
 Terminal in a new "native" WSL folder, clone and [fix CRLF issue](https://stackoverflow.com/questions/9976986/force-lf-eol-in-git-repo-and-working-copy):
 
-- git clone ptoject_url  
+- git clone project_url  
 - git config core.eol lf  
 - git config core.autocrlf input
 
@@ -45,5 +45,17 @@ line to compare files.
 replace ; enable regex by ;\r\n
 
 To revert, do it in Notepad++ with a record sequence
+
+***
+
+## Caret Cloning
+
+SRC: - [IntelliJ IDEA Tips & Tricks: Multiple Cursors](https://www.vojtechruzicka.com/intellij-idea-tips-tricks-multiple-cursors/#:~:text=This%20feature%20can%20be%20toggled,%2B%20%E2%8C%98%20%2B%208%20on%20Mac.)
+
+```text
+Alt + Shift + Insert to switch to column mode
+
+Then Shift + Up/Down Arrow(s)
+```
 
 ***
