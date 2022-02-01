@@ -386,3 +386,15 @@ $ cat test.txt | sort | uniq -c | sort -r
 ```
 
 ***
+
+## All file containing a pattern
+
+List all file that contain a pattern in current folder:
+
+Be aware to filtered out subfolder by precising some file name pattern (e.g. '\*.log', not only '\*')
+
+```console
+grep searchedString *.log
+```
+
+***
