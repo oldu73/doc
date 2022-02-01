@@ -34,6 +34,8 @@ nav:
         - 'Windows - Misc': 'windows/windows.md'
     - MongoDB:
         - 'MongoDB - Misc': 'mongodb/mongodb.md'
+    - Redis:
+        - 'Redis - Misc': 'redis/1-redis-misc.md'
 
 # $ mkdocs build
 # $ mkdocs gh-deploy
