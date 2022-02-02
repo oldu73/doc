@@ -3,6 +3,7 @@
 ***
 
 [Agile Guide](https://www.wrike.com/agile-guide/)
+
 [Méthode agile scrum, exemple](https://blog.myagilepartner.fr/index.php/2019/10/07/methode-agile-scrum-exemple/)
 
 ## Definitions
