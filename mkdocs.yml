@@ -36,6 +36,8 @@ nav:
         - 'MongoDB - Misc': 'mongodb/mongodb.md'
     - Redis:
         - 'Redis - 01 - Misc': 'redis/1-redis-misc.md'
+    - Agile Methodology:
+        - 'Agile Methodology - 01 - Misc': 'agilemethodology/1-agilemethodology-misc.md'
 
 # $ mkdocs build
 # $ mkdocs gh-deploy
