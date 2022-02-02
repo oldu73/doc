@@ -38,6 +38,8 @@ nav:
         - 'Redis - 01 - Misc': 'redis/1-redis-misc.md'
     - Agile Methodology:
         - 'Agile Methodology - 01 - Misc': 'agilemethodology/1-agilemethodology-misc.md'
+    - Kafka:
+        - 'Kafka - 01 - Misc': 'kafka/1-kafka-misc.md'
 
 # $ mkdocs build
 # $ mkdocs gh-deploy
