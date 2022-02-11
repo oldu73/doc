@@ -216,6 +216,293 @@ Still experiment some red error messages in logs after SIGINT received by the pr
 
 ***
 
+## PM2
+
+One Node.js instance by CPU available thread.
+
+Cluster module.
+
+In fullstack/api folder, rename Dockerfile as Dockerfile.dev and create new Dockerfile.prod for production:
+
+```console
+mv Dockerfile Dockerfile.dev
+touch Dockerfile.prod
+```
+
+Edit docker-compose.dev.yml accordingly to use Dockerfile.dev for api service:
+
+```yaml
+version: "3.8"
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - type: bind
+        source: ./client
+        target: /app
+      - type: volume
+        target: /app/node_modules
+    ports:
+      - 3000:3000
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    volumes:
+      - type: bind
+        source: ./api/src
+        target: /app/src
+    ports:
+      - 3001:80
+  db:
+    image: mongo
+    volumes:
+      - type: volume
+        source: dbtest
+        target: /data/db
+  reverse-proxy:
+    build:
+      context: ./reverse-proxy
+      dockerfile: Dockerfile.dev
+    ports:
+      - 80:80
+    depends_on:
+      - api
+      - db
+volumes:
+  dbtest:
+```
+
+Dockerfile.prod:
+
+```text
+FROM node:lts-alpine
+WORKDIR /app
+COPY package.json .
+RUN npm install
+RUN npm i pm2 -g
+# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
+RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
+COPY . .
+EXPOSE 80
+CMD [ "npm", "run", "prod" ]
+```
+
+package.json:
+
+```json
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js",
+    "prod": "pm2-runtime ecosystem.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongodb": "^4.3.0",
+    "nodemon": "^2.0.15"
+  }
+}
+
+Still in fullstack/api folder create ecosystem.config.js file:
+
+```console
+touch ecosystem.config.js
+```
+
+ecosystem.config.js:
+
+```javascript
+module.exports = [
+    {
+        script: 'src/index.js',
+        name: 'api',
+        exec_mode: 'cluster',
+        instances: 'max'
+    }
+]
+```
+
+In fullstack folder, edit docker-compose.prod.yml accordingly (for now, db dependency of api service is commented):
+
+```yaml
+version: '3.8'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.prod
+    env_file:
+      - ./api/.env
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+    #depends_on:
+    #  - db
+  db:
+    image: mongo
+    volumes:
+      - type: volume
+        source: dbprod
+        target: /data/db
+    env_file:
+      - ./db/.env
+    restart: unless-stopped
+  reverse-proxy:
+    build:
+      context: ./reverse-proxy
+      dockerfile: Dockerfile.prod
+    ports:
+      - 80:80
+    restart: unless-stopped
+    depends_on:
+      - api
+      - db
+      - client
+
+volumes:
+  dbprod:
+    external: true
+```
+
+JS application is also commented, for now, to avoid issue trying db connection, .../fullstack/api/src/index.js:
+
+```javascript
+console.log('Hi, PM2!');
+
+/*
+const express = require("express");
+
+const MongoClient = require('mongodb').MongoClient;
+
+let clientDb;
+
+let count;
+
+const MongUrl = process.env.NODE_ENV === 'production' ? 
+`mongodb://${ process.env.MONGO_USERNAME }:${ process.env.MONGO_PWD }@db` : 
+`mongodb://db`
+
+console.log(process.env) // to have environnement variables in logs
+
+MongoClient.connect(MongUrl, { useUnifiedTopology: true }, (err, client) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('CONNECTION DB OK!');
+    clientDb = client;
+    count = client.db('test').collection("count");
+  }
+});
+
+const app = express();
+
+app.get('/api/count', (req, res) => {
+  console.log('request url: ' + req.url);
+  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) => {
+    const value = doc.value;
+    res.status(200).json(value.count);
+  })
+});
+
+app.all('*', (req, res) => {
+  res.status(404).end();
+});
+
+const server = app.listen(80);
+
+process.addListener('SIGINT', () => {
+  console.log('Received interruption signal!');
+
+  server.close((err) => {
+    if (err) {
+      process.exit(1);
+    } else {
+      if (clientDb) {
+        clientDb.close((err) => process.exit(err ? 1 : 0));
+      } else {
+        process.exit(0);
+      }
+    }
+  })
+})
+*/
+```
+
+In fullstack folder, build, run production api (maybe dbprod volume is missing, so recreate it):
+
+```console
+docker volume create dbprod
+docker-compose -f docker-compose.prod.yml build api
+docker-compose -f docker-compose.prod.yml run api
+
+> api@1.0.0 prod
+> pm2-runtime ecosystem.config.js
+
+2022-02-11T16:19:52: PM2 log: Launching in no daemon mode
+2022-02-11T16:19:52: PM2 log: App [api:0] starting in -cluster mode-
+2022-02-11T16:19:52: PM2 log: App [api:0] online
+2022-02-11T16:19:52: PM2 log: App [api:1] starting in -cluster mode-
+2022-02-11T16:19:52: PM2 log: App [api:1] online
+2022-02-11T16:19:52: PM2 log: App [api:2] starting in -cluster mode-
+2022-02-11T16:19:52: PM2 log: App [api:2] online
+2022-02-11T16:19:52: PM2 log: App [api:3] starting in -cluster mode-
+2022-02-11T16:19:52: PM2 log: App [api:3] online
+2022-02-11T16:19:52: PM2 log: App [api:4] starting in -cluster mode-
+2022-02-11T16:19:52: PM2 log: App [api:4] online
+2022-02-11T16:19:52: PM2 log: App [api:5] starting in -cluster mode-
+Hi, PM2!
+Hi, PM2!
+2022-02-11T16:19:52: PM2 log: App [api:5] online
+2022-02-11T16:19:52: PM2 log: App [api:6] starting in -cluster mode-
+Hi, PM2!
+2022-02-11T16:19:52: PM2 log: App [api:6] online
+2022-02-11T16:19:52: PM2 log: App [api:7] starting in -cluster mode-
+Hi, PM2!
+2022-02-11T16:19:52: PM2 log: App [api:7] online
+Hi, PM2!
+Hi, PM2!
+Hi, PM2!
+Hi, PM2!
+```
+
+Have a look to [Quick Start page of PM2](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/)
+
+In a second terminal exec a container sh session and list PM2 processes:
+
+```console
+docker exec -it fullstack_api_run_d97c9b2061d1 sh
+pm2 ls
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 0  │ api                │ cluster  │ 0    │ online    │ 0%       │ 44.4mb   │
+│ 1  │ api                │ cluster  │ 0    │ online    │ 0%       │ 45.0mb   │
+│ 2  │ api                │ cluster  │ 0    │ online    │ 0%       │ 44.9mb   │
+│ 3  │ api                │ cluster  │ 0    │ online    │ 0%       │ 44.5mb   │
+│ 4  │ api                │ cluster  │ 0    │ online    │ 0%       │ 45.0mb   │
+│ 5  │ api                │ cluster  │ 0    │ online    │ 0%       │ 45.2mb   │
+│ 6  │ api                │ cluster  │ 0    │ online    │ 0%       │ 45.3mb   │
+│ 7  │ api                │ cluster  │ 0    │ online    │ 0%       │ 44.7mb   │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+```
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
