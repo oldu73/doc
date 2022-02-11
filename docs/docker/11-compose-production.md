@@ -218,7 +218,7 @@ Still experiment some red error messages in logs after SIGINT received by the pr
 
 ## PM2
 
-One Node.js instance by CPU available thread.
+One Node.js instance by CPU available threads.
 
 Cluster module.
 
