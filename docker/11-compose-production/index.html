@@ -696,6 +696,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gitlab-placing-the-project-on" class="md-nav__link">
+    Gitlab, Placing the project on
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -1088,6 +1095,13 @@
         <li class="md-nav__item">
   <a href="#production-environment" class="md-nav__link">
     Production Environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gitlab-placing-the-project-on" class="md-nav__link">
+    Gitlab, Placing the project on
   </a>
   
 </li>
@@ -1639,6 +1653,34 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 PWD=/app
 MONGO_PWD=123
 NODE_ENV=production
+</code></pre>
+<hr />
+<h2 id="gitlab-placing-the-project-on">Gitlab, Placing the project on</h2>
+<p>Browse to <a href="https://gitlab.com/">Gitlab</a> and create a new blank project called 'docker-production'.</p>
+<p>Edit Gitlab user settings to add public SSH Key from local machine, '~/.ssh' folder:</p>
+<pre><code class="language-console">cat id_rsa.pub
+</code></pre>
+<p>Copy-paste result to "Add key" form entry in Gitlab.</p>
+<p>Back to 'docker-production' project's page, click on clone button and select "Open in your IDE - Visual Studio Code (SSH)" and choose a new local folder (e.g. .../docker-production).</p>
+<p>From new VS Code project (docker-production) root folder, in a terminal, copy all files from '.../fullstack' folder:</p>
+<pre><code class="language-console">cp -R ~/.../.../fullstack/* .
+</code></pre>
+<p>In .../docker-production folder:</p>
+<pre><code class="language-console">touch .gitignore
+</code></pre>
+<p>And following entries to .../docker-production/.gitignore file:</p>
+<pre><code class="language-text">.env
+**/node_modules
+</code></pre>
+<p>By clicking on 'Source Control' plugin in VS Code, observe that there's no '.env' file in the list.</p>
+<p>Finalize git folder initialization:</p>
+<pre><code class="language-console">git config user.email &quot;john@doe.com&quot;
+git config user.name &quot;John Doe&quot;
+</code></pre>
+<p>First commit:</p>
+<pre><code class="language-console">git add .
+git commit -m &quot;first commit&quot;
+git push
 </code></pre>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
