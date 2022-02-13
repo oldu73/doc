@@ -1566,7 +1566,8 @@ pm2 ls
 </code></pre>
 <hr />
 <h2 id="production-environment">Production Environment</h2>
-<p>Remove references to env file for api and db service, values contained in this file (admin and user credentials) will be entered at server start.</p>
+<p>Remove references to .env file for api and db service.</p>
+<p>Values contained in those files (admin and user credentials) will be entered at server start.</p>
 <p>.../fullstack/docker-compose.prod.yml:</p>
 <pre><code class="language-yaml">version: '3.8'
 services:
