@@ -503,6 +503,102 @@ pm2 ls
 
 ***
 
+## Production Environment
+
+Remove references to .env file for api and db service.
+
+Values contained in those files (admin and user credentials) will be entered at server start.
+
+.../fullstack/docker-compose.prod.yml:
+
+```yaml
+version: '3.8'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.prod
+    environment:
+      - MONGO_USERNAME
+      - MONGO_PWD
+      - NODE_ENV=production
+    restart: unless-stopped
+    #depends_on:
+    #  - db
+  db:
+    image: mongo
+    volumes:
+      - type: volume
+        source: dbprod
+        target: /data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    restart: unless-stopped
+  reverse-proxy:
+    build:
+      context: ./reverse-proxy
+      dockerfile: Dockerfile.prod
+    ports:
+      - 80:80
+    restart: unless-stopped
+    depends_on:
+      - api
+      - db
+      - client
+
+volumes:
+  dbprod:
+    external: true
+```
+
+Add a .dockerignore file in .../fullstack/api folder:
+
+```console
+touch .dockerignore
+```
+
+Add in .dockerignore file '.env' entry to not copy it in container.
+
+../fullstack/api/.dockerignore:
+
+```text
+.env
+```
+
+Test api with passing credentials at run from command line, from .../fullstack folder:
+
+```console
+MONGO_PWD=123 MONGO_USERNAME=paul docker-compose -f docker-compose.prod.yml run api
+```
+
+In a second terminal:
+
+```console
+docker exec -it fullstack_api_run_16a3f881761e sh
+
+env
+
+NODE_VERSION=16.14.0
+HOSTNAME=65742617b66a
+YARN_VERSION=1.22.17
+SHLVL=1
+HOME=/root
+TERM=xterm
+MONGO_USERNAME=paul
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/app
+MONGO_PWD=123
+NODE_ENV=production
+```
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
