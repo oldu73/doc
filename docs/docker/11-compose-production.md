@@ -599,6 +599,58 @@ NODE_ENV=production
 
 ***
 
+## Gitlab, Placing the project on
+
+Browse to [Gitlab](https://gitlab.com/) and create a new blank project called 'docker-production'.
+
+Edit Gitlab user settings to add public SSH Key from local machine, '~/.ssh' folder:
+
+```console
+cat id_rsa.pub
+```
+
+Copy-paste result to "Add key" form entry in Gitlab.
+
+Back to 'docker-production' project's page, click on clone button and select "Open in your IDE - Visual Studio Code (SSH)" and choose a new local folder (e.g. .../docker-production).
+
+From new VS Code project (docker-production) root folder, in a terminal, copy all files from '.../fullstack' folder:
+
+```console
+cp -R ~/.../.../fullstack/* .
+```
+
+In .../docker-production folder:
+
+```console
+touch .gitignore
+```
+
+And following entries to .../docker-production/.gitignore file:
+
+```text
+.env
+**/node_modules
+```
+
+By clicking on 'Source Control' plugin in VS Code, observe that there's no '.env' file in the list.
+
+Finalize git folder initialization:
+
+```console
+git config user.email "john@doe.com"
+git config user.name "John Doe"
+```
+
+First commit:
+
+```console
+git add .
+git commit -m "first commit"
+git push
+```
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
