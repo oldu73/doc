@@ -689,6 +689,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#production-environment" class="md-nav__link">
+    Production Environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -1074,6 +1081,13 @@
         <li class="md-nav__item">
   <a href="#pm2" class="md-nav__link">
     PM2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-environment" class="md-nav__link">
+    Production Environment
   </a>
   
 </li>
@@ -1549,6 +1563,81 @@ pm2 ls
 │ 6  │ api                │ cluster  │ 0    │ online    │ 0%       │ 45.3mb   │
 │ 7  │ api                │ cluster  │ 0    │ online    │ 0%       │ 44.7mb   │
 └────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+</code></pre>
+<hr />
+<h2 id="production-environment">Production Environment</h2>
+<p>Remove references to env file for api and db service, values contained in this file (admin and user credentials) will be entered at server start.</p>
+<p>.../fullstack/docker-compose.prod.yml:</p>
+<pre><code class="language-yaml">version: '3.8'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.prod
+    environment:
+      - MONGO_USERNAME
+      - MONGO_PWD
+      - NODE_ENV=production
+    restart: unless-stopped
+    #depends_on:
+    #  - db
+  db:
+    image: mongo
+    volumes:
+      - type: volume
+        source: dbprod
+        target: /data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    restart: unless-stopped
+  reverse-proxy:
+    build:
+      context: ./reverse-proxy
+      dockerfile: Dockerfile.prod
+    ports:
+      - 80:80
+    restart: unless-stopped
+    depends_on:
+      - api
+      - db
+      - client
+
+volumes:
+  dbprod:
+    external: true
+</code></pre>
+<p>Add a .dockerignore file in .../fullstack/api folder:</p>
+<pre><code class="language-console">touch .dockerignore
+</code></pre>
+<p>Add in .dockerignore file '.env' entry to not copy it in container.</p>
+<p>../fullstack/api/.dockerignore:</p>
+<pre><code class="language-text">.env
+</code></pre>
+<p>Test api with passing credentials at run from command line, from .../fullstack folder:</p>
+<pre><code class="language-console">MONGO_PWD=123 MONGO_USERNAME=paul docker-compose -f docker-compose.prod.yml run api
+</code></pre>
+<p>In a second terminal:</p>
+<pre><code class="language-console">docker exec -it fullstack_api_run_16a3f881761e sh
+
+env
+
+NODE_VERSION=16.14.0
+HOSTNAME=65742617b66a
+YARN_VERSION=1.22.17
+SHLVL=1
+HOME=/root
+TERM=xterm
+MONGO_USERNAME=paul
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/app
+MONGO_PWD=123
+NODE_ENV=production
 </code></pre>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
