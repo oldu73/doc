@@ -15,7 +15,7 @@ nav:
         - 'IntelliJ - 01 - Misc': 'intellij/1-intellij-misc.md'
         - 'IntelliJ - 02 - WSL': 'intellij/2-intellij-wsl.md'
     - Linux:
-        - 'Linux - Misc': 'linux/linux.md'
+        - 'Linux - 01 - Misc': 'linux/1-linux-misc.md'
     - Docker:
         - 'Docker - 01 - Misc': 'docker/1-docker-misc.md'
         - 'Docker - 02 - Basis': 'docker/2-docker-basis.md'

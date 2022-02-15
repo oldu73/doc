@@ -1,32 +1,38 @@
-# Linux
+# Linux - 01 - Misc
 
 ***
 
 ## Curl
 
 ```console
-$ curl -i localhost
-$ curl -sb -H "Accept: application/json" "http://localhost" | json_pp
+curl -i localhost
+curl -sb -H "Accept: application/json" "http://localhost" | json_pp
 ```
 
 ***
 
 ## Compress Decompress
+
 ### Compress (czf)
+
 \- c compress, -z zip, -f file
+
 ```console
-$ tar -czf /targetfolder/targetfile.tar.gz /sourcefolder
+tar -czf /targetfolder/targetfile.tar.gz /sourcefolder
 ```
 
 ### Decompress (xzf)
+
 \- x extract, -z zip, -f file
+
 ```console
-$ tar -xzf targetfile.tar.gz
+tar -xzf targetfile.tar.gz
 ```
 
 or gzip, -k to keep original, -d to decompress:
+
 ```console
-$ gzip -kd file.gz
+gzip -kd file.gz
 ```
 
 ***
@@ -34,18 +40,21 @@ $ gzip -kd file.gz
 ## Package
 
 ### List installed
-```
-$ apt list --installed
+
+```console
+apt list --installed
 ```
 
 ### Info
-```
-$ apt-cache show packagename
+
+```console
+apt-cache show packagename
 ```
 
 ### Remove
-```
-$ sudo apt-get --purge autoremove packagename
+
+```console
+sudo apt-get --purge autoremove packagename
 ```
 
 ***
@@ -53,8 +62,9 @@ $ sudo apt-get --purge autoremove packagename
 ## Switch user to root
 
 Switch current user to root
-```
-$ sudo su -
+
+```console
+sudo su -
 ```
 
 ***
@@ -66,8 +76,8 @@ $ sudo su -
 
 Stick ne lines just after option
 
-```
-$ grep -B2 -A3 pattern infile.txt
+```console
+grep -B2 -A3 pattern infile.txt
 ```
 
 ***
@@ -76,8 +86,8 @@ $ grep -B2 -A3 pattern infile.txt
 
 Copy specific files from a text list of files
 
-```
-$ rsync -a sourcefolder --files-from=list.txt destinationfolder
+```console
+rsync -a sourcefolder --files-from=list.txt destinationfolder
 ```
 
 ***
@@ -85,7 +95,8 @@ $ rsync -a sourcefolder --files-from=list.txt destinationfolder
 ## Get data between two patterns
 
 In error.log
-```
+
+```text
 .
 .
 05:59:30.024 [nioEventLoopGroup-3-5] ERROR c.l.d.c.ConnectorServerHandlerTCP.parseAndSendMessageTeltonika(177) - class java.util.concurrent.ExecutionException FOR RAW DATA : 0000017d55747fb00003f5380c1be045ce00000000000000000804ef005000c8024503034230fc430f8d440000011007e0fca600 WITH STACKTRACE : {}
@@ -94,8 +105,15 @@ In error.log
 ```
 
 Get data between "DATA : " and " WITH" (hex raw data)
+
+```console
+cat error.log | sed -nr 's/.*DATA : (.*) WITH.*/\1/p'
 ```
-$ cat error.log | sed -nr 's/.*DATA : (.*) WITH.*/\1/p'
+
+or
+
+```console
+cat file | grep -o -P '(?<=left).*(?=right)'
 ```
 
 ***
@@ -104,18 +122,18 @@ $ cat error.log | sed -nr 's/.*DATA : (.*) WITH.*/\1/p'
 
 -f option, maybe -oF options also
 
-```
-$ grep -f patterns_file *.log
+```console
+grep -f patterns_file *.log
 
 or
 
-$ grep -oFf patterns.txt *.log
+grep -oFf patterns.txt *.log
 ```
 
 If result's count's not OK, check by not found pattern (-h option to hide filename in output)
 
-```
-$ grep -hoFf patterns.txt *.log | grep -vFf - patterns.txt
+```console
+grep -hoFf patterns.txt *.log | grep -vFf - patterns.txt
 ```
 
 ***
@@ -125,8 +143,8 @@ $ grep -hoFf patterns.txt *.log | grep -vFf - patterns.txt
 For list of file in current folder, do operation.
 Here we want to have file name, cat content and separate result with a new line
 
-```
-$ ll *.txt
+```console
+ll *.txt
 
 1.txt
 2.txt
@@ -135,7 +153,7 @@ $ ll *.txt
 5.txt
 
 
-$ for f in {2..4}.txt; do echo "$f"; cat "$f"; printf "\n"; done
+for f in {2..4}.txt; do echo "$f"; cat "$f"; printf "\n"; done
 
 2.txt
 jkl
@@ -157,8 +175,8 @@ hij
 
 ## Search between timestamp
 
-```
-$ sed -rne '/10:50/,/11:05/ p' file
+```console
+sed -rne '/10:50/,/11:05/ p' file
 ```
 
 Put existing time range in file (10:50 - 11:05).
@@ -167,8 +185,8 @@ Put existing time range in file (10:50 - 11:05).
 
 ## Highlight search result
 
-```
-$ grep --color=always -z pattern file | less -R
+```console
+grep --color=always -z pattern file | less -R
 ```
 
 always to transmit color through pipe  
@@ -179,7 +197,8 @@ always to transmit color through pipe
 
 ## Delete history
 
-```
+```console
+history
 1003  25-04-2016 17:54:52 echo "Command 1"
 1004  25-04-2016 17:54:54 echo "Command 2"
 1005  25-04-2016 17:54:57 echo "Command 3"
@@ -192,8 +211,8 @@ always to transmit color through pipe
 1012  25-04-2016 17:55:14 echo "Command 10"
 ```
 
-```
-$ for h in $(seq 1006 1008); do history -d 1006; done
+```console
+for h in $(seq 1006 1008); do history -d 1006; done
 ```
 
 ***
@@ -202,57 +221,69 @@ $ for h in $(seq 1006 1008); do history -d 1006; done
 
 How to know where reside a program, e.g. ls?
 
-```
-$ which ls
+```console
+which ls
 /usr/bin/ls
 
-$ env
+env
 
-$ env | grep PATH
+env | grep PATH
 ```
 
 ***
 
-## Difference
+## Difference of cmd output
 
-Difference of 2 commands output
-
-```
-$ diff <(ls test1) <(ls test2)
+```console
+diff <(ls test1) <(ls test2)
 ```
 
 Difference of sorted lists
 
-```
-$ sort ok.txt > okSorted.txt
+```console
+sort ok.txt > okSorted.txt
 
-$ sort all.txt > allSorted.txt
+sort all.txt > allSorted.txt
 
-$ diff --new-line-format="" --unchanged-line-format=""  allSorted.txt okSorted.txt
+diff --new-line-format="" --unchanged-line-format=""  allSorted.txt okSorted.txt
 ```
 
 ***
 
-## Mean of a column
+## Column
+
+### Min
+
+```console
+cat ... | grep ... | sort -n -r | tail -n10
+```
+
+### Max
+
+```console
+cat ... | grep ... | sort -n -r | head -n10
+```
+
+### Average
 
 test.txt (warning on empty lines (maybe at the end))
-```
+
+```text
 1
 3
 7
 ```
 
-```
-$ cat test.txt | awk '{ total += $1 } END { print total/NR }'
+```console
+cat test.txt | awk '{ total += $1 } END { print total/NR }'
 3.66667
 ```
 
-***
-
-## Median of a column
+### Median
 
 test.txt (warning on empty lines (maybe at the end))
-```
+
+```text
 1 
 3 
 7 
@@ -263,7 +294,8 @@ test.txt (warning on empty lines (maybe at the end))
 ```
 
 median.awk
-```
+
+```text
 #/usr/bin/env awk
 {
     count[NR] = $1;
@@ -277,17 +309,17 @@ END {
 }
 ```
 
-```
-$ cat test.txt | awk -f median.awk
+```console
+cat test.txt | awk -f median.awk
 11
 ```
 
 Check equal number of values below and above median
 
-```
-$ cat test.txt | awk '{if($1 < 11) print $1}' | wc -l
+```console
+cat test.txt | awk '{if($1 < 11) print $1}' | wc -l
 3
-$ cat test.txt | awk '{if($1 > 11) print $1}' | wc -l
+cat test.txt | awk '{if($1 > 11) print $1}' | wc -l
 3
 ```
 
@@ -298,14 +330,15 @@ $ cat test.txt | awk '{if($1 > 11) print $1}' | wc -l
 Get nth column from file with field separated values
 
 test.txt
-```
+
+```text
 column 1 row 1;column 2 row 1;column 3 row 1
 column 1 row 2;column 2 row 2;column 3 row 2
 column 1 row 3;column 2 row 3;column 3 row 3
 ```
 
-```
-$ cat test.txt | awk -F ';' '{print $2}'
+```console
+cat test.txt | awk -F ';' '{print $2}'
 column 2 row 1
 column 2 row 2
 column 2 row 3
@@ -313,8 +346,8 @@ column 2 row 3
 
 ### Conditional
 
-```
-$ cat test.txt | awk -F ';' '{if($1 == "column 1 row 2") print $2}'
+```console
+cat test.txt | awk -F ';' '{if($1 == "column 1 row 2") print $2}'
 column 2 row 2
 ```
 
@@ -323,8 +356,9 @@ column 2 row 2
 ## List files
 
 Sorted by sizes and human readable
-```
-$ ll -S -h
+
+```console
+ll -S -h
 ```
 
 ***
@@ -334,7 +368,8 @@ $ ll -S -h
 Uniq values in a file, sorted and counted (first sort is mandatory)
 
 test.txt
-```
+
+```text
 1
 71
 3
@@ -348,8 +383,8 @@ test.txt
 22
 ```
 
-```
-$ cat test.txt | sort | uniq -c
+```console
+cat test.txt | sort | uniq -c
       2 1
       1 11
       3 22
@@ -361,8 +396,8 @@ $ cat test.txt | sort | uniq -c
 
 sorted output
 
-```
-$ cat test.txt | sort | uniq -c | sort
+```console
+cat test.txt | sort | uniq -c | sort
       1 11
       1 3
       1 45
@@ -374,8 +409,8 @@ $ cat test.txt | sort | uniq -c | sort
 
 revert sorted output
 
-```
-$ cat test.txt | sort | uniq -c | sort -r
+```console
+cat test.txt | sort | uniq -c | sort -r
       3 22
       2 71
       2 1
