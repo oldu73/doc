@@ -433,3 +433,13 @@ grep searchedString *.log
 ```
 
 ***
+
+## Grep end of line after match
+
+[SRC](https://stackoverflow.com/questions/20567667/grep-command-to-add-end-line-after-every-match)
+
+```console
+cat error.log | grep -A 1 -B 1 --group-separator==============\\r\\n "not valid"
+```
+
+***
