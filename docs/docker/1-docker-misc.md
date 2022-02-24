@@ -2,8 +2,6 @@
 
 ***
 
-$ = console
-
-$c = console inside container
+...
 
 ***
