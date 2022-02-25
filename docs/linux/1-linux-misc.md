@@ -443,3 +443,13 @@ cat error.log | grep -A 1 -B 1 --group-separator==============\\r\\n "not valid"
 ```
 
 ***
+
+## Empty file
+
+Empty File Content by Redirecting to Null:
+
+```console
+> access.log
+```
+
+***
