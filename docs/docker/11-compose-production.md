@@ -735,6 +735,168 @@ In DNS Zone, edit type "A" entry with your remote server IP address.
 
 ***
 
+## TLS Certificate
+
+Let's Encrypt is a certification authority that allow to get free X509 certificate for using TLS protocol.
+
+They develop ACME protocol to automate certificates management.
+
+Certbot is official client from Let's Encrypt using ACME protocol in an automated manner.
+
+### Certbot Install
+
+Connect to remote server through SSH, then:
+
+```console
+sudo snap install certbot --classic
+or
+sudo apt install certbot
+```
+
+Create certificate with certbot, "domain" should exactly match your root URL (with and/or without "www"):
+
+```console
+sudo certbot certonly -d DOMAIN1 -d DOMAIN2 -d DOMAIN3
+```
+
+Select 'standalone' option, port 80 should be available.
+Follow instructions to create a letsencrypt account.
+
+Now, certificates should be available in folder '/etc/letsencrypt/live/DOMAIN_NAME'.
+
+To use TLS certificate edit compose file as follow by opening port 443 for HTTP and HTTP2 for reverse proxy service, docker-compose.prod.yml:
+
+```yaml
+version: "3.8"
+services: 
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.prod
+    environment: 
+      - MONGO_USERNAME
+      - MONGO_PWD
+      - NODE_ENV=production
+    restart: unless-stopped
+    depends_on: 
+      - db
+  db:
+    image: mongo
+    volumes: 
+      - type: volume
+        source: dbprod
+        target: /data/db
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    restart: unless-stopped
+  reverse-proxy:
+    build:
+      context: ./reverse-proxy
+      dockerfile: Dockerfile.prod
+    ports: 
+      - 80:80
+      - 443:443
+    restart: unless-stopped
+    depends_on: 
+      - api
+      - db
+      - client
+volumes:
+  dbprod:
+    external: true
+```
+
+Edit reverse-proxy/conf/prod.conf to use HTTP2 with nginx:
+
+```text
+server {
+    listen 80;
+    return 301 https://sandbox-dyma.ovh$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    ssl_certificate /etc/letsencrypt/live/www.sandbox-dyma.ovh/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.sandbox-dyma.ovh/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/www.sandbox-dyma.ovh/chain.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+
+    location / {
+        proxy_pass http://client;
+    }
+
+    location /api {
+        proxy_pass http://api;
+    }
+}
+```
+
+We force the redirection of requests on port 80 (HTTP requests) on port 443 (HTTPS / HTTP2).
+
+For the virtual server listening on port 443, we use the certificates created to be able to use HTTP2 (which uses TLS).
+
+To allow reverse proxy to access TLS certificate, create a **bind mount** with modifying docker-compose.prod.yml file as follow:
+
+```yaml
+version: "3.8"
+services: 
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.prod
+    environment: 
+      - MONGO_USERNAME
+      - MONGO_PWD
+      - NODE_ENV=production
+    restart: unless-stopped
+    depends_on: 
+      - db
+  db:
+    image: mongo
+    volumes: 
+      - type: volume
+        source: dbprod
+        target: /data/db
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    restart: unless-stopped
+  reverse-proxy:
+    build:
+      context: ./reverse-proxy
+      dockerfile: Dockerfile.prod
+    ports: 
+      - 80:80
+      - 443:443
+    volumes: 
+      - type: bind
+        source: /etc/letsencrypt
+        target: /etc/letsencrypt
+    restart: unless-stopped
+    depends_on: 
+      - api
+      - db
+      - client
+volumes:
+  dbprod:
+    external: true
+```
+
+We simply mount the /etc/letsencrypt folder which contains our letsencrypt certificates.
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
