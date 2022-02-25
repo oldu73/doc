@@ -703,6 +703,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#vps" class="md-nav__link">
+    VPS
+  </a>
+  
+    <nav class="md-nav" aria-label="VPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secure-configuration-of-ssh-on-the-server" class="md-nav__link">
+    Secure configuration of SSH on the server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-name" class="md-nav__link">
+    Domain name
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -1103,6 +1130,33 @@
   <a href="#gitlab-placing-the-project-on" class="md-nav__link">
     Gitlab, Placing the project on
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vps" class="md-nav__link">
+    VPS
+  </a>
+  
+    <nav class="md-nav" aria-label="VPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secure-configuration-of-ssh-on-the-server" class="md-nav__link">
+    Secure configuration of SSH on the server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-name" class="md-nav__link">
+    Domain name
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1682,6 +1736,52 @@ git config user.name &quot;John Doe&quot;
 git commit -m &quot;first commit&quot;
 git push
 </code></pre>
+<hr />
+<h2 id="vps">VPS</h2>
+<p>Setup a Virtual Private Server on <a href="https://www.ovhcloud.com/fr">OVHcloud</a> or on a Raspberry.</p>
+<p>Connect to remote server through SSH:</p>
+<pre><code class="language-console">ssh user@host
+</code></pre>
+<p>Create a new user and add it to sudo group and switch to newly created user:</p>
+<pre><code class="language-console">adduser jean
+usermod -aG sudo jean
+su jean -
+</code></pre>
+<p>Back to host machine, set it up to easily connect to remote through SSH:</p>
+<pre><code class="language-console">nano ~/.ssh/config
+</code></pre>
+<p>config:</p>
+<pre><code class="language-text">Host dockerprod
+    Hostname &lt;ip address&gt;
+    User jean
+    Port 22
+</code></pre>
+<p>Add ssh key to remote server to connect to it without the need to enter the password:</p>
+<pre><code class="language-console">ssh-copy-id jean@&lt;remote server ip address&gt;
+</code></pre>
+<p>Now simply connect to remote server with:</p>
+<pre><code class="language-console">ssh dockerprod
+</code></pre>
+<h3 id="secure-configuration-of-ssh-on-the-server">Secure configuration of SSH on the server</h3>
+<p>Connected on remote server through SSH, edit SSH demon configuration for minimal safety:</p>
+<pre><code class="language-console">sudo nano /etc/ssh/sshd_config
+</code></pre>
+<p>Edit entries in sshd_config file as follow:</p>
+<pre><code class="language-text">PasswordAuthentication no
+X11Forwarding no
+PermitRootLogin no
+Protocol 2
+</code></pre>
+<p>Reload SSH demon:</p>
+<pre><code class="language-console">systemctl reload sshd
+</code></pre>
+<p>Now the only way to connect on remote server through SSH is with your own computer with the created user.</p>
+<p>Finally change permission on home folder for more safety:</p>
+<pre><code class="language-console">sudo chmod 700 ~
+</code></pre>
+<h3 id="domain-name">Domain name</h3>
+<p>Order a domain name.</p>
+<p>In DNS Zone, edit type "A" entry with your remote server IP address.</p>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
