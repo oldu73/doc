@@ -483,9 +483,60 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Docker - 01 - Misc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Docker - 01 - Misc
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#maven-java" class="md-nav__link">
+    Maven, Java
+  </a>
+  
+    <nav class="md-nav" aria-label="Maven, Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project" class="md-nav__link">
+    Project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-hotswap" class="md-nav__link">
+    Debug, HotSwap
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -946,6 +997,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#maven-java" class="md-nav__link">
+    Maven, Java
+  </a>
+  
+    <nav class="md-nav" aria-label="Maven, Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project" class="md-nav__link">
+    Project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-hotswap" class="md-nav__link">
+    Debug, HotSwap
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -959,7 +1045,56 @@
 
 <h1 id="docker-01-misc">Docker - 01 - Misc</h1>
 <hr />
-<p>...</p>
+<h2 id="maven-java">Maven, Java</h2>
+<p>Mainly for Maven projects but maybe easily adapted for standard Java project.</p>
+<h3 id="project">Project</h3>
+<p>From IntelliJ Java (Maven) project to a container hosted on a Raspberry.</p>
+<p>Deployment process:</p>
+<pre><code class="language-text">(IntelliJ)
+maven &lt;project&gt; package
+Dockerfile-arm64v8 build image
+(terminal)
+docker login
+docker push oldu73/msc:&lt;project&gt;_arm64v8_latest
+(raspberry)
+maybe stop/remove previous existing &lt;project&gt; container instance
+docker login
+sudo docker pull oldu73/msc:&lt;project&gt;_arm64v8_latest
+sudo docker run -d -p &lt;port&gt;:&lt;port&gt; --name &lt;container_name&gt; oldu73/msc:&lt;project&gt;_arm64v8_latest
+sudo docker container ps -a
+sudo docker exec -it &lt;container_name&gt; sh
+(container)
+tail -1000f /var/log/&lt;file&gt;.log
+</code></pre>
+<p>Dockerfile-arm64v8:</p>
+<pre><code class="language-text">FROM arm64v8/openjdk:8-oraclelinux7
+COPY ./target/project.jar /tmp
+WORKDIR /tmp
+EXPOSE &lt;port&gt;
+ENTRYPOINT [&quot;java&quot;, &quot;-jar&quot;, &quot;project.jar&quot;]
+</code></pre>
+<h3 id="debug-hotswap">Debug, HotSwap</h3>
+<pre><code class="language-text">(IntelliJ)
+maven &lt;project&gt; package
+Dockerfile run image // bind port 8080
+</code></pre>
+<p>Dockerfile:</p>
+<pre><code class="language-text">FROM openjdk:8
+COPY ./target/&lt;project&gt;.jar /tmp
+WORKDIR /tmp
+EXPOSE 8080
+ENTRYPOINT [&quot;java&quot;, &quot;-jar&quot;, &quot;-agentlib:jdwp=transport=dt_socket,address=8080,server=y,suspend=n&quot;, &quot;&lt;project&gt;.jar&quot;]
+</code></pre>
+<p>IntelliJ, Remote JVM Debug, configuration:</p>
+<pre><code class="language-text">Debugger mode: Attach to remote JVM
+Transport: Socket
+Host: localhost
+Port: 8080
+Command line arguments for remote JVM: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8080
+</code></pre>
+<p>Run IntelliJ remote debug configuration.</p>
+<p>Modify code, set breakpoint and then reload changed class.</p>
+<p>By adding some system out you may observe live changes in container log console.</p>
 <hr />
 
               
