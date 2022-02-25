@@ -651,6 +651,90 @@ git push
 
 ***
 
+## VPS
+
+Setup a Virtual Private Server on [OVHcloud](https://www.ovhcloud.com/fr) or on a Raspberry.
+
+Connect to remote server through SSH:
+
+```console
+ssh user@host
+```
+
+Create a new user and add it to sudo group and switch to newly created user:
+
+```console
+adduser jean
+usermod -aG sudo jean
+su jean -
+```
+
+Back to host machine, set it up to easily connect to remote through SSH:
+
+```console
+nano ~/.ssh/config
+```
+
+config:
+
+```text
+Host dockerprod
+    Hostname <ip address>
+    User jean
+    Port 22
+```
+
+Add ssh key to remote server to connect to it without the need to enter the password:
+
+```console
+ssh-copy-id jean@<remote server ip address>
+```
+
+Now simply connect to remote server with:
+
+```console
+ssh dockerprod
+```
+
+### Secure configuration of SSH on the server
+
+Connected on remote server through SSH, edit SSH demon configuration for minimal safety:
+
+```console
+sudo nano /etc/ssh/sshd_config
+```
+
+Edit entries in sshd_config file as follow:
+
+```text
+PasswordAuthentication no
+X11Forwarding no
+PermitRootLogin no
+Protocol 2
+```
+
+Reload SSH demon:
+
+```console
+systemctl reload sshd
+```
+
+Now the only way to connect on remote server through SSH is with your own computer with the created user.
+
+Finally change permission on home folder for more safety:
+
+```console
+sudo chmod 700 ~
+```
+
+### Domain name
+
+Order a domain name.
+
+In DNS Zone, edit type "A" entry with your remote server IP address.
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
