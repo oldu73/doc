@@ -897,6 +897,112 @@ We simply mount the /etc/letsencrypt folder which contains our letsencrypt certi
 
 ***
 
+## Launch production
+
+From local machine.
+
+Git add/commit/push all changes:
+
+```console
+git add *
+git commit -m "prod ready"
+git push origin
+```
+
+### Clone from server
+
+Connect to your server through SSH.
+
+Get link (https) to clone from GitLab repository.
+
+Copy paste link to terminal in your server:
+
+```console
+git clone https://gitlab.com/...
+```
+
+### Docker installation
+
+On Ubuntu server simply type:
+
+```console
+sudo snap install docker
+```
+
+Check installation:
+
+```console
+sudo docker
+```
+
+### DB setup
+
+On server, create volume:
+
+```console
+sudo docker volume create dbprod
+```
+
+Initialize db service:
+
+```console
+sudo MONGO_INITDB_ROOT_PASSWORD=password MONGO_INITDB_ROOT_USERNAME=root docker-compose -f docker-compose.prod.yml run -d db
+```
+
+Specify user admin root credential, this user is allowed to everything.
+
+Connect to MongoDB client in container:
+
+```console
+sudo docker-compose exec -it db mongo
+```
+
+Authenticate in console:
+
+```console
+use admin
+db.auth({user: 'root', pwd: 'password'})
+```
+
+Return '1', means it's OK.
+
+Create user used to connect from API to DB:
+
+```console
+db.createUser({user: 'jean', pwd: '123', roles:[{role: 'readWrite', db: 'test'}]})
+```
+
+Initialize collection in test db:
+
+```console
+use test
+db.count.insertOne({count: 0});
+```
+
+DB is now ready and we may quit:
+
+```console
+sudo docker-compose -f docker-compose.prod.yml down
+```
+
+### Launch application
+
+We just have to launch our application:
+
+```console
+sudo MONGO_USERNAME=jean MONGO_PWD=123 docker-compose -f docker-compose.prod.yml up -d --build
+```
+
+We check that everything is well launched:
+
+```console
+sudo docker-compose -f docker-compose.prod.yml logs -f
+```
+
+You can also access the URL in an Internet browser to test the entire application.
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
