@@ -921,6 +921,8 @@ Copy paste link to terminal in your server:
 git clone https://gitlab.com/...
 ```
 
+Maybe clone PROD project to /root (sudo -i) instead of /home/paul, for cron certbot renew certificate and also ease docker command (no need to sudo each time).
+
 ### Docker installation
 
 On Ubuntu server simply type:
@@ -1013,6 +1015,8 @@ In this chapter we show you how to automate renewal through a cron job.
 
 The pre/post hook are there to free port 80, needed by certbot to renew certificate.
 
+"Manual" with *--force-renewal* option to check:
+
 ```console
 sudo certbot --standalone renew --force-renewal --pre-hook "/snap/bin/docker-compose -f ~/docker-production/docker-compose.prod.yml stop reverseproxy" --post-hook "/snap/bin/docker-compose -f ~/docker-production/docker-compose.prod.yml restart reverseproxy"
 ```
@@ -1043,26 +1047,38 @@ You can also find the project code on [Github](https://github.com/dymafr/docker-
 
 ***
 
-## Chapter y
+## Quick Reference
 
-### Sub chapter y.1
+### PM2 commands
 
-...
+[PM2 metrics](https://id.keymetrics.io/api/oauth/login):
+
+```console
+pm2 ls
+pm2 monit
+pm2 monitor // start
+pm2 unmonitor api // stop
+```
+
+### MongoDB commands
+
+Free online monitoring, from MongoDB console:
+
+```console
+// enable
+db.enableFreeMonitoring()
+// disable
+db.disableFreeMonitoring()
+```
+
+List collection:
+
+```console
+mongo
+show dbs
+use test // db
+show collections
+db.count.find()
+```
 
 ***
-
-NGINX
-
-React
-
-Node.js
-
-webpack
-
-Docker Compose
-
-MongoDB
-
-Certbot
-
-PM2
