@@ -1003,6 +1003,43 @@ You can also access the URL in an Internet browser to test the entire applicatio
 
 ***
 
+## TLS Certificate, automatic renewal
+
+A letsencrypt certificate is valid 90 days.
+
+In this chapter we show you how to automate renewal through a cron job.
+
+### Test renewal command
+
+The pre/post hook are there to free port 80, needed by certbot to renew certificate.
+
+```console
+sudo certbot --standalone renew --force-renewal --pre-hook "/snap/bin/docker-compose -f ~/docker-production/docker-compose.prod.yml stop reverseproxy" --post-hook "/snap/bin/docker-compose -f ~/docker-production/docker-compose.prod.yml restart reverseproxy"
+```
+
+This command should be adapted to your "/docker-production" folder and check where is installed Docker Compose with 'which docker-compose'.
+
+### Add cron task
+
+We add cron task:
+
+```console
+crontab -e
+```
+
+Add:
+
+```text
+0 0 * * * certbot --standalone renew --pre-hook "/snap/bin/docker-compose -f ~/docker-production/docker-compose.prod.yml stop reverseproxy" --post-hook "/snap/bin/docker-compose -f ~/docker-production/docker-compose.prod.yml restart reverseproxy"
+```
+
+We save and we leave the editor: the certificate will be renewed at the right time by certbot automatically. You will have a downtime of a few seconds one day per month approximately every 3 months.
+
+Example code
+You can also find the project code on [Github](https://github.com/dymafr/docker-chapitre11-server-prod).
+
+***
+
 ## Chapter y
 
 ### Sub chapter y.1
