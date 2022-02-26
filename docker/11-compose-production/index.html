@@ -825,16 +825,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-y" class="md-nav__link">
-    Chapter y
+  <a href="#quick-reference" class="md-nav__link">
+    Quick Reference
   </a>
   
-    <nav class="md-nav" aria-label="Chapter y">
+    <nav class="md-nav" aria-label="Quick Reference">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
+  <a href="#pm2-commands" class="md-nav__link">
+    PM2 commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-commands" class="md-nav__link">
+    MongoDB commands
   </a>
   
 </li>
@@ -1351,16 +1358,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-y" class="md-nav__link">
-    Chapter y
+  <a href="#quick-reference" class="md-nav__link">
+    Quick Reference
   </a>
   
-    <nav class="md-nav" aria-label="Chapter y">
+    <nav class="md-nav" aria-label="Quick Reference">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sub-chapter-y1" class="md-nav__link">
-    Sub chapter y.1
+  <a href="#pm2-commands" class="md-nav__link">
+    PM2 commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-commands" class="md-nav__link">
+    MongoDB commands
   </a>
   
 </li>
@@ -2122,6 +2136,7 @@ git push origin
 <p>Copy paste link to terminal in your server:</p>
 <pre><code class="language-console">git clone https://gitlab.com/...
 </code></pre>
+<p>Maybe clone PROD project to /root (sudo -i) instead of /home/paul, for cron certbot renew certificate and also ease docker command (no need to sudo each time).</p>
 <h3 id="docker-installation">Docker installation</h3>
 <p>On Ubuntu server simply type:</p>
 <pre><code class="language-console">sudo snap install docker
@@ -2169,6 +2184,7 @@ db.count.insertOne({count: 0});
 <p>In this chapter we show you how to automate renewal through a cron job.</p>
 <h3 id="test-renewal-command">Test renewal command</h3>
 <p>The pre/post hook are there to free port 80, needed by certbot to renew certificate.</p>
+<p>"Manual" with <em>--force-renewal</em> option to check:</p>
 <pre><code class="language-console">sudo certbot --standalone renew --force-renewal --pre-hook &quot;/snap/bin/docker-compose -f ~/docker-production/docker-compose.prod.yml stop reverseproxy&quot; --post-hook &quot;/snap/bin/docker-compose -f ~/docker-production/docker-compose.prod.yml restart reverseproxy&quot;
 </code></pre>
 <p>This command should be adapted to your "/docker-production" folder and check where is installed Docker Compose with 'which docker-compose'.</p>
@@ -2184,18 +2200,29 @@ db.count.insertOne({count: 0});
 <h2 id="example-code">Example code</h2>
 <p>You can also find the project code on <a href="https://github.com/dymafr/docker-chapitre11-server-prod">Github</a>.</p>
 <hr />
-<h2 id="chapter-y">Chapter y</h2>
-<h3 id="sub-chapter-y1">Sub chapter y.1</h3>
-<p>...</p>
+<h2 id="quick-reference">Quick Reference</h2>
+<h3 id="pm2-commands">PM2 commands</h3>
+<p><a href="https://id.keymetrics.io/api/oauth/login">PM2 metrics</a>:</p>
+<pre><code class="language-console">pm2 ls
+pm2 monit
+pm2 monitor // start
+pm2 unmonitor api // stop
+</code></pre>
+<h3 id="mongodb-commands">MongoDB commands</h3>
+<p>Free online monitoring, from MongoDB console:</p>
+<pre><code class="language-console">// enable
+db.enableFreeMonitoring()
+// disable
+db.disableFreeMonitoring()
+</code></pre>
+<p>List collection:</p>
+<pre><code class="language-console">mongo
+show dbs
+use test // db
+show collections
+db.count.find()
+</code></pre>
 <hr />
-<p>NGINX</p>
-<p>React</p>
-<p>Node.js</p>
-<p>webpack</p>
-<p>Docker Compose</p>
-<p>MongoDB</p>
-<p>Certbot</p>
-<p>PM2</p>
 
               
             </article>
