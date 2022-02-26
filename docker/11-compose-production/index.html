@@ -750,6 +750,47 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#launch-production" class="md-nav__link">
+    Launch production
+  </a>
+  
+    <nav class="md-nav" aria-label="Launch production">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-from-server" class="md-nav__link">
+    Clone from server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-installation" class="md-nav__link">
+    Docker installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db-setup" class="md-nav__link">
+    DB setup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launch-application" class="md-nav__link">
+    Launch application
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -1191,6 +1232,47 @@
           <li class="md-nav__item">
   <a href="#certbot-install" class="md-nav__link">
     Certbot Install
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-production" class="md-nav__link">
+    Launch production
+  </a>
+  
+    <nav class="md-nav" aria-label="Launch production">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-from-server" class="md-nav__link">
+    Clone from server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-installation" class="md-nav__link">
+    Docker installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db-setup" class="md-nav__link">
+    DB setup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launch-application" class="md-nav__link">
+    Launch application
   </a>
   
 </li>
@@ -1958,6 +2040,61 @@ volumes:
     external: true
 </code></pre>
 <p>We simply mount the /etc/letsencrypt folder which contains our letsencrypt certificates.</p>
+<hr />
+<h2 id="launch-production">Launch production</h2>
+<p>From local machine.</p>
+<p>Git add/commit/push all changes:</p>
+<pre><code class="language-console">git add *
+git commit -m &quot;prod ready&quot;
+git push origin
+</code></pre>
+<h3 id="clone-from-server">Clone from server</h3>
+<p>Connect to your server through SSH.</p>
+<p>Get link (https) to clone from GitLab repository.</p>
+<p>Copy paste link to terminal in your server:</p>
+<pre><code class="language-console">git clone https://gitlab.com/...
+</code></pre>
+<h3 id="docker-installation">Docker installation</h3>
+<p>On Ubuntu server simply type:</p>
+<pre><code class="language-console">sudo snap install docker
+</code></pre>
+<p>Check installation:</p>
+<pre><code class="language-console">sudo docker
+</code></pre>
+<h3 id="db-setup">DB setup</h3>
+<p>On server, create volume:</p>
+<pre><code class="language-console">sudo docker volume create dbprod
+</code></pre>
+<p>Initialize db service:</p>
+<pre><code class="language-console">sudo MONGO_INITDB_ROOT_PASSWORD=password MONGO_INITDB_ROOT_USERNAME=root docker-compose -f docker-compose.prod.yml run -d db
+</code></pre>
+<p>Specify user admin root credential, this user is allowed to everything.</p>
+<p>Connect to MongoDB client in container:</p>
+<pre><code class="language-console">sudo docker-compose exec -it db mongo
+</code></pre>
+<p>Authenticate in console:</p>
+<pre><code class="language-console">use admin
+db.auth({user: 'root', pwd: 'password'})
+</code></pre>
+<p>Return '1', means it's OK.</p>
+<p>Create user used to connect from API to DB:</p>
+<pre><code class="language-console">db.createUser({user: 'jean', pwd: '123', roles:[{role: 'readWrite', db: 'test'}]})
+</code></pre>
+<p>Initialize collection in test db:</p>
+<pre><code class="language-console">use test
+db.count.insertOne({count: 0});
+</code></pre>
+<p>DB is now ready and we may quit:</p>
+<pre><code class="language-console">sudo docker-compose -f docker-compose.prod.yml down
+</code></pre>
+<h3 id="launch-application">Launch application</h3>
+<p>We just have to launch our application:</p>
+<pre><code class="language-console">sudo MONGO_USERNAME=jean MONGO_PWD=123 docker-compose -f docker-compose.prod.yml up -d --build
+</code></pre>
+<p>We check that everything is well launched:</p>
+<pre><code class="language-console">sudo docker-compose -f docker-compose.prod.yml logs -f
+</code></pre>
+<p>You can also access the URL in an Internet browser to test the entire application.</p>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
