@@ -791,6 +791,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tls-certificate-automatic-renewal" class="md-nav__link">
+    TLS Certificate, automatic renewal
+  </a>
+  
+    <nav class="md-nav" aria-label="TLS Certificate, automatic renewal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-renewal-command" class="md-nav__link">
+    Test renewal command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-cron-task" class="md-nav__link">
+    Add cron task
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#chapter-y" class="md-nav__link">
     Chapter y
   </a>
@@ -1273,6 +1300,33 @@
           <li class="md-nav__item">
   <a href="#launch-application" class="md-nav__link">
     Launch application
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls-certificate-automatic-renewal" class="md-nav__link">
+    TLS Certificate, automatic renewal
+  </a>
+  
+    <nav class="md-nav" aria-label="TLS Certificate, automatic renewal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-renewal-command" class="md-nav__link">
+    Test renewal command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-cron-task" class="md-nav__link">
+    Add cron task
   </a>
   
 </li>
@@ -2095,6 +2149,25 @@ db.count.insertOne({count: 0});
 <pre><code class="language-console">sudo docker-compose -f docker-compose.prod.yml logs -f
 </code></pre>
 <p>You can also access the URL in an Internet browser to test the entire application.</p>
+<hr />
+<h2 id="tls-certificate-automatic-renewal">TLS Certificate, automatic renewal</h2>
+<p>A letsencrypt certificate is valid 90 days.</p>
+<p>In this chapter we show you how to automate renewal through a cron job.</p>
+<h3 id="test-renewal-command">Test renewal command</h3>
+<p>The pre/post hook are there to free port 80, needed by certbot to renew certificate.</p>
+<pre><code class="language-console">sudo certbot --standalone renew --force-renewal --pre-hook &quot;/snap/bin/docker-compose -f ~/docker-production/docker-compose.prod.yml stop reverseproxy&quot; --post-hook &quot;/snap/bin/docker-compose -f ~/docker-production/docker-compose.prod.yml restart reverseproxy&quot;
+</code></pre>
+<p>This command should be adapted to your "/docker-production" folder and check where is installed Docker Compose with 'which docker-compose'.</p>
+<h3 id="add-cron-task">Add cron task</h3>
+<p>We add cron task:</p>
+<pre><code class="language-console">crontab -e
+</code></pre>
+<p>Add:</p>
+<pre><code class="language-text">0 0 * * * certbot --standalone renew --pre-hook &quot;/snap/bin/docker-compose -f ~/docker-production/docker-compose.prod.yml stop reverseproxy&quot; --post-hook &quot;/snap/bin/docker-compose -f ~/docker-production/docker-compose.prod.yml restart reverseproxy&quot;
+</code></pre>
+<p>We save and we leave the editor: the certificate will be renewed at the right time by certbot automatically. You will have a downtime of a few seconds one day per month approximately every 3 months.</p>
+<p>Example code
+You can also find the project code on <a href="https://github.com/dymafr/docker-chapitre11-server-prod">Github</a>.</p>
 <hr />
 <h2 id="chapter-y">Chapter y</h2>
 <h3 id="sub-chapter-y1">Sub chapter y.1</h3>
