@@ -1035,7 +1035,10 @@ Add:
 
 We save and we leave the editor: the certificate will be renewed at the right time by certbot automatically. You will have a downtime of a few seconds one day per month approximately every 3 months.
 
-Example code
+***
+
+## Example code
+
 You can also find the project code on [Github](https://github.com/dymafr/docker-chapitre11-server-prod).
 
 ***
