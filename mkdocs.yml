@@ -5,6 +5,11 @@ theme:
 
 nav:
     - Home: 'index.md'
+    - JavaScript:
+        - 'misc': 'javascript/misc.md'
+        - training:
+            - chapter02:
+                - '06-install-environnement': 'javascript/training/chapter02/06-install-environnement.md'
     - MkDocs:
         - 'MkDocs - Misc': 'mkdocs/mkdocs.md'
     - Git:
