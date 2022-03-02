@@ -453,3 +453,17 @@ Empty File Content by Redirecting to Null:
 ```
 
 ***
+
+## Disk usage
+
+```console
+df -h
+```
+
+Huge file:
+
+```console
+sudo du -xh / | grep -P "G\t"
+```
+
+***

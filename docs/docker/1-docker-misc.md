@@ -75,3 +75,23 @@ Modify code, set breakpoint and then reload changed class.
 By adding some system out you may observe live changes in container log console.
 
 ***
+
+## Disk usage
+
+```console
+docker system df
+```
+
+Docker reclaim unused image space:
+
+```console
+docker image prune -a
+```
+
+Docker container size:
+
+```console
+docker ps --size
+```
+
+***
