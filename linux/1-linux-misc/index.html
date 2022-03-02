@@ -828,6 +828,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#disk-usage" class="md-nav__link">
+    Disk usage
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1586,6 +1593,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#disk-usage" class="md-nav__link">
+    Disk usage
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1883,6 +1897,13 @@ column 2 row 2
 <h2 id="empty-file">Empty file</h2>
 <p>Empty File Content by Redirecting to Null:</p>
 <pre><code class="language-console">&gt; access.log
+</code></pre>
+<hr />
+<h2 id="disk-usage">Disk usage</h2>
+<pre><code class="language-console">df -h
+</code></pre>
+<p>Huge file:</p>
+<pre><code class="language-console">sudo du -xh / | grep -P &quot;G\t&quot;
 </code></pre>
 <hr />
 

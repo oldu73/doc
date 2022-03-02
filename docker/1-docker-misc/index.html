@@ -662,6 +662,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#disk-usage" class="md-nav__link">
+    Disk usage
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1158,6 +1165,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#disk-usage" class="md-nav__link">
+    Disk usage
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1223,6 +1237,16 @@ Command line arguments for remote JVM: -agentlib:jdwp=transport=dt_socket,server
 <p>Run IntelliJ remote debug configuration.</p>
 <p>Modify code, set breakpoint and then reload changed class.</p>
 <p>By adding some system out you may observe live changes in container log console.</p>
+<hr />
+<h2 id="disk-usage">Disk usage</h2>
+<pre><code class="language-console">docker system df
+</code></pre>
+<p>Docker reclaim unused image space:</p>
+<pre><code class="language-console">docker image prune -a
+</code></pre>
+<p>Docker container size:</p>
+<pre><code class="language-console">docker ps --size
+</code></pre>
 <hr />
 
               
