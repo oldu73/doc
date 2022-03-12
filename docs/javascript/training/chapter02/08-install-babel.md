@@ -108,7 +108,6 @@ And now, es6after.js has been converted in an earlier version:
 "use strict";
 
 var test = "123";
-
 ```
 
 ***
