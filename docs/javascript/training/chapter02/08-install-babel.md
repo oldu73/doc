@@ -102,7 +102,7 @@ npm run babel
 > babel es6.js -o es6after.js
 ```
 
-And now, in es6after.js has been converted in an earlier version:
+And now, es6after.js has been converted in an earlier version:
 
 ```javascript
 "use strict";
