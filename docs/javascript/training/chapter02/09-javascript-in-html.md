@@ -52,7 +52,9 @@ Add a h1 section in body and from file explorer drag and drop it in a browser to
 
 ***
 
-## Source in html
+## Source
+
+### In html
 
 Now to incorporate javascript in our html page, add a script section in head:
 
@@ -80,7 +82,7 @@ You may incorporate anywhere inside a head or body section of an html document.
 
 ***
 
-## Source out html
+### Out html
 
 Separation of concern.
 
@@ -108,7 +110,7 @@ See the result in dist folder and refresh the page in the browser to observe mes
 
 ***
 
-## Source from web
+### From web
 
 E.g. [jquery](https://jquery.com/)
 
