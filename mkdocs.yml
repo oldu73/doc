@@ -12,6 +12,7 @@ nav:
                 - '06-install-environnement': 'javascript/training/chapter02/06-install-environnement.md'
                 - '08-install-babel': 'javascript/training/chapter02/08-install-babel.md'
                 - '09-javascript-in-html': 'javascript/training/chapter02/09-javascript-in-html.md'
+                - '10-webpack': 'javascript/training/chapter02/10-webpack.md'
     - MkDocs:
         - 'MkDocs - Misc': 'mkdocs/mkdocs.md'
     - Git:
