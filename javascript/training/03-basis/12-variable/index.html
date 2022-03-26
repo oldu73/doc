@@ -427,8 +427,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    ...
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#var" class="md-nav__link">
+    var
   </a>
   
 </li>
@@ -1219,8 +1226,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    ...
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#var" class="md-nav__link">
+    var
   </a>
   
 </li>
@@ -1240,8 +1254,44 @@
 
 <h1 id="12-variable">12-variable</h1>
 <hr />
-<h2 id="_1">...</h2>
-<p>...</p>
+<h2 id="introduction">Introduction</h2>
+<p>Chapter (03) objectives summary:</p>
+<ul>
+<li>Variables (var, let and const)  </li>
+<li>Hoisting  </li>
+<li>Types  </li>
+<li>Operators  </li>
+<li>Coercion  </li>
+<li>Scope, Execution context  </li>
+<li>Reference and value</li>
+</ul>
+<p>Environment is inherited from previous chapter</p>
+<hr />
+<h2 id="var">var</h2>
+<p>src/index.js</p>
+<pre><code class="language-js">// declaration
+var firstName;
+
+// undefined
+console.log(firstName);
+
+// initialisation
+firstName = 'Olivier';
+
+console.log(firstName);
+
+// reference error, does not exist
+// and stop execution if not commmented
+// console.log(lastName);
+
+// declare many variables at the same time
+var myvar1, myvar2;
+
+myvar1 = 123;
+myvar2 = 55;
+
+console.log(myvar1, myvar2);
+</code></pre>
 <hr />
 
               
