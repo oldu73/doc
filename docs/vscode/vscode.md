@@ -44,3 +44,19 @@ Keyboard
 **Ctrl + Shift + Alt** then use arrow keys
 
 ***
+
+## Comment code
+
+Comment code block
+
+```text
+Ctrl+K+C
+```
+
+Uncomment code block
+
+```text
+Ctrl+K+U
+```
+
+***
