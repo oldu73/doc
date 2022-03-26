@@ -8,12 +8,14 @@ nav:
     - JavaScript:
         - 'misc': 'javascript/misc.md'
         - training:
-            - chapter02:
-                - '06-install-environnement': 'javascript/training/chapter02/06-install-environnement.md'
-                - '08-install-babel': 'javascript/training/chapter02/08-install-babel.md'
-                - '09-javascript-in-html': 'javascript/training/chapter02/09-javascript-in-html.md'
-                - '10-webpack': 'javascript/training/chapter02/10-webpack.md'
-                - '11-console': 'javascript/training/chapter02/11-console.md'
+            - 02-environment:
+                - '06-install-environnement': 'javascript/training/02-environment/06-install-environnement.md'
+                - '08-install-babel': 'javascript/training/02-environment/08-install-babel.md'
+                - '09-javascript-in-html': 'javascript/training/02-environment/09-javascript-in-html.md'
+                - '10-webpack': 'javascript/training/02-environment/10-webpack.md'
+                - '11-console': 'javascript/training/02-environment/11-console.md'
+            - 03-basis:
+                - '12-variable': 'javascript/training/03-basis/12-variable.md'
     - MkDocs:
         - 'MkDocs - Misc': 'mkdocs/mkdocs.md'
     - Git:
