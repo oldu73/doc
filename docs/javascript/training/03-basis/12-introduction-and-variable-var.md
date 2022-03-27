@@ -1,4 +1,4 @@
-# 12-variable
+# 12-introduction-and-variable-var
 
 ***
 
@@ -14,7 +14,11 @@ Chapter (03) objectives summary:
 - Scope, Execution context  
 - Reference and value
 
-Environment is inherited from previous chapter
+Environment is inherited from previous chapter and without particular mention, thereafter we will assume that the webpack environment has been launched with following command through a terminal at the root level of the project:
+
+```console
+npm start
+```
 
 ***
 
