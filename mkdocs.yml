@@ -15,8 +15,8 @@ nav:
                 - '10-webpack': 'javascript/training/02-environment/10-webpack.md'
                 - '11-console': 'javascript/training/02-environment/11-console.md'
             - 03-basis:
-                - '12-introduction-and-variable-var': 'javascript/training/03-basis/12-introduction-and-variable-var.md'
-                - '13-variable-let-and-const': 'javascript/training/03-basis/13-variable-let-and-const.md'
+                - '12-intro-and-var': 'javascript/training/03-basis/12-intro-and-var.md'
+                - '13-let-and-const': 'javascript/training/03-basis/13-let-and-const.md'
     - MkDocs:
         - 'MkDocs - Misc': 'mkdocs/mkdocs.md'
     - Git:

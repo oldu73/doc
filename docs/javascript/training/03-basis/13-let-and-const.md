@@ -1,4 +1,4 @@
-# 13-variable-let-and-const
+# 13-let-and-const
 
 ***
 
