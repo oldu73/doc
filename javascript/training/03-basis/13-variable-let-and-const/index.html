@@ -13,7 +13,7 @@
     
     
       
-        <title>12-variable - Doc</title>
+        <title>13-variable-let-and-const - Doc</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#12-variable" class="md-skip">
+        <a href="#13-variable-let-and-const" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              12-variable
+              13-variable-let-and-const
             
           </span>
         </div>
@@ -391,6 +391,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../12-introduction-and-variable-var/" class="md-nav__link">
+        12-introduction-and-variable-var
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -403,12 +417,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          12-variable
+          13-variable-let-and-const
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        12-variable
+        13-variable-let-and-const
       </a>
       
         
@@ -427,15 +441,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    Introduction
+  <a href="#var-problematic" class="md-nav__link">
+    var problematic
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#var" class="md-nav__link">
-    var
+  <a href="#let" class="md-nav__link">
+    let
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#const" class="md-nav__link">
+    const
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#priority-order-of-usage" class="md-nav__link">
+    Priority order of usage
   </a>
   
 </li>
@@ -1226,15 +1254,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    Introduction
+  <a href="#var-problematic" class="md-nav__link">
+    var problematic
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#var" class="md-nav__link">
-    var
+  <a href="#let" class="md-nav__link">
+    let
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#const" class="md-nav__link">
+    const
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#priority-order-of-usage" class="md-nav__link">
+    Priority order of usage
   </a>
   
 </li>
@@ -1252,46 +1294,63 @@
               
                 
 
-<h1 id="12-variable">12-variable</h1>
+<h1 id="13-variable-let-and-const">13-variable-let-and-const</h1>
 <hr />
-<h2 id="introduction">Introduction</h2>
-<p>Chapter (03) objectives summary:</p>
-<ul>
-<li>Variables (var, let and const)  </li>
-<li>Hoisting  </li>
-<li>Types  </li>
-<li>Operators  </li>
-<li>Coercion  </li>
-<li>Scope, Execution context  </li>
-<li>Reference and value</li>
-</ul>
-<p>Environment is inherited from previous chapter</p>
-<hr />
-<h2 id="var">var</h2>
-<p>src/index.js</p>
-<pre><code class="language-js">// declaration
-var firstName;
-
-// undefined
-console.log(firstName);
-
-// initialisation
-firstName = 'Olivier';
-
-console.log(firstName);
-
-// reference error, does not exist
-// and stop execution if not commmented
-// console.log(lastName);
-
-// declare many variables at the same time
-var myvar1, myvar2;
-
-myvar1 = 123;
-myvar2 = 55;
-
-console.log(myvar1, myvar2);
+<h2 id="var-problematic">var problematic</h2>
+<p>let has been introduced to fix some var's problem.</p>
+<p>var allow to redeclare a variable that has already been declared with the same name, which could lead in very problematic issues in huge js file when you don't remember that a variable with a particular name has already been declared and you redeclare it with the same name for a different usage:</p>
+<pre><code class="language-js">var test = 123;
+var test = 456;
 </code></pre>
+<p>Curly brace delimitate a code block but does not limit variable scope:</p>
+<pre><code class="language-js">{
+  var test = 123;
+}
+
+console.log(test);
+</code></pre>
+<hr />
+<h2 id="let">let</h2>
+<p>Reuse a name will raise a "Identifier 'test' has already been declared." error in browser and webpack consoles:</p>
+<pre><code class="language-js">let test = 123;
+let test = 456;
+</code></pre>
+<p>Scope of let is limited to code block, below example will raise a "test not defined" error:</p>
+<pre><code class="language-js">{
+  let test = 123;
+}
+
+console.log(test);
+</code></pre>
+<p>Use let instead of var is mostly advised.</p>
+<hr />
+<h2 id="const">const</h2>
+<p>const should be initialized on line where she's declared:</p>
+<pre><code class="language-js">const test = 123;
+</code></pre>
+<p>Like expected const cannot be reassigned and trying to will raise a read only error.</p>
+<p>For an object reference it's possible to reassign a key inside a const object but not the reference himself:</p>
+<pre><code class="language-js">const simpleObject = {
+  test: 123
+};
+
+console.log(simpleObject.test);
+
+// OK
+simpleObject.test = 456;
+
+console.log(simpleObject.test);
+
+// KO
+simpleObject = 456
+</code></pre>
+<hr />
+<h2 id="priority-order-of-usage">Priority order of usage</h2>
+<ol>
+<li>const  </li>
+<li>let  </li>
+<li>var</li>
+</ol>
 <hr />
 
               
@@ -1306,7 +1365,7 @@ console.log(myvar1, myvar2);
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../02-environment/11-console/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 11-console" rel="prev">
+        <a href="../12-introduction-and-variable-var/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 12-introduction-and-variable-var" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1315,7 +1374,7 @@ console.log(myvar1, myvar2);
               <span class="md-footer__direction">
                 Previous
               </span>
-              11-console
+              12-introduction-and-variable-var
             </div>
           </div>
         </a>
