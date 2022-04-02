@@ -5,29 +5,8 @@ theme:
 
 nav:
     - Home: 'index.md'
-    - JavaScript:
-        - 'misc': 'javascript/misc.md'
-        - training:
-            - 02-environment:
-                - '06-install-environnement': 'javascript/training/02-environment/06-install-environnement.md'
-                - '08-install-babel': 'javascript/training/02-environment/08-install-babel.md'
-                - '09-javascript-in-html': 'javascript/training/02-environment/09-javascript-in-html.md'
-                - '10-webpack': 'javascript/training/02-environment/10-webpack.md'
-                - '11-console': 'javascript/training/02-environment/11-console.md'
-            - 03-basis:
-                - '12-intro-and-var': 'javascript/training/03-basis/12-intro-and-var.md'
-                - '13-let-and-const': 'javascript/training/03-basis/13-let-and-const.md'
-    - MkDocs:
-        - 'MkDocs - Misc': 'mkdocs/mkdocs.md'
-    - Git:
-        - 'Git - Misc': 'git/git.md'
-    - ElasticSearch:
-        - 'ElasticSearch - Misc': 'elasticsearch/elasticsearch.md'
-    - IntelliJ:
-        - 'IntelliJ - 01 - Misc': 'intellij/1-intellij-misc.md'
-        - 'IntelliJ - 02 - WSL': 'intellij/2-intellij-wsl.md'
-    - Linux:
-        - 'Linux - 01 - Misc': 'linux/1-linux-misc.md'
+    - Agile Methodology:
+        - 'Agile Methodology - 01 - Misc': 'agilemethodology/1-agilemethodology-misc.md'
     - Docker:
         - 'Docker - 01 - Misc': 'docker/1-docker-misc.md'
         - 'Docker - 02 - Basis': 'docker/2-docker-basis.md'
@@ -40,18 +19,42 @@ nav:
         - 'Compose - 09 - Dockerfile': 'docker/9-compose-dockerfile.md'
         - 'Compose - 10 - Services': 'docker/10-compose-services.md'
         - 'Compose - 11 - Production': 'docker/11-compose-production.md'
-    - VS Code:
-        - 'VS Code - Misc': 'vscode/vscode.md'
-    - Windows:
-        - 'Windows - Misc': 'windows/windows.md'
+    - ElasticSearch:
+        - 'ElasticSearch - Misc': 'elasticsearch/elasticsearch.md'
+    - Git:
+        - 'Git - Misc': 'git/git.md'
+    - IntelliJ:
+        - 'IntelliJ - 01 - Misc': 'intellij/1-intellij-misc.md'
+        - 'IntelliJ - 02 - WSL': 'intellij/2-intellij-wsl.md'
+    - Java:
+        - test:
+            - 'mock': 'java/test/mock.md'
+    - JavaScript:
+        - 'misc': 'javascript/misc.md'
+        - training:
+            - 02-environment:
+                - '06-install-environnement': 'javascript/training/02-environment/06-install-environnement.md'
+                - '08-install-babel': 'javascript/training/02-environment/08-install-babel.md'
+                - '09-javascript-in-html': 'javascript/training/02-environment/09-javascript-in-html.md'
+                - '10-webpack': 'javascript/training/02-environment/10-webpack.md'
+                - '11-console': 'javascript/training/02-environment/11-console.md'
+            - 03-basis:
+                - '12-intro-and-var': 'javascript/training/03-basis/12-intro-and-var.md'
+                - '13-let-and-const': 'javascript/training/03-basis/13-let-and-const.md'
+    - Kafka:
+        - 'Kafka - 01 - Misc': 'kafka/1-kafka-misc.md'
+    - Linux:
+        - 'Linux - 01 - Misc': 'linux/1-linux-misc.md'
+    - MkDocs:
+        - 'MkDocs - Misc': 'mkdocs/mkdocs.md'
     - MongoDB:
         - 'MongoDB - Misc': 'mongodb/mongodb.md'
     - Redis:
         - 'Redis - 01 - Misc': 'redis/1-redis-misc.md'
-    - Agile Methodology:
-        - 'Agile Methodology - 01 - Misc': 'agilemethodology/1-agilemethodology-misc.md'
-    - Kafka:
-        - 'Kafka - 01 - Misc': 'kafka/1-kafka-misc.md'
+    - VS Code:
+        - 'VS Code - Misc': 'vscode/vscode.md'
+    - Windows:
+        - 'Windows - Misc': 'windows/windows.md'
 
 # $ mkdocs build
 # $ mkdocs gh-deploy
