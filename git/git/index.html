@@ -571,6 +571,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ssh-to-https" class="md-nav__link">
+    SSH To HTTPS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#many-github-accounts" class="md-nav__link">
+    Many GitHub accounts
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1370,6 +1384,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ssh-to-https" class="md-nav__link">
+    SSH To HTTPS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#many-github-accounts" class="md-nav__link">
+    Many GitHub accounts
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1412,6 +1440,23 @@ git config --edit
 </code></pre>
 <p>or for 1 hour</p>
 <pre><code class="language-console">git config credential.helper 'cache --timeout=3600'
+</code></pre>
+<hr />
+<h2 id="ssh-to-https">SSH To HTTPS</h2>
+<p>Change remote URL from SSH To HTTPS.</p>
+<p><a href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories">Source</a></p>
+<p>Check existing remote:</p>
+<pre><code class="language-console">git remote -v
+</code></pre>
+<p>Change your remote's URL from SSH to HTTPS with the git remote set-url command:</p>
+<pre><code class="language-console">git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+</code></pre>
+<hr />
+<h2 id="many-github-accounts">Many GitHub accounts</h2>
+<p>How to manage credentials for many different GitHub accounts.</p>
+<p><a href="https://stackoverflow.com/questions/25845963/git-credential-helper-update-password">Source</a></p>
+<p>Configure credentials to use the full repository path:</p>
+<pre><code class="language-console">git config --global credential.useHttpPath true
 </code></pre>
 <hr />
 
