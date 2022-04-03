@@ -1405,13 +1405,15 @@
 <hr />
 <h2 id="introduction">Introduction</h2>
 <p>At first when a browser receive a javascript file, he read the file content entirely and initialize a stack.</p>
-<p>This is reserved memory place to store needed things (var, function, etc.) for running the script.</p>
+<p>This behavior is due to the fact that Javascript is an interpreted language.</p>
+<p>This stack is a reserved memory place to store needed things (var, function, etc.) for running the script.</p>
 <p>This process of preparing the stack for running the script is called "Hoisting".</p>
 <hr />
 <h2 id="initialization">Initialization</h2>
 <h3 id="var">var</h3>
-<p>Initialized during the hoisting phase.</p>
+<p>Initialized during the hoisting phase to "undefined".</p>
 <h3 id="let-and-const">let and const</h3>
+<p>They are hoisted and <strong>NOT</strong>, initialized to "undefined".</p>
 <p>Initialized during the execution phase.</p>
 <hr />
 
