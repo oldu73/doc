@@ -41,6 +41,7 @@ nav:
             - 03-basis:
                 - '12-intro-and-var': 'javascript/training/03-basis/12-intro-and-var.md'
                 - '13-let-and-const': 'javascript/training/03-basis/13-let-and-const.md'
+                - '14-hoisting': 'javascript/training/03-basis/14-hoisting.md'
     - Kafka:
         - 'Kafka - 01 - Misc': 'kafka/1-kafka-misc.md'
     - Linux:
