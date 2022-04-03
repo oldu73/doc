@@ -60,3 +60,11 @@ Ctrl+K+U
 ```
 
 ***
+
+## Multiple cursors
+
+**Alt+Click**. Each cursor operates independently based on the context it sits in.
+
+A common way to add more cursors is with **Shift+Alt+Down** or **Shift+Alt+Up** that insert cursors below or above.
+
+***
