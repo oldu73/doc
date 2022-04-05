@@ -467,3 +467,11 @@ sudo du -xh / | grep -P "G\t"
 ```
 
 ***
+
+## Last modification of a file
+
+```console
+date -r fileName
+```
+
+***
