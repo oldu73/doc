@@ -475,3 +475,97 @@ date -r fileName
 ```
 
 ***
+
+## Creation date of a file
+
+Below process to find creation date of a test file
+
+1. In a tmp directory create a test file  
+2. Find inode of the file  
+3. Find partition on which current folder belongs to  
+4. Use file system debugger to find creation date
+
+```console
+mkdir tmp
+
+cd tmp
+
+touch test
+
+ls -i
+201769 test
+
+df .
+Filesystem     1K-blocks     Used Available Use% Mounted on
+/dev/sdd       263174212 10339304 239396752   5% /
+
+sudo debugfs -R 'stat <201769>' /dev/sdd
+.
+.
+debugfs 1.45.5 (07-Jan-2020)
+.
+.
+Filesystem     1K-blocks     Used Available Use% Mounted on
+/dev/sdd       263174212 10339304 239396752   5% /
+16:15:36 ✔ oldu:(main)~/git/doc/tmp$ sudo debugfs -R 'stat <201769>' /dev/sdd
+
+
+Inode: 201769   Type: regular    Mode:  0644   Flags: 0x80000
+Generation: 333662723    Version: 0x00000000:00000001
+User:  1000   Group:  1000   Project:     0   Size: 0
+File ACL: 0
+Links: 1   Blockcount: 0
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022
+ atime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022
+ mtime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022
+crtime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022
+Size of extra inode fields: 32
+Inode checksum: 0x38e4efd5
+```
+
+***
+
+## Since when a process run
+
+```console
+ps -p pid -o etime
+```
+
+Then use this [online tool](https://www.timeanddate.com/date/timeduration.html?) to calculate time between above result and now.
+
+***
+
+## How many file descriptors opened by a process
+
+1. disk usage  
+2. find processName's process id (e.g. 28043)  
+3. number of fd opened for pid  
+4. max limit of opened fd for pid
+
+```console
+df -H
+ps ax | grep processName
+sudo ls /proc/28043/fd | wc -l
+sudo grep "Max open files" /proc/28043/limits | awk '{ print $4; }'
+```
+
+***
+
+## Copy filtered file list
+
+Copy (for move replace below cp by mv) grep"ed" filtered files list to another folder.
+
+```console
+ls | grep pattern1 | grep pattern2 | ... | xargs cp -t /destinationFolder
+```
+
+***
+
+## Add prefix to file names list
+
+```console
+for f in * ; do mv -- "$f" "PRE_$f" ; done
+```
+
+***
