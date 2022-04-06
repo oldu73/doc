@@ -1304,6 +1304,41 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#creation-date-of-a-file" class="md-nav__link">
+    Creation date of a file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#since-when-a-process-run" class="md-nav__link">
+    Since when a process run
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-many-file-descriptors-opened-by-a-process" class="md-nav__link">
+    How many file descriptors opened by a process
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-filtered-file-list" class="md-nav__link">
+    Copy filtered file list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-prefix-to-file-names-list" class="md-nav__link">
+    Add prefix to file names list
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1840,6 +1875,41 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#creation-date-of-a-file" class="md-nav__link">
+    Creation date of a file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#since-when-a-process-run" class="md-nav__link">
+    Since when a process run
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-many-file-descriptors-opened-by-a-process" class="md-nav__link">
+    How many file descriptors opened by a process
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-filtered-file-list" class="md-nav__link">
+    Copy filtered file list
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-prefix-to-file-names-list" class="md-nav__link">
+    Add prefix to file names list
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2148,6 +2218,79 @@ column 2 row 2
 <hr />
 <h2 id="last-modification-of-a-file">Last modification of a file</h2>
 <pre><code class="language-console">date -r fileName
+</code></pre>
+<hr />
+<h2 id="creation-date-of-a-file">Creation date of a file</h2>
+<p>Below process to find creation date of a test file</p>
+<ol>
+<li>In a tmp directory create a test file  </li>
+<li>Find inode of the file  </li>
+<li>Find partition on which current folder belongs to  </li>
+<li>Use file system debugger to find creation date</li>
+</ol>
+<pre><code class="language-console">mkdir tmp
+
+cd tmp
+
+touch test
+
+ls -i
+201769 test
+
+df .
+Filesystem     1K-blocks     Used Available Use% Mounted on
+/dev/sdd       263174212 10339304 239396752   5% /
+
+sudo debugfs -R 'stat &lt;201769&gt;' /dev/sdd
+.
+.
+debugfs 1.45.5 (07-Jan-2020)
+.
+.
+Filesystem     1K-blocks     Used Available Use% Mounted on
+/dev/sdd       263174212 10339304 239396752   5% /
+16:15:36 ✔ oldu:(main)~/git/doc/tmp$ sudo debugfs -R 'stat &lt;201769&gt;' /dev/sdd
+
+
+Inode: 201769   Type: regular    Mode:  0644   Flags: 0x80000
+Generation: 333662723    Version: 0x00000000:00000001
+User:  1000   Group:  1000   Project:     0   Size: 0
+File ACL: 0
+Links: 1   Blockcount: 0
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022
+ atime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022
+ mtime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022
+crtime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022
+Size of extra inode fields: 32
+Inode checksum: 0x38e4efd5
+</code></pre>
+<hr />
+<h2 id="since-when-a-process-run">Since when a process run</h2>
+<pre><code class="language-console">ps -p pid -o etime
+</code></pre>
+<p>Then use this <a href="https://www.timeanddate.com/date/timeduration.html?">online tool</a> to calculate time between above result and now.</p>
+<hr />
+<h2 id="how-many-file-descriptors-opened-by-a-process">How many file descriptors opened by a process</h2>
+<ol>
+<li>disk usage  </li>
+<li>find processName's process id (e.g. 28043)  </li>
+<li>number of fd opened for pid  </li>
+<li>max limit of opened fd for pid</li>
+</ol>
+<pre><code class="language-console">df -H
+ps ax | grep processName
+sudo ls /proc/28043/fd | wc -l
+sudo grep &quot;Max open files&quot; /proc/28043/limits | awk '{ print $4; }'
+</code></pre>
+<hr />
+<h2 id="copy-filtered-file-list">Copy filtered file list</h2>
+<p>Copy (for move replace below cp by mv) grep"ed" filtered files list to another folder.</p>
+<pre><code class="language-console">ls | grep pattern1 | grep pattern2 | ... | xargs cp -t /destinationFolder
+</code></pre>
+<hr />
+<h2 id="add-prefix-to-file-names-list">Add prefix to file names list</h2>
+<pre><code class="language-console">for f in * ; do mv -- &quot;$f&quot; &quot;PRE_$f&quot; ; done
 </code></pre>
 <hr />
 
