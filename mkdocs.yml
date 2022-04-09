@@ -44,6 +44,7 @@ nav:
                 - '14-hoisting': 'javascript/training/03-basis/14-hoisting.md'
                 - '15-type': 'javascript/training/03-basis/15-type.md'
                 - '16-operator': 'javascript/training/03-basis/16-operator.md'
+                - '17-coercion': 'javascript/training/03-basis/17-coercion.md'
     - Kafka:
         - 'Kafka - 01 - Misc': 'kafka/1-kafka-misc.md'
     - Linux:
