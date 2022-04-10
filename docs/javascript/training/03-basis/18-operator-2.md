@@ -6,21 +6,21 @@
 
 = VS == VS ===
 
-= [assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment)
-
-== [equality](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality)
-
-=== [strict equality](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality)
+and others logical operators
 
 ***
 
-## Assignment
+## Assignment (=)
+
+= [assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment)
 
 Set a variable value
 
 ***
 
-## Equality (not recommended)
+## Equality (==, not recommended)
+
+== [equality](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality)
 
 Automatic (implicit) coercion, enabled!
 
@@ -45,7 +45,9 @@ console.log(undefined == false); // false
 
 ***
 
-## Strict equality (recommended)
+## Strict equality (===, recommended)
+
+=== [strict equality](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality)
 
 Automatic (implicit) coercion, disabled!
 
@@ -64,7 +66,7 @@ console.log(undefined === false); // false
 
 ***
 
-## Less than
+## Less than (<)
 
 ```js
 console.log(1 < 2 < 3); // true = OK!
