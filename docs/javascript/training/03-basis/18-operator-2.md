@@ -18,7 +18,9 @@ Set a variable value
 
 ***
 
-## Equality (==, not recommended)
+## Equality (==)
+
+Not recommended!
 
 == [equality](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality)
 
@@ -45,7 +47,9 @@ console.log(undefined == false); // false
 
 ***
 
-## Strict equality (===, recommended)
+## Strict equality (===)
+
+Recommended!
 
 === [strict equality](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality)
 
