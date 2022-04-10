@@ -43,8 +43,9 @@ nav:
                 - '13-let-and-const': 'javascript/training/03-basis/13-let-and-const.md'
                 - '14-hoisting': 'javascript/training/03-basis/14-hoisting.md'
                 - '15-type': 'javascript/training/03-basis/15-type.md'
-                - '16-operator': 'javascript/training/03-basis/16-operator.md'
+                - '16-operator-1': 'javascript/training/03-basis/16-operator-1.md'
                 - '17-coercion': 'javascript/training/03-basis/17-coercion.md'
+                - '18-operator-2': 'javascript/training/03-basis/18-operator-2.md'
     - Kafka:
         - 'Kafka - 01 - Misc': 'kafka/1-kafka-misc.md'
     - Linux:

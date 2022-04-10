@@ -569,3 +569,16 @@ for f in * ; do mv -- "$f" "PRE_$f" ; done
 ```
 
 ***
+
+## Curly braces
+
+Using braces to build a sequence.
+
+[All about {Curly Braces} in Bash](https://www.linux.com/topic/desktop/all-about-curly-braces-bash/)
+
+```console
+echo {0..10}
+0 1 2 3 4 5 6 7 8 9 10
+```
+
+***
