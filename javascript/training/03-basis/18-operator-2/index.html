@@ -994,28 +994,28 @@
       
         <li class="md-nav__item">
   <a href="#assignment" class="md-nav__link">
-    Assignment
+    Assignment (=)
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#equality-not-recommended" class="md-nav__link">
-    Equality (not recommended)
+    Equality (==, not recommended)
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#strict-equality-recommended" class="md-nav__link">
-    Strict equality (recommended)
+    Strict equality (===, recommended)
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#less-than" class="md-nav__link">
-    Less than
+    Less than (&lt;)
   </a>
   
 </li>
@@ -1448,28 +1448,28 @@
       
         <li class="md-nav__item">
   <a href="#assignment" class="md-nav__link">
-    Assignment
+    Assignment (=)
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#equality-not-recommended" class="md-nav__link">
-    Equality (not recommended)
+    Equality (==, not recommended)
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#strict-equality-recommended" class="md-nav__link">
-    Strict equality (recommended)
+    Strict equality (===, recommended)
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#less-than" class="md-nav__link">
-    Less than
+    Less than (&lt;)
   </a>
   
 </li>
@@ -1519,14 +1519,14 @@
 <hr />
 <h2 id="introduction">Introduction</h2>
 <p>= VS == VS ===</p>
-<p>= <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment">assignment</a></p>
-<p>== <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality">equality</a></p>
-<p>=== <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality">strict equality</a></p>
+<p>and others logical operators</p>
 <hr />
-<h2 id="assignment">Assignment</h2>
+<h2 id="assignment">Assignment (=)</h2>
+<p>= <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment">assignment</a></p>
 <p>Set a variable value</p>
 <hr />
-<h2 id="equality-not-recommended">Equality (not recommended)</h2>
+<h2 id="equality-not-recommended">Equality (==, not recommended)</h2>
+<p>== <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality">equality</a></p>
 <p>Automatic (implicit) coercion, enabled!</p>
 <p>If compared values are of different type, coercion happen before comparison.</p>
 <p>A bit tricky to use/understand, usage of '===' is mostly advised.</p>
@@ -1544,7 +1544,8 @@ console.log(true == &quot;true&quot;); // false
 console.log(undefined == false); // false
 </code></pre>
 <hr />
-<h2 id="strict-equality-recommended">Strict equality (recommended)</h2>
+<h2 id="strict-equality-recommended">Strict equality (===, recommended)</h2>
+<p>=== <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality">strict equality</a></p>
 <p>Automatic (implicit) coercion, disabled!</p>
 <p>Compared values should be same type and value to return true.</p>
 <pre><code class="language-js">let a = 1;
@@ -1557,7 +1558,7 @@ console.log(1 === '1'); // false
 console.log(undefined === false); // false
 </code></pre>
 <hr />
-<h2 id="less-than">Less than</h2>
+<h2 id="less-than">Less than (&lt;)</h2>
 <pre><code class="language-js">console.log(1 &lt; 2 &lt; 3); // true = OK!
 console.log(3 &lt; 2 &lt; 1); // true = WHAT??
 </code></pre>
