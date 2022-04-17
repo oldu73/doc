@@ -47,6 +47,8 @@ nav:
                 - '17-coercion': 'javascript/training/03-basis/17-coercion.md'
                 - '18-operator-2': 'javascript/training/03-basis/18-operator-2.md'
                 - '19-value-and-reference': 'javascript/training/03-basis/19-value-and-reference.md'
+            - 04-control:
+                - '20-condition': 'javascript/training/04-control/20-condition.md'
     - Kafka:
         - 'Kafka - 01 - Misc': 'kafka/1-kafka-misc.md'
     - Linux:
