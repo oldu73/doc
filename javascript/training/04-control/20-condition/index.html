@@ -1053,6 +1053,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    If
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#else" class="md-nav__link">
+    else
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#else-if" class="md-nav__link">
+    else if
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1451,6 +1472,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    If
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#else" class="md-nav__link">
+    else
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#else-if" class="md-nav__link">
+    else if
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1467,7 +1509,78 @@
 <h1 id="20-condition">20-condition</h1>
 <hr />
 <h2 id="introduction">Introduction</h2>
-<p>...</p>
+<p>if, else, else if</p>
+<hr />
+<h2 id="if">If</h2>
+<pre><code class="language-js">const condition = true;
+
+if (condition === true) {
+  console.log('here!'); // here!
+}
+</code></pre>
+<p>By omitting strict comparison in if condition, implicit coercion to boolean happen:</p>
+<pre><code class="language-js">const condition = true;
+
+if (condition) {
+  console.log('here!'); // here!
+}
+</code></pre>
+<p>Even if 'condition' here in example is not a boolean, implicit coercion happen as well:</p>
+<p>With a number</p>
+<pre><code class="language-js">const condition = 0;
+
+if (!condition) {
+  console.log('here!'); // here!
+}
+</code></pre>
+<p>With a string</p>
+<pre><code class="language-js">const condition1 = &quot;john&quot;; // true
+const condition2 = &quot;&quot;; // false
+
+if (condition1) {
+  console.log('condition1'); // condition1
+}
+
+if (!condition2) {
+  console.log('not condition2'); // not condition2
+}
+</code></pre>
+<hr />
+<h2 id="else">else</h2>
+<p>if the condition is not met, an "else" branch is provided to allow this case to be processed:</p>
+<pre><code class="language-js">//const test = &quot;John&quot;;
+const test = &quot;&quot;;
+
+if (test) {
+  console.log(&quot;hello &quot; + test); // hello John
+} else {
+  console.log(&quot;hello !&quot;); // hello !
+}
+</code></pre>
+<hr />
+<h2 id="else-if">else if</h2>
+<p>Treat more than two cases (if/else) with "else if":</p>
+<pre><code class="language-js">//const test = &quot;John&quot;;
+const test = &quot;Paul&quot;;
+//const test = &quot;&quot;;
+
+if (test === &quot;John&quot;) {
+  console.log(&quot;hello John&quot;); // hello John
+} else if (test === &quot;Paul&quot;) {
+  console.log(&quot;hello Paul&quot;); // hello Paul
+} else {
+  console.log(&quot;hello !&quot;); // hello !
+}
+</code></pre>
+<p>Not recommended! But if only one instruction, not forced to delimit instruction block with curly braces:</p>
+<pre><code class="language-js">//const test = &quot;John&quot;;
+const test = &quot;Paul&quot;;
+//const test = &quot;&quot;;
+
+if (test === &quot;John&quot;) console.log(&quot;hello John&quot;); // hello John
+else if (test === &quot;Paul&quot;) console.log(&quot;hello Paul&quot;); // hello Paul
+else console.log(&quot;hello !&quot;); // hello !
+</code></pre>
 <hr />
 
               
