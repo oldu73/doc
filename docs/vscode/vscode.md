@@ -2,9 +2,15 @@
 
 ***
 
-## Switch terminals
+## Switch windows
 
-Alt+up/down left/right arrows to switch between split terminals.
+To switch from editing area (above) and terminal area (below):
+
+Ctrl + arrow up/down
+
+To switch from same area type windows (edit/terminal):
+
+Alt + arrow left/right
 
 ***
 
@@ -32,6 +38,8 @@ Alt + Up/down keys
 If you want to copy the line to the line above itself, press Shift + Alt + Up Arrow Key.
 
 If you want to copy the line to the line below itself, press Shift + Alt + Down Arrow Key.
+
+Hit Ctrl + c (without anything selected on a line) and then Ctrl + v will directly copy/paste the entire line even nothing is selected.
 
 ***
 

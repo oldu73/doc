@@ -54,9 +54,20 @@ pip install mkdocs-material
 
 Simply add the following lines to mkdocs.yml to enable the theme.
 
+Also feature for code block annotation and extension setup.
+
 ```yaml
 theme:
   name: material
+  features:
+    - content.code.annotate
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
 ```
 
 ***
