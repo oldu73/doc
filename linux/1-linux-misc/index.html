@@ -2043,299 +2043,299 @@
 <h1 id="linux-01-misc">Linux - 01 - Misc</h1>
 <hr />
 <h2 id="curl">Curl</h2>
-<pre><code class="language-console">curl -i localhost
-curl -sb -H &quot;Accept: application/json&quot; &quot;http://localhost&quot; | json_pp
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">curl -i localhost</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="go">curl -sb -H &quot;Accept: application/json&quot; &quot;http://localhost&quot; | json_pp</span>
+</code></pre></div>
 <hr />
 <h2 id="compress-decompress">Compress Decompress</h2>
 <h3 id="compress-czf">Compress (czf)</h3>
 <p>- c compress, -z zip, -f file</p>
-<pre><code class="language-console">tar -czf /targetfolder/targetfile.tar.gz /sourcefolder
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">tar -czf /targetfolder/targetfile.tar.gz /sourcefolder</span>
+</code></pre></div>
 <h3 id="decompress-xzf">Decompress (xzf)</h3>
 <p>- x extract, -z zip, -f file</p>
-<pre><code class="language-console">tar -xzf targetfile.tar.gz
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">tar -xzf targetfile.tar.gz</span>
+</code></pre></div>
 <p>or gzip, -k to keep original, -d to decompress:</p>
-<pre><code class="language-console">gzip -kd file.gz
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">gzip -kd file.gz</span>
+</code></pre></div>
 <hr />
 <h2 id="package">Package</h2>
 <h3 id="list-installed">List installed</h3>
-<pre><code class="language-console">apt list --installed
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">apt list --installed</span>
+</code></pre></div>
 <h3 id="info">Info</h3>
-<pre><code class="language-console">apt-cache show packagename
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">apt-cache show packagename</span>
+</code></pre></div>
 <h3 id="remove">Remove</h3>
-<pre><code class="language-console">sudo apt-get --purge autoremove packagename
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">sudo apt-get --purge autoremove packagename</span>
+</code></pre></div>
 <hr />
 <h2 id="switch-user-to-root">Switch user to root</h2>
 <p>Switch current user to root</p>
-<pre><code class="language-console">sudo su -
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">sudo su -</span>
+</code></pre></div>
 <hr />
 <h2 id="grep-lines-before-after-match">Grep lines before after match</h2>
 <p>-B before<br />
 -A after</p>
 <p>Stick ne lines just after option</p>
-<pre><code class="language-console">grep -B2 -A3 pattern infile.txt
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">grep -B2 -A3 pattern infile.txt</span>
+</code></pre></div>
 <hr />
 <h2 id="copy-files-from-list">Copy files from list</h2>
 <p>Copy specific files from a text list of files</p>
-<pre><code class="language-console">rsync -a sourcefolder --files-from=list.txt destinationfolder
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">rsync -a sourcefolder --files-from=list.txt destinationfolder</span>
+</code></pre></div>
 <hr />
 <h2 id="get-data-between-two-patterns">Get data between two patterns</h2>
 <p>In error.log</p>
-<pre><code class="language-text">.
-.
-05:59:30.024 [nioEventLoopGroup-3-5] ERROR c.l.d.c.ConnectorServerHandlerTCP.parseAndSendMessageTeltonika(177) - class java.util.concurrent.ExecutionException FOR RAW DATA : 0000017d55747fb00003f5380c1be045ce00000000000000000804ef005000c8024503034230fc430f8d440000011007e0fca600 WITH STACKTRACE : {}
-.
-.
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>.
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>.
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>05:59:30.024 [nioEventLoopGroup-3-5] ERROR c.l.d.c.ConnectorServerHandlerTCP.parseAndSendMessageTeltonika(177) - class java.util.concurrent.ExecutionException FOR RAW DATA : 0000017d55747fb00003f5380c1be045ce00000000000000000804ef005000c8024503034230fc430f8d440000011007e0fca600 WITH STACKTRACE : {}
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>.
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>.
+</code></pre></div>
 <p>Get data between "DATA : " and " WITH" (hex raw data)</p>
-<pre><code class="language-console">cat error.log | sed -nr 's/.*DATA : (.*) WITH.*/\1/p'
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="go">cat error.log | sed -nr &#39;s/.*DATA : (.*) WITH.*/\1/p&#39;</span>
+</code></pre></div>
 <p>or</p>
-<pre><code class="language-console">cat file | grep -o -P '(?&lt;=left).*(?=right)'
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="go">cat file | grep -o -P &#39;(?&lt;=left).*(?=right)&#39;</span>
+</code></pre></div>
 <hr />
 <h2 id="grep-patterns-from-a-file">Grep patterns from a file</h2>
 <p>-f option, maybe -oF options also</p>
-<pre><code class="language-console">grep -f patterns_file *.log
-
-or
-
-grep -oFf patterns.txt *.log
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="go">grep -f patterns_file *.log</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="go">or</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="go">grep -oFf patterns.txt *.log</span>
+</code></pre></div>
 <p>If result's count's not OK, check by not found pattern (-h option to hide filename in output)</p>
-<pre><code class="language-console">grep -hoFf patterns.txt *.log | grep -vFf - patterns.txt
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="go">grep -hoFf patterns.txt *.log | grep -vFf - patterns.txt</span>
+</code></pre></div>
 <hr />
 <h2 id="for-list-of-file">For list of file</h2>
 <p>For list of file in current folder, do operation.
 Here we want to have file name, cat content and separate result with a new line</p>
-<pre><code class="language-console">ll *.txt
-
-1.txt
-2.txt
-3.txt
-4.txt
-5.txt
-
-
-for f in {2..4}.txt; do echo &quot;$f&quot;; cat &quot;$f&quot;; printf &quot;\n&quot;; done
-
-2.txt
-jkl
-mno
-pqr
-
-3.txt
-stu
-vwx
-yza
-
-4.txt
-bcd
-efg
-hij
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="go">ll *.txt</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="go">1.txt</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="go">2.txt</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="go">3.txt</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="go">4.txt</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="go">5.txt</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9"></a>
+<a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="go">for f in {2..4}.txt; do echo &quot;$f&quot;; cat &quot;$f&quot;; printf &quot;\n&quot;; done</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11"></a>
+<a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="go">2.txt</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="go">jkl</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="go">mno</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15"></a><span class="go">pqr</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16"></a>
+<a id="__codelineno-15-17" name="__codelineno-15-17"></a><span class="go">3.txt</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18"></a><span class="go">stu</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19"></a><span class="go">vwx</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20"></a><span class="go">yza</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21"></a>
+<a id="__codelineno-15-22" name="__codelineno-15-22"></a><span class="go">4.txt</span>
+<a id="__codelineno-15-23" name="__codelineno-15-23"></a><span class="go">bcd</span>
+<a id="__codelineno-15-24" name="__codelineno-15-24"></a><span class="go">efg</span>
+<a id="__codelineno-15-25" name="__codelineno-15-25"></a><span class="go">hij</span>
+</code></pre></div>
 <hr />
 <h2 id="search-between-timestamp">Search between timestamp</h2>
-<pre><code class="language-console">sed -rne '/10:50/,/11:05/ p' file
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="go">sed -rne &#39;/10:50/,/11:05/ p&#39; file</span>
+</code></pre></div>
 <p>Put existing time range in file (10:50 - 11:05).</p>
 <hr />
 <h2 id="highlight-search-result">Highlight search result</h2>
-<pre><code class="language-console">grep --color=always -z pattern file | less -R
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="go">grep --color=always -z pattern file | less -R</span>
+</code></pre></div>
 <p>always to transmit color through pipe<br />
 -z to show everything, not only the matching pattern<br />
 -R to avoid showing esc char instead of color</p>
 <hr />
 <h2 id="delete-history">Delete history</h2>
-<pre><code class="language-console">history
-1003  25-04-2016 17:54:52 echo &quot;Command 1&quot;
-1004  25-04-2016 17:54:54 echo &quot;Command 2&quot;
-1005  25-04-2016 17:54:57 echo &quot;Command 3&quot;
-1006  25-04-2016 17:54:59 echo &quot;Command 4&quot;
-1007  25-04-2016 17:55:01 echo &quot;Command 5&quot;
-1008  25-04-2016 17:55:03 echo &quot;Command 6&quot;
-1009  25-04-2016 17:55:07 echo &quot;Command 7&quot;
-1010  25-04-2016 17:55:09 echo &quot;Command 8&quot;
-1011  25-04-2016 17:55:11 echo &quot;Command 9&quot;
-1012  25-04-2016 17:55:14 echo &quot;Command 10&quot;
-</code></pre>
-<pre><code class="language-console">for h in $(seq 1006 1008); do history -d 1006; done
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="go">history</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="go">1003  25-04-2016 17:54:52 echo &quot;Command 1&quot;</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="go">1004  25-04-2016 17:54:54 echo &quot;Command 2&quot;</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="go">1005  25-04-2016 17:54:57 echo &quot;Command 3&quot;</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="go">1006  25-04-2016 17:54:59 echo &quot;Command 4&quot;</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="go">1007  25-04-2016 17:55:01 echo &quot;Command 5&quot;</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="go">1008  25-04-2016 17:55:03 echo &quot;Command 6&quot;</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="go">1009  25-04-2016 17:55:07 echo &quot;Command 7&quot;</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="go">1010  25-04-2016 17:55:09 echo &quot;Command 8&quot;</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="go">1011  25-04-2016 17:55:11 echo &quot;Command 9&quot;</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11"></a><span class="go">1012  25-04-2016 17:55:14 echo &quot;Command 10&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="go">for h in $(seq 1006 1008); do history -d 1006; done</span>
+</code></pre></div>
 <hr />
 <h2 id="where-is-a-program">Where is a program</h2>
 <p>How to know where reside a program, e.g. ls?</p>
-<pre><code class="language-console">which ls
-/usr/bin/ls
-
-env
-
-env | grep PATH
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="go">which ls</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="go">/usr/bin/ls</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a>
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="go">env</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a>
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="go">env | grep PATH</span>
+</code></pre></div>
 <hr />
 <h2 id="difference-of-cmd-output">Difference of cmd output</h2>
-<pre><code class="language-console">diff &lt;(ls test1) &lt;(ls test2)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="go">diff &lt;(ls test1) &lt;(ls test2)</span>
+</code></pre></div>
 <p>Difference of sorted lists</p>
-<pre><code class="language-console">sort ok.txt &gt; okSorted.txt
-
-sort all.txt &gt; allSorted.txt
-
-diff --new-line-format=&quot;&quot; --unchanged-line-format=&quot;&quot;  allSorted.txt okSorted.txt
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="go">sort ok.txt &gt; okSorted.txt</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="go">sort all.txt &gt; allSorted.txt</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a>
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="go">diff --new-line-format=&quot;&quot; --unchanged-line-format=&quot;&quot;  allSorted.txt okSorted.txt</span>
+</code></pre></div>
 <hr />
 <h2 id="column">Column</h2>
 <h3 id="min">Min</h3>
-<pre><code class="language-console">cat ... | grep ... | sort -n -r | tail -n10
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="go">cat ... | grep ... | sort -n -r | tail -n10</span>
+</code></pre></div>
 <h3 id="max">Max</h3>
-<pre><code class="language-console">cat ... | grep ... | sort -n -r | head -n10
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="go">cat ... | grep ... | sort -n -r | head -n10</span>
+</code></pre></div>
 <h3 id="average">Average</h3>
 <p>test.txt (warning on empty lines (maybe at the end))</p>
-<pre><code class="language-text">1
-3
-7
-</code></pre>
-<pre><code class="language-console">cat test.txt | awk '{ total += $1 } END { print total/NR }'
-3.66667
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a>1
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a>3
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a>7
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="go">cat test.txt | awk &#39;{ total += $1 } END { print total/NR }&#39;</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="go">3.66667</span>
+</code></pre></div>
 <h3 id="median">Median</h3>
 <p>test.txt (warning on empty lines (maybe at the end))</p>
-<pre><code class="language-text">1 
-3 
-7 
-11
-22
-45
-71
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a>1 
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a>3 
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a>7 
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a>11
+<a id="__codelineno-27-5" name="__codelineno-27-5"></a>22
+<a id="__codelineno-27-6" name="__codelineno-27-6"></a>45
+<a id="__codelineno-27-7" name="__codelineno-27-7"></a>71
+</code></pre></div>
 <p>median.awk</p>
-<pre><code class="language-text">#/usr/bin/env awk
-{
-    count[NR] = $1;
-}
-END {
-    if (NR % 2) {
-        print count[(NR + 1) / 2];
-    } else {
-        print (count[(NR / 2)] + count[(NR / 2) + 1]) / 2.0;
-    }
-}
-</code></pre>
-<pre><code class="language-console">cat test.txt | awk -f median.awk
-11
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a>#/usr/bin/env awk
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a>{
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a>    count[NR] = $1;
+<a id="__codelineno-28-4" name="__codelineno-28-4"></a>}
+<a id="__codelineno-28-5" name="__codelineno-28-5"></a>END {
+<a id="__codelineno-28-6" name="__codelineno-28-6"></a>    if (NR % 2) {
+<a id="__codelineno-28-7" name="__codelineno-28-7"></a>        print count[(NR + 1) / 2];
+<a id="__codelineno-28-8" name="__codelineno-28-8"></a>    } else {
+<a id="__codelineno-28-9" name="__codelineno-28-9"></a>        print (count[(NR / 2)] + count[(NR / 2) + 1]) / 2.0;
+<a id="__codelineno-28-10" name="__codelineno-28-10"></a>    }
+<a id="__codelineno-28-11" name="__codelineno-28-11"></a>}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="go">cat test.txt | awk -f median.awk</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a><span class="go">11</span>
+</code></pre></div>
 <p>Check equal number of values below and above median</p>
-<pre><code class="language-console">cat test.txt | awk '{if($1 &lt; 11) print $1}' | wc -l
-3
-cat test.txt | awk '{if($1 &gt; 11) print $1}' | wc -l
-3
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="go">cat test.txt | awk &#39;{if($1 &lt; 11) print $1}&#39; | wc -l</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a><span class="go">3</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3"></a><span class="go">cat test.txt | awk &#39;{if($1 &gt; 11) print $1}&#39; | wc -l</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4"></a><span class="go">3</span>
+</code></pre></div>
 <hr />
 <h2 id="get-nth-column-from-file">Get nth column from file</h2>
 <p>Get nth column from file with field separated values</p>
 <p>test.txt</p>
-<pre><code class="language-text">column 1 row 1;column 2 row 1;column 3 row 1
-column 1 row 2;column 2 row 2;column 3 row 2
-column 1 row 3;column 2 row 3;column 3 row 3
-</code></pre>
-<pre><code class="language-console">cat test.txt | awk -F ';' '{print $2}'
-column 2 row 1
-column 2 row 2
-column 2 row 3
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a>column 1 row 1;column 2 row 1;column 3 row 1
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a>column 1 row 2;column 2 row 2;column 3 row 2
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a>column 1 row 3;column 2 row 3;column 3 row 3
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="go">cat test.txt | awk -F &#39;;&#39; &#39;{print $2}&#39;</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2"></a><span class="go">column 2 row 1</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3"></a><span class="go">column 2 row 2</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4"></a><span class="go">column 2 row 3</span>
+</code></pre></div>
 <h3 id="conditional">Conditional</h3>
-<pre><code class="language-console">cat test.txt | awk -F ';' '{if($1 == &quot;column 1 row 2&quot;) print $2}'
-column 2 row 2
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="go">cat test.txt | awk -F &#39;;&#39; &#39;{if($1 == &quot;column 1 row 2&quot;) print $2}&#39;</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2"></a><span class="go">column 2 row 2</span>
+</code></pre></div>
 <hr />
 <h2 id="list-files">List files</h2>
 <p>Sorted by sizes and human readable</p>
-<pre><code class="language-console">ll -S -h
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a><span class="go">ll -S -h</span>
+</code></pre></div>
 <hr />
 <h2 id="uniq-values-in-a-file">Uniq values in a file</h2>
 <p>Uniq values in a file, sorted and counted (first sort is mandatory)</p>
 <p>test.txt</p>
-<pre><code class="language-text">1
-71
-3
-7
-22
-1
-11
-22
-45
-71
-22
-</code></pre>
-<pre><code class="language-console">cat test.txt | sort | uniq -c
-      2 1
-      1 11
-      3 22
-      1 3
-      1 45
-      1 7
-      2 71
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a>1
+<a id="__codelineno-35-2" name="__codelineno-35-2"></a>71
+<a id="__codelineno-35-3" name="__codelineno-35-3"></a>3
+<a id="__codelineno-35-4" name="__codelineno-35-4"></a>7
+<a id="__codelineno-35-5" name="__codelineno-35-5"></a>22
+<a id="__codelineno-35-6" name="__codelineno-35-6"></a>1
+<a id="__codelineno-35-7" name="__codelineno-35-7"></a>11
+<a id="__codelineno-35-8" name="__codelineno-35-8"></a>22
+<a id="__codelineno-35-9" name="__codelineno-35-9"></a>45
+<a id="__codelineno-35-10" name="__codelineno-35-10"></a>71
+<a id="__codelineno-35-11" name="__codelineno-35-11"></a>22
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="go">cat test.txt | sort | uniq -c</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2"></a><span class="go">      2 1</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3"></a><span class="go">      1 11</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4"></a><span class="go">      3 22</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5"></a><span class="go">      1 3</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6"></a><span class="go">      1 45</span>
+<a id="__codelineno-36-7" name="__codelineno-36-7"></a><span class="go">      1 7</span>
+<a id="__codelineno-36-8" name="__codelineno-36-8"></a><span class="go">      2 71</span>
+</code></pre></div>
 <p>sorted output</p>
-<pre><code class="language-console">cat test.txt | sort | uniq -c | sort
-      1 11
-      1 3
-      1 45
-      1 7
-      2 1
-      2 71
-      3 22
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="go">cat test.txt | sort | uniq -c | sort</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2"></a><span class="go">      1 11</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3"></a><span class="go">      1 3</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4"></a><span class="go">      1 45</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5"></a><span class="go">      1 7</span>
+<a id="__codelineno-37-6" name="__codelineno-37-6"></a><span class="go">      2 1</span>
+<a id="__codelineno-37-7" name="__codelineno-37-7"></a><span class="go">      2 71</span>
+<a id="__codelineno-37-8" name="__codelineno-37-8"></a><span class="go">      3 22</span>
+</code></pre></div>
 <p>revert sorted output</p>
-<pre><code class="language-console">cat test.txt | sort | uniq -c | sort -r
-      3 22
-      2 71
-      2 1
-      1 7
-      1 45
-      1 3
-      1 11
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="go">cat test.txt | sort | uniq -c | sort -r</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2"></a><span class="go">      3 22</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3"></a><span class="go">      2 71</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4"></a><span class="go">      2 1</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5"></a><span class="go">      1 7</span>
+<a id="__codelineno-38-6" name="__codelineno-38-6"></a><span class="go">      1 45</span>
+<a id="__codelineno-38-7" name="__codelineno-38-7"></a><span class="go">      1 3</span>
+<a id="__codelineno-38-8" name="__codelineno-38-8"></a><span class="go">      1 11</span>
+</code></pre></div>
 <hr />
 <h2 id="all-file-containing-a-pattern">All file containing a pattern</h2>
 <p>List all file that contain a pattern in current folder:</p>
 <p>Be aware to filtered out subfolder by precising some file name pattern (e.g. '*.log', not only '*')</p>
-<pre><code class="language-console">grep searchedString *.log
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="go">grep searchedString *.log</span>
+</code></pre></div>
 <hr />
 <h2 id="grep-end-of-line-after-match">Grep end of line after match</h2>
 <p><a href="https://stackoverflow.com/questions/20567667/grep-command-to-add-end-line-after-every-match">SRC</a></p>
-<pre><code class="language-console">cat error.log | grep -A 1 -B 1 --group-separator==============\\r\\n &quot;not valid&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a><span class="go">cat error.log | grep -A 1 -B 1 --group-separator==============\\r\\n &quot;not valid&quot;</span>
+</code></pre></div>
 <hr />
 <h2 id="empty-file">Empty file</h2>
 <p>Empty File Content by Redirecting to Null:</p>
-<pre><code class="language-console">&gt; access.log
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a><span class="go">&gt; access.log</span>
+</code></pre></div>
 <hr />
 <h2 id="disk-usage">Disk usage</h2>
-<pre><code class="language-console">df -h
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="go">df -h</span>
+</code></pre></div>
 <p>Huge file:</p>
-<pre><code class="language-console">sudo du -xh / | grep -P &quot;G\t&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a><span class="go">sudo du -xh / | grep -P &quot;G\t&quot;</span>
+</code></pre></div>
 <hr />
 <h2 id="last-modification-of-a-file">Last modification of a file</h2>
-<pre><code class="language-console">date -r fileName
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1"></a><span class="go">date -r fileName</span>
+</code></pre></div>
 <hr />
 <h2 id="creation-date-of-a-file">Creation date of a file</h2>
 <p>Below process to find creation date of a test file</p>
@@ -2345,47 +2345,47 @@ column 2 row 2
 <li>Find partition on which current folder belongs to  </li>
 <li>Use file system debugger to find creation date</li>
 </ol>
-<pre><code class="language-console">mkdir tmp
-
-cd tmp
-
-touch test
-
-ls -i
-201769 test
-
-df .
-Filesystem     1K-blocks     Used Available Use% Mounted on
-/dev/sdd       263174212 10339304 239396752   5% /
-
-sudo debugfs -R 'stat &lt;201769&gt;' /dev/sdd
-.
-.
-debugfs 1.45.5 (07-Jan-2020)
-.
-.
-Filesystem     1K-blocks     Used Available Use% Mounted on
-/dev/sdd       263174212 10339304 239396752   5% /
-16:15:36 ✔ oldu:(main)~/git/doc/tmp$ sudo debugfs -R 'stat &lt;201769&gt;' /dev/sdd
-
-
-Inode: 201769   Type: regular    Mode:  0644   Flags: 0x80000
-Generation: 333662723    Version: 0x00000000:00000001
-User:  1000   Group:  1000   Project:     0   Size: 0
-File ACL: 0
-Links: 1   Blockcount: 0
-Fragment:  Address: 0    Number: 0    Size: 0
- ctime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022
- atime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022
- mtime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022
-crtime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022
-Size of extra inode fields: 32
-Inode checksum: 0x38e4efd5
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1"></a><span class="go">mkdir tmp</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2"></a>
+<a id="__codelineno-45-3" name="__codelineno-45-3"></a><span class="go">cd tmp</span>
+<a id="__codelineno-45-4" name="__codelineno-45-4"></a>
+<a id="__codelineno-45-5" name="__codelineno-45-5"></a><span class="go">touch test</span>
+<a id="__codelineno-45-6" name="__codelineno-45-6"></a>
+<a id="__codelineno-45-7" name="__codelineno-45-7"></a><span class="go">ls -i</span>
+<a id="__codelineno-45-8" name="__codelineno-45-8"></a><span class="go">201769 test</span>
+<a id="__codelineno-45-9" name="__codelineno-45-9"></a>
+<a id="__codelineno-45-10" name="__codelineno-45-10"></a><span class="go">df .</span>
+<a id="__codelineno-45-11" name="__codelineno-45-11"></a><span class="go">Filesystem     1K-blocks     Used Available Use% Mounted on</span>
+<a id="__codelineno-45-12" name="__codelineno-45-12"></a><span class="go">/dev/sdd       263174212 10339304 239396752   5% /</span>
+<a id="__codelineno-45-13" name="__codelineno-45-13"></a>
+<a id="__codelineno-45-14" name="__codelineno-45-14"></a><span class="go">sudo debugfs -R &#39;stat &lt;201769&gt;&#39; /dev/sdd</span>
+<a id="__codelineno-45-15" name="__codelineno-45-15"></a><span class="go">.</span>
+<a id="__codelineno-45-16" name="__codelineno-45-16"></a><span class="go">.</span>
+<a id="__codelineno-45-17" name="__codelineno-45-17"></a><span class="go">debugfs 1.45.5 (07-Jan-2020)</span>
+<a id="__codelineno-45-18" name="__codelineno-45-18"></a><span class="go">.</span>
+<a id="__codelineno-45-19" name="__codelineno-45-19"></a><span class="go">.</span>
+<a id="__codelineno-45-20" name="__codelineno-45-20"></a><span class="go">Filesystem     1K-blocks     Used Available Use% Mounted on</span>
+<a id="__codelineno-45-21" name="__codelineno-45-21"></a><span class="go">/dev/sdd       263174212 10339304 239396752   5% /</span>
+<a id="__codelineno-45-22" name="__codelineno-45-22"></a><span class="go">16:15:36 ✔ oldu:(main)~/git/doc/tmp$ sudo debugfs -R &#39;stat &lt;201769&gt;&#39; /dev/sdd</span>
+<a id="__codelineno-45-23" name="__codelineno-45-23"></a>
+<a id="__codelineno-45-24" name="__codelineno-45-24"></a>
+<a id="__codelineno-45-25" name="__codelineno-45-25"></a><span class="go">Inode: 201769   Type: regular    Mode:  0644   Flags: 0x80000</span>
+<a id="__codelineno-45-26" name="__codelineno-45-26"></a><span class="go">Generation: 333662723    Version: 0x00000000:00000001</span>
+<a id="__codelineno-45-27" name="__codelineno-45-27"></a><span class="go">User:  1000   Group:  1000   Project:     0   Size: 0</span>
+<a id="__codelineno-45-28" name="__codelineno-45-28"></a><span class="go">File ACL: 0</span>
+<a id="__codelineno-45-29" name="__codelineno-45-29"></a><span class="go">Links: 1   Blockcount: 0</span>
+<a id="__codelineno-45-30" name="__codelineno-45-30"></a><span class="go">Fragment:  Address: 0    Number: 0    Size: 0</span>
+<a id="__codelineno-45-31" name="__codelineno-45-31"></a><span class="go"> ctime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022</span>
+<a id="__codelineno-45-32" name="__codelineno-45-32"></a><span class="go"> atime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022</span>
+<a id="__codelineno-45-33" name="__codelineno-45-33"></a><span class="go"> mtime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022</span>
+<a id="__codelineno-45-34" name="__codelineno-45-34"></a><span class="go">crtime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022</span>
+<a id="__codelineno-45-35" name="__codelineno-45-35"></a><span class="go">Size of extra inode fields: 32</span>
+<a id="__codelineno-45-36" name="__codelineno-45-36"></a><span class="go">Inode checksum: 0x38e4efd5</span>
+</code></pre></div>
 <hr />
 <h2 id="since-when-a-process-run">Since when a process run</h2>
-<pre><code class="language-console">ps -p pid -o etime
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="go">ps -p pid -o etime</span>
+</code></pre></div>
 <p>Then use this <a href="https://www.timeanddate.com/date/timeduration.html?">online tool</a> to calculate time between above result and now.</p>
 <hr />
 <h2 id="how-many-file-descriptors-opened-by-a-process">How many file descriptors opened by a process</h2>
@@ -2395,27 +2395,27 @@ Inode checksum: 0x38e4efd5
 <li>number of fd opened for pid  </li>
 <li>max limit of opened fd for pid</li>
 </ol>
-<pre><code class="language-console">df -H
-ps ax | grep processName
-sudo ls /proc/28043/fd | wc -l
-sudo grep &quot;Max open files&quot; /proc/28043/limits | awk '{ print $4; }'
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1"></a><span class="go">df -H</span>
+<a id="__codelineno-47-2" name="__codelineno-47-2"></a><span class="go">ps ax | grep processName</span>
+<a id="__codelineno-47-3" name="__codelineno-47-3"></a><span class="go">sudo ls /proc/28043/fd | wc -l</span>
+<a id="__codelineno-47-4" name="__codelineno-47-4"></a><span class="go">sudo grep &quot;Max open files&quot; /proc/28043/limits | awk &#39;{ print $4; }&#39;</span>
+</code></pre></div>
 <hr />
 <h2 id="copy-filtered-file-list">Copy filtered file list</h2>
 <p>Copy (for move replace below cp by mv) grep"ed" filtered files list to another folder.</p>
-<pre><code class="language-console">ls | grep pattern1 | grep pattern2 | ... | xargs cp -t /destinationFolder
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="go">ls | grep pattern1 | grep pattern2 | ... | xargs cp -t /destinationFolder</span>
+</code></pre></div>
 <hr />
 <h2 id="add-prefix-to-file-names-list">Add prefix to file names list</h2>
-<pre><code class="language-console">for f in * ; do mv -- &quot;$f&quot; &quot;PRE_$f&quot; ; done
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1"></a><span class="go">for f in * ; do mv -- &quot;$f&quot; &quot;PRE_$f&quot; ; done</span>
+</code></pre></div>
 <hr />
 <h2 id="curly-braces">Curly braces</h2>
 <p>Using braces to build a sequence.</p>
 <p><a href="https://www.linux.com/topic/desktop/all-about-curly-braces-bash/">All about {Curly Braces} in Bash</a></p>
-<pre><code class="language-console">echo {0..10}
-0 1 2 3 4 5 6 7 8 9 10
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1"></a><span class="go">echo {0..10}</span>
+<a id="__codelineno-50-2" name="__codelineno-50-2"></a><span class="go">0 1 2 3 4 5 6 7 8 9 10</span>
+</code></pre></div>
 <hr />
 
               

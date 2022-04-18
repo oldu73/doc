@@ -1521,32 +1521,32 @@
 <h2 id="exportimport">export/import</h2>
 <p>for container
 docker container export/import</p>
-<pre><code>$ docker build -t mynode .
-
-$ docker run -it mynode sh
-
-$c touch hello.txt
-
-$c exit
-
-$ docker container ps -a
-CONTAINER ID   IMAGE
-3d8e43e502b0   mynode
-
-$ docker container export -o mycontainer.tar 3d8
-
-$ tar -tvf mycontainer.tar
-
-$ docker container rm 3d8
-
-$ docker image import mycontainer.tar nodetest
-
-$ docker images
-REPOSITORY                                      TAG
-nodetest                                        latest
-
-$ docker image inspect nodetest:latest
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>$ docker build -t mynode .
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>$ docker run -it mynode sh
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>$c touch hello.txt
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>$c exit
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>$ docker container ps -a
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>CONTAINER ID   IMAGE
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>3d8e43e502b0   mynode
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>$ docker container export -o mycontainer.tar 3d8
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>$ tar -tvf mycontainer.tar
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>$ docker container rm 3d8
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>$ docker image import mycontainer.tar nodetest
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>$ docker images
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>REPOSITORY                                      TAG
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a>nodetest                                        latest
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>$ docker image inspect nodetest:latest
+</code></pre></div>
 <p>Only one layer because exporting a container is like creating an image from a file system.</p>
 <p>It's not possible to relaunch a container directly from another exported container.
 You must first create an image with import.</p>
@@ -1554,62 +1554,62 @@ You must first create an image with import.</p>
 <h2 id="tar">tar</h2>
 <p>for image
 docker image save/load &lt;-&gt; tar</p>
-<pre><code>$ docker build -t mynode:0.1 .
-
-$ docker image ls
-REPOSITORY                                      TAG       IMAGE ID       CREATED         SIZE  
-mynode                                          0.1       c68e7a86d468   8 seconds ago   48MB
-
-$ docker image save -o monimage.tar mynode
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>$ docker build -t mynode:0.1 .
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>$ docker image ls
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>REPOSITORY                                      TAG       IMAGE ID       CREATED         SIZE  
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>mynode                                          0.1       c68e7a86d468   8 seconds ago   48MB
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>$ docker image save -o monimage.tar mynode
+</code></pre></div>
 <p>(to compress with gzip: docker save mon_image | gzip &gt; mon_image.tar.gz)</p>
-<pre><code>$ tar -tvf monimage.tar
-
-$ docker image prune -a
-
-$ docker image load &lt; monimage.tar
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>$ tar -tvf monimage.tar
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>$ docker image prune -a
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>$ docker image load &lt; monimage.tar
+</code></pre></div>
 <p>or</p>
-<pre><code>$ docker image load -i mon_image.tar
-
-$ docker run --rm mynode:0.1
-hello node-test-012
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>$ docker image load -i mon_image.tar
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>$ docker run --rm mynode:0.1
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>hello node-test-012
+</code></pre></div>
 <hr />
 <h2 id="encrypt-identifiers">Encrypt identifiers</h2>
 <p>Encrypt your identifiers GNU/Linux</p>
-<pre><code>$ sudo apt install pass
-
-$ gpg2 --gen-key
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>$ sudo apt install pass
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>$ gpg2 --gen-key
+</code></pre></div>
 <p>Enter your name and email when requested. Then do:</p>
-<pre><code>$ wget https://github.com/docker/docker-credential-helpers/releases/download/v0.6.3/docker-credential-pass-v0.6.3-amd64.tar.gz &amp;&amp; tar -xf docker-credential-pass-v0.6.3-amd64.tar.gz &amp;&amp; chmod +x docker-credential-pass &amp;&amp; sudo mv docker-credential-pass /usr/local/bin/
-
-$ pass init &quot;YOUR NAME&quot;
-
-$ nano ~/.docker/config.json
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>$ wget https://github.com/docker/docker-credential-helpers/releases/download/v0.6.3/docker-credential-pass-v0.6.3-amd64.tar.gz &amp;&amp; tar -xf docker-credential-pass-v0.6.3-amd64.tar.gz &amp;&amp; chmod +x docker-credential-pass &amp;&amp; sudo mv docker-credential-pass /usr/local/bin/
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>$ pass init &quot;YOUR NAME&quot;
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>$ nano ~/.docker/config.json
+</code></pre></div>
 <p>then:</p>
-<pre><code>{
-    &quot;credsStore&quot;: &quot;pass&quot;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>{
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>    &quot;credsStore&quot;: &quot;pass&quot;
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>}
+</code></pre></div>
 <p>$ docker login</p>
 <hr />
 <h2 id="push-image">Push image</h2>
 <p>Push image to docker hub</p>
-<pre><code>$ docker login
-
-$ docker build -t oldu73/mynode .
-
-$ docker image push oldu73/mynode
-
-$ docker image prune -a
-
-$ docker run --rm oldu73/mynode
-
-$ docker logout
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>$ docker login
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>$ docker build -t oldu73/mynode .
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>$ docker image push oldu73/mynode
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>$ docker image prune -a
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a>$ docker run --rm oldu73/mynode
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a>$ docker logout
+</code></pre></div>
 <hr />
 <h2 id="docker-hub">Docker hub</h2>
 <p>docker image pull</p>
@@ -1617,26 +1617,26 @@ $ docker logout
 <p>docker image pull/push <username>/<repertoire>:[tag]</p>
 <p>docker search</p>
 <p>https://hub.docker.com/</p>
-<pre><code>$ docker pull node
-
-$ docker image ls
-REPOSITORY                                      TAG       IMAGE ID       CREATED         SIZE
-node                                            latest    7220633f01cd   7 days ago      992MB
-
-$ docker run -it --rm node sh
-
-$c ls
-
-$c node -v1
-
-$c mkdir app
-
-$c cd app
-
-$c echo &quot;console.log('Hello, world!');&quot; &gt; app.js
-
-$c node app.js
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>$ docker pull node
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>$ docker image ls
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>REPOSITORY                                      TAG       IMAGE ID       CREATED         SIZE
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>node                                            latest    7220633f01cd   7 days ago      992MB
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>$ docker run -it --rm node sh
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a>$c ls
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a>$c node -v1
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a>$c mkdir app
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a>$c cd app
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a>$c echo &quot;console.log(&#39;Hello, world!&#39;);&quot; &gt; app.js
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a>
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a>$c node app.js
+</code></pre></div>
 <hr />
 
               

@@ -1678,692 +1678,691 @@
 <li>== /api -&gt; Node.js -&gt; MongoDB.</li>
 </ul>
 <h3 id="setup">Setup</h3>
-<pre><code class="language-console">mkdir fullstack
-cd fullstack
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">mkdir fullstack</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="go">cd fullstack</span>
+</code></pre></div>
 <p>React application:</p>
-<pre><code class="language-console">mkdir client
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">mkdir client</span>
+</code></pre></div>
 <p>Node.js application:</p>
-<pre><code class="language-console">mkdir api
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">mkdir api</span>
+</code></pre></div>
 <p>MongoDB database:</p>
-<pre><code class="language-console">mkdir db
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">mkdir db</span>
+</code></pre></div>
 <p>NGINX as a reverse proxy, in charge of dispatching http requests:</p>
-<pre><code class="language-console">mkdir reverse-proxy
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">mkdir reverse-proxy</span>
+</code></pre></div>
 <p>Docker Compose:</p>
-<pre><code class="language-console">touch docker-compose.dev.yml
-touch docker-compose.prod.yml
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">touch docker-compose.dev.yml</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="go">touch docker-compose.prod.yml</span>
+</code></pre></div>
 <hr />
 <h2 id="client-configuration">Client configuration</h2>
 <p>Setting up the client configuration</p>
-<pre><code class="language-console">cd client
-npx create-react-app client
-mv client/* .
-rm -rf client
-rm -rf node_modules
-touch Dockerfile.dev
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">cd client</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="go">npx create-react-app client</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="go">mv client/* .</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="go">rm -rf client</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="go">rm -rf node_modules</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="go">touch Dockerfile.dev</span>
+</code></pre></div>
 <p>/fullstack/client/Dockerfile.dev:</p>
-<pre><code class="language-text">FROM node:alpine
-WORKDIR /app
-COPY package.json .
-RUN npm install
-# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
-RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
-COPY . .
-CMD [&quot;npm&quot;, &quot;start&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>FROM node:alpine
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>WORKDIR /app
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>COPY package.json .
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>RUN npm install
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a># To avoid &#39;EACCES: permission denied&#39; issue on &#39;/app/node_modules/.cache&#39; folder
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>COPY . .
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>CMD [&quot;npm&quot;, &quot;start&quot;]
+</code></pre></div>
 <p>/fullstack/docker-compose.dev.yml:</p>
-<pre><code class="language-yaml">version: &quot;3.8&quot;
-services:
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile.dev
-    volumes:
-      - type: bind
-        source: ./client
-        target: /app
-      - type: volume
-        target: /app/node_modules
-    ports:
-      - 3000:3000
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.8&quot;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>  <span class="nt">client</span><span class="p">:</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./client</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile.dev</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bind</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./client</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app/node_modules</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">3000:3000</span>
+</code></pre></div>
 <p>From 'fullstack' folder, we'll let '--build' option to ensure building images before starting containers:</p>
-<pre><code class="language-console">code .
-docker-compose -f docker-compose.dev.yml up --build
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">code .</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="go">docker-compose -f docker-compose.dev.yml up --build</span>
+</code></pre></div>
 <p>Test by browsing at <a href="http://localhost:3000/">localhost:3000</a></p>
 <p>We add a function to '/fullstack/client/src/App.js' file in order to get a counter from api (not ready yet but we prepare here the application in advance).</p>
 <p>/fullstack/client/src/App.js:</p>
-<pre><code class="language-javascript">import logo from './logo.svg';
-import './App.css';
-import { useState, useEffect } from 'react';
-
-function App() {
-  const [count, setCount] = useState();
-
-  useEffect(() =&gt; {
-    async function fetchCount() {
-      try {
-        const response = await fetch('/api/count')
-        if (response.ok) {
-          setCount(await response.json());
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    fetchCount();
-  }, []);
-
-  return (
-    &lt;div className=&quot;App&quot;&gt;
-      &lt;header className=&quot;App-header&quot;&gt;
-        &lt;img src={logo} className=&quot;App-logo&quot; alt=&quot;logo&quot; /&gt;
-        &lt;p&gt;
-          Edit &lt;code&gt;src/App.js&lt;/code&gt; and save to reload.
-        &lt;/p&gt;
-        &lt;p&gt;
-          Count : { count }
-        &lt;/p&gt;
-        &lt;a
-          className=&quot;App-link&quot;
-          href=&quot;https://reactjs.org&quot;
-          target=&quot;_blank&quot;
-          rel=&quot;noopener noreferrer&quot;
-        &gt;
-          Learn React
-        &lt;/a&gt;
-      &lt;/header&gt;
-    &lt;/div&gt;
-  );
-}
-
-export default App;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="k">import</span> <span class="nx">logo</span> <span class="kr">from</span> <span class="s1">&#39;./logo.svg&#39;</span><span class="p">;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="k">import</span> <span class="s1">&#39;./App.css&#39;</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="k">import</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>  <span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">();</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a>  <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a>    <span class="k">async</span> <span class="kd">function</span> <span class="nx">fetchCount</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a>      <span class="k">try</span> <span class="p">{</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a>        <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;/api/count&#39;</span><span class="p">)</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a>        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a>          <span class="nx">setCount</span><span class="p">(</span><span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a>        <span class="p">}</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15"></a>      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16"></a>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17"></a>      <span class="p">}</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18"></a>    <span class="p">}</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19"></a>    <span class="nx">fetchCount</span><span class="p">();</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20"></a>  <span class="p">},</span> <span class="p">[]);</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21"></a>
+<a id="__codelineno-10-22" name="__codelineno-10-22"></a>  <span class="k">return</span> <span class="p">(</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23"></a>    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;App&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24"></a>      <span class="o">&lt;</span><span class="nx">header</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;App-header&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25"></a>        <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="p">{</span><span class="nx">logo</span><span class="p">}</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;App-logo&quot;</span> <span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;logo&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26"></a>        <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+<a id="__codelineno-10-27" name="__codelineno-10-27"></a>          <span class="nx">Edit</span> <span class="o">&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">src</span><span class="o">/</span><span class="nx">App</span><span class="p">.</span><span class="nx">js</span><span class="o">&lt;</span><span class="err">/code&gt; and save to reload.</span>
+<a id="__codelineno-10-28" name="__codelineno-10-28"></a>        <span class="o">&lt;</span><span class="err">/p&gt;</span>
+<a id="__codelineno-10-29" name="__codelineno-10-29"></a>        <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+<a id="__codelineno-10-30" name="__codelineno-10-30"></a>          <span class="nx">Count</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">count</span> <span class="p">}</span>
+<a id="__codelineno-10-31" name="__codelineno-10-31"></a>        <span class="o">&lt;</span><span class="err">/p&gt;</span>
+<a id="__codelineno-10-32" name="__codelineno-10-32"></a>        <span class="o">&lt;</span><span class="nx">a</span>
+<a id="__codelineno-10-33" name="__codelineno-10-33"></a>          <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;App-link&quot;</span>
+<a id="__codelineno-10-34" name="__codelineno-10-34"></a>          <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;https://reactjs.org&quot;</span>
+<a id="__codelineno-10-35" name="__codelineno-10-35"></a>          <span class="nx">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span>
+<a id="__codelineno-10-36" name="__codelineno-10-36"></a>          <span class="nx">rel</span><span class="o">=</span><span class="s2">&quot;noopener noreferrer&quot;</span>
+<a id="__codelineno-10-37" name="__codelineno-10-37"></a>        <span class="o">&gt;</span>
+<a id="__codelineno-10-38" name="__codelineno-10-38"></a>          <span class="nx">Learn</span> <span class="nx">React</span>
+<a id="__codelineno-10-39" name="__codelineno-10-39"></a>        <span class="o">&lt;</span><span class="err">/a&gt;</span>
+<a id="__codelineno-10-40" name="__codelineno-10-40"></a>      <span class="o">&lt;</span><span class="err">/header&gt;</span>
+<a id="__codelineno-10-41" name="__codelineno-10-41"></a>    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+<a id="__codelineno-10-42" name="__codelineno-10-42"></a>  <span class="p">);</span>
+<a id="__codelineno-10-43" name="__codelineno-10-43"></a><span class="p">}</span>
+<a id="__codelineno-10-44" name="__codelineno-10-44"></a>
+<a id="__codelineno-10-45" name="__codelineno-10-45"></a><span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div>
 <p>In Docker Compose logs we may observe successful compilation:</p>
-<pre><code class="language-console">.
-.
-client_1  | webpack 5.65.0 compiled successfully in 191 ms
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="go">.</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="go">.</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="go">client_1  | webpack 5.65.0 compiled successfully in 191 ms</span>
+</code></pre></div>
 <p>Test again by browsing at <a href="http://localhost:3000/">localhost:3000</a></p>
 <p>Stop/remove stack:</p>
-<pre><code class="language-console">docker-compose -f docker-compose.dev.yml down
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="go">docker-compose -f docker-compose.dev.yml down</span>
+</code></pre></div>
 <p>Note: - webpack is exclusively devoted for development.</p>
 <hr />
 <h2 id="set-up-nodejs-api">Set up Node.js API</h2>
 <p>From project root folder: - .../fullstack</p>
-<pre><code class="language-console">cd api
-npm init -y
-npm i express nodemon mongodb
-mkdir src
-cd src
-touch index.js
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="go">cd api</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="go">npm init -y</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="go">npm i express nodemon mongodb</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="go">mkdir src</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="go">cd src</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="go">touch index.js</span>
+</code></pre></div>
 <p>index.js (from previous node server project)</p>
-<pre><code class="language-javascript">const express = require(&quot;express&quot;);
-
-const MongoClient = require('mongodb').MongoClient;
-
-let count;
-
-const MongUrl = process.env.NODE_ENV === 'production' ? 
-`mongodb://${ process.env.MONGO_USERNAME }:${ process.env.MONGO_PWD }@db` : 
-`mongodb://db`
-
-console.log(process.env) // to have environnement variables in logs
-
-MongoClient.connect(MongUrl, { useUnifiedTopology: true }, (err, client) =&gt; {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log('CONNECTION DB OK!');
-    count = client.db('test').collection(&quot;count&quot;);
-  }
-});
-
-const app = express();
-
-app.get('/api/count', (req, res) =&gt; {
-  console.log('request url: ' + req.url);
-  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) =&gt; {
-    const value = doc.value;
-    res.status(200).json(value.count);
-  })
-});
-
-app.all('*', (req, res) =&gt; {
-  res.status(404).end();
-});
-
-app.listen(80);
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="kd">const</span> <span class="nx">MongoClient</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongodb&#39;</span><span class="p">).</span><span class="nx">MongoClient</span><span class="p">;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="kd">let</span> <span class="nx">count</span><span class="p">;</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="kd">const</span> <span class="nx">MongUrl</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="s1">&#39;production&#39;</span> <span class="o">?</span> 
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="sb">`mongodb://</span><span class="si">${</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">MONGO_USERNAME</span> <span class="si">}</span><span class="sb">:</span><span class="si">${</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">MONGO_PWD</span> <span class="si">}</span><span class="sb">@db`</span> <span class="o">:</span> 
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="sb">`mongodb://db`</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">)</span> <span class="c1">// to have environnement variables in logs</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12"></a>
+<a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="nx">MongoClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">MongUrl</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useUnifiedTopology</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">client</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14"></a>  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15"></a>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16"></a>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17"></a>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;CONNECTION DB OK!&#39;</span><span class="p">);</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18"></a>    <span class="nx">count</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">).</span><span class="nx">collection</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19"></a>  <span class="p">}</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20"></a><span class="p">});</span>
+<a id="__codelineno-14-21" name="__codelineno-14-21"></a>
+<a id="__codelineno-14-22" name="__codelineno-14-22"></a><span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<a id="__codelineno-14-23" name="__codelineno-14-23"></a>
+<a id="__codelineno-14-24" name="__codelineno-14-24"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api/count&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-14-25" name="__codelineno-14-25"></a>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;request url: &#39;</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+<a id="__codelineno-14-26" name="__codelineno-14-26"></a>  <span class="nx">count</span><span class="p">.</span><span class="nx">findOneAndUpdate</span><span class="p">({},</span> <span class="p">{</span> <span class="nx">$inc</span><span class="o">:</span> <span class="p">{</span> <span class="nx">count</span><span class="o">:</span> <span class="mf">1</span> <span class="p">}</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">returnNewDocument</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">doc</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-14-27" name="__codelineno-14-27"></a>    <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+<a id="__codelineno-14-28" name="__codelineno-14-28"></a>    <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+<a id="__codelineno-14-29" name="__codelineno-14-29"></a>  <span class="p">})</span>
+<a id="__codelineno-14-30" name="__codelineno-14-30"></a><span class="p">});</span>
+<a id="__codelineno-14-31" name="__codelineno-14-31"></a>
+<a id="__codelineno-14-32" name="__codelineno-14-32"></a><span class="nx">app</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-14-33" name="__codelineno-14-33"></a>  <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">end</span><span class="p">();</span>
+<a id="__codelineno-14-34" name="__codelineno-14-34"></a><span class="p">});</span>
+<a id="__codelineno-14-35" name="__codelineno-14-35"></a>
+<a id="__codelineno-14-36" name="__codelineno-14-36"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">80</span><span class="p">);</span>
+</code></pre></div>
 <p>.../fullstack/docker-compose.dev.yml</p>
-<pre><code class="language-yaml">version: &quot;3.8&quot;
-services:
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile.dev
-    volumes:
-      - type: bind
-        source: ./client
-        target: /app
-      - type: volume
-        target: /app/node_modules
-    ports:
-      - 3000:3000
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    volumes:
-      - type: bind
-        source: ./api/src
-        target: /app/src
-    ports:
-      - 3001:80
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.8&quot;</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>  <span class="nt">client</span><span class="p">:</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./client</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile.dev</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bind</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./client</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app/node_modules</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">3000:3000</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15"></a>  <span class="nt">api</span><span class="p">:</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./api</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bind</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./api/src</span>
+<a id="__codelineno-15-22" name="__codelineno-15-22"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app/src</span>
+<a id="__codelineno-15-23" name="__codelineno-15-23"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-15-24" name="__codelineno-15-24"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">3001:80</span>
+</code></pre></div>
 <p>../fullstack/api</p>
-<pre><code class="language-console">touch Dockerfile
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="go">touch Dockerfile</span>
+</code></pre></div>
 <p>.../fullstack/api/Dockerfile</p>
-<pre><code class="language-text">FROM node:alpine
-WORKDIR /app
-COPY package.json .
-RUN npm install
-# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
-RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
-COPY . .
-EXPOSE 80
-CMD [&quot;npm&quot;, &quot;start&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>FROM node:alpine
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>WORKDIR /app
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a>COPY package.json .
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a>RUN npm install
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a># To avoid &#39;EACCES: permission denied&#39; issue on &#39;/app/node_modules/.cache&#39; folder
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a>RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a>COPY . .
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a>EXPOSE 80
+<a id="__codelineno-17-9" name="__codelineno-17-9"></a>CMD [&quot;npm&quot;, &quot;start&quot;]
+</code></pre></div>
 <p>.../fullstack/api/package.json</p>
-<pre><code class="language-json">{
-  &quot;name&quot;: &quot;api&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;description&quot;: &quot;&quot;,
-  &quot;main&quot;: &quot;index.js&quot;,
-  &quot;scripts&quot;: {
-    &quot;start&quot;: &quot;nodemon ./src/index.js&quot;,
-    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
-  },
-  &quot;keywords&quot;: [],
-  &quot;author&quot;: &quot;&quot;,
-  &quot;license&quot;: &quot;ISC&quot;,
-  &quot;dependencies&quot;: {
-    &quot;express&quot;: &quot;^4.17.2&quot;,
-    &quot;mongodb&quot;: &quot;^4.3.0&quot;,
-    &quot;nodemon&quot;: &quot;^2.0.15&quot;
-  }
-}
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="p">{</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;api&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a>  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a>  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a>  <span class="nt">&quot;main&quot;</span><span class="p">:</span> <span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a>  <span class="nt">&quot;scripts&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7"></a>    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;nodemon ./src/index.js&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8"></a>    <span class="nt">&quot;test&quot;</span><span class="p">:</span> <span class="s2">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9"></a>  <span class="p">},</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10"></a>  <span class="nt">&quot;keywords&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11"></a>  <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12"></a>  <span class="nt">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;ISC&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13"></a>  <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14"></a>    <span class="nt">&quot;express&quot;</span><span class="p">:</span> <span class="s2">&quot;^4.17.2&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15"></a>    <span class="nt">&quot;mongodb&quot;</span><span class="p">:</span> <span class="s2">&quot;^4.3.0&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16"></a>    <span class="nt">&quot;nodemon&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.0.15&quot;</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17"></a>  <span class="p">}</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18"></a><span class="p">}</span>
+</code></pre></div>
 <p>Test API in a terminal from .../fullstack/ folder</p>
-<pre><code class="language-console">code .
-docker-compose -f docker-compose.dev.yml run api
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="go">code .</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="go">docker-compose -f docker-compose.dev.yml run api</span>
+</code></pre></div>
 <hr />
 <h2 id="set-up-database-service">Set up database service</h2>
 <p>Add db service to Docker Compose configuration file.</p>
 <p>.../fullstack/docker-compose.dev.yml:</p>
-<pre><code class="language-yaml">version: &quot;3.8&quot;
-services:
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile.dev
-    volumes:
-      - type: bind
-        source: ./client
-        target: /app
-      - type: volume
-        target: /app/node_modules
-    ports:
-      - 3000:3000
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    volumes:
-      - type: bind
-        source: ./api/src
-        target: /app/src
-    ports:
-      - 3001:80
-  db:
-    image: mongo
-    volumes:
-      - type: volume
-        source: dbtest
-        target: /data/db
-volumes:
-  dbtest:
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.8&quot;</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a>  <span class="nt">client</span><span class="p">:</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./client</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile.dev</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bind</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./client</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app/node_modules</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">3000:3000</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15"></a>  <span class="nt">api</span><span class="p">:</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./api</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bind</span>
+<a id="__codelineno-20-21" name="__codelineno-20-21"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./api/src</span>
+<a id="__codelineno-20-22" name="__codelineno-20-22"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app/src</span>
+<a id="__codelineno-20-23" name="__codelineno-20-23"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-20-24" name="__codelineno-20-24"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">3001:80</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25"></a>  <span class="nt">db</span><span class="p">:</span>
+<a id="__codelineno-20-26" name="__codelineno-20-26"></a>    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mongo</span>
+<a id="__codelineno-20-27" name="__codelineno-20-27"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-20-28" name="__codelineno-20-28"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-20-29" name="__codelineno-20-29"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dbtest</span>
+<a id="__codelineno-20-30" name="__codelineno-20-30"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/data/db</span>
+<a id="__codelineno-20-31" name="__codelineno-20-31"></a><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-20-32" name="__codelineno-20-32"></a>  <span class="nt">dbtest</span><span class="p">:</span>
+</code></pre></div>
 <p>Initialize database container.</p>
 <p>From '.../fullstack' folder:</p>
-<pre><code class="language-console">docker-compose -f docker-compose.dev.yml run db
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="go">docker-compose -f docker-compose.dev.yml run db</span>
+</code></pre></div>
 <p>Now it should be launch and we connect on it in a second terminal:</p>
-<pre><code class="language-console">docker container exec -it fullstack_db_run_c97d6cfbd602 sh
-mongo
-use test
-db.count.insertOne({ count: 0 })
-exit
-exit
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="go">docker container exec -it fullstack_db_run_c97d6cfbd602 sh</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="go">mongo</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="go">use test</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="go">db.count.insertOne({ count: 0 })</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="go">exit</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a><span class="go">exit</span>
+</code></pre></div>
 <p>Now it's OK, we may close second terminal and 'Ctrl+c' database container.</p>
 <p>We may test application with (from '.../fullstack' folder):</p>
-<pre><code class="language-console">(code . // it's always better to have VS Code started from application root folder)
-docker-compose -f docker-compose.dev.yml up
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="gp gp-VirtualEnv">(code . // it&#39;s always better to have VS Code started from application root folder)</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="go">docker-compose -f docker-compose.dev.yml up</span>
+</code></pre></div>
 <p>Test application by browsing to <a href="http://localhost:3001/api/count">http://localhost:3001/api/count</a></p>
 <p>We may also observe that React is running by browsing to <a href="http://localhost:3000/">http://localhost:3000/</a></p>
 <p>Then 'Ctrl-c' to stop stack.</p>
 <hr />
 <h2 id="set-up-the-nginx-reverse-proxy">Set up the NGINX reverse proxy</h2>
 <p>From '.../fullstack/reverse-proxy' folder:</p>
-<pre><code class="language-console">mkdir conf
-touch conf/dev.conf
-touch Dockerfile.dev
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="go">mkdir conf</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="go">touch conf/dev.conf</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a><span class="go">touch Dockerfile.dev</span>
+</code></pre></div>
 <p>.../fullstack/reverse-proxy/Dockerfile.dev:</p>
-<pre><code class="language-text">FROM nginx:latest
-COPY ./conf/dev.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a>FROM nginx:latest
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a>COPY ./conf/dev.conf /etc/nginx/conf.d/default.conf
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a>EXPOSE 80
+</code></pre></div>
 <p>.../fullstack/reverse-proxy/conf/dev.conf:</p>
-<pre><code class="language-text">server {
-    listen 80;
-
-    location / {
-        proxy_pass http://client:3000;
-    }
-
-    location /api {
-        proxy_pass http://api;
-    }
-
-    location /sockjs-node {
-        proxy_pass http://client:3000;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection &quot;upgrade&quot;;
-    }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a>server {
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a>    listen 80;
+<a id="__codelineno-26-3" name="__codelineno-26-3"></a>
+<a id="__codelineno-26-4" name="__codelineno-26-4"></a>    location / {
+<a id="__codelineno-26-5" name="__codelineno-26-5"></a>        proxy_pass http://client:3000;
+<a id="__codelineno-26-6" name="__codelineno-26-6"></a>    }
+<a id="__codelineno-26-7" name="__codelineno-26-7"></a>
+<a id="__codelineno-26-8" name="__codelineno-26-8"></a>    location /api {
+<a id="__codelineno-26-9" name="__codelineno-26-9"></a>        proxy_pass http://api;
+<a id="__codelineno-26-10" name="__codelineno-26-10"></a>    }
+<a id="__codelineno-26-11" name="__codelineno-26-11"></a>
+<a id="__codelineno-26-12" name="__codelineno-26-12"></a>    location /sockjs-node {
+<a id="__codelineno-26-13" name="__codelineno-26-13"></a>        proxy_pass http://client:3000;
+<a id="__codelineno-26-14" name="__codelineno-26-14"></a>        proxy_set_header Upgrade $http_upgrade;
+<a id="__codelineno-26-15" name="__codelineno-26-15"></a>        proxy_set_header Connection &quot;upgrade&quot;;
+<a id="__codelineno-26-16" name="__codelineno-26-16"></a>    }
+<a id="__codelineno-26-17" name="__codelineno-26-17"></a>}
+</code></pre></div>
 <p>No need to specify port for api because inside stack (network), not from a host point of view, it's listening on default http port ('80').</p>
 <p>Among HTTP standards, by default some 'headers' called 'hop-by-hop' aren't passed by proxy to server and then avoid live reload to work.</p>
 <p>To fix this, the 'sockjs-node' is a needed technical part to make live reload works.</p>
 <p>.../fullstack/docker-compose.dev.yml:</p>
-<pre><code class="language-yaml">version: &quot;3.8&quot;
-services:
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile.dev
-    volumes:
-      - type: bind
-        source: ./client
-        target: /app
-      - type: volume
-        target: /app/node_modules
-    ports:
-      - 3000:3000
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    volumes:
-      - type: bind
-        source: ./api/src
-        target: /app/src
-    ports:
-      - 3001:80
-  db:
-    image: mongo
-    volumes:
-      - type: volume
-        source: dbtest
-        target: /data/db
-  reverse-proxy:
-    build:
-      context: ./reverse-proxy
-      dockerfile: Dockerfile.dev
-    ports:
-      - 80:80
-    depends_on:
-      - api
-      - db
-volumes:
-  dbtest:
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.8&quot;</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a>  <span class="nt">client</span><span class="p">:</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./client</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile.dev</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bind</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./client</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app/node_modules</span>
+<a id="__codelineno-27-13" name="__codelineno-27-13"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">3000:3000</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15"></a>  <span class="nt">api</span><span class="p">:</span>
+<a id="__codelineno-27-16" name="__codelineno-27-16"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-27-17" name="__codelineno-27-17"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./api</span>
+<a id="__codelineno-27-18" name="__codelineno-27-18"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile</span>
+<a id="__codelineno-27-19" name="__codelineno-27-19"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-27-20" name="__codelineno-27-20"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bind</span>
+<a id="__codelineno-27-21" name="__codelineno-27-21"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./api/src</span>
+<a id="__codelineno-27-22" name="__codelineno-27-22"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app/src</span>
+<a id="__codelineno-27-23" name="__codelineno-27-23"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-27-24" name="__codelineno-27-24"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">3001:80</span>
+<a id="__codelineno-27-25" name="__codelineno-27-25"></a>  <span class="nt">db</span><span class="p">:</span>
+<a id="__codelineno-27-26" name="__codelineno-27-26"></a>    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mongo</span>
+<a id="__codelineno-27-27" name="__codelineno-27-27"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-27-28" name="__codelineno-27-28"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-27-29" name="__codelineno-27-29"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dbtest</span>
+<a id="__codelineno-27-30" name="__codelineno-27-30"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/data/db</span>
+<a id="__codelineno-27-31" name="__codelineno-27-31"></a>  <span class="nt">reverse-proxy</span><span class="p">:</span>
+<a id="__codelineno-27-32" name="__codelineno-27-32"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-27-33" name="__codelineno-27-33"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./reverse-proxy</span>
+<a id="__codelineno-27-34" name="__codelineno-27-34"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile.dev</span>
+<a id="__codelineno-27-35" name="__codelineno-27-35"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-27-36" name="__codelineno-27-36"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">80:80</span>
+<a id="__codelineno-27-37" name="__codelineno-27-37"></a>    <span class="nt">depends_on</span><span class="p">:</span>
+<a id="__codelineno-27-38" name="__codelineno-27-38"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">api</span>
+<a id="__codelineno-27-39" name="__codelineno-27-39"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">db</span>
+<a id="__codelineno-27-40" name="__codelineno-27-40"></a><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-27-41" name="__codelineno-27-41"></a>  <span class="nt">dbtest</span><span class="p">:</span>
+</code></pre></div>
 <p>Test, everything is supposed to work:</p>
-<pre><code class="language-console">docker-compose -f docker-compose.dev.yml up --build
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="go">docker-compose -f docker-compose.dev.yml up --build</span>
+</code></pre></div>
 <p>In a second terminal:</p>
-<pre><code class="language-console">docker-compose -f docker-compose.dev.yml ps
-NAME                        COMMAND                  SERVICE             STATUS              PORTS
-fullstack_api_1             &quot;docker-entrypoint.s…&quot;   api                 running             0.0.0.0:3001-&gt;80/tcp
-fullstack_client_1          &quot;docker-entrypoint.s…&quot;   client              running             0.0.0.0:3000-&gt;3000/tcp
-fullstack_db_1              &quot;docker-entrypoint.s…&quot;   db                  running             27017/tcp
-fullstack_reverse-proxy_1   &quot;/docker-entrypoint.…&quot;   reverse-proxy       running             0.0.0.0:80-&gt;80/tcp
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="go">docker-compose -f docker-compose.dev.yml ps</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a><span class="go">NAME                        COMMAND                  SERVICE             STATUS              PORTS</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a><span class="go">fullstack_api_1             &quot;docker-entrypoint.s…&quot;   api                 running             0.0.0.0:3001-&gt;80/tcp</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a><span class="go">fullstack_client_1          &quot;docker-entrypoint.s…&quot;   client              running             0.0.0.0:3000-&gt;3000/tcp</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5"></a><span class="go">fullstack_db_1              &quot;docker-entrypoint.s…&quot;   db                  running             27017/tcp</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6"></a><span class="go">fullstack_reverse-proxy_1   &quot;/docker-entrypoint.…&quot;   reverse-proxy       running             0.0.0.0:80-&gt;80/tcp</span>
+</code></pre></div>
 <p>We may observe then the 4 components composing our application are running.</p>
 <p>And test by browsing to <a href="http://localhost/">http://localhost/</a>, note that there's not need to specify port this time thanks to NGINX that do his job as a reverse proxy by distributing requests through our application by listening on default http port ('80').</p>
 <p>By refreshing the page, you also may observe counter increasing.</p>
 <p>To test live reload edit file '.../fullstack/client/src/App.js' and observe live changes in browser window (even without refreshing the page).</p>
 <p>We now have a full functional development stack that maybe up with only one command:</p>
-<pre><code class="language-console">docker-compose -f docker-compose.dev.yml up
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="go">docker-compose -f docker-compose.dev.yml up</span>
+</code></pre></div>
 <hr />
 <h2 id="set-up-production-configuration">Set up production configuration</h2>
 <p>Reset Docker environnement (if needed):</p>
-<pre><code class="language-console">docker system prune -a
-docker volume prune
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="go">docker system prune -a</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a><span class="go">docker volume prune</span>
+</code></pre></div>
 <h3 id="client">Client</h3>
 <p>From folder '.../fullstack/client':</p>
-<pre><code class="language-console">touch Dockerfile.prod
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="go">touch Dockerfile.prod</span>
+</code></pre></div>
 <p>.../fullstack/client/Dockerfile.prod</p>
-<pre><code class="language-text">FROM node:alpine as build
-WORKDIR /app
-COPY package.json .
-RUN npm install
-# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
-RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
-COPY . .
-RUN npm run build
-
-FROM nginx:latest
-COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 80
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a>FROM node:alpine as build
+<a id="__codelineno-33-2" name="__codelineno-33-2"></a>WORKDIR /app
+<a id="__codelineno-33-3" name="__codelineno-33-3"></a>COPY package.json .
+<a id="__codelineno-33-4" name="__codelineno-33-4"></a>RUN npm install
+<a id="__codelineno-33-5" name="__codelineno-33-5"></a># To avoid &#39;EACCES: permission denied&#39; issue on &#39;/app/node_modules/.cache&#39; folder
+<a id="__codelineno-33-6" name="__codelineno-33-6"></a>RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
+<a id="__codelineno-33-7" name="__codelineno-33-7"></a>COPY . .
+<a id="__codelineno-33-8" name="__codelineno-33-8"></a>RUN npm run build
+<a id="__codelineno-33-9" name="__codelineno-33-9"></a>
+<a id="__codelineno-33-10" name="__codelineno-33-10"></a>FROM nginx:latest
+<a id="__codelineno-33-11" name="__codelineno-33-11"></a>COPY --from=build /app/build /usr/share/nginx/html
+<a id="__codelineno-33-12" name="__codelineno-33-12"></a>EXPOSE 80
+</code></pre></div>
 <p>! Be aware of <strong>RUN</strong> npm run build, NOT CMD!</p>
 <p>.../fullstack/docker-compose.prod.yml</p>
-<pre><code class="language-yaml">version: '3.8'
-services:
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile.prod
-    restart: unless-stopped
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a><span class="nt">version</span><span class="p">:</span> <span class="s">&#39;3.8&#39;</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3"></a>  <span class="nt">client</span><span class="p">:</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./client</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile.prod</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7"></a>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+</code></pre></div>
 <p>Start VS Code in '.../fullstack' folder with 'code .' command and then:</p>
-<pre><code class="language-console">docker-compose -f docker-compose.prod.yml run -p 80:80 client
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="go">docker-compose -f docker-compose.prod.yml run -p 80:80 client</span>
+</code></pre></div>
 <p>Browse to <a href="http://localhost/">http://localhost/</a> to validate React application is running.</p>
 <h3 id="api">API</h3>
 <p>In '.../fullstack/api/src/index.js' notice mongodb connection URL with MONGO_USERNAME and MONGO_PWD credentials that comes from process (production) environnement:</p>
-<pre><code class="language-javascript">const express = require(&quot;express&quot;);
-
-const MongoClient = require('mongodb').MongoClient;
-
-let count;
-
-const MongUrl = process.env.NODE_ENV === 'production' ? 
-`mongodb://${ process.env.MONGO_USERNAME }:${ process.env.MONGO_PWD }@db` : 
-`mongodb://db`
-
-console.log(process.env) // to have environnement variables in logs
-
-MongoClient.connect(MongUrl, { useUnifiedTopology: true }, (err, client) =&gt; {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log('CONNECTION DB OK!');
-    count = client.db('test').collection(&quot;count&quot;);
-  }
-});
-
-const app = express();
-
-app.get('/api/count', (req, res) =&gt; {
-  console.log('request url: ' + req.url);
-  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) =&gt; {
-    const value = doc.value;
-    res.status(200).json(value.count);
-  })
-});
-
-app.all('*', (req, res) =&gt; {
-  res.status(404).end();
-});
-
-app.listen(80);
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2"></a>
+<a id="__codelineno-36-3" name="__codelineno-36-3"></a><span class="kd">const</span> <span class="nx">MongoClient</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongodb&#39;</span><span class="p">).</span><span class="nx">MongoClient</span><span class="p">;</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4"></a>
+<a id="__codelineno-36-5" name="__codelineno-36-5"></a><span class="kd">let</span> <span class="nx">count</span><span class="p">;</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6"></a>
+<a id="__codelineno-36-7" name="__codelineno-36-7"></a><span class="kd">const</span> <span class="nx">MongUrl</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="s1">&#39;production&#39;</span> <span class="o">?</span> 
+<a id="__codelineno-36-8" name="__codelineno-36-8"></a><span class="sb">`mongodb://</span><span class="si">${</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">MONGO_USERNAME</span> <span class="si">}</span><span class="sb">:</span><span class="si">${</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">MONGO_PWD</span> <span class="si">}</span><span class="sb">@db`</span> <span class="o">:</span> 
+<a id="__codelineno-36-9" name="__codelineno-36-9"></a><span class="sb">`mongodb://db`</span>
+<a id="__codelineno-36-10" name="__codelineno-36-10"></a>
+<a id="__codelineno-36-11" name="__codelineno-36-11"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">)</span> <span class="c1">// to have environnement variables in logs</span>
+<a id="__codelineno-36-12" name="__codelineno-36-12"></a>
+<a id="__codelineno-36-13" name="__codelineno-36-13"></a><span class="nx">MongoClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">MongUrl</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useUnifiedTopology</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">client</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-36-14" name="__codelineno-36-14"></a>  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-36-15" name="__codelineno-36-15"></a>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<a id="__codelineno-36-16" name="__codelineno-36-16"></a>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-36-17" name="__codelineno-36-17"></a>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;CONNECTION DB OK!&#39;</span><span class="p">);</span>
+<a id="__codelineno-36-18" name="__codelineno-36-18"></a>    <span class="nx">count</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">).</span><span class="nx">collection</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">);</span>
+<a id="__codelineno-36-19" name="__codelineno-36-19"></a>  <span class="p">}</span>
+<a id="__codelineno-36-20" name="__codelineno-36-20"></a><span class="p">});</span>
+<a id="__codelineno-36-21" name="__codelineno-36-21"></a>
+<a id="__codelineno-36-22" name="__codelineno-36-22"></a><span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<a id="__codelineno-36-23" name="__codelineno-36-23"></a>
+<a id="__codelineno-36-24" name="__codelineno-36-24"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api/count&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-36-25" name="__codelineno-36-25"></a>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;request url: &#39;</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+<a id="__codelineno-36-26" name="__codelineno-36-26"></a>  <span class="nx">count</span><span class="p">.</span><span class="nx">findOneAndUpdate</span><span class="p">({},</span> <span class="p">{</span> <span class="nx">$inc</span><span class="o">:</span> <span class="p">{</span> <span class="nx">count</span><span class="o">:</span> <span class="mf">1</span> <span class="p">}</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">returnNewDocument</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">doc</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-36-27" name="__codelineno-36-27"></a>    <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+<a id="__codelineno-36-28" name="__codelineno-36-28"></a>    <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+<a id="__codelineno-36-29" name="__codelineno-36-29"></a>  <span class="p">})</span>
+<a id="__codelineno-36-30" name="__codelineno-36-30"></a><span class="p">});</span>
+<a id="__codelineno-36-31" name="__codelineno-36-31"></a>
+<a id="__codelineno-36-32" name="__codelineno-36-32"></a><span class="nx">app</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-36-33" name="__codelineno-36-33"></a>  <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">end</span><span class="p">();</span>
+<a id="__codelineno-36-34" name="__codelineno-36-34"></a><span class="p">});</span>
+<a id="__codelineno-36-35" name="__codelineno-36-35"></a>
+<a id="__codelineno-36-36" name="__codelineno-36-36"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">80</span><span class="p">);</span>
+</code></pre></div>
 <p>In '.../fullstack/api' folder:</p>
-<pre><code class="language-console">touch .env
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="go">touch .env</span>
+</code></pre></div>
 <p>.../fullstack/api/.env:</p>
-<pre><code class="language-text">MONGO_USERNAME=paul
-MONGO_PWD=123
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a>MONGO_USERNAME=paul
+<a id="__codelineno-38-2" name="__codelineno-38-2"></a>MONGO_PWD=123
+</code></pre></div>
 <p>We don't want that secret information to be copied in container:</p>
-<pre><code class="language-console">touch .dockerignore
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="go">touch .dockerignore</span>
+</code></pre></div>
 <p>.../fullstack/api/.dockerignore:</p>
-<pre><code class="language-text">.env
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a>.env
+</code></pre></div>
 <p>.../fullstack/docker-compose.prod.yml</p>
-<pre><code class="language-yaml">version: '3.8'
-services:
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile.prod
-    restart: unless-stopped
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    env_file:
-      - ./api/.env
-    environment:
-      NODE_ENV: production
-    restart: unless-stopped
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a><span class="nt">version</span><span class="p">:</span> <span class="s">&#39;3.8&#39;</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3"></a>  <span class="nt">client</span><span class="p">:</span>
+<a id="__codelineno-41-4" name="__codelineno-41-4"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-41-5" name="__codelineno-41-5"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./client</span>
+<a id="__codelineno-41-6" name="__codelineno-41-6"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile.prod</span>
+<a id="__codelineno-41-7" name="__codelineno-41-7"></a>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-41-8" name="__codelineno-41-8"></a>  <span class="nt">api</span><span class="p">:</span>
+<a id="__codelineno-41-9" name="__codelineno-41-9"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-41-10" name="__codelineno-41-10"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./api</span>
+<a id="__codelineno-41-11" name="__codelineno-41-11"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile</span>
+<a id="__codelineno-41-12" name="__codelineno-41-12"></a>    <span class="nt">env_file</span><span class="p">:</span>
+<a id="__codelineno-41-13" name="__codelineno-41-13"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./api/.env</span>
+<a id="__codelineno-41-14" name="__codelineno-41-14"></a>    <span class="nt">environment</span><span class="p">:</span>
+<a id="__codelineno-41-15" name="__codelineno-41-15"></a>      <span class="nt">NODE_ENV</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">production</span>
+<a id="__codelineno-41-16" name="__codelineno-41-16"></a>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+</code></pre></div>
 <p>Test API with (tanks to "console.log(process.env)" in ".../fullstack/api/src/index.js" we may observe environment variables):</p>
-<pre><code class="language-console">docker-compose -f docker-compose.prod.yml run api
-{
-  .
-  .
-  .
-  MONGO_USERNAME: 'paul',
-  .
-  .
-  MONGO_PWD: '123',
-  .
-  NODE_ENV: 'production',
-  .
-  .
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="go">docker-compose -f docker-compose.prod.yml run api</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2"></a><span class="go">{</span>
+<a id="__codelineno-42-3" name="__codelineno-42-3"></a><span class="go">  .</span>
+<a id="__codelineno-42-4" name="__codelineno-42-4"></a><span class="go">  .</span>
+<a id="__codelineno-42-5" name="__codelineno-42-5"></a><span class="go">  .</span>
+<a id="__codelineno-42-6" name="__codelineno-42-6"></a><span class="go">  MONGO_USERNAME: &#39;paul&#39;,</span>
+<a id="__codelineno-42-7" name="__codelineno-42-7"></a><span class="go">  .</span>
+<a id="__codelineno-42-8" name="__codelineno-42-8"></a><span class="go">  .</span>
+<a id="__codelineno-42-9" name="__codelineno-42-9"></a><span class="go">  MONGO_PWD: &#39;123&#39;,</span>
+<a id="__codelineno-42-10" name="__codelineno-42-10"></a><span class="go">  .</span>
+<a id="__codelineno-42-11" name="__codelineno-42-11"></a><span class="go">  NODE_ENV: &#39;production&#39;,</span>
+<a id="__codelineno-42-12" name="__codelineno-42-12"></a><span class="go">  .</span>
+<a id="__codelineno-42-13" name="__codelineno-42-13"></a><span class="go">  .</span>
+<a id="__codelineno-42-14" name="__codelineno-42-14"></a><span class="go">}</span>
+</code></pre></div>
 <p>Hit 'Ctrl+c' to stop.</p>
 <h3 id="db">DB</h3>
 <p>Secure the database by providing root username and password through an environment file.</p>
 <p>From folder '.../fullstack/db':</p>
-<pre><code class="language-console">touch .env
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a><span class="go">touch .env</span>
+</code></pre></div>
 <p>Get credential syntax from 'Environment Variables' section in <a href="https://hub.docker.com/_/mongo">Mongo image on Docker Hub</a>.</p>
 <p>In file '.../fullstack/db/.env' add credentials:</p>
-<pre><code class="language-text">MONGO_INITDB_ROOT_USERNAME=admin
-MONGO_INITDB_ROOT_PASSWORD=password
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1"></a>MONGO_INITDB_ROOT_USERNAME=admin
+<a id="__codelineno-44-2" name="__codelineno-44-2"></a>MONGO_INITDB_ROOT_PASSWORD=password
+</code></pre></div>
 <p>Provide environment file (for root user credentials) and external volume for db service in docker compose configuration file.</p>
 <p>Set up db service in '.../fullstack/docker-compose.prod.yml' file:</p>
-<pre><code class="language-yaml">version: '3.8'
-services:
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile.prod
-    restart: unless-stopped
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    env_file:
-      - ./api/.env
-    environment:
-      NODE_ENV: production
-    restart: unless-stopped
-  db:
-    image: mongo
-    volumes:
-      - type: volume
-        source: dbprod
-        target: /data/db
-    env_file:
-      - ./db/.env
-    restart: unless-stopped
-
-volumes:
-  dbprod:
-    external: true
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1"></a><span class="nt">version</span><span class="p">:</span> <span class="s">&#39;3.8&#39;</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-45-3" name="__codelineno-45-3"></a>  <span class="nt">client</span><span class="p">:</span>
+<a id="__codelineno-45-4" name="__codelineno-45-4"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-45-5" name="__codelineno-45-5"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./client</span>
+<a id="__codelineno-45-6" name="__codelineno-45-6"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile.prod</span>
+<a id="__codelineno-45-7" name="__codelineno-45-7"></a>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-45-8" name="__codelineno-45-8"></a>  <span class="nt">api</span><span class="p">:</span>
+<a id="__codelineno-45-9" name="__codelineno-45-9"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-45-10" name="__codelineno-45-10"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./api</span>
+<a id="__codelineno-45-11" name="__codelineno-45-11"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile</span>
+<a id="__codelineno-45-12" name="__codelineno-45-12"></a>    <span class="nt">env_file</span><span class="p">:</span>
+<a id="__codelineno-45-13" name="__codelineno-45-13"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./api/.env</span>
+<a id="__codelineno-45-14" name="__codelineno-45-14"></a>    <span class="nt">environment</span><span class="p">:</span>
+<a id="__codelineno-45-15" name="__codelineno-45-15"></a>      <span class="nt">NODE_ENV</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">production</span>
+<a id="__codelineno-45-16" name="__codelineno-45-16"></a>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-45-17" name="__codelineno-45-17"></a>  <span class="nt">db</span><span class="p">:</span>
+<a id="__codelineno-45-18" name="__codelineno-45-18"></a>    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mongo</span>
+<a id="__codelineno-45-19" name="__codelineno-45-19"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-45-20" name="__codelineno-45-20"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-45-21" name="__codelineno-45-21"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dbprod</span>
+<a id="__codelineno-45-22" name="__codelineno-45-22"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/data/db</span>
+<a id="__codelineno-45-23" name="__codelineno-45-23"></a>    <span class="nt">env_file</span><span class="p">:</span>
+<a id="__codelineno-45-24" name="__codelineno-45-24"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./db/.env</span>
+<a id="__codelineno-45-25" name="__codelineno-45-25"></a>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-45-26" name="__codelineno-45-26"></a>
+<a id="__codelineno-45-27" name="__codelineno-45-27"></a><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-45-28" name="__codelineno-45-28"></a>  <span class="nt">dbprod</span><span class="p">:</span>
+<a id="__codelineno-45-29" name="__codelineno-45-29"></a>    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 <p>Create volume 'dbprod':</p>
-<pre><code class="language-console">docker volume create dbprod
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="go">docker volume create dbprod</span>
+</code></pre></div>
 <p>Run 'db' container in detached mode from '.../fullstack' folder:</p>
-<pre><code class="language-console">docker-compose -f docker-compose.prod.yml run -d db
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1"></a><span class="go">docker-compose -f docker-compose.prod.yml run -d db</span>
+</code></pre></div>
 <p>Initialize database by connecting to it with root user credentials.</p>
-<pre><code class="language-console">docker container exec -it fullstack_db_run_e9fa9328e2b8 sh
-mongo
-use admin
-db.auth({ user: 'admin', pwd: 'password' })
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="go">docker container exec -it fullstack_db_run_e9fa9328e2b8 sh</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2"></a><span class="go">mongo</span>
+<a id="__codelineno-48-3" name="__codelineno-48-3"></a><span class="go">use admin</span>
+<a id="__codelineno-48-4" name="__codelineno-48-4"></a><span class="go">db.auth({ user: &#39;admin&#39;, pwd: &#39;password&#39; })</span>
+</code></pre></div>
 <p>Create the needed user for API access, the one described in '.env' environnement file that reside in '.../fullstack/api' folder.</p>
-<pre><code class="language-console">db.createUser({ user: 'paul', pwd: '123', roles: [{ role: 'readWrite', db: 'test' }] })
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1"></a><span class="go">db.createUser({ user: &#39;paul&#39;, pwd: &#39;123&#39;, roles: [{ role: &#39;readWrite&#39;, db: &#39;test&#39; }] })</span>
+</code></pre></div>
 <p>Setup collection for 'count'.</p>
-<pre><code class="language-console">use test
-db.count.insertOne({ count: 0 })
-exit
-exit
-docker stop fullstack_db_run_e9fa9328e2b8
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1"></a><span class="go">use test</span>
+<a id="__codelineno-50-2" name="__codelineno-50-2"></a><span class="go">db.count.insertOne({ count: 0 })</span>
+<a id="__codelineno-50-3" name="__codelineno-50-3"></a><span class="go">exit</span>
+<a id="__codelineno-50-4" name="__codelineno-50-4"></a><span class="go">exit</span>
+<a id="__codelineno-50-5" name="__codelineno-50-5"></a><span class="go">docker stop fullstack_db_run_e9fa9328e2b8</span>
+</code></pre></div>
 <p>Now db is ready and API may communicate with it.</p>
 <p>To test, launch complete stack with port 80 open for 'api' service (only for testing, because after, in this production context, this is the reverse proxy role to communicate on port 80).</p>
 <p>.../fullstack/docker-compose.prod.yml:</p>
-<pre><code class="language-yaml">version: '3.8'
-services:
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile.prod
-    restart: unless-stopped
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    env_file:
-      - ./api/.env
-    environment:
-      NODE_ENV: production
-    restart: unless-stopped
-    ports:
-      - 80:80
-  db:
-    image: mongo
-    volumes:
-      - type: volume
-        source: dbprod
-        target: /data/db
-    env_file:
-      - ./db/.env
-    restart: unless-stopped
-
-volumes:
-  dbprod:
-    external: true
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1"></a><span class="nt">version</span><span class="p">:</span> <span class="s">&#39;3.8&#39;</span>
+<a id="__codelineno-51-2" name="__codelineno-51-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-51-3" name="__codelineno-51-3"></a>  <span class="nt">client</span><span class="p">:</span>
+<a id="__codelineno-51-4" name="__codelineno-51-4"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-51-5" name="__codelineno-51-5"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./client</span>
+<a id="__codelineno-51-6" name="__codelineno-51-6"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile.prod</span>
+<a id="__codelineno-51-7" name="__codelineno-51-7"></a>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-51-8" name="__codelineno-51-8"></a>  <span class="nt">api</span><span class="p">:</span>
+<a id="__codelineno-51-9" name="__codelineno-51-9"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-51-10" name="__codelineno-51-10"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./api</span>
+<a id="__codelineno-51-11" name="__codelineno-51-11"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile</span>
+<a id="__codelineno-51-12" name="__codelineno-51-12"></a>    <span class="nt">env_file</span><span class="p">:</span>
+<a id="__codelineno-51-13" name="__codelineno-51-13"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./api/.env</span>
+<a id="__codelineno-51-14" name="__codelineno-51-14"></a>    <span class="nt">environment</span><span class="p">:</span>
+<a id="__codelineno-51-15" name="__codelineno-51-15"></a>      <span class="nt">NODE_ENV</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">production</span>
+<a id="__codelineno-51-16" name="__codelineno-51-16"></a>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-51-17" name="__codelineno-51-17"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-51-18" name="__codelineno-51-18"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">80:80</span>
+<a id="__codelineno-51-19" name="__codelineno-51-19"></a>  <span class="nt">db</span><span class="p">:</span>
+<a id="__codelineno-51-20" name="__codelineno-51-20"></a>    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mongo</span>
+<a id="__codelineno-51-21" name="__codelineno-51-21"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-51-22" name="__codelineno-51-22"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-51-23" name="__codelineno-51-23"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dbprod</span>
+<a id="__codelineno-51-24" name="__codelineno-51-24"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/data/db</span>
+<a id="__codelineno-51-25" name="__codelineno-51-25"></a>    <span class="nt">env_file</span><span class="p">:</span>
+<a id="__codelineno-51-26" name="__codelineno-51-26"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./db/.env</span>
+<a id="__codelineno-51-27" name="__codelineno-51-27"></a>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-51-28" name="__codelineno-51-28"></a>
+<a id="__codelineno-51-29" name="__codelineno-51-29"></a><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-51-30" name="__codelineno-51-30"></a>  <span class="nt">dbprod</span><span class="p">:</span>
+<a id="__codelineno-51-31" name="__codelineno-51-31"></a>    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 <p>Launch full stack:</p>
-<pre><code class="language-console">docker-compose -f docker-compose.prod.yml up (--build)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1"></a><span class="go">docker-compose -f docker-compose.prod.yml up (--build)</span>
+</code></pre></div>
 <p>Browse to <a href="http://localhost/api/count">localhost/api/count</a> and refresh page to observe counter incrementing.</p>
 <p>Hit 'Ctrl+c' to stop.</p>
 <p>Remove port 80 for 'api' service in 'docker-compose.prod.yml' file.</p>
 <h3 id="reverse-proxy">Reverse proxy</h3>
 <p>Production configuration file in '.../fullstack/reverse-proxy/conf' folder:</p>
-<pre><code class="language-console">touch prod.conf
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1"></a><span class="go">touch prod.conf</span>
+</code></pre></div>
 <p>Production Docker file in '.../fullstack/reverse-proxy' folder:</p>
-<pre><code class="language-console">touch Dockerfile.prod
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1"></a><span class="go">touch Dockerfile.prod</span>
+</code></pre></div>
 <p>.../fullstack/reverse-proxy/Dockerfile.prod:</p>
-<pre><code class="language-text">FROM nginx:latest
-COPY ./conf/prod.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1"></a>FROM nginx:latest
+<a id="__codelineno-55-2" name="__codelineno-55-2"></a>COPY ./conf/prod.conf /etc/nginx/conf.d/default.conf
+<a id="__codelineno-55-3" name="__codelineno-55-3"></a>EXPOSE 80
+</code></pre></div>
 <p>.../fullstack/reverse-proxy/conf/prod.conf:</p>
-<pre><code class="language-text">server {
-    listen 80;
-
-    location / {
-        proxy_pass http://client;
-    }
-
-    location /api {
-        proxy_pass http://api;
-    }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1"></a>server {
+<a id="__codelineno-56-2" name="__codelineno-56-2"></a>    listen 80;
+<a id="__codelineno-56-3" name="__codelineno-56-3"></a>
+<a id="__codelineno-56-4" name="__codelineno-56-4"></a>    location / {
+<a id="__codelineno-56-5" name="__codelineno-56-5"></a>        proxy_pass http://client;
+<a id="__codelineno-56-6" name="__codelineno-56-6"></a>    }
+<a id="__codelineno-56-7" name="__codelineno-56-7"></a>
+<a id="__codelineno-56-8" name="__codelineno-56-8"></a>    location /api {
+<a id="__codelineno-56-9" name="__codelineno-56-9"></a>        proxy_pass http://api;
+<a id="__codelineno-56-10" name="__codelineno-56-10"></a>    }
+<a id="__codelineno-56-11" name="__codelineno-56-11"></a>}
+</code></pre></div>
 <p>Add 'reverse-proxy' service in '.../fullstack/docker-compose.prod.yml' file:</p>
-<pre><code class="language-yaml">version: '3.8'
-services:
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile.prod
-    restart: unless-stopped
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    env_file:
-      - ./api/.env
-    environment:
-      NODE_ENV: production
-    restart: unless-stopped
-    depends_on:
-      - db
-  db:
-    image: mongo
-    volumes:
-      - type: volume
-        source: dbprod
-        target: /data/db
-    env_file:
-      - ./db/.env
-    restart: unless-stopped
-  reverse-proxy:
-    build:
-      context: ./reverse-proxy
-      dockerfile: Dockerfile.prod
-    ports:
-      - 80:80
-    restart: unless-stopped
-    depends_on:
-      - api
-      - db
-      - client
-
-volumes:
-  dbprod:
-    external: true
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1"></a><span class="nt">version</span><span class="p">:</span> <span class="s">&#39;3.8&#39;</span>
+<a id="__codelineno-57-2" name="__codelineno-57-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-57-3" name="__codelineno-57-3"></a>  <span class="nt">client</span><span class="p">:</span>
+<a id="__codelineno-57-4" name="__codelineno-57-4"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-57-5" name="__codelineno-57-5"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./client</span>
+<a id="__codelineno-57-6" name="__codelineno-57-6"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile.prod</span>
+<a id="__codelineno-57-7" name="__codelineno-57-7"></a>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-57-8" name="__codelineno-57-8"></a>  <span class="nt">api</span><span class="p">:</span>
+<a id="__codelineno-57-9" name="__codelineno-57-9"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-57-10" name="__codelineno-57-10"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./api</span>
+<a id="__codelineno-57-11" name="__codelineno-57-11"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile</span>
+<a id="__codelineno-57-12" name="__codelineno-57-12"></a>    <span class="nt">env_file</span><span class="p">:</span>
+<a id="__codelineno-57-13" name="__codelineno-57-13"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./api/.env</span>
+<a id="__codelineno-57-14" name="__codelineno-57-14"></a>    <span class="nt">environment</span><span class="p">:</span>
+<a id="__codelineno-57-15" name="__codelineno-57-15"></a>      <span class="nt">NODE_ENV</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">production</span>
+<a id="__codelineno-57-16" name="__codelineno-57-16"></a>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-57-17" name="__codelineno-57-17"></a>    <span class="nt">depends_on</span><span class="p">:</span>
+<a id="__codelineno-57-18" name="__codelineno-57-18"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">db</span>
+<a id="__codelineno-57-19" name="__codelineno-57-19"></a>  <span class="nt">db</span><span class="p">:</span>
+<a id="__codelineno-57-20" name="__codelineno-57-20"></a>    <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mongo</span>
+<a id="__codelineno-57-21" name="__codelineno-57-21"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-57-22" name="__codelineno-57-22"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-57-23" name="__codelineno-57-23"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dbprod</span>
+<a id="__codelineno-57-24" name="__codelineno-57-24"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/data/db</span>
+<a id="__codelineno-57-25" name="__codelineno-57-25"></a>    <span class="nt">env_file</span><span class="p">:</span>
+<a id="__codelineno-57-26" name="__codelineno-57-26"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./db/.env</span>
+<a id="__codelineno-57-27" name="__codelineno-57-27"></a>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-57-28" name="__codelineno-57-28"></a>  <span class="nt">reverse-proxy</span><span class="p">:</span>
+<a id="__codelineno-57-29" name="__codelineno-57-29"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-57-30" name="__codelineno-57-30"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./reverse-proxy</span>
+<a id="__codelineno-57-31" name="__codelineno-57-31"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile.prod</span>
+<a id="__codelineno-57-32" name="__codelineno-57-32"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-57-33" name="__codelineno-57-33"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">80:80</span>
+<a id="__codelineno-57-34" name="__codelineno-57-34"></a>    <span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-57-35" name="__codelineno-57-35"></a>    <span class="nt">depends_on</span><span class="p">:</span>
+<a id="__codelineno-57-36" name="__codelineno-57-36"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">api</span>
+<a id="__codelineno-57-37" name="__codelineno-57-37"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">db</span>
+<a id="__codelineno-57-38" name="__codelineno-57-38"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">client</span>
+<a id="__codelineno-57-39" name="__codelineno-57-39"></a>
+<a id="__codelineno-57-40" name="__codelineno-57-40"></a><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-57-41" name="__codelineno-57-41"></a>  <span class="nt">dbprod</span><span class="p">:</span>
+<a id="__codelineno-57-42" name="__codelineno-57-42"></a>    <span class="nt">external</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 <p>Test, from '.../fullstack' folder:</p>
-<pre><code class="language-console">docker-compose -f docker-compose.prod.yml down -v
-docker-compose -f docker-compose.prod.yml up --build
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1"></a><span class="go">docker-compose -f docker-compose.prod.yml down -v</span>
+<a id="__codelineno-58-2" name="__codelineno-58-2"></a><span class="go">docker-compose -f docker-compose.prod.yml up --build</span>
+</code></pre></div>
 <p>Browse to <a href="http://localhost">localhost</a> and refresh page to observe counter incrementing.</p>
 <hr />
 

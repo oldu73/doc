@@ -1695,121 +1695,121 @@ Containers will be straight forward connected to local network.</p>
 <p>To establish communication between Docker Daemons.</p>
 <hr />
 <h2 id="bridge">Bridge</h2>
-<pre><code class="language-console">$ docker network
-$ docker network ls
-NETWORK ID     NAME      DRIVER    SCOPE
-266b7ae5e9d7   bridge    bridge    local
-ada5f50a5c41   host      host      local
-119b5f46e464   none      null      local
-
-$ docker network inspect bridge
-...
-&quot;Containers&quot;: {},
-...
-
-$ ifconfig
-...
-docker0:
-...
-
-$ docker run --rm -it alpine sh
-</code></pre>
-<p>in a second terminal</p>
-<pre><code class="language-console">$ docker network inspect bridge
-...
-&quot;Containers&quot;: {
-            &quot;04d3d4540a17d21ea7db83779e8de1716e6e3a4122e1f2c2f66c60d25a094656&quot;: {
-                &quot;Name&quot;: &quot;stoic_wozniak&quot;,
-                &quot;EndpointID&quot;: &quot;2ed11c55d850ed3cc4eec221f705dad2a9679a016934cd991cd96da86d2dfcbd&quot;,
-                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,
-                &quot;IPv4Address&quot;: &quot;172.17.0.2/16&quot;,
-                &quot;IPv6Address&quot;: &quot;&quot;
-            }
-}
-...
-
-$ docker run --rm -it alpine sh
-</code></pre>
-<p>in a third terminal</p>
-<pre><code class="language-console">$ docker network inspect bridge
-&quot;Containers&quot;: {
-            &quot;04d3d4540a17d21ea7db83779e8de1716e6e3a4122e1f2c2f66c60d25a094656&quot;: {  
-                &quot;Name&quot;: &quot;stoic_wozniak&quot;,
-                &quot;EndpointID&quot;: &quot;2ed11c55d850ed3cc4eec221f705dad2a9679a016934cd991cd96da86d2dfcbd&quot;,
-                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,
-                &quot;IPv4Address&quot;: &quot;172.17.0.2/16&quot;,
-                &quot;IPv6Address&quot;: &quot;&quot;
-            },
-            &quot;76ff8f56718ae5244eabe03092f7a0227aa2e42249bf2ab1c8f91a9faf76c715&quot;: {  
-                &quot;Name&quot;: &quot;admiring_driscoll&quot;,
-                &quot;EndpointID&quot;: &quot;684e6a570db46dadd9bdf53bf383ea069fa626fc16b7ab26c11e604415c00b25&quot;,
-                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:03&quot;,
-                &quot;IPv4Address&quot;: &quot;172.17.0.3/16&quot;,
-                &quot;IPv6Address&quot;: &quot;&quot;
-            }
-}
-</code></pre>
-<p>in second terminal</p>
-<pre><code class="language-console">$c ping google.ch
-$c ping 172.17.0.2
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="gp">$ </span>docker network
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="gp">$ </span>docker network ls
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="go">NETWORK ID     NAME      DRIVER    SCOPE</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="go">266b7ae5e9d7   bridge    bridge    local</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="go">ada5f50a5c41   host      host      local</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="go">119b5f46e464   none      null      local</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="gp">$ </span>docker network inspect bridge
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="go">...</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="go">&quot;Containers&quot;: {},</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="go">...</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="gp">$ </span>ifconfig
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="go">...</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="go">docker0:</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="go">...</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="gp">$ </span>docker run --rm -it alpine sh
+</code></pre></div>
+<p>in a second terminal
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="gp">$ </span>docker network inspect bridge
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="go">...</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="go">&quot;Containers&quot;: {</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="go">            &quot;04d3d4540a17d21ea7db83779e8de1716e6e3a4122e1f2c2f66c60d25a094656&quot;: {</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="go">                &quot;Name&quot;: &quot;stoic_wozniak&quot;,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="go">                &quot;EndpointID&quot;: &quot;2ed11c55d850ed3cc4eec221f705dad2a9679a016934cd991cd96da86d2dfcbd&quot;,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="go">                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="go">                &quot;IPv4Address&quot;: &quot;172.17.0.2/16&quot;,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="go">                &quot;IPv6Address&quot;: &quot;&quot;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="go">            }</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="go">}</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="go">...</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="gp">$ </span>docker run --rm -it alpine sh
+</code></pre></div></p>
+<p>in a third terminal
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="gp">$ </span>docker network inspect bridge
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="go">&quot;Containers&quot;: {</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="go">            &quot;04d3d4540a17d21ea7db83779e8de1716e6e3a4122e1f2c2f66c60d25a094656&quot;: {  </span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="go">                &quot;Name&quot;: &quot;stoic_wozniak&quot;,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="go">                &quot;EndpointID&quot;: &quot;2ed11c55d850ed3cc4eec221f705dad2a9679a016934cd991cd96da86d2dfcbd&quot;,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="go">                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="go">                &quot;IPv4Address&quot;: &quot;172.17.0.2/16&quot;,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="go">                &quot;IPv6Address&quot;: &quot;&quot;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="go">            },</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="go">            &quot;76ff8f56718ae5244eabe03092f7a0227aa2e42249bf2ab1c8f91a9faf76c715&quot;: {  </span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="go">                &quot;Name&quot;: &quot;admiring_driscoll&quot;,</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="go">                &quot;EndpointID&quot;: &quot;684e6a570db46dadd9bdf53bf383ea069fa626fc16b7ab26c11e604415c00b25&quot;,</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="go">                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:03&quot;,</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="go">                &quot;IPv4Address&quot;: &quot;172.17.0.3/16&quot;,</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="go">                &quot;IPv6Address&quot;: &quot;&quot;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="go">            }</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="go">}</span>
+</code></pre></div></p>
+<p>in second terminal
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="gp">$</span>c ping google.ch
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="gp">$</span>c ping <span class="m">172</span>.17.0.2
+</code></pre></div></p>
 <p>Be aware that ip address maybe attributed randomly by Docker.<br />
 To use name on default network, use <strong>--name</strong> and <strong>--link</strong> (deprecated) options on run command then you may ping by name instead of ip address (only for default bridge network).</p>
-<p>in first terminal</p>
-<pre><code class="language-console">$ docker run --rm --name alpine1 -it alpine sh
-</code></pre>
-<p>in second terminal</p>
-<pre><code class="language-console">$ docker run --rm --link alpine1 -it alpine sh
-$c ping alpine1
-</code></pre>
+<p>in first terminal
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="gp">$ </span>docker run --rm --name alpine1 -it alpine sh
+</code></pre></div></p>
+<p>in second terminal
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="gp">$ </span>docker run --rm --link alpine1 -it alpine sh
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="gp">$</span>c ping alpine1
+</code></pre></div></p>
 <hr />
 <h2 id="create-bridge">Create bridge</h2>
 <p>Create a network, make two containers communicate through it and use container name instead of ip addresses.</p>
-<p>Create network, default driver = bridge</p>
-<pre><code class="language-console">$ docker network create mynet
-
-$ docker network ls
-NETWORK ID     NAME      DRIVER    SCOPE
-266b7ae5e9d7   bridge    bridge    local
-ada5f50a5c41   host      host      local
-0a85e3670d62   mynet     bridge    local
-119b5f46e464   none      null      local
-</code></pre>
+<p>Create network, default driver = bridge
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="gp">$ </span>docker network create mynet
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="gp">$ </span>docker network ls
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="go">NETWORK ID     NAME      DRIVER    SCOPE</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="go">266b7ae5e9d7   bridge    bridge    local</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="go">ada5f50a5c41   host      host      local</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="go">0a85e3670d62   mynet     bridge    local</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="go">119b5f46e464   none      null      local</span>
+</code></pre></div></p>
 <p>Use network with a named (important for name resolution over the network) container</p>
-<pre><code class="language-console">$ docker run --rm --network mynet --name server1 -d alpine ping google.ch
-
-$ docker inspect mynet
-
-&quot;Containers&quot;: {
-            &quot;249b952ab5db2ac4f3077e1a7fb89582eedaa02c236a92a7e15fc5cee73d3292&quot;: {
-                &quot;Name&quot;: &quot;server1&quot;,
-                &quot;EndpointID&quot;: &quot;48284c2119158a9ebf9d67b3eee0c74c58ede079ba173b769f5b791f2f507abb&quot;,
-                &quot;MacAddress&quot;: &quot;02:42:ac:12:00:02&quot;,
-                &quot;IPv4Address&quot;: &quot;172.18.0.2/16&quot;,
-                &quot;IPv6Address&quot;: &quot;&quot;
-            }
-        }
-
-$ docker run --rm -it --network mynet --name server2 alpine sh
-
-$c ping server1
-PING server1 (172.18.0.2): 56 data bytes
-64 bytes from 172.18.0.2: seq=0 ttl=64 time=0.079 ms
-64 bytes from 172.18.0.2: seq=1 ttl=64 time=0.166 ms
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="gp">$ </span>docker run --rm --network mynet --name server1 -d alpine ping google.ch
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="gp">$ </span>docker inspect mynet
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="go">&quot;Containers&quot;: {</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="go">            &quot;249b952ab5db2ac4f3077e1a7fb89582eedaa02c236a92a7e15fc5cee73d3292&quot;: {</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="go">                &quot;Name&quot;: &quot;server1&quot;,</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="go">                &quot;EndpointID&quot;: &quot;48284c2119158a9ebf9d67b3eee0c74c58ede079ba173b769f5b791f2f507abb&quot;,</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="go">                &quot;MacAddress&quot;: &quot;02:42:ac:12:00:02&quot;,</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="go">                &quot;IPv4Address&quot;: &quot;172.18.0.2/16&quot;,</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="go">                &quot;IPv6Address&quot;: &quot;&quot;</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="go">            }</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="go">        }</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="gp">$ </span>docker run --rm -it --network mynet --name server2 alpine sh
+<a id="__codelineno-7-16" name="__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="gp">$</span>c ping server1
+<a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="go">PING server1 (172.18.0.2): 56 data bytes</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="go">64 bytes from 172.18.0.2: seq=0 ttl=64 time=0.079 ms</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="go">64 bytes from 172.18.0.2: seq=1 ttl=64 time=0.166 ms</span>
+</code></pre></div>
 <p>From another terminal</p>
-<pre><code class="language-console">$ docker exec -it server1 sh
-$c ping server2
-PING server2 (172.18.0.3): 56 data bytes
-64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.125 ms
-64 bytes from 172.18.0.3: seq=1 ttl=64 time=0.496 ms
-</code></pre>
-<p>Remove network</p>
-<pre><code class="language-console">$ docker network rm mynet
-</code></pre>
-<p>Remove all network at once</p>
-<pre><code class="language-console">$ docker network prune
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="gp">$ </span>docker <span class="nb">exec</span> -it server1 sh
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="gp">$</span>c ping server2
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="go">PING server2 (172.18.0.3): 56 data bytes</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="go">64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.125 ms</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="go">64 bytes from 172.18.0.3: seq=1 ttl=64 time=0.496 ms</span>
+</code></pre></div>
+<p>Remove network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="gp">$ </span>docker network rm mynet
+</code></pre></div></p>
+<p>Remove all network at once
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="gp">$ </span>docker network prune
+</code></pre></div></p>
 <hr />
 <h2 id="connect-a-nodejs-server-with-mongodb">Connect a Node.js server with MongoDB</h2>
 <p>Goal: - display a counter in a browser at 'localhost' address.  </p>
@@ -1822,155 +1822,147 @@ PING server2 (172.18.0.3): 56 data bytes
 - Network - mynet<br />
 - Port 80 open to listen to request (count++) from a browser at 'localhost' address  </p>
 <h3 id="mongodb">MongoDB</h3>
-<p>Volume and container</p>
-<pre><code class="language-console">$ docker volume create mydb
-$ docker run --name db --mount type=volume,source=mydb,target=/data/db -d mongo
-</code></pre>
-<p>Network and connect (and disconnect from default bridge)</p>
-<pre><code class="language-console">$ docker network create mynet
-$ docker network connect mynet db
-$ docker network disconnect bridge db
-</code></pre>
-<p>Create db and collection to handle and initialize the counter</p>
-<pre><code class="language-console">$ docker exec -it db sh
-$c mongo
-&gt; use test
-switched to db test
-&gt; db.count.insertOne({count:0})
-{
-        &quot;acknowledged&quot; : true,
-        &quot;insertedId&quot; : ObjectId(&quot;61cc2517094e32ba7f98bb31&quot;)
-}
-&gt; db.count.find()
-{ &quot;_id&quot; : ObjectId(&quot;61cc2517094e32ba7f98bb31&quot;), &quot;count&quot; : 0 }
-&gt; exit
-bye
-$c exit
-</code></pre>
+<p>Volume and container
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="gp">$ </span>docker volume create mydb
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="gp">$ </span>docker run --name db --mount <span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>mydb,target<span class="o">=</span>/data/db -d mongo
+</code></pre></div></p>
+<p>Network and connect (and disconnect from default bridge)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="gp">$ </span>docker network create mynet
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="gp">$ </span>docker network connect mynet db
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="gp">$ </span>docker network disconnect bridge db
+</code></pre></div></p>
+<p>Create db and collection to handle and initialize the counter
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="gp">$ </span>docker <span class="nb">exec</span> -it db sh
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="gp">$</span>c mongo
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="go">&gt; use test</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="go">switched to db test</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="go">&gt; db.count.insertOne({count:0})</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="go">{</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="go">        &quot;acknowledged&quot; : true,</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="go">        &quot;insertedId&quot; : ObjectId(&quot;61cc2517094e32ba7f98bb31&quot;)</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="go">}</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="go">&gt; db.count.find()</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="go">{ &quot;_id&quot; : ObjectId(&quot;61cc2517094e32ba7f98bb31&quot;), &quot;count&quot; : 0 }</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="go">&gt; exit</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="go">bye</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="gp">$</span>c <span class="nb">exit</span>
+</code></pre></div></p>
 <h3 id="node-server-development">Node server Development</h3>
 <h4 id="development-environnement-setup">Development Environnement setup</h4>
 <p>First step, application development with bind mount.</p>
 <p>We should use the mongo javascript driver in our application to allow connection to the db.</p>
 <p>In 'node-server' folder.</p>
-<p>File 'package.json' add mongo dependencies (browse for "npm mongodb" -&gt; MongoDB NodeJS Driver, to check version)</p>
-<pre><code class="language-json">
-{
-    &quot;dependencies&quot;: {
-      &quot;express&quot;: &quot;^4.17.1&quot;,
-      &quot;mongodb&quot;: &quot;^3.6.2&quot;,
-      &quot;nodemon&quot;: &quot;^2.0.6&quot;,
-      &quot;console-stamp&quot;: &quot;^3.0.3&quot;
-    }
-}
-
-</code></pre>
+<p>File 'package.json' add mongo dependencies (browse for "npm mongodb" -&gt; MongoDB NodeJS Driver, to check version)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="p">{</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>    <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>      <span class="nt">&quot;express&quot;</span><span class="p">:</span> <span class="s2">&quot;^4.17.1&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>      <span class="nt">&quot;mongodb&quot;</span><span class="p">:</span> <span class="s2">&quot;^3.6.2&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>      <span class="nt">&quot;nodemon&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.0.6&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>      <span class="nt">&quot;console-stamp&quot;</span><span class="p">:</span> <span class="s2">&quot;^3.0.3&quot;</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a>    <span class="p">}</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="p">}</span>
+</code></pre></div></p>
 <p>"console-stamp" is to add timestamp in logs</p>
 <p>^version “Compatible with version”, will update you to all future minor/patch versions, without incrementing the major version. ^2.3.4 will use releases from 2.3.4 to &lt;3.0.0.</p>
-<p>Dockerfile</p>
-<pre><code>FROM node:alpine
-WORKDIR /app
-COPY ./package.json .
-RUN npm install
-COPY . .
-ENV PATH=$PATH:/app/node_modules/.bin
-CMD [&quot;nodemon&quot;, &quot;-L&quot;, &quot;src/app.js&quot;]
-</code></pre>
-<p>Build image in 'node-server' folder</p>
-<pre><code class="language-console">$ docker build -t node-server .
-</code></pre>
-<p>Application is in js file 'node-server/src/app.js'</p>
-<pre><code class="language-javascript">
-const express = require(&quot;express&quot;);
-
-const app = express();
-
-app.get(&quot;*&quot;, (req, res) =&gt; {
-  res.status(200).json(&quot;Hello, world!&quot;);
-});
-
-app.listen(80);
-
-</code></pre>
-<p>To develop application use a bind mount</p>
-<pre><code class="language-console">$ docker run --name server --mount type=bind,source=&quot;$(pwd)&quot;/src,target=/app/src -p 80:80 --network mynet node-server
-</code></pre>
+<p>Dockerfile
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>FROM node:alpine
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>WORKDIR /app
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>COPY ./package.json .
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>RUN npm install
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>COPY . .
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a>ENV PATH=$PATH:/app/node_modules/.bin
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a>CMD [&quot;nodemon&quot;, &quot;-L&quot;, &quot;src/app.js&quot;]
+</code></pre></div></p>
+<p>Build image in 'node-server' folder
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="gp">$ </span>docker build -t node-server .
+</code></pre></div></p>
+<p>Application is in js file 'node-server/src/app.js'
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a>  <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">);</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="p">});</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a>
+<a id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">80</span><span class="p">);</span>
+</code></pre></div></p>
+<p>To develop application use a bind mount
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="gp">$ </span>docker run --name server --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/src,target<span class="o">=</span>/app/src -p <span class="m">80</span>:80 --network mynet node-server
+</code></pre></div></p>
 <p>Browse to 'localhost'.<br />
 Observe live change availability by editing "Hello, world!" response in 'app.js' file and refreshing 'localhost' page in internet browser.</p>
-<p>Check that port '80' is published for 'server' container</p>
-<pre><code class="language-console">$ docker container port server
-80/tcp -&gt; 0.0.0.0:80
-</code></pre>
+<p>Check that port '80' is published for 'server' container
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="gp">$ </span>docker container port server
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="go">80/tcp -&gt; 0.0.0.0:80</span>
+</code></pre></div></p>
 <h4 id="development-server-configuration">Development Server configuration</h4>
-<p>Modify 'app.js' file as follow</p>
-<pre><code class="language-javascript">
-require( 'console-stamp' )( console );  // to add timestamp in logs
-
-const express = require(&quot;express&quot;);
-
-const MongoClient = require('mongodb').MongoClient;
-
-let count;
-
-MongoClient.connect('mongodb://db', { useUnifiedTopology: true }, (err, client) =&gt; {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log('CONNEXION DB OK!');
-    count = client.db('test').collection(&quot;count&quot;);
-  }
-});
-
-const app = express();
-
-app.get('/', (req, res) =&gt; {
-  console.log('request url: ' + req.url);
-  count.findOneAndUpdate({}, { $inc: { count: 1 } }, { returnNewDocument: true }).then((doc) =&gt; {
-    const value = doc.value;
-    res.status(200).json(value.count);
-  })
-});
-
-app.get('*', (req, res) =&gt; {
-  res.end();
-});
-
-app.listen(80);
-
-</code></pre>
+<p>Modify 'app.js' file as follow
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="nx">require</span><span class="p">(</span> <span class="s1">&#39;console-stamp&#39;</span> <span class="p">)(</span> <span class="nx">console</span> <span class="p">);</span>  <span class="c1">// to add timestamp in logs</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="kd">const</span> <span class="nx">MongoClient</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongodb&#39;</span><span class="p">).</span><span class="nx">MongoClient</span><span class="p">;</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a>
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a><span class="kd">let</span> <span class="nx">count</span><span class="p">;</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a>
+<a id="__codelineno-20-9" name="__codelineno-20-9"></a><span class="nx">MongoClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s1">&#39;mongodb://db&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useUnifiedTopology</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">client</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10"></a>  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11"></a>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12"></a>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13"></a>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;CONNEXION DB OK!&#39;</span><span class="p">);</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14"></a>    <span class="nx">count</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">).</span><span class="nx">collection</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">);</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15"></a>  <span class="p">}</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16"></a><span class="p">});</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17"></a>
+<a id="__codelineno-20-18" name="__codelineno-20-18"></a><span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19"></a>
+<a id="__codelineno-20-20" name="__codelineno-20-20"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-20-21" name="__codelineno-20-21"></a>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;request url: &#39;</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+<a id="__codelineno-20-22" name="__codelineno-20-22"></a>  <span class="nx">count</span><span class="p">.</span><span class="nx">findOneAndUpdate</span><span class="p">({},</span> <span class="p">{</span> <span class="nx">$inc</span><span class="o">:</span> <span class="p">{</span> <span class="nx">count</span><span class="o">:</span> <span class="mf">1</span> <span class="p">}</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">returnNewDocument</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">doc</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-20-23" name="__codelineno-20-23"></a>    <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+<a id="__codelineno-20-24" name="__codelineno-20-24"></a>    <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25"></a>  <span class="p">})</span>
+<a id="__codelineno-20-26" name="__codelineno-20-26"></a><span class="p">});</span>
+<a id="__codelineno-20-27" name="__codelineno-20-27"></a>
+<a id="__codelineno-20-28" name="__codelineno-20-28"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-20-29" name="__codelineno-20-29"></a>  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+<a id="__codelineno-20-30" name="__codelineno-20-30"></a><span class="p">});</span>
+<a id="__codelineno-20-31" name="__codelineno-20-31"></a>
+<a id="__codelineno-20-32" name="__codelineno-20-32"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">80</span><span class="p">);</span>
+</code></pre></div></p>
 <h3 id="node-server-production">Node server Production</h3>
 <p>Rebuild node server image with released app.js in it (above development has been erased by bind mount)</p>
-<p>In 'node-server' folder</p>
-<pre><code class="language-console">$ docker build -t node-server .
-</code></pre>
-<p>If 'node-server' container is still running, remove it and then</p>
-<pre><code class="language-console">$ docker run --name server --network mynet -d -p 80:80 node-server
-</code></pre>
+<p>In 'node-server' folder
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="gp">$ </span>docker build -t node-server .
+</code></pre></div></p>
+<p>If 'node-server' container is still running, remove it and then
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="gp">$ </span>docker run --name server --network mynet -d -p <span class="m">80</span>:80 node-server
+</code></pre></div></p>
 <hr />
 <h2 id="host">Host</h2>
 <p>C.f. <a href="##bridge">Bridge section</a> for initial setup.</p>
-<p>Reset 'app.js' to</p>
-<pre><code class="language-javascript">
-const express = require(&quot;express&quot;);
-
-const app = express();
-
-app.get(&quot;*&quot;, (req, res) =&gt; {
-  res.status(200).json(&quot;Hello, world!&quot;);
-});
-
-app.listen(80);
-
-</code></pre>
-<p>Rebuild 'node-server' image</p>
-<pre><code class="language-console">$ docker build -t node-server .
-</code></pre>
-<p>Relaunch server but on local network, this time, no need to publish port</p>
-<pre><code class="language-console">$ docker run --network host node-server
-</code></pre>
+<p>Reset 'app.js' to
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a>
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a>  <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">);</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="p">});</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8"></a>
+<a id="__codelineno-23-9" name="__codelineno-23-9"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">80</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Rebuild 'node-server' image
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="gp">$ </span>docker build -t node-server .
+</code></pre></div></p>
+<p>Relaunch server but on local network, this time, no need to publish port
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="gp">$ </span>docker run --network host node-server
+</code></pre></div></p>
 <p>Do not work on WSL (Windows Subsystem for Linux), neither MacOs.</p>
-<p>To not use any network</p>
-<pre><code class="language-console">$ docker run --network none node-server
-</code></pre>
+<p>To not use any network
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="gp">$ </span>docker run --network none node-server
+</code></pre></div></p>
 <hr />
 
               

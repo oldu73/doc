@@ -1649,137 +1649,137 @@ Instead, prefer usage of a "native" WSL2 folder like for e.g. '/home/user/react-
 <li>'Node.js'</li>
 </ul>
 <p>Set/check installation with:</p>
-<pre><code class="language-console">// Setup project root folder
-mkdir react-nginx
-cd react-nginx
-
-// To install 'nvm'
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-
-// Check
-nvm
-
-// Get last version
-nvm ls-remote | tail
-.
-.
-v17.0.1
-        v17.1.0
-        v17.2.0
-        v17.3.0
-
-// Install last version
-nvm install 17.3.0
-
-node -v
-v17.3.0
-
-node
-Welcome to Node.js v17.3.0.       
-Type &quot;.help&quot; for more information.
-&gt;
-(To exit, press Ctrl+C again or Ctrl+D or type .exit)
-&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">// Setup project root folder</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="go">mkdir react-nginx</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="go">cd react-nginx</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="go">// To install &#39;nvm&#39;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="go">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="go">// Check</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="go">nvm</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="go">// Get last version</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="go">nvm ls-remote | tail</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="go">.</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="go">.</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="go">v17.0.1</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="go">        v17.1.0</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="go">        v17.2.0</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="go">        v17.3.0</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="go">// Install last version</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="go">nvm install 17.3.0</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="go">node -v</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="go">v17.3.0</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="go">node</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="go">Welcome to Node.js v17.3.0.       </span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="go">Type &quot;.help&quot; for more information.</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="go">&gt;</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="gp gp-VirtualEnv">(To exit, press Ctrl+C again or Ctrl+D or type .exit)</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="go">&gt;</span>
+</code></pre></div>
 <h3 id="react">React</h3>
 <p>Instal 'React' with 'npx' (like npm but executed once with last script release):</p>
-<pre><code class="language-console">npx create-react-app client
-cd client
-ls
-README.md  node_modules  package-lock.json  package.json  public  src
-npm start
-.
-.
-Compiled successfully!
-
-You can now view client in the browser.
-
-  Local:            http://localhost:3000
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">npx create-react-app client</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="go">cd client</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="go">ls</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="go">README.md  node_modules  package-lock.json  package.json  public  src</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="go">npm start</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="go">.</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="go">.</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="go">Compiled successfully!</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="go">You can now view client in the browser.</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="go">  Local:            http://localhost:3000</span>
+</code></pre></div>
 <p>Browse to: - <a href="http://localhost:3000">http://localhost:3000</a></p>
 <p>Test (launch tests contained in react-nginx/client/src/App.test.js):</p>
-<pre><code class="language-console">npm run test
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">npm run test</span>
+</code></pre></div>
 <p>!! Fail on WSL2 :(</p>
 <p>Build for production (add a build folder to the project, this is the folder to return via NGINX for client):</p>
-<pre><code class="language-console">npm run build
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">npm run build</span>
+</code></pre></div>
 <p>All of this just to initialize the project locally on host machine.</p>
 <h3 id="dockerized">Dockerized</h3>
 <p>We may now <strong>delete the 'node_modules' folder</strong> ('node_modules' folder will then be only in container initialized with dependencies through 'npm install' command in 'Dockerfile'):</p>
-<pre><code class="language-console">rm -rf node_modules/
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">rm -rf node_modules/</span>
+</code></pre></div>
 <p>Add a 'Dockerfile' in client project folder '/home/user/react-nginx/client':</p>
-<pre><code class="language-console">touch Dockerfile
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">touch Dockerfile</span>
+</code></pre></div>
 <p>Dockerfile:</p>
-<pre><code class="language-text">FROM node:alpine
-WORKDIR /app
-COPY package.json .
-RUN npm install
-COPY . .
-CMD [&quot;npm&quot;, &quot;start&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>FROM node:alpine
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>WORKDIR /app
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>COPY package.json .
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>RUN npm install
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>COPY . .
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>CMD [&quot;npm&quot;, &quot;start&quot;]
+</code></pre></div>
 <p>Build docker image:</p>
-<pre><code class="language-console">docker build -t myreact .
-
-docker image ls
-REPOSITORY                        TAG       IMAGE ID       CREATED          SIZE  
-myreact                           latest    c4c1b5bb9d21   45 seconds ago   483MB
-
-docker run --rm --name react -p 3000:3000 myreact
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">docker build -t myreact .</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="go">docker image ls</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="go">REPOSITORY                        TAG       IMAGE ID       CREATED          SIZE  </span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="go">myreact                           latest    c4c1b5bb9d21   45 seconds ago   483MB</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="go">docker run --rm --name react -p 3000:3000 myreact</span>
+</code></pre></div>
 <p>Browse to: - <a href="http://localhost:3000">http://localhost:3000</a></p>
 <hr />
 <h2 id="live-reload">Live reload</h2>
 <p>It's important to launch <strong>from a terminal</strong> a based VS Code instance from root client application folder to get live reload effect that works:</p>
-<pre><code class="language-console">cd .../react-nginx/client
-code .
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">cd .../react-nginx/client</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="go">code .</span>
+</code></pre></div>
 <p>For development purpose, to automatically propagate local changes to container.</p>
 <p>Bind mount project folder:</p>
-<pre><code class="language-console">docker run --rm --name react -p 3000:3000 --mount type=bind,src=&quot;$(pwd)&quot;,target=/app myreact
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">docker run --rm --name react -p 3000:3000 --mount type=bind,src=&quot;$(pwd)&quot;,target=/app myreact</span>
+</code></pre></div>
 <p>!! =&gt; FAIL!! Why? Because when bind mount it crush all what was contained in container '/app' folder with local content and in local there isn't anymore 'node_modules' folder.</p>
 <p>To avoid this unwanted behavior and keep 'node_modules' in container folder not erased by bind mount (also needed for live reload feature), we bind an anonymous volume targeted on remote container '/app/node_modules' folder.</p>
 <p>Also, to avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder we modify 'Dockerfile' as follow:</p>
-<pre><code class="language-text">FROM node:alpine
-WORKDIR /app
-COPY package.json .
-RUN npm install
-# To avoid 'EACCES: permission denied' issue on '/app/node_modules/.cache' folder
-RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
-COPY . .
-CMD [&quot;npm&quot;, &quot;start&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>FROM node:alpine
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>WORKDIR /app
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>COPY package.json .
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>RUN npm install
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a># To avoid &#39;EACCES: permission denied&#39; issue on &#39;/app/node_modules/.cache&#39; folder
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>RUN mkdir -p node_modules/.cache &amp;&amp; chmod -R 777 node_modules/.cache
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a>COPY . .
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a>CMD [&quot;npm&quot;, &quot;start&quot;]
+</code></pre></div>
 <p>Bind mount project folder + anonymous volume with '/app/node_modules' as target:</p>
-<pre><code class="language-console">docker run --rm --name react -p 3000:3000 --mount type=bind,src=&quot;$(pwd)&quot;,target=/app --mount type=volume,target=/app/node_modules myreact
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="go">docker run --rm --name react -p 3000:3000 --mount type=bind,src=&quot;$(pwd)&quot;,target=/app --mount type=volume,target=/app/node_modules myreact</span>
+</code></pre></div>
 <p>It's advised to run with '--rm' option when using anonymous volume to suppress it automatically on stop in addition to container suppression.</p>
 <p>Test live reload by changing text '.. save to reload.' with e.g. 'Hello, world!" in 'src/App.js' and then observe live effect at <a href="http://localhost:3000">http://localhost:3000</a> in an Internet browser.</p>
 <hr />
 <h2 id="set-up-docker-compose">Set up Docker Compose</h2>
 <p>docker-compose.yml</p>
-<pre><code class="language-yaml">version: &quot;3.8&quot;
-services:
-  client:
-    build: .
-    ports:
-      - 3000:3000
-    volumes:
-      - type: bind
-        source: .
-        target: /app
-      - type: volume
-        target: /app/node_modules
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.8&quot;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>  <span class="nt">client</span><span class="p">:</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>    <span class="nt">build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">3000:3000</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bind</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app/node_modules</span>
+</code></pre></div>
 <p>Reset Docker:</p>
-<pre><code class="language-console">docker system prune -a
-docker volume prune
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="go">docker system prune -a</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="go">docker volume prune</span>
+</code></pre></div>
 <p>Start service:</p>
-<pre><code class="language-console">docker-compose up
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="go">docker-compose up</span>
+</code></pre></div>
 <p>You may observe live reload working by changing 'App.js' content and 'localhost:3000' changing accordingly.</p>
 <hr />
 <h2 id="test-during-developpement">Test during developpement</h2>
@@ -1792,97 +1792,97 @@ docker volume prune
 To achieve this, we lauch two terminals in prallel, one with webpack for running application and this other one for automatic testing purpose.<br />
 It's done with same container image and duplicate services in Docker Compose configuration file, only thing that will change for second duplicated service is that we override command from Dockerfile in Docker Compose configuration file to launch test server and remove also port mapping which is useless for tests.</p>
 <p>docker-compose.yml:</p>
-<pre><code class="language-yaml">version: &quot;3.8&quot;
-services:
-  client:
-    build: .
-    ports:
-      - 3000:3000
-    volumes:
-      - type: bind
-        source: .
-        target: /app
-      - type: volume
-        target: /app/node_modules
-  test:
-    build: .
-    command: [&quot;npm&quot;, &quot;run&quot;, &quot;test&quot;]
-    volumes:
-      - type: bind
-        source: .
-        target: /app
-      - type: volume
-        target: /app/node_modules
-</code></pre>
-<pre><code class="language-console">docker-compose up --build
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.8&quot;</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>  <span class="nt">client</span><span class="p">:</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>    <span class="nt">build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">3000:3000</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bind</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app/node_modules</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13"></a>  <span class="nt">test</span><span class="p">:</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14"></a>    <span class="nt">build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15"></a>    <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;npm&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;run&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;test&quot;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bind</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app/node_modules</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="go">docker-compose up --build</span>
+</code></pre></div>
 <p>In logs we may observe:</p>
-<pre><code class="language-console">.
-.
-test_1    | Tests:       1 passed, 1 total
-.
-.
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="go">.</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="go">.</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="go">test_1    | Tests:       1 passed, 1 total</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="go">.</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="go">.</span>
+</code></pre></div>
 <p>If we duplicate one exsisting test in '.../src/App.test.js' file, we may observe live change in logs:</p>
-<pre><code class="language-console">.
-.
-test_1    | Tests:       2 passed, 2 total
-.
-.
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="go">.</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="go">.</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="go">test_1    | Tests:       2 passed, 2 total</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="go">.</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="go">.</span>
+</code></pre></div>
 <p>To interact with test server we need a second terminal.<br />
 If we want to send command in test container when attaching to it we need to add two options to the test service in Docker Compose configuration file, 'stdin_open' and 'tty', both set to 'true'.</p>
 <p>docker-compose.yml:</p>
-<pre><code class="language-yaml">version: &quot;3.8&quot;
-services:
-  client:
-    build: .
-    ports:
-      - 3000:3000
-    volumes:
-      - type: bind
-        source: .
-        target: /app
-      - type: volume
-        target: /app/node_modules
-  test:
-    build: .
-    command: [&quot;npm&quot;, &quot;run&quot;, &quot;test&quot;]
-    volumes:
-      - type: bind
-        source: .
-        target: /app
-      - type: volume
-        target: /app/node_modules
-    stdin_open: true
-    tty: true
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.8&quot;</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>  <span class="nt">client</span><span class="p">:</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a>    <span class="nt">build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">3000:3000</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bind</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app/node_modules</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13"></a>  <span class="nt">test</span><span class="p">:</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14"></a>    <span class="nt">build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15"></a>    <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;npm&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;run&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;test&quot;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16"></a>    <span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bind</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18"></a>        <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20"></a>      <span class="p p-Indicator">-</span> <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">volume</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21"></a>        <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/app/node_modules</span>
+<a id="__codelineno-19-22" name="__codelineno-19-22"></a>    <span class="nt">stdin_open</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-19-23" name="__codelineno-19-23"></a>    <span class="nt">tty</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 <p>In first terminal:</p>
-<pre><code class="language-console">docker-compose down -v
-docker-compose up --build
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="go">docker-compose down -v</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="go">docker-compose up --build</span>
+</code></pre></div>
 <p>In second terminal:</p>
-<pre><code class="language-console">docker container ls
-
-CONTAINER ID   IMAGE           COMMAND                  CREATED              STATUS              PORTS                    NAMES
-ca16b44236ad   client_test     &quot;docker-entrypoint.s…&quot;   About a minute ago   Up About a minute                            client_test_1
-4633b0999f9c   client_client   &quot;docker-entrypoint.s…&quot;   About a minute ago   Up About a minute   0.0.0.0:3000-&gt;3000/tcp   client_client_1
-
-docker attach client_test_1
-.
-.
-Watch Usage
- › Press f to run only failed tests.
- › Press o to only run tests related to changed files.
- › Press q to quit watch mode.
- › Press p to filter by a filename regex pattern.
- › Press t to filter by a test name regex pattern.
- › Press Enter to trigger a test run.
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="go">docker container ls</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="go">CONTAINER ID   IMAGE           COMMAND                  CREATED              STATUS              PORTS                    NAMES</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="go">ca16b44236ad   client_test     &quot;docker-entrypoint.s…&quot;   About a minute ago   Up About a minute                            client_test_1</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a><span class="go">4633b0999f9c   client_client   &quot;docker-entrypoint.s…&quot;   About a minute ago   Up About a minute   0.0.0.0:3000-&gt;3000/tcp   client_client_1</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a>
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a><span class="go">docker attach client_test_1</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8"></a><span class="go">.</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9"></a><span class="go">.</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10"></a><span class="go">Watch Usage</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11"></a><span class="go"> › Press f to run only failed tests.</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12"></a><span class="go"> › Press o to only run tests related to changed files.</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13"></a><span class="go"> › Press q to quit watch mode.</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14"></a><span class="go"> › Press p to filter by a filename regex pattern.</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15"></a><span class="go"> › Press t to filter by a test name regex pattern.</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16"></a><span class="go"> › Press Enter to trigger a test run.</span>
+</code></pre></div>
 <p>We may now send commands to test server in second terminal.</p>
 <p>Then, shutdown gracefully:</p>
-<pre><code class="language-console">docker-compose down -v
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="go">docker-compose down -v</span>
+</code></pre></div>
 <hr />
 <h2 id="production-environnement">Production environnement</h2>
 <h3 id="introduction">Introduction</h3>
@@ -1890,86 +1890,86 @@ Watch Usage
 <p>NGINX intercept http request and return by default an html file.</p>
 <p>Browse <a href="https://hub.docker.com/_/nginx#:~:text=Hosting%20some%20simple%20static%20content">docker hub for nginx on official image page to host some simple static content</a>.</p>
 <p>Simple test:</p>
-<pre><code class="language-console">docker run --rm -p 80:80 nginx
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="go">docker run --rm -p 80:80 nginx</span>
+</code></pre></div>
 <p>Browse to <a href="http://localhost/">localhost</a></p>
 <p>In a second terminal:</p>
-<pre><code class="language-console">docker exec -it exciting_elion sh
-
-cd usr/share/nginx/html
-
-ls
-50x.html  index.html
-
-cat index.html
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Welcome to nginx!&lt;/title&gt;
-.
-.
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="go">docker exec -it exciting_elion sh</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a><span class="go">cd usr/share/nginx/html</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a>
+<a id="__codelineno-24-5" name="__codelineno-24-5"></a><span class="go">ls</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6"></a><span class="go">50x.html  index.html</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7"></a>
+<a id="__codelineno-24-8" name="__codelineno-24-8"></a><span class="go">cat index.html</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9"></a><span class="go">&lt;!DOCTYPE html&gt;</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10"></a><span class="go">&lt;html&gt;</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11"></a><span class="go">&lt;head&gt;</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12"></a><span class="go">&lt;title&gt;Welcome to nginx!&lt;/title&gt;</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13"></a><span class="go">.</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14"></a><span class="go">.</span>
+</code></pre></div>
 <p>It's in this folder we gonna copy our application '/usr/share/nginx/html'.</p>
 <p>For more complex configuration, have a look in '/etc/nginx/conf.d' folder.</p>
 <h3 id="multi-stage-dockerfile">Multi stage Dockerfile</h3>
 <p>Reuse a preceding builded image in next build.</p>
 <p>Goal to reach here is to put React's build folder into NGINX image.</p>
 <p>../client/Dockerfile.prod</p>
-<pre><code class="language-text">FROM node:alpine as buildstage
-WORKDIR /app
-COPY package.json .
-RUN npm install
-COPY . .
-RUN npm run build
-
-FROM nginx
-COPY --from=buildstage /app/build /usr/share/nginx/html
-EXPOSE 80
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a>FROM node:alpine as buildstage
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a>WORKDIR /app
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a>COPY package.json .
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a>RUN npm install
+<a id="__codelineno-25-5" name="__codelineno-25-5"></a>COPY . .
+<a id="__codelineno-25-6" name="__codelineno-25-6"></a>RUN npm run build
+<a id="__codelineno-25-7" name="__codelineno-25-7"></a>
+<a id="__codelineno-25-8" name="__codelineno-25-8"></a>FROM nginx
+<a id="__codelineno-25-9" name="__codelineno-25-9"></a>COPY --from=buildstage /app/build /usr/share/nginx/html
+<a id="__codelineno-25-10" name="__codelineno-25-10"></a>EXPOSE 80
+</code></pre></div>
 <p>After second FROM above, --from=buildstage refer to first stage of image build (npm run build, output is a 'build' folder that containe production application).</p>
 <p>Build Docker image:</p>
-<pre><code class="language-console">docker build -t nginxreact -f Dockerfile.prod .
-.
-.
- =&gt; [stage-1 2/2] COPY --from=buildstage /app/build /usr/share/nginx/html
-.
-.
-
-docker image ls
-REPOSITORY      TAG       IMAGE ID       CREATED         SIZE
-nginxreact      latest    ee3388384541   4 minutes ago   141MB
-.
-.
-&lt;none&gt;          &lt;none&gt;    1c9dc1e2c948   6 hours ago     483MB
-.
-.
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="go">docker build -t nginxreact -f Dockerfile.prod .</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="go">.</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3"></a><span class="go">.</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4"></a><span class="go"> =&gt; [stage-1 2/2] COPY --from=buildstage /app/build /usr/share/nginx/html</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5"></a><span class="go">.</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6"></a><span class="go">.</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7"></a>
+<a id="__codelineno-26-8" name="__codelineno-26-8"></a><span class="go">docker image ls</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9"></a><span class="go">REPOSITORY      TAG       IMAGE ID       CREATED         SIZE</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10"></a><span class="go">nginxreact      latest    ee3388384541   4 minutes ago   141MB</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11"></a><span class="go">.</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12"></a><span class="go">.</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13"></a><span class="go">&lt;none&gt;          &lt;none&gt;    1c9dc1e2c948   6 hours ago     483MB</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14"></a><span class="go">.</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15"></a><span class="go">.</span>
+</code></pre></div>
 <p>"\&lt;none>" image are produced by intermediate build stage(s).</p>
 <p>Launch a container with just built image:</p>
-<pre><code class="language-console">docker run --rm -p 80:80 nginxreact
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="go">docker run --rm -p 80:80 nginxreact</span>
+</code></pre></div>
 <p>Browse to <a href="http://localhost/">localhost</a> to observe your production application running.</p>
 <h3 id="docker-compose">Docker Compose</h3>
 <p>A new Docker Compose configuration file dedicated to prodction:</p>
-<pre><code class="language-console">touch docker-compose.prod.yml
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="go">touch docker-compose.prod.yml</span>
+</code></pre></div>
 <p>docker-compose.prod.yml</p>
-<pre><code class="language-yaml">version: &quot;3.8&quot;
-services:
-  mynginx:
-    build:
-      context: .
-      dockerfile: Dockerfile.prod
-    ports:
-      - 80:80
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="nt">version</span><span class="p">:</span> <span class="s">&quot;3.8&quot;</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a>  <span class="nt">mynginx</span><span class="p">:</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a>    <span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5"></a>      <span class="nt">context</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">.</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6"></a>      <span class="nt">dockerfile</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dockerfile.prod</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7"></a>    <span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8"></a>      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">80:80</span>
+</code></pre></div>
 <p>Reset Docker content:</p>
-<pre><code class="language-console">docker system prune -a
-docker volume prune
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="go">docker system prune -a</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a><span class="go">docker volume prune</span>
+</code></pre></div>
 <p>Start a fresh new production application:</p>
-<pre><code class="language-console">docker-compose -f docker-compose.prod.yml up
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="go">docker-compose -f docker-compose.prod.yml up</span>
+</code></pre></div>
 <p>Browse to <a href="http://localhost/">localhost</a> to observe your production application running.</p>
 <hr />
 

@@ -1951,121 +1951,121 @@
 <h1 id="docker-03-docker-file">Docker - 03 - Docker File</h1>
 <hr />
 <h2 id="image-variants">Image Variants</h2>
-<pre><code>$ docker pull node:slim
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>$ docker pull node:slim
+</code></pre></div>
 <p>node:latest = 992MB</p>
 <p>VS</p>
 <p>node:slim = 242MB</p>
 <hr />
 <h2 id="tag">tag</h2>
 <p>tag to tag image after build</p>
-<pre><code>$ docker image tag mynode:latest mynode:1.0
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>$ docker image tag mynode:latest mynode:1.0
+</code></pre></div>
 <hr />
 <h2 id="history">history</h2>
 <p>Show the history of an image</p>
-<pre><code>$ docker history mynode:latest 
-IMAGE          CREATED         CREATED BY                                      SIZE      COMMENT
-1a8f184ef896   8 minutes ago   sh                                              42.4MB
-14119a10abf4   2 months ago    /bin/sh -c #(nop)  CMD [&quot;/bin/sh&quot;]              0B
-&lt;missing&gt;      2 months ago    /bin/sh -c #(nop) ADD file:aad4290d27580cc1a…   5.6MB
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>$ docker history mynode:latest 
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>IMAGE          CREATED         CREATED BY                                      SIZE      COMMENT
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>1a8f184ef896   8 minutes ago   sh                                              42.4MB
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>14119a10abf4   2 months ago    /bin/sh -c #(nop)  CMD [&quot;/bin/sh&quot;]              0B
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>&lt;missing&gt;      2 months ago    /bin/sh -c #(nop) ADD file:aad4290d27580cc1a…   5.6MB
+</code></pre></div>
 <hr />
 <h2 id="logs">logs</h2>
-<pre><code>$ docker container logs redis-4.0-001
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>$ docker container logs redis-4.0-001
+</code></pre></div>
 <p>-f to follow
 -t timestamp</p>
 <hr />
 <h2 id="commit">COMMIT</h2>
 <p>Snapshot a container to image</p>
-<pre><code>$ docker run -it alpine sh
-
-# mkdir app
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>$ docker run -it alpine sh
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a># mkdir app
+</code></pre></div>
 <p>open a new terminal to copy app.js "manually" to app folder</p>
-<pre><code>$ docker container cp app.js ed6:/app/
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>$ docker container cp app.js ed6:/app/
+</code></pre></div>
 <p>then from inside container install node.js</p>
-<pre><code>$c apk add --update nodejs
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>$c apk add --update nodejs
+</code></pre></div>
 <p>then quit container and from host terminal</p>
-<pre><code>$ docker container commit -c 'CMD [&quot;node&quot;, &quot;/app/app.js&quot;]' ed6 mynode
-
-$ docker image ls
-REPOSITORY                                      TAG       IMAGE ID       CREATED          SIZE
-mynode                                          latest    1a8f184ef896   6 seconds ago    48MB
-..
-
-$ docker run --rm mynode
-hello node-test-010
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>$ docker container commit -c &#39;CMD [&quot;node&quot;, &quot;/app/app.js&quot;]&#39; ed6 mynode
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>$ docker image ls
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>REPOSITORY                                      TAG       IMAGE ID       CREATED          SIZE
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>mynode                                          latest    1a8f184ef896   6 seconds ago    48MB
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>..
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>$ docker run --rm mynode
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a>hello node-test-010
+</code></pre></div>
 <hr />
 <h2 id="label">LABEL</h2>
 <p>LABEL to add meta information</p>
-<pre><code>LABEL MAINTAINER=oldu73@gmail.com
-LABEL version=1.0
-</code></pre>
-<pre><code>$ docker build -t node10 .
-
-$ docker image inspect node10:latest | less
-
-/oldu
-
-..
-    &quot;MAINTAINER&quot;: &quot;oldu73@gmail.com&quot;,
-                &quot;version&quot;: &quot;1.0&quot;
-            }
-..
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>LABEL MAINTAINER=oldu73@gmail.com
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>LABEL version=1.0
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>$ docker build -t node10 .
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>$ docker image inspect node10:latest | less
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>/oldu
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a>..
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a>    &quot;MAINTAINER&quot;: &quot;oldu73@gmail.com&quot;,
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a>                &quot;version&quot;: &quot;1.0&quot;
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a>            }
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a>..
+</code></pre></div>
 <hr />
 <h2 id="env">ENV</h2>
 <p>key value</p>
 <p>Usable in container, available as environment variable:</p>
-<pre><code>ENV environment=production
-</code></pre>
-<pre><code>$ docker build -t node10 .
-
-$ docker run -it node10 sh
-/app $c env
-HOSTNAME=ac68969910b7
-SHLVL=1
-HOME=/root
-environment=production
-TERM=xterm
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-PWD=/app
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>ENV environment=production
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>$ docker build -t node10 .
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>$ docker run -it node10 sh
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>/app $c env
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>HOSTNAME=ac68969910b7
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>SHLVL=1
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>HOME=/root
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>environment=production
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>TERM=xterm
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a>PWD=/app
+</code></pre></div>
 <hr />
 <h2 id="arg">ARG</h2>
 <p>Argument available at build time only:</p>
-<pre><code>ARG folder
-ARG file
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>ARG folder
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>ARG file
+</code></pre></div>
 <p>then</p>
-<pre><code>WORKDIR $folder
-COPY $file .
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>WORKDIR $folder
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>COPY $file .
+</code></pre></div>
 <p>then</p>
-<pre><code>$ docker build --build-arg folder=/app --build-arg file=app.js -t node-test-008 .
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>$ docker build --build-arg folder=/app --build-arg file=app.js -t node-test-008 .
+</code></pre></div>
 <p>then if you try to retriev ARGs by typing env inside the container
 you do not retrieve it because they are available only at build time:</p>
-<pre><code>$ docker run --rm -it node-test-008 sh
-/app # env
-HOSTNAME=22cc31c49889
-SHLVL=1
-HOME=/root
-TERM=xterm
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-PWD=/app
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>$ docker run --rm -it node-test-008 sh
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>/app # env
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>HOSTNAME=22cc31c49889
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>SHLVL=1
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>HOME=/root
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a>TERM=xterm
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a>PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a>PWD=/app
+</code></pre></div>
 <p>You may also put a default value:</p>
-<pre><code>ARG folder=/app
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>ARG folder=/app
+</code></pre></div>
 <p>then</p>
-<pre><code>$ docker build --build-arg file=app.js -t node-test-008 .
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>$ docker build --build-arg file=app.js -t node-test-008 .
+</code></pre></div>
 <hr />
 <h2 id="override-entry-point">Override entry point</h2>
 <p>You can still override the entry point with the --entrypoint option:</p>
@@ -2075,28 +2075,28 @@ PWD=/app
 <hr />
 <h2 id="docker-default-entry-point">Docker default entry point</h2>
 <p>By default, Docker has a default entry point which is "/bin/sh -c" but does not have a default command.</p>
-<pre><code>$ man sh -&gt; /-c
-
--c
-
-Read commands from the command_string operand instead
-of from the standard input.  Special parameter 0 will
-be set from the command_name operand and the positional
-parameters ($1, $2, etc.)  set from the remaining argument operands.
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>$ man sh -&gt; /-c
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a>-c
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a>Read commands from the command_string operand instead
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a>of from the standard input.  Special parameter 0 will
+<a id="__codelineno-18-7" name="__codelineno-18-7"></a>be set from the command_name operand and the positional
+<a id="__codelineno-18-8" name="__codelineno-18-8"></a>parameters ($1, $2, etc.)  set from the remaining argument operands.
+</code></pre></div>
 <hr />
 <h2 id="entrypoint-and-cmd">ENTRYPOINT and CMD</h2>
 <p>May have ENTRYPOINT and CMD:</p>
-<pre><code>ENTRYPOINT [&quot;echo&quot;]
-CMD [&quot;hello&quot;]
-</code></pre>
-<pre><code>$ docker run --rm node:test                                               
-hello
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>ENTRYPOINT [&quot;echo&quot;]
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>CMD [&quot;hello&quot;]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>$ docker run --rm node:test                                               
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>hello
+</code></pre></div>
 <p>then you may override hello in run parameter:</p>
-<pre><code>$ docker run --rm node:test world
-world
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>$ docker run --rm node:test world
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a>world
+</code></pre></div>
 <hr />
 <h2 id="exec-form">exec form</h2>
 <p>[] exec form -&gt; recommended</p>
@@ -2105,56 +2105,56 @@ world
 <h2 id="entrypoint-instead-cmd">ENTRYPOINT instead CMD</h2>
 <p>ENTRYPOINT instead CMD avoid availability for end user to replace Dockerfile CMD by typing one
 at the end of run terminal command:</p>
-<pre><code>ENTRYPOINT [&quot;node&quot;, &quot;app.js&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>ENTRYPOINT [&quot;node&quot;, &quot;app.js&quot;]
+</code></pre></div>
 <p>in Dockerfile, then:</p>
-<pre><code>$ docker run --rm node:test
-Bonjour
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a>$ docker run --rm node:test
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a>Bonjour
+</code></pre></div>
 <p>or</p>
-<pre><code>$ docker run --rm node:test echo test
-Bonjour
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a>$ docker run --rm node:test echo test
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a>Bonjour
+</code></pre></div>
 <p>same same ;-), echo test at the end is not taking under consideration</p>
 <hr />
 <h2 id="command-at-the-end-of-run">Command at the end of run</h2>
 <p>Typing a command at the end of the run command replace the one in Dockerfile:</p>
-<pre><code>$ docker run --rm node:test echo test
-test
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a>$ docker run --rm node:test echo test
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a>test
+</code></pre></div>
 <p>even if "CMD ["node", "app.js"]" in Dockerfile</p>
 <hr />
 <h2 id="remove-dangling-images">Remove dangling images</h2>
 <p>Remove dangling (<none>) images:</p>
-<pre><code>$ docker image prune
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a>$ docker image prune
+</code></pre></div>
 <p>For removing dangling and ununsed images:</p>
-<pre><code>$ docker image prune -a
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a>$ docker image prune -a
+</code></pre></div>
 <hr />
 <h2 id="docker-build-no-output">Docker build no output</h2>
 <p>Docker build not showing any output from commands(Dockerfile RUN):</p>
 <p>Dockerfile</p>
-<pre><code>..
-RUN echo hello
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a>..
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a>RUN echo hello
+</code></pre></div>
 <p>Don't show anything in console at build.</p>
 <p>Use legacy mode by adding 'DOCKER_BUILDKIT=0' in front of docker build:</p>
-<pre><code>$ DOCKER_BUILDKIT=0 docker build -t test:latest .
-
-..
-Step 2/2 : RUN echo hello
- ---&gt; Running in 3d9c96daa522
-hello
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a>$ DOCKER_BUILDKIT=0 docker build -t test:latest .
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a>..
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a>Step 2/2 : RUN echo hello
+<a id="__codelineno-29-5" name="__codelineno-29-5"></a> ---&gt; Running in 3d9c96daa522
+<a id="__codelineno-29-6" name="__codelineno-29-6"></a>hello
+</code></pre></div>
 <p>or (new fashion) with "--progress=plain --no-cache" after build command:</p>
-<pre><code>$ docker build --progress=plain --no-cache -t node-test-007:latest .
-
-[3/5] RUN echo &quot;Hello, world!&quot;
-sha256:54040767d950b92027e2e377a0938fd42b89a34fa5d76e3ce281deacda0f1959
-0.281 Hello, world!
-DONE 0.3s
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a>$ docker build --progress=plain --no-cache -t node-test-007:latest .
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a>
+<a id="__codelineno-30-3" name="__codelineno-30-3"></a>[3/5] RUN echo &quot;Hello, world!&quot;
+<a id="__codelineno-30-4" name="__codelineno-30-4"></a>sha256:54040767d950b92027e2e377a0938fd42b89a34fa5d76e3ce281deacda0f1959
+<a id="__codelineno-30-5" name="__codelineno-30-5"></a>0.281 Hello, world!
+<a id="__codelineno-30-6" name="__codelineno-30-6"></a>DONE 0.3s
+</code></pre></div>
 <hr />
 <h2 id="list-only-container-names">List only container names</h2>
 <p>To list only names of all containers:</p>
@@ -2165,64 +2165,64 @@ DONE 0.3s
 <p>Dockerfile:
 - Base image
 - Test environment variable</p>
-<pre><code>FROM alpine
-
-ENV DIR=/app
-WORKDIR ${DIR}/back
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a>FROM alpine
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a>
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a>ENV DIR=/app
+<a id="__codelineno-31-4" name="__codelineno-31-4"></a>WORKDIR ${DIR}/back
+</code></pre></div>
 <p>then..</p>
-<pre><code>$ docker build -t node-test-006:latest .
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a>$ docker build -t node-test-006:latest .
+</code></pre></div>
 <p>then..</p>
-<pre><code>$ docker run -it node-test-006 sh
-
-$c pwd
-/app/back
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a>$ docker run -it node-test-006 sh
+<a id="__codelineno-33-2" name="__codelineno-33-2"></a>
+<a id="__codelineno-33-3" name="__codelineno-33-3"></a>$c pwd
+<a id="__codelineno-33-4" name="__codelineno-33-4"></a>/app/back
+</code></pre></div>
 <hr />
 <h2 id="run">RUN</h2>
 <p>RUN exist in 'exec' and 'shell' mode (which is 'sh' by default).</p>
 <p>exec:</p>
-<pre><code>RUN [&quot;/bin/bash&quot;, &quot;-c&quot;, &quot;echo Bonjour !&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a>RUN [&quot;/bin/bash&quot;, &quot;-c&quot;, &quot;echo Bonjour !&quot;]
+</code></pre></div>
 <p>shell:</p>
-<pre><code>RUN echo &quot;Bonjour !&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a>RUN echo &quot;Bonjour !&quot;
+</code></pre></div>
 <hr />
 <h2 id="cmd">CMD</h2>
 <p>Remove CMD line to test container in interactive mode, then build:</p>
-<pre><code>$ docker build -t node-test-005:test .
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a>$ docker build -t node-test-005:test .
+</code></pre></div>
 <p>Launch a container in interactive mode with sh as shell.
 Don't forget to mention image tag after ':' as long as it ain't 'latest',
 and to mention the shell at the end, 'sh':</p>
-<pre><code>$ docker run -it node-test-005:test sh
-/app $c
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a>$ docker run -it node-test-005:test sh
+<a id="__codelineno-37-2" name="__codelineno-37-2"></a>/app $c
+</code></pre></div>
 <p>As we can see, we are directly in 'app' folder.
 And by typing 'echo $0' to check shell is indeed, 'sh':</p>
-<pre><code>$c echo $0
-sh
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a>$c echo $0
+<a id="__codelineno-38-2" name="__codelineno-38-2"></a>sh
+</code></pre></div>
 <p>And check 'node' version:</p>
-<pre><code>$c node --version
-v14.18.1
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a>$c node --version
+<a id="__codelineno-39-2" name="__codelineno-39-2"></a>v14.18.1
+</code></pre></div>
 <p>And test 'app.js' (in app.js -&gt; console.log('Hi test 005');):</p>
-<pre><code>$c node app.js
-Hi test 005
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a>$c node app.js
+<a id="__codelineno-40-2" name="__codelineno-40-2"></a>Hi test 005
+</code></pre></div>
 <hr />
 <h2 id="workdir">WORKDIR</h2>
 <p>WORKDIR define working directory in image:</p>
-<pre><code>WORKDIR /app
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a>WORKDIR /app
+</code></pre></div>
 <p>Then, for COPY command, no need to specify destination directory:</p>
-<pre><code>COPY ./app.js .
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a>COPY ./app.js .
+</code></pre></div>
 <p>Also for CMD:</p>
-<pre><code>CMD [&quot;node&quot;, &quot;app.js&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a>CMD [&quot;node&quot;, &quot;app.js&quot;]
+</code></pre></div>
 <p>WORKDIR can be changed during the Dockerfile by being filled in again.</p>
 <p>WORKDIR can create folders if they do not exist (this saves us a mkdir).</p>
 <hr />
@@ -2243,21 +2243,21 @@ Hi test 005
 <hr />
 <h2 id="remove-image-with-pattern">Remove image with pattern</h2>
 <p>Remove all images that contain a pattern:</p>
-<pre><code>$ docker image rm $(docker images --format &quot;{{.Repository}}&quot; | grep node-test-00)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1"></a>$ docker image rm $(docker images --format &quot;{{.Repository}}&quot; | grep node-test-00)
+</code></pre></div>
 <hr />
 <h2 id="optimize-cache">Optimize cache</h2>
 <p>Optimizing cache.</p>
 <p>Only the RUN, COPY, and ADD instructions create new layers and increase the size of an image.</p>
 <p>It is therefore necessary to avoid multiplying the RUN commands, and try to group all the necessary
 commands in a single RUN instruction (multi-line separator '\'):</p>
-<pre><code>FROM ubuntu
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update &amp;&amp; apt-get install -y \
-    git \
-    nodejs \
-    &amp;&amp; rm -rf /var/lib/apt/lists/*
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1"></a>FROM ubuntu
+<a id="__codelineno-45-2" name="__codelineno-45-2"></a>ENV DEBIAN_FRONTEND=noninteractive
+<a id="__codelineno-45-3" name="__codelineno-45-3"></a>RUN apt-get update &amp;&amp; apt-get install -y \
+<a id="__codelineno-45-4" name="__codelineno-45-4"></a>    git \
+<a id="__codelineno-45-5" name="__codelineno-45-5"></a>    nodejs \
+<a id="__codelineno-45-6" name="__codelineno-45-6"></a>    &amp;&amp; rm -rf /var/lib/apt/lists/*
+</code></pre></div>
 <ul>
 <li>
 <p>It's recommended to put one installation by line, alphabetically sorted.</p>
@@ -2288,14 +2288,14 @@ RUN apt-get update &amp;&amp; apt-get install -y \
 <h2 id="inspect-go-template">Inspect Go template</h2>
 <p>docker inspect with Go template for format parameter.
 e.g. to retrieve CMD:</p>
-<pre><code>$ docker inspect --format='{{.Config.Cmd}}' node-test-001
-[node app/app.js]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1"></a>$ docker inspect --format=&#39;{{.Config.Cmd}}&#39; node-test-001
+<a id="__codelineno-46-2" name="__codelineno-46-2"></a>[node app/app.js]
+</code></pre></div>
 <hr />
 <h3 id="_1"></h3>
 <p>Show the history of an image:</p>
-<pre><code>$ docker image history node-test-001
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1"></a>$ docker image history node-test-001
+</code></pre></div>
 <hr />
 <h2 id="image-size">Image size</h2>
 <p>node image = 900 MB/3 min VS alpine + node install = 50 MB/30 sec =&gt; ???</p>
@@ -2355,12 +2355,12 @@ to simply test console log in a js file.</p>
 <p>If folder does not exist, it will be created.</p>
 <p>Type following commands in newly created Dockerfile file
 (exactly respect the case and do not add any extensions):</p>
-<pre><code>FROM alpine
-
-RUN apk add --update nodejs
-
-COPY ./app.js /app/
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1"></a>FROM alpine
+<a id="__codelineno-48-2" name="__codelineno-48-2"></a>
+<a id="__codelineno-48-3" name="__codelineno-48-3"></a>RUN apk add --update nodejs
+<a id="__codelineno-48-4" name="__codelineno-48-4"></a>
+<a id="__codelineno-48-5" name="__codelineno-48-5"></a>COPY ./app.js /app/
+</code></pre></div>
 <hr />
 
               

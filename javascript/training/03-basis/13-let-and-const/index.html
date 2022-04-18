@@ -1511,51 +1511,51 @@
 <h2 id="var-problematic">var problematic</h2>
 <p>let has been introduced to fix some var's problem.</p>
 <p>var allow to redeclare a variable that has already been declared with the same name, which could lead in very problematic issues in huge js file when you don't remember that a variable with a particular name has already been declared and you redeclare it with the same name for a different usage:</p>
-<pre><code class="language-js">var test = 123;
-var test = 456;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="mf">123</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="mf">456</span><span class="p">;</span>
+</code></pre></div>
 <p>Curly brace delimitate a code block but does not limit variable scope:</p>
-<pre><code class="language-js">{
-  var test = 123;
-}
-
-console.log(test);
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>  <span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="mf">123</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="p">}</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h2 id="let">let</h2>
 <p>Reuse a name will raise a "Identifier 'test' has already been declared." error in browser and webpack consoles:</p>
-<pre><code class="language-js">let test = 123;
-let test = 456;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">let</span> <span class="nx">test</span> <span class="o">=</span> <span class="mf">123</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kd">let</span> <span class="nx">test</span> <span class="o">=</span> <span class="mf">456</span><span class="p">;</span>
+</code></pre></div>
 <p>Scope of let is limited to code block, below example will raise a "test not defined" error:</p>
-<pre><code class="language-js">{
-  let test = 123;
-}
-
-console.log(test);
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>  <span class="kd">let</span> <span class="nx">test</span> <span class="o">=</span> <span class="mf">123</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="p">}</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
+</code></pre></div>
 <p>Use let instead of var is mostly advised.</p>
 <hr />
 <h2 id="const">const</h2>
 <p>const should be initialized on line where she's declared:</p>
-<pre><code class="language-js">const test = 123;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kd">const</span> <span class="nx">test</span> <span class="o">=</span> <span class="mf">123</span><span class="p">;</span>
+</code></pre></div>
 <p>Like expected const cannot be reassigned and trying to will raise a read only error.</p>
 <p>For an object reference it's possible to reassign a key inside a const object but not the reference himself:</p>
-<pre><code class="language-js">const simpleObject = {
-  test: 123
-};
-
-console.log(simpleObject.test);
-
-// OK
-simpleObject.test = 456;
-
-console.log(simpleObject.test);
-
-// KO
-simpleObject = 456
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">const</span> <span class="nx">simpleObject</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>  <span class="nx">test</span><span class="o">:</span> <span class="mf">123</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="p">};</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">simpleObject</span><span class="p">.</span><span class="nx">test</span><span class="p">);</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="c1">// OK</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="nx">simpleObject</span><span class="p">.</span><span class="nx">test</span> <span class="o">=</span> <span class="mf">456</span><span class="p">;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">simpleObject</span><span class="p">.</span><span class="nx">test</span><span class="p">);</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="c1">// KO</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="nx">simpleObject</span> <span class="o">=</span> <span class="mf">456</span>
+</code></pre></div>
 <hr />
 <h2 id="priority-order-of-usage">Priority order of usage</h2>
 <ol>

@@ -1472,68 +1472,68 @@
 <hr />
 <h2 id="install">Install</h2>
 <p>In a terminal:</p>
-<pre><code class="language-console">mkdir test
-cd test
-npm init -y
-touch index.html
-touch babel.config.js
-touch es6.js
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">mkdir test</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="go">cd test</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="go">npm init -y</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="go">touch index.html</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="go">touch babel.config.js</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="go">touch es6.js</span>
+</code></pre></div>
 <p>es6.js:</p>
-<pre><code class="language-javascript">let test = &quot;123&quot;;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">let</span> <span class="nx">test</span> <span class="o">=</span> <span class="s2">&quot;123&quot;</span><span class="p">;</span>
+</code></pre></div>
 <p>let keyword only available since es6 and here we want to show that babel do his job by converting to an earlier version understandable by most of the browsers.</p>
 <p>In a terminal:</p>
-<pre><code class="language-console">npm i @babel/core @babel/cli @babel/preset-env
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">npm i @babel/core @babel/cli @babel/preset-env</span>
+</code></pre></div>
 <p>Then all dependencies are in created in node_modules folder.
 If node_modules does not exist or removed, type command below will read package.json file and reinstall everything:</p>
-<pre><code class="language-console">npm i
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">npm i</span>
+</code></pre></div>
 <p>First, test babel without preset by adding script below in package.json:</p>
-<pre><code class="language-javascript">&quot;scripts&quot;: {
-    ...,
-    &quot;babel&quot;: &quot;babel es6.js&quot;
-  }
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>    <span class="p">...,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="s2">&quot;babel&quot;</span><span class="o">:</span> <span class="s2">&quot;babel es6.js&quot;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>  <span class="p">}</span>
+</code></pre></div>
 <p>Then, in a terminal:</p>
-<pre><code class="language-console">npm run babel
-
-&gt; test@1.0.0 babel
-&gt; babel es6.js
-
-let test = &quot;123&quot;;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">npm run babel</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="go">&gt; test@1.0.0 babel</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="go">&gt; babel es6.js</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="go">let test = &quot;123&quot;;</span>
+</code></pre></div>
 <p>No difference in output but at least we now that babel core is running well.</p>
 <p>To have output in a new file, package.json:</p>
-<pre><code class="language-javascript">&quot;scripts&quot;: {
-    ...,
-    &quot;babel&quot;: &quot;babel es6.js -o es6after.js&quot;
-  }
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>    <span class="p">...,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>    <span class="s2">&quot;babel&quot;</span><span class="o">:</span> <span class="s2">&quot;babel es6.js -o es6after.js&quot;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>  <span class="p">}</span>
+</code></pre></div>
 <p>Then, again, in a terminal:</p>
-<pre><code class="language-console">npm run babel
-
-&gt; test@1.0.0 babel
-&gt; babel es6.js -o es6after.js
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">npm run babel</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="go">&gt; test@1.0.0 babel</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="go">&gt; babel es6.js -o es6after.js</span>
+</code></pre></div>
 <p>Now, as expected, we have a new file es6after.js</p>
 <p>Now we configure babel in babel.config.js to use preset-env:</p>
-<pre><code class="language-javascript">module.exports = {
-  presets: [[&quot;@babel/preset-env&quot;]]
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>  <span class="nx">presets</span><span class="o">:</span> <span class="p">[[</span><span class="s2">&quot;@babel/preset-env&quot;</span><span class="p">]]</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="p">}</span>
+</code></pre></div>
 <p>Then, again, in a terminal:</p>
-<pre><code class="language-console">npm run babel
-
-&gt; test@1.0.0 babel
-&gt; babel es6.js -o es6after.js
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">npm run babel</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="go">&gt; test@1.0.0 babel</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="go">&gt; babel es6.js -o es6after.js</span>
+</code></pre></div>
 <p>And now, es6after.js has been converted in an earlier version:</p>
-<pre><code class="language-javascript">&quot;use strict&quot;;
-
-var test = &quot;123&quot;;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="s2">&quot;123&quot;</span><span class="p">;</span>
+</code></pre></div>
 <hr />
 
               

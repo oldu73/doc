@@ -1859,27 +1859,27 @@
 CMD ["node", "app/app.js"]</p>
 <p>Then from terminal, build command with -t argument to name:tag image
 . to mention path of Dockerfile in current directory:</p>
-<pre><code>$ docker build -t node-test-001:latest .
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>$ docker build -t node-test-001:latest .
+</code></pre></div>
 <p>To check:</p>
-<pre><code>$ docker images (or $ docker image ls)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>$ docker images (or $ docker image ls)
+</code></pre></div>
 <p>To test:</p>
-<pre><code>$ docker run node-test-001
-Hello, world!
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>$ docker run node-test-001
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>Hello, world!
+</code></pre></div>
 <p>To auto delete container after execution, use –rm option:</p>
-<pre><code>$ docker run --rm node-test-001
-Hello, world!
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>$ docker run --rm node-test-001
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>Hello, world!
+</code></pre></div>
 <p>Check if node is installed on host machine:</p>
-<pre><code>$ node --version
-v14.16.1
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>$ node --version
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>v14.16.1
+</code></pre></div>
 <p>Test app.js on host machine (if node is installed):</p>
-<pre><code>$ node app.js 
-Hello, world!
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>$ node app.js 
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>Hello, world!
+</code></pre></div>
 <hr />
 <h2 id="vs-code">VS Code</h2>
 <p>VS Code install Microsoft Docker extension</p>
@@ -1902,330 +1902,324 @@ Hello, world!
 <p>Add/del Alpine package</p>
 <p>A base image (e.g. Alpine) is not based on any other image.</p>
 <p>Add or del package in Alpine</p>
-<pre><code>$c apk update
-
-$c apk add grep
-
-$c apk del grep
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>$c apk update
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>$c apk add grep
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>$c apk del grep
+</code></pre></div>
 <hr />
 <h2 id="running-container">Running container</h2>
 <p>Running container as a running process</p>
 <p>To demonstrate running container is just a running process on host machine</p>
-<pre><code>$ docker run -d redis
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>$ docker run -d redis
+</code></pre></div>
 <p>In contrary of a virtual machine (VM) a container is "just" a running process
 sharing Linux kernel on host machine.</p>
 <p>SRC: - https://stackoverflow.com/questions/64787125/why-doesnt-htop-show-my-docker-processes-using-wsl2
 To see running process on WSL use command prompt (would be "$ sudo ps -ef | grep redis" on a Linux machine):</p>
-<pre><code>C:\&gt; wsl -d docker-desktop top
-(or C:\&gt; wsl -d docker-desktop ps -ef)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>C:\&gt; wsl -d docker-desktop top
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>(or C:\&gt; wsl -d docker-desktop ps -ef)
+</code></pre></div>
 <p>If you want htop, you need to install it first:</p>
-<pre><code>C:\&gt; wsl -d docker-desktop apk update 
-C:\&gt; wsl -d docker-desktop apk add htop
-
-... 0% redis-server *:6379
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>C:\&gt; wsl -d docker-desktop apk update 
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>C:\&gt; wsl -d docker-desktop apk add htop
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>... 0% redis-server *:6379
+</code></pre></div>
 <p>To kill a process on host machine, WSL:</p>
-<pre><code>C:\&gt; wsl -d docker-desktop killall redis-server
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>C:\&gt; wsl -d docker-desktop killall redis-server
+</code></pre></div>
 <p>To kill a process on host machine, Linux:</p>
-<pre><code>$ sudo killall redis-server
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>$ sudo killall redis-server
+</code></pre></div>
 <p>Running:</p>
-<pre><code>C:\&gt; wsl -d docker-desktop htop
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>C:\&gt; wsl -d docker-desktop htop
+</code></pre></div>
 <p>See that container isn't running anymore:</p>
-<pre><code>$ docker container ls
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>$ docker container ls
+</code></pre></div>
 <hr />
 <h2 id="disk-usage">Disk usage</h2>
 <p>Show docker disk usage</p>
-<pre><code>$ docker system df
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>$ docker system df
+</code></pre></div>
 <p>Show detailed information on space usage, -v, --verbose</p>
-<pre><code>docker system df -v
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>docker system df -v
+</code></pre></div>
 <hr />
 <h2 id="consumed-resource">Consumed resource</h2>
 <p>to see live consuming resources of running containers:</p>
-<pre><code>$ docker container stats
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>$ docker container stats
+</code></pre></div>
 <hr />
 <h2 id="inspect">Inspect</h2>
 <p>to inspect all configuration of a container</p>
-<pre><code>$ docker container inspect alpinetest001
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>$ docker container inspect alpinetest001
+</code></pre></div>
 <hr />
 <h2 id="running-process">Running process</h2>
 <p>Show running process in a container from host</p>
-<pre><code>$ docker container top alpinetest001
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>$ docker container top alpinetest001
+</code></pre></div>
 <p>See the difference from inside the container</p>
-<pre><code>$ docker attach alpine001
-</code></pre>
-<ol>
-<li>update</li>
-</ol>
-<pre><code>$c apk update
-</code></pre>
-<ol>
-<li>add bash</li>
-</ol>
-<pre><code>$c apk add bash
-</code></pre>
-<ol>
-<li>test bash</li>
-</ol>
-<pre><code>$c bash
-$c echo $0
-bash
-ctrl+p+q
-</code></pre>
-<pre><code>$ docker exec -it alpinetest001 bash
-</code></pre>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>$ docker attach alpine001
+</code></pre></div>
+1. update
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>$c apk update
+</code></pre></div>
+2. add bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>$c apk add bash
+</code></pre></div>
+3. test bash
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>$c bash
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>$c echo $0
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a>bash
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a>ctrl+p+q
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a>$ docker exec -it alpinetest001 bash
+</code></pre></div>
 <p>if ps not present, install it with:</p>
-<pre><code>$c apk update &amp;&amp; apk add procps
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a>$c apk update &amp;&amp; apk add procps
+</code></pre></div>
 <p>then:</p>
-<pre><code>$c ps -ef
-UID        PID  PPID  C STIME TTY          TIME CMD
-root         1     0  0 16:15 pts/0    00:00:00 /bin/sh
-root        16     1  0 16:27 pts/0    00:00:00 bash
-root        17     0  0 16:28 pts/1    00:00:00 bash
-root        31    17  0 16:33 pts/1    00:00:00 ps -ef
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a>$c ps -ef
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a>UID        PID  PPID  C STIME TTY          TIME CMD
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a>root         1     0  0 16:15 pts/0    00:00:00 /bin/sh
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a>root        16     1  0 16:27 pts/0    00:00:00 bash
+<a id="__codelineno-25-5" name="__codelineno-25-5"></a>root        17     0  0 16:28 pts/1    00:00:00 bash
+<a id="__codelineno-25-6" name="__codelineno-25-6"></a>root        31    17  0 16:33 pts/1    00:00:00 ps -ef
+</code></pre></div>
 <p>sh and bash does not have parent process ID (PPID) = '0' because of container isolation,
 container does not see running processes of host machine neither the ones belonging to other containers.</p>
 <hr />
 <h2 id="modified-file">Modified file</h2>
 <p>Show modified file in a container:</p>
 <p>A = added, D = deleted, C = modified</p>
-<pre><code>$ docker container diff alpinetest001
-A /test
-A /test/test1.txt
-A /test/test2.txt
-C /root
-A /root/.ash_history
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a>$ docker container diff alpinetest001
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a>A /test
+<a id="__codelineno-26-3" name="__codelineno-26-3"></a>A /test/test1.txt
+<a id="__codelineno-26-4" name="__codelineno-26-4"></a>A /test/test2.txt
+<a id="__codelineno-26-5" name="__codelineno-26-5"></a>C /root
+<a id="__codelineno-26-6" name="__codelineno-26-6"></a>A /root/.ash_history
+</code></pre></div>
 <hr />
 <h2 id="copy-file">Copy file</h2>
 <p>copy file from host to container, docker cp path container:path</p>
-<pre><code>docker cp test1.txt alpinetest001:test
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a>docker cp test1.txt alpinetest001:test
+</code></pre></div>
 <p>copy file from container to host, docker cp container:path path</p>
-<pre><code>docker cp alpinetest001:test/test2.txt .
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a>docker cp alpinetest001:test/test2.txt .
+</code></pre></div>
 <hr />
 <h2 id="execute-command-in-container">Execute command in container</h2>
 <p>Execute a command in a container without using terminal</p>
-<pre><code>$ docker container exec alpine001 mkdir testdir
-
-$ docker container exec alpine001 touch /testdir/hello.txt
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a>$ docker container exec alpine001 mkdir testdir
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a>$ docker container exec alpine001 touch /testdir/hello.txt
+</code></pre></div>
 <p>other e.g.</p>
-<pre><code>$ docker run -d --name redis001 redis
-
-$ docker exec -it redis001 redis-cli
-
-redis command:
-
-set cle 42
-get cle
-exit
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a>$ docker run -d --name redis001 redis
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a>
+<a id="__codelineno-30-3" name="__codelineno-30-3"></a>$ docker exec -it redis001 redis-cli
+<a id="__codelineno-30-4" name="__codelineno-30-4"></a>
+<a id="__codelineno-30-5" name="__codelineno-30-5"></a>redis command:
+<a id="__codelineno-30-6" name="__codelineno-30-6"></a>
+<a id="__codelineno-30-7" name="__codelineno-30-7"></a>set cle 42
+<a id="__codelineno-30-8" name="__codelineno-30-8"></a>get cle
+<a id="__codelineno-30-9" name="__codelineno-30-9"></a>exit
+</code></pre></div>
 <hr />
 <h2 id="get-shell-in-container">Get shell in container</h2>
 <p>Get a shell, in a no matter which running container it is:</p>
-<pre><code>$ docker exec -it redis001 bash
-$c echo $0
-bash
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a>$ docker exec -it redis001 bash
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a>$c echo $0
+<a id="__codelineno-31-3" name="__codelineno-31-3"></a>bash
+</code></pre></div>
 <p>if bash not installed in container (e.g. with alpine) you may use sh instead:
 (if both presents, both works (e.g. redis)</p>
-<pre><code>$ docker exec -it redis001 sh
-$c echo $0
-sh
-</code></pre>
-<pre><code>$ docker run -it -d --name alpine001 alpine
-
-$ docker exec -it alpine001 bash
-OCI runtime exec failed: exec failed: container_linux.go:380: starting container process caused: exec: &quot;bash&quot;: executable file not found in $PATH: unknown
-
-$ docker exec -it alpine001 sh
-$c echo $0
-sh
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a>$ docker exec -it redis001 sh
+<a id="__codelineno-32-2" name="__codelineno-32-2"></a>$c echo $0
+<a id="__codelineno-32-3" name="__codelineno-32-3"></a>sh
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a>$ docker run -it -d --name alpine001 alpine
+<a id="__codelineno-33-2" name="__codelineno-33-2"></a>
+<a id="__codelineno-33-3" name="__codelineno-33-3"></a>$ docker exec -it alpine001 bash
+<a id="__codelineno-33-4" name="__codelineno-33-4"></a>OCI runtime exec failed: exec failed: container_linux.go:380: starting container process caused: exec: &quot;bash&quot;: executable file not found in $PATH: unknown
+<a id="__codelineno-33-5" name="__codelineno-33-5"></a>
+<a id="__codelineno-33-6" name="__codelineno-33-6"></a>$ docker exec -it alpine001 sh
+<a id="__codelineno-33-7" name="__codelineno-33-7"></a>$c echo $0
+<a id="__codelineno-33-8" name="__codelineno-33-8"></a>sh
+</code></pre></div>
 <hr />
 <h2 id="pauseunpause-a-container">Pause/unpause a container</h2>
-<pre><code>$ docker container start -ai alpine001
-
-$ docker container pause alpine001
-
-$ docker container unpause alpine001
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a>$ docker container start -ai alpine001
+<a id="__codelineno-34-2" name="__codelineno-34-2"></a>
+<a id="__codelineno-34-3" name="__codelineno-34-3"></a>$ docker container pause alpine001
+<a id="__codelineno-34-4" name="__codelineno-34-4"></a>
+<a id="__codelineno-34-5" name="__codelineno-34-5"></a>$ docker container unpause alpine001
+</code></pre></div>
 <hr />
 <h2 id="rename-a-container">Rename a container</h2>
 <p>rename a container named "beautiful_leakey"</p>
-<pre><code>$ docker container rename beautiful_leakey alpine001
-
-not allowed to rename image
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a>$ docker container rename beautiful_leakey alpine001
+<a id="__codelineno-35-2" name="__codelineno-35-2"></a>
+<a id="__codelineno-35-3" name="__codelineno-35-3"></a>not allowed to rename image
+</code></pre></div>
 <hr />
 <h2 id="postgres-with-environnement-variable">Postgres with environnement variable</h2>
-<pre><code>$ docker run -d --name mongo mongo
-$ docker run -d --name redis redis
-$ docker run -d --name postgres postgres
-
-$ docker logs postgres
-
-Error: ...
-
-$ docker container rm postgres
-
-$ docker container run --name postgres -d -e POSTGRES_HOST_AUTH_METHOD=trust postgres
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a>$ docker run -d --name mongo mongo
+<a id="__codelineno-36-2" name="__codelineno-36-2"></a>$ docker run -d --name redis redis
+<a id="__codelineno-36-3" name="__codelineno-36-3"></a>$ docker run -d --name postgres postgres
+<a id="__codelineno-36-4" name="__codelineno-36-4"></a>
+<a id="__codelineno-36-5" name="__codelineno-36-5"></a>$ docker logs postgres
+<a id="__codelineno-36-6" name="__codelineno-36-6"></a>
+<a id="__codelineno-36-7" name="__codelineno-36-7"></a>Error: ...
+<a id="__codelineno-36-8" name="__codelineno-36-8"></a>
+<a id="__codelineno-36-9" name="__codelineno-36-9"></a>$ docker container rm postgres
+<a id="__codelineno-36-10" name="__codelineno-36-10"></a>
+<a id="__codelineno-36-11" name="__codelineno-36-11"></a>$ docker container run --name postgres -d -e POSTGRES_HOST_AUTH_METHOD=trust postgres
+</code></pre></div>
 <hr />
 <h2 id="stop-container">Stop container</h2>
 <p>Stop all running container at once</p>
-<pre><code>docker stop $(docker ps -aq)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a>docker stop $(docker ps -aq)
+</code></pre></div>
 <hr />
 <h2 id="suppress-all">Suppress all</h2>
 <p>!Suppress all not used (stopped container(s) and not used for the rest)!</p>
-<pre><code>$ docker system prune -a
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a>$ docker system prune -a
+</code></pre></div>
 <hr />
 <h2 id="remove-image">Remove image</h2>
-<pre><code>$ docker image rm NAME_OR_ID
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a>$ docker image rm NAME_OR_ID
+</code></pre></div>
 <p>remove unused images (dangling = image is not tagged and no other image depends on it)</p>
-<pre><code>$ docker image prune -a
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a>$ docker image prune -a
+</code></pre></div>
 <hr />
 <h2 id="remove-container">Remove container</h2>
 <p>try to remove a running container</p>
 <p>Launch a background test named redis container with:</p>
-<pre><code>$ docker run --name test -d redis
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a>$ docker run --name test -d redis
+</code></pre></div>
 <p>then try to remove it with:</p>
-<pre><code>$ docker container rm test
-
-Error - Stop the container before attempting removal or force remove
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a>$ docker container rm test
+<a id="__codelineno-42-2" name="__codelineno-42-2"></a>
+<a id="__codelineno-42-3" name="__codelineno-42-3"></a>Error - Stop the container before attempting removal or force remove
+</code></pre></div>
 <p>Force remove running container:</p>
-<pre><code>$ docker container rm -f test
-
-$ docker run --name test1 -d redis
-$ docker run --name test2 -d redis
-$ docker run --name test3 -d redis
-
-$ docker container rm -f test1 test2 test3
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a>$ docker container rm -f test
+<a id="__codelineno-43-2" name="__codelineno-43-2"></a>
+<a id="__codelineno-43-3" name="__codelineno-43-3"></a>$ docker run --name test1 -d redis
+<a id="__codelineno-43-4" name="__codelineno-43-4"></a>$ docker run --name test2 -d redis
+<a id="__codelineno-43-5" name="__codelineno-43-5"></a>$ docker run --name test3 -d redis
+<a id="__codelineno-43-6" name="__codelineno-43-6"></a>
+<a id="__codelineno-43-7" name="__codelineno-43-7"></a>$ docker container rm -f test1 test2 test3
+</code></pre></div>
 <p>remove all stopped container</p>
-<pre><code>$ docker container prune
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1"></a>$ docker container prune
+</code></pre></div>
 <hr />
 <h2 id="image-images">Image, images</h2>
-<pre><code>$ docker images
-
-$ docker image ls redis
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1"></a>$ docker images
+<a id="__codelineno-45-2" name="__codelineno-45-2"></a>
+<a id="__codelineno-45-3" name="__codelineno-45-3"></a>$ docker image ls redis
+</code></pre></div>
 <hr />
 <h2 id="help">Help</h2>
 <p>to get help, simply type:</p>
-<pre><code>$ docker
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1"></a>$ docker
+</code></pre></div>
 <p>help on a command:</p>
-<pre><code>$ docker ps --help
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1"></a>$ docker ps --help
+</code></pre></div>
 <hr />
 <h2 id="redis">Redis</h2>
-<pre><code>$ docker run redis
-
-$ docker run -d redis
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1"></a>$ docker run redis
+<a id="__codelineno-48-2" name="__codelineno-48-2"></a>
+<a id="__codelineno-48-3" name="__codelineno-48-3"></a>$ docker run -d redis
+</code></pre></div>
 <hr />
 <h2 id="alpine">Alpine</h2>
-<pre><code>$ docker run alpine
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1"></a>$ docker run alpine
+</code></pre></div>
 <p>-i, interactive mode</p>
-<pre><code>$ docker run -i alpine
-$c ls
-
-.
-.
-dev
-etc
-home
-.
-.
-.
-
-exit
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1"></a>$ docker run -i alpine
+<a id="__codelineno-50-2" name="__codelineno-50-2"></a>$c ls
+<a id="__codelineno-50-3" name="__codelineno-50-3"></a>
+<a id="__codelineno-50-4" name="__codelineno-50-4"></a>.
+<a id="__codelineno-50-5" name="__codelineno-50-5"></a>.
+<a id="__codelineno-50-6" name="__codelineno-50-6"></a>dev
+<a id="__codelineno-50-7" name="__codelineno-50-7"></a>etc
+<a id="__codelineno-50-8" name="__codelineno-50-8"></a>home
+<a id="__codelineno-50-9" name="__codelineno-50-9"></a>.
+<a id="__codelineno-50-10" name="__codelineno-50-10"></a>.
+<a id="__codelineno-50-11" name="__codelineno-50-11"></a>.
+<a id="__codelineno-50-12" name="__codelineno-50-12"></a>
+<a id="__codelineno-50-13" name="__codelineno-50-13"></a>exit
+</code></pre></div>
 <p>-t, terminal -&gt; prompt</p>
-<pre><code>$ docker run -it alpine (= docker run -it alpine sh)
-
-$c echo $0  // check which shell (/bin/sh)
-$c apk update
-$c apk add bash
-$c bash
-$c echo $0  // check which shell (bash)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1"></a>$ docker run -it alpine (= docker run -it alpine sh)
+<a id="__codelineno-51-2" name="__codelineno-51-2"></a>
+<a id="__codelineno-51-3" name="__codelineno-51-3"></a>$c echo $0  // check which shell (/bin/sh)
+<a id="__codelineno-51-4" name="__codelineno-51-4"></a>$c apk update
+<a id="__codelineno-51-5" name="__codelineno-51-5"></a>$c apk add bash
+<a id="__codelineno-51-6" name="__codelineno-51-6"></a>$c bash
+<a id="__codelineno-51-7" name="__codelineno-51-7"></a>$c echo $0  // check which shell (bash)
+</code></pre></div>
 <p>start in foreground mode</p>
-<pre><code>$ docker run alpine ping google.ch
-$ docker run alpine echo hello
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1"></a>$ docker run alpine ping google.ch
+<a id="__codelineno-52-2" name="__codelineno-52-2"></a>$ docker run alpine echo hello
+</code></pre></div>
 <p>start in background mode (-d = detach (!= daemon))</p>
-<pre><code>$ docker run -d alpine ping google.fr
-3593...
-docker logs 3593...
-$ docker logs 8e86... --follow
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1"></a>$ docker run -d alpine ping google.fr
+<a id="__codelineno-53-2" name="__codelineno-53-2"></a>3593...
+<a id="__codelineno-53-3" name="__codelineno-53-3"></a>docker logs 3593...
+<a id="__codelineno-53-4" name="__codelineno-53-4"></a>$ docker logs 8e86... --follow
+</code></pre></div>
 <hr />
 <h2 id="available-image">Available image</h2>
 <p>show available image(s)</p>
-<pre><code>$ docker images
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1"></a>$ docker images
+</code></pre></div>
 <hr />
 <h2 id="none-running-container">None running container</h2>
-<p>check none running container with (-a show all containers (default shows just running)):</p>
-<pre><code>$ docker container ls -a
-</code></pre>
+<p>check none running container with (-a show all containers (default shows just running)):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1"></a>$ docker container ls -a
+</code></pre></div></p>
 <hr />
 <h2 id="ubuntu">Ubuntu</h2>
-<pre><code>$ docker run -it ubuntu bash
-</code></pre>
-<pre><code>$c cat /etc/os-release 
-
-NAME=&quot;Ubuntu&quot;
-VERSION=&quot;20.04.3 LTS (Focal Fossa)&quot;
-...
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1"></a>$ docker run -it ubuntu bash
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1"></a>$c cat /etc/os-release 
+<a id="__codelineno-57-2" name="__codelineno-57-2"></a>
+<a id="__codelineno-57-3" name="__codelineno-57-3"></a>NAME=&quot;Ubuntu&quot;
+<a id="__codelineno-57-4" name="__codelineno-57-4"></a>VERSION=&quot;20.04.3 LTS (Focal Fossa)&quot;
+<a id="__codelineno-57-5" name="__codelineno-57-5"></a>...
+</code></pre></div>
 <p>to exit container and stop it</p>
-<pre><code>$c ctrl + d
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1"></a>$c ctrl + d
+</code></pre></div>
 <p>then to start/stop it again, e.g container name is 'trusting_yalow'</p>
-<pre><code>$ docker start trusting_yalow
-
-$ docker stop trusting_yalow
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1"></a>$ docker start trusting_yalow
+<a id="__codelineno-59-2" name="__codelineno-59-2"></a>
+<a id="__codelineno-59-3" name="__codelineno-59-3"></a>$ docker stop trusting_yalow
+</code></pre></div>
 <p>then to bash into it</p>
-<pre><code>$ docker attach trusting_yalow
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1"></a>$ docker attach trusting_yalow
+</code></pre></div>
 <p>to detach from a docker container without stopping it</p>
-<pre><code>$c ctrl + p + q
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1"></a>$c ctrl + p + q
+</code></pre></div>
 <hr />
 <h2 id="hello-world">Hello, world!</h2>
-<pre><code>$ docker run hello-world
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1"></a>$ docker run hello-world
+</code></pre></div>
 <hr />
 <h2 id="info">Info</h2>
-<pre><code>$ docker info
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1"></a>$ docker info
+</code></pre></div>
 <hr />
 
               

@@ -1521,61 +1521,61 @@
 <h3 id="project">Project</h3>
 <p>From IntelliJ Java (Maven) project to a container hosted on a Raspberry.</p>
 <p>Deployment process:</p>
-<pre><code class="language-text">(IntelliJ)
-maven &lt;project&gt; package
-Dockerfile-arm64v8 build image
-(terminal)
-docker login
-docker push oldu73/msc:&lt;project&gt;_arm64v8_latest
-(raspberry)
-maybe stop/remove previous existing &lt;project&gt; container instance
-docker login
-sudo docker pull oldu73/msc:&lt;project&gt;_arm64v8_latest
-sudo docker run -d -p &lt;port&gt;:&lt;port&gt; --name &lt;container_name&gt; oldu73/msc:&lt;project&gt;_arm64v8_latest
-sudo docker container ps -a
-sudo docker exec -it &lt;container_name&gt; sh
-(container)
-tail -1000f /var/log/&lt;file&gt;.log
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>(IntelliJ)
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>maven &lt;project&gt; package
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>Dockerfile-arm64v8 build image
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>(terminal)
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>docker login
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>docker push oldu73/msc:&lt;project&gt;_arm64v8_latest
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>(raspberry)
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>maybe stop/remove previous existing &lt;project&gt; container instance
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>docker login
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>sudo docker pull oldu73/msc:&lt;project&gt;_arm64v8_latest
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>sudo docker run -d -p &lt;port&gt;:&lt;port&gt; --name &lt;container_name&gt; oldu73/msc:&lt;project&gt;_arm64v8_latest
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>sudo docker container ps -a
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>sudo docker exec -it &lt;container_name&gt; sh
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>(container)
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>tail -1000f /var/log/&lt;file&gt;.log
+</code></pre></div>
 <p>Dockerfile-arm64v8:</p>
-<pre><code class="language-text">FROM arm64v8/openjdk:8-oraclelinux7
-COPY ./target/project.jar /tmp
-WORKDIR /tmp
-EXPOSE &lt;port&gt;
-ENTRYPOINT [&quot;java&quot;, &quot;-jar&quot;, &quot;project.jar&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>FROM arm64v8/openjdk:8-oraclelinux7
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>COPY ./target/project.jar /tmp
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>WORKDIR /tmp
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>EXPOSE &lt;port&gt;
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>ENTRYPOINT [&quot;java&quot;, &quot;-jar&quot;, &quot;project.jar&quot;]
+</code></pre></div>
 <h3 id="debug-hotswap">Debug, HotSwap</h3>
-<pre><code class="language-text">(IntelliJ)
-maven &lt;project&gt; package
-Dockerfile run image // bind port 8080
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>(IntelliJ)
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>maven &lt;project&gt; package
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>Dockerfile run image // bind port 8080
+</code></pre></div>
 <p>Dockerfile:</p>
-<pre><code class="language-text">FROM openjdk:8
-COPY ./target/&lt;project&gt;.jar /tmp
-WORKDIR /tmp
-EXPOSE 8080
-ENTRYPOINT [&quot;java&quot;, &quot;-jar&quot;, &quot;-agentlib:jdwp=transport=dt_socket,address=8080,server=y,suspend=n&quot;, &quot;&lt;project&gt;.jar&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>FROM openjdk:8
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>COPY ./target/&lt;project&gt;.jar /tmp
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>WORKDIR /tmp
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>EXPOSE 8080
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>ENTRYPOINT [&quot;java&quot;, &quot;-jar&quot;, &quot;-agentlib:jdwp=transport=dt_socket,address=8080,server=y,suspend=n&quot;, &quot;&lt;project&gt;.jar&quot;]
+</code></pre></div>
 <p>IntelliJ, Remote JVM Debug, configuration:</p>
-<pre><code class="language-text">Debugger mode: Attach to remote JVM
-Transport: Socket
-Host: localhost
-Port: 8080
-Command line arguments for remote JVM: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8080
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>Debugger mode: Attach to remote JVM
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>Transport: Socket
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>Host: localhost
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>Port: 8080
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>Command line arguments for remote JVM: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8080
+</code></pre></div>
 <p>Run IntelliJ remote debug configuration.</p>
 <p>Modify code, set breakpoint and then reload changed class.</p>
 <p>By adding some system out you may observe live changes in container log console.</p>
 <hr />
 <h2 id="disk-usage">Disk usage</h2>
-<pre><code class="language-console">docker system df
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">docker system df</span>
+</code></pre></div>
 <p>Docker reclaim unused image space:</p>
-<pre><code class="language-console">docker image prune -a
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">docker image prune -a</span>
+</code></pre></div>
 <p>Docker container size:</p>
-<pre><code class="language-console">docker ps --size
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">docker ps --size</span>
+</code></pre></div>
 <hr />
 
               

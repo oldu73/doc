@@ -1550,82 +1550,82 @@
 <hr />
 <h2 id="initial-setup">Initial setup</h2>
 <p>In root folder project create a src folder that will contain all javascript source code:</p>
-<pre><code class="language-console">mkdir src
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">mkdir src</span>
+</code></pre></div>
 <p>Move file (just a test file) used from previous chapter in src folder:</p>
-<pre><code class="language-console">mv es6.js src
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">mv es6.js src</span>
+</code></pre></div>
 <p>Edit babel script in package.json to specify input = src folder, output = dist folder:</p>
-<pre><code class="language-javascript">&quot;scripts&quot;: {
-   &quot;babel&quot;: &quot;babel src --out-dir dist&quot;
-  }
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>   <span class="s2">&quot;babel&quot;</span><span class="o">:</span> <span class="s2">&quot;babel src --out-dir dist&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>  <span class="p">}</span>
+</code></pre></div>
 <p>Test, type below command in a terminal and have a look in dist folder to see the result of babel transpiled output:</p>
-<pre><code class="language-console">npm run babel
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">npm run babel</span>
+</code></pre></div>
 <hr />
 <h2 id="html">Html</h2>
 <p>In root project folder:</p>
-<pre><code class="language-console">touch index.html
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">touch index.html</span>
+</code></pre></div>
 <p>Open index.html in VS Code, and type "!" + tab to get a minimal html file set.</p>
 <p>Add a h1 section in body and from file explorer drag and drop it in a browser to see the result:</p>
-<pre><code class="language-html">&lt;body&gt;
-  &lt;h1&gt;My app&lt;/h1&gt;
-&lt;/body&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>My app<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></div>
 <hr />
 <h2 id="source">Source</h2>
 <h3 id="in-html">In html</h3>
 <p>Now to incorporate javascript in our html page, add a script section in head:</p>
-<pre><code class="language-html">&lt;head&gt;
-  ...
-  &lt;script type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>  ...
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</code></pre></div>
 <p>Not really common expect for some dedicated usage like google analytic, but you may insert javascript directly inside script section of an html page (be aware to put only retro compatible code in it as long as it's directly interpreted by the browser, doesn't went through babel transpiler):</p>
-<pre><code class="language-html">&lt;head&gt;
-  ...
-  &lt;script type=&quot;text/javascript&quot;&gt;
-    console.log('Hi');
-  &lt;/script&gt;
-&lt;/head&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>  ...
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hi&#39;</span><span class="p">);</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</code></pre></div>
 <p>Drag and drop index.html file in a browser, right click inspect and then observe message in console.</p>
 <p>You may incorporate anywhere inside a head or body section of an html document.</p>
 <hr />
 <h3 id="out-html">Out html</h3>
 <p>Separation of concern.</p>
 <p>Edit head, script section of index.html as follow:</p>
-<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot; src=&quot;dist/es6.js&quot;&gt;&lt;/script&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;dist/es6.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
 <p>Never edit files in dist folder.</p>
 <p>Edit src/es6.js by adding a line as follow:</p>
-<pre><code class="language-javascript">console.log(&quot;test&quot;);
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
+</code></pre></div>
 <p>Recompile application with babel:</p>
-<pre><code class="language-console">npm run babel
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">npm run babel</span>
+</code></pre></div>
 <p>See the result in dist folder and refresh the page in the browser to observe message in log.</p>
 <hr />
 <h3 id="from-web">From web</h3>
 <p>E.g. <a href="https://jquery.com/">jquery</a></p>
 <p>CDN = Content Delivery Network</p>
 <p>Browse for <a href="https://releases.jquery.com/">jquery cdn</a> and copy script snippet of last minified version and add it to head section of html file:</p>
-<pre><code class="language-html">&lt;head&gt;
-
-  &lt;script src=&quot;https://code.jquery.com/jquery-3.6.0.min.js&quot; integrity=&quot;sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
-
-  &lt;script type=&quot;text/javascript&quot; src=&quot;dist/es6.js&quot;&gt;&lt;/script&gt;
-
-&lt;/head&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://code.jquery.com/jquery-3.6.0.min.js&quot;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&quot;sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=&quot;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&quot;anonymous&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;dist/es6.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</code></pre></div>
 <p>Test that jquery is working by adding following line in src/es6.js file:</p>
-<pre><code class="language-javascript">console.log($);
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">$</span><span class="p">);</span>
+</code></pre></div>
 <p>npm run babel and refresh page in browser, in console you may observe a message that correspond to a function like:</p>
-<pre><code class="language-text">ƒ (e,t){return new S.fn.init(e,t)}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>ƒ (e,t){return new S.fn.init(e,t)}
+</code></pre></div>
 <p>What happen here is that we bring back javascript from internet.</p>
 <hr />
 

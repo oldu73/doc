@@ -1500,36 +1500,36 @@
 <hr />
 <h2 id="implicit-coercion">Implicit coercion</h2>
 <p>Implicit or automatic conversion.</p>
-<pre><code class="language-js">let a = 1;
-let b = 'hello';
-console.log(a + b); // 1hello
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mf">1</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span> <span class="c1">// 1hello</span>
+</code></pre></div>
 <p>Unable to convert hello to a number but 1 is easily converted to a string and then the result of the addition is the concatenated string.</p>
 <p>Another example when adding a number to a true boolean value (converted to 1 (false would be converted to zero)):</p>
-<pre><code class="language-js">let a = 1;
-let b = true;
-console.log(a + b); // 2
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mf">1</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span> <span class="c1">// 2</span>
+</code></pre></div>
 <p>Another example with string and boolean value, here converted to a string:</p>
-<pre><code class="language-js">let a = 'test';
-let b = false;
-console.log(a + b); // testfalse
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span> <span class="c1">// testfalse</span>
+</code></pre></div>
 <hr />
 <h2 id="constructor-conversion">Constructor conversion</h2>
 <p>Types's constructor call with a value trying to convert, e.g. Number('hello').</p>
-<pre><code class="language-js">console.log(Number('hello, world')); // NaN = not a number
-
-let a = 1;
-let b = undefined;
-
-console.log(a + b); // NaN
-console.log(Number(undefined)); // NaN
-
-console.log(String(undefined)); // undefined
-console.log(String(1)); // 1
-console.log(String(null)); // null
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">(</span><span class="s1">&#39;hello, world&#39;</span><span class="p">));</span> <span class="c1">// NaN = not a number</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mf">1</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span> <span class="c1">// NaN</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">(</span><span class="kc">undefined</span><span class="p">));</span> <span class="c1">// NaN</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">String</span><span class="p">(</span><span class="kc">undefined</span><span class="p">));</span> <span class="c1">// undefined</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">String</span><span class="p">(</span><span class="mf">1</span><span class="p">));</span> <span class="c1">// 1</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">String</span><span class="p">(</span><span class="kc">null</span><span class="p">));</span> <span class="c1">// null</span>
+</code></pre></div>
 <p>NaN, not a number, coercion not possible!</p>
 <hr />
 

@@ -1540,23 +1540,23 @@
 <p>Operators and the notions of precedence and associativity.</p>
 <hr />
 <h2 id="assignation">Assignation</h2>
-<pre><code class="language-js">let a = 1;
-console.log(a);
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mf">1</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h2 id="addition">Addition</h2>
-<pre><code class="language-js">let a = 1 + 2;
-console.log(a);
-let b = 'hello, ' + 'world';
-console.log(b);
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mf">1</span> <span class="o">+</span> <span class="mf">2</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="s1">&#39;hello, &#39;</span> <span class="o">+</span> <span class="s1">&#39;world&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h2 id="precedence">Precedence</h2>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">Operator precedence</a></p>
 <p>Precedence determine in which order operators are executed.</p>
 <p>For, let's say:</p>
-<pre><code class="language-js">let a = 1 + 2; // 3
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mf">1</span> <span class="o">+</span> <span class="mf">2</span><span class="p">;</span> <span class="c1">// 3</span>
+</code></pre></div>
 <p>We have two operators, '=' and '+'.</p>
 <p>By clicking one link above you may find Table precedence section with "weight" of each operators that will determine execution order:</p>
 <ul>
@@ -1565,8 +1565,8 @@ console.log(b);
 </ul>
 <p>Means that '+' will be executed before '='.</p>
 <p>For:</p>
-<pre><code class="language-js">let a = 2 + 2 * 5; // 12
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mf">2</span> <span class="o">+</span> <span class="mf">2</span> <span class="o">*</span> <span class="mf">5</span><span class="p">;</span> <span class="c1">// 12</span>
+</code></pre></div>
 <ul>
 <li>for '*' it's 13  </li>
 <li>for '+' it's 12  </li>
@@ -1578,22 +1578,22 @@ console.log(b);
 <p>Associativity rules apply when there's many operator with same precedence weight.</p>
 <p>Even though the calculation below gives the same result no matter which way you apply the operators, we still use it as an example.</p>
 <p>Multiplication and division operator have same precedence weight of 13.</p>
-<pre><code class="language-js">let a = 2 + 2 * 5 / 3; // 5.333333333333334
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mf">2</span> <span class="o">+</span> <span class="mf">2</span> <span class="o">*</span> <span class="mf">5</span> <span class="o">/</span> <span class="mf">3</span><span class="p">;</span> <span class="c1">// 5.333333333333334</span>
+</code></pre></div>
 <p>But then what matter here is what 'Associativity' column contain (in above mentioned table) which is, in our case, 'left-to-right'.</p>
 <p>Means, calculation start by multiplication and then division.</p>
 <p>Note that parenthesis is also an operator with maximal precedence weight.</p>
 <hr />
 <h2 id="conditional-ternary-operator">Conditional (ternary) operator (?)</h2>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">Source</a></p>
-<pre><code class="language-js">let a = 1;
-
-// a += 2;
-
-let b = a == 3 ? 5 : 6;
-
-console.log(b); // 6
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mf">1</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1">// a += 2;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">==</span> <span class="mf">3</span> <span class="o">?</span> <span class="mf">5</span> <span class="o">:</span> <span class="mf">6</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 6</span>
+</code></pre></div>
 <hr />
 
               

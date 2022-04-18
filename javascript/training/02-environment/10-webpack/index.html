@@ -1624,127 +1624,127 @@
 <h2 id="installation">Installation</h2>
 <h3 id="prerequisite">Prerequisite</h3>
 <p>First, rename used file in previous chapter src/es6.js to src/index.js and remove dist folder if it exist and move index.html in src/:</p>
-<pre><code class="language-console">mv src/es6.js src/index.js
-rm -rf dist
-mv index.html src/
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">mv src/es6.js src/index.js</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="go">rm -rf dist</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="go">mv index.html src/</span>
+</code></pre></div>
 <p>In src/index.html remove script section.</p>
 <p>src/index.html:</p>
-<pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-  &lt;title&gt;Document&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;My app&lt;/h1&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;IE=edge&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Document<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>My app<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
 <p>Edit src/index.js as follow.</p>
 <p>src/index.js:</p>
-<pre><code class="language-javascript">let test = &quot;123&quot;;
-console.log(test);
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">let</span> <span class="nx">test</span> <span class="o">=</span> <span class="s2">&quot;123&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
+</code></pre></div>
 <p>In package.json remove line in script section that concern babel because we'll let webpack to take it in charge.</p>
 <p>package.json:</p>
-<pre><code class="language-json">{
-  &quot;name&quot;: &quot;test&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;description&quot;: &quot;&quot;,
-  &quot;main&quot;: &quot;index.js&quot;,
-  &quot;scripts&quot;: {
-    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
-  },
-  &quot;keywords&quot;: [],
-  &quot;author&quot;: &quot;&quot;,
-  &quot;license&quot;: &quot;ISC&quot;,
-  &quot;dependencies&quot;: {
-    &quot;@babel/cli&quot;: &quot;^7.17.6&quot;,
-    &quot;@babel/core&quot;: &quot;^7.17.5&quot;,
-    &quot;@babel/preset-env&quot;: &quot;^7.16.11&quot;
-  }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>  <span class="nt">&quot;main&quot;</span><span class="p">:</span> <span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>  <span class="nt">&quot;scripts&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>    <span class="nt">&quot;test&quot;</span><span class="p">:</span> <span class="s2">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>  <span class="p">},</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>  <span class="nt">&quot;keywords&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>  <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>  <span class="nt">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;ISC&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>  <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>    <span class="nt">&quot;@babel/cli&quot;</span><span class="p">:</span> <span class="s2">&quot;^7.17.6&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>    <span class="nt">&quot;@babel/core&quot;</span><span class="p">:</span> <span class="s2">&quot;^7.17.5&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a>    <span class="nt">&quot;@babel/preset-env&quot;</span><span class="p">:</span> <span class="s2">&quot;^7.16.11&quot;</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>  <span class="p">}</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="p">}</span>
+</code></pre></div>
 <h3 id="launch">Launch</h3>
-<pre><code class="language-console">npm i webpack webpack-cli webpack-dev-server babel-loader
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">npm i webpack webpack-cli webpack-dev-server babel-loader</span>
+</code></pre></div>
 <p>Add new file at the project root level called webpack.config.js:</p>
-<pre><code class="language-console">touch webpack.config.js
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">touch webpack.config.js</span>
+</code></pre></div>
 <p>webpack.config.js:</p>
-<pre><code class="language-javascript">const path = require(&quot;path&quot;);
-const HtmlWebpackPlugin = require(&quot;html-webpack-plugin&quot;);
-
-module.exports = {
-  entry: path.resolve(__dirname, &quot;src/index.js&quot;),
-  output: {
-    path: path.resolve(__dirname, &quot;dist&quot;),
-    filename: &quot;[name].bundle.js&quot;
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: &quot;babel-loader&quot;
-        }
-      }
-    ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, &quot;src/index.html&quot;)
-    })
-  ],
-  devtool: &quot;source-map&quot;,
-  mode: &quot;development&quot;,
-  devServer: {
-    static: path.resolve(__dirname, './dist'),
-    open: true,
-    port: 4000
-  }
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">);</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="kd">const</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;html-webpack-plugin&quot;</span><span class="p">);</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>  <span class="nx">entry</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">&quot;src/index.js&quot;</span><span class="p">),</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>  <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>    <span class="nx">path</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">&quot;dist&quot;</span><span class="p">),</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>    <span class="nx">filename</span><span class="o">:</span> <span class="s2">&quot;[name].bundle.js&quot;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>  <span class="p">},</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a>    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a>      <span class="p">{</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a>        <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.js$/</span><span class="p">,</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>        <span class="nx">exclude</span><span class="o">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a>        <span class="nx">use</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a>          <span class="nx">loader</span><span class="o">:</span> <span class="s2">&quot;babel-loader&quot;</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a>        <span class="p">}</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a>      <span class="p">}</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a>    <span class="p">]</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a>  <span class="p">},</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a>  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a>    <span class="ow">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23"></a>      <span class="nx">template</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">&quot;src/index.html&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24"></a>    <span class="p">})</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25"></a>  <span class="p">],</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26"></a>  <span class="nx">devtool</span><span class="o">:</span> <span class="s2">&quot;source-map&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27"></a>  <span class="nx">mode</span><span class="o">:</span> <span class="s2">&quot;development&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28"></a>  <span class="nx">devServer</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29"></a>    <span class="k">static</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">&#39;./dist&#39;</span><span class="p">),</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30"></a>    <span class="nx">open</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31"></a>    <span class="nx">port</span><span class="o">:</span> <span class="mf">4000</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32"></a>  <span class="p">}</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33"></a><span class="p">};</span>
+</code></pre></div>
 <p>Html webpack plugin automatically inject output js bundle to html file.</p>
 <p>Install:</p>
-<pre><code class="language-console">npm i html-webpack-plugin
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">npm i html-webpack-plugin</span>
+</code></pre></div>
 <p>Edit package.json to use webpack and webpack server in script section.</p>
 <p>package.json</p>
-<pre><code class="language-json">...
-  &quot;scripts&quot;: {
-    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
-    &quot;webpack&quot;: &quot;webpack&quot;,
-    &quot;start&quot;: &quot;webpack serve&quot;
-  },
-...
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="err">...</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>  <span class="nt">&quot;scripts&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>    <span class="nt">&quot;test&quot;</span><span class="p">:</span> <span class="s2">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>    <span class="nt">&quot;webpack&quot;</span><span class="p">:</span> <span class="s2">&quot;webpack&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;webpack serve&quot;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>  <span class="p">},</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="err">...</span>
+</code></pre></div>
 <h3 id="run">Run</h3>
-<pre><code class="language-console">npm run webpack
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">npm run webpack</span>
+</code></pre></div>
 <p>Now a dist folder appear with an index.html file that does include call to output result of bundled js, main.bundle.js.</p>
 <p>dist/index.html:</p>
-<pre><code class="language-html">...
-&lt;head&gt;
-...
-&lt;script defer src=&quot;main.bundle.js&quot;&gt;&lt;/script&gt;
-...
-&lt;/head&gt;
-...
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>...
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>...
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="p">&lt;</span><span class="nt">script</span> <span class="na">defer</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;main.bundle.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>...
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a>...
+</code></pre></div>
 <p>In dist/main.bundle.js we may observe that output code went through babel because let has been replaced by var.</p>
 <p>dist/main.bundle.js:</p>
-<pre><code class="language-javascript">...
-var test = &quot;123&quot;;
-...
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="p">...</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="s2">&quot;123&quot;</span><span class="p">;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="p">...</span>
+</code></pre></div>
 <h3 id="start">Start</h3>
-<pre><code class="language-console">npm start
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="go">npm start</span>
+</code></pre></div>
 <p>Browse to <a href="http://localhost:4000/">http://localhost:4000/</a> and hit F12 to open browser development tools and observe console.</p>
 <p>Retrieve code for this chapter on <a href="https://github.com/dymafr/javascript-chapitre2">github</a></p>
 <hr />

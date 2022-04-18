@@ -1767,9 +1767,9 @@
 <h3 id="volumes">Volumes</h3>
 <p>On Filesystem but managed by Docker, accessible through Docker CLI), mostly advised to use (in /var/lib/docker/volumes/ (not on WSL) but never access it directly.
 Volumes are stored on but isolated from host machine.</p>
-<p>Create a volume with Docker CLI command</p>
-<pre><code>docker volume create
-</code></pre>
+<p>Create a volume with Docker CLI command
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>docker volume create
+</code></pre></div></p>
 <h3 id="bind-mount">Bind mount</h3>
 <p>Manged by Filesystem and accessible from outside of Docker, not recommended.
 Bind mounts are regular folder and files stored on host machine.</p>
@@ -1781,63 +1781,63 @@ TMPFS are used to store temporary not persisted data, sensitive information like
 <p>Adapted for:
 - Sharing configuration files between host and container.
 - Development environment to share source code and alow live reload.</p>
-<p>Recommend syntax</p>
-<pre><code>docker run --mount type=bind,source=&lt;url&gt;,target=&lt;url&gt; image
-</code></pre>
-<pre><code>$ mkdir data
-$ cd data
-$ touch hello.txt
-$ cd ..
-$ docker run --mount type=bind,source=&quot;$(pwd)&quot;/data,target=/data -it alpine sh
-$c ls
-.. data ..
-$c cd data
-$c ls
-hello.txt
-</code></pre>
-<p>Search for Mounts section with inspect CLI command to see mounting details:</p>
-<pre><code>docker container inspect containerName
-</code></pre>
+<p>Recommend syntax
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>docker run --mount type=bind,source=&lt;url&gt;,target=&lt;url&gt; image
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>$ mkdir data
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>$ cd data
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>$ touch hello.txt
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>$ cd ..
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>$ docker run --mount type=bind,source=&quot;$(pwd)&quot;/data,target=/data -it alpine sh
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>$c ls
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>.. data ..
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>$c cd data
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>$c ls
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>hello.txt
+</code></pre></div>
+<p>Search for Mounts section with inspect CLI command to see mounting details:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>docker container inspect containerName
+</code></pre></div></p>
 <h3 id="development-environment">Development environment</h3>
 <p>Set up of a development environnement for a node server application (c.f. <a href="../5-docker-nodeserver/#node-server-project">Node server project</a>).  </p>
 <p>The goal here is to have changes available from host machine (IDE) in container and automatically reloaded by nodemon.</p>
 <p>!!Warning!! A common mistake is to bind the root folder of a project.</p>
 <p>E.g. in case of node context, if we do so, the node_modules folder created/populated in container image by "RUN npm install" instruction from Dockerfile will be erased. To avoid this unwanted behavior, it's mostly advised to move the source code files modified through IDE on host machine in a dedicated folder (e.g. src).</p>
-<p>On host machine:</p>
-<pre><code>$ mkdir node-server
-$ cd node-server
-$ mkdir src
-$ cd src
-$ touch app.js
-$ cd ..
-</code></pre>
-<p>src/app.js:</p>
-<pre><code>const express = require('express');
-
-const app = express();
-
-app.get('*', (req, res) =&gt; {
-    res.status(200).json('Hello, world!');
-})
-
-app.listen(80);
-</code></pre>
-<p>Dockerfile (in root folder, "node-server"):</p>
-<pre><code>FROM node:alpine
-WORKDIR /app
-COPY ./package.json .
-RUN npm install
-COPY . .
-ENV PATH=$PATH:/app/node_modules/.bin
-CMD [&quot;nodemon&quot;, &quot;-L&quot;, &quot;src/app.js&quot;]
-</code></pre>
+<p>On host machine:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>$ mkdir node-server
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>$ cd node-server
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>$ mkdir src
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>$ cd src
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>$ touch app.js
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>$ cd ..
+</code></pre></div></p>
+<p>src/app.js:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>const express = require(&#39;express&#39;);
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>const app = express();
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>app.get(&#39;*&#39;, (req, res) =&gt; {
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>    res.status(200).json(&#39;Hello, world!&#39;);
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>})
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>app.listen(80);
+</code></pre></div></p>
+<p>Dockerfile (in root folder, "node-server"):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>FROM node:alpine
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>WORKDIR /app
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>COPY ./package.json .
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>RUN npm install
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>COPY . .
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>ENV PATH=$PATH:/app/node_modules/.bin
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>CMD [&quot;nodemon&quot;, &quot;-L&quot;, &quot;src/app.js&quot;]
+</code></pre></div></p>
 <p>!! Warning !! In above Dockerfile we use <strong>-L</strong> option for --legacy-watch because in some containerized environnement, application may not restart automatically after file's change.</p>
-<p>Build image:</p>
-<pre><code>$ docker build -t myapp .
-</code></pre>
-<p>Start a container with new image version:</p>
-<pre><code>$ docker run --rm -p 80:80 --mount type=bind,source=&quot;$(pwd)/src&quot;,target=/app/src myapp
-</code></pre>
+<p>Build image:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>$ docker build -t myapp .
+</code></pre></div></p>
+<p>Start a container with new image version:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>$ docker run --rm -p 80:80 --mount type=bind,source=&quot;$(pwd)/src&quot;,target=/app/src myapp
+</code></pre></div></p>
 <p>Now try to edit 'src/app.js' file on host machine to observe nodemon restart in terminal.<br />
 You may also observe the changes on your browser at 'localhost' address, after refresh.</p>
 <hr />
@@ -1848,139 +1848,139 @@ You may also observe the changes on your browser at 'localhost' address, after r
 - ls
 - rm
 - prune</p>
-<p>old syntax (not advised, c.f. bind)</p>
-<pre><code>docker run -v &lt;volume-name&gt;:&lt;container-url&gt; image
-</code></pre>
-<p>new syntax</p>
-<pre><code>docker run --mount type=volume,source=&lt;volume-name&gt;,target=&lt;url&gt; image
-</code></pre>
+<p>old syntax (not advised, c.f. bind)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>docker run -v &lt;volume-name&gt;:&lt;container-url&gt; image
+</code></pre></div></p>
+<p>new syntax
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>docker run --mount type=volume,source=&lt;volume-name&gt;,target=&lt;url&gt; image
+</code></pre></div></p>
 <h3 id="create">Create</h3>
 <h4 id="new-volume">New volume</h4>
-<pre><code>$ docker volume create mydata
-mydata
-
-$ docker volume ls
-DRIVER    VOLUME NAME
-local     mydata
-
-$ docker volume inspect mydata
-[
-    {
-        &quot;CreatedAt&quot;: &quot;2021-12-24T06:15:34Z&quot;,
-        &quot;Driver&quot;: &quot;local&quot;,
-        &quot;Labels&quot;: {},
-        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/mydata/_data&quot;,
-        &quot;Name&quot;: &quot;mydata&quot;,
-        &quot;Options&quot;: {},
-        &quot;Scope&quot;: &quot;local&quot;
-    }
-]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>$ docker volume create mydata
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>mydata
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>$ docker volume ls
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>DRIVER    VOLUME NAME
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>local     mydata
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>$ docker volume inspect mydata
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>[
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>    {
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a>        &quot;CreatedAt&quot;: &quot;2021-12-24T06:15:34Z&quot;,
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a>        &quot;Driver&quot;: &quot;local&quot;,
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a>        &quot;Labels&quot;: {},
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a>        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/mydata/_data&quot;,
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a>        &quot;Name&quot;: &quot;mydata&quot;,
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a>        &quot;Options&quot;: {},
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a>        &quot;Scope&quot;: &quot;local&quot;
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a>    }
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a>]
+</code></pre></div>
 <p>WSL2 volumes are not in /var/lib/docker/volumes/mydata/_data</p>
 <p>You can find WSL2 volumes under a hidden network share. Open Windows Explorer, and type <strong>\\wsl$</strong> into the location bar. Hit enter, and it should display your WSL volumes, including the ones for Docker for Windows.</p>
-<p>WSL2 volumes, in Windows Explorer bar</p>
-<pre><code>\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes
-</code></pre>
+<p>WSL2 volumes, in Windows Explorer bar
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes
+</code></pre></div></p>
 <h4 id="new-container-with-bind-volume">New container with bind volume</h4>
-<pre><code class="language-console">$ docker run --mount type=volume,source=mydata,target=/data -it alpine sh
-$c cd data
-$c touch hello.txt
-$c echo 123 &gt; hello.txt
-ctrl+d
-$ docker rm containername
-$ docker run --mount type=volume,source=mydata,target=/data -it alpine sh
-$c cd data
-$c cat hello.txt
-123
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="gp">$ </span>docker run --mount <span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>mydata,target<span class="o">=</span>/data -it alpine sh
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="gp">$</span>c <span class="nb">cd</span> data
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="gp">$</span>c touch hello.txt
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="gp">$</span>c <span class="nb">echo</span> <span class="m">123</span> &gt; hello.txt
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="go">ctrl+d</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="gp">$ </span>docker rm containername
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="gp">$ </span>docker run --mount <span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>mydata,target<span class="o">=</span>/data -it alpine sh
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="gp">$</span>c <span class="nb">cd</span> data
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="gp">$</span>c cat hello.txt
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="go">123</span>
+</code></pre></div>
 <h3 id="share-backup-restore">Share Backup Restore</h3>
 <h4 id="share-volume-between-containers">Share volume between containers</h4>
-<pre><code class="language-console">$ docker run --mount type=volume,source=mydata,target=/data --name firstcont -it alpine sh
-$c1 cd data
-In another terminal
-$ docker run --mount type=volume,source=mydata,target=/data --name secondcont -it alpine sh
-$c2 cd data
-$c2 touch new.txt
-$c1 ls
-hello.txt  new.txt
-</code></pre>
-<p>Another way is volume from container</p>
-<pre><code class="language-console">$ docker run --volumes-from firstcont --name thirdcont -it alpine sh
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="gp">$ </span>docker run --mount <span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>mydata,target<span class="o">=</span>/data --name firstcont -it alpine sh
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="gp">$</span>c1 <span class="nb">cd</span> data
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="go">In another terminal</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="gp">$ </span>docker run --mount <span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>mydata,target<span class="o">=</span>/data --name secondcont -it alpine sh
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="gp">$</span>c2 <span class="nb">cd</span> data
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="gp">$</span>c2 touch new.txt
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="gp">$</span>c1 ls
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="go">hello.txt  new.txt</span>
+</code></pre></div>
+<p>Another way is volume from container
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="gp">$ </span>docker run --volumes-from firstcont --name thirdcont -it alpine sh
+</code></pre></div></p>
 <h4 id="backup-volume">Backup volume</h4>
-<p>Compress a volume to a bind folder with tar</p>
-<pre><code class="language-console">$ mkdir backup
-$ docker run --mount type=volume,source=mydata,target=/data --mount type=bind,source=&quot;$(pwd)&quot;/backup,target=/backup alpine tar -czf /backup/mydata.tar.gz /data
-</code></pre>
+<p>Compress a volume to a bind folder with tar
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="gp">$ </span>mkdir backup
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="gp">$ </span>docker run --mount <span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>mydata,target<span class="o">=</span>/data --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/backup,target<span class="o">=</span>/backup alpine tar -czf /backup/mydata.tar.gz /data
+</code></pre></div></p>
 <h4 id="restore-volume">Restore volume</h4>
-<p>Extract an archive from a bind folder to a volume</p>
-<pre><code class="language-console">$ docker volume create restore
-
-$ docker run --mount type=volume,source=restore,target=/data --mount type=bind,source=&quot;$(pwd)&quot;/backup,target=/backup alpine tar -xf /backup/mydata.tar.gz -C /data
-</code></pre>
-<p>To not have a folder data in a folder data, use tar with option --strip-components 1</p>
-<pre><code class="language-console">$ docker run --mount type=volume,source=restore,target=/data --mount type=bind,source=&quot;$(pwd)&quot;,target=/backup -it alpine tar -xf /backup/backup.tar --strip-components 1 -C /data
-</code></pre>
-<p>Check volume correctly restored</p>
-<pre><code class="language-console">$ docker container run -it --rm --mount source=restore,target=/data alpine sh
-</code></pre>
+<p>Extract an archive from a bind folder to a volume
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="gp">$ </span>docker volume create restore
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="gp">$ </span>docker run --mount <span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>restore,target<span class="o">=</span>/data --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/backup,target<span class="o">=</span>/backup alpine tar -xf /backup/mydata.tar.gz -C /data
+</code></pre></div></p>
+<p>To not have a folder data in a folder data, use tar with option --strip-components 1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="gp">$ </span>docker run --mount <span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>restore,target<span class="o">=</span>/data --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>,target<span class="o">=</span>/backup -it alpine tar -xf /backup/backup.tar --strip-components <span class="m">1</span> -C /data
+</code></pre></div></p>
+<p>Check volume correctly restored
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="gp">$ </span>docker container run -it --rm --mount <span class="nv">source</span><span class="o">=</span>restore,target<span class="o">=</span>/data alpine sh
+</code></pre></div></p>
 <h3 id="volume-to-persist-a-database-mongo">Volume to persist a database (mongo)</h3>
-<p>For mongo db it consist of mounting a volume with folder /data/db in mongo container</p>
-<pre><code class="language-console">$ docker volume create mydb
-$ docker run --mount type=volume,source=mydb,target=/data/db -d --name mongocontainer1 mongo
-$ docker exec -it mongocontainer1 sh
-$c mongo
-&gt; use test
-switched to db test
-&gt; db.user.insertOne({ name: 'jean' })
-{
-        &quot;acknowledged&quot; : true,
-        &quot;insertedId&quot; : ObjectId(&quot;61caeae2df845609f1835264&quot;)
-}
-&gt; db.user.findOne()
-{ &quot;_id&quot; : ObjectId(&quot;61caeae2df845609f1835264&quot;), &quot;name&quot; : &quot;jean&quot; }
-&gt; exit
-bye
-$c exit
-$ docker container stop mongocontainer1
-$ docker container rm mongocontainer1
-</code></pre>
-<p>Container is removed but database is persisted in a volume.</p>
-<pre><code class="language-console">$ docker run --mount type=volume,source=mydb,target=/data/db -d --name mongocontainer2 mongo
-$ docker exec -it mongocontainer1 sh
-$c mongo
-&gt; use test
-switched to db test
-&gt; db.user.findOne()
-{ &quot;_id&quot; : ObjectId(&quot;61caeae2df845609f1835264&quot;), &quot;name&quot; : &quot;jean&quot; }
-</code></pre>
+<p>For mongo db it consist of mounting a volume with folder /data/db in mongo container
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="gp">$ </span>docker volume create mydb
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="gp">$ </span>docker run --mount <span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>mydb,target<span class="o">=</span>/data/db -d --name mongocontainer1 mongo
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="gp">$ </span>docker <span class="nb">exec</span> -it mongocontainer1 sh
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="gp">$</span>c mongo
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="go">&gt; use test</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="go">switched to db test</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a><span class="go">&gt; db.user.insertOne({ name: &#39;jean&#39; })</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a><span class="go">{</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9"></a><span class="go">        &quot;acknowledged&quot; : true,</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10"></a><span class="go">        &quot;insertedId&quot; : ObjectId(&quot;61caeae2df845609f1835264&quot;)</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11"></a><span class="go">}</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12"></a><span class="go">&gt; db.user.findOne()</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13"></a><span class="go">{ &quot;_id&quot; : ObjectId(&quot;61caeae2df845609f1835264&quot;), &quot;name&quot; : &quot;jean&quot; }</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14"></a><span class="go">&gt; exit</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15"></a><span class="go">bye</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16"></a><span class="gp">$</span>c <span class="nb">exit</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17"></a><span class="gp">$ </span>docker container stop mongocontainer1
+<a id="__codelineno-20-18" name="__codelineno-20-18"></a><span class="gp">$ </span>docker container rm mongocontainer1
+</code></pre></div></p>
+<p>Container is removed but database is persisted in a volume.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="gp">$ </span>docker run --mount <span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>mydb,target<span class="o">=</span>/data/db -d --name mongocontainer2 mongo
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="gp">$ </span>docker <span class="nb">exec</span> -it mongocontainer1 sh
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="gp">$</span>c mongo
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="go">&gt; use test</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a><span class="go">switched to db test</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a><span class="go">&gt; db.user.findOne()</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a><span class="go">{ &quot;_id&quot; : ObjectId(&quot;61caeae2df845609f1835264&quot;), &quot;name&quot; : &quot;jean&quot; }</span>
+</code></pre></div></p>
 <h4 id="compass-gui-to-browse-mongo-db">Compass GUI to browse mongo db</h4>
 <p>Should run container with opened port (default 27017).<br />
 If port is already used on host machine, you may use 27018 for example</p>
-<pre><code class="language-console">$ docker run -p 27018:27017 --mount type=volume,source=mydb,target=/data/db -d --name mongocontainer3 mongo
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="gp">$ </span>docker run -p <span class="m">27018</span>:27017 --mount <span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>mydb,target<span class="o">=</span>/data/db -d --name mongocontainer3 mongo
+</code></pre></div>
 <p>Enter in connection field:<br />
 mongodb://localhost:27018</p>
 <hr />
 <h2 id="tmpfs_1">TMPFS</h2>
-<p>Rarely used, uniquely to keep data in RAM, e.g. secret or status data, works only on Linux system.</p>
-<pre><code class="language-console">$ docker run --mount type=tmpfs,target=/data -it alpine sh
-$c cd data
-$c touch secret.txt
-$c ls
-secret.txt
-$c exit
-$ docker ps -a
-CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS                     PORTS     NAMES
-58f104d6a051   alpine    &quot;sh&quot;      2 minutes ago   Exited (0) 5 seconds ago             musing_wilbur
-</code></pre>
+<p>Rarely used, uniquely to keep data in RAM, e.g. secret or status data, works only on Linux system.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="gp">$ </span>docker run --mount <span class="nv">type</span><span class="o">=</span>tmpfs,target<span class="o">=</span>/data -it alpine sh
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="gp">$</span>c <span class="nb">cd</span> data
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="gp">$</span>c touch secret.txt
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="gp">$</span>c ls
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a><span class="go">secret.txt</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a><span class="gp">$</span>c <span class="nb">exit</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="gp">$ </span>docker ps -a
+<a id="__codelineno-23-8" name="__codelineno-23-8"></a><span class="go">CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS                     PORTS     NAMES</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9"></a><span class="go">58f104d6a051   alpine    &quot;sh&quot;      2 minutes ago   Exited (0) 5 seconds ago             musing_wilbur</span>
+</code></pre></div></p>
 <p>With 'TMPFS' if container is in an 'Exited' status, data aren't persisted.<br />
-Relaunch container to observe that data aren't available anymore.</p>
-<pre><code class="language-console">$ docker start -ai musing_wilbur
-$c cd data
-$c ls
-(empty)
-</code></pre>
+Relaunch container to observe that data aren't available anymore.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="gp">$ </span>docker start -ai musing_wilbur
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="gp">$</span>c <span class="nb">cd</span> data
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a><span class="gp">$</span>c ls
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="gp gp-VirtualEnv">(empty)</span>
+</code></pre></div></p>
 <hr />
 
               
