@@ -7,10 +7,12 @@ Docker Compose - Use
 ## Introduction
 
 Application =  
+
 - Container Web server +  
 - Container Database  
 
 Setup:  
+
 - Ports  
 - Volumes  
 - Network  
@@ -23,8 +25,9 @@ One Application = (is composed of) Many Services (containers that communicate wi
 Docker Compose is a CLI that read 'docker-compose.yml' file.
 
 First, install Docker Compose and check installation and version by typing in a terminal:
+
 ```console
-$ docker-compose version
+docker-compose version
 ```
 
 ***
@@ -35,14 +38,16 @@ $ docker-compose version
 
 Yaml format configuration file.  
 Yaml syntax is based on an indented key value format.
+
 ```console
- $ touch docker-compose.yml
+touch docker-compose.yml
 ```
 
 First, mention version to use to ensure retro-compatibility.
 To determine which version to specify in 'docker-compose.yml' file header, refer to docker engine version that run on your host machine:
+
 ```console
-$ docker version
+docker version
 ...
 Server: Docker Engine - Community
  Engine:
@@ -56,7 +61,8 @@ Then refer to documentation
 Second, specify service(s).
 
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -65,20 +71,21 @@ services:
 ```
 
 ```console
-$ docker-compose up
+docker-compose up
 ```
 
 Alternative to go straight in service's container:
+
 ```console
-$ docker-compose run myapline
-$c
+docker-compose run myapline
 ```
 
 In another console:
+
 ```console
-$ docker-compose ps
-$ docker-compose ps -a
-$ docker-compose down
+docker-compose ps
+docker-compose ps -a
+docker-compose down
 ```
 
 Particularity of 'docker-compose down' command is to suppress (don't just stop) all container and network that was launched by previous 'docker-compose up' command.  
@@ -86,7 +93,8 @@ Anonymous volumes are never reused by Docker Compose. It launches new ones each 
 
 Default command is the one defined in image, for 'alpine' it's '/bin/sh'.  
 To overwrite default command, specify it in 'docker-compose.yml' file:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -96,12 +104,14 @@ services:
 ```
 
 Or by adding command directly after service name in run command:
+
 ```console
-$ docker-compose run myalpine ls
+docker-compose run myalpine ls
 ```
 
 Or with entry point in exec form (instead of shell) in 'docker-compose.yml' file:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -117,17 +127,19 @@ Or 'command: ["ls"]' instead of 'entrypoint: ["ls"]'
 ## Custom image
 
 ```console
-$ touch Dockerfile
+touch Dockerfile
 ```
 
 Dockerfile:
-```
+
+```text
 FROM alpine
 CMD ["/bin/sh"]
 ```
 
 docker-compose.yml
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -139,7 +151,7 @@ services:
 ```
 
 ```console
-$ docker-compose build
+docker-compose build
 ```
 
 Have a look to VS Code Docker plugin to have a synthetic view of all Docker ecosystem components, containers, images, network, etc.
@@ -147,13 +159,15 @@ Have a look to VS Code Docker plugin to have a synthetic view of all Docker ecos
 ### Context and Dockerfile
 
 Specify a context and Dockerfile:
+
 ```console
-$ mkdir backend
-$ cp Dockerfile backend/DockerfileBackend
+mkdir backend
+cp Dockerfile backend/DockerfileBackend
 ```
 
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -170,7 +184,8 @@ services:
 
 Passing arguments, e.g. create a folder at build, 'Dockerfile' receive args from 'docker-compose.yml'.  
 DockerfileBackend:
-```
+
+```text
 FROM alpine
 ARG FOLDER
 RUN mkdir $FOLDER
@@ -178,7 +193,8 @@ CMD ["/bin/sh"]
 ```
 
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -196,16 +212,18 @@ services:
 Note the 'arg' indentation with '-' for an array of values (yaml syntax).
 
 test:
+
 ```console
-$ docker-compose build
-$ docker-compose run b
-$c ls
+docker-compose build
+docker-compose run b
+ls
 .. test ..
 ```
 
 Instead of list (- FOLDER=), e.g. for 'args' you may also use an object instead (FOLDER:).
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -221,17 +239,19 @@ services:
 ```
 
 test:
+
 ```console
-$ docker-compose build
-$ docker-compose run b
-$c ls
+docker-compose build
+docker-compose run b
+ls
 .. myfolder ..
 ```
 
 ### Labels
 
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -249,9 +269,10 @@ services:
 ```
 
 test:
+
 ```console
-$ docker-compose build
-$ docker image inspect compose_b:latest | grep EMAIL
+docker-compose build
+docker image inspect compose_b:latest | grep EMAIL
                 "EMAIL": "toto@test.com"
 ```
 
@@ -260,7 +281,8 @@ $ docker image inspect compose_b:latest | grep EMAIL
 ## Ports
 
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -286,11 +308,12 @@ services:
 ### Bind
 
 ```console
-$ mkdir data
-$ touch data/hello.txt
+mkdir data
+touch data/hello.txt
 ```
 
 DockerfileBackend.yml:
+
 ```
 FROM alpine
 ARG FOLDER
@@ -300,7 +323,8 @@ CMD ["/bin/sh"]
 ```
 
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -324,18 +348,20 @@ services:
 ```
 
 test:
+
 ```console
-$ docker-compose build
-$ docker-compose run b
-$c cd data
-$c ls
-$c exit 
+docker-compose build
+docker-compose run b
+cd data
+ls
+exit 
 ```
 
 ### Volumes
 
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -365,19 +391,21 @@ volumes:
 ```
 
 test:
+
 ```console
-$ docker-compose build
-$ docker-compose run b
+docker-compose build
+docker-compose run b
 [+] Running 1/0
  ⠿ Volume "compose_datavolume"  Created
-$c ls
+ls
 data        datavolume  myfolder
-$c exit 
+exit 
 ```
 
 Volume option external to avoid docker-compose to create volume if it does not exist.  
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -409,14 +437,16 @@ volumes:
 
 Before testing remove previously created volumes.  
 test:
+
 ```console
-$ docker-compose run b
+docker-compose run b
 external volume "" not found
 ```
 
 To create anonymous volume, omit source option.  
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -448,18 +478,21 @@ volumes:
 ```
 
 test:
+
 ```console
-$ docker-compose build
-$ docker-compose run b
-$c ls
+docker-compose build
+docker-compose run b
+ls
 data                 datavolume           datavolumeanonymous  myfolder
 ```
 
 Docker Compose does not always use the same anonymous volume for a service.  
 Therefore, it is advisable to use:
+
 ```console
-$ docker-compose down -v
+docker-compose down -v
 ```
+
 to remove it.
 
 -v, --volumes volumes, Remove named volumes declared in the volumes section of the Compose file and anonymous volumes attached to containers.
@@ -471,8 +504,8 @@ to remove it.
 ### from cli
 
 ```console
-$ docker-compose run b
-$c env
+docker-compose run b
+env
 HOSTNAME=0b9907714155
 SHLVL=1
 HOME=/root
@@ -482,18 +515,20 @@ PWD=/app
 ```
 
 Add environnement variable from command line, value from host machine:
+
 ```console
-$ docker-compose run -e USER b
-$c env | grep USER
+docker-compose run -e USER b
+env | grep USER
 USER=toto
 ```
 
 By default, by not specifying a value, docker-compose search on host machine environnement variable and if find one that match, pass it (e.g. here with USER that do exist on host machine and has a value).
 
 Add environnement variable from command line with specified value:
+
 ```console
-$ docker-compose run -e USER=tintin b
-$c env | grep USER
+docker-compose run -e USER=tintin b
+env | grep USER
 USER=tintin
 ```
 
@@ -501,7 +536,8 @@ USER=tintin
 
 Without specifying a value (comes from host machine).  
 docker-compose.yml:
-```console
+
+```yaml
 version: '3.8'
 
 services:
@@ -535,16 +571,18 @@ volumes:
 ```
 
 test:
+
 ```console
-$ docker-compose build
-$ docker-compose run b
-$c env | grep USER
+docker-compose build
+docker-compose run b
+env | grep USER
 USER=toto
 ```
 
 By specifying a value.  
 docker-compose.yml:
-```console
+
+```yaml
 version: '3.8'
 
 services:
@@ -578,10 +616,11 @@ volumes:
 ```
 
 test:
+
 ```console
-$ docker-compose build
-$ docker-compose run b
-$c env | grep USER
+docker-compose build
+docker-compose run b
+env | grep USER
 USER=tintin
 ```
 
@@ -589,12 +628,14 @@ USER=tintin
 
 If value of environment variable is not specified, docker compose search for corresponding value in host machine, if not found, search then in '.env' file.  
 .env:
-```
+
+```text
 NODE_ENV=development
 ```
 
 docker-compose.yml:
-```console
+
+```yaml
 version: '3.8'
 
 services:
@@ -628,22 +669,25 @@ volumes:
 ```
 
 test:
+
 ```console
-$ docker-compose build
-$ docker-compose run b
-$c env | grep NODE_ENV
+docker-compose build
+docker-compose run b
+env | grep NODE_ENV
 NODE_ENV=development
 ```
 
 By specifying an environnement file, all variables contained in it will be imported in container.  
 .env:
-```
+
+```text
 NODE_ENV=development
 TEST_ENV=test
 ```
 
 docker-compose.yml:
-```console
+
+```yaml
 version: '3.8'
 
 services:
@@ -677,10 +721,11 @@ volumes:
 ```
 
 test:
+
 ```console
-$ docker-compose build
-$ docker-compose run b
-$c env | grep _ENV
+docker-compose build
+docker-compose run b
+env | grep _ENV
 TEST_ENV=test
 NODE_ENV=development
 ```
@@ -688,14 +733,16 @@ NODE_ENV=development
 You may have many environnement files.  
 
 You may specify env file in command line, works only with 'up':
+
 ```console
-$ docker-compose --env-file ./.env up
+docker-compose --env-file ./.env up
 ```
 
 You may use both 'env_file' and 'environnement' for same service.
 
 You may specify compose project name instead of current folder with, e.g. in .env file:
-```
+
+```text
 COMPOSE_PROJECT_NAME=myproject
 ```
 
@@ -706,18 +753,20 @@ COMPOSE_PROJECT_NAME=myproject
 ### Default
 
 By default docker compose create a network with folder name as a prefix, or with value of 'COMPOSE_PROJECT_NAME' key in project's environnement variable:
+
 ```console
-$ docker-compose up
+docker-compose up
 [+] Running 4/4
  ⠿ Network myproject_default      Created
  ..
 ```
 
-Note that containers using the network appear in the list ($ docker network inspect myproject_default) only when they are running.
+Note that containers using the network appear in the list (docker network inspect myproject_default) only when they are running.
 
 Below, we make a test with ping, note that we use shell form (instead of exec (cause:  executable file not found in $PATH: unknown)).  
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -750,8 +799,9 @@ volumes:
 ```
 
 test:
+
 ```console
-$ docker-compose up
+docker-compose up
 [+] Running 2/2
  ⠿ Container myproject_a_1  Recreated                                                                                                                 0.2s
  ⠿ Container myproject_b_1  Recreated                                                                                                                 0.2s 
@@ -766,7 +816,8 @@ b_1  | 64 bytes from 172.29.0.2: seq=0 ttl=64 time=0.152 ms
 
 Links from a container to another one.  
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -801,8 +852,9 @@ volumes:
 ```
 
 test:
+
 ```console
-$ docker-compose up                                                                                       
+docker-compose up                                                                                       
 [+] Running 3/2
  ⠿ Network myproject_default  Created                                                                                                                 0.0s 
  ⠿ Container myproject_a_1    Created                                                                                                                 0.8s 
@@ -818,14 +870,15 @@ b_1  | 64 bytes from 172.31.0.2: seq=3 ttl=64 time=0.305 ms
 ```
 
 test to ping a and containerA from b:
+
 ```console
-$ docker-compose up -d
-$ docker-compose exec b sh
-$c ping a
+docker-compose up -d
+docker-compose exec b sh
+ping a
 PING a (172.31.0.2): 56 data bytes
 64 bytes from 172.31.0.2: seq=0 ttl=64 time=0.181 ms
 ..
-$c ping containerA
+ping containerA
 PING containerA (172.31.0.2): 56 data bytes
 64 bytes from 172.31.0.2: seq=0 ttl=64 time=0.287 ms
 ```
@@ -835,7 +888,8 @@ PING containerA (172.31.0.2): 56 data bytes
 Give network a name to replace the default one.
 
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -873,8 +927,9 @@ networks:
 ```
 
 test:
+
 ```console
-$ docker-compose up
+docker-compose up
 [+] Running 3/3
  ⠿ Network mynetwork        Created                                                                                                                0.0s
  ⠿ Container myproject_a_1  Created                                                                                                                0.8s
@@ -892,7 +947,8 @@ a_1  | 64 bytes from 192.168.0.3: seq=0 ttl=64 time=0.339 ms
 
 Link container to many networks with adding list in service configuration.  
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -933,15 +989,17 @@ networks:
 ```
 
 test:
+
 ```console
-$ docker-compose up
+docker-compose up
 service "b" refers to undefined network othernetwork: invalid compose project
 ```
 
 Error due to othernetwork missing.  
 We add it to networks section in configuration file and then to services.  
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -986,8 +1044,9 @@ networks:
 ```
 
 test:
+
 ```console
-$ docker-compose up
+docker-compose up
 [+] Running 3/3
  ⠿ Network myproject_othernetwork  Created                                                                                                          0.0s 
  ⠿ Container myproject_a_1         Created                                                                                                          0.1s 
@@ -1011,12 +1070,14 @@ Node.js application that increment a counter in a MongoDB.
 ### MongoDB
 
 We provide volume to handle db data, so, preamble is to "manually" create the needed volume:
+
 ```console
-$ docker volume create mydb
+docker volume create mydb
 ```
 
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -1032,11 +1093,12 @@ volumes:
 ```
 
 We run db individually to initialize it:
+
 ```console
-$ docker-compose run -d db
+docker-compose run -d db
 39cf..
-$ docker container exec -it 39cf sh
-$c mongo
+docker container exec -it 39cf sh
+mongo
 > use test
 > db.count.insertOne({ count: 0 })
 {
@@ -1047,8 +1109,8 @@ $c mongo
 { "_id" : ObjectId("61d1a03ac9a303a408034aca"), "count" : 0 }
 > exit
 bye
-$c exit
-$ docker container stop 39cf
+exit
+docker container stop 39cf
 ```
 
 In MongoDB, volume that contain the database may not be mounted anywhere.  
@@ -1060,7 +1122,8 @@ By default all ports are available for containers that run on same network.
 ### Node.js
 
 Dockerfile:
-```
+
+```text
 FROM node:alpine
 WORKDIR /app
 COPY ./package.json .
@@ -1071,7 +1134,8 @@ CMD ["nodemon", "-L", "src/app.js"]
 ```
 
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -1098,6 +1162,7 @@ volumes:
 ```
 
 \src\app.js:
+
 ```javascript
 require( 'console-stamp' )( console );  // to add timestamp in logs
 
@@ -1134,15 +1199,17 @@ app.listen(80);
 ```
 
 In a terminal:
+
 ```console
-$ docker-compose up
+docker-compose up
 ..
 server_1  | [02.01.2022 17:10.30.697] [LOG]   CONNEXION DB OK!
 ..
 ```
 
 In a browser:
-```
+
+```text
 http://localhost/
 ```
 
@@ -1151,29 +1218,33 @@ http://localhost/
 We add authentication through environnement variable to MongoDB.
 
 Clear docker environnement and recreate database volume:
+
 ```console
-$ docker container prune
-$ docker volume prune
-$ docker volume create mydb
+docker container prune
+docker volume prune
+docker volume create mydb
 ```
 
 [Have a look to MongoDB official image on Docker Hub](https://hub.docker.com/_/mongo#:~:text=mongo/mongod.conf-,Environment%20Variables,-When%20you%20start)  
 What's interesting us here is to set the two following environnement variables:  
+
 - MONGO_INITDB_ROOT_USERNAME  
 - MONGO_INITDB_ROOT_PASSWORD  
 
 ```console
-$ touch .env
+touch .env
 ```
 
 .env:
-```
+
+```text
 MONGO_INITDB_ROOT_USERNAME=toto
 MONGO_INITDB_ROOT_PASSWORD=123
 ```
 
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -1203,11 +1274,12 @@ volumes:
 ```
 
 In a terminal, set up db with authenticated user and then create a new user 'tintin' with password '456' and role 'readWrite' on db 'test':
+
 ```console
-$ docker-compose run -d db
+docker-compose run -d db
 bad88..
-$ docker exec -it bad88 sh
-$c mongo
+docker exec -it bad88 sh
+mongo
 > use test
 > db.count.insertOne({ count: 0 })
 .. error.. command insert requires authentication..
@@ -1236,13 +1308,14 @@ Successfully added user: {
 }
 > exit
 bye
-$c exit
-$ docker stop bad88
+exit
+docker stop bad88
 ```
 
 Check that connection to db is OK ('CONNECTION DB OK!' in logs), but we cannot access data (trying to refresh 'localhost' in Internet browser), due to unauthenticated connection:
+
 ```console
-$ docker-compose up
+docker-compose up
 ..
 server_1  | [02.01.2022 19:47.14.606] [LOG]   CONNECTION DB OK!
 ..
@@ -1255,6 +1328,7 @@ We can authenticate with many different ways.
 By specifying (hard coded) user password directly in 'app.js' file ('mongodb://tintin:456@db').  
 We also add a 'console.log(process)' to have environnement variables in logs.  
 app.js:
+
 ```javascript
 require( 'console-stamp' )( console );  // to add timestamp in logs
 
@@ -1293,6 +1367,7 @@ app.listen(80);
 ```
 
 server_1 logs (to see environnement variables):
+
 ```console
 ..
 server_1  |   env: {
@@ -1314,7 +1389,8 @@ Now we stop application by hitting 'Ctrl+c'.
 Below is described a second manner (more secure, therefor, advised to use) to authenticate to 'db' service from 'sever' service through environnement variables.
 
 .env:
-```
+
+```text
 MONGO_INITDB_ROOT_USERNAME=toto
 MONGO_INITDB_ROOT_PASSWORD=123
 
@@ -1323,7 +1399,8 @@ MONGO_USER_PASSWORD=456
 ```
 
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -1356,6 +1433,7 @@ volumes:
 ```
 
 app.js:
+
 ```javascript
 require( 'console-stamp' )( console );  // to add timestamp in logs
 
@@ -1396,8 +1474,9 @@ app.listen(80);
 ! Be aware of literal evaluation with use of ` character to surround mongodb connection URL instead of ' character like before.
 
 To test, type below command in a terminal and refresh Internet browser's page at 'localhost' address:
+
 ```console
-$ docker-compose up
+docker-compose up
 ..
 server_1  | [02.01.2022 20:32.25.069] [LOG]   {
 server_1  |   NODE_VERSION: '17.3.0',
@@ -1423,7 +1502,8 @@ Specify containers up priority order (depends_on).
 E.g. in our application we want that server (Node.js application) start only once database (MongoDB) container is up.
 
 docker-compose.yml:
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -1458,8 +1538,9 @@ volumes:
 ```
 
 In a terminal, type below command and you may observe, in logs, that, first, we have database logs, then server logs:
+
 ```console
-$ docker-compose up
+docker-compose up
 
 Attaching to db_1, server_1
 db_1      | ..
@@ -1474,6 +1555,7 @@ server_1  | ..
 ### Restart
 
 restart:  
+
 - **"no"** (between quotes because without it has a yaml signification), default value, never restart automatically.  
 - **always** restart if container stop from inside or Docker daemon restart, but not with a 'docker-compose stop' command.  
 - **on-failure** restart container only on quit with error code.  
@@ -1481,6 +1563,7 @@ restart:
 
 To test it we add a '/err' route to the server to exit the process (process.exit(errorCode)).  
 app.js:
+
 ```javascript
 require( 'console-stamp' )( console );  // to add timestamp in logs
 
@@ -1524,7 +1607,8 @@ app.listen(80);
 
 For testing purpose (different restart modes) avoid using nodemon.  
 Dockerfile:
-```
+
+```text
 FROM node:alpine
 WORKDIR /app
 COPY ./package.json .
@@ -1535,15 +1619,17 @@ CMD ["node", "src/app.js"]
 ```
 
 Terminal:
+
 ```console
-$ docker-compose down
-$ docker-compose build --no-cache
+docker-compose down
+docker-compose build --no-cache
 ```
 
 #### no
 
 docker-compose.yml (restart: "no"):
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -1579,17 +1665,20 @@ volumes:
 ```
 
 Test:
+
 ```console
-$ docker-compose down
-$ docker-compose up
+docker-compose down
+docker-compose up
 ```
 
 Navigate in Internet browser to:
-```
+
+```text
 http://localhost/err
 ```
 
 You may observe in logs:
+
 ```console
 ..
 server_1 exited with code 0
@@ -1597,8 +1686,9 @@ server_1 exited with code 0
 ```
 
 In another terminal:
+
 ```console
-$ docker ps -a
+docker ps -a
 CONTAINER ID   IMAGE                COMMAND                  CREATED              STATUS
 63c2040a78c6   node-server_server   "docker-entrypoint.s…"   About a minute ago   Exited (0) About a minute ago     
 2d8b795bf1ed   mongo                "docker-entrypoint.s…"   7 minutes ago        Up About a minute
@@ -1609,7 +1699,8 @@ And server isn't available anymore.
 #### always
 
 docker-compose.yml (restart: always):
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -1645,17 +1736,20 @@ volumes:
 ```
 
 Terminal:
+
 ```console
-$ docker-compose up
+docker-compose up
 ```
 
 In an Internet browser, navigate alternatively to following addresses and observe in logs server exit and restart automatically:
-```
+
+```text
 http://localhost/
 http://localhost/err
 ```
 
 Terminal:
+
 ```console
 ..
 server_1  | [03.01.2022 16:24.28.780] [LOG]   CONNECTION DB OK!
@@ -1667,16 +1761,18 @@ server_1  | [03.01.2022 16:27.10.339] [LOG]   CONNECTION DB OK!
 ```
 
 In another terminal:
+
 ```console
-$ docker-compose ps
+docker-compose ps
 NAME                   COMMAND                  SERVICE             STATUS              PORTS
 node-server_db_1       "docker-entrypoint.s…"   db                  running             27017/tcp
 node-server_server_1   "docker-entrypoint.s…"   server              running             0.0.0.0:80->80/tcp
 ```
 
 If we "manually" stop 'server' container from another terminal with below command:
+
 ```console
-$ docker-compose stop server
+docker-compose stop server
 ```
 
 And then restart the Docker daemon, we may observe the 'server' that has restart automatically due to his 'always' restart policy and 'db' is down because, for now, he hasn't any restart policy defined in docker-compose yaml configuration file.
@@ -1684,7 +1780,8 @@ And then restart the Docker daemon, we may observe the 'server' that has restart
 #### on-failure
 
 docker-compose.yml (restart: on-failure):
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -1720,29 +1817,33 @@ volumes:
 ```
 
 Terminal:
+
 ```console
-$ docker-compose down
-$ docker-compose up -d
-$ docker-compose ps
+docker-compose down
+docker-compose up -d
+docker-compose ps
 NAME                   COMMAND                  SERVICE             STATUS              PORTS
 node-server_db_1       "docker-entrypoint.s…"   db                  running             27017/tcp
 node-server_server_1   "docker-entrypoint.s…"   server              running             0.0.0.0:80->80/tcp
 ```
 
 Browse to:
-```
+
+```text
 http://localhost/err
 ```
 
 In app.js exit code is '0' = no error, therefore container does not restart automatically:
+
 ```console
-$ docker-compose ps
+docker-compose ps
 NAME                   COMMAND                  SERVICE             STATUS              PORTS
 node-server_db_1       "docker-entrypoint.s…"   db                  running             27017/tcp
 node-server_server_1   "docker-entrypoint.s…"   server              exited (0)
 ```
 
 Modify exit code of 'err' route to app.js with '1', app.js:
+
 ```javascript
 require( 'console-stamp' )( console );  // to add timestamp in logs
 
@@ -1785,23 +1886,26 @@ app.listen(80);
 ```
 
 Terminal:
+
 ```console
-$ docker-compose down
-$ docker-compose up -d
-$ docker-compose ps
+docker-compose down
+docker-compose up -d
+docker-compose ps
 NAME                   COMMAND                  SERVICE             STATUS              PORTS
 node-server_db_1       "docker-entrypoint.s…"   db                  running             27017/tcp
 node-server_server_1   "docker-entrypoint.s…"   server              running             0.0.0.0:80->80/tcp
 ```
 
 Browse to:
-```
+
+```text
 http://localhost/err
 ```
 
 In app.js exit code is '1' = error, therefore container restart automatically:
+
 ```console
-$ docker-compose ps
+docker-compose ps
 NAME                   COMMAND                  SERVICE             STATUS              PORTS
 node-server_db_1       "docker-entrypoint.s…"   db                  running             27017/tcp
 node-server_server_1   "docker-entrypoint.s…"   server              running             0.0.0.0:80->80/tcp
@@ -1812,7 +1916,8 @@ node-server_server_1   "docker-entrypoint.s…"   server              running   
 Will always restart except if stopped "manually" with 'docker-compose stop server', then restart Docker daemon, then stopped 'server' container will not restart.
 
 docker-compose.yml (restart: unless-stopped):
-```
+
+```yaml
 version: '3.8'
 
 services:
@@ -1848,23 +1953,25 @@ volumes:
 ```
 
 Terminal:
+
 ```console
-$ docker-compose down
-$ docker-compose up -d
-$ docker-compose ps
+docker-compose down
+docker-compose up -d
+docker-compose ps
 NAME                   COMMAND                  SERVICE             STATUS              PORTS
 node-server_db_1       "docker-entrypoint.s…"   db                  running             27017/tcp
 node-server_server_1   "docker-entrypoint.s…"   server              running             0.0.0.0:80->80/tcp
-$ docker-compose stop server
-$ docker-compose ps
+docker-compose stop server
+docker-compose ps
 NAME                   COMMAND                  SERVICE             STATUS              PORTS
 node-server_db_1       "docker-entrypoint.s…"   db                  running             27017/tcp
 node-server_server_1   "docker-entrypoint.s…"   server              exited (137)
 ```
 
 Restart Docker daemon, then:
+
 ```console
-$ docker-compose ps
+docker-compose ps
 NAME                   COMMAND                  SERVICE             STATUS              PORTS
 node-server_db_1       "docker-entrypoint.s…"   db                  exited (255)        27017/tcp
 node-server_server_1   "docker-entrypoint.s…"   server              exited (137)
@@ -1873,8 +1980,9 @@ node-server_server_1   "docker-entrypoint.s…"   server              exited (13
 We may observe that 'server' container hasn't restarted automatically due to fact it has been "manually" stopped before Docker daemon restart.
 
 Note that you can change the restart configuration of an already running container by doing:
+
 ```console
-$ docker container update --restart unless-stopped ID
+docker container update --restart unless-stopped ID
 ```
 
 ***
@@ -1882,15 +1990,17 @@ $ docker container update --restart unless-stopped ID
 ## Other commands
 
 First:
+
 ```console
-$ docker-compose up -d
+docker-compose up -d
 ```
 
 ### logs
 
 View output from containers:
+
 ```console
-$ docker-compose logs
+docker-compose logs
 ..
 db_1  | ..
 server_1  | ..
@@ -1898,14 +2008,16 @@ server_1  | ..
 ```
 
 To follow -f option, to show timestamps -t options:
+
 ```console
-$ docker-compose logs -f -t
+docker-compose logs -f -t
 ```
 
 'Ctrl+c' does not stop containers, stop only logs display:
+
 ```console
-$ Ctrl+c
-$ docker-compose ps
+Ctrl+c
+docker-compose ps
 NAME                   COMMAND                  SERVICE             STATUS              PORTS
 node-server_db_1       "docker-entrypoint.s…"   db                  running             27017/tcp
 node-server_server_1   "docker-entrypoint.s…"   server              running             0.0.0.0:80->80/tcp
@@ -1914,49 +2026,56 @@ node-server_server_1   "docker-entrypoint.s…"   server              running   
 ### top
 
 Display the running processes:
+
 ```console
-$ docker-compose top
+docker-compose top
 ```
 
 ### misc
 
 Stop a container:
-```console
-$ docker-compose stop server
 
-$ docker-compose ps
+```console
+docker-compose stop server
+
+docker-compose ps
 NAME                   COMMAND                  SERVICE             STATUS              PORTS
 node-server_db_1       "docker-entrypoint.s…"   db                  running             27017/tcp
 node-server_server_1   "docker-entrypoint.s…"   server              exited (137)
 ```
 
 Remove a stopped container:
-```console
-$ docker-compose rm server
 
-$ docker-compose ps
+```console
+docker-compose rm server
+
+docker-compose ps
 NAME                COMMAND                  SERVICE             STATUS              PORTS
 node-server_db_1    "docker-entrypoint.s…"   db                  running             27017/tcp
 ```
 
 Remove a running container (+ -f to avoid confirm's need):
+
 ```console
-$ docker-compose rm -s server
+docker-compose rm -s server
 ```
 
 Remove anonym volumes belonging to container:
+
 ```console
-$ docker-compose rm -v db
+docker-compose rm -v db
 ```
 
 After removing a container, to get it back (+ -d):
+
 ```console
-$ docker-compose up
+docker-compose up
 ```
 
 Port mapping information and entering ip allowed (0.0.0.0 for all entering ip address allowed):
+
 ```console
-$ docker-compose port server 80
+docker-compose port server 80
 0.0.0.0:80
 ```
 
@@ -1965,8 +2084,9 @@ Means, outside port 80 is mapped to inside port 80 and all ip addresses allowed.
 ### config
 
 Let see environnement variables replaced with found values and configuration that will then be used to build the stack:
+
 ```console
-$ docker-compose config
+docker-compose config
 
 services:
   db:
