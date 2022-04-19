@@ -58,6 +58,7 @@ nav:
                 - '19-value-and-reference': 'javascript/training/03-basis/19-value-and-reference.md'
             - 04-control:
                 - '20-condition': 'javascript/training/04-control/20-condition.md'
+                - '21-ternary-operator': 'javascript/training/04-control/21-ternary-operator.md'
     - Kafka:
         - 'Kafka - 01 - Misc': 'kafka/1-kafka-misc.md'
     - Linux:
