@@ -582,3 +582,21 @@ echo {0..10}
 ```
 
 ***
+
+## Network connection
+
+```console
+(sudo) netstat -tunlp
+```
+
+***
+
+## Search replace
+
+Search and replace in place (-i) all occurrences of each lines in a file:
+
+```console
+sed -i 's/SEARCH/REPLACE/g' filename
+```
+
+***
