@@ -2357,26 +2357,29 @@ Here we want to have file name, cat content and separate result with a new line<
 <p>Be aware to filtered out subfolder by precising some file name pattern (e.g. '*.log', not only '*')</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="go">grep searchedString *.log</span>
 </code></pre></div>
+<p>Output only file name that contain pattern with option -l (that is a lowercase L):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a><span class="go">grep -l searchedString *.log</span>
+</code></pre></div>
 <hr />
 <h2 id="grep-end-of-line-after-match">Grep end of line after match</h2>
 <p><a href="https://stackoverflow.com/questions/20567667/grep-command-to-add-end-line-after-every-match">SRC</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a><span class="go">cat error.log | grep -A 1 -B 1 --group-separator==============\\r\\n &quot;not valid&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a><span class="go">cat error.log | grep -A 1 -B 1 --group-separator==============\\r\\n &quot;not valid&quot;</span>
 </code></pre></div>
 <hr />
 <h2 id="empty-file">Empty file</h2>
 <p>Empty File Content by Redirecting to Null:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a><span class="go">&gt; access.log</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="go">&gt; access.log</span>
 </code></pre></div>
 <hr />
 <h2 id="disk-usage">Disk usage</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="go">df -h</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a><span class="go">df -h</span>
 </code></pre></div>
 <p>Huge file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a><span class="go">sudo du -xh / | grep -P &quot;G\t&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1"></a><span class="go">sudo du -xh / | grep -P &quot;G\t&quot;</span>
 </code></pre></div>
 <hr />
 <h2 id="last-modification-of-a-file">Last modification of a file</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1"></a><span class="go">date -r fileName</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1"></a><span class="go">date -r fileName</span>
 </code></pre></div>
 <hr />
 <h2 id="creation-date-of-a-file">Creation date of a file</h2>
@@ -2387,46 +2390,46 @@ Here we want to have file name, cat content and separate result with a new line<
 <li>Find partition on which current folder belongs to  </li>
 <li>Use file system debugger to find creation date</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1"></a><span class="go">mkdir tmp</span>
-<a id="__codelineno-45-2" name="__codelineno-45-2"></a>
-<a id="__codelineno-45-3" name="__codelineno-45-3"></a><span class="go">cd tmp</span>
-<a id="__codelineno-45-4" name="__codelineno-45-4"></a>
-<a id="__codelineno-45-5" name="__codelineno-45-5"></a><span class="go">touch test</span>
-<a id="__codelineno-45-6" name="__codelineno-45-6"></a>
-<a id="__codelineno-45-7" name="__codelineno-45-7"></a><span class="go">ls -i</span>
-<a id="__codelineno-45-8" name="__codelineno-45-8"></a><span class="go">201769 test</span>
-<a id="__codelineno-45-9" name="__codelineno-45-9"></a>
-<a id="__codelineno-45-10" name="__codelineno-45-10"></a><span class="go">df .</span>
-<a id="__codelineno-45-11" name="__codelineno-45-11"></a><span class="go">Filesystem     1K-blocks     Used Available Use% Mounted on</span>
-<a id="__codelineno-45-12" name="__codelineno-45-12"></a><span class="go">/dev/sdd       263174212 10339304 239396752   5% /</span>
-<a id="__codelineno-45-13" name="__codelineno-45-13"></a>
-<a id="__codelineno-45-14" name="__codelineno-45-14"></a><span class="go">sudo debugfs -R &#39;stat &lt;201769&gt;&#39; /dev/sdd</span>
-<a id="__codelineno-45-15" name="__codelineno-45-15"></a><span class="go">.</span>
-<a id="__codelineno-45-16" name="__codelineno-45-16"></a><span class="go">.</span>
-<a id="__codelineno-45-17" name="__codelineno-45-17"></a><span class="go">debugfs 1.45.5 (07-Jan-2020)</span>
-<a id="__codelineno-45-18" name="__codelineno-45-18"></a><span class="go">.</span>
-<a id="__codelineno-45-19" name="__codelineno-45-19"></a><span class="go">.</span>
-<a id="__codelineno-45-20" name="__codelineno-45-20"></a><span class="go">Filesystem     1K-blocks     Used Available Use% Mounted on</span>
-<a id="__codelineno-45-21" name="__codelineno-45-21"></a><span class="go">/dev/sdd       263174212 10339304 239396752   5% /</span>
-<a id="__codelineno-45-22" name="__codelineno-45-22"></a><span class="go">16:15:36 ✔ oldu:(main)~/git/doc/tmp$ sudo debugfs -R &#39;stat &lt;201769&gt;&#39; /dev/sdd</span>
-<a id="__codelineno-45-23" name="__codelineno-45-23"></a>
-<a id="__codelineno-45-24" name="__codelineno-45-24"></a>
-<a id="__codelineno-45-25" name="__codelineno-45-25"></a><span class="go">Inode: 201769   Type: regular    Mode:  0644   Flags: 0x80000</span>
-<a id="__codelineno-45-26" name="__codelineno-45-26"></a><span class="go">Generation: 333662723    Version: 0x00000000:00000001</span>
-<a id="__codelineno-45-27" name="__codelineno-45-27"></a><span class="go">User:  1000   Group:  1000   Project:     0   Size: 0</span>
-<a id="__codelineno-45-28" name="__codelineno-45-28"></a><span class="go">File ACL: 0</span>
-<a id="__codelineno-45-29" name="__codelineno-45-29"></a><span class="go">Links: 1   Blockcount: 0</span>
-<a id="__codelineno-45-30" name="__codelineno-45-30"></a><span class="go">Fragment:  Address: 0    Number: 0    Size: 0</span>
-<a id="__codelineno-45-31" name="__codelineno-45-31"></a><span class="go"> ctime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022</span>
-<a id="__codelineno-45-32" name="__codelineno-45-32"></a><span class="go"> atime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022</span>
-<a id="__codelineno-45-33" name="__codelineno-45-33"></a><span class="go"> mtime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022</span>
-<a id="__codelineno-45-34" name="__codelineno-45-34"></a><span class="go">crtime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022</span>
-<a id="__codelineno-45-35" name="__codelineno-45-35"></a><span class="go">Size of extra inode fields: 32</span>
-<a id="__codelineno-45-36" name="__codelineno-45-36"></a><span class="go">Inode checksum: 0x38e4efd5</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="go">mkdir tmp</span>
+<a id="__codelineno-46-2" name="__codelineno-46-2"></a>
+<a id="__codelineno-46-3" name="__codelineno-46-3"></a><span class="go">cd tmp</span>
+<a id="__codelineno-46-4" name="__codelineno-46-4"></a>
+<a id="__codelineno-46-5" name="__codelineno-46-5"></a><span class="go">touch test</span>
+<a id="__codelineno-46-6" name="__codelineno-46-6"></a>
+<a id="__codelineno-46-7" name="__codelineno-46-7"></a><span class="go">ls -i</span>
+<a id="__codelineno-46-8" name="__codelineno-46-8"></a><span class="go">201769 test</span>
+<a id="__codelineno-46-9" name="__codelineno-46-9"></a>
+<a id="__codelineno-46-10" name="__codelineno-46-10"></a><span class="go">df .</span>
+<a id="__codelineno-46-11" name="__codelineno-46-11"></a><span class="go">Filesystem     1K-blocks     Used Available Use% Mounted on</span>
+<a id="__codelineno-46-12" name="__codelineno-46-12"></a><span class="go">/dev/sdd       263174212 10339304 239396752   5% /</span>
+<a id="__codelineno-46-13" name="__codelineno-46-13"></a>
+<a id="__codelineno-46-14" name="__codelineno-46-14"></a><span class="go">sudo debugfs -R &#39;stat &lt;201769&gt;&#39; /dev/sdd</span>
+<a id="__codelineno-46-15" name="__codelineno-46-15"></a><span class="go">.</span>
+<a id="__codelineno-46-16" name="__codelineno-46-16"></a><span class="go">.</span>
+<a id="__codelineno-46-17" name="__codelineno-46-17"></a><span class="go">debugfs 1.45.5 (07-Jan-2020)</span>
+<a id="__codelineno-46-18" name="__codelineno-46-18"></a><span class="go">.</span>
+<a id="__codelineno-46-19" name="__codelineno-46-19"></a><span class="go">.</span>
+<a id="__codelineno-46-20" name="__codelineno-46-20"></a><span class="go">Filesystem     1K-blocks     Used Available Use% Mounted on</span>
+<a id="__codelineno-46-21" name="__codelineno-46-21"></a><span class="go">/dev/sdd       263174212 10339304 239396752   5% /</span>
+<a id="__codelineno-46-22" name="__codelineno-46-22"></a><span class="go">16:15:36 ✔ oldu:(main)~/git/doc/tmp$ sudo debugfs -R &#39;stat &lt;201769&gt;&#39; /dev/sdd</span>
+<a id="__codelineno-46-23" name="__codelineno-46-23"></a>
+<a id="__codelineno-46-24" name="__codelineno-46-24"></a>
+<a id="__codelineno-46-25" name="__codelineno-46-25"></a><span class="go">Inode: 201769   Type: regular    Mode:  0644   Flags: 0x80000</span>
+<a id="__codelineno-46-26" name="__codelineno-46-26"></a><span class="go">Generation: 333662723    Version: 0x00000000:00000001</span>
+<a id="__codelineno-46-27" name="__codelineno-46-27"></a><span class="go">User:  1000   Group:  1000   Project:     0   Size: 0</span>
+<a id="__codelineno-46-28" name="__codelineno-46-28"></a><span class="go">File ACL: 0</span>
+<a id="__codelineno-46-29" name="__codelineno-46-29"></a><span class="go">Links: 1   Blockcount: 0</span>
+<a id="__codelineno-46-30" name="__codelineno-46-30"></a><span class="go">Fragment:  Address: 0    Number: 0    Size: 0</span>
+<a id="__codelineno-46-31" name="__codelineno-46-31"></a><span class="go"> ctime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022</span>
+<a id="__codelineno-46-32" name="__codelineno-46-32"></a><span class="go"> atime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022</span>
+<a id="__codelineno-46-33" name="__codelineno-46-33"></a><span class="go"> mtime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022</span>
+<a id="__codelineno-46-34" name="__codelineno-46-34"></a><span class="go">crtime: 0x624da077:74d33a00 -- Wed Apr  6 16:15:19 2022</span>
+<a id="__codelineno-46-35" name="__codelineno-46-35"></a><span class="go">Size of extra inode fields: 32</span>
+<a id="__codelineno-46-36" name="__codelineno-46-36"></a><span class="go">Inode checksum: 0x38e4efd5</span>
 </code></pre></div>
 <hr />
 <h2 id="since-when-a-process-run">Since when a process run</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="go">ps -p pid -o etime</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1"></a><span class="go">ps -p pid -o etime</span>
 </code></pre></div>
 <p>Then use this <a href="https://www.timeanddate.com/date/timeduration.html?">online tool</a> to calculate time between above result and now.</p>
 <hr />
@@ -2437,35 +2440,35 @@ Here we want to have file name, cat content and separate result with a new line<
 <li>number of fd opened for pid  </li>
 <li>max limit of opened fd for pid</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1"></a><span class="go">df -H</span>
-<a id="__codelineno-47-2" name="__codelineno-47-2"></a><span class="go">ps ax | grep processName</span>
-<a id="__codelineno-47-3" name="__codelineno-47-3"></a><span class="go">sudo ls /proc/28043/fd | wc -l</span>
-<a id="__codelineno-47-4" name="__codelineno-47-4"></a><span class="go">sudo grep &quot;Max open files&quot; /proc/28043/limits | awk &#39;{ print $4; }&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="go">df -H</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2"></a><span class="go">ps ax | grep processName</span>
+<a id="__codelineno-48-3" name="__codelineno-48-3"></a><span class="go">sudo ls /proc/28043/fd | wc -l</span>
+<a id="__codelineno-48-4" name="__codelineno-48-4"></a><span class="go">sudo grep &quot;Max open files&quot; /proc/28043/limits | awk &#39;{ print $4; }&#39;</span>
 </code></pre></div>
 <hr />
 <h2 id="copy-filtered-file-list">Copy filtered file list</h2>
 <p>Copy (for move replace below cp by mv) grep"ed" filtered files list to another folder.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="go">ls | grep pattern1 | grep pattern2 | ... | xargs cp -t /destinationFolder</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1"></a><span class="go">ls | grep pattern1 | grep pattern2 | ... | xargs cp -t /destinationFolder</span>
 </code></pre></div>
 <hr />
 <h2 id="add-prefix-to-file-names-list">Add prefix to file names list</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1"></a><span class="go">for f in * ; do mv -- &quot;$f&quot; &quot;PRE_$f&quot; ; done</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1"></a><span class="go">for f in * ; do mv -- &quot;$f&quot; &quot;PRE_$f&quot; ; done</span>
 </code></pre></div>
 <hr />
 <h2 id="curly-braces">Curly braces</h2>
 <p>Using braces to build a sequence.</p>
 <p><a href="https://www.linux.com/topic/desktop/all-about-curly-braces-bash/">All about {Curly Braces} in Bash</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1"></a><span class="go">echo {0..10}</span>
-<a id="__codelineno-50-2" name="__codelineno-50-2"></a><span class="go">0 1 2 3 4 5 6 7 8 9 10</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1"></a><span class="go">echo {0..10}</span>
+<a id="__codelineno-51-2" name="__codelineno-51-2"></a><span class="go">0 1 2 3 4 5 6 7 8 9 10</span>
 </code></pre></div>
 <hr />
 <h2 id="network-connection">Network connection</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1"></a><span class="gp gp-VirtualEnv">(sudo)</span> <span class="go">netstat -tunlp</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1"></a><span class="gp gp-VirtualEnv">(sudo)</span> <span class="go">netstat -tunlp</span>
 </code></pre></div>
 <hr />
 <h2 id="search-replace">Search replace</h2>
 <p>Search (s) and replace in place (-i) all occurrences (g) of each lines in a file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1"></a><span class="go">sed -i &#39;s/SEARCH/REPLACE/g&#39; filename</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1"></a><span class="go">sed -i &#39;s/SEARCH/REPLACE/g&#39; filename</span>
 </code></pre></div>
 <hr />
 
