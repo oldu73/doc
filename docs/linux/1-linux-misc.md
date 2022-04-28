@@ -593,7 +593,7 @@ echo {0..10}
 
 ## Search replace
 
-Search and replace in place (-i) all occurrences of each lines in a file:
+Search (s) and replace in place (-i) all occurrences (g) of each lines in a file:
 
 ```console
 sed -i 's/SEARCH/REPLACE/g' filename
