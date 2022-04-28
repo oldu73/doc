@@ -432,6 +432,12 @@ Be aware to filtered out subfolder by precising some file name pattern (e.g. '\*
 grep searchedString *.log
 ```
 
+Output only file name that contain pattern with option -l (that is a lowercase L):
+
+```console
+grep -l searchedString *.log
+```
+
 ***
 
 ## Grep end of line after match
