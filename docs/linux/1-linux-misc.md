@@ -606,3 +606,11 @@ sed -i 's/SEARCH/REPLACE/g' filename
 ```
 
 ***
+
+## Add new line after delimiter
+
+```console
+cat someFile | tr ',' '\n' > someOtherFile
+```
+
+***

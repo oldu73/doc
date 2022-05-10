@@ -59,6 +59,8 @@ nav:
             - 04-control:
                 - '20-condition': 'javascript/training/04-control/20-condition.md'
                 - '21-ternary-operator': 'javascript/training/04-control/21-ternary-operator.md'
+    - JMeter:
+        - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
         - 'Kafka - 01 - Misc': 'kafka/1-kafka-misc.md'
     - Linux:
