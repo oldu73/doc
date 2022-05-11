@@ -2,7 +2,7 @@
 
 ***
 
-## Basic operations (CRUD)
+## Basic operations (CRUD and more)
 
 Basic operations from command line interface ([source](https://auth0.com/blog/introduction-to-redis-install-cli-commands-and-data-types/)).
 
@@ -62,11 +62,9 @@ redis-cli monitor
 exit
 ```
 
-***
-
 ### Remove all
 
-To remove all the keys of all the existing database, run:
+To remove all keys of all existing databases, run:
 
 ```console
 redis-cli FLUSHALL
