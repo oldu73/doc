@@ -2,7 +2,7 @@
 
 ***
 
-## Basic operations (CRUD and more)
+## Basic operations
 
 Basic operations from command line interface ([source](https://auth0.com/blog/introduction-to-redis-install-cli-commands-and-data-types/)).
 
