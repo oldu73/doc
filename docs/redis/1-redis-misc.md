@@ -63,3 +63,13 @@ exit
 ```
 
 ***
+
+### Remove all
+
+To remove all the keys of all the existing database, run:
+
+```console
+redis-cli FLUSHALL
+```
+
+***
