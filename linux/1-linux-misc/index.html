@@ -1532,6 +1532,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#find-file" class="md-nav__link">
+    Find file
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2131,6 +2138,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#find-file" class="md-nav__link">
+    Find file
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2535,6 +2549,11 @@ Here we want to have file name, cat content and separate result with a new line<
 <hr />
 <h2 id="add-new-line-after-delimiter">Add new line after delimiter</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1"></a><span class="go">cat someFile | tr &#39;,&#39; &#39;\n&#39; &gt; someOtherFile</span>
+</code></pre></div>
+<hr />
+<h2 id="find-file">Find file</h2>
+<p>Find file everywhere</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1"></a><span class="go">find / -type f -iname &quot;foo*txt&quot;</span>
 </code></pre></div>
 <hr />
 
