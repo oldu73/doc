@@ -614,3 +614,13 @@ cat someFile | tr ',' '\n' > someOtherFile
 ```
 
 ***
+
+## Find file
+
+Find file everywhere
+
+```console
+find / -type f -iname "foo*txt"
+```
+
+***
