@@ -76,3 +76,23 @@ Ctrl+K+U
 A common way to add more cursors is with **Shift+Alt+Down** or **Shift+Alt+Up** that insert cursors below or above.
 
 ***
+
+## Open from terminal
+
+To open a file in VS Code editor from integrated terminal:
+
+```console
+code -r fileName
+```
+
+***
+
+## Open an other instance
+
+To open an other instance (from VS Code integrated terminal) or a VS Code instance from another terminal:
+
+```console
+code .
+```
+
+***
