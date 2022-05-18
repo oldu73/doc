@@ -407,10 +407,10 @@ cat test.txt | sort | uniq -c | sort
       3 22
 ```
 
-revert sorted output
+revert sorted output, numeric value (-n) otherwise it's alphabetically (1.. 10.. 100.. then 2.. 20.., etc.)
 
 ```console
-cat test.txt | sort | uniq -c | sort -r
+cat test.txt | sort | uniq -c | sort -n -r
       3 22
       2 71
       2 1
