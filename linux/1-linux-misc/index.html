@@ -2459,8 +2459,8 @@ Here we want to have file name, cat content and separate result with a new line<
 <a id="__codelineno-37-7" name="__codelineno-37-7"></a><span class="go">      2 71</span>
 <a id="__codelineno-37-8" name="__codelineno-37-8"></a><span class="go">      3 22</span>
 </code></pre></div>
-<p>revert sorted output</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="go">cat test.txt | sort | uniq -c | sort -r</span>
+<p>revert sorted output, numeric value (-n) otherwise it's alphabetically (1.. 10.. 100.. then 2.. 20.., etc.)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="go">cat test.txt | sort | uniq -c | sort -n -r</span>
 <a id="__codelineno-38-2" name="__codelineno-38-2"></a><span class="go">      3 22</span>
 <a id="__codelineno-38-3" name="__codelineno-38-3"></a><span class="go">      2 71</span>
 <a id="__codelineno-38-4" name="__codelineno-38-4"></a><span class="go">      2 1</span>
