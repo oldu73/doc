@@ -22,7 +22,7 @@ Console code block in markdown file:
 Ctrl+space, then select fenced codeblock, then select console
 
 ```console
-$ ...
+...
 ```
 
 ***
