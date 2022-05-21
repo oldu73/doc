@@ -16,7 +16,7 @@ The Math object is a native object whose methods and properties allow the use of
 
 - Literal  
 - With Number() function  
-- With a constructor
+- With a constructor (new)
 
 ```js
 const myNumber = 45; // literal declaration
