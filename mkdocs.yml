@@ -62,6 +62,8 @@ nav:
                 - '22-switch': 'javascript/training/04-control/22-switch.md'
                 - '23-for': 'javascript/training/04-control/23-for.md'
                 - '24-while': 'javascript/training/04-control/24-while.md'
+            - 05-number:
+                - '25-introduction': 'javascript/training/05-number/25-introduction.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
