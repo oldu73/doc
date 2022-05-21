@@ -61,6 +61,7 @@ nav:
                 - '21-ternary-operator': 'javascript/training/04-control/21-ternary-operator.md'
                 - '22-switch': 'javascript/training/04-control/22-switch.md'
                 - '23-for': 'javascript/training/04-control/23-for.md'
+                - '24-while': 'javascript/training/04-control/24-while.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
