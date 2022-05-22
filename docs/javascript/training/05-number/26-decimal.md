@@ -12,6 +12,8 @@ const dec = 15.45;
 console.log(dec); // 15.45
 ```
 
+***
+
 ## Common case
 
 Due to how decimal number are stored as fraction, sometimes there's a little approximate:
