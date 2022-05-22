@@ -64,6 +64,7 @@ nav:
                 - '24-while': 'javascript/training/04-control/24-while.md'
             - 05-number:
                 - '25-introduction': 'javascript/training/05-number/25-introduction.md'
+                - '26-decimal': 'javascript/training/05-number/26-decimal.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
