@@ -78,6 +78,8 @@ nav:
     - Microsoft:
         - Excel:
             - 'Excel - 01 - Misc': 'microsoft/excel/1-excel-misc.md'
+        - Windows:
+            - 'Windows - 01 - Misc': 'microsoft/windows/1-windows-misc.md'
     - MkDocs:
         - 'MkDocs - Misc': 'mkdocs/mkdocs.md'
     - MongoDB:
@@ -86,8 +88,6 @@ nav:
         - 'Redis - 01 - Misc': 'redis/1-redis-misc.md'
     - VS Code:
         - 'VS Code - Misc': 'vscode/vscode.md'
-    - Windows:
-        - 'Windows - Misc': 'windows/windows.md'
 
 # $ mkdocs build
 # $ mkdocs gh-deploy

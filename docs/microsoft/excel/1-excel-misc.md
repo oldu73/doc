@@ -31,6 +31,6 @@ The macro is then stored in a file 'PERSONAL.XLSB' path 'C:\Users\user\AppData\R
 
 You may edit macros directly in this file.
 
-From another workbook, to allow editing macro, you maybe need to unhide it first (PERSONAL.XLSB) in View tab - unhide.
+From another workbook, to allow editing macro, you maybe need to unhide it first (PERSONAL.XLSB) in View tab - Unhide.
 
 ***
