@@ -75,6 +75,9 @@ nav:
         - 'Kafka - 01 - Misc': 'kafka/1-kafka-misc.md'
     - Linux:
         - 'Linux - 01 - Misc': 'linux/1-linux-misc.md'
+    - Microsoft:
+        - Excel:
+            - 'Excel - 01 - Misc': 'microsoft/excel/1-excel-misc.md'
     - MkDocs:
         - 'MkDocs - Misc': 'mkdocs/mkdocs.md'
     - MongoDB:
