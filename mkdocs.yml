@@ -69,6 +69,7 @@ nav:
                 - '26-decimal': 'javascript/training/05-number/26-decimal.md'
                 - '27-global-method': 'javascript/training/05-number/27-global-method.md'
                 - '28-number-method': 'javascript/training/05-number/28-number-method.md'
+                - '29-math-object': 'javascript/training/05-number/29-math-object.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
