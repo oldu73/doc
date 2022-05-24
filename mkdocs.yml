@@ -70,6 +70,8 @@ nav:
                 - '27-global-method': 'javascript/training/05-number/27-global-method.md'
                 - '28-number-method': 'javascript/training/05-number/28-number-method.md'
                 - '29-math-object': 'javascript/training/05-number/29-math-object.md'
+            - 06-string:
+                - '30-introduction': 'javascript/training/06-string/30-introduction.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
@@ -77,10 +79,10 @@ nav:
     - Linux:
         - 'Linux - 01 - Misc': 'linux/1-linux-misc.md'
     - Microsoft:
-        - Excel:
-            - 'Excel - 01 - Misc': 'microsoft/excel/1-excel-misc.md'
         - Windows:
             - 'Windows - 01 - Misc': 'microsoft/windows/1-windows-misc.md'
+        - WSL:
+            - 'WSL - 01 - Misc': 'microsoft/wsl/1-wsl-misc.md'
     - MkDocs:
         - 'MkDocs - Misc': 'mkdocs/mkdocs.md'
     - MongoDB:
