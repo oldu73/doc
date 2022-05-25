@@ -8,11 +8,11 @@
 
 Update boolean field with Chrome plugin ElasticSearch Head
 
-local: http://localhost:9200/
+local: <http://localhost:9200/>
 
 Other request tab
 
-URL http://localhost:9200/index/doc/id
+URL <http://localhost:9200/index/doc/id>
 
 to check
 
@@ -29,12 +29,14 @@ request _update POST
 Browse to Dev Tools, Console
 
 to get:
-```
+
+```txt
 GET _index/_type/_id
 ```
 
 to update:
-```
+
+```txt
 POST _index/_type/_id/_update
 {
     "doc": {
@@ -44,6 +46,23 @@ POST _index/_type/_id/_update
         or
         "field":false
     }
+}
+```
+
+***
+
+## Retrieve index
+
+Retrieve to which index belongs an id, in Kibana 5.6 Dev Tools:
+
+```txt
+GET /*/_search
+{
+  "query": {
+    "match": {
+      "_id": "db37..-..-..-..-..9a117d83"
+    }
+  }
 }
 ```
 
