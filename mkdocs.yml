@@ -73,6 +73,7 @@ nav:
             - 06-string:
                 - '30-introduction': 'javascript/training/06-string/30-introduction.md'
                 - '31-template-literals': 'javascript/training/06-string/31-template-literals.md'
+                - '32-index-length': 'javascript/training/06-string/32-index-length.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
