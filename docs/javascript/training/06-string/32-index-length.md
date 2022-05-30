@@ -38,6 +38,8 @@ console.log(a[6]); // !
 console.log(a[8]); // �
 ```
 
+For emoji at index 8 output = '�' due to 32 bits encoded char and a[8] represent the 16 first bits of the character which do not have an Unicode significant value.
+
 ***
 
 ## Length
@@ -61,6 +63,8 @@ console.log(a[a.length - 1]); // t
 ```
 
 ## String object
+
+With a string object we may retrieve each characters with their respective index and also the length property.
 
 ```js
 const b = new String('test');
