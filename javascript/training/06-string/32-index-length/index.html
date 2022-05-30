@@ -13,7 +13,7 @@
     
     
       
-        <title>30-introduction - Doc</title>
+        <title>32-index-length - Doc</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#30-introduction" class="md-skip">
+        <a href="#32-index-length" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              30-introduction
+              32-index-length
             
           </span>
         </div>
@@ -1265,6 +1265,34 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../30-introduction/" class="md-nav__link">
+        30-introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-template-literals/" class="md-nav__link">
+        31-template-literals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -1277,12 +1305,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          30-introduction
+          32-index-length
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        30-introduction
+        32-index-length
       </a>
       
         
@@ -1307,38 +1335,38 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    Index
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#length" class="md-nav__link">
+    Length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#last-char-of-a-sring" class="md-nav__link">
+    Last char of a sring
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string-object" class="md-nav__link">
+    String object
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../31-template-literals/" class="md-nav__link">
-        31-template-literals
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../32-index-length/" class="md-nav__link">
-        32-index-length
-      </a>
     </li>
   
 
@@ -1861,6 +1889,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    Index
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#length" class="md-nav__link">
+    Length
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#last-char-of-a-sring" class="md-nav__link">
+    Last char of a sring
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string-object" class="md-nav__link">
+    String object
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1874,33 +1930,57 @@
               
                 
 
-<h1 id="30-introduction">30-introduction</h1>
+<h1 id="32-index-length">32-index-length</h1>
 <hr />
 <h2 id="introduction">Introduction</h2>
-<p>Introduction to strings, JS primitive type.</p>
-<p><a href="https://buzut.net/cours/computer-science/encodage-du-texte-en-unicode">Course on Unicode text encoding (french)</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span><span class="p">;</span> <span class="c1">// Literal</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// hello</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">);</span>  <span class="c1">// Through special constructor function String()</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>                            <span class="c1">// Convert anything to a string</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// hello</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="kd">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">);</span>  <span class="c1">// Constructor function with new operator</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>                                <span class="c1">// Create an object that contain a string primitive</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span> <span class="c1">// String {&#39;hello&#39;}</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="kd">const</span> <span class="nx">d</span> <span class="o">=</span> <span class="s2">&quot;hello &#39;world&#39;&quot;</span><span class="p">;</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">d</span><span class="p">);</span> <span class="c1">// hello &#39;world&#39;</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="kd">const</span> <span class="nx">e</span> <span class="o">=</span> <span class="s1">&#39;hello \&#39;world\&#39;&#39;</span><span class="p">;</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">d</span><span class="p">);</span> <span class="c1">// hello &#39;world&#39;</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="c1">// \n = new line, \t = tab</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="kd">const</span> <span class="nx">f</span> <span class="o">=</span> <span class="s1">&#39;hello\n&#39;</span> <span class="o">+</span> <span class="s1">&#39;\tworld&#39;</span><span class="p">;</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">f</span><span class="p">);</span> <span class="c1">// hello</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a>                <span class="c1">//     world</span>
+<p>Index and length properties on string.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// 4</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mf">1</span><span class="p">]);</span> <span class="c1">// e</span>
+</code></pre></div>
+<hr />
+<h2 id="index">Index</h2>
+<p>[#] retrieve character at given index like for an array:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span> <span class="c1">// t</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mf">1</span><span class="p">]);</span> <span class="c1">// e</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mf">2</span><span class="p">]);</span> <span class="c1">// s</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mf">3</span><span class="p">]);</span> <span class="c1">// t</span>
+</code></pre></div>
+<p>Another sample:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="s1">&#39;Hello ! 😀&#39;</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span> <span class="c1">// H</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mf">6</span><span class="p">]);</span> <span class="c1">// !</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mf">8</span><span class="p">]);</span> <span class="c1">// �</span>
+</code></pre></div>
+<hr />
+<h2 id="length">Length</h2>
+<p>Return string length:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// 4</span>
+</code></pre></div>
+<hr />
+<h2 id="last-char-of-a-sring">Last char of a sring</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mf">1</span><span class="p">]);</span> <span class="c1">// t</span>
+</code></pre></div>
+<h2 id="string-object">String object</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>String {&#39;test&#39;}
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>0: &quot;t&quot;
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>1: &quot;e&quot;
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>2: &quot;s&quot;
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>3: &quot;t&quot;
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>length: 4
 </code></pre></div>
 <hr />
 
@@ -1916,7 +1996,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../05-number/29-math-object/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 29-math-object" rel="prev">
+        <a href="../31-template-literals/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 31-template-literals" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1925,20 +2005,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              29-math-object
+              31-template-literals
             </div>
           </div>
         </a>
       
       
         
-        <a href="../31-template-literals/" class="md-footer__link md-footer__link--next" aria-label="Next: 31-template-literals" rel="next">
+        <a href="../../../../jmeter/1-jmeter-misc/" class="md-footer__link md-footer__link--next" aria-label="Next: JMeter - 01 - Misc" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              31-template-literals
+              JMeter - 01 - Misc
             </div>
           </div>
           <div class="md-footer__button md-icon">
