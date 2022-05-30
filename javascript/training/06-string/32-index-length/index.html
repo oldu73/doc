@@ -1956,6 +1956,7 @@
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mf">6</span><span class="p">]);</span> <span class="c1">// !</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="mf">8</span><span class="p">]);</span> <span class="c1">// �</span>
 </code></pre></div>
+<p>For emoji at index 8 output = '�' due to 32 bits encoded char and a[8] represent the 16 first bits of the character which do not have an Unicode significant value.</p>
 <hr />
 <h2 id="length">Length</h2>
 <p>Return string length:</p>
@@ -1970,6 +1971,7 @@
 <a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mf">1</span><span class="p">]);</span> <span class="c1">// t</span>
 </code></pre></div>
 <h2 id="string-object">String object</h2>
+<p>With a string object we may retrieve each characters with their respective index and also the length property.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2"></a>
 <a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
