@@ -1,4 +1,4 @@
-# 31-template-literals
+# 31-template-literal
 
 ***
 

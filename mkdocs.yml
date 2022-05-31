@@ -72,8 +72,9 @@ nav:
                 - '29-math-object': 'javascript/training/05-number/29-math-object.md'
             - 06-string:
                 - '30-introduction': 'javascript/training/06-string/30-introduction.md'
-                - '31-template-literals': 'javascript/training/06-string/31-template-literals.md'
+                - '31-template-literal': 'javascript/training/06-string/31-template-literal.md'
                 - '32-index-length': 'javascript/training/06-string/32-index-length.md'
+                - '33-method': 'javascript/training/06-string/33-method.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
