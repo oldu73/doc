@@ -76,6 +76,8 @@ nav:
                 - '32-index-length': 'javascript/training/06-string/32-index-length.md'
                 - '33-method': 'javascript/training/06-string/33-method.md'
                 - '34-regex': 'javascript/training/06-string/34-regex.md'
+            - 07-object:
+                - '35-introduction': 'javascript/training/07-object/35-introduction.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
