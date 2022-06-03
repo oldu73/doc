@@ -83,6 +83,7 @@ nav:
     - Kafka:
         - 'Kafka - 01 - Misc': 'kafka/1-kafka-misc.md'
     - Linux:
+        - 'Linux - 00 - Debug': 'linux/0-linux-debug.md'
         - 'Linux - 01 - Misc': 'linux/1-linux-misc.md'
     - Microsoft:
         - Windows:
