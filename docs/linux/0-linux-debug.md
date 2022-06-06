@@ -4,6 +4,8 @@
 
 ## Toolbox
 
+[20 one-line Linux commands to add to your toolbox](https://www.redhat.com/sysadmin/one-line-linux-commands)
+
 ```console
 df // report file system disk space usage
 free // Display amount of free and used memory in the system

@@ -732,3 +732,15 @@ cat file.log | awk -F ';' '{print $1}' | sort | uniq -c | sort -r | head -20
 ```
 
 ***
+
+## Occurrence live
+
+watch - execute a program periodically, showing output full screen
+
+Live occurrences change of column (first in example below '$1') value in [file.log](#occurrence-of-column-value) with ';' separated column values:
+
+```console
+watch -d "awk -F ';' '{print \$1}' file.log | sort | uniq -c | sort -n -r | head -20"
+```
+
+***
