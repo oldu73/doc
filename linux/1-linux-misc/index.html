@@ -1910,6 +1910,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#occurrence-live" class="md-nav__link">
+    Occurrence Live
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2610,6 +2617,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#occurrence-live" class="md-nav__link">
+    Occurrence Live
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3113,6 +3127,12 @@ Here we want to have file name, cat content and separate result with a new line<
 <a id="__codelineno-59-19" name="__codelineno-59-19"></a><span class="go">    331 864394041302482</span>
 <a id="__codelineno-59-20" name="__codelineno-59-20"></a><span class="go">    328 864394040907448</span>
 <a id="__codelineno-59-21" name="__codelineno-59-21"></a><span class="go">    328 864394040892780</span>
+</code></pre></div>
+<hr />
+<h2 id="occurrence-live">Occurrence Live</h2>
+<p>watch - execute a program periodically, showing output full screen</p>
+<p>Live occurrences change of column (first in example below '$1') value in <a href="#occurrence-of-column-value">file.log</a> with ';' separated column values:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1"></a><span class="go">watch -d &quot;awk -F &#39;;&#39; &#39;{print \$1}&#39; file.log | sort | uniq -c | sort -n -r | head -20&quot;</span>
 </code></pre></div>
 <hr />
 
