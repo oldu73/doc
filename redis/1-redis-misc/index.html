@@ -1905,6 +1905,19 @@
     Monitor
   </a>
   
+    <nav class="md-nav" aria-label="Monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitor-spring-session" class="md-nav__link">
+    Monitor spring session
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2077,6 +2090,19 @@
     Monitor
   </a>
   
+    <nav class="md-nav" aria-label="Monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitor-spring-session" class="md-nav__link">
+    Monitor spring session
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2140,12 +2166,17 @@
 <p><a href="https://redis.io/commands/MONITOR">Source</a></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">redis-cli monitor</span>
 </code></pre></div>
+<h4 id="monitor-spring-session">Monitor spring session</h4>
+<p><a href="https://spring.io/projects/spring-session">Spring Session</a></p>
+<p>This is a sample use case where spring sessions are stored in redis and how to monitor them:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">redis-cli -a &lt;redis.password&gt; monitor | grep -e &#39;spring\:session*&#39;</span>
+</code></pre></div>
 <h3 id="quit">Quit</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">exit</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">exit</span>
 </code></pre></div>
 <h3 id="remove-all">Remove all</h3>
 <p>To remove all keys of all existing databases, run:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">redis-cli FLUSHALL</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">redis-cli FLUSHALL</span>
 </code></pre></div>
 <hr />
 
