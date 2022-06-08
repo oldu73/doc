@@ -743,4 +743,6 @@ Live occurrences change of column (first in example below '$1') value in [file.l
 watch -d "awk -F ';' '{print \$1}' file.log | sort | uniq -c | sort -n -r | head -20"
 ```
 
+[Linux Watch Command](https://linuxize.com/post/linux-watch-command/)
+
 ***

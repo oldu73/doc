@@ -56,6 +56,16 @@ keys *
 redis-cli monitor
 ```
 
+#### Monitor spring session
+
+[Spring Session](https://spring.io/projects/spring-session)
+
+This is a sample use case where spring sessions are stored in redis and how to monitor them:
+
+```console
+redis-cli -a <redis.password> monitor | grep -e 'spring\:session*'
+```
+
 ### Quit
 
 ```console
