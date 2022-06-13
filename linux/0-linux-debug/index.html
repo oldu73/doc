@@ -1679,6 +1679,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#log-repartition" class="md-nav__link">
+    Log repartition
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2115,6 +2122,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#log-repartition" class="md-nav__link">
+    Log repartition
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2144,8 +2158,7 @@
 <hr />
 <h2 id="quick-live-log-monitor">Quick live log monitor</h2>
 <h3 id="monitor">Monitor</h3>
-<p>E.g. for ""success" pattern presence in log file</p>
-<p>"success" monitor:</p>
+<p>E.g. for "success" pattern presence in log file</p>
 <p><strong>1st terminal</strong> watch (120s) grep 'success' in 'file.log' and output in 'logsuccess' file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">watch -t -n 120 &#39;({ date; echo &quot;-&quot;; cat file.log | grep success | wc -l; } | tr &quot;\n&quot; &quot; &quot; ; printf &quot;\n&quot;) | tee -a logsuccess&#39;</span>
 </code></pre></div>
@@ -2170,6 +2183,11 @@
 <h4 id="monitor-of-monitor-of-monitor-of-success-monitor">Monitor of Monitor of Monitor of "success" monitor</h4>
 <p><strong>5th terminal</strong> live top processes resource consumption:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">top | grep top</span>
+</code></pre></div>
+<hr />
+<h2 id="log-repartition">Log repartition</h2>
+<p>To see repartition in log file of a matching pattern</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">less + /&lt;searched pattern&gt;</span>
 </code></pre></div>
 <hr />
 
