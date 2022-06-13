@@ -1630,6 +1630,53 @@
     Quick live log monitor
   </a>
   
+    <nav class="md-nav" aria-label="Quick live log monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitor" class="md-nav__link">
+    Monitor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitor-of-monitor" class="md-nav__link">
+    Monitor of monitor
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitor of monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitor-of-success-monitor" class="md-nav__link">
+    Monitor of "success" monitor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitor-of-monitor-of-success-monitor" class="md-nav__link">
+    Monitor of Monitor of "success" monitor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitor-of-monitor-of-monitor-of-success-monitor" class="md-nav__link">
+    Monitor of Monitor of Monitor of "success" monitor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2019,6 +2066,53 @@
     Quick live log monitor
   </a>
   
+    <nav class="md-nav" aria-label="Quick live log monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitor" class="md-nav__link">
+    Monitor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitor-of-monitor" class="md-nav__link">
+    Monitor of monitor
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitor of monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitor-of-success-monitor" class="md-nav__link">
+    Monitor of "success" monitor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitor-of-monitor-of-success-monitor" class="md-nav__link">
+    Monitor of Monitor of "success" monitor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitor-of-monitor-of-monitor-of-success-monitor" class="md-nav__link">
+    Monitor of Monitor of Monitor of "success" monitor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2049,7 +2143,34 @@
 </code></pre></div>
 <hr />
 <h2 id="quick-live-log-monitor">Quick live log monitor</h2>
-<p>..</p>
+<h3 id="monitor">Monitor</h3>
+<p>E.g. for ""success" pattern presence in log file</p>
+<p>"success" monitor:</p>
+<p><strong>1st terminal</strong> watch (120s) grep 'success' in 'file.log' and output in 'logsuccess' file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">watch -t -n 120 &#39;({ date; echo &quot;-&quot;; cat file.log | grep success | wc -l; } | tr &quot;\n&quot; &quot; &quot; ; printf &quot;\n&quot;) | tee -a logsuccess&#39;</span>
+</code></pre></div>
+<p>When done, remove 'logsuccess' file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">rm logsuccess</span>
+</code></pre></div>
+<p><strong>2nd terminal</strong> tailed watch (120s) of 'logsuccess' file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">watch -n 120 -d &#39;cat logsuccess | tail -n $(($LINES - 2))&#39;</span>
+</code></pre></div>
+<h3 id="monitor-of-monitor">Monitor of monitor</h3>
+<p>Prerequisite, PID of current bash session:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">echo $$</span>
+</code></pre></div>
+<h4 id="monitor-of-success-monitor">Monitor of "success" monitor</h4>
+<p><strong>3rd terminal</strong> live top PID:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">top -p &lt;pid1&gt;,&lt;pid2&gt;</span>
+</code></pre></div>
+<h4 id="monitor-of-monitor-of-success-monitor">Monitor of Monitor of "success" monitor</h4>
+<p><strong>4th terminal</strong> log top PID:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">top | grep -E &#39;&lt;pid1&gt;|&lt;pid2&gt;&#39;</span>
+</code></pre></div>
+<h4 id="monitor-of-monitor-of-monitor-of-success-monitor">Monitor of Monitor of Monitor of "success" monitor</h4>
+<p><strong>5th terminal</strong> live top processes resource consumption:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">top | grep top</span>
+</code></pre></div>
 <hr />
 
               
