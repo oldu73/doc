@@ -2158,7 +2158,7 @@
 <hr />
 <h2 id="quick-live-log-monitor">Quick live log monitor</h2>
 <h3 id="monitor">Monitor</h3>
-<p>E.g. for "success" pattern presence in log file</p>
+<p>E.g. for "success" pattern presence in log file.</p>
 <p><strong>1st terminal</strong> watch (120s) grep 'success' in 'file.log' and output in 'logsuccess' file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">watch -t -n 120 &#39;({ date; echo &quot;-&quot;; cat file.log | grep success | wc -l; } | tr &quot;\n&quot; &quot; &quot; ; printf &quot;\n&quot;) | tee -a logsuccess&#39;</span>
 </code></pre></div>
