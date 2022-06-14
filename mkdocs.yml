@@ -82,6 +82,7 @@ nav:
                 - '35-introduction': 'javascript/training/07-object/35-introduction.md'
                 - '36-property': 'javascript/training/07-object/36-property.md'
                 - '37-syntax-shortcut': 'javascript/training/07-object/37-syntax-shortcut.md'
+                - '38-decomposition': 'javascript/training/07-object/38-decomposition.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
