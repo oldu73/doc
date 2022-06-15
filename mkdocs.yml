@@ -34,8 +34,9 @@ nav:
         - 'Git - Misc': 'git/git.md'
     - Google:
         - Chrome:
-            - 'DevTools - 01 - Misc': 'google/chrome/1-devtool-misc.md'
-            - 'Shortcut - 02 - Misc': 'google/chrome//2-shortcut-misc.md'
+            - '0-misc': 'google/chrome/0-misc.md'
+            - '1-devtool': 'google/chrome/1-devtool.md'
+            - '2-shortcut': 'google/chrome//2-shortcut.md'
     - IntelliJ:
         - 'IntelliJ - 01 - Misc': 'intellij/1-intellij-misc.md'
         - 'IntelliJ - 02 - WSL': 'intellij/2-intellij-wsl.md'

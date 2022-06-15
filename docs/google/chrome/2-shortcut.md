@@ -1,4 +1,4 @@
-# Shortcut - 02 - Misc
+# 2-shortcut
 
 Google Chrome miscellaneous shortcuts
 

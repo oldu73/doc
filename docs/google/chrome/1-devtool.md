@@ -1,4 +1,4 @@
-# Devtool - 01 - Misc
+# 1-devtool
 
 Google Chrome DevTools (F12 or Inspect)
 
