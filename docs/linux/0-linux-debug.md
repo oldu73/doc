@@ -86,3 +86,139 @@ less + /<searched pattern>
 ```
 
 ***
+
+## Terminal ring
+
+For long command, terminal ring when finished:
+
+```console
+<long command>; echo -e "\a"
+```
+
+***
+
+## Grep binary file
+
+Grep binary file, or supposed to be (some text files are considered as):
+
+```console
+grep -a <pattern> file
+```
+
+Add -a argument to 'grep' command for processing a binary file as if it were text.
+
+***
+
+## Live network connection
+
+Live log established network connections on a dedidcated port number of a load balancer server and forwarded IP of communication server filtered out:
+
+```console
+watch -d 'netstat -an | grep :50307 | grep ESTABLISHED | grep -v 10.102.2.26'
+```
+
+***
+
+## Log between time range
+
+For logs like in file.log:
+
+```txt
+185.98.28.113: - - [16/Jun/2022:07:30:00 +0000] "GET /...
+```
+
+Logs from 07:30 to 07:40:
+
+```console
+grep -E '(16/Jun/2022:07:3)' file.log
+```
+
+***
+
+## URL by time
+
+Statisitic of requested URL by time (round to minutes), for logs like in file.log:
+
+```txt
+82.146.192.163:- - - [03/Nov/2021:06:25:21 +0000] "GET /base/services/report/type_2/data...
+```
+
+Command, for timestamp catch pattern from first '[' until last ':' (trunc seconds), then catch type of report in URL, from 'report/' until none of \[a-zA-Z0-9_.\], hoping it is a '/':
+
+```console
+cat file.log | sed -n 's/^.*\[\(.*\):[^:].*\/base\/services\/report\/\([a-zA-Z0-9_.]*\)\(.*\)/\1 -> \2/p' | sort | uniq -c | sort -n -r | head -20
+```
+
+Output:
+
+```console
+5 31/May/2022:07:36 -> type_1
+5 31/May/2022:07:24 -> type_2
+5 31/May/2022:07:18 -> type_2
+5 31/May/2022:06:20 -> type_2
+5 31/May/2022:05:21 -> type_2
+5 31/May/2022:04:55 -> type_2
+4 31/May/2022:20:20 -> type_2
+4 31/May/2022:18:41 -> type_2
+4 31/May/2022:12:45 -> type_3
+4 31/May/2022:12:42 -> type_2
+4 31/May/2022:12:35 -> type_3
+4 31/May/2022:11:57 -> type_2
+```
+
+***
+
+## List of requested base URL
+
+file.log:
+
+```txt
+82.146.192.163:- - - [03/Nov/2021:06:25:21 +0000] "GET /base/services/report/type_2/data...
+```
+
+Command:
+
+```console
+grep -a -o -P '(?<=\/base\/services\/report\/).*' file.log | cut -d/ -f1 | sort | uniq
+```
+
+Output:
+
+```txt
+type_1
+type_2
+type_3
+```
+
+***
+
+## Count by minute of base URL
+
+file.log:
+
+```txt
+82.146.192.163:- - - [03/Nov/2021:06:25:21 +0000] "GET /base/services/report/type_2/data...
+```
+
+Command:
+
+```console
+grep -a /base/services/report/ file.log | grep -oP '\[.*\]' | cut -c2- | rev | cut -c11- | rev | sort | uniq -c | sort -n -r | head
+```
+
+Output:
+
+```txt
+11 31/May/2022:12:48
+07 31/May/2022:12:45
+06 31/May/2022:12:44
+05 31/May/2022:12:42
+05 31/May/2022:12:35
+05 31/May/2022:11:57
+05 31/May/2022:07:36
+05 31/May/2022:07:24
+05 31/May/2022:07:18
+05 31/May/2022:06:20
+```
+
+***
