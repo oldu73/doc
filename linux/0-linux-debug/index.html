@@ -1728,6 +1728,41 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#terminal-ring" class="md-nav__link">
+    Terminal ring
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grep-binary-file" class="md-nav__link">
+    Grep binary file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#live-network-connection" class="md-nav__link">
+    Live network connection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-between-time-range" class="md-nav__link">
+    Log between time range
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url-by-time" class="md-nav__link">
+    URL by time
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2171,6 +2206,41 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#terminal-ring" class="md-nav__link">
+    Terminal ring
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grep-binary-file" class="md-nav__link">
+    Grep binary file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#live-network-connection" class="md-nav__link">
+    Live network connection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-between-time-range" class="md-nav__link">
+    Log between time range
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url-by-time" class="md-nav__link">
+    URL by time
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2230,6 +2300,52 @@
 <h2 id="log-repartition">Log repartition</h2>
 <p>To see repartition in log file of a matching pattern</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">less + /&lt;searched pattern&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="terminal-ring">Terminal ring</h2>
+<p>For long command, terminal ring when finished:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">&lt;long command&gt;; echo -e &quot;\a&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="grep-binary-file">Grep binary file</h2>
+<p>Grep binary file, or supposed to be (some text files are considered as):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">grep -a &lt;pattern&gt; file</span>
+</code></pre></div>
+<p>-a Process a binary file as if it were text</p>
+<hr />
+<h2 id="live-network-connection">Live network connection</h2>
+<p>Live log established network connections on a dedidcated port number of a load balancer server and forwarded IP of communication server filtered out:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="go">watch -d &#39;netstat -an | grep :50307 | grep ESTABLISHED | grep -v 10.102.2.26&#39;</span>
+</code></pre></div>
+<hr />
+<h2 id="log-between-time-range">Log between time range</h2>
+<p>For logs like, in file.log:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>185.98.28.113: - - [16/Jun/2022:07:30:00 +0000] &quot;GET /...
+</code></pre></div>
+<p>Logs from 07:30 to 07:40:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="go">grep -E &#39;(16/Jun/2022:07:3)&#39; file.log</span>
+</code></pre></div>
+<hr />
+<h2 id="url-by-time">URL by time</h2>
+<p>Statisitic of requested URL by time (round to minutes), for logs like, in file.log:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>82.146.192.163:- - - [03/Nov/2021:06:25:21 +0000] &quot;GET /base/services/report/type_2/data...
+</code></pre></div>
+<p>Command, for timestamp catch pattern from first '[' until last ':' (trunc seconds), then catch type of report in URL, from 'report/' until none of [a-zA-Z0-9_.], hoping it is a '/':</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="go">cat file.log | sed -n &#39;s/^.*\[\(.*\):[^:].*\/base\/services\/report\/\([a-zA-Z0-9_.]*\)\(.*\)/\1 -&gt; \2/p&#39; | sort | uniq -c | sort -n -r | head -20</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="go">5 31/May/2022:07:36 -&gt; type_1</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="go">5 31/May/2022:07:24 -&gt; type_2</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="go">5 31/May/2022:07:18 -&gt; type_2</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="go">5 31/May/2022:06:20 -&gt; type_2</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="go">5 31/May/2022:05:21 -&gt; type_2</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="go">5 31/May/2022:04:55 -&gt; type_2</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="go">4 31/May/2022:20:20 -&gt; type_2</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="go">4 31/May/2022:18:41 -&gt; type_2</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="go">4 31/May/2022:12:45 -&gt; type_3</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="go">4 31/May/2022:12:42 -&gt; type_2</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="go">4 31/May/2022:12:35 -&gt; type_3</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="go">4 31/May/2022:11:57 -&gt; type_2</span>
 </code></pre></div>
 <hr />
 
