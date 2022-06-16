@@ -2347,7 +2347,7 @@
 </code></pre></div>
 <hr />
 <h2 id="log-between-time-range">Log between time range</h2>
-<p>For logs like, in file.log:</p>
+<p>For logs like in file.log:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>185.98.28.113: - - [16/Jun/2022:07:30:00 +0000] &quot;GET /...
 </code></pre></div>
 <p>Logs from 07:30 to 07:40:</p>
@@ -2355,7 +2355,7 @@
 </code></pre></div>
 <hr />
 <h2 id="url-by-time">URL by time</h2>
-<p>Statisitic of requested URL by time (round to minutes), for logs like, in file.log:</p>
+<p>Statisitic of requested URL by time (round to minutes), for logs like in file.log:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>82.146.192.163:- - - [03/Nov/2021:06:25:21 +0000] &quot;GET /base/services/report/type_2/data...
 </code></pre></div>
 <p>Command, for timestamp catch pattern from first '[' until last ':' (trunc seconds), then catch type of report in URL, from 'report/' until none of [a-zA-Z0-9_.], hoping it is a '/':</p>
