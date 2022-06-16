@@ -1763,6 +1763,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#list-of-requested-base-url" class="md-nav__link">
+    List of requested base URL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#count-by-minute-of-base-url" class="md-nav__link">
+    Count by minute of base URL
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2241,6 +2255,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#list-of-requested-base-url" class="md-nav__link">
+    List of requested base URL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#count-by-minute-of-base-url" class="md-nav__link">
+    Count by minute of base URL
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2346,6 +2374,39 @@
 <a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="go">4 31/May/2022:12:42 -&gt; type_2</span>
 <a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="go">4 31/May/2022:12:35 -&gt; type_3</span>
 <a id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="go">4 31/May/2022:11:57 -&gt; type_2</span>
+</code></pre></div>
+<hr />
+<h2 id="list-of-requested-base-url">List of requested base URL</h2>
+<p>file.log:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>82.146.192.163:- - - [03/Nov/2021:06:25:21 +0000] &quot;GET /base/services/report/type_2/data...
+</code></pre></div>
+<p>Command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="go">grep -a -o -P &#39;(?&lt;=\/base\/services\/report\/).*&#39; file.log | cut -d/ -f1 | sort | uniq</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>type_1
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>type_2
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>type_3
+</code></pre></div>
+<hr />
+<h2 id="count-by-minute-of-base-url">Count by minute of base URL</h2>
+<p>file.log:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>82.146.192.163:- - - [03/Nov/2021:06:25:21 +0000] &quot;GET /base/services/report/type_2/data...
+</code></pre></div>
+<p>Command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="go">grep -a /base/services/report/ file.log | grep -oP &#39;\[.*\]&#39; | cut -c2- | rev | cut -c11- | rev | sort | uniq -c | sort -n -r | head</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>11 31/May/2022:12:48
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>07 31/May/2022:12:45
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a>06 31/May/2022:12:44
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a>05 31/May/2022:12:42
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a>05 31/May/2022:12:35
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a>05 31/May/2022:11:57
+<a id="__codelineno-22-7" name="__codelineno-22-7"></a>05 31/May/2022:07:36
+<a id="__codelineno-22-8" name="__codelineno-22-8"></a>05 31/May/2022:07:24
+<a id="__codelineno-22-9" name="__codelineno-22-9"></a>05 31/May/2022:07:18
+<a id="__codelineno-22-10" name="__codelineno-22-10"></a>05 31/May/2022:06:20
 </code></pre></div>
 <hr />
 
