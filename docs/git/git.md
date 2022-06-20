@@ -39,7 +39,7 @@ git config --edit
 
 ***
 
-## cache token
+## Cache token
 
 to cache token (use token instead of password) (for 15 minutes, by default).
 
@@ -87,6 +87,16 @@ Configure credentials to use the full repository path:
 
 ```console
 git config --global credential.useHttpPath true
+```
+
+***
+
+## Remove tracked folder
+
+For files folder previously tracked and then added to .gitignore:
+
+```console
+git rm -r --cached <folder>
 ```
 
 ***
