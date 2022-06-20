@@ -585,6 +585,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#remove-tracked-folder" class="md-nav__link">
+    Remove tracked folder
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2145,6 +2152,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#remove-tracked-folder" class="md-nav__link">
+    Remove tracked folder
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2204,6 +2218,11 @@
 <p><a href="https://stackoverflow.com/questions/25845963/git-credential-helper-update-password">Source</a></p>
 <p>Configure credentials to use the full repository path:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">git config --global credential.useHttpPath true</span>
+</code></pre></div>
+<hr />
+<h2 id="remove-tracked-folder">Remove tracked folder</h2>
+<p>For files folder previously tracked and then added to .gitignore:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">git rm -r --cached &lt;folder&gt;</span>
 </code></pre></div>
 <hr />
 
