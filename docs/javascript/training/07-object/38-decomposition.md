@@ -50,7 +50,7 @@ console.log(population2, satellite, temperature); // 7000000000 'Moon' {min: -70
 
 ## Rest operator
 
-3 dots (spread operator) to get the rest of decomposed object:
+3 dots '...' (Rest operator) to get the rest of decomposed object:
 
 ```js
 const hearth = {

@@ -86,6 +86,7 @@ nav:
                 - '38-decomposition': 'javascript/training/07-object/38-decomposition.md'
                 - '39-test-existence': 'javascript/training/07-object/39-test-existence.md'
                 - '40-discard-property': 'javascript/training/07-object/40-discard-property.md'
+                - '41-merge-object': 'javascript/training/07-object/41-merge-object.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
