@@ -104,6 +104,8 @@ nav:
         - 'MkDocs - Misc': 'mkdocs/mkdocs.md'
     - MongoDB:
         - 'MongoDB - Misc': 'mongodb/mongodb.md'
+    - OKR:
+        - 'OKR - Rédaction': 'okrmethodology/redaction.md'
     - Redis:
         - 'Redis - 01 - Misc': 'redis/1-redis-misc.md'
     - VS Code:
