@@ -8,7 +8,7 @@ Rédaction des Objectifs et Résultats Clés.
 
 Comment rédiger un OKR ?
 
-Sources:
+Sources :
 
 [Comment rédiger le parfait OKR](https://www.dokr.be/post/r%C3%A9diger-le-parfait-okr)
 
@@ -57,18 +57,18 @@ Un résultats est donc mesurables, par métrique ou jalon:
 
 Métrique:
 
-- Positif : - Passer de 5 à 20 CHF de profit sur le produit X.  
+- Positif : - Passer de 5 à 20 CHF de profit sur le produit X :  
 [X] 05 CHF  
 [X] 10 CHF  
 [\_] 20 CHF
-- Négatif : - Réduire de 7 à 5 % le taux de churn de nos leads.  
+- Négatif : - Réduire de 7 à 5 % le taux de churn de nos leads :  
 [X] 07 CHF  
 [\_] 06 CHF  
 [\_] 05 CHF
-- Seuil : - Maintenir un Net Promoted Score entre +16 et +48.
-[\_] ]-∞;+16[ // ?? not sure ??  
-[X] [16;+48] // ?? not sure ??  
-[\_] ]+48;+∞[ // ?? not sure ??
+- Seuil : - Maintenir un Net Promoted Score entre +16 et +48 (période date 1 -> 3) :  
+[X] 33% - valeur 1 = 32 => OK!, date 1  
+[\_] 33% - valeur 2 = -4 => KO!, date 2  
+[X] 33% - valeur 3 = 19 => OK!, date 3
 
 Jalon (% - résultat produit, du produit total, pas forcément linéaire, certaines phases ont plus de poid que d'autres):
 
