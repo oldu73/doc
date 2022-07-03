@@ -1583,6 +1583,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#for-in" class="md-nav__link">
+    for in
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objectkeys" class="md-nav__link">
+    Object.keys()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objectvalues" class="md-nav__link">
+    Object.values()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objectentries" class="md-nav__link">
+    Object.entries()
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2171,6 +2199,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#for-in" class="md-nav__link">
+    for in
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objectkeys" class="md-nav__link">
+    Object.keys()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objectvalues" class="md-nav__link">
+    Object.values()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objectentries" class="md-nav__link">
+    Object.entries()
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2187,7 +2243,49 @@
 <h1 id="43-iterate">43-iterate</h1>
 <hr />
 <h2 id="introduction">Introduction</h2>
-<p>...</p>
+<p>Iterate over objects.</p>
+<hr />
+<h2 id="for-in">for in</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>  <span class="nx">a</span><span class="o">:</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>  <span class="nx">b</span><span class="o">:</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>  <span class="nx">c</span><span class="o">:</span> <span class="s1">&#39;three&#39;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="p">}</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">for</span> <span class="p">(</span><span class="nx">prop</span> <span class="ow">in</span> <span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">prop</span><span class="p">);</span> <span class="c1">// keys</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">prop</span><span class="p">]);</span> <span class="c1">// values</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="p">}</span>
+</code></pre></div>
+<p>Ouput:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>a
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>one
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>b
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>two
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>c
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>three
+</code></pre></div>
+<hr />
+<h2 id="objectkeys">Object.keys()</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">));</span> <span class="c1">// (3) [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+</code></pre></div>
+<p>Output an array of object's keys.</p>
+<hr />
+<h2 id="objectvalues">Object.values()</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">obj</span><span class="p">));</span> <span class="c1">// (3) [&#39;one&#39;, &#39;two&#39;, &#39;three&#39;]</span>
+</code></pre></div>
+<p>Output an array of object's values.</p>
+<hr />
+<h2 id="objectentries">Object.entries()</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">obj</span><span class="p">));</span>
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>(3) [Array(2), Array(2), Array(2)]
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>0: (2) [&#39;a&#39;, &#39;one&#39;]
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>1: (2) [&#39;b&#39;, &#39;two&#39;]
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>2: (2) [&#39;c&#39;, &#39;three&#39;]
+</code></pre></div>
+<p>Output an array of arrays of object's keys, values.</p>
 <hr />
 
               
