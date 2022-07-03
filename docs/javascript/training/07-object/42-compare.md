@@ -1,4 +1,4 @@
-# 42-compare-object
+# 42-compare
 
 ***
 
