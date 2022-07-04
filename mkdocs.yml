@@ -89,6 +89,7 @@ nav:
                 - '41-merge': 'javascript/training/07-object/41-merge.md'
                 - '42-compare': 'javascript/training/07-object/42-compare.md'
                 - '43-iterate': 'javascript/training/07-object/43-iterate.md'
+                - '44-json': 'javascript/training/07-object/44-json.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
