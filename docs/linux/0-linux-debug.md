@@ -222,3 +222,13 @@ Output:
 ```
 
 ***
+
+## Monitor live file activity
+
+Monitor live file activity (sorted by size) in a folder:
+
+```console
+watch -d 'ls -laS'
+```
+
+***
