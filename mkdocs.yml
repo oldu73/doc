@@ -90,6 +90,9 @@ nav:
                 - '42-compare': 'javascript/training/07-object/42-compare.md'
                 - '43-iterate': 'javascript/training/07-object/43-iterate.md'
                 - '44-json': 'javascript/training/07-object/44-json.md'
+                - '45-copy': 'javascript/training/07-object/45-copy.md'
+            - 08-function:
+                - '46-expression': 'javascript/training/08-function/46-expression.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
