@@ -232,3 +232,23 @@ watch -d 'ls -laS'
 ```
 
 ***
+
+## Filter java stack trace in log
+
+### Quick
+
+Remove "at" lines:
+
+```console
+grep -v '^.*at' debug.log | less
+```
+
+### Long
+
+Remove other line that contain (recurring) pattern:
+
+```console
+cat debug.log | grep -v -E '^.*at|pattern1|pattern2|pattern3' | less
+```
+
+***
