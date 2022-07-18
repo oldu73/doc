@@ -746,3 +746,15 @@ watch -d "awk -F ';' '{print \$1}' file.log | sort | uniq -c | sort -n -r | head
 [Linux Watch Command](https://linuxize.com/post/linux-watch-command/)
 
 ***
+
+## jq
+
+[Command-line JSON processor](https://stedolan.github.io/jq/)
+
+Select a field that contain true and output another field (+ count + sort + head result):
+
+```console
+jq 'select(.fieldThatMayContainTrue|startswith("true"))|.outputField' file.ndjson | sort | uniq -c | sort -n -r | head -50
+```
+
+***
