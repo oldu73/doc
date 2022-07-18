@@ -2165,6 +2165,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#jq" class="md-nav__link">
+    jq
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2920,6 +2927,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#jq" class="md-nav__link">
+    jq
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3431,6 +3445,12 @@ Here we want to have file name, cat content and separate result with a new line<
 <div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1"></a><span class="go">watch -d &quot;awk -F &#39;;&#39; &#39;{print \$1}&#39; file.log | sort | uniq -c | sort -n -r | head -20&quot;</span>
 </code></pre></div>
 <p><a href="https://linuxize.com/post/linux-watch-command/">Linux Watch Command</a></p>
+<hr />
+<h2 id="jq">jq</h2>
+<p><a href="https://stedolan.github.io/jq/">Command-line JSON processor</a></p>
+<p>Select a field that contain true and output another field (+ count + sort + head result):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1"></a><span class="go">jq &#39;select(.fieldThatMayContainTrue|startswith(&quot;true&quot;))|.outputField&#39; file.ndjson | sort | uniq -c | sort -n -r | head -50</span>
+</code></pre></div>
 <hr />
 
               
