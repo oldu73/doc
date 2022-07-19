@@ -758,3 +758,37 @@ jq 'select(.fieldThatMayContainTrue|startswith("true"))|.outputField' file.ndjso
 ```
 
 ***
+
+## Find patterns across multiple lines
+
+Find in file between "abc" AND "efg", in that order.
+
+test.txt:
+
+```txt
+blah blah..
+blah blah..
+blah abc blah
+blah blah..
+blah blah..
+blah blah..
+blah efg blah blah
+blah blah..
+blah blah..
+```
+
+```console
+sed -n '/abc/,/efg/p' test.txt
+```
+
+output:
+
+```txt
+blah abc blah
+blah blah..
+blah blah..
+blah blah..
+blah efg blah blah
+```
+
+***
