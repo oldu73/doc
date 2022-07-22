@@ -59,3 +59,11 @@ Then Shift + Up/Down Arrow(s)
 ```
 
 ***
+
+## Compile and reload changed classes
+
+```txt
+Ctrl + Shift + F9
+```
+
+***
