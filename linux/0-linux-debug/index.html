@@ -1888,13 +1888,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#live-network-connection" class="md-nav__link">
-    Live network connection
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#log-between-time-range" class="md-nav__link">
     Log between time range
   </a>
@@ -1973,6 +1966,20 @@
     <li class="md-nav__item">
       <a href="../1-linux-misc/" class="md-nav__link">
         Linux - 01 - Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-linux-network/" class="md-nav__link">
+        Linux - 02 - Network
       </a>
     </li>
   
@@ -2462,13 +2469,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#live-network-connection" class="md-nav__link">
-    Live network connection
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#log-between-time-range" class="md-nav__link">
     Log between time range
   </a>
@@ -2602,87 +2602,82 @@
 </code></pre></div>
 <p>Add -a argument to 'grep' command for processing a binary file as if it were text.</p>
 <hr />
-<h2 id="live-network-connection">Live network connection</h2>
-<p>Live log established network connections on a dedidcated port number of a load balancer server and forwarded IP of communication server filtered out:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="go">watch -d &#39;netstat -an | grep :50307 | grep ESTABLISHED | grep -v 10.102.2.26&#39;</span>
-</code></pre></div>
-<hr />
 <h2 id="log-between-time-range">Log between time range</h2>
 <p>For logs like in file.log:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>185.98.28.113: - - [16/Jun/2022:07:30:00 +0000] &quot;GET /...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>185.98.28.113: - - [16/Jun/2022:07:30:00 +0000] &quot;GET /...
 </code></pre></div>
 <p>Logs from 07:30 to 07:40:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="go">grep -E &#39;(16/Jun/2022:07:3)&#39; file.log</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="go">grep -E &#39;(16/Jun/2022:07:3)&#39; file.log</span>
 </code></pre></div>
 <hr />
 <h2 id="url-by-time">URL by time</h2>
 <p>Statisitic of requested URL by time (round to minutes), for logs like in file.log:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>82.146.192.163:- - - [03/Nov/2021:06:25:21 +0000] &quot;GET /base/services/report/type_2/data...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>82.146.192.163:- - - [03/Nov/2021:06:25:21 +0000] &quot;GET /base/services/report/type_2/data...
 </code></pre></div>
 <p>Command, for timestamp catch pattern from first '[' until last ':' (trunc seconds), then catch type of report in URL, from 'report/' until none of [a-zA-Z0-9_.], hoping it is a '/':</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="go">cat file.log | sed -n &#39;s/^.*\[\(.*\):[^:].*\/base\/services\/report\/\([a-zA-Z0-9_.]*\)\(.*\)/\1 -&gt; \2/p&#39; | sort | uniq -c | sort -n -r | head -20</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="go">cat file.log | sed -n &#39;s/^.*\[\(.*\):[^:].*\/base\/services\/report\/\([a-zA-Z0-9_.]*\)\(.*\)/\1 -&gt; \2/p&#39; | sort | uniq -c | sort -n -r | head -20</span>
 </code></pre></div>
 <p>Output:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="go">5 31/May/2022:07:36 -&gt; type_1</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="go">5 31/May/2022:07:24 -&gt; type_2</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="go">5 31/May/2022:07:18 -&gt; type_2</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="go">5 31/May/2022:06:20 -&gt; type_2</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="go">5 31/May/2022:05:21 -&gt; type_2</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="go">5 31/May/2022:04:55 -&gt; type_2</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="go">4 31/May/2022:20:20 -&gt; type_2</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="go">4 31/May/2022:18:41 -&gt; type_2</span>
-<a id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="go">4 31/May/2022:12:45 -&gt; type_3</span>
-<a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="go">4 31/May/2022:12:42 -&gt; type_2</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="go">4 31/May/2022:12:35 -&gt; type_3</span>
-<a id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="go">4 31/May/2022:11:57 -&gt; type_2</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="go">5 31/May/2022:07:36 -&gt; type_1</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="go">5 31/May/2022:07:24 -&gt; type_2</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="go">5 31/May/2022:07:18 -&gt; type_2</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="go">5 31/May/2022:06:20 -&gt; type_2</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="go">5 31/May/2022:05:21 -&gt; type_2</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="go">5 31/May/2022:04:55 -&gt; type_2</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="go">4 31/May/2022:20:20 -&gt; type_2</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="go">4 31/May/2022:18:41 -&gt; type_2</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9"></a><span class="go">4 31/May/2022:12:45 -&gt; type_3</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="go">4 31/May/2022:12:42 -&gt; type_2</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="go">4 31/May/2022:12:35 -&gt; type_3</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="go">4 31/May/2022:11:57 -&gt; type_2</span>
 </code></pre></div>
 <hr />
 <h2 id="list-of-requested-base-url">List of requested base URL</h2>
 <p>file.log:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>82.146.192.163:- - - [03/Nov/2021:06:25:21 +0000] &quot;GET /base/services/report/type_2/data...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>82.146.192.163:- - - [03/Nov/2021:06:25:21 +0000] &quot;GET /base/services/report/type_2/data...
 </code></pre></div>
 <p>Command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="go">grep -a -o -P &#39;(?&lt;=\/base\/services\/report\/).*&#39; file.log | cut -d/ -f1 | sort | uniq</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="go">grep -a -o -P &#39;(?&lt;=\/base\/services\/report\/).*&#39; file.log | cut -d/ -f1 | sort | uniq</span>
 </code></pre></div>
 <p>Output:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>type_1
-<a id="__codelineno-19-2" name="__codelineno-19-2"></a>type_2
-<a id="__codelineno-19-3" name="__codelineno-19-3"></a>type_3
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>type_1
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>type_2
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a>type_3
 </code></pre></div>
 <hr />
 <h2 id="count-by-minute-of-base-url">Count by minute of base URL</h2>
 <p>file.log:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>82.146.192.163:- - - [03/Nov/2021:06:25:21 +0000] &quot;GET /base/services/report/type_2/data...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>82.146.192.163:- - - [03/Nov/2021:06:25:21 +0000] &quot;GET /base/services/report/type_2/data...
 </code></pre></div>
 <p>Command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="go">grep -a /base/services/report/ file.log | grep -oP &#39;\[.*\]&#39; | cut -c2- | rev | cut -c11- | rev | sort | uniq -c | sort -n -r | head</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="go">grep -a /base/services/report/ file.log | grep -oP &#39;\[.*\]&#39; | cut -c2- | rev | cut -c11- | rev | sort | uniq -c | sort -n -r | head</span>
 </code></pre></div>
 <p>Output:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a>11 31/May/2022:12:48
-<a id="__codelineno-22-2" name="__codelineno-22-2"></a>07 31/May/2022:12:45
-<a id="__codelineno-22-3" name="__codelineno-22-3"></a>06 31/May/2022:12:44
-<a id="__codelineno-22-4" name="__codelineno-22-4"></a>05 31/May/2022:12:42
-<a id="__codelineno-22-5" name="__codelineno-22-5"></a>05 31/May/2022:12:35
-<a id="__codelineno-22-6" name="__codelineno-22-6"></a>05 31/May/2022:11:57
-<a id="__codelineno-22-7" name="__codelineno-22-7"></a>05 31/May/2022:07:36
-<a id="__codelineno-22-8" name="__codelineno-22-8"></a>05 31/May/2022:07:24
-<a id="__codelineno-22-9" name="__codelineno-22-9"></a>05 31/May/2022:07:18
-<a id="__codelineno-22-10" name="__codelineno-22-10"></a>05 31/May/2022:06:20
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>11 31/May/2022:12:48
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a>07 31/May/2022:12:45
+<a id="__codelineno-21-3" name="__codelineno-21-3"></a>06 31/May/2022:12:44
+<a id="__codelineno-21-4" name="__codelineno-21-4"></a>05 31/May/2022:12:42
+<a id="__codelineno-21-5" name="__codelineno-21-5"></a>05 31/May/2022:12:35
+<a id="__codelineno-21-6" name="__codelineno-21-6"></a>05 31/May/2022:11:57
+<a id="__codelineno-21-7" name="__codelineno-21-7"></a>05 31/May/2022:07:36
+<a id="__codelineno-21-8" name="__codelineno-21-8"></a>05 31/May/2022:07:24
+<a id="__codelineno-21-9" name="__codelineno-21-9"></a>05 31/May/2022:07:18
+<a id="__codelineno-21-10" name="__codelineno-21-10"></a>05 31/May/2022:06:20
 </code></pre></div>
 <hr />
 <h2 id="monitor-live-file-activity">Monitor live file activity</h2>
 <p>Monitor live file activity (sorted by size) in a folder:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="go">watch -d &#39;ls -laS&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="go">watch -d &#39;ls -laS&#39;</span>
 </code></pre></div>
 <hr />
 <h2 id="filter-java-stack-trace-in-log">Filter java stack trace in log</h2>
 <h3 id="quick">Quick</h3>
 <p>Remove "at" lines:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="go">grep -v &#39;^.*at&#39; debug.log | less</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="go">grep -v &#39;^.*at&#39; debug.log | less</span>
 </code></pre></div>
 <h3 id="long">Long</h3>
 <p>Remove other line that contain (recurring) pattern:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="go">cat debug.log | grep -v -E &#39;^.*at|pattern1|pattern2|pattern3&#39; | less</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="go">cat debug.log | grep -v -E &#39;^.*at|pattern1|pattern2|pattern3&#39; | less</span>
 </code></pre></div>
 <hr />
 
