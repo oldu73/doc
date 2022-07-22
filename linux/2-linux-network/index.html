@@ -1847,6 +1847,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#send-raw-data-hex-udp" class="md-nav__link">
+    Send raw data hex UDP
+  </a>
+  
+    <nav class="md-nav" aria-label="Send raw data hex UDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-shot" class="md-nav__link">
+    One shot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    Script
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2270,6 +2297,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#send-raw-data-hex-udp" class="md-nav__link">
+    Send raw data hex UDP
+  </a>
+  
+    <nav class="md-nav" aria-label="Send raw data hex UDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-shot" class="md-nav__link">
+    One shot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    Script
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2291,7 +2345,52 @@
 <hr />
 <h2 id="live-network-connection">Live network connection</h2>
 <p>Live log established network connections on a dedidcated port number of a load balancer server and forwarded IP of communication server filtered out:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">watch -d &#39;netstat -an | grep :50307 | grep ESTABLISHED | grep -v 10.102.2.26&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">watch -d &#39;netstat -an | grep :&lt;port&gt; | grep ESTABLISHED | grep -v &lt;ip&gt;&#39;</span>
+</code></pre></div>
+<hr />
+<h2 id="send-raw-data-hex-udp">Send raw data hex UDP</h2>
+<p>Sending hex raw data through UDP.</p>
+<p>References:</p>
+<p><a href="https://www.computerhope.com/unix/nc.htm#:~:text=option%20is%20given.-,Client/server%20model,-It%20is%20quite">Linux nc command help and examples</a><br />
+<a href="https://www.digitalocean.com/community/tutorials/how-to-use-netcat-to-establish-and-test-tcp-and-udp-connections">How To Use Netcat to Establish and Test TCP and UDP Connections | DigitalOcean</a><br />
+<a href="https://unix.stackexchange.com/questions/82561/convert-a-hex-string-to-binary-and-send-with-netcat#:~:text=%7C%20perl%20%2De%20%27print%20pack%20%22H*%22%2C%20%3CSTDIN%3E%27%20%7C">linux - convert a hex string to binary and send with netcat - Unix &amp; Linux Stack Exchange</a><br />
+<a href="https://www.cyberciti.biz/faq/unix-howto-read-line-by-line-from-file/#:~:text=%23!/bin/bash%0Ainput%3D%22/path/to/txt/file%22%0Awhile%20IFS%3D%20read%20%2Dr%20line%0Ado%0A%20%20echo%20%22%24line%22%0Adone%20%3C%20%22%24input%22">Linux/UNIX: Bash Read a File Line By Line - nixCraft</a><br />
+<a href="https://unix.stackexchange.com/questions/445153/wait-for-keyboard-input-inside-a-while-read-loop#:~:text=the%20loop%2C%20the-,read%20keypress,-reads%20from%20this">shell script - Wait for keyboard input inside a while-read loop - Unix &amp; Linux Stack Exchange</a><br />
+<a href="https://serverfault.com/questions/512722/how-to-automatically-close-netcat-connection-after-data-is-sent#:~:text=echo%20hello%7Cnc-,%2Dw%201,-%2Du%2010.0.30.255%20%2Dp">linux - How to automatically close netcat connection after data is sent? - Server Fault</a><br />
+<a href="https://stackoverflow.com/questions/8467424/echo-newline-in-bash-prints-literal-n#:~:text=Use-,printf,-instead%3A">Echo newline in Bash prints literal \n - Stack Overflow</a><br />
+<a href="https://stackoverflow.com/questions/5974607/shell-magic-wanted-format-output-of-hexdump-in-a-pipe#:~:text=you%20can%20use-,xxd%20%2Dp,-to%20make%20a">perl - Shell magic wanted: format output of hexdump in a pipe - Stack Overflow</a>  </p>
+<h3 id="one-shot">One shot</h3>
+<p>Command line, manual sending, one raw data frame (Like Network Stuff):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">echo -n &quot;830e83f59a73..&quot; | perl -e &#39;print pack &quot;H*&quot;, &lt;STDIN&gt;&#39; | nc -u &lt;ip&gt; &lt;port&gt;</span>
+</code></pre></div>
+<h3 id="script">Script</h3>
+<p>sample (file):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>8308352739096415820f01020102128362d80bb162d80bb11c1e6..
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>8308359739077103745f01020102b2df62d80bb262d80bb11bd9d..
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>..
+</code></pre></div>
+<p>readsample script, chmod +x then ./readsample to execute:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nv">input</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="nb">exec</span> <span class="m">3</span>&lt;<span class="p">&amp;</span><span class="m">0</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="k">while</span> <span class="nv">IFS</span><span class="o">=</span> <span class="nb">read</span> -r line
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="k">do</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>  <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>  <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>  <span class="nb">echo</span> -n <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="p">|</span> perl -e <span class="s1">&#39;print pack &quot;H*&quot;, &lt;STDIN&gt;&#39;</span> <span class="p">|</span> nc -w <span class="m">1</span> -u &lt;ip&gt; &lt;port&gt; <span class="p">|</span> xxd -p
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>  <span class="nb">printf</span> <span class="s1">&#39;\n\nPress &lt;enter&gt; to continue: &#39;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>  <span class="nb">read</span> keypress &lt;<span class="p">&amp;</span><span class="m">3</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a>  <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="k">done</span> &lt; <span class="s2">&quot;</span><span class="nv">$input</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="nb">exec</span> <span class="m">3</span>&lt;<span class="p">&amp;</span>-
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="nb">echo</span> <span class="s1">&#39;Done.&#39;</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
 </code></pre></div>
 <hr />
 
