@@ -109,16 +109,6 @@ Add -a argument to 'grep' command for processing a binary file as if it were tex
 
 ***
 
-## Live network connection
-
-Live log established network connections on a dedidcated port number of a load balancer server and forwarded IP of communication server filtered out:
-
-```console
-watch -d 'netstat -an | grep :50307 | grep ESTABLISHED | grep -v 10.102.2.26'
-```
-
-***
-
 ## Log between time range
 
 For logs like in file.log:

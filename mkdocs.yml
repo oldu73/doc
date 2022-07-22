@@ -100,6 +100,7 @@ nav:
     - Linux:
         - 'Linux - 00 - Debug': 'linux/0-linux-debug.md'
         - 'Linux - 01 - Misc': 'linux/1-linux-misc.md'
+        - 'Linux - 02 - Network': 'linux/2-linux-network.md'
     - Microsoft:
         - Windows:
             - 'Windows - 01 - Misc': 'microsoft/windows/1-windows-misc.md'

@@ -589,14 +589,6 @@ echo {0..10}
 
 ***
 
-## Network connection
-
-```console
-(sudo) netstat -tunlp
-```
-
-***
-
 ## Search replace
 
 Search (s) and replace in place (-i) all occurrences (g) of each lines in a file:
