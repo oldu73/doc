@@ -784,3 +784,11 @@ blah efg blah blah
 ```
 
 ***
+
+## Number of pattern occurrence through files
+
+```console
+grep -c pattern files*
+```
+
+***
