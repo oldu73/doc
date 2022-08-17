@@ -792,3 +792,56 @@ grep -c pattern files*
 ```
 
 ***
+
+## Bash option select
+
+Script template launched with option(s):
+
+optionselect script, chmod +x then ./optionselect to execute:
+
+```sh
+#!/bin/bash
+
+trap 'exit 130' INT
+
+optionwitharg="option with arg = -y arg"
+optionwithoutarg="option without arg = -n"
+
+if [ $# -eq 0 ]; then
+  printf '\n'
+  echo "usage: "$optionwitharg", "$optionwithoutarg
+  printf '\n'
+  echo "e.g.: $ ./optionselect -n -y hello"
+  printf '\n'
+  exit 1
+fi
+
+while getopts "h?y:?n" opt; do
+  case "$opt" in
+    h|\?)
+      echo "help!.. not implemented yet, sorry :("
+      exit 0
+      ;;
+    y)  filter=$OPTARG
+      echo "$OPTARG"
+      ;;
+    n)
+      echo "no arg"
+      ;;
+  esac
+done
+
+shift $((OPTIND-1))
+```
+
+***
+
+## dos2unix
+
+Utility to reformat text files generated under Windows for use under Linux:
+
+```console
+dos2unix file
+```
+
+***
