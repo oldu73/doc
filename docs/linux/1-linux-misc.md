@@ -795,7 +795,7 @@ grep -c pattern files*
 
 ## Bash option select
 
-Script template launched with option(s):
+Script template launched with option(s).
 
 optionselect script, chmod +x then ./optionselect to execute:
 
