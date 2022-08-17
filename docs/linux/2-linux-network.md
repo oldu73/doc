@@ -24,7 +24,7 @@ watch -d 'netstat -an | grep :<port> | grep ESTABLISHED | grep -v <ip>'
 
 Sending hex raw data through UDP.
 
-References:
+### References
 
 [Linux nc command help and examples](https://www.computerhope.com/unix/nc.htm#:~:text=option%20is%20given.-,Client/server%20model,-It%20is%20quite)  
 [How To Use Netcat to Establish and Test TCP and UDP Connections | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-use-netcat-to-establish-and-test-tcp-and-udp-connections)  
@@ -40,10 +40,12 @@ References:
 Command line, manual sending, one raw data frame (Like Network Stuff):
 
 ```console
-echo -n "830e83f59a73.." | perl -e 'print pack "H*", <STDIN>' | nc -u <ip> <port>
+echo -n "830f9d10362f4bc8a1c.." | perl -e 'print pack "H*", <STDIN>' | timeout 0.2 nc -w 1 -u <ip> <port> | xxd -p
 ```
 
-### Script
+### Script straight or line by line
+
+Read file straight forward or line by line.
 
 sample (file):
 
@@ -58,25 +60,84 @@ readsample script, chmod +x then ./readsample to execute:
 ```sh
 #!/bin/bash
 
-input="sample"
-exec 3<&0
+trap 'exit 130' INT
 
-printf '\n'
+modearg="mode arg = -s for straight or -l for line by line"
+filearg="file arg = input file name"
+iparg="ip arg = server IP address"
+portarg="port arg = server port number"
 
-while IFS= read -r line
-do
-  echo "$line"
+if [ $# -eq 0 ]; then
   printf '\n'
-  echo -n "$line" | perl -e 'print pack "H*", <STDIN>' | nc -w 1 -u <ip> <port> | xxd -p
-  printf '\n\nPress <enter> to continue: ' >&2
-  read keypress <&3
+  echo "usage: "$modearg", "$filearg", "$iparg", "$portarg
   printf '\n'
-done < "$input"
-exec 3<&-
+  echo "e.g.: $ ./readsample -s|-l sample 192.168.1.141 50300"
+  printf '\n'
+  exit 1
+fi
+
+input=$2
+ip=$3
+port=$4
 
 printf '\n'
-echo 'Done.'
-printf '\n'
+
+while getopts "h?s?l" opt; do
+  case "$opt" in
+    h|\?)
+      echo "help!.. not implemented yet, sorry :("
+      printf '\n'
+      exit 0
+      ;;
+    s)
+      echo "straight mode.."
+      printf '\n'
+
+      printf '\n'
+
+      while IFS= read -r line
+      do
+        echo "$line"
+        printf '\n'
+        echo -n "$line" | perl -e 'print pack "H*", <STDIN>' | timeout 0.2 nc -w 1 -u "$ip" "$port" | xxd -p
+        printf '\n'
+      done < "$input"
+
+      printf '\n'
+      echo 'Done.'
+      printf '\n'
+
+      exit 0
+      ;;
+    l)
+      echo "line by line mode.."
+      printf '\n'
+
+      printf '\n'
+
+      exec 3<&0
+
+      printf '\n'
+      
+      while IFS= read -r line
+      do
+        echo "$line"
+        printf '\n'
+        echo -n "$line" | perl -e 'print pack "H*", <STDIN>' | timeout 0.2 nc -w 1 -u "$ip" "$port" | xxd -p
+        printf '\n\nPress <enter> to continue: ' >&2
+        read keypress <&3
+        printf '\n'
+      done < "$input"
+      exec 3<&-
+      
+      printf '\n'
+      echo 'Done.'
+      printf '\n'
+
+      exit 0
+      ;;
+  esac
+done
 ```
 
 ***
