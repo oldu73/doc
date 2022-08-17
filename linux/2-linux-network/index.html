@@ -1856,6 +1856,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#one-shot" class="md-nav__link">
     One shot
   </a>
@@ -1863,8 +1870,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#script" class="md-nav__link">
-    Script
+  <a href="#script-straight-or-line-by-line" class="md-nav__link">
+    Script straight or line by line
   </a>
   
 </li>
@@ -2306,6 +2313,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#one-shot" class="md-nav__link">
     One shot
   </a>
@@ -2313,8 +2327,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#script" class="md-nav__link">
-    Script
+  <a href="#script-straight-or-line-by-line" class="md-nav__link">
+    Script straight or line by line
   </a>
   
 </li>
@@ -2350,7 +2364,7 @@
 <hr />
 <h2 id="send-raw-data-hex-udp">Send raw data hex UDP</h2>
 <p>Sending hex raw data through UDP.</p>
-<p>References:</p>
+<h3 id="references">References</h3>
 <p><a href="https://www.computerhope.com/unix/nc.htm#:~:text=option%20is%20given.-,Client/server%20model,-It%20is%20quite">Linux nc command help and examples</a><br />
 <a href="https://www.digitalocean.com/community/tutorials/how-to-use-netcat-to-establish-and-test-tcp-and-udp-connections">How To Use Netcat to Establish and Test TCP and UDP Connections | DigitalOcean</a><br />
 <a href="https://unix.stackexchange.com/questions/82561/convert-a-hex-string-to-binary-and-send-with-netcat#:~:text=%7C%20perl%20%2De%20%27print%20pack%20%22H*%22%2C%20%3CSTDIN%3E%27%20%7C">linux - convert a hex string to binary and send with netcat - Unix &amp; Linux Stack Exchange</a><br />
@@ -2361,9 +2375,10 @@
 <a href="https://stackoverflow.com/questions/5974607/shell-magic-wanted-format-output-of-hexdump-in-a-pipe#:~:text=you%20can%20use-,xxd%20%2Dp,-to%20make%20a">perl - Shell magic wanted: format output of hexdump in a pipe - Stack Overflow</a>  </p>
 <h3 id="one-shot">One shot</h3>
 <p>Command line, manual sending, one raw data frame (Like Network Stuff):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">echo -n &quot;830e83f59a73..&quot; | perl -e &#39;print pack &quot;H*&quot;, &lt;STDIN&gt;&#39; | nc -u &lt;ip&gt; &lt;port&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">echo -n &quot;830f9d10362f4bc8a1c..&quot; | perl -e &#39;print pack &quot;H*&quot;, &lt;STDIN&gt;&#39; | timeout 0.2 nc -w 1 -u &lt;ip&gt; &lt;port&gt; | xxd -p</span>
 </code></pre></div>
-<h3 id="script">Script</h3>
+<h3 id="script-straight-or-line-by-line">Script straight or line by line</h3>
+<p>Read file straight forward or line by line.</p>
 <p>sample (file):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>8308352739096415820f01020102128362d80bb162d80bb11c1e6..
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a>8308359739077103745f01020102b2df62d80bb262d80bb11bd9d..
@@ -2372,25 +2387,84 @@
 <p>readsample script, chmod +x then ./readsample to execute:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nv">input</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="nb">exec</span> <span class="m">3</span>&lt;<span class="p">&amp;</span><span class="m">0</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="k">while</span> <span class="nv">IFS</span><span class="o">=</span> <span class="nb">read</span> -r line
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="k">do</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a>  <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nb">trap</span> <span class="s1">&#39;exit 130&#39;</span> INT
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="nv">modearg</span><span class="o">=</span><span class="s2">&quot;mode arg = -s for straight or -l for line by line&quot;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="nv">filearg</span><span class="o">=</span><span class="s2">&quot;file arg = input file name&quot;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="nv">iparg</span><span class="o">=</span><span class="s2">&quot;ip arg = server IP address&quot;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="nv">portarg</span><span class="o">=</span><span class="s2">&quot;port arg = server port number&quot;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
 <a id="__codelineno-4-11" name="__codelineno-4-11"></a>  <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a>  <span class="nb">echo</span> -n <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="p">|</span> perl -e <span class="s1">&#39;print pack &quot;H*&quot;, &lt;STDIN&gt;&#39;</span> <span class="p">|</span> nc -w <span class="m">1</span> -u &lt;ip&gt; &lt;port&gt; <span class="p">|</span> xxd -p
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a>  <span class="nb">printf</span> <span class="s1">&#39;\n\nPress &lt;enter&gt; to continue: &#39;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a>  <span class="nb">read</span> keypress &lt;<span class="p">&amp;</span><span class="m">3</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>  <span class="nb">echo</span> <span class="s2">&quot;usage: &quot;</span><span class="nv">$modearg</span><span class="s2">&quot;, &quot;</span><span class="nv">$filearg</span><span class="s2">&quot;, &quot;</span><span class="nv">$iparg</span><span class="s2">&quot;, &quot;</span><span class="nv">$portarg</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>  <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>  <span class="nb">echo</span> <span class="s2">&quot;e.g.: </span>$<span class="s2"> ./readsample -s|-l sample 192.168.1.141 50300&quot;</span>
 <a id="__codelineno-4-15" name="__codelineno-4-15"></a>  <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="k">done</span> &lt; <span class="s2">&quot;</span><span class="nv">$input</span><span class="s2">&quot;</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="nb">exec</span> <span class="m">3</span>&lt;<span class="p">&amp;</span>-
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a>  <span class="nb">exit</span> <span class="m">1</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="k">fi</span>
 <a id="__codelineno-4-18" name="__codelineno-4-18"></a>
-<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="nb">echo</span> <span class="s1">&#39;Done.&#39;</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="nv">input</span><span class="o">=</span><span class="nv">$2</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="nv">ip</span><span class="o">=</span><span class="nv">$3</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="nv">port</span><span class="o">=</span><span class="nv">$4</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a>
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="k">while</span> <span class="nb">getopts</span> <span class="s2">&quot;h?s?l&quot;</span> opt<span class="p">;</span> <span class="k">do</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26"></a>  <span class="k">case</span> <span class="s2">&quot;</span><span class="nv">$opt</span><span class="s2">&quot;</span> <span class="k">in</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27"></a>    h<span class="p">|</span><span class="se">\?</span><span class="o">)</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28"></a>      <span class="nb">echo</span> <span class="s2">&quot;help!.. not implemented yet, sorry :(&quot;</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29"></a>      <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30"></a>      <span class="nb">exit</span> <span class="m">0</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31"></a>      <span class="p">;;</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32"></a>    s<span class="o">)</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33"></a>      <span class="nb">echo</span> <span class="s2">&quot;straight mode..&quot;</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34"></a>      <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35"></a>
+<a id="__codelineno-4-36" name="__codelineno-4-36"></a>      <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37"></a>
+<a id="__codelineno-4-38" name="__codelineno-4-38"></a>      <span class="k">while</span> <span class="nv">IFS</span><span class="o">=</span> <span class="nb">read</span> -r line
+<a id="__codelineno-4-39" name="__codelineno-4-39"></a>      <span class="k">do</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40"></a>        <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41"></a>        <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42"></a>        <span class="nb">echo</span> -n <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="p">|</span> perl -e <span class="s1">&#39;print pack &quot;H*&quot;, &lt;STDIN&gt;&#39;</span> <span class="p">|</span> timeout <span class="m">0</span>.2 nc -w <span class="m">1</span> -u <span class="s2">&quot;</span><span class="nv">$ip</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="nv">$port</span><span class="s2">&quot;</span> <span class="p">|</span> xxd -p
+<a id="__codelineno-4-43" name="__codelineno-4-43"></a>        <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-44" name="__codelineno-4-44"></a>      <span class="k">done</span> &lt; <span class="s2">&quot;</span><span class="nv">$input</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45"></a>
+<a id="__codelineno-4-46" name="__codelineno-4-46"></a>      <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-47" name="__codelineno-4-47"></a>      <span class="nb">echo</span> <span class="s1">&#39;Done.&#39;</span>
+<a id="__codelineno-4-48" name="__codelineno-4-48"></a>      <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-49" name="__codelineno-4-49"></a>
+<a id="__codelineno-4-50" name="__codelineno-4-50"></a>      <span class="nb">exit</span> <span class="m">0</span>
+<a id="__codelineno-4-51" name="__codelineno-4-51"></a>      <span class="p">;;</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52"></a>    l<span class="o">)</span>
+<a id="__codelineno-4-53" name="__codelineno-4-53"></a>      <span class="nb">echo</span> <span class="s2">&quot;line by line mode..&quot;</span>
+<a id="__codelineno-4-54" name="__codelineno-4-54"></a>      <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-55" name="__codelineno-4-55"></a>
+<a id="__codelineno-4-56" name="__codelineno-4-56"></a>      <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-57" name="__codelineno-4-57"></a>
+<a id="__codelineno-4-58" name="__codelineno-4-58"></a>      <span class="nb">exec</span> <span class="m">3</span>&lt;<span class="p">&amp;</span><span class="m">0</span>
+<a id="__codelineno-4-59" name="__codelineno-4-59"></a>
+<a id="__codelineno-4-60" name="__codelineno-4-60"></a>      <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-61" name="__codelineno-4-61"></a>
+<a id="__codelineno-4-62" name="__codelineno-4-62"></a>      <span class="k">while</span> <span class="nv">IFS</span><span class="o">=</span> <span class="nb">read</span> -r line
+<a id="__codelineno-4-63" name="__codelineno-4-63"></a>      <span class="k">do</span>
+<a id="__codelineno-4-64" name="__codelineno-4-64"></a>        <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-65" name="__codelineno-4-65"></a>        <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-66" name="__codelineno-4-66"></a>        <span class="nb">echo</span> -n <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span> <span class="p">|</span> perl -e <span class="s1">&#39;print pack &quot;H*&quot;, &lt;STDIN&gt;&#39;</span> <span class="p">|</span> timeout <span class="m">0</span>.2 nc -w <span class="m">1</span> -u <span class="s2">&quot;</span><span class="nv">$ip</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="nv">$port</span><span class="s2">&quot;</span> <span class="p">|</span> xxd -p
+<a id="__codelineno-4-67" name="__codelineno-4-67"></a>        <span class="nb">printf</span> <span class="s1">&#39;\n\nPress &lt;enter&gt; to continue: &#39;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+<a id="__codelineno-4-68" name="__codelineno-4-68"></a>        <span class="nb">read</span> keypress &lt;<span class="p">&amp;</span><span class="m">3</span>
+<a id="__codelineno-4-69" name="__codelineno-4-69"></a>        <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-70" name="__codelineno-4-70"></a>      <span class="k">done</span> &lt; <span class="s2">&quot;</span><span class="nv">$input</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-71" name="__codelineno-4-71"></a>      <span class="nb">exec</span> <span class="m">3</span>&lt;<span class="p">&amp;</span>-
+<a id="__codelineno-4-72" name="__codelineno-4-72"></a>
+<a id="__codelineno-4-73" name="__codelineno-4-73"></a>      <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-74" name="__codelineno-4-74"></a>      <span class="nb">echo</span> <span class="s1">&#39;Done.&#39;</span>
+<a id="__codelineno-4-75" name="__codelineno-4-75"></a>      <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+<a id="__codelineno-4-76" name="__codelineno-4-76"></a>
+<a id="__codelineno-4-77" name="__codelineno-4-77"></a>      <span class="nb">exit</span> <span class="m">0</span>
+<a id="__codelineno-4-78" name="__codelineno-4-78"></a>      <span class="p">;;</span>
+<a id="__codelineno-4-79" name="__codelineno-4-79"></a>  <span class="k">esac</span>
+<a id="__codelineno-4-80" name="__codelineno-4-80"></a><span class="k">done</span>
 </code></pre></div>
 <hr />
 
