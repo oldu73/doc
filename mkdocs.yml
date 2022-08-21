@@ -93,6 +93,8 @@ nav:
                 - '45-copy': 'javascript/training/07-object/45-copy.md'
             - 08-function:
                 - '46-expression': 'javascript/training/08-function/46-expression.md'
+            - 11-dom:
+                - '81-css-with-webpack': 'javascript/training/11-dom/81-css-with-webpack.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
