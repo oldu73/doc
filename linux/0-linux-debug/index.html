@@ -1996,6 +1996,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tail-in-wsl-2" class="md-nav__link">
+    tail in WSL (2)
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2577,6 +2584,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tail-in-wsl-2" class="md-nav__link">
+    tail in WSL (2)
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2725,6 +2739,12 @@
 <h3 id="long">Long</h3>
 <p>Remove other line that contain (recurring) pattern:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="go">cat debug.log | grep -v -E &#39;^.*at|pattern1|pattern2|pattern3&#39; | less</span>
+</code></pre></div>
+<hr />
+<h2 id="tail-in-wsl-2">tail in WSL (2)</h2>
+<p>By default tail in WSL on a Windows handled file does not follow.</p>
+<p>To make it works:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="go">tail -f ---disable-inotify file</span>
 </code></pre></div>
 <hr />
 
