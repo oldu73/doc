@@ -242,3 +242,15 @@ cat debug.log | grep -v -E '^.*at|pattern1|pattern2|pattern3' | less
 ```
 
 ***
+
+## tail in WSL (2)
+
+By default tail in WSL on a Windows handled file does not follow.
+
+To make it works:
+
+```console
+tail -f ---disable-inotify file
+```
+
+***
