@@ -546,6 +546,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#local-first-step" class="md-nav__link">
+    Local, first step
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    GitHub
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-second-step" class="md-nav__link">
+    Local, second step
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#wsl-credential-manager-setup" class="md-nav__link">
     WSL Credential Manager setup
   </a>
@@ -2353,6 +2374,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#local-first-step" class="md-nav__link">
+    Local, first step
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    GitHub
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-second-step" class="md-nav__link">
+    Local, second step
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#wsl-credential-manager-setup" class="md-nav__link">
     WSL Credential Manager setup
   </a>
@@ -2415,54 +2457,68 @@
 <h1 id="git">Git</h1>
 <hr />
 <h2 id="initialize">Initialize</h2>
-<p>Local settings:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">git config user.name &quot;Your Name&quot;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="go">git config user.email &quot;youremail@domain.com&quot;</span>
+<p>Set up a new project.</p>
+<h3 id="local-first-step">Local, first step</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">mkdir newproject-001</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="go">cd newproject-001</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="go">git init</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="go">touch .gitignore</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="go">git config user.email &quot;john@doe.com&quot;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="go">git config user.name &quot;John Doe&quot;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="go">git add .</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="go">git commit -m &quot;initial commit&quot;</span>
+</code></pre></div>
+<h3 id="github">GitHub</h3>
+<p>Now go to your github account and create a new repository, e.g. "newproject-001".</p>
+<h3 id="local-second-step">Local, second step</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">git branch -M main</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="go">git remote add origin https://github.com/johndoe/newproject-001.git</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="go">git push -u origin main</span>
 </code></pre></div>
 <h3 id="wsl-credential-manager-setup">WSL Credential Manager setup</h3>
 <p>SRC: <a href="https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-git">microsoft</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">git config credential.helper &quot;/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">git config credential.helper &quot;/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe&quot;</span>
 </code></pre></div>
 <hr />
 <h2 id="configuration">Configuration</h2>
 <p>List configuration parameters:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">git config --list</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">git config --list</span>
 </code></pre></div>
 <p>Edit configuration parameters:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">git config --global --edit</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="go">or</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="go">git config --edit</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">git config --global --edit</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="go">or</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="go">git config --edit</span>
 </code></pre></div>
 <hr />
 <h2 id="cache-token">Cache token</h2>
 <p>to cache token (use token instead of password) (for 15 minutes, by default).</p>
 <p>SRC: <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">github</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">git config credential.helper cache</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">git config credential.helper cache</span>
 </code></pre></div>
 <p>or for 1 hour</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">git config credential.helper &#39;cache --timeout=3600&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">git config credential.helper &#39;cache --timeout=3600&#39;</span>
 </code></pre></div>
 <hr />
 <h2 id="ssh-to-https">SSH To HTTPS</h2>
 <p>Change remote URL from SSH To HTTPS.</p>
 <p><a href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories">Source</a></p>
 <p>Check existing remote:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">git remote -v</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">git remote -v</span>
 </code></pre></div>
 <p>Change your remote's URL from SSH to HTTPS with the git remote set-url command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">git remote set-url origin https://github.com/USERNAME/REPOSITORY.git</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">git remote set-url origin https://github.com/USERNAME/REPOSITORY.git</span>
 </code></pre></div>
 <hr />
 <h2 id="many-github-accounts">Many GitHub accounts</h2>
 <p>How to manage credentials for many different GitHub accounts.</p>
 <p><a href="https://stackoverflow.com/questions/25845963/git-credential-helper-update-password">Source</a></p>
 <p>Configure credentials to use the full repository path:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">git config --global credential.useHttpPath true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">git config --global credential.useHttpPath true</span>
 </code></pre></div>
 <hr />
 <h2 id="remove-tracked-folder">Remove tracked folder</h2>
 <p>For files folder previously tracked and then added to .gitignore:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">git rm -r --cached &lt;folder&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">git rm -r --cached &lt;folder&gt;</span>
 </code></pre></div>
 <hr />
 
