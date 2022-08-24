@@ -95,6 +95,8 @@ nav:
                 - '46-expression': 'javascript/training/08-function/46-expression.md'
             - 11-dom:
                 - '81-css-with-webpack': 'javascript/training/11-dom/81-css-with-webpack.md'
+            - 13-project-todo:
+                - '92-initialization': 'javascript/training/13-project-todo/92-initialization.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
