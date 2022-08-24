@@ -4,11 +4,31 @@
 
 ## Initialize
 
-Local settings:
+Set up a new project.
+
+### Local, first step
 
 ```console
-git config user.name "Your Name"
-git config user.email "youremail@domain.com"
+mkdir newproject-001
+cd newproject-001
+git init
+touch .gitignore
+git config user.email "john@doe.com"
+git config user.name "John Doe"
+git add .
+git commit -m "initial commit"
+```
+
+### GitHub
+
+Now go to your github account and create a new repository, e.g. "newproject-001".
+
+### Local, second step
+
+```console
+git branch -M main
+git remote add origin https://github.com/johndoe/newproject-001.git
+git push -u origin main
 ```
 
 ### WSL Credential Manager setup
