@@ -111,14 +111,14 @@ code .
 
 ## Keyboard shorcut
 
-### set
+### Set
 
 Press Ctrl + Shift + P keyboard shortcut and this will open Command Palette.  
 There type **Open Keyboard Shortcuts** and select it from the list.
 
 In search bar, type e.g.: - 'ctrl + §' to find default toggle line comment shortcut.
 
-### reset
+### Reset
 
 Press Ctrl + Shift + P keyboard shortcut and this will open Command Palette.  
 There type **Open Keyboard Shortcuts (JSON)** and select it from the list.
