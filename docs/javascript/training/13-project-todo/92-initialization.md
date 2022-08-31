@@ -2,6 +2,8 @@
 
 Project presentation and setup.
 
+[Source code on GitHub](https://github.com/oldu73/todo-list-001)
+
 ---
 
 ## Goals
