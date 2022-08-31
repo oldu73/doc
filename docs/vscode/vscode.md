@@ -61,10 +61,22 @@ Comment code block
 Ctrl+K+C
 ```
 
+or line
+
+```text
+ctrl + §
+```
+
 Uncomment code block
 
 ```text
 Ctrl+K+U
+```
+
+or line
+
+```text
+ctrl + §
 ```
 
 ***
@@ -94,5 +106,24 @@ To open an other instance (from VS Code integrated terminal) or a VS Code instan
 ```console
 code .
 ```
+
+***
+
+## Keyboard shorcut
+
+### set
+
+Press Ctrl + Shift + P keyboard shortcut and this will open Command Palette.  
+There type **Open Keyboard Shortcuts** and select it from the list.
+
+in search bar, type e.g.: - 'ctrl + §' to find default toggle line comment shortcut.
+
+### reset
+
+Press Ctrl + Shift + P keyboard shortcut and this will open Command Palette.  
+There type **Open Keyboard Shortcuts (JSON)** and select it from the list.
+
+You may remove one or more undesired entries or simply remove everything from keybindings. json and type empty [ ] into it. ...  
+Save it.
 
 ***
