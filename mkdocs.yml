@@ -97,6 +97,8 @@ nav:
                 - '81-css-with-webpack': 'javascript/training/11-dom/81-css-with-webpack.md'
             - 13-project-todo:
                 - '92-initialization': 'javascript/training/13-project-todo/92-initialization.md'
+            - 14-asynchronous-browser:
+                - '102-polyfill-webpack': 'javascript/training/14-asynchronous-browser/102-polyfill-webpack.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
