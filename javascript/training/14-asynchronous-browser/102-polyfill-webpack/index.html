@@ -1793,8 +1793,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#msc" class="md-nav__link">
-    Msc
+  <a href="#webpack-setup" class="md-nav__link">
+    Webpack setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#babel-setup" class="md-nav__link">
+    Babel setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Babel setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usebuiltins" class="md-nav__link">
+    useBuiltIns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    debug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corejs" class="md-nav__link">
+    corejs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#targets" class="md-nav__link">
+    targets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
   </a>
   
 </li>
@@ -2395,8 +2443,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#msc" class="md-nav__link">
-    Msc
+  <a href="#webpack-setup" class="md-nav__link">
+    Webpack setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#babel-setup" class="md-nav__link">
+    Babel setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Babel setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usebuiltins" class="md-nav__link">
+    useBuiltIns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    debug
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corejs" class="md-nav__link">
+    corejs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#targets" class="md-nav__link">
+    targets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
   </a>
   
 </li>
@@ -2415,10 +2511,63 @@
                 
 
 <h1 id="102-polyfill-webpack">102-polyfill-webpack</h1>
-<p>...</p>
+<p>A <a href="https://developer.mozilla.org/en-US/docs/Glossary/Polyfill">polyfill</a> is a piece of code (usually JavaScript on the Web) used to provide modern functionality on older browsers that do not natively support it.</p>
 <hr />
-<h2 id="msc">Msc</h2>
-<p>...</p>
+<h2 id="webpack-setup">Webpack setup</h2>
+<p>Webpack setup to use polyfills, in a terminal, at the root folder level of the project, type in the command below:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">npm i -D core-js@3 regenerator-runtime</span>
+</code></pre></div>
+<hr />
+<h2 id="babel-setup">Babel setup</h2>
+<p>Edit file babel.config.js as follow:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">const</span> <span class="nx">presets</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>  <span class="p">[</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="s2">&quot;@babel/preset-env&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>      <span class="nx">useBuiltIns</span><span class="o">:</span> <span class="s2">&quot;usage&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>      <span class="nx">debug</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>      <span class="nx">corejs</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>      <span class="nx">targets</span><span class="o">:</span> <span class="s2">&quot;&gt; 0.25%, not dead&quot;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="p">}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>  <span class="p">]</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="p">];</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">presets</span> <span class="p">};</span>
+</code></pre></div>
+<h3 id="usebuiltins">useBuiltIns</h3>
+<p>'useBuiltIns' option, allow Babel's polyfills management.<br />
+Default value is 'false' and Babel therefor will not add polyfills automatically.</p>
+<p>'usage' value allow to import <strong>only needed polyfills</strong> for targeted browsers.</p>
+<p>'entry' value will import <strong>all polyfills</strong> for targeted browsers (even those not used by your application).</p>
+<h3 id="debug">debug</h3>
+<p>'debug' option, will log browser release targets and all your code needs in term of polyfills.</p>
+<h3 id="corejs">corejs</h3>
+<p>'corejs' option, specify release of core-js library to use.</p>
+<h3 id="targets">targets</h3>
+<p>'target' option, allow to specifiy targeted browser.<br />
+This option is extremely powerful.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>Support the browsers used in France by at least 0.2% of people:
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>&quot;&gt; 0.2% in FR&quot;
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>Support all versions of browsers representing at least 1% of users or which are not dead:
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>&quot;&gt; 1%, not dead&quot;
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>Latest three versions of browsers:
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>&quot;last 3 versions&quot;
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>Recommended:
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>&quot;defaults&quot;
+</code></pre></div>
+<p>"default" is equivalent to "&gt; 0.5%, last 2 versions, Firefox ESR, not dead"</p>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>The more polyfills there are, the heavier your application will be, but the more it will be supported by all browsers.</p>
+<p>There is no recommendation, it all depends on your target!</p>
+<p>If you don't have a particular target use 'defaults' which is the official Browserslist recommendation.</p>
 <hr />
 
               
