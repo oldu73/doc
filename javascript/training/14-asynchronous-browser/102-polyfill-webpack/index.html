@@ -2514,6 +2514,7 @@
 <p>A <a href="https://developer.mozilla.org/en-US/docs/Glossary/Polyfill">polyfill</a> is a piece of code (usually JavaScript on the Web) used to provide modern functionality on older browsers that do not natively support it.</p>
 <hr />
 <h2 id="webpack-setup">Webpack setup</h2>
+<p>Webpack alone does not take care of adding polyfills to your application, you must use Babel and Browserlist which is a dependency of Babel.</p>
 <p>Webpack setup to use polyfills, in a terminal, at the root folder level of the project, type in the command below:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">npm i -D core-js@3 regenerator-runtime</span>
 </code></pre></div>
