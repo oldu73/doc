@@ -6,6 +6,8 @@ A [polyfill](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill) is a pi
 
 ## Webpack setup
 
+Webpack alone does not take care of adding polyfills to your application, you must use Babel and Browserlist which is a dependency of Babel.
+
 Webpack setup to use polyfills, in a terminal, at the root folder level of the project, type in the command below:
 
 ```console
