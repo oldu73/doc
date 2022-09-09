@@ -53,7 +53,7 @@ GET /*/_search
 Filter in query bar (not in filter-pill) to get all records that id field start with a pattern:
 
 ```txt
-Id:3*
+id:3*
 ```
 
 ***
