@@ -28,8 +28,11 @@ nav:
         - 'Compose - 09 - Dockerfile': 'docker/9-compose-dockerfile.md'
         - 'Compose - 10 - Services': 'docker/10-compose-services.md'
         - 'Compose - 11 - Production': 'docker/11-compose-production.md'
-    - ElasticSearch:
-        - 'ElasticSearch - Misc': 'elasticsearch/elasticsearch.md'
+    - ELK:
+        - ElasticSearch:
+            - 'ElasticSearch - Misc': 'elk/elasticsearch/elasticsearch.md'
+        - Kibana:
+            - 'Kibana - Misc': 'elk/kibana/kibana.md'
     - Git:
         - 'Git - Misc': 'git/git.md'
     - Google:
