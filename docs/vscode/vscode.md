@@ -128,3 +128,13 @@ There type **Open Keyboard Shortcuts (JSON)** and select it from the list.
 You may remove one or more undesired entries or simply remove everything from keybindings.json and type empty [] into it, then save.
 
 ***
+
+## IntelliSense
+
+[IntelliSense is a general term for various code editing features](https://code.visualstudio.com/docs/editor/intellisense)
+
+### Suggestion widget
+
+Hit **Ctrl + Space** to trigger IntelliSense suggestion widget.
+
+***
