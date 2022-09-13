@@ -151,7 +151,7 @@ Ctrl + J
 
 ## Hide file explorer
 
-To toggle terminal view:
+To toggle file explorer view:
 
 ```txt
 Ctrl + B
