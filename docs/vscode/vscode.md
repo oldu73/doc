@@ -58,25 +58,25 @@ Keyboard
 Comment code block
 
 ```text
-Ctrl+K+C
+Ctrl + K + C
 ```
 
 or line
 
 ```text
-Ctrl+§
+Ctrl + §
 ```
 
 Uncomment code block
 
 ```text
-Ctrl+K+U
+Ctrl + K + U
 ```
 
 or line
 
 ```text
-Ctrl+§
+Ctrl + §
 ```
 
 ***
@@ -136,5 +136,25 @@ You may remove one or more undesired entries or simply remove everything from ke
 ### Suggestion widget
 
 Hit **Ctrl + Space** to trigger IntelliSense suggestion widget.
+
+***
+
+## Hide terminal
+
+To toggle terminal view:
+
+```txt
+Ctrl + J
+```
+
+***
+
+## Hide file explorer
+
+To toggle terminal view:
+
+```txt
+Ctrl + B
+```
 
 ***
