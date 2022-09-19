@@ -102,6 +102,8 @@ nav:
                 - '92-initialization': 'javascript/training/13-project-todo/92-initialization.md'
             - 14-asynchronous-browser:
                 - '102-polyfill-webpack': 'javascript/training/14-asynchronous-browser/102-polyfill-webpack.md'
+            - 16-project-blog:
+                - '115-introduction': 'javascript/training/16-project-blog/115-introduction.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
