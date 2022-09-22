@@ -104,6 +104,7 @@ nav:
                 - '102-polyfill-webpack': 'javascript/training/14-asynchronous-browser/102-polyfill-webpack.md'
             - 16-project-blog:
                 - '115-introduction': 'javascript/training/16-project-blog/115-introduction.md'
+                - '116-multipages-webpack': 'javascript/training/16-project-blog/116-multipages-webpack.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
