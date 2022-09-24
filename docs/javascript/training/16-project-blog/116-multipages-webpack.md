@@ -2,8 +2,6 @@
 
 Setup Webpack project for multi page application.
 
-[Source code on GitHub](https://github.com/oldu73/blog-001)
-
 ---
 
 ## Goals
