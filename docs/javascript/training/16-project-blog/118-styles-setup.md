@@ -6,32 +6,19 @@ Setting up styles for our application.
 
 ## Setup
 
-Create a 'styles' folder inside assets folder:
+Create a `styles` folder inside `assets` folder:
 
 ```console
 ../blog-001$ mkdir src/assets/styles
 ```
 
-Move and rename 'index.scss' (old style.scss):
-
-```console
-../blog-001$ mv src/index.scss src/assets/styles/styles.scss
-```
-
-Then edit index.js accordingly:
-
-```js
-import "./assets/styles/styles.scss";
-
-console.log("index");
-```
-
-We start by creating the 'scss' files we will need in folder  'src/assets/styles':
+We start by creating the `scss` files we will need in folder  `src/assets/styles`:
 
 [Sass @import and Partials](https://www.w3schools.com/sass/sass_import.php)
 
 ```console
 ../blog-001$ cd src/assets/styles
+touch styles.scss
 touch _reset.scss
 touch _media-queries.scss
 touch _classes.scss
@@ -40,7 +27,7 @@ touch _variables.scss
 touch _utils.scss
 ```
 
-Edit 'styles.scss' to import partials, no need to put underscore as file name prefix due to the fact those are partials:
+Edit `styles.scss` to import partials, no need to put underscore as file name prefix due to the fact those are partials:
 
 ```scss
 @import "base";
@@ -115,7 +102,7 @@ _base.scss:
   font-size: 62.5%;
 }
 
-:body {
+body {
   font-size: 1.6rem;
   color: var(--text);
   font-family: var(--font-family);
@@ -192,6 +179,19 @@ _media-queries.scss:
     @content;
   }
 }
+```
+
+### index scss and js
+
+If `index.scss` file exist at root `src` folder from previous chapter, empty it otherwise create it.
+
+index.js:
+
+```js
+import "./assets/styles/styles.scss";
+import "./index.scss";
+
+console.log("index");
 ```
 
 ### Have a try
