@@ -132,7 +132,7 @@ h4 {
 }
 
 ul {
-  list-style: 0;
+  list-style: none;
 }
 
 img {
