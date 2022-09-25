@@ -107,6 +107,7 @@ nav:
                 - '116-multipages-webpack': 'javascript/training/16-project-blog/116-multipages-webpack.md'
                 - '117-assets-webpack': 'javascript/training/16-project-blog/117-assets-webpack.md'
                 - '118-styles-setup': 'javascript/training/16-project-blog/118-styles-setup.md'
+                - '119-layout-setup': 'javascript/training/16-project-blog/119-layout-setup.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
