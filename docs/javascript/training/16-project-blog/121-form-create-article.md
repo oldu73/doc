@@ -80,7 +80,7 @@ Html setup for form page, `form.html`:
 
 ---
 
-### form.scss
+## form.scss
 
 Own style for the form defined in the file `form.scss`:
 
