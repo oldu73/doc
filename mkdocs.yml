@@ -111,6 +111,7 @@ nav:
                 - '120-header-footer-setup': 'javascript/training/16-project-blog/120-header-footer-setup.md'
                 - '121-form-create-article': 'javascript/training/16-project-blog/121-form-create-article.md'
                 - '122-form-javascript': 'javascript/training/16-project-blog/122-form-javascript.md'
+                - '123-send-article': 'javascript/training/16-project-blog/123-send-article.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
