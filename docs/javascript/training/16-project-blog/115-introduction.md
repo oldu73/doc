@@ -2,7 +2,8 @@
 
 Project presentation and setup.
 
-[Source code on GitHub](https://github.com/oldu73/blog-001)
+[Dyma.fr Source code on GitHub](https://github.com/dymafr/javascript-chapitre16-projet_blog-partie1)  
+[OLDU Source code on GitHub](https://github.com/oldu73/blog-001)
 
 ---
 
