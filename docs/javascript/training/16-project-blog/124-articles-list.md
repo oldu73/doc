@@ -46,8 +46,8 @@ Design setup on how to render article list to home page.
         Tilsit (1807).
       </p>
       <div class="article-actions">
-        <button class="btn btn-danger">Supprimer</button>
-        <button class="btn btn-primary">Modifier</button>
+        <button class="btn btn-delete">Delete</button>
+        <button class="btn btn-primary">Edit</button>
       </div>
     </div>
   </div>

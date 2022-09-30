@@ -44,7 +44,7 @@ _variables.scss:
   --text: #333;
   --divider: #ecf0f1;
   --dark-gey: #324355;
-  --font-family: "Mulish", sans-serif;
+  --font-family: "Muli", sans-serif;
   --box-shadow: 0 1px 2px 0 rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15)
 }
 ```

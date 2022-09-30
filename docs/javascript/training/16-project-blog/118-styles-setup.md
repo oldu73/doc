@@ -67,14 +67,14 @@ _variables.scss:
   --accent: #2c3e50;
   --text: #333;
   --divider: #ecf0f1;
-  --font-family: "Mulish", sans-serif;
+  --font-family: "Muli", sans-serif;
   --box-shadow: 0 1px 2px 0 rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15)
 }
 ```
 
 ### fonts
 
-We use `Mulish` from [google fonts](https://fonts.google.com/)
+We use `Muli` from [google fonts](https://fonts.google.com/)
 
 light 300, regular 400, bold 700
 
@@ -83,12 +83,10 @@ index.html:
 ```html
 <head>
 ...
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;700&display=swap"
+<link
+    href="https://fonts.googleapis.com/css?family=Muli:300,400,700&display=swap"
     rel="stylesheet"
-  />
+/>
 ...
 </head>
 ```
