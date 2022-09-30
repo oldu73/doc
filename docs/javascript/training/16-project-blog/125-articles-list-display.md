@@ -51,7 +51,7 @@ const formIsValid = (article) => {
 
 ## index.html
 
-Remove hard coded article because the list will be then created from JavaScript
+Remove hard coded article because the list will be then created from JavaScript.
 
 ```html
 ...
