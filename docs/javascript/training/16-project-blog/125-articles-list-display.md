@@ -150,7 +150,14 @@ const createArticles = (articles) => {
 const fetchArticle = async () => {
   try {
     const response = await fetch("https://restapi.fr/api/article");
-    const articles = await response.json();
+    let articles = await response.json();
+    console.log(articles);
+    // Standard api behavior return not an array if only one element
+    // so below code convert it (one element) into an array
+    // otherwise it cause an error when 'map' method (to create articles) will be called on it.
+    if (!Array.isArray(articles)) {
+      articles = [articles];
+    }
     createArticles(articles);
   } catch (e) {
     console.log("e : ", e);
