@@ -134,6 +134,8 @@ header {
 
 ---
 
+## topbar.js
+
 Manage to display the top bar menun in `JavaScript`.
 
 topbar.js:
