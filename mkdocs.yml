@@ -114,7 +114,7 @@ nav:
                 - '123-send-article': 'javascript/training/16-project-blog/123-send-article.md'
                 - '124-articles-list': 'javascript/training/16-project-blog/124-articles-list.md'
                 - '125-articles-list-display': 'javascript/training/16-project-blog/125-articles-list-display.md'
-                - '126-delete-article': 'javascript/training/16-project-blog/126-delete-article.md'
+                - '127-responsive-project': 'javascript/training/16-project-blog/127-responsive-project.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
