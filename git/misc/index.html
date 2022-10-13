@@ -13,7 +13,7 @@
     
     
       
-        <title>Git - Misc - Doc</title>
+        <title>misc - Doc</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#git" class="md-skip">
+        <a href="#misc" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Git - Misc
+              misc
             
           </span>
         </div>
@@ -594,12 +594,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Git - Misc
+          misc
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Git - Misc
+        misc
       </a>
       
         
@@ -690,6 +690,40 @@
   <a href="#remove-tracked-folder" class="md-nav__link">
     Remove tracked folder
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkout-remote-branch" class="md-nav__link">
+    Checkout remote branch
+  </a>
+  
+    <nav class="md-nav" aria-label="Checkout remote branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fetch-all-remote-branches" class="md-nav__link">
+    1. Fetch all remote branches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-list-the-branches-available-for-checkout" class="md-nav__link">
+    2. List the branches available for checkout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pull-changes-from-a-remote-branch" class="md-nav__link">
+    3. Pull changes from a remote branch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2858,6 +2892,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#checkout-remote-branch" class="md-nav__link">
+    Checkout remote branch
+  </a>
+  
+    <nav class="md-nav" aria-label="Checkout remote branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fetch-all-remote-branches" class="md-nav__link">
+    1. Fetch all remote branches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-list-the-branches-available-for-checkout" class="md-nav__link">
+    2. List the branches available for checkout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pull-changes-from-a-remote-branch" class="md-nav__link">
+    3. Pull changes from a remote branch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2871,7 +2939,7 @@
               
                 
 
-<h1 id="git">Git</h1>
+<h1 id="misc">misc</h1>
 <hr />
 <h2 id="initialize">Initialize</h2>
 <p>Set up a new project.</p>
@@ -2937,6 +3005,15 @@
 <p>For files folder previously tracked and then added to .gitignore:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">git rm -r --cached &lt;folder&gt;</span>
 </code></pre></div>
+<hr />
+<h2 id="checkout-remote-branch">Checkout remote branch</h2>
+<p><a href="https://www.freecodecamp.org/news/git-checkout-remote-branch-tutorial/">Tutorial</a></p>
+<h3 id="1-fetch-all-remote-branches">1. Fetch all remote branches</h3>
+<p><code>git fetch origin</code></p>
+<h3 id="2-list-the-branches-available-for-checkout">2. List the branches available for checkout</h3>
+<p><code>git branch -a</code></p>
+<h3 id="3-pull-changes-from-a-remote-branch">3. Pull changes from a remote branch</h3>
+<p><code>git checkout -b local origin/remote</code></p>
 <hr />
 
               
