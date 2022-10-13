@@ -34,7 +34,7 @@ nav:
         - Kibana:
             - 'Kibana - Misc': 'elk/kibana/kibana.md'
     - Git:
-        - 'Git - Misc': 'git/git.md'
+        - 'misc': 'git/misc.md'
     - Google:
         - Chrome:
             - '0-misc': 'google/chrome/0-misc.md'
@@ -132,7 +132,7 @@ nav:
         - WSL:
             - 'WSL - 01 - Misc': 'microsoft/wsl/1-wsl-misc.md'
     - MkDocs:
-        - 'MkDocs - Misc': 'mkdocs/mkdocs.md'
+        - 'misc': 'mkdocs/misc.md'
     - MongoDB:
         - 'MongoDB - Misc': 'mongodb/mongodb.md'
     - OKR:
