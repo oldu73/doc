@@ -727,6 +727,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cherry-pick-without-commit" class="md-nav__link">
+    Cherry-pick without commit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch-description" class="md-nav__link">
+    Branch description
+  </a>
+  
+    <nav class="md-nav" aria-label="Branch description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    Set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    Get
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-description-into-merge-commits" class="md-nav__link">
+    Push description into merge commits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2926,6 +2967,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cherry-pick-without-commit" class="md-nav__link">
+    Cherry-pick without commit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch-description" class="md-nav__link">
+    Branch description
+  </a>
+  
+    <nav class="md-nav" aria-label="Branch description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    Set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    Get
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-description-into-merge-commits" class="md-nav__link">
+    Push description into merge commits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3014,6 +3096,21 @@
 <p><code>git branch -a</code></p>
 <h3 id="3-pull-changes-from-a-remote-branch">3. Pull changes from a remote branch</h3>
 <p><code>git checkout -b local origin/remote</code></p>
+<hr />
+<h2 id="cherry-pick-without-commit">Cherry-pick without commit</h2>
+<p><a href="https://geekwebcast.com/git-cherry-picking-with-vs-code-part-1/">Tutorial</a></p>
+<p><code>git cherry-pick &lt;commit-hash&gt; -n</code></p>
+<hr />
+<h2 id="branch-description">Branch description</h2>
+<p><a href="https://stackoverflow.com/questions/11886132/can-i-add-a-message-note-comment-when-creating-a-new-branch-in-git">Tutorial</a></p>
+<h3 id="set">Set</h3>
+<p><code>git branch --edit-description</code></p>
+<h3 id="get">Get</h3>
+<p><code>git config branch.&lt;branch&gt;.description</code></p>
+<h3 id="push-description-into-merge-commits">Push description into merge commits</h3>
+<p>You can push this description into merge commits if you set:</p>
+<p><code>git config merge.branchdesc true</code></p>
+<p>This means when you issue <code>git merge --log &lt;branch&gt;</code>, it'll force the branch description into the stock merge commit message.</p>
 <hr />
 
               
