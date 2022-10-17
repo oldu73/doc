@@ -17,6 +17,6 @@ Create web application with `AWS Amplify`.
 3. Click on `New app` - `Host web app`  
 4. Select `GitHub`  
 5. Select repository and branch  
-6. Build and test settings are auto-detected, click `Next` and `Save and deploy`  
+6. Build and test settings are auto-detected, click `Next` then `Save and deploy`  
 
 ---
