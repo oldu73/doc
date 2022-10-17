@@ -34,7 +34,7 @@ We gonna use Webpack and initialize project's root folder accordingly.
 
 ### Git
 
-[Git setup](../../../git/git.md#initialize)
+[Git setup](../../../git/misc.md#initialize)
 
 ### Npm
 
