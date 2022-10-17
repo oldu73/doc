@@ -67,3 +67,12 @@ Index pattern scripted field to calculate time difference, in seconds, between t
 ```
 
 ***
+
+## Delete doc
+
+Kibana 7.17
+
+- discover to get doc id  
+- dev tools e.g. `GET/DELETE /index/_doc/<id>`
+
+***
