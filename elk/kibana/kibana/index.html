@@ -592,6 +592,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#delete-doc" class="md-nav__link">
+    Delete doc
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2764,6 +2771,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#delete-doc" class="md-nav__link">
+    Delete doc
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2819,6 +2833,13 @@
 <p>Index pattern scripted field to calculate time difference, in seconds, between two dates, language "painless", type "number", format pattern "00.":</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>(doc[&#39;gatewayDate&#39;].value - doc[&#39;timestamp&#39;].value)/1000
 </code></pre></div>
+<hr />
+<h2 id="delete-doc">Delete doc</h2>
+<p>Kibana 7.17</p>
+<ul>
+<li>discover to get doc id  </li>
+<li>dev tools e.g. <code>GET/DELETE /index/_doc/&lt;id&gt;</code></li>
+</ul>
 <hr />
 
               
