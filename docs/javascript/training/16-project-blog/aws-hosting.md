@@ -12,6 +12,11 @@ This documentation is based on Amazon tutorial for [Creating a Simple Web Applic
 
 Create web application with `AWS Amplify`.
 
-...
+1. Log on to [AWS Management Console](https://aws.amazon.com/fr/console/)  
+2. Browse to `AWS Amplify console`  
+3. Click on `New app` - `Host web app`  
+4. Select `GitHub`  
+5. Select repository and branch  
+6. Build and test settings are auto-detected, click `Next` and `Save and deploy`  
 
 ---
