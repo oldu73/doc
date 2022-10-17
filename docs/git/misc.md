@@ -168,3 +168,20 @@ You can push this description into merge commits if you set:
 This means when you issue `git merge --log <branch>`, it'll force the branch description into the stock merge commit message.
 
 ***
+
+## Undo remote change(s)
+
+Warning! To use only if you are working alone in repository!
+
+```console
+git reset --hard HEAD~<number of commit(s) before>
+git push --force
+```
+
+Undo undo
+
+```console
+git pull
+```
+
+***
