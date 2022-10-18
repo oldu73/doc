@@ -76,3 +76,23 @@ Kibana 7.17
 - dev tools e.g. `GET/DELETE /index/_doc/<id>`
 
 ***
+
+## List connected agent
+
+Kibana 7.17, dev tools:
+
+```txt
+GET _nodes/stats?filter_path=**.clients
+```
+
+***
+
+## List queue
+
+Kibana 7.17, dev tools:
+
+```txt
+GET _cat/thread_pool/search,write?v
+```
+
+***

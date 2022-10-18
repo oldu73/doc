@@ -25,3 +25,15 @@ request _update POST
 {"doc":{"deleted":false}}
 
 ***
+
+## Application logging
+
+ES 7.17, [Configure application logging](https://www.elastic.co/guide/en/ecs-logging/java/current/setup.html#_use_the_ecs_encoderformatterlayout)
+
+***
+
+## MDC
+
+Logback MDC, [Mapped Diagnostic Context](https://logback.qos.ch/manual/mdc.html)
+
+***
