@@ -599,6 +599,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#list-connected-agent" class="md-nav__link">
+    List connected agent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-queue" class="md-nav__link">
+    List queue
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2778,6 +2792,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#list-connected-agent" class="md-nav__link">
+    List connected agent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-queue" class="md-nav__link">
+    List queue
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2840,6 +2868,16 @@
 <li>discover to get doc id  </li>
 <li>dev tools e.g. <code>GET/DELETE /index/_doc/&lt;id&gt;</code></li>
 </ul>
+<hr />
+<h2 id="list-connected-agent">List connected agent</h2>
+<p>Kibana 7.17, dev tools:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>GET _nodes/stats?filter_path=**.clients
+</code></pre></div>
+<hr />
+<h2 id="list-queue">List queue</h2>
+<p>Kibana 7.17, dev tools:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>GET _cat/thread_pool/search,write?v
+</code></pre></div>
 <hr />
 
               
