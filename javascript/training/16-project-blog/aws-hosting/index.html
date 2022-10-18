@@ -2108,6 +2108,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#amazon-dynamodb" class="md-nav__link">
+    Amazon DynamoDB
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-lambda" class="md-nav__link">
+    AWS Lambda
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS Lambda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-item" class="md-nav__link">
+    Create item
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2724,6 +2751,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#amazon-dynamodb" class="md-nav__link">
+    Amazon DynamoDB
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-lambda" class="md-nav__link">
+    AWS Lambda
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS Lambda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-item" class="md-nav__link">
+    Create item
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2741,6 +2795,7 @@
 <p>How to host the project on <code>AWS Cloud</code>.</p>
 <p>The objective is to host the blog project on <code>AWS Cloud</code> with <code>AWS Amplify</code> and to create the API with <code>Amazon API Gateway</code> to interact with <code>Amazon DynamoDB</code> through <code>AWS Lambda</code> controlled by <code>AWS Identity and Access Management</code>.</p>
 <p>This documentation is based on Amazon tutorial for <a href="https://aws.amazon.com/fr/getting-started/hands-on/build-web-app-s3-lambda-api-gateway-dynamodb/">Creating a Simple Web Application</a>.</p>
+<p>All the time, pay attention in which geographical region the different components of your application are located.</p>
 <hr />
 <h2 id="aws-amplify">AWS Amplify</h2>
 <p>Create web application with <code>AWS Amplify</code>.</p>
@@ -2751,8 +2806,30 @@
 <li>Select <code>GitHub</code>  </li>
 <li>Select repository and branch  </li>
 <li>Build and test settings are auto-detected, click <code>Next</code> then <code>Save and deploy</code>  </li>
-<li>Protect your app with a password in <code>App settings - Access control - Manage access</code>, <code>Access setting = Restricted - password required</code>, then fill <code>Username and Password</code>  </li>
+<li>Protect your app with a password in <code>App settings - Access control - Manage access</code>, <code>Access setting = Restricted - password required</code>, then fill <code>Username and Password</code></li>
 </ol>
+<hr />
+<h2 id="amazon-dynamodb">Amazon DynamoDB</h2>
+<ol>
+<li>Log on to <code>Amazon DynamoDB console</code>  </li>
+<li>Click on <code>Create table</code>, provide a <code>Table name</code>  </li>
+<li>Choose <code>id</code> as <code>Partition key</code> name of <code>String</code> type  </li>
+<li>Let all the rest as default and click on <code>Create table</code>  </li>
+<li>Be aware of Amazon Resource Name (ARN) of the table, we will need it later</li>
+</ol>
+<hr />
+<h2 id="aws-lambda">AWS Lambda</h2>
+<ol>
+<li>Log on to <code>AWS Lambda console</code>  </li>
+<li><code>Create function - Author from scratch</code> provide a name, choose runtime <code>Node.js 16.x</code>, architecture <code>x86_64</code> then click on <code>Create function</code>  </li>
+</ol>
+<h3 id="create-item">Create item</h3>
+<p>JS code of the function to create item<br />
+...</p>
+<p>Using AWS Identity and Access Management (IAM), add permissions to your function so that it can use the DynamoDB service<br />
+...</p>
+<p>Test function<br />
+...</p>
 <hr />
 
               
