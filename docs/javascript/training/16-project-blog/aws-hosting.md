@@ -57,7 +57,7 @@ exports.handler = async (event, context) => {
   );
   // Create JSON object with parameters for DynamoDB and store in a variable
   let params = {
-    TableName: "blog-001-002-database-001",
+    TableName: "YOUR-TABLE-NAME",
     Item: {
       id: id,
       author: event.author,
@@ -87,13 +87,17 @@ Using AWS Identity and Access Management (IAM), add permissions to your function
 
 Copy DynamoDB table `ARN`.
 
-First part:
+Steps:
 
 1. Click the Configuration - Permissions tab.
 2. In the Execution Role field, click the appropriate role. A new tab opens in your browser.
-3. Click Add inline policy to the right of Authorization policies.
-4. Select the JSON tab.
-5. Copy the following into the text box, being careful to replace your table's `ARN` in the Resource field, line 15:
+3. Click Add inline policy to the right of Authorization policies and select the JSON tab.
+4. Copy below json into the text box, being careful to replace your table's `ARN` in the Resource field, line 15:
+5. This permission allows your Lambda function to read, modify, or delete items, but only in the table you created.
+6. Click the Review Policy button, colored blue.
+7. Next to Name, type policy name.
+8. Click the Create Policy button, colored blue.
+9. You can now close this tab and return to the one dedicated to your Lambda function.
 
 ```json
 {
@@ -115,14 +119,6 @@ First part:
   ]
 }
 ```
-
-Second part:
-
-1. This permission allows your Lambda function to read, modify, or delete items, but only in the table you created.  
-2. Click the Review Policy button, colored blue.
-3. Next to Name, type policy name.  
-4. Click the Create Policy button, colored blue.  
-5. You can now close this tab and return to the one dedicated to your Lambda function.
 
 ### Test function
 
