@@ -2891,11 +2891,11 @@
 <h3 id="add-permission">Add permission</h3>
 <p>Using AWS Identity and Access Management (IAM), add permissions to your function so that it can use the DynamoDB service.</p>
 <p>Copy DynamoDB table <code>ARN</code>.</p>
+<p>Steps:</p>
 <ol>
 <li>Click the Configuration - Permissions tab.</li>
 <li>In the Execution Role field, click the appropriate role. A new tab opens in your browser.</li>
-<li>Click Add inline policy to the right of Authorization policies.</li>
-<li>Select the JSON tab.</li>
+<li>Click Add inline policy to the right of Authorization policies and select the JSON tab.</li>
 <li>Copy below json into the text box, being careful to replace your table's <code>ARN</code> in the Resource field, line 15:</li>
 <li>This permission allows your Lambda function to read, modify, or delete items, but only in the table you created.</li>
 <li>Click the Review Policy button, colored blue.</li>
