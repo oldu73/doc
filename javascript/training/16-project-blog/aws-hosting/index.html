@@ -2892,13 +2892,13 @@
 <p>Using AWS Identity and Access Management (IAM), add permissions to your function so that it can use the DynamoDB service.</p>
 <p>Copy DynamoDB table <code>ARN</code>.</p>
 <p>First part:</p>
-<ol>
+<ul>
 <li>Click the Configuration - Permissions tab.</li>
 <li>In the Execution Role field, click the appropriate role. A new tab opens in your browser.</li>
 <li>Click Add inline policy to the right of Authorization policies.</li>
 <li>Select the JSON tab.</li>
 <li>Copy the following into the text box, being careful to replace your table's <code>ARN</code> in the Resource field, line 15:</li>
-</ol>
+</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">{</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a>  <span class="nt">&quot;Version&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a>  <span class="nt">&quot;Statement&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -2919,13 +2919,13 @@
 <a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="p">}</span>
 </code></pre></div>
 <p>Second part:</p>
-<ol>
+<ul>
 <li>This permission allows your Lambda function to read, modify, or delete items, but only in the table you created.</li>
 <li>Click the Review Policy button, colored blue.</li>
 <li>Next to Name, type policy name.</li>
 <li>Click the Create Policy button, colored blue.</li>
 <li>You can now close this tab and return to the one dedicated to your Lambda function.</li>
-</ol>
+</ul>
 <h3 id="test-function">Test function</h3>
 <p>Click on <code>Test</code> button to configure a test event, provide a name and paste below json:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">{</span>
