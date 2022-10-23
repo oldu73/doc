@@ -2866,7 +2866,7 @@
 <a id="__codelineno-0-11" name="__codelineno-0-11"></a>  <span class="p">);</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12"></a>  <span class="c1">// Create JSON object with parameters for DynamoDB and store in a variable</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13"></a>  <span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="nx">TableName</span><span class="o">:</span> <span class="s2">&quot;blog-001-002-database-001&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="nx">TableName</span><span class="o">:</span> <span class="s2">&quot;YOUR-TABLE-NAME&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="nx">Item</span><span class="o">:</span> <span class="p">{</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16"></a>      <span class="nx">id</span><span class="o">:</span> <span class="nx">id</span><span class="p">,</span>
 <a id="__codelineno-0-17" name="__codelineno-0-17"></a>      <span class="nx">author</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">author</span><span class="p">,</span>
@@ -2920,10 +2920,10 @@
 </code></pre></div>
 <p>Second part:</p>
 <ol>
-<li>This permission allows your Lambda function to read, modify, or delete items, but only in the table you created.  </li>
+<li>This permission allows your Lambda function to read, modify, or delete items, but only in the table you created.</li>
 <li>Click the Review Policy button, colored blue.</li>
-<li>Next to Name, type policy name.  </li>
-<li>Click the Create Policy button, colored blue.  </li>
+<li>Next to Name, type policy name.</li>
+<li>Click the Create Policy button, colored blue.</li>
 <li>You can now close this tab and return to the one dedicated to your Lambda function.</li>
 </ol>
 <h3 id="test-function">Test function</h3>
