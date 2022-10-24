@@ -137,3 +137,15 @@ Click on `Test` button to configure a test event, provide a name and paste below
 To validate test is successful, browse to database to see above element has correctly been created.
 
 ---
+
+## Amazon API Gateway
+
+1. Log on to `Amazon API Gateway`
+2. Create API - REST API - Build
+3. Choose `REST` protocol
+4. Create `New API`
+5. Settings, provide a name, choose Endpoint Type as `Edge optimized` it is the most suitable option for public services accessed from the Internet
+
+...
+
+---
