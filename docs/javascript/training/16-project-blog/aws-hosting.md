@@ -140,12 +140,44 @@ To validate test is successful, browse to database to see above element has corr
 
 ## Amazon API Gateway
 
+### Create new REST API
+
 1. Log on to `Amazon API Gateway`
 2. Create API - REST API - Build
 3. Choose `REST` protocol
 4. Create `New API`
 5. Settings, provide a name, choose Endpoint Type as `Edge optimized` it is the most suitable option for public services accessed from the Internet
 
-...
+### Create new resource and method
+
+1. In the left pane, click Resources under your API.
+2. Select the “/” resource, then click Create Method from the Action drop-down menu.
+3. Select POST from the drop-down menu that appears, then click the check mark.
+4. Select Lambda Function as the integration type.
+5. Enter Function Name in the Function field.
+6. Click the blue Save button.
+7. You should see a message telling you that you allow the API being created to call your Lambda function. Click the OK button.
+8. Select the newly created POST method, then Enable CORS mechanism from the Action drop-down menu.
+9. Leave the POST box unchecked and click the blue Enable CORS mechanism and replace existing CORS headers button.
+10. A message asking you to confirm the changes made to the method should appear. Click the blue Yes, Replace Existing Values button.
+11. [To allow only specific IP addresses to access your API Gateway REST API](https://aws.amazon.com/fr/premiumsupport/knowledge-center/api-gateway-resource-policy-access/)
+
+### API deployment
+
+1. From the Actions drop-down list, select Deploy API.
+2. Select [New Stage] from the Deploy Stage drop-down list.
+3. Enter dev in the Stage Name field.
+4. Select Deploy.
+5. Copy and save the URL next to Invoke URL (you will need this later).
+
+### API validation
+
+1. On the left, click Resources.
+2. The methods available for the API are displayed on the right. Click POST.
+3. Click the blue lightning bolt icon.
+4. Paste a JSON that correspond to data format you want to store in your database, into the Request Body field.
+5. Click the blue Test button.
+6. On the right, a response with Code 200 should appear.
+7. Congratulations! You have created and tested an API for calling a Lambda function.
 
 ---
