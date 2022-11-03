@@ -50,6 +50,7 @@ let dynamodb = new AWS.DynamoDB.DocumentClient();
 // Define handler function, the entry point to our code for the Lambda service
 // We receive the object that triggers the function as a parameter
 exports.handler = async (event, context) => {
+  // id from context as unique key to record in database
   let id = context.awsRequestId;
   // Extract values from event and format as strings
   let values = JSON.stringify(
@@ -78,6 +79,8 @@ exports.handler = async (event, context) => {
   return response;
 };
 ```
+
+Notice that the id is taken from the context (`let id = context.awsRequestId`) as the unique key to record in database.
 
 Then click on deploy.
 
@@ -179,5 +182,62 @@ To validate test is successful, browse to database to see above element has corr
 5. Click the blue Test button.
 6. On the right, a response with Code 200 should appear.
 7. Congratulations! You have created and tested an API for calling a Lambda function.
+
+---
+
+## Web app create item
+
+Browse to `API Gateway` click on API you choose to use then select `Stages` in left column, expand Stages and select `POST` method created previously above.
+
+Copy `Invoke URL`.
+
+Paste it in `form.js` file of the blog project, as follow:
+
+```js
+..
+form.addEventListener("submit", async (event) => {
+  ..
+  try {
+    if (formIsValid(article)) {
+      const json = JSON.stringify(article);
+      const response = await fetch(
+        "<Invoke URL>",
+        {
+          method: "POST",
+          body: json,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const body = await response.json();
+      console.log(body);
+    }
+  } catch (e) {
+    console.error("e: ", e);
+  }
+});
+..
+```
+
+### Test it locally
+
+```console
+npm start
+```
+
+Browse to [localhost:4000](localhost:4000)
+
+Create an article, save and observe in DynamoDB that it has been created.
+
+### Test it remotely
+
+Browse to `AWS Amplify` and click on your application.
+
+Push code and observe automatic deployment.
+
+Browse to [aws hosted application](https://aws-to-doc.d2nxetbv9qp6jv.amplifyapp.com/)
+
+Create an article, save and observe in DynamoDB that it has been created.
 
 ---
