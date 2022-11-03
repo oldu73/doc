@@ -2190,6 +2190,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#web-app-create-item" class="md-nav__link">
+    Web app create item
+  </a>
+  
+    <nav class="md-nav" aria-label="Web app create item">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-it-locally" class="md-nav__link">
+    Test it locally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-it-remotely" class="md-nav__link">
+    Test it remotely
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2888,6 +2915,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#web-app-create-item" class="md-nav__link">
+    Web app create item
+  </a>
+  
+    <nav class="md-nav" aria-label="Web app create item">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-it-locally" class="md-nav__link">
+    Test it locally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-it-remotely" class="md-nav__link">
+    Test it remotely
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3057,6 +3111,46 @@
 <li>On the right, a response with Code 200 should appear.</li>
 <li>Congratulations! You have created and tested an API for calling a Lambda function.</li>
 </ol>
+<hr />
+<h2 id="web-app-create-item">Web app create item</h2>
+<p>Browse to <code>API Gateway</code> click on API you choose to use then select <code>Stages</code> in left column, expand Stages and select <code>POST</code> method created previously above.</p>
+<p>Copy <code>Invoke URL</code>.</p>
+<p>Paste it in <code>form.js</code> file of the blog project, as follow:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">..</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="nx">form</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;submit&quot;</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>  <span class="p">..</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>  <span class="k">try</span> <span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>    <span class="k">if</span> <span class="p">(</span><span class="nx">formIsValid</span><span class="p">(</span><span class="nx">article</span><span class="p">))</span> <span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>      <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">article</span><span class="p">);</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>      <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>        <span class="s2">&quot;&lt;Invoke URL&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>        <span class="p">{</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>          <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>          <span class="nx">body</span><span class="o">:</span> <span class="nx">json</span><span class="p">,</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>          <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>            <span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>          <span class="p">},</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a>        <span class="p">}</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>      <span class="p">);</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a>      <span class="kd">const</span> <span class="nx">body</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a>    <span class="p">}</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a>  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a>    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;e: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a>  <span class="p">}</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="p">});</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="p">..</span>
+</code></pre></div>
+<h3 id="test-it-locally">Test it locally</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">npm start</span>
+</code></pre></div>
+<p>Browse to <a href="localhost:4000">localhost:4000</a></p>
+<p>Create an article, save and observe in DynamoDB that it has been created.</p>
+<h3 id="test-it-remotely">Test it remotely</h3>
+<p>Browse to <code>AWS Amplify</code> and click on your application.</p>
+<p>Push code and observe automatic deployment.</p>
+<p>Browse to <a href="https://aws-to-doc.d2nxetbv9qp6jv.amplifyapp.com/">aws hosted application</a></p>
+<p>Create an article, save and observe in DynamoDB that it has been created.</p>
 <hr />
 
               
