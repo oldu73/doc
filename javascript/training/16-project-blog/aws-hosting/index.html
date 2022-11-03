@@ -2995,34 +2995,36 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1">// Define handler function, the entry point to our code for the Lambda service</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1">// We receive the object that triggers the function as a parameter</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>  <span class="kd">let</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">context</span><span class="p">.</span><span class="nx">awsRequestId</span><span class="p">;</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>  <span class="c1">// Extract values from event and format as strings</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>  <span class="kd">let</span> <span class="nx">values</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="sb">`id: </span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">, author: </span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">author</span><span class="si">}</span><span class="sb">, img: </span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">img</span><span class="si">}</span><span class="sb">, category: </span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">category</span><span class="si">}</span><span class="sb">, title: </span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb">, content: </span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a>  <span class="p">);</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a>  <span class="c1">// Create JSON object with parameters for DynamoDB and store in a variable</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a>  <span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="nx">TableName</span><span class="o">:</span> <span class="s2">&quot;YOUR-TABLE-NAME&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="nx">Item</span><span class="o">:</span> <span class="p">{</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a>      <span class="nx">id</span><span class="o">:</span> <span class="nx">id</span><span class="p">,</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a>      <span class="nx">author</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">author</span><span class="p">,</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a>      <span class="nx">img</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">img</span><span class="p">,</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a>      <span class="nx">category</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">category</span><span class="p">,</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a>      <span class="nx">title</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a>      <span class="nx">content</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">content</span><span class="p">,</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a>    <span class="p">},</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a>  <span class="p">};</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a>  <span class="c1">// Using await, make sure object writes to DynamoDB table before continuing execution</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a>  <span class="k">await</span> <span class="nx">dynamodb</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">params</span><span class="p">).</span><span class="nx">promise</span><span class="p">();</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a>  <span class="c1">// Create a JSON object with our response and store it in a constant</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a>  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a>    <span class="nx">statusCode</span><span class="o">:</span> <span class="mf">200</span><span class="p">,</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a>    <span class="nx">body</span><span class="o">:</span> <span class="nx">values</span><span class="p">,</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a>  <span class="p">};</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a>  <span class="c1">// Return the response constant</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a>  <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="p">};</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>  <span class="c1">// id from context as unique key to record in database</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>  <span class="kd">let</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">context</span><span class="p">.</span><span class="nx">awsRequestId</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>  <span class="c1">// Extract values from event and format as strings</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>  <span class="kd">let</span> <span class="nx">values</span> <span class="o">=</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="sb">`id: </span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">, author: </span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">author</span><span class="si">}</span><span class="sb">, img: </span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">img</span><span class="si">}</span><span class="sb">, category: </span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">category</span><span class="si">}</span><span class="sb">, title: </span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb">, content: </span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">content</span><span class="si">}</span><span class="sb">`</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>  <span class="p">);</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>  <span class="c1">// Create JSON object with parameters for DynamoDB and store in a variable</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>  <span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="nx">TableName</span><span class="o">:</span> <span class="s2">&quot;YOUR-TABLE-NAME&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>    <span class="nx">Item</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>      <span class="nx">id</span><span class="o">:</span> <span class="nx">id</span><span class="p">,</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>      <span class="nx">author</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">author</span><span class="p">,</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>      <span class="nx">img</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">img</span><span class="p">,</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>      <span class="nx">category</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">category</span><span class="p">,</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>      <span class="nx">title</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>      <span class="nx">content</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">content</span><span class="p">,</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a>    <span class="p">},</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a>  <span class="p">};</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>  <span class="c1">// Using await, make sure object writes to DynamoDB table before continuing execution</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>  <span class="k">await</span> <span class="nx">dynamodb</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">params</span><span class="p">).</span><span class="nx">promise</span><span class="p">();</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>  <span class="c1">// Create a JSON object with our response and store it in a constant</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a>  <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a>    <span class="nx">statusCode</span><span class="o">:</span> <span class="mf">200</span><span class="p">,</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>    <span class="nx">body</span><span class="o">:</span> <span class="nx">values</span><span class="p">,</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a>  <span class="p">};</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a>  <span class="c1">// Return the response constant</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a>  <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="p">};</span>
 </code></pre></div>
+<p>Notice that the id is taken from the context (<code>let id = context.awsRequestId</code>) as the unique key to record in database.</p>
 <p>Then click on deploy.</p>
 <h3 id="add-permission">Add permission</h3>
 <p>Using AWS Identity and Access Management (IAM), add permissions to your function so that it can use the DynamoDB service.</p>
