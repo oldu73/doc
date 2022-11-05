@@ -2225,6 +2225,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../aws-03-list-item/" class="md-nav__link">
+        aws-03-list-item
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../git-branch/" class="md-nav__link">
         git-branch
       </a>
@@ -2982,9 +2996,9 @@
 <li>Click Add inline policy to the right of Authorization policies and select the JSON tab.</li>
 <li>Copy below json into the text box, being careful to replace your table's <code>ARN</code> in the Resource field, line 15:</li>
 <li>This permission allows your Lambda function to read, modify, or delete items, but only in the table you created.</li>
-<li>Click the Review Policy button, colored blue.</li>
+<li>Click the Review Policy blue button.</li>
 <li>Next to Name, type policy name.</li>
-<li>Click the Create Policy button, colored blue.</li>
+<li>Click the Create Policy blue button.</li>
 <li>You can now close this tab and return to the one dedicated to your Lambda function.</li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">{</span>
@@ -3031,13 +3045,13 @@
 <ol>
 <li>In the left pane, click Resources under your API.</li>
 <li>Select the “/” resource, then click Create Method from the Action drop-down menu.</li>
-<li>Select POST from the drop-down menu that appears, then click the check mark.</li>
+<li>Select <code>POST</code> from the drop-down menu that appears, then click the check mark.</li>
 <li>Select Lambda Function as the integration type.</li>
 <li>Enter Function Name in the Function field.</li>
 <li>Click the blue Save button.</li>
 <li>You should see a message telling you that you allow the API being created to call your Lambda function. Click the OK button.</li>
-<li>Select the newly created POST method, then Enable CORS mechanism from the Action drop-down menu.</li>
-<li>Leave the POST box unchecked and click the blue Enable CORS mechanism and replace existing CORS headers button.</li>
+<li>Select the newly created <code>POST</code> method, then Enable CORS mechanism from the Action drop-down menu.</li>
+<li>Leave the <code>POST</code> box unchecked and click the blue Enable CORS mechanism and replace existing CORS headers button.</li>
 <li>A message asking you to confirm the changes made to the method should appear. Click the blue Yes, Replace Existing Values button.</li>
 <li><a href="https://aws.amazon.com/fr/premiumsupport/knowledge-center/api-gateway-resource-policy-access/">To allow only specific IP addresses to access your API Gateway REST API</a></li>
 </ol>
@@ -3052,7 +3066,7 @@
 <h3 id="api-validation">API validation</h3>
 <ol>
 <li>On the left, click Resources.</li>
-<li>The methods available for the API are displayed on the right. Click POST.</li>
+<li>The methods available for the API are displayed on the right. Click <code>POST</code>.</li>
 <li>Click the blue lightning bolt icon.</li>
 <li>Paste a JSON that correspond to data format you want to store in your database, into the Request Body field.</li>
 <li>Click the blue Test button.</li>
@@ -3095,8 +3109,7 @@
 <p>Browse to <a href="localhost:4000">localhost:4000</a></p>
 <p>Create an article, save and observe in DynamoDB that it has been created.</p>
 <h3 id="test-it-remotely">Test it remotely</h3>
-<p>Browse to <code>AWS Amplify</code> and click on your application.</p>
-<p>Push code and observe automatic deployment.</p>
+<p>Push code and observe automatic deployment when you browse to <code>AWS Amplify</code> and click on your application.</p>
 <p>Browse to <a href="https://aws-to-doc.d2nxetbv9qp6jv.amplifyapp.com/">aws hosted application</a></p>
 <p>Create an article, save and observe in DynamoDB that it has been created.</p>
 <hr />
@@ -3129,13 +3142,13 @@
       
       
         
-        <a href="../git-branch/" class="md-footer__link md-footer__link--next" aria-label="Next: git-branch" rel="next">
+        <a href="../aws-03-list-item/" class="md-footer__link md-footer__link--next" aria-label="Next: aws-03-list-item" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              git-branch
+              aws-03-list-item
             </div>
           </div>
           <div class="md-footer__button md-icon">
