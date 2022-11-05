@@ -136,7 +136,7 @@ Observe in your DynamoDB table that item has correctly been deleted.
 
 ---
 
-## Web app list item
+## Web app delete item
 
 Browse to `API Gateway` click on API you choose to use then select `Stages` in left column, expand Stages and select `DELETE` method created previously above.
 
