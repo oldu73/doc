@@ -116,7 +116,8 @@ nav:
                 - '125-articles-list-display': 'javascript/training/16-project-blog/125-articles-list-display.md'
                 - '126-delete-article': 'javascript/training/16-project-blog/126-delete-article.md'
                 - '127-responsive-project': 'javascript/training/16-project-blog/127-responsive-project.md'
-                - 'aws-hosting': 'javascript/training/16-project-blog/aws-hosting.md'
+                - 'aws-01-setup': 'javascript/training/16-project-blog/aws-01-setup.md'
+                - 'aws-02-create-item': 'javascript/training/16-project-blog/aws-02-create-item.md'
                 - 'git-branch': 'javascript/training/16-project-blog/git-branch.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
