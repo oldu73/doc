@@ -13,7 +13,7 @@
     
     
       
-        <title>aws-hosting - Doc</title>
+        <title>aws-02-create-item - Doc</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-hosting" class="md-skip">
+        <a href="#aws-02-create-item" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              aws-hosting
+              aws-02-create-item
             
           </span>
         </div>
@@ -2066,6 +2066,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../aws-01-setup/" class="md-nav__link">
+        aws-01-setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -2078,12 +2092,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          aws-hosting
+          aws-02-create-item
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        aws-hosting
+        aws-02-create-item
       </a>
       
         
@@ -2102,33 +2116,12 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws-amplify" class="md-nav__link">
-    AWS Amplify
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#amazon-dynamodb" class="md-nav__link">
-    Amazon DynamoDB
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#aws-lambda" class="md-nav__link">
     AWS Lambda
   </a>
   
     <nav class="md-nav" aria-label="AWS Lambda">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-item" class="md-nav__link">
-    Create item
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#add-permission" class="md-nav__link">
@@ -2827,33 +2820,12 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws-amplify" class="md-nav__link">
-    AWS Amplify
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#amazon-dynamodb" class="md-nav__link">
-    Amazon DynamoDB
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#aws-lambda" class="md-nav__link">
     AWS Lambda
   </a>
   
     <nav class="md-nav" aria-label="AWS Lambda">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-item" class="md-nav__link">
-    Create item
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#add-permission" class="md-nav__link">
@@ -2955,39 +2927,13 @@
               
                 
 
-<h1 id="aws-hosting">aws-hosting</h1>
-<p>How to host the project on <code>AWS Cloud</code>.</p>
-<p>The objective is to host the blog project on <code>AWS Cloud</code> with <code>AWS Amplify</code> and to create the API with <code>Amazon API Gateway</code> to interact with <code>Amazon DynamoDB</code> through <code>AWS Lambda</code> controlled by <code>AWS Identity and Access Management</code>.</p>
-<p>This documentation is based on Amazon tutorial for <a href="https://aws.amazon.com/fr/getting-started/hands-on/build-web-app-s3-lambda-api-gateway-dynamodb/">Creating a Simple Web Application</a>.</p>
-<p>All the time, pay attention in which geographical region the different components of your application are located.</p>
-<hr />
-<h2 id="aws-amplify">AWS Amplify</h2>
-<p>Create web application with <code>AWS Amplify</code>.</p>
-<ol>
-<li>Log on to <a href="https://aws.amazon.com/fr/console/">AWS Management Console</a></li>
-<li>Browse to <code>AWS Amplify console</code></li>
-<li>Click on <code>New app</code> - <code>Host web app</code></li>
-<li>Select <code>GitHub</code></li>
-<li>Select repository and branch</li>
-<li>Build and test settings are auto-detected, click <code>Next</code> then <code>Save and deploy</code></li>
-<li>Protect your app with a password in <code>App settings - Access control - Manage access</code>, <code>Access setting = Restricted - password required</code>, then fill <code>Username and Password</code></li>
-</ol>
-<hr />
-<h2 id="amazon-dynamodb">Amazon DynamoDB</h2>
-<ol>
-<li>Log on to <code>Amazon DynamoDB console</code></li>
-<li>Click on <code>Create table</code>, provide a <code>Table name</code></li>
-<li>Choose <code>id</code> as <code>Partition key</code> name of <code>String</code> type</li>
-<li>Let all the rest as default and click on <code>Create table</code></li>
-<li>Be aware of Amazon Resource Name (ARN) of the table, we will need it later</li>
-</ol>
+<h1 id="aws-02-create-item">aws-02-create-item</h1>
 <hr />
 <h2 id="aws-lambda">AWS Lambda</h2>
 <ol>
 <li>Log on to <code>AWS Lambda console</code></li>
 <li><code>Create function - Author from scratch</code> provide a name, choose runtime <code>Node.js 16.x</code>, architecture <code>x86_64</code> then click on <code>Create function</code></li>
 </ol>
-<h3 id="create-item">Create item</h3>
 <p>JS code (paste in index.js) of the function to create item:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">const</span> <span class="nx">AWS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;aws-sdk&quot;</span><span class="p">);</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="c1">// Instantiate a DynamoDB document client with the SDK</span>
@@ -3167,7 +3113,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../127-responsive-project/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 127-responsive-project" rel="prev">
+        <a href="../aws-01-setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: aws-01-setup" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -3176,7 +3122,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              127-responsive-project
+              aws-01-setup
             </div>
           </div>
         </a>
