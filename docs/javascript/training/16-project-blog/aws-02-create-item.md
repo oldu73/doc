@@ -63,9 +63,9 @@ Steps:
 3. Click Add inline policy to the right of Authorization policies and select the JSON tab.
 4. Copy below json into the text box, being careful to replace your table's `ARN` in the Resource field, line 15:
 5. This permission allows your Lambda function to read, modify, or delete items, but only in the table you created.
-6. Click the Review Policy button, colored blue.
+6. Click the Review Policy blue button.
 7. Next to Name, type policy name.
-8. Click the Create Policy button, colored blue.
+8. Click the Create Policy blue button.
 9. You can now close this tab and return to the one dedicated to your Lambda function.
 
 ```json
@@ -121,13 +121,13 @@ To validate test is successful, browse to database to see above element has corr
 
 1. In the left pane, click Resources under your API.
 2. Select the “/” resource, then click Create Method from the Action drop-down menu.
-3. Select POST from the drop-down menu that appears, then click the check mark.
+3. Select `POST` from the drop-down menu that appears, then click the check mark.
 4. Select Lambda Function as the integration type.
 5. Enter Function Name in the Function field.
 6. Click the blue Save button.
 7. You should see a message telling you that you allow the API being created to call your Lambda function. Click the OK button.
-8. Select the newly created POST method, then Enable CORS mechanism from the Action drop-down menu.
-9. Leave the POST box unchecked and click the blue Enable CORS mechanism and replace existing CORS headers button.
+8. Select the newly created `POST` method, then Enable CORS mechanism from the Action drop-down menu.
+9. Leave the `POST` box unchecked and click the blue Enable CORS mechanism and replace existing CORS headers button.
 10. A message asking you to confirm the changes made to the method should appear. Click the blue Yes, Replace Existing Values button.
 11. [To allow only specific IP addresses to access your API Gateway REST API](https://aws.amazon.com/fr/premiumsupport/knowledge-center/api-gateway-resource-policy-access/)
 
@@ -142,7 +142,7 @@ To validate test is successful, browse to database to see above element has corr
 ### API validation
 
 1. On the left, click Resources.
-2. The methods available for the API are displayed on the right. Click POST.
+2. The methods available for the API are displayed on the right. Click `POST`.
 3. Click the blue lightning bolt icon.
 4. Paste a JSON that correspond to data format you want to store in your database, into the Request Body field.
 5. Click the blue Test button.
@@ -198,9 +198,7 @@ Create an article, save and observe in DynamoDB that it has been created.
 
 ### Test it remotely
 
-Browse to `AWS Amplify` and click on your application.
-
-Push code and observe automatic deployment.
+Push code and observe automatic deployment when you browse to `AWS Amplify` and click on your application.
 
 Browse to [aws hosted application](https://aws-to-doc.d2nxetbv9qp6jv.amplifyapp.com/)
 
