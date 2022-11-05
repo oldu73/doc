@@ -7,7 +7,7 @@
 1. Log on to `AWS Lambda console`
 2. `Create function - Author from scratch` provide a name, choose runtime `Node.js 16.x`, architecture `x86_64` then click on `Create function`
 
-JS code (paste in index.js) of the function to create item:
+JS code (paste in index.js) of the function to list item:
 
 ```js
 const AWS = require("aws-sdk");
@@ -116,7 +116,7 @@ Click on `Test` orange button after having saved the test and as a result you sh
 2. Select existing `dev` stage created in [aws-02-create-item](aws-02-create-item.md) from the Deploy Stage drop-down list.
 3. Select Deploy.
 4. Click on blue Save button.
-5. Copy and save the URL next to Invoke URL (you will need this later).
+5. Copy the URL next to Invoke URL (you will need this later) and save.
 
 ### API validation
 

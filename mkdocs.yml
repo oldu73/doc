@@ -119,6 +119,7 @@ nav:
                 - 'aws-01-setup': 'javascript/training/16-project-blog/aws-01-setup.md'
                 - 'aws-02-create-item': 'javascript/training/16-project-blog/aws-02-create-item.md'
                 - 'aws-03-list-item': 'javascript/training/16-project-blog/aws-03-list-item.md'
+                - 'aws-04-delete-item': 'javascript/training/16-project-blog/aws-04-delete-item.md'
                 - 'git-branch': 'javascript/training/16-project-blog/git-branch.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'

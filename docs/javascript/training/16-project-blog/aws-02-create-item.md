@@ -137,7 +137,7 @@ To validate test is successful, browse to database to see above element has corr
 2. Select [New Stage] from the Deploy Stage drop-down list.
 3. Enter dev in the Stage Name field.
 4. Select Deploy.
-5. Copy and save the URL next to Invoke URL (you will need this later).
+5. Copy the URL next to Invoke URL (you will need this later) and save.
 
 ### API validation
 
