@@ -8,7 +8,7 @@ Adapt the project for mobile, by creating, among other things, a mobile menu in 
 
 We set a maximum width and a width of 100% so that the width of the content fits the screen.
 
-We use an `@inclide xs` media query to decrease padding on mobile.
+We use an `@include xs` media query to decrease padding on mobile.
 
 index.scss:
 
@@ -23,6 +23,7 @@ index.scss:
     ...
     .article {
       ...
+      padding: 0 5rem;
       @include xs {
         padding: 0 2rem;
       }
@@ -63,6 +64,14 @@ index.html:
 ```html
 ...
 <html>
+  <head>
+    ...
+    <script
+      src="https://kit.fontawesome.com/671ba50d24.js"
+      crossorigin="anonymous"
+    ></script>
+    ...
+  </head>
   <body>
     ...
       <header>
@@ -76,7 +85,6 @@ index.html:
       </header>
       ...
 </html>
-
 ```
 
 ## styles.scss
@@ -197,7 +205,6 @@ window.addEventListener("resize", (event) => {
     toggleMobileMenu();
   }
 });
-
 ```
 
 ## form.html
@@ -218,19 +225,18 @@ form.html:
   </head>
   <body>
     ...
-      <header>
-        ...
-        <div class="header-menu">
-          ...
-          <div class="header-menu-icon">
-            <i class="fas fa-bars"></i>
-          </div>
-        </div>
-      </header>
+    <header>
       ...
+      <div class="header-menu">
+        ...
+        <div class="header-menu-icon">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </header>
+    ...
   </body>
 </html>
-
 ```
 
 ---

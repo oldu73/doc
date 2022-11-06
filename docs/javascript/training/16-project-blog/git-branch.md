@@ -8,6 +8,5 @@ Description of branches used for git project on [github](https://github.com/oldu
 
 - main = Reference branch for `aws` hosting working implmentation  
 - restapi = Reference branch for `restapi.fr` api (dyma) working implmentation  
-- aws-to-doc = working branch to document `aws` hosting implmentation (deleted once done)
 
 ---
