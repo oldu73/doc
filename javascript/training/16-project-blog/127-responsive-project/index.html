@@ -2854,7 +2854,7 @@
 <hr />
 <h2 id="indexscss">index.scss</h2>
 <p>We set a maximum width and a width of 100% so that the width of the content fits the screen.</p>
-<p>We use an <code>@inclide xs</code> media query to decrease padding on mobile.</p>
+<p>We use an <code>@include xs</code> media query to decrease padding on mobile.</p>
 <p>index.scss:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">@import</span> <span class="s2">&quot;./assets/styles/media-queries&quot;</span><span class="p">;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a>
@@ -2866,11 +2866,12 @@
 <a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="nc">...</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="nc">.article</span> <span class="p">{</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10"></a>      <span class="nc">...</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a>      <span class="o">@</span><span class="nt">include</span> <span class="nt">xs</span> <span class="p">{</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a>        <span class="nt">padding</span><span class="nd">:</span> <span class="nt">0</span> <span class="nt">2rem</span><span class="o">;</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a>      <span class="p">}</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>      <span class="nc">...</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="p">}</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>      <span class="nt">padding</span><span class="nd">:</span> <span class="nt">0</span> <span class="nt">5rem</span><span class="o">;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>      <span class="o">@</span><span class="nt">include</span> <span class="nt">xs</span> <span class="p">{</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>        <span class="nt">padding</span><span class="nd">:</span> <span class="nt">0</span> <span class="nt">2rem</span><span class="o">;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>      <span class="p">}</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>      <span class="nc">...</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="p">}</span>
 </code></pre></div>
 <hr />
 <h2 id="formscss">form.scss</h2>
@@ -2892,19 +2893,27 @@
 <p>index.html:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>...
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a>    ...
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a>      <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a>        ...
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header-menu&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a>          ...
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a>          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header-menu-icon&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a>            <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-bars&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a>          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a>      <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a>      ...
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>    <span class="p">&lt;</span><span class="nt">script</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>      <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://kit.fontawesome.com/671ba50d24.js&quot;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>      <span class="na">crossorigin</span><span class="o">=</span><span class="s">&quot;anonymous&quot;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>    ...
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>    ...
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>      <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>        ...
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header-menu&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>          ...
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header-menu-icon&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>            <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-bars&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a>      <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a>      ...
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 <h2 id="stylesscss">styles.scss</h2>
 <p>We make the list of links disappear with a media query on mobile.</p>
@@ -3027,16 +3036,16 @@
 <a id="__codelineno-5-9" name="__codelineno-5-9"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 <a id="__codelineno-5-10" name="__codelineno-5-10"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 <a id="__codelineno-5-11" name="__codelineno-5-11"></a>    ...
-<a id="__codelineno-5-12" name="__codelineno-5-12"></a>      <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13"></a>        ...
-<a id="__codelineno-5-14" name="__codelineno-5-14"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header-menu&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15"></a>          ...
-<a id="__codelineno-5-16" name="__codelineno-5-16"></a>          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header-menu-icon&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17"></a>            <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-bars&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18"></a>          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20"></a>      <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21"></a>      ...
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a>      ...
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a>      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header-menu&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a>        ...
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header-menu-icon&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a>          <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-bars&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a>      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a>    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a>    ...
 <a id="__codelineno-5-22" name="__codelineno-5-22"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <a id="__codelineno-5-23" name="__codelineno-5-23"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
