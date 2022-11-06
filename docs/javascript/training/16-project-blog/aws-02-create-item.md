@@ -18,15 +18,17 @@ let dynamodb = new AWS.DynamoDB.DocumentClient();
 exports.handler = async (event, context) => {
   // id from context as unique key to record in database
   let id = context.awsRequestId;
+  let createdAt = new Date().toISOString();
   // Extract values from event and format as strings
   let values = JSON.stringify(
-    `id: ${id}, author: ${event.author}, img: ${event.img}, category: ${event.category}, title: ${event.title}, content: ${event.content}`
+    `id: ${id}, createdAt: ${createdAt}, author: ${event.author}, img: ${event.img}, category: ${event.category}, title: ${event.title}, content: ${event.content}`
   );
   // Create JSON object with parameters for DynamoDB and store in a variable
   let params = {
     TableName: "YOUR-TABLE-NAME",
     Item: {
       id: id,
+      createdAt: createdAt,
       author: event.author,
       img: event.img,
       category: event.category,

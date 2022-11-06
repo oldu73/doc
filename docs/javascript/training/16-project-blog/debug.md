@@ -32,7 +32,7 @@ Edit `index.scss` as follow:
       .article-content {
         max-width: 100%;
         white-space: pre-line;
-        overflow: scroll;
+        overflow: auto;
       }
       ...
     }
