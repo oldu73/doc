@@ -122,6 +122,8 @@ nav:
                 - 'aws-04-delete-item': 'javascript/training/16-project-blog/aws-04-delete-item.md'
                 - 'debug': 'javascript/training/16-project-blog/debug.md'
                 - 'git-branch': 'javascript/training/16-project-blog/git-branch.md'
+            - 19-project-blog-p2:
+                - '137-introduction': 'javascript/training/19-project-blog-p2/137-introduction.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
