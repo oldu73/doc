@@ -4,9 +4,9 @@
 
 ## Cookie
 
-To retrieve the session cookie from a browser.
+Access website resources through Postman requests with cookie session of a browser.
 
-After login to web page with dev tool (right click - inspect) opened retrieve a transaction that concern current website in `Network` tab.
+To get cookie session, after login to web page with dev tool (right click - inspect) opened, retrieve a transaction that concern current website in `Network` tab.
 
 Then in `Headers - Request Headers` retrieve entry for `Cookie SESSION=ZWEwMjYwMWI...;`.
 
