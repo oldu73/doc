@@ -2887,8 +2887,8 @@
 <h1 id="misc">misc</h1>
 <hr />
 <h2 id="cookie">Cookie</h2>
-<p>To retrieve the session cookie from a browser.</p>
-<p>After login to web page with dev tool (right click - inspect) opened retrieve a transaction that concern current website in <code>Network</code> tab.</p>
+<p>Access website resources through Postman requests with cookie session of a browser.</p>
+<p>To get cookie session, after login to web page with dev tool (right click - inspect) opened, retrieve a transaction that concern current website in <code>Network</code> tab.</p>
 <p>Then in <code>Headers - Request Headers</code> retrieve entry for <code>Cookie SESSION=ZWEwMjYwMWI...;</code>.</p>
 <p>In Postman, in <code>Headers</code> tab of your request add a <code>KEY = Cookie</code> and <code>VALUE = SESSION=ZWEwMjYwMWI...;</code> with copied session value from above.</p>
 <p>Now you may access website resources through Postman requests with cookie session of your browser.</p>
