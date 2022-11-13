@@ -73,3 +73,37 @@ By defining types, only submit button will have submit action, on click.
 ...
 
 ---
+
+## Date
+
+In article list, display date instead of category.
+
+Edit `index.js` as follow:
+
+```js
+const createArticles = (articles) => {
+  const articlesDOM = articles.map((article) => {
+    ...
+    articleDOM.innerHTML = `
+...
+<p class="article-author">${article.author} - ${(new Date(article.createdAt)).toLocaleDateString("fr-CH", {
+  weekday: 'long',
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric'
+})}</p>
+...
+`;
+    return articleDOM;
+  });
+  ...
+};
+```
+
+---
+
+## data attribute
+
+[data-* are global attributes to exchange information between `HTML` and its `DOM`.](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*#:~:text=Voir%20aussi-,data-*,peut%20manipuler%20avec%20des%20scripts.)
+
+---
