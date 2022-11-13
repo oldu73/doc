@@ -2252,6 +2252,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#date" class="md-nav__link">
+    Date
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-attribute" class="md-nav__link">
+    data attribute
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2929,6 +2943,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#date" class="md-nav__link">
+    Date
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-attribute" class="md-nav__link">
+    data attribute
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2996,6 +3024,31 @@
 <p>By default, button in a form has submit action.</p>
 <p>By defining types, only submit button will have submit action, on click.</p>
 <p>...</p>
+<hr />
+<h2 id="date">Date</h2>
+<p>In article list, display date instead of category.</p>
+<p>Edit <code>index.js</code> as follow:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">const</span> <span class="nx">createArticles</span> <span class="o">=</span> <span class="p">(</span><span class="nx">articles</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>  <span class="kd">const</span> <span class="nx">articlesDOM</span> <span class="o">=</span> <span class="nx">articles</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">article</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="p">...</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="nx">articleDOM</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="sb">`</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="sb">...</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="sb">&lt;p class=&quot;article-author&quot;&gt;</span><span class="si">${</span><span class="nx">article</span><span class="p">.</span><span class="nx">author</span><span class="si">}</span><span class="sb"> - </span><span class="si">${</span><span class="p">(</span><span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">article</span><span class="p">.</span><span class="nx">createdAt</span><span class="p">)).</span><span class="nx">toLocaleDateString</span><span class="p">(</span><span class="s2">&quot;fr-CH&quot;</span><span class="p">,</span> <span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>  <span class="nx">weekday</span><span class="o">:</span> <span class="s1">&#39;long&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>  <span class="nx">day</span><span class="o">:</span> <span class="s1">&#39;2-digit&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>  <span class="nx">month</span><span class="o">:</span> <span class="s1">&#39;long&#39;</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>  <span class="nx">year</span><span class="o">:</span> <span class="s1">&#39;numeric&#39;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="si">}</span><span class="sb">)}&lt;/p&gt;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="sb">...</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="sb">`</span><span class="p">;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>    <span class="k">return</span> <span class="nx">articleDOM</span><span class="p">;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>  <span class="p">});</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>  <span class="p">...</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="p">};</span>
+</code></pre></div>
+<hr />
+<h2 id="data-attribute">data attribute</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*#:~:text=Voir%20aussi-,data-*,peut%20manipuler%20avec%20des%20scripts.">data-* are global attributes to exchange information between <code>HTML</code> and its <code>DOM</code>.</a></p>
 <hr />
 
               
