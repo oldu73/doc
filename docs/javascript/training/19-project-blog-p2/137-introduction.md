@@ -104,6 +104,6 @@ const createArticles = (articles) => {
 
 ## data attribute
 
-[data-* are global attributes to exchange information between `HTML` and its `DOM`.](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*#:~:text=Voir%20aussi-,data-*,peut%20manipuler%20avec%20des%20scripts.)
+[data-*](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*#:~:text=Voir%20aussi-,data-*,peut%20manipuler%20avec%20des%20scripts.) are global attributes to exchange information between `HTML` and its `DOM`.
 
 ---
