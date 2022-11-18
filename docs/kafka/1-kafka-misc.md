@@ -25,3 +25,13 @@ kafka-topics.sh --bootstrap-server=localhost:9092 --describe --topic <topic_name
 ```
 
 ***
+
+### View message
+
+[How to view kafka message](https://stackoverflow.com/questions/44239027/how-to-view-kafka-message)
+
+```console
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic name> (--from-beginning)
+```
+
+***
