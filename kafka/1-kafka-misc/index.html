@@ -2187,6 +2187,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/19-project-blog-p2/138-edit-article/" class="md-nav__link">
+        138-edit-article
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2342,6 +2356,13 @@
           <li class="md-nav__item">
   <a href="#topic-details" class="md-nav__link">
     Topic Details
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-message" class="md-nav__link">
+    View message
   </a>
   
 </li>
@@ -2906,6 +2927,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#view-message" class="md-nav__link">
+    View message
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2938,6 +2966,11 @@
 </code></pre></div>
 <h3 id="topic-details">Topic Details</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">kafka-topics.sh --bootstrap-server=localhost:9092 --describe --topic &lt;topic_name&gt;</span>
+</code></pre></div>
+<hr />
+<h3 id="view-message">View message</h3>
+<p><a href="https://stackoverflow.com/questions/44239027/how-to-view-kafka-message">How to view kafka message</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic &lt;topic name&gt; (--from-beginning)</span>
 </code></pre></div>
 <hr />
 
