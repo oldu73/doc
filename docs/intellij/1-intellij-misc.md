@@ -67,3 +67,13 @@ Ctrl + Shift + F9
 ```
 
 ***
+
+## Surround code fragments
+
+SRC: - [Surround code fragments](https://www.jetbrains.com/help/idea/surrounding-blocks-of-code-with-language-constructs.html)
+
+```txt
+Ctrl + Alt + T
+```
+
+***
