@@ -103,6 +103,7 @@ Steps:
 10. Select the newly created `GET` method, then Enable CORS mechanism from the Action drop-down menu.
 11. A message asking you to confirm the changes made to the method should appear. Click the blue Yes, Replace Existing Values button.
 12. [To allow only specific IP addresses to access your API Gateway REST API](https://aws.amazon.com/fr/premiumsupport/knowledge-center/api-gateway-resource-policy-access/)
+13. Edit Method Request to add `id` in `URL Query String Parameters` section as `Required`, you may also check `Request Validator` in header section of this form.
 
 ### API deployment
 
