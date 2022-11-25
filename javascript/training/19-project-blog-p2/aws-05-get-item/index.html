@@ -2316,6 +2316,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-06-update-item/" class="md-nav__link">
+        aws-06-update-item
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -3040,7 +3054,7 @@
 <a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7"></a>  <span class="c1">// Create JSON object with parameters for DynamoDB and store in a variable</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8"></a>  <span class="kd">let</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="nx">TableName</span><span class="o">:</span> <span class="s2">&quot;blog-001-database-001&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="nx">TableName</span><span class="o">:</span> <span class="s2">&quot;YOUR-TABLE-NAME&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="nx">Key</span><span class="o">:</span> <span class="p">{</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11"></a>      <span class="nx">id</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">queryStringParameters</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12"></a>    <span class="p">},</span>
@@ -3053,7 +3067,7 @@
 <a id="__codelineno-0-19" name="__codelineno-0-19"></a>    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
 <a id="__codelineno-0-20" name="__codelineno-0-20"></a>      <span class="s2">&quot;Access-Control-Allow-Headers&quot;</span><span class="o">:</span> <span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-21" name="__codelineno-0-21"></a>      <span class="s2">&quot;Access-Control-Allow-Origin&quot;</span><span class="o">:</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a>        <span class="s2">&quot;https://main.d2x8tnefrw262w.amplifyapp.com&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>        <span class="s2">&quot;https://&lt;amplify app url&gt; or &lt;localhost:4000&gt;&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-23" name="__codelineno-0-23"></a>      <span class="s2">&quot;Access-Control-Allow-Methods&quot;</span><span class="o">:</span> <span class="s2">&quot;OPTIONS,POST,GET&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-24" name="__codelineno-0-24"></a>    <span class="p">},</span>
 <a id="__codelineno-0-25" name="__codelineno-0-25"></a>    <span class="nx">body</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
@@ -3160,13 +3174,13 @@
       
       
         
-        <a href="../../../../jmeter/1-jmeter-misc/" class="md-footer__link md-footer__link--next" aria-label="Next: JMeter - 01 - Misc" rel="next">
+        <a href="../aws-06-update-item/" class="md-footer__link md-footer__link--next" aria-label="Next: aws-06-update-item" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              JMeter - 01 - Misc
+              aws-06-update-item
             </div>
           </div>
           <div class="md-footer__button md-icon">
