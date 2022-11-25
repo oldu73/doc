@@ -124,6 +124,7 @@ nav:
                 - 'git-branch': 'javascript/training/16-project-blog/git-branch.md'
             - 19-project-blog-p2:
                 - '137-introduction': 'javascript/training/19-project-blog-p2/137-introduction.md'
+                - '138-edit-article': 'javascript/training/19-project-blog-p2/138-edit-article.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
