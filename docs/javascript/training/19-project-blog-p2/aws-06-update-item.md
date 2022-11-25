@@ -1,4 +1,4 @@
-# aws-05-get-item
+# aws-06-update-item
 
 ---
 
@@ -11,32 +11,49 @@ JS code (paste in index.js) of the function to get item:
 
 ```js
 const AWS = require("aws-sdk");
-// Instantiate a DynamoDB document client with the SDK
 let dynamodb = new AWS.DynamoDB.DocumentClient();
-// Define handler function, the entry point to our code for the Lambda service
-// We receive the object that triggers the function as a parameter
+
 exports.handler = async (event) => {
-  // Create JSON object with parameters for DynamoDB and store in a variable
-  let params = {
+  let item = JSON.parse(event.body);
+
+  let paramsAuthor = {
     TableName: "YOUR-TABLE-NAME",
     Key: {
       id: event.queryStringParameters.id,
     },
+    UpdateExpression: `set author = :author`,
+    ExpressionAttributeValues: {
+      ":author": item.author,
+    },
   };
-  // Using await, make sure object reads from DynamoDB table before continuing execution
-  const data = await dynamodb.get(params).promise();
-  // Create a JSON object with our response and store it in a constant
+
+  let paramsContent = {
+    TableName: "YOUR-TABLE-NAME",
+    Key: {
+      id: event.queryStringParameters.id,
+    },
+    UpdateExpression: `set content = :content`,
+    ExpressionAttributeValues: {
+      ":content": item.content,
+    },
+  };
+
+  // Using await, make sure object updates to DynamoDB table before continuing execution
+  await dynamodb.update(paramsAuthor).promise();
+  await dynamodb.update(paramsContent).promise();
+
   const response = {
     statusCode: 200,
     headers: {
       "Access-Control-Allow-Headers": "Content-Type",
       "Access-Control-Allow-Origin":
         "https://<amplify app url> or <localhost:4000>",
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PATCH",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(event.body),
+    isBase64Encoded: false,
   };
-  // Return the response constant
+
   return response;
 };
 ```
@@ -92,17 +109,16 @@ Steps:
 ### Create new resource and method
 
 1. In the left pane, click Resources under your API.
-2. Select the “/” resource, then click Create Resource from the Action drop-down menu, to create a new resource called `article`.
-3. Select the “/article” resource, then click Create Method from the Action drop-down menu.
-4. Select `GET` from the drop-down menu that appears, then click the check mark.
-5. Select Lambda Function as the integration type.
-6. Check `Use Lambda Proxy integration` to allow query string parameter from header in lambda (article id).
-7. Enter Function Name in the Function field.
-8. Click the blue Save button.
-9. You should see a message telling you that you allow the API being created to call your Lambda function. Click the OK button.
-10. Select the newly created `GET` method, then Enable CORS mechanism from the Action drop-down menu.
-11. A message asking you to confirm the changes made to the method should appear. Click the blue Yes, Replace Existing Values button.
-12. [To allow only specific IP addresses to access your API Gateway REST API](https://aws.amazon.com/fr/premiumsupport/knowledge-center/api-gateway-resource-policy-access/)
+2. Select the “/article” resource, then click Create Method from the Action drop-down menu.
+3. Select `PATCH` from the drop-down menu that appears, then click the check mark.
+4. Select Lambda Function as the integration type.
+5. Check `Use Lambda Proxy integration` to allow query string parameter from header in lambda (article id).
+6. Enter Function Name in the Function field.
+7. Click the blue Save button.
+8. You should see a message telling you that you allow the API being created to call your Lambda function. Click the OK button.
+9. Select the newly created `PATCH` method, then Enable CORS mechanism from the Action drop-down menu.
+10. A message asking you to confirm the changes made to the method should appear. Click the blue Yes, Replace Existing Values button.
+11. [To allow only specific IP addresses to access your API Gateway REST API](https://aws.amazon.com/fr/premiumsupport/knowledge-center/api-gateway-resource-policy-access/)
 
 ### API deployment
 
@@ -114,9 +130,9 @@ Steps:
 
 ---
 
-## Web app edit item
+## Web app update item
 
-This part (get item) is the first of two parts (get + update) in the edit process.
+This part (update item) is the second of two parts (get + update) in the edit process.
 
 Application to edit, described in [138-edit-article](138-edit-article.md) is aws ready.
 
