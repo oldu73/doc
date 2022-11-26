@@ -125,6 +125,7 @@ nav:
             - 19-project-blog-p2:
                 - '137-introduction': 'javascript/training/19-project-blog-p2/137-introduction.md'
                 - '138-edit-article': 'javascript/training/19-project-blog-p2/138-edit-article.md'
+                - '139-menu-categories-setup': 'javascript/training/19-project-blog-p2/139-menu-categories-setup.md'
                 - 'aws-05-get-item': 'javascript/training/19-project-blog-p2/aws-05-get-item.md'
                 - 'aws-06-update-item': 'javascript/training/19-project-blog-p2/aws-06-update-item.md'
     - JMeter:
