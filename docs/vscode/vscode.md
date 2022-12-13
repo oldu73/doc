@@ -158,3 +158,13 @@ Ctrl + B
 ```
 
 ***
+
+## Run code
+
+Quickly run a piece of code (JS) to debug, create a new `test.js` file and your code sample in it:
+
+```txt
+F1 -> Run ..
+```
+
+***
