@@ -2581,6 +2581,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#unable-to-bind-port" class="md-nav__link">
+    unable to bind port
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2985,6 +2992,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#unable-to-bind-port" class="md-nav__link">
+    unable to bind port
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3021,9 +3035,17 @@
 <p>find "50307" or findstr 50307</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">C:\&gt; netstat -ano -p tcp | findstr 50307</span>
 </code></pre></div>
+<p>You can find the application based on the PID on the Processes tab in Windows Task Manager.</p>
+<p><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netstat">netstat</a></p>
 <hr />
 <h2 id="kill-process">kill process</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">C:\&gt; taskkill /F /PID pid_number</span>
+</code></pre></div>
+<hr />
+<h2 id="unable-to-bind-port">unable to bind port</h2>
+<p><a href="https://stackoverflow.com/questions/15619921/an-attempt-was-made-to-access-a-socket-in-a-way-forbidden-by-its-access-permissi">SRC</a></p>
+<p>Windows Power Shell in admin mode:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>Restart-Service hns
 </code></pre></div>
 <hr />
 
