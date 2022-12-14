@@ -38,12 +38,28 @@ find "50307" or findstr 50307
 C:\> netstat -ano -p tcp | findstr 50307
 ```
 
+You can find the application based on the PID on the Processes tab in Windows Task Manager.
+
+[netstat](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netstat)
+
 ***
 
 ## kill process
 
 ```console
 C:\> taskkill /F /PID pid_number
+```
+
+***
+
+## unable to bind port
+
+[SRC](https://stackoverflow.com/questions/15619921/an-attempt-was-made-to-access-a-socket-in-a-way-forbidden-by-its-access-permissi)
+
+Windows Power Shell in admin mode:
+
+```txt
+Restart-Service hns
 ```
 
 ***
