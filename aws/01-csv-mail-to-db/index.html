@@ -277,9 +277,82 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          01-csv-mail-to-db
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         01-csv-mail-to-db
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#schema" class="md-nav__link">
+    Schema
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    Sources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workmail" class="md-nav__link">
+    WorkMail
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ses" class="md-nav__link">
+    SES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lambda" class="md-nav__link">
+    Lambda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#athena" class="md-nav__link">
+    Athena
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quicksight" class="md-nav__link">
+    Quicksight
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2959,6 +3032,63 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#schema" class="md-nav__link">
+    Schema
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    Sources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workmail" class="md-nav__link">
+    WorkMail
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ses" class="md-nav__link">
+    SES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lambda" class="md-nav__link">
+    Lambda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#athena" class="md-nav__link">
+    Athena
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quicksight" class="md-nav__link">
+    Quicksight
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2971,6 +3101,93 @@
                 
 
 <h1 id="01-csv-mail-to-db">01-csv-mail-to-db</h1>
+<hr />
+<h2 id="schema">Schema</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Application &gt; mail + csv &gt; WorkMail &gt; SES &gt; S3 Bucket #1 &gt; Lambda &gt; S3 Bucket #2 &gt; Athena &gt; Quicksight
+</code></pre></div>
+<hr />
+<h2 id="sources">Sources</h2>
+<p><a href="https://towardsdatascience.com/extract-email-attachment-using-aws-624614a2429b">Extract Email Attachment using AWS</a><br />
+<a href="https://aws.amazon.com/fr/premiumsupport/knowledge-center/ses-troubleshoot-inbound-emails/">Résolution des problèmes liés aux e-mails entrants Amazon SES</a><br />
+<a href="https://docs.aws.amazon.com/lambda/latest/dg/with-s3-example.html">S3 trigger to invoke a Lambda function</a><br />
+<a href="https://aws.amazon.com/fr/premiumsupport/knowledge-center/lambda-s3-event-configuration-error/">Configuration is ambiguously defined</a><br />
+<a href="https://stackoverflow.com/questions/46452010/aws-athena-create-external-table-skipping-first-row">Create external table skipping first row</a><br />
+<a href="https://docs.aws.amazon.com/quicksight/latest/user/troubleshoot-athena-insufficient-permissions.html">Insufficient permissions</a></p>
+<hr />
+<h2 id="workmail">WorkMail</h2>
+<p>Configure a dedicated email server using Amazon WorkMail:</p>
+<ul>
+<li>Create an organization  </li>
+<li>Select an email domain for the new email server  </li>
+<li>Create a user</li>
+</ul>
+<hr />
+<h2 id="ses">SES</h2>
+<p>Configure Amazon SES to send a copy of incoming email in raw format to Amazon S3:</p>
+<ul>
+<li>An active rule set called ‘INBOUND_MAIL’ is automatically created.  </li>
+<li>Create Rule under Amazon SES.  </li>
+<li>Add a recipient to personalize the rule.  </li>
+<li>Add an action for ‘S3’ by choosing a destination S3 bucket.</li>
+</ul>
+<hr />
+<h2 id="lambda">Lambda</h2>
+<p>AWS lambda function in python to extract email attachment:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">json</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kn">import</span> <span class="nn">boto3</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kn">import</span> <span class="nn">email</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="kn">import</span> <span class="nn">re</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="k">def</span> <span class="nf">get_timestamp</span><span class="p">():</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="n">current</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>    <span class="k">return</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">year</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">month</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">day</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">minute</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">current</span><span class="o">.</span><span class="n">second</span><span class="p">))</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>    <span class="c1"># Get current timestamp</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">get_timestamp</span><span class="p">()</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>    <span class="c1"># Initiate boto3 client</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a>    <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a>    <span class="c1"># Get s3 object contents based on bucket name and object key; in bytes and convert to string</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a>    <span class="n">data</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;Records&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;s3&#39;</span><span class="p">][</span><span class="s1">&#39;bucket&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">Key</span><span class="o">=</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;Records&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;s3&#39;</span><span class="p">][</span><span class="s1">&#39;object&#39;</span><span class="p">][</span><span class="s1">&#39;key&#39;</span><span class="p">])</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a>    <span class="n">contents</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Body&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a>    <span class="c1"># Given the s3 object content is the ses email, get the message content and attachment using email package</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a>    <span class="n">msg</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">message_from_string</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a>    <span class="n">attachment</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">get_payload</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a>    <span class="n">fromAddress</span> <span class="o">=</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;from&#39;</span><span class="p">]</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a>    <span class="n">regex</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&lt;(.*?)</span><span class="se">\\</span><span class="s2">&gt;&quot;</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a>    <span class="n">fromAddress</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">fromAddress</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a>
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a>    <span class="c1"># Write the attachment to a temp location</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31"></a>    <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/tmp/attach.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">attachment</span><span class="o">.</span><span class="n">get_payload</span><span class="p">(</span><span class="n">decode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32"></a>
+<a id="__codelineno-1-33" name="__codelineno-1-33"></a>    <span class="c1"># Upload the file at the temp location to destination s3 bucket and append timestamp to the filename</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34"></a>    <span class="c1"># Destination S3 bucket is hard coded to &#39;legacy-applications-email-attachment&#39;. This can be configured as a parameter</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35"></a>    <span class="c1"># Extracted attachment is temporarily saved as attach.csv and then uploaded to attach-upload-&lt;timestamp&gt;.csv</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37"></a>        <span class="n">s3</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s1">&#39;/tmp/attach.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;destination bucket name&gt;&#39;</span><span class="p">,</span> <span class="n">fromAddress</span> <span class="o">+</span> <span class="s1">&#39;/attach-upload-&#39;</span> <span class="o">+</span> <span class="n">timestamp</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Upload Successful&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39"></a>    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The file was not found&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41"></a>
+<a id="__codelineno-1-42" name="__codelineno-1-42"></a>    <span class="c1"># Clean up the file from temp location</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43"></a>    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;/tmp/attach.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44"></a>
+<a id="__codelineno-1-45" name="__codelineno-1-45"></a>    <span class="k">return</span> <span class="p">{</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46"></a>        <span class="s1">&#39;statusCode&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47"></a>        <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s1">&#39;SES Email received and processed!&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48"></a>    <span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="athena">Athena</h2>
+<p>Use Athena to get csv data from bucket to db.</p>
+<hr />
+<h2 id="quicksight">Quicksight</h2>
+<p>Use Quicksight to get data from db (Athena) to analytic dashboard.</p>
 <hr />
 
               
