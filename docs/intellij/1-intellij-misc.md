@@ -77,3 +77,21 @@ Ctrl + Alt + T
 ```
 
 ***
+
+## Comment
+
+Selected:
+
+### Lines
+
+```txt
+Ctrl + /
+```
+
+### Block
+
+```txt
+Ctrl + Shift + /
+```
+
+***
