@@ -4,17 +4,17 @@
 
 ## Update field
 
-Kibana 5.6
+Kibana 7.17
 
 Browse to Dev Tools, Console
 
-to get [8.5]:
+to get:
 
 ```txt
 GET <index>/_doc/<id>
 ```
 
-to update [8.5]:
+to update:
 
 ```txt
 POST <index>/_update/<id>
