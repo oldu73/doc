@@ -8,16 +8,16 @@ Kibana 5.6
 
 Browse to Dev Tools, Console
 
-to get:
+to get [8.5]:
 
 ```txt
-GET _index/_type/_id
+GET <index>/_doc/<id>
 ```
 
-to update:
+to update [8.5]:
 
 ```txt
-POST _index/_type/_id/_update
+POST <index>/_update/<id>
 {
     "doc": {
         "field":"value"
