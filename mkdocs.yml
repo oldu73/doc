@@ -130,8 +130,10 @@ nav:
                 - '139-menu-categories-setup': 'javascript/training/19-project-blog-p2/139-menu-categories-setup.md'
                 - '140-menu-categories-dynamic': 'javascript/training/19-project-blog-p2/140-menu-categories-dynamic.md'
                 - '141-category-filter': 'javascript/training/19-project-blog-p2/141-category-filter.md'
+                - '142-sort-by-date': 'javascript/training/19-project-blog-p2/142-sort-by-date.md'
                 - 'aws-05-get-item': 'javascript/training/19-project-blog-p2/aws-05-get-item.md'
                 - 'aws-06-update-item': 'javascript/training/19-project-blog-p2/aws-06-update-item.md'
+                - 'aws-07-sort-api': 'javascript/training/19-project-blog-p2/aws-07-sort-api.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
