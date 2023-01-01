@@ -141,6 +141,8 @@ In S3 Bucket, `Properties` tab, add an `Event notifications` to trigger lambda (
 
 Configure a crawler to browse bucket which contain `csv` files to automatically discover data schema, create database and table.
 
+If a new email sends data to configured address in `WorkMail` section above, run same `Crawler` again to automatically create a new partition (email) in `Athena` table.
+
 ---
 
 ## Athena
