@@ -44,6 +44,8 @@ Configure Amazon SES to send a copy of incoming email in raw format to Amazon S3
 
 ## Lambda
 
+When create new lambda, select `Use a blueprint` type `s3` in filter and choose `Get S3 object` (Name = s3-get-object-python).
+
 AWS lambda function in python to extract email attachment:
 
 ```python
@@ -97,11 +99,60 @@ def lambda_handler(event, context):
     }
 ```
 
+Through the blueprint configure process role for source bucket is set.
+
+For destination bucket add an inline policy to the role as follow:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<bucket name>"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<bucket name>/*"
+            ]
+        }
+    ]
+}
+```
+
+---
+
+## S3 Bucket
+
+In S3 Bucket, `Properties` tab, add an `Event notifications` to trigger lambda (the one above) execution on `Put` and `Post` event types.
+
+---
+
+## Glue Crawler
+
+Configure a crawler to browse bucket which contain `csv` files to automatically discover data schema, create database and table.
+
 ---
 
 ## Athena
 
 Use Athena to get csv data from bucket to db.
+
+Sample SQL, in `Query editor` with a column containing seconds and name of it with parentheses (special characters):
+
+```sql
+SELECT * FROM "<db name>"."<table name>" ORDER BY "(s)" DESC limit 20;
+SELECT COUNT("(s)") FROM "<db name>"."<table name>";
+```
 
 ---
 
