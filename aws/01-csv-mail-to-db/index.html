@@ -337,6 +337,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#s3-bucket" class="md-nav__link">
+    S3 Bucket
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glue-crawler" class="md-nav__link">
+    Glue Crawler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#athena" class="md-nav__link">
     Athena
   </a>
@@ -3102,6 +3116,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#s3-bucket" class="md-nav__link">
+    S3 Bucket
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glue-crawler" class="md-nav__link">
+    Glue Crawler
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#athena" class="md-nav__link">
     Athena
   </a>
@@ -3160,6 +3188,7 @@
 </ul>
 <hr />
 <h2 id="lambda">Lambda</h2>
+<p>When create new lambda, select <code>Use a blueprint</code> type <code>s3</code> in filter and choose <code>Get S3 object</code> (Name = s3-get-object-python).</p>
 <p>AWS lambda function in python to extract email attachment:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">json</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kn">import</span> <span class="nn">boto3</span>
@@ -3210,9 +3239,45 @@
 <a id="__codelineno-1-47" name="__codelineno-1-47"></a>        <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s1">&#39;SES Email received and processed!&#39;</span><span class="p">)</span>
 <a id="__codelineno-1-48" name="__codelineno-1-48"></a>    <span class="p">}</span>
 </code></pre></div>
+<p>Through the blueprint configure process role for source bucket is set.</p>
+<p>For destination bucket add an inline policy to the role as follow:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>    <span class="nt">&quot;Version&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="nt">&quot;Statement&quot;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>        <span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>            <span class="nt">&quot;Effect&quot;</span><span class="p">:</span> <span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>            <span class="nt">&quot;Action&quot;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>                <span class="s2">&quot;s3:ListBucket&quot;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>            <span class="p">],</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>            <span class="nt">&quot;Resource&quot;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>                <span class="s2">&quot;arn:aws:s3:::&lt;bucket name&gt;&quot;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>            <span class="p">]</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>        <span class="p">},</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>        <span class="p">{</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>            <span class="nt">&quot;Effect&quot;</span><span class="p">:</span> <span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>            <span class="nt">&quot;Action&quot;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>                <span class="s2">&quot;s3:PutObject&quot;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>            <span class="p">],</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>            <span class="nt">&quot;Resource&quot;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>                <span class="s2">&quot;arn:aws:s3:::&lt;bucket name&gt;/*&quot;</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>            <span class="p">]</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a>        <span class="p">}</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a>    <span class="p">]</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="s3-bucket">S3 Bucket</h2>
+<p>In S3 Bucket, <code>Properties</code> tab, add an <code>Event notifications</code> to trigger lambda (the one above) execution on <code>Put</code> and <code>Post</code> event types.</p>
+<hr />
+<h2 id="glue-crawler">Glue Crawler</h2>
+<p>Configure a crawler to browse bucket which contain <code>csv</code> files to automatically discover data schema, create database and table.</p>
 <hr />
 <h2 id="athena">Athena</h2>
 <p>Use Athena to get csv data from bucket to db.</p>
+<p>Sample SQL, in <code>Query editor</code> with a column containing seconds and name of it with parentheses (special characters):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="ss">&quot;&lt;db name&gt;&quot;</span><span class="p">.</span><span class="ss">&quot;&lt;table name&gt;&quot;</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="ss">&quot;(s)&quot;</span> <span class="k">DESC</span> <span class="k">limit</span> <span class="mi">20</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="ss">&quot;(s)&quot;</span><span class="p">)</span> <span class="k">FROM</span> <span class="ss">&quot;&lt;db name&gt;&quot;</span><span class="p">.</span><span class="ss">&quot;&lt;table name&gt;&quot;</span><span class="p">;</span>
+</code></pre></div>
 <hr />
 <h2 id="quicksight">Quicksight</h2>
 <p>Use Quicksight to get data from db (Athena) to analytic dashboard.</p>
