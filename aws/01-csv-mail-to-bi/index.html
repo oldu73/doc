@@ -13,7 +13,7 @@
     
     
       
-        <title>01-csv-mail-to-db - Doc</title>
+        <title>01-csv-mail-to-bi - Doc</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#01-csv-mail-to-db" class="md-skip">
+        <a href="#01-csv-mail-to-bi" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              01-csv-mail-to-db
+              01-csv-mail-to-bi
             
           </span>
         </div>
@@ -278,12 +278,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          01-csv-mail-to-db
+          01-csv-mail-to-bi
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        01-csv-mail-to-db
+        01-csv-mail-to-bi
       </a>
       
         
@@ -361,6 +361,26 @@
   <a href="#quicksight" class="md-nav__link">
     Quicksight
   </a>
+  
+    <nav class="md-nav" aria-label="Quicksight">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manage-access" class="md-nav__link">
+    Manage access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epoch-to-date-time" class="md-nav__link">
+    Epoch to date time
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3141,6 +3161,26 @@
     Quicksight
   </a>
   
+    <nav class="md-nav" aria-label="Quicksight">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manage-access" class="md-nav__link">
+    Manage access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epoch-to-date-time" class="md-nav__link">
+    Epoch to date time
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3156,7 +3196,8 @@
               
                 
 
-<h1 id="01-csv-mail-to-db">01-csv-mail-to-db</h1>
+<h1 id="01-csv-mail-to-bi">01-csv-mail-to-bi</h1>
+<p>From csv mail attach to business intelligence.</p>
 <hr />
 <h2 id="schema">Schema</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Application &gt; mail + csv &gt; WorkMail &gt; SES &gt; S3 Bucket #1 &gt; Lambda &gt; S3 Bucket #2 &gt; Athena &gt; Quicksight
@@ -3282,6 +3323,25 @@
 <hr />
 <h2 id="quicksight">Quicksight</h2>
 <p>Use Quicksight to get data from db (Athena) to analytic dashboard.</p>
+<h3 id="manage-access">Manage access</h3>
+<p>By default data set does not have S3 access and as a result, this kind of error message: - "permission denied on s3 path".</p>
+<p>To solve, from <a href="https://aws.amazon.com/fr/premiumsupport/knowledge-center/quicksight-access-denied-athena-data/">source page</a>:</p>
+<ul>
+<li>Open the Amazon QuickSight console.</li>
+<li>Choose Manage QuickSight.  </li>
+<li>Choose Security &amp; Permissions.  </li>
+<li>Under QuickSight access to AWS services, choose Manage.  </li>
+<li>In the list of AWS services, select Amazon S3.  </li>
+<li>Choose Select S3 buckets, then select the S3 bucket you want to access from QuickSight.  </li>
+<li>Choose Write permission for Athena Workgroup, then click Finish.  </li>
+<li>Choose Save.</li>
+</ul>
+<h3 id="epoch-to-date-time">Epoch to date time</h3>
+<p>Convert epoch field in second, "(s)" column, to date time.</p>
+<p>Edit Dataset.</p>
+<p>Add calculated field, named "dateTime" with formula:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>epochDate({(s)})
+</code></pre></div>
 <hr />
 
               
