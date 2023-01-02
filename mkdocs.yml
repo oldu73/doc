@@ -17,7 +17,7 @@ nav:
     - Agile Methodology:
         - 'Agile Methodology - 01 - Misc': 'agilemethodology/1-agilemethodology-misc.md'    
     - AWS:
-        - '01-csv-mail-to-db': 'aws/01-csv-mail-to-db.md'    
+        - '01-csv-mail-to-bi': 'aws/01-csv-mail-to-bi.md'    
     - Docker:
         - 'Docker - 01 - Misc': 'docker/1-docker-misc.md'
         - 'Docker - 02 - Basis': 'docker/2-docker-basis.md'

@@ -1,4 +1,6 @@
-# 01-csv-mail-to-db
+# 01-csv-mail-to-bi
+
+From csv mail attach to business intelligence.
 
 ---
 
@@ -161,5 +163,32 @@ SELECT COUNT("(s)") FROM "<db name>"."<table name>";
 ## Quicksight
 
 Use Quicksight to get data from db (Athena) to analytic dashboard.
+
+### Manage access
+
+By default data set does not have S3 access and as a result, this kind of error message: - "permission denied on s3 path".
+
+To solve, from [source page](https://aws.amazon.com/fr/premiumsupport/knowledge-center/quicksight-access-denied-athena-data/):
+
+- Open the Amazon QuickSight console.
+- Choose Manage QuickSight.  
+- Choose Security & Permissions.  
+- Under QuickSight access to AWS services, choose Manage.  
+- In the list of AWS services, select Amazon S3.  
+- Choose Select S3 buckets, then select the S3 bucket you want to access from QuickSight.  
+- Choose Write permission for Athena Workgroup, then click Finish.  
+- Choose Save.
+
+### Epoch to date time
+
+Convert epoch field in second, "(s)" column, to date time.
+
+Edit Dataset.
+
+Add calculated field, named "dateTime" with formula:
+
+```txt
+epochDate({(s)})
+```
 
 ---
