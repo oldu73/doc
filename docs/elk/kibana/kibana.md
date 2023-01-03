@@ -2,6 +2,24 @@
 
 ***
 
+## Search
+
+Kibana 7.17
+
+Be aware of `size`:
+
+```txt
+GET <index>/_search
+{
+    "query": {
+        "match_all": {}
+    },
+    "size": 100
+}
+```
+
+***
+
 ## Update field
 
 Kibana 7.17
