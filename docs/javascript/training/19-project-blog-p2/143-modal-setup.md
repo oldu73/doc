@@ -41,7 +41,7 @@ const createArticles = () => {
       //     articleToDelete.id = articleId;
       //     const json = JSON.stringify(articleToDelete);
       //     const response = await fetch(
-      //       `https://chr562igwa.execute-api.eu-central-1.amazonaws.com/dev`,
+      //       `https://<api url>`,
       //       {
       //         method: "DELETE",
       //         body: json,
