@@ -3105,7 +3105,7 @@
                 
 
 <h1 id="144-modal-logic">144-modal-logic</h1>
-<p>Add modal logic to handle modal process.</p>
+<p>Add logic to handle modal process.</p>
 <hr />
 <h2 id="indexjs">index.js</h2>
 <p>Make <code>createModal()</code> function return a promise so we will use <code>await</code>.</p>
@@ -3156,7 +3156,7 @@
 <li>click on the layer or cancel the promise is resolved to <code>false</code>.</li>
 <li>click on confirm button and then the promise is resolved to <code>true</code>.</li>
 </ul>
-<p>We also add an event listener on modal to avoid closing it when click on it by stopping event propagation.</p>
+<p>We also add an event listener on modal to avoid closing when click on it by stopping event propagation (from modal to layer).</p>
 <p>File modal.js:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">const</span> <span class="nx">body</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">);</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kd">let</span> <span class="nx">calc</span><span class="p">;</span>
