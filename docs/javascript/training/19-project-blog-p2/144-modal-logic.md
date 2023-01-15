@@ -1,6 +1,6 @@
 # 144-modal-logic
 
-Add modal logic to handle modal process.
+Add logic to handle modal process.
 
 ---
 
@@ -61,7 +61,7 @@ We return a new promise for our modal resolved when either user:
 - click on the layer or cancel the promise is resolved to `false`.
 - click on confirm button and then the promise is resolved to `true`.
 
-We also add an event listener on modal to avoid closing it when click on it by stopping event propagation.
+We also add an event listener on modal to avoid closing when click on it by stopping event propagation (from modal to layer).
 
 File modal.js:
 
