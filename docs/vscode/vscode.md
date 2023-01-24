@@ -168,3 +168,21 @@ F1 -> Run ..
 ```
 
 ***
+
+## New line
+
+New line without need to go end of line:
+
+```txt
+ctrl + enter
+```
+
+***
+
+## console.log shortcut
+
+```txt
+log + tab
+```
+
+***
