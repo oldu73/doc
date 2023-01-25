@@ -38,11 +38,11 @@ to update:
 POST <index>/_update/<id>
 {
     "doc": {
-        "field":"value"
+        "field" : "value"
         or
-        "field":99
+        "field" : 99
         or
-        "field":false
+        "field" : false
         or
         "location" : {
           "lat" : 46.7552483,
