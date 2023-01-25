@@ -43,6 +43,11 @@ POST <index>/_update/<id>
         "field":99
         or
         "field":false
+        or
+        "location" : {
+          "lat" : 46.7552483,
+          "lon" : 7.6519766
+        }
     }
 }
 ```
