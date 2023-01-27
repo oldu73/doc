@@ -1,6 +1,6 @@
 # 10-webpack
 
-***
+---
 
 ## Basic principles
 
@@ -8,12 +8,10 @@ Webpack is installed through npm.
 
 What is installed:
 
-- webpack  
-- webpack-cli  
-- webpack-dev-server  
+- webpack
+- webpack-cli
+- webpack-dev-server
 - babel-loader
-
-***
 
 ### Webpack
 
@@ -31,7 +29,7 @@ Use webpack in a terminal.
 
 Local development web server the list at localhost address on dedicated port and return index.html file from dist folder.
 
-***
+---
 
 ## Installation
 
@@ -52,15 +50,15 @@ src/index.html:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>My app</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>My app</h1>
+  </body>
 </html>
 ```
 
@@ -119,7 +117,7 @@ module.exports = {
   entry: path.resolve(__dirname, "src/index.js"),
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].bundle.js"
+    filename: "[name].bundle.js",
   },
   module: {
     rules: [
@@ -127,23 +125,23 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
-      }
-    ]
+          loader: "babel-loader",
+        },
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src/index.html")
-    })
+      template: path.resolve(__dirname, "src/index.html"),
+    }),
   ],
   devtool: "source-map",
   mode: "development",
   devServer: {
-    static: path.resolve(__dirname, './dist'),
+    static: path.resolve(__dirname, "./dist"),
     open: true,
-    port: 4000
-  }
+    port: 4000,
+  },
 };
 ```
 
@@ -182,9 +180,9 @@ dist/index.html:
 ```html
 ...
 <head>
-...
-<script defer src="main.bundle.js"></script>
-...
+  ...
+  <script defer src="main.bundle.js"></script>
+  ...
 </head>
 ...
 ```
@@ -209,4 +207,30 @@ Browse to [http://localhost:4000/](http://localhost:4000/) and hit F12 to open b
 
 Retrieve code for this chapter on [github](https://github.com/dymafr/javascript-chapitre2)
 
-***
+---
+
+## Debug
+
+Common issues
+
+### Hot update
+
+Browser does not auto refresh on change.
+
+Fix from [source](https://stackoverflow.com/questions/65640449/how-to-solve-chunkloaderror-loading-hot-update-chunk-second-app-failed-in-webpa)
+
+webpack.dev.js:
+
+```js
+module.exports = {
+    ...,
+    optimization: {
+        runtimeChunk: 'single'
+    },
+    ...
+}
+```
+
+Works for Windows and WSL native folder as well.
+
+---
