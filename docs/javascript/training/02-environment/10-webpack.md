@@ -231,4 +231,6 @@ module.exports = {
 
 Works for Windows and WSL native folder as well.
 
+Webpack optimization documentation for [runtimeChunk](https://webpack.js.org/configuration/optimization/#optimizationruntimechunk).
+
 ---
