@@ -215,9 +215,7 @@ Common issues
 
 ### Hot update
 
-Browser does not auto refresh on change.
-
-Fix from [source](https://stackoverflow.com/questions/65640449/how-to-solve-chunkloaderror-loading-hot-update-chunk-second-app-failed-in-webpa)
+Browser does not auto refresh on change (fixed from [source](https://stackoverflow.com/questions/65640449/how-to-solve-chunkloaderror-loading-hot-update-chunk-second-app-failed-in-webpa)).
 
 webpack.dev.js:
 
