@@ -30,3 +30,11 @@ To synchronize changes made directly in Chrome DevTools, with local project sour
 In `Sources` tab (right click inspect page in Chrome), click on `+ Add folder to workspace` select your root project folder and allow full access to it by clicking on `Authorize` to let Chrome synchronize your changes.
 
 ---
+
+## Run to next line
+
+```txt
+Step Over (F10)
+```
+
+---
