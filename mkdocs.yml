@@ -138,6 +138,7 @@ nav:
                 - 'aws-07-sort-api': 'javascript/training/19-project-blog-p2/aws-07-sort-api.md'
             - 22-error-management:
                 - '162-debugger-devtools': 'javascript/training/22-error-management/162-debugger-devtools.md'
+                - '163-debugger-vscode': 'javascript/training/22-error-management/163-debugger-vscode.md'
     - JMeter:
         - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
     - Kafka:
