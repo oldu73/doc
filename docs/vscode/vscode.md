@@ -1,6 +1,6 @@
 # VS Code
 
-***
+---
 
 ## Switch windows
 
@@ -12,7 +12,7 @@ To switch from same area type windows (edit/terminal):
 
 Alt + arrow left/right
 
-***
+---
 
 ## Code snippet shortcut
 
@@ -25,13 +25,13 @@ Ctrl+space, then select fenced codeblock, then select console
 ...
 ```
 
-***
+---
 
 ## Move line
 
 Alt + Up/down keys
 
-***
+---
 
 ## Duplicate line
 
@@ -41,7 +41,7 @@ If you want to copy the line to the line below itself, press Shift + Alt + Down 
 
 Hit Ctrl + c (without anything selected on a line) and then Ctrl + v will directly copy/paste the entire line even nothing is selected.
 
-***
+---
 
 ## Column select
 
@@ -51,7 +51,7 @@ Mouse
 Keyboard  
 **Ctrl + Shift + Alt** then use arrow keys
 
-***
+---
 
 ## Comment code
 
@@ -79,7 +79,7 @@ or line
 Ctrl + §
 ```
 
-***
+---
 
 ## Multiple cursors
 
@@ -89,7 +89,7 @@ Ctrl + §
 
 A common way to add more cursors is with **Ctrl+Alt+Down** or **Ctrl+Alt+Up** that insert cursors below or above.
 
-***
+---
 
 ## Open from terminal
 
@@ -99,7 +99,7 @@ To open a file in VS Code editor from integrated terminal:
 code -r fileName
 ```
 
-***
+---
 
 ## Open an other instance
 
@@ -109,7 +109,7 @@ To open an other instance (from VS Code integrated terminal) or a VS Code instan
 code .
 ```
 
-***
+---
 
 ## Keyboard shorcut
 
@@ -127,7 +127,7 @@ There type **Open Keyboard Shortcuts (JSON)** and select it from the list.
 
 You may remove one or more undesired entries or simply remove everything from keybindings.json and type empty [] into it, then save.
 
-***
+---
 
 ## IntelliSense
 
@@ -137,7 +137,7 @@ You may remove one or more undesired entries or simply remove everything from ke
 
 Hit **Ctrl + Space** to trigger IntelliSense suggestion widget.
 
-***
+---
 
 ## Hide terminal
 
@@ -147,7 +147,7 @@ To toggle terminal view:
 Ctrl + J
 ```
 
-***
+---
 
 ## Hide file explorer
 
@@ -157,7 +157,7 @@ To toggle file explorer view:
 Ctrl + B
 ```
 
-***
+---
 
 ## Run code
 
@@ -167,7 +167,7 @@ Quickly run a piece of code (JS) to debug, create a new `test.js` file and your 
 F1 -> Run ..
 ```
 
-***
+---
 
 ## New line
 
@@ -177,7 +177,7 @@ New line without need to go end of line:
 ctrl + enter
 ```
 
-***
+---
 
 ## console.log shortcut
 
@@ -185,4 +185,12 @@ ctrl + enter
 log + tab
 ```
 
-***
+---
+
+## Todo Tree
+
+[Extension to manage todo](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree), should be capital case `TODO` in code to be considered.
+
+(Works also with `FIXME` but it's maybe better to stay simple).
+
+---
