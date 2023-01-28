@@ -76,3 +76,9 @@ Step Over (F10)
 ```
 
 ---
+
+## Stop debugger
+
+In VS Code, click on red square `Stop (Shift+F5)` to stop debugging session.
+
+---
