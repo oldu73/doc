@@ -160,6 +160,11 @@ nav:
         - 'OKR - Rédaction': 'okrmethodology/redaction.md'
     - Postman:
         - 'misc': 'postman/misc.md'
+    - React:
+        - 'misc': 'react/misc.md'
+        - training:
+            - 01-introduction:
+                - '05-install-environnement': 'react/training/01-introduction/05-install-environnement.md'
     - Redis:
         - 'Redis - 01 - Misc': 'redis/1-redis-misc.md'
     - VS Code:
