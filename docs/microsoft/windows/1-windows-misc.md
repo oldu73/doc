@@ -1,6 +1,6 @@
 # Windows - 01 - Misc
 
-***
+---
 
 ## find process that uses a port
 
@@ -28,7 +28,7 @@ In PowerShell
 C:\> Get-Process -Id (Get-NetTCPConnection -LocalPort 50307).OwningProcess
 ```
 
-***
+---
 
 ## grep equivalent
 
@@ -42,7 +42,7 @@ You can find the application based on the PID on the Processes tab in Windows Ta
 
 [netstat](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netstat)
 
-***
+---
 
 ## kill process
 
@@ -50,7 +50,7 @@ You can find the application based on the PID on the Processes tab in Windows Ta
 C:\> taskkill /F /PID pid_number
 ```
 
-***
+---
 
 ## unable to bind port
 
@@ -62,4 +62,14 @@ Windows Power Shell in admin mode:
 Restart-Service hns
 ```
 
-***
+---
+
+## path
+
+PATH shortcut:
+
+```txt
+Windows key + type "path" in search field
+```
+
+---
