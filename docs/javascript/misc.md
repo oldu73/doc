@@ -1,6 +1,28 @@
 # misc
 
-***
+---
+
+## Hello world
+
+Check that `NodeJS` is installed:
+
+```console
+node -v
+```
+
+Create a `JS` file with following content, test.js:
+
+```js
+console.log("Hello, world!");
+```
+
+To execute, from terminal, type:
+
+```console
+node test.js
+```
+
+---
 
 ## Spread Vs Rest
 
@@ -50,4 +72,4 @@ console.log(sum(1, 2, 3)); // expected output: 6
 console.log(sum(1, 2, 3, 4)); // expected output: 10
 ```
 
-***
+---
