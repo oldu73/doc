@@ -194,3 +194,13 @@ log + tab
 (Works also with `FIXME` but it's maybe better to stay simple).
 
 ---
+
+## Prettier
+
+Set up `Prettier` - Code formatter, to format code on save:
+
+```txt
+VS Code File -> Preferences -> Settings -> type "format" -> check "Editor: Format On Save"
+```
+
+---
