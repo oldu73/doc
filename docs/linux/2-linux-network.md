@@ -1,6 +1,6 @@
 # Linux - 02 - Network
 
-***
+---
 
 ## Network connection
 
@@ -8,7 +8,7 @@
 (sudo) netstat -tunlp
 ```
 
-***
+---
 
 ## Live network connection
 
@@ -18,7 +18,7 @@ Live log established network connections on a dedidcated port number of a load b
 watch -d 'netstat -an | grep :<port> | grep ESTABLISHED | grep -v <ip>'
 ```
 
-***
+---
 
 ## Send raw data hex UDP
 
@@ -33,7 +33,7 @@ Sending hex raw data through UDP.
 [shell script - Wait for keyboard input inside a while-read loop - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/445153/wait-for-keyboard-input-inside-a-while-read-loop#:~:text=the%20loop%2C%20the-,read%20keypress,-reads%20from%20this)  
 [linux - How to automatically close netcat connection after data is sent? - Server Fault](https://serverfault.com/questions/512722/how-to-automatically-close-netcat-connection-after-data-is-sent#:~:text=echo%20hello%7Cnc-,%2Dw%201,-%2Du%2010.0.30.255%20%2Dp)  
 [Echo newline in Bash prints literal \n - Stack Overflow](https://stackoverflow.com/questions/8467424/echo-newline-in-bash-prints-literal-n#:~:text=Use-,printf,-instead%3A)  
-[perl - Shell magic wanted: format output of hexdump in a pipe - Stack Overflow](https://stackoverflow.com/questions/5974607/shell-magic-wanted-format-output-of-hexdump-in-a-pipe#:~:text=you%20can%20use-,xxd%20%2Dp,-to%20make%20a)  
+[perl - Shell magic wanted: format output of hexdump in a pipe - Stack Overflow](https://stackoverflow.com/questions/5974607/shell-magic-wanted-format-output-of-hexdump-in-a-pipe#:~:text=you%20can%20use-,xxd%20%2Dp,-to%20make%20a)
 
 ### One shot
 
@@ -118,7 +118,7 @@ while getopts "h?s?l" opt; do
       exec 3<&0
 
       printf '\n'
-      
+
       while IFS= read -r line
       do
         echo "$line"
@@ -129,7 +129,7 @@ while getopts "h?s?l" opt; do
         printf '\n'
       done < "$input"
       exec 3<&-
-      
+
       printf '\n'
       echo 'Done.'
       printf '\n'
@@ -140,4 +140,63 @@ while getopts "h?s?l" opt; do
 done
 ```
 
-***
+---
+
+## Forward traffic
+
+Forward network communications when you are forced to keep the IP address of a server because of devices deployed in the field that are no longer maintainable to change the IP address of the server with which they communicate.
+
+Solutions:
+
+- [socat](#socat), communication relay  
+- [Traefik](https://doc.traefik.io/traefik/) open-source Edge Router
+
+---
+
+## telnet
+
+Open connection:
+
+```console
+telnet localhost <tcp port number>
+```
+
+Close connection:
+
+```console
+type Ctrl + ] on your keyboard
+
+telnet>
+
+type in the word 'close' to close the session
+```
+
+---
+
+## netcat
+
+Netcat (nc) operates by initiating a TCP connection to a remote host.
+
+The most basic syntax is:
+
+```console
+netcat [options] <host> <port>
+```
+
+---
+
+## socat
+
+The `socat` utility is a relay for bidirectional data transfers between two independent data channels.
+
+[Online documentation source](https://www.redhat.com/sysadmin/getting-started-socat)
+
+For multiple connections, use the `fork` option as used in the examples below:
+
+```console
+socat TCP4-LISTEN:81,fork,reuseaddr TCP4:TCP4:192.168.1.10:80
+```
+
+This example listens on port 81, accepts connections, and forwards the connections to port 80 on the remote host.
+
+---
