@@ -2697,6 +2697,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#forward-traffic" class="md-nav__link">
+    Forward traffic
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#telnet" class="md-nav__link">
+    telnet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#netcat" class="md-nav__link">
+    netcat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socat" class="md-nav__link">
+    socat
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3330,6 +3358,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#forward-traffic" class="md-nav__link">
+    Forward traffic
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#telnet" class="md-nav__link">
+    telnet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#netcat" class="md-nav__link">
+    netcat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socat" class="md-nav__link">
+    socat
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3364,7 +3420,7 @@
 <a href="https://unix.stackexchange.com/questions/445153/wait-for-keyboard-input-inside-a-while-read-loop#:~:text=the%20loop%2C%20the-,read%20keypress,-reads%20from%20this">shell script - Wait for keyboard input inside a while-read loop - Unix &amp; Linux Stack Exchange</a><br />
 <a href="https://serverfault.com/questions/512722/how-to-automatically-close-netcat-connection-after-data-is-sent#:~:text=echo%20hello%7Cnc-,%2Dw%201,-%2Du%2010.0.30.255%20%2Dp">linux - How to automatically close netcat connection after data is sent? - Server Fault</a><br />
 <a href="https://stackoverflow.com/questions/8467424/echo-newline-in-bash-prints-literal-n#:~:text=Use-,printf,-instead%3A">Echo newline in Bash prints literal \n - Stack Overflow</a><br />
-<a href="https://stackoverflow.com/questions/5974607/shell-magic-wanted-format-output-of-hexdump-in-a-pipe#:~:text=you%20can%20use-,xxd%20%2Dp,-to%20make%20a">perl - Shell magic wanted: format output of hexdump in a pipe - Stack Overflow</a>  </p>
+<a href="https://stackoverflow.com/questions/5974607/shell-magic-wanted-format-output-of-hexdump-in-a-pipe#:~:text=you%20can%20use-,xxd%20%2Dp,-to%20make%20a">perl - Shell magic wanted: format output of hexdump in a pipe - Stack Overflow</a></p>
 <h3 id="one-shot">One shot</h3>
 <p>Command line, manual sending, one raw data frame (Like Network Stuff):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">echo -n &quot;830f9d10362f4bc8a1c..&quot; | perl -e &#39;print pack &quot;H*&quot;, &lt;STDIN&gt;&#39; | timeout 0.2 nc -w 1 -u &lt;ip&gt; &lt;port&gt; | xxd -p</span>
@@ -3458,6 +3514,40 @@
 <a id="__codelineno-4-79" name="__codelineno-4-79"></a>  <span class="k">esac</span>
 <a id="__codelineno-4-80" name="__codelineno-4-80"></a><span class="k">done</span>
 </code></pre></div>
+<hr />
+<h2 id="forward-traffic">Forward traffic</h2>
+<p>Forward network communications when you are forced to keep the IP address of a server because of devices deployed in the field that are no longer maintainable to change the IP address of the server with which they communicate.</p>
+<p>Solutions:</p>
+<ul>
+<li><a href="#socat">socat</a>, communication relay  </li>
+<li><a href="https://doc.traefik.io/traefik/">Traefik</a> open-source Edge Router</li>
+</ul>
+<hr />
+<h2 id="telnet">telnet</h2>
+<p>Open connection:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">telnet localhost &lt;tcp port number&gt;</span>
+</code></pre></div>
+<p>Close connection:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">type Ctrl + ] on your keyboard</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="go">telnet&gt;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="go">type in the word &#39;close&#39; to close the session</span>
+</code></pre></div>
+<hr />
+<h2 id="netcat">netcat</h2>
+<p>Netcat (nc) operates by initiating a TCP connection to a remote host.</p>
+<p>The most basic syntax is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">netcat [options] &lt;host&gt; &lt;port&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="socat">socat</h2>
+<p>The <code>socat</code> utility is a relay for bidirectional data transfers between two independent data channels.</p>
+<p><a href="https://www.redhat.com/sysadmin/getting-started-socat">Online documentation source</a></p>
+<p>For multiple connections, use the <code>fork</code> option as used in the examples below:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">socat TCP4-LISTEN:81,fork,reuseaddr TCP4:TCP4:192.168.1.10:80</span>
+</code></pre></div>
+<p>This example listens on port 81, accepts connections, and forwards the connections to port 80 on the remote host.</p>
 <hr />
 
               
