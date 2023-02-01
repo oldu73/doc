@@ -35,7 +35,3 @@ npm start
 ```
 
 ---
-
-<!-- TODO -->
-
-replay Linux install video.. complete, from start!
