@@ -187,9 +187,7 @@ netcat [options] <host> <port>
 
 ## socat
 
-The `socat` utility is a relay for bidirectional data transfers between two independent data channels.
-
-[Online documentation source](https://www.redhat.com/sysadmin/getting-started-socat)
+The [`socat`](https://www.redhat.com/sysadmin/getting-started-socat) utility is a relay for bidirectional data transfers between two independent data channels.
 
 For multiple connections, use the `fork` option as used in the examples below:
 
