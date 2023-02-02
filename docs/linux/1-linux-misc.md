@@ -1,6 +1,6 @@
 # Linux - 01 - Misc
 
-***
+---
 
 ## Curl
 
@@ -9,7 +9,7 @@ curl -i localhost
 curl -sb -H "Accept: application/json" "http://localhost" | json_pp
 ```
 
-***
+---
 
 ## Compress Decompress
 
@@ -19,6 +19,12 @@ curl -sb -H "Accept: application/json" "http://localhost" | json_pp
 
 ```console
 tar -czf /targetfolder/targetfile.tar.gz /sourcefolder
+```
+
+or gzip:
+
+```console
+gzip <file name>
 ```
 
 ### Decompress (xzf)
@@ -35,7 +41,7 @@ or gzip, -k to keep original, -d to decompress:
 gzip -kd file.gz
 ```
 
-***
+---
 
 ## Package
 
@@ -57,7 +63,7 @@ apt-cache show packagename
 sudo apt-get --purge autoremove packagename
 ```
 
-***
+---
 
 ## Switch user to root
 
@@ -67,7 +73,7 @@ Switch current user to root
 sudo su -
 ```
 
-***
+---
 
 ## Grep lines before after match
 
@@ -80,7 +86,7 @@ Stick ne lines just after option
 grep -B2 -A3 pattern infile.txt
 ```
 
-***
+---
 
 ## Copy files from list
 
@@ -90,7 +96,7 @@ Copy specific files from a text list of files
 rsync -a sourcefolder --files-from=list.txt destinationfolder
 ```
 
-***
+---
 
 ## Get data between two patterns
 
@@ -116,7 +122,7 @@ or
 cat file | grep -o -P '(?<=left).*(?=right)'
 ```
 
-***
+---
 
 ## Grep patterns from a file
 
@@ -136,7 +142,7 @@ If result's count's not OK, check by not found pattern (-h option to hide filena
 grep -hoFf patterns.txt *.log | grep -vFf - patterns.txt
 ```
 
-***
+---
 
 ## For list of file
 
@@ -171,7 +177,7 @@ efg
 hij
 ```
 
-***
+---
 
 ## Search between timestamp
 
@@ -181,7 +187,7 @@ sed -rne '/10:50/,/11:05/ p' file
 
 Put existing time range in file (10:50 - 11:05).
 
-***
+---
 
 ## Highlight search result
 
@@ -193,7 +199,7 @@ always to transmit color through pipe
 -z to show everything, not only the matching pattern  
 -R to avoid showing esc char instead of color
 
-***
+---
 
 ## Delete history
 
@@ -215,7 +221,7 @@ history
 for h in $(seq 1006 1008); do history -d 1006; done
 ```
 
-***
+---
 
 ## Where is a program
 
@@ -230,7 +236,7 @@ env
 env | grep PATH
 ```
 
-***
+---
 
 ## Difference of cmd output
 
@@ -248,7 +254,7 @@ sort all.txt > allSorted.txt
 diff --new-line-format="" --unchanged-line-format=""  allSorted.txt okSorted.txt
 ```
 
-***
+---
 
 ## Column
 
@@ -284,9 +290,9 @@ cat test.txt | awk '{ total += $1 } END { print total/NR }'
 test.txt (warning on empty lines (maybe at the end))
 
 ```text
-1 
-3 
-7 
+1
+3
+7
 11
 22
 45
@@ -323,7 +329,7 @@ cat test.txt | awk '{if($1 > 11) print $1}' | wc -l
 3
 ```
 
-***
+---
 
 ## Get nth column from file
 
@@ -351,7 +357,7 @@ cat test.txt | awk -F ';' '{if($1 == "column 1 row 2") print $2}'
 column 2 row 2
 ```
 
-***
+---
 
 ## List files
 
@@ -361,7 +367,7 @@ Sorted by sizes and human readable
 ll -S -h
 ```
 
-***
+---
 
 ## Uniq values in a file
 
@@ -420,7 +426,7 @@ cat test.txt | sort | uniq -c | sort -n -r
       1 11
 ```
 
-***
+---
 
 ## All file containing a pattern
 
@@ -438,7 +444,7 @@ Output only file name that contain pattern with option -l (that is a lowercase L
 grep -l searchedString *.log
 ```
 
-***
+---
 
 ## Grep end of line after match
 
@@ -448,7 +454,7 @@ grep -l searchedString *.log
 cat error.log | grep -A 1 -B 1 --group-separator==============\\r\\n "not valid"
 ```
 
-***
+---
 
 ## Empty file
 
@@ -458,7 +464,7 @@ Empty File Content by Redirecting to Null:
 > access.log
 ```
 
-***
+---
 
 ## Disk usage
 
@@ -472,7 +478,7 @@ Huge file:
 sudo du -xh / | grep -P "G\t"
 ```
 
-***
+---
 
 ## Last modification of a file
 
@@ -480,15 +486,15 @@ sudo du -xh / | grep -P "G\t"
 date -r fileName
 ```
 
-***
+---
 
 ## Creation date of a file
 
 Below process to find creation date of a test file
 
-1. In a tmp directory create a test file  
-2. Find inode of the file  
-3. Find partition on which current folder belongs to  
+1. In a tmp directory create a test file
+2. Find inode of the file
+3. Find partition on which current folder belongs to
 4. Use file system debugger to find creation date
 
 ```console
@@ -530,7 +536,7 @@ Size of extra inode fields: 32
 Inode checksum: 0x38e4efd5
 ```
 
-***
+---
 
 ## Since when a process run
 
@@ -540,13 +546,13 @@ ps -p pid -o etime
 
 Then use this [online tool](https://www.timeanddate.com/date/timeduration.html?) to calculate time between above result and now.
 
-***
+---
 
 ## How many file descriptors opened by a process
 
-1. disk usage  
-2. find processName's process id (e.g. 28043)  
-3. number of fd opened for pid  
+1. disk usage
+2. find processName's process id (e.g. 28043)
+3. number of fd opened for pid
 4. max limit of opened fd for pid
 
 ```console
@@ -556,7 +562,7 @@ sudo ls /proc/28043/fd | wc -l
 sudo grep "Max open files" /proc/28043/limits | awk '{ print $4; }'
 ```
 
-***
+---
 
 ## Copy filtered file list
 
@@ -566,7 +572,7 @@ Copy (for move replace below cp by mv) grep"ed" filtered files list to another f
 ls | grep pattern1 | grep pattern2 | ... | xargs cp -t /destinationFolder
 ```
 
-***
+---
 
 ## Add prefix to file names list
 
@@ -574,7 +580,7 @@ ls | grep pattern1 | grep pattern2 | ... | xargs cp -t /destinationFolder
 for f in * ; do mv -- "$f" "PRE_$f" ; done
 ```
 
-***
+---
 
 ## Curly braces
 
@@ -587,7 +593,7 @@ echo {0..10}
 0 1 2 3 4 5 6 7 8 9 10
 ```
 
-***
+---
 
 ## Search replace
 
@@ -597,7 +603,7 @@ Search (s) and replace in place (-i) all occurrences (g) of each lines in a file
 sed -i 's/SEARCH/REPLACE/g' filename
 ```
 
-***
+---
 
 ## Add new line after delimiter
 
@@ -605,7 +611,7 @@ sed -i 's/SEARCH/REPLACE/g' filename
 cat someFile | tr ',' '\n' > someOtherFile
 ```
 
-***
+---
 
 ## Find file
 
@@ -615,7 +621,7 @@ Find file everywhere
 find / -type f -iname "foo*txt"
 ```
 
-***
+---
 
 ## Occurrence between positions
 
@@ -669,7 +675,7 @@ cut -c5-19 file.log | sort | uniq -c | sort -r | head -20
    1143 352739097814815
 ```
 
-***
+---
 
 ## Occurrence of column value
 
@@ -723,7 +729,7 @@ cat file.log | awk -F ';' '{print $1}' | sort | uniq -c | sort -r | head -20
     328 864394040892780
 ```
 
-***
+---
 
 ## Occurrence live
 
@@ -737,7 +743,7 @@ watch -d "awk -F ';' '{print \$1}' file.log | sort | uniq -c | sort -n -r | head
 
 [Linux Watch Command](https://linuxize.com/post/linux-watch-command/)
 
-***
+---
 
 ## jq
 
@@ -749,7 +755,7 @@ Select a field that contain true and output another field (+ count + sort + head
 jq 'select(.fieldThatMayContainTrue|startswith("true"))|.outputField' file.ndjson | sort | uniq -c | sort -n -r | head -50
 ```
 
-***
+---
 
 ## Find patterns across multiple lines
 
@@ -783,7 +789,7 @@ blah blah..
 blah efg blah blah
 ```
 
-***
+---
 
 ## Number of pattern occurrence through files
 
@@ -791,7 +797,7 @@ blah efg blah blah
 grep -c pattern files*
 ```
 
-***
+---
 
 ## Bash option select
 
@@ -834,7 +840,7 @@ done
 shift $((OPTIND-1))
 ```
 
-***
+---
 
 ## dos2unix
 
@@ -844,4 +850,4 @@ Utility to reformat text files generated under Windows for use under Linux:
 dos2unix file
 ```
 
-***
+---
