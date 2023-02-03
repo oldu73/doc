@@ -851,3 +851,63 @@ dos2unix file
 ```
 
 ---
+
+## New line
+
+### Add new line
+
+Adding new line after separator `;` to one liner file, e.g. with following file content:
+
+```txt
+<key1>:<value1>;<key2>:<value2>;<key3>:<value3>;..
+```
+
+To replace ';' with ';' + new line:
+
+```console
+sed -i 's/;/;\n/g' <file name>
+```
+
+Then ine file:
+
+```txt
+<key1>:<value1>;
+<key2>:<value2>;
+<key3>:<value3>;
+..
+```
+
+### Remove new line
+
+Remove new line after separator `;` to do a one liner file, e.g. with following file content:
+
+```txt
+<key1>:<value1>;
+<key2>:<value2>;
+<key3>:<value3>;
+..
+```
+
+To replace ';' + new line with ';':
+
+```console
+sed -i ':a;N;$!ba;s/\n//g' <file name>
+```
+
+Then ine file:
+
+```txt
+<key1>:<value1>;<key2>:<value2>;<key3>:<value3>;..
+```
+
+---
+
+## Replace value for key
+
+In a key value pair file (format "`<key>`:`<value>`;"), replace value for key, e.g. `107:what ever;` to `107:1;`:
+
+```console
+sed -i '/^107/s/:.*;/:1;/' <file name>
+```
+
+---
