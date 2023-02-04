@@ -3043,6 +3043,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#folder-size" class="md-nav__link">
+    Folder size
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4097,6 +4104,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#folder-size" class="md-nav__link">
+    Folder size
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4714,6 +4728,11 @@ Here we want to have file name, cat content and separate result with a new line<
 <h2 id="replace-value-for-key">Replace value for key</h2>
 <p>In a key value pair file (format "<code>&lt;key&gt;</code>:<code>&lt;value&gt;</code>;"), replace value for key, e.g. <code>107:what ever;</code> to <code>107:1;</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1"></a><span class="go">sed -i &#39;/^107/s/:.*;/:1;/&#39; &lt;file name&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="folder-size">Folder size</h2>
+<p><code>ls</code> or <code>ll</code> does not show folder content size, use below instead (<a href="https://unix.stackexchange.com/questions/365369/ls-ls-isnt-showing-true-size-of-directory">src</a>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1"></a><span class="go">du -ha -d 1 | sort -hr</span>
 </code></pre></div>
 <hr />
 
