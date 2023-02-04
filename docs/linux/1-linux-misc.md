@@ -911,3 +911,13 @@ sed -i '/^107/s/:.*;/:1;/' <file name>
 ```
 
 ---
+
+## Folder size
+
+`ls` or `ll` does not show folder content size, use below instead ([src](https://unix.stackexchange.com/questions/365369/ls-ls-isnt-showing-true-size-of-directory)):
+
+```console
+du -ha -d 1 | sort -hr
+```
+
+---
