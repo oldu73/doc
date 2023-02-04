@@ -165,6 +165,8 @@ nav:
         - training:
             - 01-introduction:
                 - '05-install-environnement': 'react/training/01-introduction/05-install-environnement.md'
+            - 02-create-application:
+                - '07-use-create-react-app': 'react/training/02-create-application/07-use-create-react-app.md'
     - Redis:
         - 'Redis - 01 - Misc': 'redis/1-redis-misc.md'
     - VS Code:

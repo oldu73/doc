@@ -21,17 +21,3 @@ VS Code File -> Preferences -> Settings -> type "format" -> check "Editor: Forma
 ```
 
 ---
-
-## Project
-
-Setup a new `React` project:
-
-```console
-npx create-react-app myapp
-
-cd myapp
-
-npm start
-```
-
----
