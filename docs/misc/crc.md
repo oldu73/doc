@@ -20,6 +20,6 @@ invert input as follow:
 7D000002CFCDCA14 becomes 14CACDCF020000
 ```
 
-Put `14CACDCF020000` in entry field  click on 'CRC-8' button and CRC result should be '0x7D'
+Put `14CACDCF020000` in entry field then click on 'CRC-8' button and CRC result should be '0x7D'.
 
 ---
