@@ -152,6 +152,8 @@ nav:
             - 'Windows - 01 - Misc': 'microsoft/windows/1-windows-misc.md'
         - WSL:
             - 'WSL - 01 - Misc': 'microsoft/wsl/1-wsl-misc.md'
+    - Misc:
+        - 'CRC': 'misc/crc.md'
     - MkDocs:
         - 'misc': 'mkdocs/misc.md'
     - MongoDB:
