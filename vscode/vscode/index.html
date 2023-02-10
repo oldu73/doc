@@ -3447,6 +3447,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#reformat-code" class="md-nav__link">
+    Reformat code
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3647,6 +3654,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#reformat-code" class="md-nav__link">
+    Reformat code
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3764,6 +3778,29 @@ There type <strong>Open Keyboard Shortcuts (JSON)</strong> and select it from th
 <h2 id="prettier">Prettier</h2>
 <p>Set up <code>Prettier</code> - Code formatter, to format code on save:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>VS Code File -&gt; Preferences -&gt; Settings -&gt; type &quot;format&quot; -&gt; check &quot;Editor: Format On Save&quot;
+</code></pre></div>
+<hr />
+<h2 id="reformat-code">Reformat code</h2>
+<p>Optimized output build file are not easily readable (one liner), e.g.:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nt">body</span><span class="p">{</span><span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span><span class="n">antialiased</span><span class="p">;</span><span class="kp">-moz-</span><span class="n">osx-font-smoothing</span><span class="p">:</span><span class="n">grayscale</span><span class="p">;</span><span class="k">font-family</span><span class="p">:</span><span class="o">-</span><span class="n">apple-system</span><span class="p">,</span><span class="n">BlinkMacSystemFont</span><span class="p">,</span><span class="n">Segoe</span> <span class="n">UI</span><span class="p">,</span><span class="n">Roboto</span><span class="p">,</span><span class="n">Oxygen</span><span class="p">,</span><span class="n">Ubuntu</span><span class="p">,</span><span class="n">Cantarell</span><span class="p">,</span><span class="n">Fira</span> <span class="n">Sans</span><span class="p">,</span><span class="n">Droid</span> <span class="n">Sans</span><span class="p">,</span><span class="n">Helvetica</span> <span class="n">Neue</span><span class="p">,</span><span class="kc">sans-serif</span><span class="p">;</span><span class="k">margin</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span><span class="nt">code</span><span class="p">{</span><span class="k">font-family</span><span class="p">:</span><span class="n">source-code-pro</span><span class="p">,</span><span class="n">Menlo</span><span class="p">,</span><span class="n">Monaco</span><span class="p">,</span><span class="n">Consolas</span><span class="p">,</span><span class="n">Courier</span> <span class="n">New</span><span class="p">,</span><span class="kc">monospace</span><span class="p">}.</span><span class="nc">title</span><span class="p">{</span><span class="k">background-color</span><span class="p">:</span><span class="mh">#d8e0da</span><span class="p">;</span><span class="k">color</span><span class="p">:</span><span class="kc">green</span><span class="p">}</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="c">/*# sourceMappingURL=main.5fed45fe.css.map*/</span>
+</code></pre></div>
+<p>If code formatter plugin is installed hit <code>ctrl + s</code> to save the opened file and format it in a readable manner:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nt">body</span> <span class="p">{</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>  <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>  <span class="kp">-moz-</span><span class="n">osx-font-smoothing</span><span class="p">:</span> <span class="n">grayscale</span><span class="p">;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>  <span class="k">font-family</span><span class="p">:</span> <span class="o">-</span><span class="n">apple-system</span><span class="p">,</span> <span class="n">BlinkMacSystemFont</span><span class="p">,</span> <span class="n">Segoe</span> <span class="n">UI</span><span class="p">,</span> <span class="n">Roboto</span><span class="p">,</span> <span class="n">Oxygen</span><span class="p">,</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>    <span class="n">Ubuntu</span><span class="p">,</span> <span class="n">Cantarell</span><span class="p">,</span> <span class="n">Fira</span> <span class="n">Sans</span><span class="p">,</span> <span class="n">Droid</span> <span class="n">Sans</span><span class="p">,</span> <span class="n">Helvetica</span> <span class="n">Neue</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>  <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="p">}</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="nt">code</span> <span class="p">{</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a>  <span class="k">font-family</span><span class="p">:</span> <span class="n">source-code-pro</span><span class="p">,</span> <span class="n">Menlo</span><span class="p">,</span> <span class="n">Monaco</span><span class="p">,</span> <span class="n">Consolas</span><span class="p">,</span> <span class="n">Courier</span> <span class="n">New</span><span class="p">,</span> <span class="kc">monospace</span><span class="p">;</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="p">}</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="p">.</span><span class="nc">title</span> <span class="p">{</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12"></a>  <span class="k">background-color</span><span class="p">:</span> <span class="mh">#d8e0da</span><span class="p">;</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13"></a>  <span class="k">color</span><span class="p">:</span> <span class="kc">green</span><span class="p">;</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14"></a><span class="p">}</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="c">/*# sourceMappingURL=main.5fed45fe.css.map*/</span>
 </code></pre></div>
 <hr />
 
