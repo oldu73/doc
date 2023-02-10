@@ -204,3 +204,34 @@ VS Code File -> Preferences -> Settings -> type "format" -> check "Editor: Forma
 ```
 
 ---
+
+## Reformat code
+
+Optimized output build file are not easily readable (one liner), e.g.:
+
+```css
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;margin:0}code{font-family:source-code-pro,Menlo,Monaco,Consolas,Courier New,monospace}.title{background-color:#d8e0da;color:green}
+/*# sourceMappingURL=main.5fed45fe.css.map*/
+```
+
+If code formatter plugin is installed hit `ctrl + s` to save the opened file and format it in a readable manner:
+
+```css
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  margin: 0;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+}
+.title {
+  background-color: #d8e0da;
+  color: green;
+}
+/*# sourceMappingURL=main.5fed45fe.css.map*/
+```
+
+---
