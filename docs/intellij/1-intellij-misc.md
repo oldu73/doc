@@ -1,14 +1,14 @@
 # IntelliJ - 01 - Misc
 
-***
+---
 
 ## Setup project in WSL folder
 
 Fix EOL (LF vs CRLF) issue:
 
-- git clone  
-- select root project folder  
-- menu File - File Properties - Line Separators - LF Unix  
+- git clone
+- select root project folder
+- menu File - File Properties - Line Separators - LF Unix
 - git rollback entire project to reset CRLF issue
 
 [SRC](https://www.jetbrains.com/help/idea/configuring-line-endings-and-line-separators.html)
@@ -17,11 +17,11 @@ OR
 
 Terminal in a new "native" WSL folder, clone and [fix CRLF issue](https://stackoverflow.com/questions/9976986/force-lf-eol-in-git-repo-and-working-copy):
 
-- git clone project_url  
-- git config core.eol lf  
+- git clone project_url
+- git config core.eol lf
 - git config core.autocrlf input
 
-***
+---
 
 ## Service window
 
@@ -35,7 +35,7 @@ View | Tool Windows | Services or Alt+8
 
 [SRC](https://www.jetbrains.com/help/idea/services-tool-window.html)
 
-***
+---
 
 ## Search for ; and replace with ;\r\n
 
@@ -46,7 +46,7 @@ replace ; enable regex by ;\r\n
 
 To revert, do it in Notepad++ with a record sequence
 
-***
+---
 
 ## Caret Cloning
 
@@ -58,7 +58,7 @@ Alt + Shift + Insert to switch to column mode
 Then Shift + Up/Down Arrow(s)
 ```
 
-***
+---
 
 ## Compile and reload changed classes
 
@@ -66,7 +66,7 @@ Then Shift + Up/Down Arrow(s)
 Ctrl + Shift + F9
 ```
 
-***
+---
 
 ## Surround code fragments
 
@@ -76,7 +76,7 @@ SRC: - [Surround code fragments](https://www.jetbrains.com/help/idea/surrounding
 Ctrl + Alt + T
 ```
 
-***
+---
 
 ## Comment
 
@@ -94,4 +94,14 @@ Ctrl + /
 Ctrl + Shift + /
 ```
 
-***
+---
+
+## Diff
+
+Open diff in new tab instead of new window:
+
+```txt
+File -> Settings... -> Advanced Settings -> Search 'diff' -> check 'Open Diff as Editor Tab'
+```
+
+---
