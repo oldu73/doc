@@ -891,6 +891,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    Diff
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3467,6 +3474,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    Diff
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3485,17 +3499,17 @@
 <h2 id="setup-project-in-wsl-folder">Setup project in WSL folder</h2>
 <p>Fix EOL (LF vs CRLF) issue:</p>
 <ul>
-<li>git clone  </li>
-<li>select root project folder  </li>
-<li>menu File - File Properties - Line Separators - LF Unix  </li>
+<li>git clone</li>
+<li>select root project folder</li>
+<li>menu File - File Properties - Line Separators - LF Unix</li>
 <li>git rollback entire project to reset CRLF issue</li>
 </ul>
 <p><a href="https://www.jetbrains.com/help/idea/configuring-line-endings-and-line-separators.html">SRC</a></p>
 <p>OR</p>
 <p>Terminal in a new "native" WSL folder, clone and <a href="https://stackoverflow.com/questions/9976986/force-lf-eol-in-git-repo-and-working-copy">fix CRLF issue</a>:</p>
 <ul>
-<li>git clone project_url  </li>
-<li>git config core.eol lf  </li>
+<li>git clone project_url</li>
+<li>git config core.eol lf</li>
 <li>git config core.autocrlf input</li>
 </ul>
 <hr />
@@ -3535,6 +3549,11 @@ line to compare files.</p>
 </code></pre></div>
 <h3 id="block">Block</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>Ctrl + Shift + /
+</code></pre></div>
+<hr />
+<h2 id="diff">Diff</h2>
+<p>Open diff in new tab instead of new window:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>File -&gt; Settings... -&gt; Advanced Settings -&gt; Search &#39;diff&#39; -&gt; check &#39;Open Diff as Editor Tab&#39;
 </code></pre></div>
 <hr />
 
