@@ -1,6 +1,6 @@
 # Kibana
 
-***
+---
 
 ## Search
 
@@ -18,7 +18,7 @@ GET <index>/_search
 }
 ```
 
-***
+---
 
 ## Update field
 
@@ -52,7 +52,7 @@ POST <index>/_update/<id>
 }
 ```
 
-***
+---
 
 ## Retrieve index
 
@@ -69,7 +69,7 @@ GET /*/_search
 }
 ```
 
-***
+---
 
 ## Filter in query bar
 
@@ -79,7 +79,7 @@ Filter in query bar (not in filter-pill) to get all records that id field start 
 id:3*
 ```
 
-***
+---
 
 ## Index pattern scripted field
 
@@ -89,16 +89,16 @@ Index pattern scripted field to calculate time difference, in seconds, between t
 (doc['gatewayDate'].value - doc['timestamp'].value)/1000
 ```
 
-***
+---
 
 ## Delete doc
 
 Kibana 7.17
 
-- discover to get doc id  
+- discover to get doc id
 - dev tools e.g. `GET/DELETE /index/_doc/<id>`
 
-***
+---
 
 ## List connected agent
 
@@ -108,7 +108,7 @@ Kibana 7.17, dev tools:
 GET _nodes/stats?filter_path=**.clients
 ```
 
-***
+---
 
 ## List queue
 
@@ -118,4 +118,14 @@ Kibana 7.17, dev tools:
 GET _cat/thread_pool/search,write?v
 ```
 
-***
+---
+
+## KQL
+
+KQL Kibana Query Language, e.g.:
+
+```kql
+accountId : <account name> and lastname : *0000* or firstname : *FIRST*
+```
+
+---
