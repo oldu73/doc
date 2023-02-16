@@ -18,6 +18,30 @@ GET <index>/_search
 }
 ```
 
+Another sample:
+
+```txt
+POST <index>/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "accountId": "<account id>"
+          }
+        },
+        {
+          "match": {
+            "firstname": "<first name>"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 ---
 
 ## Update field
