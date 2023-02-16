@@ -62,16 +62,18 @@ to update:
 POST <index>/_update/<id>
 {
     "doc": {
-        "field" : "value"
+        "<string field name>" : "value"
         or
-        "field" : 99
+        "<integer field name>" : 99
         or
-        "field" : false
+        "<boolean field name>" : false
         or
-        "location" : {
+        "location field name>" : {
           "lat" : 46.7552483,
           "lon" : 7.6519766
         }
+        or
+        "<timestamp field name>": "2023-02-16T07:01:39.584Z"
     }
 }
 ```
