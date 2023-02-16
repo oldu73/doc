@@ -122,7 +122,7 @@ GET _cat/thread_pool/search,write?v
 
 ## KQL
 
-KQL Kibana Query Language, e.g.:
+Kibana Query Language, e.g.:
 
 ```kql
 accountId : <account name> and lastname : *0000* or firstname : *FIRST*
