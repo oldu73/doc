@@ -71,12 +71,18 @@ GET /*/_search
 
 ---
 
-## Filter in query bar
+## KQL Filter in query bar
 
-Filter in query bar (not in filter-pill) to get all records that id field start with a pattern:
+Kibana Query Language, filter in query bar (not in filter-pill) to get all records that id field start with a pattern:
 
-```txt
+```kql
 id:3*
+```
+
+Another sample:
+
+```kql
+accountId : <account name> and lastname : *0000* or firstname : *FIRST*
 ```
 
 ---
@@ -116,16 +122,6 @@ Kibana 7.17, dev tools:
 
 ```txt
 GET _cat/thread_pool/search,write?v
-```
-
----
-
-## KQL
-
-Kibana Query Language, e.g.:
-
-```kql
-accountId : <account name> and lastname : *0000* or firstname : *FIRST*
 ```
 
 ---
