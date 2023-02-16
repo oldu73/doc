@@ -3469,54 +3469,75 @@
 <a id="__codelineno-0-6" name="__codelineno-0-6"></a>    &quot;size&quot;: 100
 <a id="__codelineno-0-7" name="__codelineno-0-7"></a>}
 </code></pre></div>
+<p>Another sample:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>POST &lt;index&gt;/_search
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>{
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>  &quot;query&quot;: {
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    &quot;bool&quot;: {
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>      &quot;must&quot;: [
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>        {
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>          &quot;match&quot;: {
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>            &quot;accountId&quot;: &quot;&lt;account id&gt;&quot;
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>          }
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>        },
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>        {
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>          &quot;match&quot;: {
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>            &quot;firstname&quot;: &quot;&lt;first name&gt;&quot;
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>          }
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>        }
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>      ]
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a>    }
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>  }
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a>}
+</code></pre></div>
 <hr />
 <h2 id="update-field">Update field</h2>
 <p>Kibana 7.17</p>
 <p>Browse to Dev Tools, Console</p>
 <p>to get:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>GET &lt;index&gt;/_doc/&lt;id&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>GET &lt;index&gt;/_doc/&lt;id&gt;
 </code></pre></div>
 <p>to update:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>POST &lt;index&gt;/_update/&lt;id&gt;
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>{
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    &quot;doc&quot;: {
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>        &quot;field&quot; : &quot;value&quot;
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a>        or
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a>        &quot;field&quot; : 99
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a>        or
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a>        &quot;field&quot; : false
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a>        or
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a>        &quot;location&quot; : {
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a>          &quot;lat&quot; : 46.7552483,
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a>          &quot;lon&quot; : 7.6519766
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a>        }
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a>    }
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a>}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>POST &lt;index&gt;/_update/&lt;id&gt;
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>{
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    &quot;doc&quot;: {
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>        &quot;field&quot; : &quot;value&quot;
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>        or
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>        &quot;field&quot; : 99
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>        or
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>        &quot;field&quot; : false
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>        or
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>        &quot;location&quot; : {
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>          &quot;lat&quot; : 46.7552483,
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>          &quot;lon&quot; : 7.6519766
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>        }
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>    }
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a>}
 </code></pre></div>
 <hr />
 <h2 id="retrieve-index">Retrieve index</h2>
 <p>Retrieve to which index belongs an id, in Kibana 5.6 Dev Tools:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>GET /*/_search
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>{
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>  &quot;query&quot;: {
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>    &quot;match&quot;: {
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>      &quot;_id&quot;: &quot;db37..-..-..-..-..9a117d83&quot;
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a>    }
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a>  }
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a>}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>GET /*/_search
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>{
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>  &quot;query&quot;: {
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>    &quot;match&quot;: {
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>      &quot;_id&quot;: &quot;db37..-..-..-..-..9a117d83&quot;
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>    }
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>  }
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>}
 </code></pre></div>
 <hr />
 <h2 id="kql-filter-in-query-bar">KQL Filter in query bar</h2>
 <p>Kibana Query Language, filter in query bar (not in filter-pill) to get all records that id field start with a pattern:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>id:3*
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>id:3*
 </code></pre></div>
 <p>Another sample:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>accountId : &lt;account name&gt; and lastname : *0000* or firstname : *FIRST*
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>accountId : &lt;account name&gt; and lastname : *0000* or firstname : *FIRST*
 </code></pre></div>
 <hr />
 <h2 id="index-pattern-scripted-field">Index pattern scripted field</h2>
 <p>Index pattern scripted field to calculate time difference, in seconds, between two dates, language "painless", type "number", format pattern "00.":</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>(doc[&#39;gatewayDate&#39;].value - doc[&#39;timestamp&#39;].value)/1000
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>(doc[&#39;gatewayDate&#39;].value - doc[&#39;timestamp&#39;].value)/1000
 </code></pre></div>
 <hr />
 <h2 id="delete-doc">Delete doc</h2>
@@ -3528,12 +3549,12 @@
 <hr />
 <h2 id="list-connected-agent">List connected agent</h2>
 <p>Kibana 7.17, dev tools:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>GET _nodes/stats?filter_path=**.clients
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>GET _nodes/stats?filter_path=**.clients
 </code></pre></div>
 <hr />
 <h2 id="list-queue">List queue</h2>
 <p>Kibana 7.17, dev tools:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>GET _cat/thread_pool/search,write?v
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>GET _cat/thread_pool/search,write?v
 </code></pre></div>
 <hr />
 
