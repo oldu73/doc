@@ -634,8 +634,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#filter-in-query-bar" class="md-nav__link">
-    Filter in query bar
+  <a href="#kql-filter-in-query-bar" class="md-nav__link">
+    KQL Filter in query bar
   </a>
   
 </li>
@@ -664,13 +664,6 @@
         <li class="md-nav__item">
   <a href="#list-queue" class="md-nav__link">
     List queue
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kql" class="md-nav__link">
-    KQL
   </a>
   
 </li>
@@ -3416,8 +3409,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#filter-in-query-bar" class="md-nav__link">
-    Filter in query bar
+  <a href="#kql-filter-in-query-bar" class="md-nav__link">
+    KQL Filter in query bar
   </a>
   
 </li>
@@ -3446,13 +3439,6 @@
         <li class="md-nav__item">
   <a href="#list-queue" class="md-nav__link">
     List queue
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kql" class="md-nav__link">
-    KQL
   </a>
   
 </li>
@@ -3520,14 +3506,17 @@
 <a id="__codelineno-3-8" name="__codelineno-3-8"></a>}
 </code></pre></div>
 <hr />
-<h2 id="filter-in-query-bar">Filter in query bar</h2>
-<p>Filter in query bar (not in filter-pill) to get all records that id field start with a pattern:</p>
+<h2 id="kql-filter-in-query-bar">KQL Filter in query bar</h2>
+<p>Kibana Query Language, filter in query bar (not in filter-pill) to get all records that id field start with a pattern:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>id:3*
+</code></pre></div>
+<p>Another sample:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>accountId : &lt;account name&gt; and lastname : *0000* or firstname : *FIRST*
 </code></pre></div>
 <hr />
 <h2 id="index-pattern-scripted-field">Index pattern scripted field</h2>
 <p>Index pattern scripted field to calculate time difference, in seconds, between two dates, language "painless", type "number", format pattern "00.":</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>(doc[&#39;gatewayDate&#39;].value - doc[&#39;timestamp&#39;].value)/1000
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>(doc[&#39;gatewayDate&#39;].value - doc[&#39;timestamp&#39;].value)/1000
 </code></pre></div>
 <hr />
 <h2 id="delete-doc">Delete doc</h2>
@@ -3539,17 +3528,12 @@
 <hr />
 <h2 id="list-connected-agent">List connected agent</h2>
 <p>Kibana 7.17, dev tools:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>GET _nodes/stats?filter_path=**.clients
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>GET _nodes/stats?filter_path=**.clients
 </code></pre></div>
 <hr />
 <h2 id="list-queue">List queue</h2>
 <p>Kibana 7.17, dev tools:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>GET _cat/thread_pool/search,write?v
-</code></pre></div>
-<hr />
-<h2 id="kql">KQL</h2>
-<p>Kibana Query Language, e.g.:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>accountId : &lt;account name&gt; and lastname : *0000* or firstname : *FIRST*
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>GET _cat/thread_pool/search,write?v
 </code></pre></div>
 <hr />
 
