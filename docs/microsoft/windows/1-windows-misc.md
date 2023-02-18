@@ -2,7 +2,7 @@
 
 ---
 
-## find process that uses a port
+## Find process that uses a port
 
 Open CMD prompt as admin
 
@@ -30,7 +30,7 @@ C:\> Get-Process -Id (Get-NetTCPConnection -LocalPort 50307).OwningProcess
 
 ---
 
-## grep equivalent
+## Grep equivalent
 
 find "50307" or findstr 50307
 
@@ -44,7 +44,7 @@ You can find the application based on the PID on the Processes tab in Windows Ta
 
 ---
 
-## kill process
+## Kill process
 
 ```console
 C:\> taskkill /F /PID pid_number
@@ -52,7 +52,7 @@ C:\> taskkill /F /PID pid_number
 
 ---
 
-## unable to bind port
+## Unable to bind port
 
 [SRC](https://stackoverflow.com/questions/15619921/an-attempt-was-made-to-access-a-socket-in-a-way-forbidden-by-its-access-permissi)
 
@@ -64,7 +64,7 @@ Restart-Service hns
 
 ---
 
-## path
+## Path
 
 PATH shortcut:
 
