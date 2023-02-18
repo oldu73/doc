@@ -2727,35 +2727,35 @@
       
         <li class="md-nav__item">
   <a href="#find-process-that-uses-a-port" class="md-nav__link">
-    find process that uses a port
+    Find process that uses a port
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#grep-equivalent" class="md-nav__link">
-    grep equivalent
+    Grep equivalent
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#kill-process" class="md-nav__link">
-    kill process
+    Kill process
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#unable-to-bind-port" class="md-nav__link">
-    unable to bind port
+    Unable to bind port
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#path" class="md-nav__link">
-    path
+    Path
   </a>
   
 </li>
@@ -3375,35 +3375,35 @@
       
         <li class="md-nav__item">
   <a href="#find-process-that-uses-a-port" class="md-nav__link">
-    find process that uses a port
+    Find process that uses a port
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#grep-equivalent" class="md-nav__link">
-    grep equivalent
+    Grep equivalent
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#kill-process" class="md-nav__link">
-    kill process
+    Kill process
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#unable-to-bind-port" class="md-nav__link">
-    unable to bind port
+    Unable to bind port
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#path" class="md-nav__link">
-    path
+    Path
   </a>
   
 </li>
@@ -3430,7 +3430,7 @@
 
 <h1 id="windows-01-misc">Windows - 01 - Misc</h1>
 <hr />
-<h2 id="find-process-that-uses-a-port">find process that uses a port</h2>
+<h2 id="find-process-that-uses-a-port">Find process that uses a port</h2>
 <p>Open CMD prompt as admin</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">C:\&gt; netstat -ano -p tcp | find &quot;50307&quot;</span>
 </code></pre></div>
@@ -3447,24 +3447,24 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">C:\&gt; Get-Process -Id (Get-NetTCPConnection -LocalPort 50307).OwningProcess</span>
 </code></pre></div>
 <hr />
-<h2 id="grep-equivalent">grep equivalent</h2>
+<h2 id="grep-equivalent">Grep equivalent</h2>
 <p>find "50307" or findstr 50307</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">C:\&gt; netstat -ano -p tcp | findstr 50307</span>
 </code></pre></div>
 <p>You can find the application based on the PID on the Processes tab in Windows Task Manager.</p>
 <p><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netstat">netstat</a></p>
 <hr />
-<h2 id="kill-process">kill process</h2>
+<h2 id="kill-process">Kill process</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">C:\&gt; taskkill /F /PID pid_number</span>
 </code></pre></div>
 <hr />
-<h2 id="unable-to-bind-port">unable to bind port</h2>
+<h2 id="unable-to-bind-port">Unable to bind port</h2>
 <p><a href="https://stackoverflow.com/questions/15619921/an-attempt-was-made-to-access-a-socket-in-a-way-forbidden-by-its-access-permissi">SRC</a></p>
 <p>Windows Power Shell in admin mode:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>Restart-Service hns
 </code></pre></div>
 <hr />
-<h2 id="path">path</h2>
+<h2 id="path">Path</h2>
 <p>PATH shortcut:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>Windows key + type &quot;path&quot; in search field
 </code></pre></div>
