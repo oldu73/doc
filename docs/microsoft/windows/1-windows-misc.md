@@ -73,3 +73,19 @@ Windows key + type "path" in search field
 ```
 
 ---
+
+## Voice input
+
+To dictate text into a field, hit:
+
+```txt
+Windows + H
+```
+
+To change field focus:
+
+```txt
+Windows + Alt + H
+```
+
+---
