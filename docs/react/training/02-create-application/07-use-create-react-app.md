@@ -14,6 +14,12 @@ cd myapp
 npm start
 ```
 
+To install in current folder:
+
+```console
+npx create-react-app .
+```
+
 On install fail try to ([src](https://stackoverflow.com/questions/71733043/npm-install-no-audit-save-save-exact-loglevel-error-react-react-dom-reac)):
 
 ```console
@@ -46,6 +52,16 @@ Expand project to fine tune `Webpack` configuration, warning, this operation is 
 
 ```console
 npm run eject
+```
+
+---
+
+## Sass
+
+To install [Sass](https://sass-lang.com/) for current project (inside project folder):
+
+```console
+npm i sass
 ```
 
 ---
