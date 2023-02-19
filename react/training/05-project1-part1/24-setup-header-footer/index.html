@@ -3230,29 +3230,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#project" class="md-nav__link">
-    Project
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
-    Build
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#webpack" class="md-nav__link">
-    Webpack
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sass" class="md-nav__link">
-    Sass
+  <a href="#font-awesome" class="md-nav__link">
+    Font Awesome
   </a>
   
 </li>
@@ -3409,29 +3388,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#project" class="md-nav__link">
-    Project
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
-    Build
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#webpack" class="md-nav__link">
-    Webpack
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sass" class="md-nav__link">
-    Sass
+  <a href="#font-awesome" class="md-nav__link">
+    Font Awesome
   </a>
   
 </li>
@@ -3451,39 +3409,48 @@
 
 <h1 id="24-setup-header-footer">24-setup-header-footer</h1>
 <hr />
-<h2 id="project">Project</h2>
-<p>Setup a new <code>React</code> project:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">npx create-react-app myapp</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="go">cd myapp</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="go">npm start</span>
+<h2 id="font-awesome">Font Awesome</h2>
+<p>Setup <a href="https://fontawesome.com/">Font Awesome</a> for a <code>React</code> project from <a href="https://stackoverflow.com/questions/23116591/how-to-include-a-font-awesome-icon-in-reacts-render">source</a>:</p>
+<p>Npm instal font awesome:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">npm i --save @fortawesome/fontawesome</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="go">npm i --save @fortawesome/react-fontawesome</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="go">npm i --save @fortawesome/fontawesome-free-solid</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="go">npm i --save @fortawesome/fontawesome-free-regular</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="go">npm i --save @fortawesome/fontawesome-svg-core</span>
 </code></pre></div>
-<p>To install in current folder:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">npx create-react-app .</span>
+<p>Insert kit in <code>index.html</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    ...
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="p">&lt;</span><span class="nt">script</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>      <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://kit.fontawesome.com/&lt;your kit&gt;.js&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>      <span class="na">crossorigin</span><span class="o">=</span><span class="s">&quot;anonymous&quot;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>    ...
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>On install fail try to (<a href="https://stackoverflow.com/questions/71733043/npm-install-no-audit-save-save-exact-loglevel-error-react-react-dom-reac">src</a>):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">npm cache clean --force</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="go">and then, again</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="go">npx create-react-app myapp</span>
-</code></pre></div>
-<p>To reinstall node_modules folder:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">npm i</span>
-</code></pre></div>
-<hr />
-<h2 id="build">Build</h2>
-<p>Build project for production:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">npm run build</span>
-</code></pre></div>
-<hr />
-<h2 id="webpack">Webpack</h2>
-<p>Expand project to fine tune <code>Webpack</code> configuration, warning, this operation is irreversible:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">npm run eject</span>
-</code></pre></div>
-<hr />
-<h2 id="sass">Sass</h2>
-<p>To install <a href="https://sass-lang.com/">Sass</a> for current project (inside project folder):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">npm i sass</span>
+<p>Import icon in <code>JS</code> file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">...</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="k">import</span> <span class="p">{</span> <span class="nx">FontAwesomeIcon</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;@fortawesome/react-fontawesome&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">import</span> <span class="p">{</span> <span class="nx">faBars</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;@fortawesome/fontawesome-free-solid&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="kd">function</span> <span class="nx">Header</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>  <span class="k">return</span> <span class="p">(</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>    <span class="o">&lt;</span><span class="nx">header</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="sb">`</span><span class="si">${</span><span class="p">...</span><span class="si">}</span><span class="sb"> ...`</span><span class="p">}</span><span class="o">&gt;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>      <span class="o">&lt;</span><span class="nx">i</span><span class="o">&gt;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>        <span class="o">&lt;</span><span class="nx">FontAwesomeIcon</span> <span class="nx">icon</span><span class="o">=</span><span class="p">{</span><span class="nx">faBars</span><span class="p">}</span> <span class="o">/&gt;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>      <span class="o">&lt;</span><span class="err">/i&gt;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>      <span class="p">...</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>    <span class="o">&lt;</span><span class="err">/header&gt;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>  <span class="p">);</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="p">}</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="k">export</span> <span class="k">default</span> <span class="nx">Header</span><span class="p">;</span>
 </code></pre></div>
 <hr />
 
