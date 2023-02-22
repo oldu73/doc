@@ -151,3 +151,26 @@ GET _cat/thread_pool/search,write?v
 ```
 
 ---
+
+## Percolate query
+
+Match a document to the registered percolator queries [(src)](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-percolate-query.html):
+
+```json
+GET /<index name>/_search
+{
+  "query": {
+    "percolate": {
+      "field": "query",
+      "document": {
+        "<field1 id>": "<uuid>",
+        "<field2 ids>": ["<uuid>"],
+        "<field3 ids>": ["<uuid>"],
+        "<event>": "<event name>"
+      }
+    }
+  }
+}
+```
+
+---
