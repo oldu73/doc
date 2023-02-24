@@ -171,6 +171,8 @@ nav:
                 - '07-use-create-react-app': 'react/training/02-create-application/07-use-create-react-app.md'
             - 05-project1-part1:
                 - '24-setup-header-footer': 'react/training/05-project1-part1/24-setup-header-footer.md'
+            - 06-conditional-rendering-and-list:
+                - '27-introduction-and-emmet': 'react/training/06-conditional-rendering-and-list/27-introduction-and-emmet.md'
     - Redis:
         - 'Redis - 01 - Misc': 'redis/1-redis-misc.md'
     - VS Code:
