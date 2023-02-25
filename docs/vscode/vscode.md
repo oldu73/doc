@@ -235,3 +235,9 @@ code {
 ```
 
 ---
+
+## Delete line
+
+Just type `Ctrl + X`. Now the whole line is deleted!
+
+---
