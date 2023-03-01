@@ -89,3 +89,11 @@ Windows + Alt + H
 ```
 
 ---
+
+## Terminal
+
+### Split
+
+Hit `ctrl + shift + p` and search for `split`
+
+---
