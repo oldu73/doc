@@ -94,6 +94,6 @@ Windows + Alt + H
 
 ### Split
 
-Hit `ctrl + shift + p` and search for `split`
+Hit `ctrl + shift + p` and search for `split`.
 
 ---
