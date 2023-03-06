@@ -3050,6 +3050,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#live-log-filtered" class="md-nav__link">
+    Live log filtered
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4253,6 +4260,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#live-log-filtered" class="md-nav__link">
+    Live log filtered
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4875,6 +4889,11 @@ Here we want to have file name, cat content and separate result with a new line<
 <h2 id="folder-size">Folder size</h2>
 <p><code>ls</code> or <code>ll</code> does not show folder content size, use below instead (<a href="https://unix.stackexchange.com/questions/365369/ls-ls-isnt-showing-true-size-of-directory">src</a>):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1"></a><span class="go">du -ha -d 1 | sort -hr</span>
+</code></pre></div>
+<hr />
+<h2 id="live-log-filtered">Live log filtered</h2>
+<p>Remove complete stray lines containing pattern from live log:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1"></a><span class="go">tail -1000f &lt;fileName.log&gt; | sed &#39;/pattern 1/d&#39; | sed &#39;/pattern 2/d&#39;</span>
 </code></pre></div>
 <hr />
 
