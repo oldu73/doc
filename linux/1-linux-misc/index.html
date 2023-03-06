@@ -4893,7 +4893,7 @@ Here we want to have file name, cat content and separate result with a new line<
 <hr />
 <h2 id="live-log-filtered">Live log filtered</h2>
 <p>Remove complete stray lines containing pattern from live log:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1"></a><span class="go">tail -1000f &lt;fileName.log&gt; | sed &#39;/pattern 1/d&#39; | sed &#39;/pattern 2/d&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1"></a><span class="go">tail -1000f &lt;fileName.log&gt; | sed &#39;/&lt;pattern 1&gt;/d&#39; | sed &#39;/&lt;pattern 2&gt;/d&#39;</span>
 </code></pre></div>
 <hr />
 
