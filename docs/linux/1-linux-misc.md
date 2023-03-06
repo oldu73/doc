@@ -927,7 +927,7 @@ du -ha -d 1 | sort -hr
 Remove complete stray lines containing pattern from live log:
 
 ```console
-tail -1000f <fileName.log> | sed '/pattern 1/d' | sed '/pattern 2/d'
+tail -1000f <fileName.log> | sed '/<pattern 1>/d' | sed '/<pattern 2>/d'
 ```
 
 ---
