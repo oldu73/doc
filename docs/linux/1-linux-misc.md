@@ -921,3 +921,13 @@ du -ha -d 1 | sort -hr
 ```
 
 ---
+
+## Live log filtered
+
+Remove complete stray lines containing pattern from live log:
+
+```console
+tail -1000f <fileName.log> | sed '/pattern 1/d' | sed '/pattern 2/d'
+```
+
+---
