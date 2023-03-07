@@ -241,3 +241,13 @@ code {
 Just type `Ctrl + X`. Now the whole line is deleted!
 
 ---
+
+## Search every where
+
+With text selected in current file, hit:
+
+```txt
+ctrl + shift + f
+```
+
+---
