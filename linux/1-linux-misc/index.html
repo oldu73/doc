@@ -3057,6 +3057,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#date-iso-8601" class="md-nav__link">
+    date ISO 8601
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4267,6 +4274,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#date-iso-8601" class="md-nav__link">
+    date ISO 8601
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4894,6 +4908,11 @@ Here we want to have file name, cat content and separate result with a new line<
 <h2 id="live-log-filtered">Live log filtered</h2>
 <p>Remove complete stray lines containing pattern from live log:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1"></a><span class="go">tail -1000f &lt;fileName.log&gt; | sed &#39;/&lt;pattern 1&gt;/d&#39; | sed &#39;/&lt;pattern 2&gt;/d&#39;</span>
+</code></pre></div>
+<hr />
+<h2 id="date-iso-8601">date ISO 8601</h2>
+<p>e.g. "2023-03-07T12:39:16.313Z":</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1"></a><span class="go">date -u +&quot;%Y-%m-%dT%H:%M:%S.%3NZ&quot;</span>
 </code></pre></div>
 <hr />
 
