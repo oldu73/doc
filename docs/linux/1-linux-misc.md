@@ -931,3 +931,13 @@ tail -1000f <fileName.log> | sed '/<pattern 1>/d' | sed '/<pattern 2>/d'
 ```
 
 ---
+
+## date ISO 8601
+
+e.g. "2023-03-07T12:39:16.313Z":
+
+```console
+date -u +"%Y-%m-%dT%H:%M:%S.%3NZ"
+```
+
+---
