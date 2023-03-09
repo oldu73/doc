@@ -2607,6 +2607,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#folder" class="md-nav__link">
+    Folder
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3491,6 +3498,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#folder" class="md-nav__link">
+    Folder
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3510,19 +3524,24 @@
 <p><a href="https://www.baeldung.com/ops/kafka-list-topics">Source</a></p>
 <p>In a Docker Kafka Container CLI.</p>
 <h3 id="listing-topics">Listing Topics</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">kafka-topics.sh --list --zookeeper localhost:2181</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">./kafka-topics.sh --list --zookeeper localhost:2181</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="go">kafka-topics.sh --list --zookeeper &lt;zookeeper_container_name_in_docker_stack_network&gt;:2181</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="go">./kafka-topics.sh --list --zookeeper &lt;zookeeper_container_name_in_docker_stack_network&gt;:2181</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="go">kafka-topics.sh --list --zookeeper zookeeper-3.5.7:2181</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="go">./kafka-topics.sh --list --zookeeper zookeeper-3.5.7:2181</span>
 </code></pre></div>
 <h3 id="topic-details">Topic Details</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">kafka-topics.sh --bootstrap-server=localhost:9092 --describe --topic &lt;topic_name&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">./kafka-topics.sh --bootstrap-server=localhost:9092 --describe --topic &lt;topic_name&gt;</span>
 </code></pre></div>
 <hr />
 <h3 id="view-message">View message</h3>
 <p><a href="https://stackoverflow.com/questions/44239027/how-to-view-kafka-message">How to view kafka message</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic &lt;topic name&gt; (--from-beginning)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic &lt;topic name&gt; (--from-beginning)</span>
+</code></pre></div>
+<hr />
+<h2 id="folder">Folder</h2>
+<p>E.g. of folder where Kafka may reside on a Linux machine:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>/usr/local/kafka
 </code></pre></div>
 <hr />
 
