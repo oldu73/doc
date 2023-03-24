@@ -177,7 +177,7 @@ nav:
         - 'Redis - 01 - Misc': 'redis/1-redis-misc.md'
     - VS Code:
         - 'VS Code - Misc': 'vscode/vscode.md'
-    - webstorm:
+    - Webstorm:
         - 'misc': 'webstorm/misc.md'
 
 # $ mkdocs build
