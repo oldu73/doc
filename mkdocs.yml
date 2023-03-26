@@ -16,6 +16,8 @@ nav:
     - Home: 'index.md'
     - Agile Methodology:
         - 'Agile Methodology - 01 - Misc': 'agilemethodology/1-agilemethodology-misc.md'    
+    - Android Studio:
+        - 'Android Studio - Flutter': 'androidstudio/flutter.md'    
     - AWS:
         - '01-csv-mail-to-bi': 'aws/01-csv-mail-to-bi.md'    
     - Docker:
