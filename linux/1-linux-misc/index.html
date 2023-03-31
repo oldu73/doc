@@ -3119,6 +3119,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cut-column-in-a-file" class="md-nav__link">
+    Cut column in a file
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4438,6 +4445,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cut-column-in-a-file" class="md-nav__link">
+    Cut column in a file
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5107,6 +5121,39 @@ Here we want to have file name, cat content and separate result with a new line<
 <a id="__codelineno-80-12" name="__codelineno-80-12"></a>11,8A000018F4B85B01
 <a id="__codelineno-80-13" name="__codelineno-80-13"></a>12,38000019C77DBB01
 <a id="__codelineno-80-14" name="__codelineno-80-14"></a>...
+</code></pre></div>
+<hr />
+<h2 id="cut-column-in-a-file">Cut column in a file</h2>
+<p>e.g. in.csv:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1"></a>parameterKey,parameterValue
+<a id="__codelineno-81-2" name="__codelineno-81-2"></a>1,A2000002D40D2701
+<a id="__codelineno-81-3" name="__codelineno-81-3"></a>2,A70000178A254101
+<a id="__codelineno-81-4" name="__codelineno-81-4"></a>3,08000016CA925901
+<a id="__codelineno-81-5" name="__codelineno-81-5"></a>4,86000018F4D6B201
+<a id="__codelineno-81-6" name="__codelineno-81-6"></a>5,34000016CA14F801
+<a id="__codelineno-81-7" name="__codelineno-81-7"></a>6,BF000016CA4FFA01
+<a id="__codelineno-81-8" name="__codelineno-81-8"></a>7,39000016CABBB701
+<a id="__codelineno-81-9" name="__codelineno-81-9"></a>8,32000016CADA6901
+<a id="__codelineno-81-10" name="__codelineno-81-10"></a>9,3F00001A90AFC001
+<a id="__codelineno-81-11" name="__codelineno-81-11"></a>10,F8000016CA38C301
+<a id="__codelineno-81-12" name="__codelineno-81-12"></a>...
+</code></pre></div>
+<p>to cut first column:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1"></a><span class="go">cut -d, -f1 --complement in.csv &gt; out.csv</span>
+</code></pre></div>
+<p>out.csv:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1"></a>parameterValue
+<a id="__codelineno-83-2" name="__codelineno-83-2"></a>A2000002D40D2701
+<a id="__codelineno-83-3" name="__codelineno-83-3"></a>A70000178A254101
+<a id="__codelineno-83-4" name="__codelineno-83-4"></a>08000016CA925901
+<a id="__codelineno-83-5" name="__codelineno-83-5"></a>86000018F4D6B201
+<a id="__codelineno-83-6" name="__codelineno-83-6"></a>34000016CA14F801
+<a id="__codelineno-83-7" name="__codelineno-83-7"></a>BF000016CA4FFA01
+<a id="__codelineno-83-8" name="__codelineno-83-8"></a>39000016CABBB701
+<a id="__codelineno-83-9" name="__codelineno-83-9"></a>32000016CADA6901
+<a id="__codelineno-83-10" name="__codelineno-83-10"></a>3F00001A90AFC001
+<a id="__codelineno-83-11" name="__codelineno-83-11"></a>F8000016CA38C301
+<a id="__codelineno-83-12" name="__codelineno-83-12"></a>...
 </code></pre></div>
 <hr />
 
