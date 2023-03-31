@@ -3112,6 +3112,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sort-file-by-column" class="md-nav__link">
+    sort file by column
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4424,6 +4431,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sort-file-by-column" class="md-nav__link">
+    sort file by column
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5056,6 +5070,43 @@ Here we want to have file name, cat content and separate result with a new line<
 <h2 id="date-iso-8601">date ISO 8601</h2>
 <p>e.g. "2023-03-07T12:39:16.313Z":</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1"></a><span class="go">date -u +&quot;%Y-%m-%dT%H:%M:%S.%3NZ&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="sort-file-by-column">sort file by column</h2>
+<p>e.g. in.csv:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1"></a>parameterKey,parameterValue
+<a id="__codelineno-78-2" name="__codelineno-78-2"></a>10,F8000016CA38C301
+<a id="__codelineno-78-3" name="__codelineno-78-3"></a>11,8A000018F4B85B01
+<a id="__codelineno-78-4" name="__codelineno-78-4"></a>12,38000019C77DBB01
+<a id="__codelineno-78-5" name="__codelineno-78-5"></a>14,9F511A8A40360401
+<a id="__codelineno-78-6" name="__codelineno-78-6"></a>15,34000016CA5E1401
+<a id="__codelineno-78-7" name="__codelineno-78-7"></a>16,FF4D5FBA66830401
+<a id="__codelineno-78-8" name="__codelineno-78-8"></a>17,99511A8A439C0401
+<a id="__codelineno-78-9" name="__codelineno-78-9"></a>18,DE6407725F900401
+<a id="__codelineno-78-10" name="__codelineno-78-10"></a>13,E0000016CA226401
+<a id="__codelineno-78-11" name="__codelineno-78-11"></a>28,AF4D5FBA66370401
+<a id="__codelineno-78-12" name="__codelineno-78-12"></a>29,034D5FBA61120401
+<a id="__codelineno-78-13" name="__codelineno-78-13"></a>30,AB4D172A3B070401
+<a id="__codelineno-78-14" name="__codelineno-78-14"></a>...
+</code></pre></div>
+<p>sort command with <code>-n</code> args to sort in numeric order:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1"></a><span class="go">sort --field-separator=&#39;1&#39; --key=1 -n in.csv &gt; out.csv</span>
+</code></pre></div>
+<p>out.csv:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1"></a>parameterKey,parameterValue
+<a id="__codelineno-80-2" name="__codelineno-80-2"></a>1,A2000002D40D2701
+<a id="__codelineno-80-3" name="__codelineno-80-3"></a>2,A70000178A254101
+<a id="__codelineno-80-4" name="__codelineno-80-4"></a>3,08000016CA925901
+<a id="__codelineno-80-5" name="__codelineno-80-5"></a>4,86000018F4D6B201
+<a id="__codelineno-80-6" name="__codelineno-80-6"></a>5,34000016CA14F801
+<a id="__codelineno-80-7" name="__codelineno-80-7"></a>6,BF000016CA4FFA01
+<a id="__codelineno-80-8" name="__codelineno-80-8"></a>7,39000016CABBB701
+<a id="__codelineno-80-9" name="__codelineno-80-9"></a>8,32000016CADA6901
+<a id="__codelineno-80-10" name="__codelineno-80-10"></a>9,3F00001A90AFC001
+<a id="__codelineno-80-11" name="__codelineno-80-11"></a>10,F8000016CA38C301
+<a id="__codelineno-80-12" name="__codelineno-80-12"></a>11,8A000018F4B85B01
+<a id="__codelineno-80-13" name="__codelineno-80-13"></a>12,38000019C77DBB01
+<a id="__codelineno-80-14" name="__codelineno-80-14"></a>...
 </code></pre></div>
 <hr />
 
