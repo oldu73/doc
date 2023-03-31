@@ -963,7 +963,7 @@ parameterKey,parameterValue
 ...
 ```
 
-sort command with `-n` args to sort in numeric order:
+sort command with `-n` argument to sort in numeric order:
 
 ```console
 sort --field-separator='1' --key=1 -n in.csv > out.csv
