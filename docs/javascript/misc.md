@@ -73,3 +73,39 @@ console.log(sum(1, 2, 3, 4)); // expected output: 10
 ```
 
 ---
+
+## Create simple simple js application
+
+From [source](https://create-project.js.org/).
+
+Install `create-js-project` via npm:
+
+```console
+npm i -g create-js-project
+```
+
+Create project, optionally providing a `project-name`:
+
+```console
+create-js-project <project-name>
+```
+
+---
+
+## Create simple simple webpack application
+
+From [source](https://www.npmjs.com/package/create-webpack-application).
+
+Install `create-webpack-application` via npm:
+
+```console
+npm install -g create-webpack-application
+```
+
+Create project:
+
+```console
+create-webpack-application
+```
+
+---
