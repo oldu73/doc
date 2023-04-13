@@ -179,6 +179,8 @@ nav:
                 - '57-useref-and-dom': 'react/training/10-hooks-for-ref/57-useref-and-dom.md'
     - Redis:
         - 'Redis - 01 - Misc': 'redis/1-redis-misc.md'
+    - Theory:
+        - 'misc': 'theory/misc.md'
     - VS Code:
         - 'VS Code - Misc': 'vscode/vscode.md'
     - Webstorm:
