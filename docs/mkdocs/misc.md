@@ -1,6 +1,6 @@
 # misc
 
-***
+---
 
 ## Installation
 
@@ -14,7 +14,7 @@ check
 mkdocs --version
 ```
 
-***
+---
 
 ## Initialize current folder
 
@@ -22,7 +22,7 @@ mkdocs --version
 mkdocs new .
 ```
 
-***
+---
 
 ## Build documentation
 
@@ -30,7 +30,7 @@ mkdocs new .
 mkdocs build
 ```
 
-***
+---
 
 ## Deploy to github
 
@@ -40,7 +40,7 @@ First synchronize current folder with corresponding github repository.
 mkdocs gh-deploy
 ```
 
-***
+---
 
 ## Material for MkDocs (theme)
 
@@ -70,7 +70,7 @@ markdown_extensions:
   - pymdownx.superfences
 ```
 
-***
+---
 
 ## Link
 
@@ -78,29 +78,33 @@ A double dash section title like below
 
 \## Node server project
 
-Should be referenced like below to be used in a link:  
+Should be referenced like below to be used in a link:
 
 \#node-server-project
 
-To link this section from another markdown file:  
+To link this section from another markdown file:
 
 \[Node server project\](otherFile.md#node-server-project)
 
-***
+---
 
 ## VS Code Extension
 
-Usefull markdown editing VS Code extensions:  
+Usefull markdown editing VS Code extensions:
 
-- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)  
+- [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 - [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
 
 Markdown All in One allow code autocompletion for inserting code block by hitting 'Ctrl+space' shortcut keys.
 
-***
+---
 
 ## Fix warning
 
-[When published on github, fix warning issue](https://patchstack.com/articles/website-flagged-malware-google/)
+Flagged as dangerous by Google.
 
-***
+[When published on github, fix warning issue](https://patchstack.com/articles/website-flagged-malware-google/).
+
+[Corriger Le Site Web que vous Allez Ouvrir est Trompeur](https://www.hostinger.fr/tutoriels/le-site-web-que-vous-allez-ouvrir-est-trompeur).
+
+---
