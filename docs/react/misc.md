@@ -2,6 +2,18 @@
 
 ---
 
+## Introduction
+
+Three essential React concepts:
+
+- components  
+- props  
+- state
+
+[Other React topics](https://nextjs.org/learn/foundations/from-javascript-to-react/continue-learning-react).
+
+---
+
 ## props useState
 
 In children component, use one liner `export default function...` syntax at declaration instead of `export` in a separate statement.
