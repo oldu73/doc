@@ -181,7 +181,7 @@ GET /<index name>/_search
 
 Kibana TSVB for time series analysis in Visualize Library:
 
-- choose index pattern (data source) in "Panel options" tab  
+- choose index pattern (data source) in "Panel options" tab.  
 
 ### Gaps
 
@@ -191,9 +191,9 @@ In Kibana's Time Series Visual Builder (TSVB), gaps can occur when there is no d
 
 When there is a gap in the data, TSVB shows it as a missing area in the chart. By default, TSVB does not interpolate data points for the gaps, so the chart will have discontinuities. However, you can choose to fill the gaps with a specific value or interpolate the data points to create a smooth chart.
 
-To fill the gaps with a specific value, you can use the default option in the Model tab of the visualization editor. This option sets a default value for the data points in the gaps.
+To fill the gaps with a specific value, you can use the `default` option in the `Model` tab of the visualization editor. This option sets a default value for the data points in the gaps.
 
-To interpolate data points for the gaps, you can use the Interpolate option in the Model tab. This option calculates a value for the missing data points by estimating the value based on the surrounding data points. This creates a smooth chart without any gaps.
+To interpolate data points for the gaps, you can use the `Interpolate` option in the `Model` tab. This option calculates a value for the missing data points by estimating the value based on the surrounding data points. This creates a smooth chart without any gaps.
 
 In summary, TSVB gaps occur when there is no data available for a particular time period. You can choose to fill the gaps with a specific value or interpolate the data points to create a smooth chart.
 
