@@ -177,9 +177,9 @@ GET /<index name>/_search
 
 ## TSVB time serie analysis
 
-Kibana TSVB for time series analysis in Visualize Library:
-
 [Guide](https://www.elastic.co/guide/en/kibana/master/tsvb.html).
+
+Kibana TSVB for time series analysis in Visualize Library:
 
 - choose index pattern (data source) in "Panel options" tab  
 
