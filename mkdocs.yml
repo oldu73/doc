@@ -182,7 +182,7 @@ nav:
     - Theory:
         - 'misc': 'theory/misc.md'
     - Tool:
-        - 'autohotkey': 'tool/autohotkey.md'
+        - 'AutoHotkey': 'tool/autohotkey.md'
     - VS Code:
         - 'VS Code - Misc': 'vscode/vscode.md'
     - Webstorm:

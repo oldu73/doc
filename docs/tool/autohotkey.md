@@ -1,12 +1,12 @@
-# autohotkey
+# AutoHotkey
 
-[Web site](https://www.autohotkey.com/).
+[Web site](https://www.autohotkey.com/)
 
 ---
 
 ## Remapping Keys
 
-[Documentation](https://www.autohotkey.com/docs/v2/misc/Remap.htm).
+[Documentation](https://www.autohotkey.com/docs/v2/misc/Remap.htm)
 
 To simplify `{}` and `[]`, for a developer mapped keyboard, in a file with `.ahk` extension placed in `C:\Users\<user name>\Documents\AutoHotkey` folder:
 
