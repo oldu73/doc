@@ -198,3 +198,19 @@ socat TCP4-LISTEN:81,fork,reuseaddr TCP4:TCP4:192.168.1.10:80
 This example listens on port 81, accepts connections, and forwards the connections to port 80 on the remote host.
 
 ---
+
+## Check for open port
+
+TCP:
+
+```console
+nmap -p <port #> <ip address or alias>
+```
+
+UDP:
+
+```console
+nmap nmap -sU -p <port #> <ip address or alias>
+```
+
+---
