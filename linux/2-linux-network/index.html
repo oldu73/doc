@@ -2773,6 +2773,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#check-for-open-port" class="md-nav__link">
+    Check for open port
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3814,6 +3821,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#check-for-open-port" class="md-nav__link">
+    Check for open port
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3975,6 +3989,14 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">socat TCP4-LISTEN:81,fork,reuseaddr TCP4:TCP4:192.168.1.10:80</span>
 </code></pre></div>
 <p>This example listens on port 81, accepts connections, and forwards the connections to port 80 on the remote host.</p>
+<hr />
+<h2 id="check-for-open-port">Check for open port</h2>
+<p>TCP:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">nmap -p &lt;port #&gt; &lt;ip address or alias&gt;</span>
+</code></pre></div>
+<p>UDP:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">nmap nmap -sU -p &lt;port #&gt; &lt;ip address or alias&gt;</span>
+</code></pre></div>
 <hr />
 
               
