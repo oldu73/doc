@@ -199,7 +199,9 @@ This example listens on port 81, accepts connections, and forwards the connectio
 
 ---
 
-## Check for open port
+## nmap
+
+To check open port.
 
 TCP:
 
@@ -210,7 +212,7 @@ nmap -p <port #> <ip address or alias>
 UDP:
 
 ```console
-nmap nmap -sU -p <port #> <ip address or alias>
+nmap -sU -p <port #> <ip address or alias>
 ```
 
 ---
