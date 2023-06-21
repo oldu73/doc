@@ -2753,27 +2753,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#telnet" class="md-nav__link">
-    telnet
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#netcat" class="md-nav__link">
-    netcat
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#socat" class="md-nav__link">
-    socat
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#check-open-port" class="md-nav__link">
     check open port
   </a>
@@ -2797,6 +2776,20 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#netcat" class="md-nav__link">
+    netcat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socat" class="md-nav__link">
+    socat
+  </a>
   
 </li>
       
@@ -3821,27 +3814,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#telnet" class="md-nav__link">
-    telnet
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#netcat" class="md-nav__link">
-    netcat
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#socat" class="md-nav__link">
-    socat
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#check-open-port" class="md-nav__link">
     check open port
   </a>
@@ -3865,6 +3837,20 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#netcat" class="md-nav__link">
+    netcat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#socat" class="md-nav__link">
+    socat
+  </a>
   
 </li>
       
@@ -4005,8 +3991,9 @@
 <li><a href="https://doc.traefik.io/traefik/">Traefik</a> open-source Edge Router</li>
 </ul>
 <hr />
-<h2 id="telnet">telnet</h2>
-<p>Open connection:</p>
+<h2 id="check-open-port">check open port</h2>
+<h3 id="tcp">TCP</h3>
+<p>With telnet, open connection:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">telnet localhost &lt;tcp port number&gt;</span>
 </code></pre></div>
 <p>Close connection:</p>
@@ -4016,31 +4003,23 @@
 <a id="__codelineno-6-4" name="__codelineno-6-4"></a>
 <a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="go">type in the word &#39;close&#39; to close the session</span>
 </code></pre></div>
+<h3 id="udp">UDP</h3>
+<p>With nmap, open connection:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">nmap -sU -p &lt;port #&gt; &lt;ip address or alias&gt;</span>
+</code></pre></div>
 <hr />
 <h2 id="netcat">netcat</h2>
 <p>Netcat (nc) operates by initiating a TCP connection to a remote host.</p>
 <p>The most basic syntax is:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">netcat [options] &lt;host&gt; &lt;port&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">netcat [options] &lt;host&gt; &lt;port&gt;</span>
 </code></pre></div>
 <hr />
 <h2 id="socat">socat</h2>
 <p>The <a href="https://www.redhat.com/sysadmin/getting-started-socat"><code>socat</code></a> utility is a relay for bidirectional data transfers between two independent data channels.</p>
 <p>For multiple connections, use the <code>fork</code> option as used in the examples below:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">socat TCP4-LISTEN:81,fork,reuseaddr TCP4:TCP4:192.168.1.10:80</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">socat TCP4-LISTEN:81,fork,reuseaddr TCP4:TCP4:192.168.1.10:80</span>
 </code></pre></div>
 <p>This example listens on port 81, accepts connections, and forwards the connections to port 80 on the remote host.</p>
-<hr />
-<h2 id="check-open-port">check open port</h2>
-<h3 id="tcp">TCP</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">telnet &lt;ip address or alias&gt; &lt;port #&gt;</span>
-</code></pre></div>
-<p>to quit:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">ctrl+]</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="go">quit</span>
-</code></pre></div>
-<h3 id="udp">UDP</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="go">nmap -sU -p &lt;port #&gt; &lt;ip address or alias&gt;</span>
-</code></pre></div>
 <hr />
 
               
