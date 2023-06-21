@@ -20,6 +20,8 @@ nav:
         - 'Android Studio - Flutter': 'androidstudio/flutter.md'    
     - AWS:
         - '01-csv-mail-to-bi': 'aws/01-csv-mail-to-bi.md'    
+    - Confluence:
+        - 'misc': 'confluence/misc.md'    
     - Docker:
         - 'Docker - 01 - Misc': 'docker/1-docker-misc.md'
         - 'Docker - 02 - Basis': 'docker/2-docker-basis.md'
