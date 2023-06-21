@@ -199,14 +199,19 @@ This example listens on port 81, accepts connections, and forwards the connectio
 
 ---
 
-## nmap
-
-To check open port.
+## check open port
 
 TCP:
 
 ```console
-nmap -p <port #> <ip address or alias>
+telnet <ip address or alias> <port #>
+```
+
+to quit:
+
+```console
+ctrl+]
+quit
 ```
 
 UDP:
