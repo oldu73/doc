@@ -201,7 +201,7 @@ This example listens on port 81, accepts connections, and forwards the connectio
 
 ## check open port
 
-TCP:
+### TCP
 
 ```console
 telnet <ip address or alias> <port #>
@@ -214,7 +214,7 @@ ctrl+]
 quit
 ```
 
-UDP:
+### UDP
 
 ```console
 nmap -sU -p <port #> <ip address or alias>
