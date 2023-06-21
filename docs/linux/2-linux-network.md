@@ -153,9 +153,11 @@ Solutions:
 
 ---
 
-## telnet
+## check open port
 
-Open connection:
+### TCP
+
+With telnet, open connection:
 
 ```console
 telnet localhost <tcp port number>
@@ -169,6 +171,14 @@ type Ctrl + ] on your keyboard
 telnet>
 
 type in the word 'close' to close the session
+```
+
+### UDP
+
+With nmap, open connection:
+
+```console
+nmap -sU -p <port #> <ip address or alias>
 ```
 
 ---
@@ -196,28 +206,5 @@ socat TCP4-LISTEN:81,fork,reuseaddr TCP4:TCP4:192.168.1.10:80
 ```
 
 This example listens on port 81, accepts connections, and forwards the connections to port 80 on the remote host.
-
----
-
-## check open port
-
-### TCP
-
-```console
-telnet <ip address or alias> <port #>
-```
-
-to quit:
-
-```console
-ctrl+]
-quit
-```
-
-### UDP
-
-```console
-nmap -sU -p <port #> <ip address or alias>
-```
 
 ---
