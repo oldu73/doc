@@ -2778,6 +2778,26 @@
     check open port
   </a>
   
+    <nav class="md-nav" aria-label="check open port">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcp" class="md-nav__link">
+    TCP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#udp" class="md-nav__link">
+    UDP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3826,6 +3846,26 @@
     check open port
   </a>
   
+    <nav class="md-nav" aria-label="check open port">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcp" class="md-nav__link">
+    TCP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#udp" class="md-nav__link">
+    UDP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -3991,14 +4031,14 @@
 <p>This example listens on port 81, accepts connections, and forwards the connections to port 80 on the remote host.</p>
 <hr />
 <h2 id="check-open-port">check open port</h2>
-<p>TCP:</p>
+<h3 id="tcp">TCP</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">telnet &lt;ip address or alias&gt; &lt;port #&gt;</span>
 </code></pre></div>
 <p>to quit:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">ctrl+]</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="go">quit</span>
 </code></pre></div>
-<p>UDP:</p>
+<h3 id="udp">UDP</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="go">nmap -sU -p &lt;port #&gt; &lt;ip address or alias&gt;</span>
 </code></pre></div>
 <hr />
