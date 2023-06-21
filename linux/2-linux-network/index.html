@@ -3993,10 +3993,14 @@
 <h2 id="nmap">nmap</h2>
 <p>To check open port.</p>
 <p>TCP:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">nmap -p &lt;port #&gt; &lt;ip address or alias&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">telnet &lt;ip address or alias&gt; &lt;port #&gt;</span>
+</code></pre></div>
+<p>to quit:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">ctrl+]</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="go">quit</span>
 </code></pre></div>
 <p>UDP:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">nmap -sU -p &lt;port #&gt; &lt;ip address or alias&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="go">nmap -sU -p &lt;port #&gt; &lt;ip address or alias&gt;</span>
 </code></pre></div>
 <hr />
 
