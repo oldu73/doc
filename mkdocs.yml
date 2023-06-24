@@ -187,6 +187,9 @@ nav:
         - 'AutoHotkey': 'tool/autohotkey.md'
     - VS Code:
         - 'VS Code - Misc': 'vscode/vscode.md'
+    - Web Design:
+        - 'misc': 'webdesign/misc.md'
+        - 'figma': 'webdesign/figma.md'
     - Webstorm:
         - 'misc': 'webstorm/misc.md'
 
