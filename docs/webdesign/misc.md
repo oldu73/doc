@@ -1,6 +1,16 @@
 # misc
 
-Below are some examples of recommendations
+In summary:
+
+- The creation of a visual universe generally begins with the search for inspiration, in particular on designer platforms such as Dribbble or Behance.
+
+- It is possible to look for color palettes, as well as font duos that go well together.
+
+- Colors convey emotions and make it easier to prioritize information.
+
+- Consistency in spacing distances as well as font sizes is essential for an effective layout.
+
+Below are some examples of recommendations.
 
 ---
 
