@@ -1,14 +1,16 @@
 # misc
 
+Related OpenClassrooms course: - [Créez une maquette web avec Figma](https://openclassrooms.com/fr/courses/7342806-creez-une-maquette-web-avec-figma)
+
 In summary:
 
-- The creation of a visual universe generally begins with the search for inspiration, in particular on designer platforms such as Dribbble or Behance.
+- The creation of a visual universe generally begins with the search for inspiration, in particular on designer platforms such as [Dribbble](https://dribbble.com/) or [Behance](https://www.behance.net/).
 
-- It is possible to look for color palettes, as well as font duos that go well together.
+- It is possible to look for [color palettes](https://coolors.co/), as well as [font duos](https://www.creativebloq.com/typography/20-perfect-type-pairings-3132120) that go well together.
 
-- Colors convey emotions and make it easier to prioritize information.
+- [Colors convey emotions](https://www.codeur.com/blog/psychologie-couleurs-conversion/) and make it easier to prioritize information.
 
-- Consistency in spacing distances as well as font sizes is essential for an effective layout.
+- Consistency in spacing distances ([spacing and layout](https://medium.com/design-with-figma/everything-you-need-to-know-as-a-ui-designer-about-spacing-layout-grids-2bc269e12321), [white space](https://uxengineer.com/principles-of-design/white-space/)) as well as font [styles](https://help.figma.com/hc/en-us/articles/360039957034-Create-and-Apply-Text-Styles) and sizes is essential for an effective layout.
 
 Below are some examples of recommendations.
 
