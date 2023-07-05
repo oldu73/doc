@@ -24,7 +24,7 @@ Set ignition source as `Power Voltage`:
 <usr> <pwd> setparam 101:4
 ```
 
-[Power Voltage](https://wiki.teltonika-gps.com/view/FMM130_System_settings#Ignition_Source) - if voltage is between High Voltage Lever and Low Voltage Level (below Ignition Settings options) - ignition is ON; if voltage is higher than High Voltage Lever or lower than Low Voltage Level - ignition is OFF
+[Power Voltage](https://wiki.teltonika-gps.com/view/FMM130_System_settings#Ignition_Source) - if voltage is between High Voltage Lever and Low Voltage Level (below Ignition Settings options) - ignition is ON; if voltage is higher than High Voltage Lever or lower than Low Voltage Level - ignition is OFF.
 
 So, by changing `Low Voltage (mV)` (Id: 105) threshold to a lower value than the default one (13200), it may simulate an ignition ON event:
 
