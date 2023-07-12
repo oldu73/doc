@@ -31,3 +31,9 @@ install desired language to Windows, then it becomes available in Figma icon -> 
 top right corner '##%' menu -> Zoom to fit, for now shortcut 'Shift+1' only center layout but do not zoom to fit window
 
 ---
+
+## goto selected frame with shortcut
+
+Shift + 2
+
+---
