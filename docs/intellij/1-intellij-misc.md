@@ -105,3 +105,11 @@ File -> Settings... -> Advanced Settings -> Search 'diff' -> check 'Open Diff as
 ```
 
 ---
+
+## Auto-indent line(s)
+
+```txt
+Ctrl + Alt + I
+```
+
+---
