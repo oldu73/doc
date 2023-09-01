@@ -185,3 +185,13 @@ git pull
 ```
 
 ***
+
+## Check Current Remotes
+
+To see the list of remote repositories associated with your local repository, you can use the following command:
+
+```console
+git remote -v
+```
+
+***
