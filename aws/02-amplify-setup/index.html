@@ -13,7 +13,7 @@
     
     
       
-        <title>Docker - 07 - Network - Doc</title>
+        <title>02-amplify-setup - Doc</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker-07-network" class="md-skip">
+        <a href="#02-amplify-setup" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker - 07 - Network
+              02-amplify-setup
             
           </span>
         </div>
@@ -286,12 +286,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -314,7 +316,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../aws/01-csv-mail-to-bi/" class="md-nav__link">
+      <a href="../01-csv-mail-to-bi/" class="md-nav__link">
         01-csv-mail-to-bi
       </a>
     </li>
@@ -326,11 +328,94 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../aws/02-amplify-setup/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          02-amplify-setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         02-amplify-setup
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-an-amplify-backend-for-the-app" class="md-nav__link">
+    Create an Amplify backend for the app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-resources-for-categories" class="md-nav__link">
+    Create resources for categories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#allow-access-for-data-content-in-amplify-studio" class="md-nav__link">
+    Allow access for data content in Amplify Studio
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#after-modifying-data-model" class="md-nav__link">
+    After modifying data model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fail-to-push" class="md-nav__link">
+    Fail to push
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-app-to-existing-backend" class="md-nav__link">
+    Connect app to existing backend
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-up-resources" class="md-nav__link">
+    Clean up resources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -396,14 +481,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
       
       
       
@@ -426,7 +509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-docker-misc/" class="md-nav__link">
+      <a href="../../docker/1-docker-misc/" class="md-nav__link">
         Docker - 01 - Misc
       </a>
     </li>
@@ -440,7 +523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-docker-basis/" class="md-nav__link">
+      <a href="../../docker/2-docker-basis/" class="md-nav__link">
         Docker - 02 - Basis
       </a>
     </li>
@@ -454,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-docker-dockerfile/" class="md-nav__link">
+      <a href="../../docker/3-docker-dockerfile/" class="md-nav__link">
         Docker - 03 - Docker File
       </a>
     </li>
@@ -468,7 +551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-docker-dockerhub/" class="md-nav__link">
+      <a href="../../docker/4-docker-dockerhub/" class="md-nav__link">
         Docker - 04 - Docker Hub
       </a>
     </li>
@@ -482,7 +565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-docker-nodeserver/" class="md-nav__link">
+      <a href="../../docker/5-docker-nodeserver/" class="md-nav__link">
         Docker - 05 - Node Server
       </a>
     </li>
@@ -496,7 +579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../6-docker-datapersistence/" class="md-nav__link">
+      <a href="../../docker/6-docker-datapersistence/" class="md-nav__link">
         Docker - 06 - Data Persistence
       </a>
     </li>
@@ -508,154 +591,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Docker - 07 - Network
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../docker/7-docker-network/" class="md-nav__link">
         Docker - 07 - Network
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    Introduction
-  </a>
-  
-    <nav class="md-nav" aria-label="Introduction">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bridge-mainly-used" class="md-nav__link">
-    Bridge (mainly used)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#host-linux-only-rarely-used" class="md-nav__link">
-    Host (Linux only, rarely used)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#overlay-swarm" class="md-nav__link">
-    Overlay (Swarm)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bridge" class="md-nav__link">
-    Bridge
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-bridge" class="md-nav__link">
-    Create bridge
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connect-a-nodejs-server-with-mongodb" class="md-nav__link">
-    Connect a Node.js server with MongoDB
-  </a>
-  
-    <nav class="md-nav" aria-label="Connect a Node.js server with MongoDB">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mongodb" class="md-nav__link">
-    MongoDB
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node-server-development" class="md-nav__link">
-    Node server Development
-  </a>
-  
-    <nav class="md-nav" aria-label="Node server Development">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#development-environnement-setup" class="md-nav__link">
-    Development Environnement setup
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#development-server-configuration" class="md-nav__link">
-    Development Server configuration
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node-server-production" class="md-nav__link">
-    Node server Production
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#host" class="md-nav__link">
-    Host
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -667,7 +607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../8-compose-use/" class="md-nav__link">
+      <a href="../../docker/8-compose-use/" class="md-nav__link">
         Compose - 08 - Use
       </a>
     </li>
@@ -681,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../9-compose-dockerfile/" class="md-nav__link">
+      <a href="../../docker/9-compose-dockerfile/" class="md-nav__link">
         Compose - 09 - Dockerfile
       </a>
     </li>
@@ -695,7 +635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../10-compose-services/" class="md-nav__link">
+      <a href="../../docker/10-compose-services/" class="md-nav__link">
         Compose - 10 - Services
       </a>
     </li>
@@ -709,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../11-compose-production/" class="md-nav__link">
+      <a href="../../docker/11-compose-production/" class="md-nav__link">
         Compose - 11 - Production
       </a>
     </li>
@@ -3977,110 +3917,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    Introduction
-  </a>
-  
-    <nav class="md-nav" aria-label="Introduction">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bridge-mainly-used" class="md-nav__link">
-    Bridge (mainly used)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#host-linux-only-rarely-used" class="md-nav__link">
-    Host (Linux only, rarely used)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#overlay-swarm" class="md-nav__link">
-    Overlay (Swarm)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bridge" class="md-nav__link">
-    Bridge
+  <a href="#create-an-amplify-backend-for-the-app" class="md-nav__link">
+    Create an Amplify backend for the app
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-bridge" class="md-nav__link">
-    Create bridge
+  <a href="#create-resources-for-categories" class="md-nav__link">
+    Create resources for categories
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#connect-a-nodejs-server-with-mongodb" class="md-nav__link">
-    Connect a Node.js server with MongoDB
+  <a href="#allow-access-for-data-content-in-amplify-studio" class="md-nav__link">
+    Allow access for data content in Amplify Studio
   </a>
-  
-    <nav class="md-nav" aria-label="Connect a Node.js server with MongoDB">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mongodb" class="md-nav__link">
-    MongoDB
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node-server-development" class="md-nav__link">
-    Node server Development
-  </a>
-  
-    <nav class="md-nav" aria-label="Node server Development">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#development-environnement-setup" class="md-nav__link">
-    Development Environnement setup
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#development-server-configuration" class="md-nav__link">
-    Development Server configuration
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node-server-production" class="md-nav__link">
-    Node server Production
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#host" class="md-nav__link">
-    Host
+  <a href="#after-modifying-data-model" class="md-nav__link">
+    After modifying data model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fail-to-push" class="md-nav__link">
+    Fail to push
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-app-to-existing-backend" class="md-nav__link">
+    Connect app to existing backend
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-up-resources" class="md-nav__link">
+    Clean up resources
   </a>
   
 </li>
@@ -4098,305 +3978,67 @@
               
                 
 
-<h1 id="docker-07-network">Docker - 07 - Network</h1>
+<h1 id="02-amplify-setup">02-amplify-setup</h1>
+<p>from app's root folder</p>
 <hr />
-<h2 id="introduction">Introduction</h2>
-<p>WAN = Internet<br />
-LAN = Local</p>
-<p>docker network:<br />
-- ls<br />
-- create<br />
-- rm<br />
-- inspect<br />
-- connect<br />
-- disconnect<br />
-- prune<br />
-- --network | --net  </p>
-<p>3 methods:<br />
-- Bridge, sub-segment<br />
-- Host, merge host machine network<br />
-- Overlay, Docker Swarm<br />
-(- MACVLAN)<br />
-(- Others)  </p>
-<h3 id="bridge-mainly-used">Bridge (mainly used)</h3>
-<p>Grouped by sub-segment.<br />
-Docker as bridge manager.<br />
-By default a container belongs to named "bridge" (Docker0) network.</p>
-<h3 id="host-linux-only-rarely-used">Host (Linux only, rarely used)</h3>
-<p>IP addresses for containers defined by router like for host machine.
-Containers will be straight forward connected to local network.</p>
-<h3 id="overlay-swarm">Overlay (Swarm)</h3>
-<p>To establish communication between Docker Daemons.</p>
-<hr />
-<h2 id="bridge">Bridge</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="gp">$ </span>docker network
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="gp">$ </span>docker network ls
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="go">NETWORK ID     NAME      DRIVER    SCOPE</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="go">266b7ae5e9d7   bridge    bridge    local</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="go">ada5f50a5c41   host      host      local</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="go">119b5f46e464   none      null      local</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="gp">$ </span>docker network inspect bridge
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="go">...</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="go">&quot;Containers&quot;: {},</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="go">...</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="gp">$ </span>ifconfig
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="go">...</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="go">docker0:</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="go">...</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="gp">$ </span>docker run --rm -it alpine sh
+<h2 id="create-an-amplify-backend-for-the-app">Create an Amplify backend for the app</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">amplify init</span>
 </code></pre></div>
-<p>in a second terminal
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="gp">$ </span>docker network inspect bridge
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="go">...</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="go">&quot;Containers&quot;: {</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="go">            &quot;04d3d4540a17d21ea7db83779e8de1716e6e3a4122e1f2c2f66c60d25a094656&quot;: {</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="go">                &quot;Name&quot;: &quot;stoic_wozniak&quot;,</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="go">                &quot;EndpointID&quot;: &quot;2ed11c55d850ed3cc4eec221f705dad2a9679a016934cd991cd96da86d2dfcbd&quot;,</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="go">                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="go">                &quot;IPv4Address&quot;: &quot;172.17.0.2/16&quot;,</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="go">                &quot;IPv6Address&quot;: &quot;&quot;</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="go">            }</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="go">}</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="go">...</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a>
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="gp">$ </span>docker run --rm -it alpine sh
-</code></pre></div></p>
-<p>in a third terminal
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="gp">$ </span>docker network inspect bridge
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="go">&quot;Containers&quot;: {</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="go">            &quot;04d3d4540a17d21ea7db83779e8de1716e6e3a4122e1f2c2f66c60d25a094656&quot;: {  </span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="go">                &quot;Name&quot;: &quot;stoic_wozniak&quot;,</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="go">                &quot;EndpointID&quot;: &quot;2ed11c55d850ed3cc4eec221f705dad2a9679a016934cd991cd96da86d2dfcbd&quot;,</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="go">                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="go">                &quot;IPv4Address&quot;: &quot;172.17.0.2/16&quot;,</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="go">                &quot;IPv6Address&quot;: &quot;&quot;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="go">            },</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="go">            &quot;76ff8f56718ae5244eabe03092f7a0227aa2e42249bf2ab1c8f91a9faf76c715&quot;: {  </span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="go">                &quot;Name&quot;: &quot;admiring_driscoll&quot;,</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="go">                &quot;EndpointID&quot;: &quot;684e6a570db46dadd9bdf53bf383ea069fa626fc16b7ab26c11e604415c00b25&quot;,</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="go">                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:03&quot;,</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="go">                &quot;IPv4Address&quot;: &quot;172.17.0.3/16&quot;,</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="go">                &quot;IPv6Address&quot;: &quot;&quot;</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="go">            }</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="go">}</span>
-</code></pre></div></p>
-<p>in second terminal
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="gp">$</span>c ping google.ch
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="gp">$</span>c ping <span class="m">172</span>.17.0.2
-</code></pre></div></p>
-<p>Be aware that ip address maybe attributed randomly by Docker.<br />
-To use name on default network, use <strong>--name</strong> and <strong>--link</strong> (deprecated) options on run command then you may ping by name instead of ip address (only for default bridge network).</p>
-<p>in first terminal
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="gp">$ </span>docker run --rm --name alpine1 -it alpine sh
-</code></pre></div></p>
-<p>in second terminal
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="gp">$ </span>docker run --rm --link alpine1 -it alpine sh
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="gp">$</span>c ping alpine1
-</code></pre></div></p>
 <hr />
-<h2 id="create-bridge">Create bridge</h2>
-<p>Create a network, make two containers communicate through it and use container name instead of ip addresses.</p>
-<p>Create network, default driver = bridge
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="gp">$ </span>docker network create mynet
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="gp">$ </span>docker network ls
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="go">NETWORK ID     NAME      DRIVER    SCOPE</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="go">266b7ae5e9d7   bridge    bridge    local</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="go">ada5f50a5c41   host      host      local</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="go">0a85e3670d62   mynet     bridge    local</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="go">119b5f46e464   none      null      local</span>
-</code></pre></div></p>
-<p>Use network with a named (important for name resolution over the network) container</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="gp">$ </span>docker run --rm --network mynet --name server1 -d alpine ping google.ch
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="gp">$ </span>docker inspect mynet
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="go">&quot;Containers&quot;: {</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="go">            &quot;249b952ab5db2ac4f3077e1a7fb89582eedaa02c236a92a7e15fc5cee73d3292&quot;: {</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="go">                &quot;Name&quot;: &quot;server1&quot;,</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="go">                &quot;EndpointID&quot;: &quot;48284c2119158a9ebf9d67b3eee0c74c58ede079ba173b769f5b791f2f507abb&quot;,</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="go">                &quot;MacAddress&quot;: &quot;02:42:ac:12:00:02&quot;,</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="go">                &quot;IPv4Address&quot;: &quot;172.18.0.2/16&quot;,</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="go">                &quot;IPv6Address&quot;: &quot;&quot;</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="go">            }</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="go">        }</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14"></a>
-<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="gp">$ </span>docker run --rm -it --network mynet --name server2 alpine sh
-<a id="__codelineno-7-16" name="__codelineno-7-16"></a>
-<a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="gp">$</span>c ping server1
-<a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="go">PING server1 (172.18.0.2): 56 data bytes</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="go">64 bytes from 172.18.0.2: seq=0 ttl=64 time=0.079 ms</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="go">64 bytes from 172.18.0.2: seq=1 ttl=64 time=0.166 ms</span>
+<h2 id="create-resources-for-categories">Create resources for categories</h2>
+<ul>
+<li>Amplify Auth: allows users to sign up, sign in, and manage their account</li>
+<li>Amplify API: allows users to create, read, update, and delete trips</li>
+<li>Amplify Storage: allows users to upload and view images in their app</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">amplify push</span>
 </code></pre></div>
-<p>From another terminal</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="gp">$ </span>docker <span class="nb">exec</span> -it server1 sh
-<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="gp">$</span>c ping server2
-<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="go">PING server2 (172.18.0.3): 56 data bytes</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="go">64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.125 ms</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="go">64 bytes from 172.18.0.3: seq=1 ttl=64 time=0.496 ms</span>
+<hr />
+<h2 id="allow-access-for-data-content-in-amplify-studio">Allow access for data content in Amplify Studio</h2>
+<p><a href="https://docs.amplify.aws/console/data/content-management/#iam-required-as-auth-provider">SRC: aws</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">amplify update api</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="go">Select GraphQL</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="go">Select Authorization Modes</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="go">Choose the default authorization type for the API Amazon Cognito User Pool</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="go">Select Configure additional auth types</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="go">Select IAM</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="go">amplify push</span>
 </code></pre></div>
-<p>Remove network
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="gp">$ </span>docker network rm mynet
-</code></pre></div></p>
-<p>Remove all network at once
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="gp">$ </span>docker network prune
-</code></pre></div></p>
 <hr />
-<h2 id="connect-a-nodejs-server-with-mongodb">Connect a Node.js server with MongoDB</h2>
-<p>Goal: - display a counter in a browser at 'localhost' address.  </p>
-<p>Architecture:<br />
-- Image - MongoDB<br />
-- Image - Node.js<br />
-- Volumes - mydb { count: x }<br />
-- Container - server<br />
-- Container - db<br />
-- Network - mynet<br />
-- Port 80 open to listen to request (count++) from a browser at 'localhost' address  </p>
-<h3 id="mongodb">MongoDB</h3>
-<p>Volume and container
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="gp">$ </span>docker volume create mydb
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="gp">$ </span>docker run --name db --mount <span class="nv">type</span><span class="o">=</span>volume,source<span class="o">=</span>mydb,target<span class="o">=</span>/data/db -d mongo
-</code></pre></div></p>
-<p>Network and connect (and disconnect from default bridge)
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="gp">$ </span>docker network create mynet
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="gp">$ </span>docker network connect mynet db
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="gp">$ </span>docker network disconnect bridge db
-</code></pre></div></p>
-<p>Create db and collection to handle and initialize the counter
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="gp">$ </span>docker <span class="nb">exec</span> -it db sh
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="gp">$</span>c mongo
-<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="go">&gt; use test</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="go">switched to db test</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="go">&gt; db.count.insertOne({count:0})</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="go">{</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="go">        &quot;acknowledged&quot; : true,</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="go">        &quot;insertedId&quot; : ObjectId(&quot;61cc2517094e32ba7f98bb31&quot;)</span>
-<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="go">}</span>
-<a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="go">&gt; db.count.find()</span>
-<a id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="go">{ &quot;_id&quot; : ObjectId(&quot;61cc2517094e32ba7f98bb31&quot;), &quot;count&quot; : 0 }</span>
-<a id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="go">&gt; exit</span>
-<a id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="go">bye</span>
-<a id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="gp">$</span>c <span class="nb">exit</span>
-</code></pre></div></p>
-<h3 id="node-server-development">Node server Development</h3>
-<h4 id="development-environnement-setup">Development Environnement setup</h4>
-<p>First step, application development with bind mount.</p>
-<p>We should use the mongo javascript driver in our application to allow connection to the db.</p>
-<p>In 'node-server' folder.</p>
-<p>File 'package.json' add mongo dependencies (browse for "npm mongodb" -&gt; MongoDB NodeJS Driver, to check version)
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="p">{</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2"></a>    <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3"></a>      <span class="nt">&quot;express&quot;</span><span class="p">:</span> <span class="s2">&quot;^4.17.1&quot;</span><span class="p">,</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4"></a>      <span class="nt">&quot;mongodb&quot;</span><span class="p">:</span> <span class="s2">&quot;^3.6.2&quot;</span><span class="p">,</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5"></a>      <span class="nt">&quot;nodemon&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.0.6&quot;</span><span class="p">,</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6"></a>      <span class="nt">&quot;console-stamp&quot;</span><span class="p">:</span> <span class="s2">&quot;^3.0.3&quot;</span>
-<a id="__codelineno-14-7" name="__codelineno-14-7"></a>    <span class="p">}</span>
-<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="p">}</span>
-</code></pre></div></p>
-<p>"console-stamp" is to add timestamp in logs</p>
-<p>^version “Compatible with version”, will update you to all future minor/patch versions, without incrementing the major version. ^2.3.4 will use releases from 2.3.4 to &lt;3.0.0.</p>
-<p>Dockerfile
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>FROM node:alpine
-<a id="__codelineno-15-2" name="__codelineno-15-2"></a>WORKDIR /app
-<a id="__codelineno-15-3" name="__codelineno-15-3"></a>COPY ./package.json .
-<a id="__codelineno-15-4" name="__codelineno-15-4"></a>RUN npm install
-<a id="__codelineno-15-5" name="__codelineno-15-5"></a>COPY . .
-<a id="__codelineno-15-6" name="__codelineno-15-6"></a>ENV PATH=$PATH:/app/node_modules/.bin
-<a id="__codelineno-15-7" name="__codelineno-15-7"></a>CMD [&quot;nodemon&quot;, &quot;-L&quot;, &quot;src/app.js&quot;]
-</code></pre></div></p>
-<p>Build image in 'node-server' folder
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="gp">$ </span>docker build -t node-server .
-</code></pre></div></p>
-<p>Application is in js file 'node-server/src/app.js'
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2"></a>
-<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4"></a>
-<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6"></a>  <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">);</span>
-<a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="p">});</span>
-<a id="__codelineno-17-8" name="__codelineno-17-8"></a>
-<a id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">80</span><span class="p">);</span>
-</code></pre></div></p>
-<p>To develop application use a bind mount
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="gp">$ </span>docker run --name server --mount <span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>/src,target<span class="o">=</span>/app/src -p <span class="m">80</span>:80 --network mynet node-server
-</code></pre></div></p>
-<p>Browse to 'localhost'.<br />
-Observe live change availability by editing "Hello, world!" response in 'app.js' file and refreshing 'localhost' page in internet browser.</p>
-<p>Check that port '80' is published for 'server' container
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="gp">$ </span>docker container port server
-<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="go">80/tcp -&gt; 0.0.0.0:80</span>
-</code></pre></div></p>
-<h4 id="development-server-configuration">Development Server configuration</h4>
-<p>Modify 'app.js' file as follow
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="nx">require</span><span class="p">(</span> <span class="s1">&#39;console-stamp&#39;</span> <span class="p">)(</span> <span class="nx">console</span> <span class="p">);</span>  <span class="c1">// to add timestamp in logs</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2"></a>
-<a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
-<a id="__codelineno-20-4" name="__codelineno-20-4"></a>
-<a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="kd">const</span> <span class="nx">MongoClient</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongodb&#39;</span><span class="p">).</span><span class="nx">MongoClient</span><span class="p">;</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6"></a>
-<a id="__codelineno-20-7" name="__codelineno-20-7"></a><span class="kd">let</span> <span class="nx">count</span><span class="p">;</span>
-<a id="__codelineno-20-8" name="__codelineno-20-8"></a>
-<a id="__codelineno-20-9" name="__codelineno-20-9"></a><span class="nx">MongoClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s1">&#39;mongodb://db&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useUnifiedTopology</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">client</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-<a id="__codelineno-20-10" name="__codelineno-20-10"></a>  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-20-11" name="__codelineno-20-11"></a>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-<a id="__codelineno-20-12" name="__codelineno-20-12"></a>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a id="__codelineno-20-13" name="__codelineno-20-13"></a>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;CONNEXION DB OK!&#39;</span><span class="p">);</span>
-<a id="__codelineno-20-14" name="__codelineno-20-14"></a>    <span class="nx">count</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">).</span><span class="nx">collection</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">);</span>
-<a id="__codelineno-20-15" name="__codelineno-20-15"></a>  <span class="p">}</span>
-<a id="__codelineno-20-16" name="__codelineno-20-16"></a><span class="p">});</span>
-<a id="__codelineno-20-17" name="__codelineno-20-17"></a>
-<a id="__codelineno-20-18" name="__codelineno-20-18"></a><span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
-<a id="__codelineno-20-19" name="__codelineno-20-19"></a>
-<a id="__codelineno-20-20" name="__codelineno-20-20"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-<a id="__codelineno-20-21" name="__codelineno-20-21"></a>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;request url: &#39;</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
-<a id="__codelineno-20-22" name="__codelineno-20-22"></a>  <span class="nx">count</span><span class="p">.</span><span class="nx">findOneAndUpdate</span><span class="p">({},</span> <span class="p">{</span> <span class="nx">$inc</span><span class="o">:</span> <span class="p">{</span> <span class="nx">count</span><span class="o">:</span> <span class="mf">1</span> <span class="p">}</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">returnNewDocument</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">doc</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-<a id="__codelineno-20-23" name="__codelineno-20-23"></a>    <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-<a id="__codelineno-20-24" name="__codelineno-20-24"></a>    <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
-<a id="__codelineno-20-25" name="__codelineno-20-25"></a>  <span class="p">})</span>
-<a id="__codelineno-20-26" name="__codelineno-20-26"></a><span class="p">});</span>
-<a id="__codelineno-20-27" name="__codelineno-20-27"></a>
-<a id="__codelineno-20-28" name="__codelineno-20-28"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-<a id="__codelineno-20-29" name="__codelineno-20-29"></a>  <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
-<a id="__codelineno-20-30" name="__codelineno-20-30"></a><span class="p">});</span>
-<a id="__codelineno-20-31" name="__codelineno-20-31"></a>
-<a id="__codelineno-20-32" name="__codelineno-20-32"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">80</span><span class="p">);</span>
-</code></pre></div></p>
-<h3 id="node-server-production">Node server Production</h3>
-<p>Rebuild node server image with released app.js in it (above development has been erased by bind mount)</p>
-<p>In 'node-server' folder
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="gp">$ </span>docker build -t node-server .
-</code></pre></div></p>
-<p>If 'node-server' container is still running, remove it and then
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="gp">$ </span>docker run --name server --network mynet -d -p <span class="m">80</span>:80 node-server
-</code></pre></div></p>
+<h2 id="after-modifying-data-model">After modifying data model</h2>
+<p>in schema.graphql file (amplify/backend/api/amplifytripsplanner/schema.graphql), then</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">amplify codegen models</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="go">amplify push</span>
+</code></pre></div>
 <hr />
-<h2 id="host">Host</h2>
-<p>C.f. <a href="##bridge">Bridge section</a> for initial setup.</p>
-<p>Reset 'app.js' to
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2"></a>
-<a id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4"></a>
-<a id="__codelineno-23-5" name="__codelineno-23-5"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-<a id="__codelineno-23-6" name="__codelineno-23-6"></a>  <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">json</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">);</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="p">});</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8"></a>
-<a id="__codelineno-23-9" name="__codelineno-23-9"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">80</span><span class="p">);</span>
-</code></pre></div></p>
-<p>Rebuild 'node-server' image
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="gp">$ </span>docker build -t node-server .
-</code></pre></div></p>
-<p>Relaunch server but on local network, this time, no need to publish port
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="gp">$ </span>docker run --network host node-server
-</code></pre></div></p>
-<p>Do not work on WSL (Windows Subsystem for Linux), neither MacOs.</p>
-<p>To not use any network
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="gp">$ </span>docker run --network none node-server
-</code></pre></div></p>
+<h2 id="fail-to-push">Fail to push</h2>
+<p>amplify push fail due to yarn deprecated issue</p>
+<p>Did it from WSL but was certainly working most likely because CLI was older than the Windows's one.</p>
+<p>I suspect this issue to appear after an amplify cli update on Windows.. but not sure.. anyway..</p>
+<p>fixed by launching commands from WSL (directly in Windows folder (/mnt/c/git/..)) instead of command.prompt:</p>
+<ul>
+<li>git clone  </li>
+<li>amplify init  </li>
+<li>amplify push</li>
+</ul>
+<p>Then you may switch to Windows environnement without any problem.</p>
+<hr />
+<h2 id="connect-app-to-existing-backend">Connect app to existing backend</h2>
+<p>If a backend is already deployed and you want to connect your app to it.</p>
+<p>In amplify, click on your backend (app/amplify project/etc.), then expand <code>Edit backend</code> section then you have local setup instructions.</p>
+<p>Connect your app to this backend environment using the Amplify CLI by running the following command from your project root folder, e.g.:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">amplify pull --appId d2f8n0exni69yo --envName dev</span>
+</code></pre></div>
+<hr />
+<h2 id="clean-up-resources">Clean up resources</h2>
+<p>When the project will no longer be useful, to avoid incurring unexpected costs.</p>
+<p>!Warning, all aws infrastructure, data and files will be lost!</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">amplify delete</span>
+</code></pre></div>
+<p>!! NEVER GIT PUSH PROJECT AFTER AMPLIFY DELETE!!</p>
+<p>Just remove project's folder locally and git pull again (then amplify init/pull or connect app to existing backend) on need to work again on the project.</p>
 <hr />
 
               
@@ -4411,7 +4053,7 @@ Observe live change availability by editing "Hello, world!" response in 'app.js'
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../6-docker-datapersistence/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Docker - 06 - Data Persistence" rel="prev">
+        <a href="../01-csv-mail-to-bi/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 01-csv-mail-to-bi" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -4420,20 +4062,20 @@ Observe live change availability by editing "Hello, world!" response in 'app.js'
               <span class="md-footer__direction">
                 Previous
               </span>
-              Docker - 06 - Data Persistence
+              01-csv-mail-to-bi
             </div>
           </div>
         </a>
       
       
         
-        <a href="../8-compose-use/" class="md-footer__link md-footer__link--next" aria-label="Next: Compose - 08 - Use" rel="next">
+        <a href="../../confluence/misc/" class="md-footer__link md-footer__link--next" aria-label="Next: misc" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Compose - 08 - Use
+              misc
             </div>
           </div>
           <div class="md-footer__button md-icon">
