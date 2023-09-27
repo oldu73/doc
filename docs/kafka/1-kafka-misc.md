@@ -118,7 +118,6 @@ bin/kafka-topics.sh --list --zookeeper zookeeper-3.5.7-001:2181
 SRC:
 
 - [kafka-client-cannot-connect-to-broker-on-aws-on-docker-etc](https://www.confluent.io/blog/kafka-client-cannot-connect-to-broker-on-aws-on-docker-etc/)  
-- [understand-default-config](https://docs.bitnami.com/ibm/infrastructure/kafka/get-started/understand-default-config/)  
 - [the-ultimate-introduction-to-kafka-with-javascript](https://soshace.com/the-ultimate-introduction-to-kafka-with-javascript/)
 
 From WSL console in a local folder with Kafka local unzipped archive files (e.g. /mnt/p/kfk/kafka_2.12-2.4.0/kafka_2.12-2.4.0/bin)
