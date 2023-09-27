@@ -2724,6 +2724,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testdebug-install" class="md-nav__link">
+    Test/Debug install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#broken-install" class="md-nav__link">
+    Broken install
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3949,6 +3970,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testdebug-install" class="md-nav__link">
+    Test/Debug install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#broken-install" class="md-nav__link">
+    Broken install
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3986,6 +4028,61 @@
 <h2 id="folder">Folder</h2>
 <p>E.g. of folder where Kafka may reside on a Linux machine:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>/usr/local/kafka
+</code></pre></div>
+<hr />
+<h2 id="notes">Notes</h2>
+<p>zookeeper + kafka -&gt; docker</p>
+<p><a href="https://hub.docker.com/r/bitnami/kafka/">SRC: - bitnami kafka</a></p>
+<p>Pull kafka image:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">docker pull bitnami/kafka:2.4.1</span>
+</code></pre></div>
+<p>Pull zookeeper image:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">docker pull bitnami/zookeeper:3.5.7</span>
+</code></pre></div>
+<p>Create a network:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">docker network create kfk-network-001 --driver bridge</span>
+</code></pre></div>
+<p>Launch the Zookeeper server instance:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">docker run -d --name zookeeper-3.5.7-001 --network kfk-network-001 -e ALLOW_ANONYMOUS_LOGIN=yes bitnami/zookeeper:3.5.7</span>
+</code></pre></div>
+<p>Launch the Kafka server instance:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">docker run -d --name kafka-2.4.1-001 -p 9092:9092 -e KAFKA_BROKER_ID=1 --network kfk-network-001 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 -e ALLOW_PLAINTEXT_LISTENER=yes -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 -e KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-3.5.7-001:2181 bitnami/kafka:2.4.1</span>
+</code></pre></div>
+<hr />
+<h2 id="testdebug-install">Test/Debug install</h2>
+<p>From cli in docker container</p>
+<p>List all topic:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">kafka-topics.sh --list --zookeeper zookeeper-3.5.7-001:2181</span>
+</code></pre></div>
+<p>Remove all topic:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">kafka-topics.sh --delete --topic &#39;[ a-z ].*&#39; --zookeeper zookeeper-3.5.7-001:2181</span>
+</code></pre></div>
+<hr />
+<h2 id="broken-install">Broken install</h2>
+<p>On local broken install, remove everything, network as well after removing kafka and zookeeper container (docker network rm kfk-network-001),
+then reinstall all with above commands.</p>
+<p>From Docker container console, list all Kafka topics:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="go">cd /opt/bitnami/kafka</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="go">bin/kafka-topics.sh --list --zookeeper zookeeper-3.5.7-001:2181</span>
+</code></pre></div>
+<p>SRC:</p>
+<ul>
+<li><a href="https://www.confluent.io/blog/kafka-client-cannot-connect-to-broker-on-aws-on-docker-etc/">kafka-client-cannot-connect-to-broker-on-aws-on-docker-etc</a>  </li>
+<li><a href="https://docs.bitnami.com/ibm/infrastructure/kafka/get-started/understand-default-config/">understand-default-config</a>  </li>
+<li><a href="https://soshace.com/the-ultimate-introduction-to-kafka-with-javascript/">the-ultimate-introduction-to-kafka-with-javascript</a></li>
+</ul>
+<p>From WSL console in a local folder with Kafka local unzipped archive files (e.g. /mnt/p/kfk/kafka_2.12-2.4.0/kafka_2.12-2.4.0/bin)</p>
+<p>Create topic:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="go">./kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test</span>
+</code></pre></div>
+<p>List topic:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="go">./kafka-topics.sh --list --bootstrap-server localhost:9092</span>
+</code></pre></div>
+<p>Produce on test topic:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="go">./kafka-console-producer.sh --broker-list lohost:9092 --topic test</span>
+</code></pre></div>
+<p>Consume test topic:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="go">./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning</span>
 </code></pre></div>
 <hr />
 
