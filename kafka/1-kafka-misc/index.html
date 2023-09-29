@@ -2745,6 +2745,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    Docker
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3991,6 +3998,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    Docker
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4082,6 +4096,22 @@ then reinstall all with above commands.</p>
 </code></pre></div>
 <p>Consume test topic:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="go">./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning</span>
+</code></pre></div>
+<hr />
+<h2 id="docker">Docker</h2>
+<p>docker container kafka -&gt; terminal</p>
+<p>cd /opt/bitnami/kafka/bin</p>
+<p>List topics:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="go">/kafka-topics.sh --list --bootstrap-server localhost:9092</span>
+</code></pre></div>
+<p>List consumer groups:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="go">/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list</span>
+</code></pre></div>
+<p>Describe consumer group to check LAG, LAG = diff (LOG-END-OFFSET - CURRENT-OFFSET) = amount of not consumed message:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="go">/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group &lt;group name&gt;</span>
+</code></pre></div>
+<p>List all messages in a topic, from beginning:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="go">/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic &lt;topic name&gt; --from-beginning</span>
 </code></pre></div>
 <hr />
 
