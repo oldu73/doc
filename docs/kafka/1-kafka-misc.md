@@ -147,3 +147,35 @@ Consume test topic:
 ```
 
 ---
+
+## Docker
+
+docker container kafka -> terminal
+
+cd /opt/bitnami/kafka/bin
+
+List topics:
+
+```console
+/kafka-topics.sh --list --bootstrap-server localhost:9092
+```
+
+List consumer groups:
+
+```console
+/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
+```
+
+Describe consumer group to check LAG, LAG = diff (LOG-END-OFFSET - CURRENT-OFFSET) = amount of not consumed message:
+
+```console
+/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group <group name>
+```
+
+List all messages in a topic, from beginning:
+
+```console
+/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic name> --from-beginning
+```
+
+---
