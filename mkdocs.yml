@@ -21,6 +21,7 @@ nav:
     - AWS:
         - '01-csv-mail-to-bi': 'aws/01-csv-mail-to-bi.md'    
         - '02-amplify-setup': 'aws/02-amplify-setup.md'    
+        - '03-amplify-sign-up-in-out': 'aws/03-amplify-sign-up-in-out.md'    
     - Confluence:
         - 'misc': 'confluence/misc.md'    
     - Docker:
