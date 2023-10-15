@@ -6,13 +6,13 @@
 
 By adding company logo above main for and/or applying style to button (linear gradient).
 
-[Source: - Override and customize your Authenticator](https://ui.docs.amplify.aws/react/connected-components/authenticator/customization)
+[SRC: - Override and customize your Authenticator](https://ui.docs.amplify.aws/react/connected-components/authenticator/customization)
 
 ---
 
 ## Sign-out
 
-Adding sign-out button to default react app wrapped in aws authenticator:
+Add sign-out button to default react app wrapped in aws authenticator:
 
 ```js
 import logo from "./logo.svg";
