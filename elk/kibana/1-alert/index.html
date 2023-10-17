@@ -3970,7 +3970,7 @@
 <h3 id="kibana">Kibana</h3>
 <p>Get MS Teams alert (web hook) based on scheduled (fired week days (not weekend)) filter matching documents (boolean fields) in Elasticsearch.</p>
 <p>In Kibana, browse to <code>Stack Management - Alerts and Insights - Watcher</code>, click on <code>Create advanced watch .. (JSON)</code>.</p>
-<p>In below sample (JSON), to notice <code>cron</code> for weekdays, <code>match_phrase</code> to filter by boolean field and <code>path</code> to <code>webhookb2</code> for MS Teams channel:</p>
+<p>In below sample (JSON), to notice <code>cron</code> for weekdays, <code>match_phrase</code> to filter by boolean field and <code>path</code> to <code>webhook</code> for MS Teams channel:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a>  <span class="nt">&quot;trigger&quot;</span><span class="p">:</span> <span class="p">{</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="nt">&quot;schedule&quot;</span><span class="p">:</span> <span class="p">{</span>
