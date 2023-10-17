@@ -40,7 +40,8 @@ nav:
         - ElasticSearch:
             - 'ElasticSearch - Misc': 'elk/elasticsearch/elasticsearch.md'
         - Kibana:
-            - 'Kibana - Misc': 'elk/kibana/kibana.md'
+            - 'Kibana - Misc': 'elk/kibana/0-kibana.md'
+            - 'Kibana - Alert': 'elk/kibana/1-alert.md'
     - Git:
         - 'misc': 'git/misc.md'
     - Google:
