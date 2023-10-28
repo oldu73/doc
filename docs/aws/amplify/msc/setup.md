@@ -1,4 +1,4 @@
-# 02-amplify-setup
+# setup
 
 from app's root folder
 

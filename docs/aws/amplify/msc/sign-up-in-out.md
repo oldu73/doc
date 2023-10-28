@@ -1,4 +1,4 @@
-# 03-amplify-sign-up-in-out
+# sign-up-in-out
 
 ---
 

@@ -19,9 +19,14 @@ nav:
     - Android Studio:
         - 'Android Studio - Flutter': 'androidstudio/flutter.md'    
     - AWS:
-        - '01-csv-mail-to-bi': 'aws/01-csv-mail-to-bi.md'    
-        - '02-amplify-setup': 'aws/02-amplify-setup.md'    
-        - '03-amplify-sign-up-in-out': 'aws/03-amplify-sign-up-in-out.md'    
+        - Amplify:
+            - Auth:
+                - 'pre sign-up': 'aws/amplify/auth/pre sign-up.md'
+            - Msc:
+                - 'setup': 'aws/amplify/msc/setup.md'
+                - 'sign-up-in-out': 'aws/amplify/msc/sign-up-in-out.md'
+        - Msc:
+            - 'csv-mail-to-bi': 'aws/msc/csv-mail-to-bi.md'
     - Confluence:
         - 'misc': 'confluence/misc.md'    
     - Docker:

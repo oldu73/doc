@@ -1,4 +1,4 @@
-# 01-csv-mail-to-bi
+# csv-mail-to-bi
 
 From csv mail attach to business intelligence.
 
