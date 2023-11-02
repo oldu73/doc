@@ -19,7 +19,7 @@ Interruptions régulières = baisse de productivité et la journée se finit ave
 Conseil:
 
 - matin et soir = heures productives.  
-- après-midi= réunion à la suite, espacées de 5 minutes de pause.  
+- après-midi = réunion à la suite, espacées de 5 minutes de pause.  
 - tâches difficiles en premier.  
 - travail superficiel (qualifié de "shallow work" par Cal Newport) = 2x/jour max 30 min. ensuite quitter Outlook et mettre Teams sur silence.  
 - [Technique Pomodoro](https://fr.wikipedia.org/wiki/Technique_Pomodoro), 1x pomodoro = 25 min. focus then ack + 5 min. de pause, tous les 4 pomodori 25 min. de pause  
