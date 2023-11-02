@@ -13,196 +13,198 @@ markdown_extensions:
   - pymdownx.superfences
 
 nav:
-    - Home: 'index.md'
-    - Agile Methodology:
-        - 'Agile Methodology - 01 - Misc': 'agilemethodology/1-agilemethodology-misc.md'    
-    - Android Studio:
-        - 'Android Studio - Flutter': 'androidstudio/flutter.md'    
-    - AWS:
-        - Amplify:
-            - Auth:
-                - 'pre sign-up': 'aws/amplify/auth/pre sign-up.md'
-            - Msc:
-                - 'setup': 'aws/amplify/msc/setup.md'
-                - 'sign-up-in-out': 'aws/amplify/msc/sign-up-in-out.md'
-        - Msc:
-            - 'csv-mail-to-bi': 'aws/msc/csv-mail-to-bi.md'
-    - Confluence:
-        - 'misc': 'confluence/misc.md'    
-    - Docker:
-        - 'Docker - 01 - Misc': 'docker/1-docker-misc.md'
-        - 'Docker - 02 - Basis': 'docker/2-docker-basis.md'
-        - 'Docker - 03 - Docker File': 'docker/3-docker-dockerfile.md'
-        - 'Docker - 04 - Docker Hub': 'docker/4-docker-dockerhub.md'
-        - 'Docker - 05 - Node Server': 'docker/5-docker-nodeserver.md'
-        - 'Docker - 06 - Data Persistence': 'docker/6-docker-datapersistence.md'
-        - 'Docker - 07 - Network': 'docker/7-docker-network.md'
-        - 'Compose - 08 - Use': 'docker/8-compose-use.md'
-        - 'Compose - 09 - Dockerfile': 'docker/9-compose-dockerfile.md'
-        - 'Compose - 10 - Services': 'docker/10-compose-services.md'
-        - 'Compose - 11 - Production': 'docker/11-compose-production.md'
-    - ELK:
-        - ElasticSearch:
-            - 'ElasticSearch - Misc': 'elk/elasticsearch/elasticsearch.md'
-        - Kibana:
-            - 'Kibana - Misc': 'elk/kibana/0-kibana.md'
-            - 'Kibana - Alert': 'elk/kibana/1-alert.md'
-    - Git:
-        - 'misc': 'git/misc.md'
-    - Google:
-        - Chrome:
-            - '0-misc': 'google/chrome/0-misc.md'
-            - '1-devtool': 'google/chrome/1-devtool.md'
-            - '2-shortcut': 'google/chrome//2-shortcut.md'
-    - IntelliJ:
-        - 'IntelliJ - 01 - Misc': 'intellij/1-intellij-misc.md'
-        - 'IntelliJ - 02 - WSL': 'intellij/2-intellij-wsl.md'
-    - Java:
-        - test:
-            - 'mock': 'java/test/mock.md'
-    - JavaScript:
-        - 'misc': 'javascript/misc.md'
-        - training:
-            - 02-environment:
-                - '06-install-environnement': 'javascript/training/02-environment/06-install-environnement.md'
-                - '08-install-babel': 'javascript/training/02-environment/08-install-babel.md'
-                - '09-javascript-in-html': 'javascript/training/02-environment/09-javascript-in-html.md'
-                - '10-webpack': 'javascript/training/02-environment/10-webpack.md'
-                - '11-console': 'javascript/training/02-environment/11-console.md'
-            - 03-basis:
-                - '12-intro-and-var': 'javascript/training/03-basis/12-intro-and-var.md'
-                - '13-let-and-const': 'javascript/training/03-basis/13-let-and-const.md'
-                - '14-hoisting': 'javascript/training/03-basis/14-hoisting.md'
-                - '15-type': 'javascript/training/03-basis/15-type.md'
-                - '16-operator-1': 'javascript/training/03-basis/16-operator-1.md'
-                - '17-coercion': 'javascript/training/03-basis/17-coercion.md'
-                - '18-operator-2': 'javascript/training/03-basis/18-operator-2.md'
-                - '19-value-and-reference': 'javascript/training/03-basis/19-value-and-reference.md'
-            - 04-control:
-                - '20-condition': 'javascript/training/04-control/20-condition.md'
-                - '21-ternary-operator': 'javascript/training/04-control/21-ternary-operator.md'
-                - '22-switch': 'javascript/training/04-control/22-switch.md'
-                - '23-for': 'javascript/training/04-control/23-for.md'
-                - '24-while': 'javascript/training/04-control/24-while.md'
-            - 05-number:
-                - '25-introduction': 'javascript/training/05-number/25-introduction.md'
-                - '26-decimal': 'javascript/training/05-number/26-decimal.md'
-                - '27-global-method': 'javascript/training/05-number/27-global-method.md'
-                - '28-number-method': 'javascript/training/05-number/28-number-method.md'
-                - '29-math-object': 'javascript/training/05-number/29-math-object.md'
-            - 06-string:
-                - '30-introduction': 'javascript/training/06-string/30-introduction.md'
-                - '31-template-literal': 'javascript/training/06-string/31-template-literal.md'
-                - '32-index-length': 'javascript/training/06-string/32-index-length.md'
-                - '33-method': 'javascript/training/06-string/33-method.md'
-                - '34-regex': 'javascript/training/06-string/34-regex.md'
-            - 07-object:
-                - '35-introduction': 'javascript/training/07-object/35-introduction.md'
-                - '36-property': 'javascript/training/07-object/36-property.md'
-                - '37-syntax-shortcut': 'javascript/training/07-object/37-syntax-shortcut.md'
-                - '38-decomposition': 'javascript/training/07-object/38-decomposition.md'
-                - '39-test-existence': 'javascript/training/07-object/39-test-existence.md'
-                - '40-discard-property': 'javascript/training/07-object/40-discard-property.md'
-                - '41-merge': 'javascript/training/07-object/41-merge.md'
-                - '42-compare': 'javascript/training/07-object/42-compare.md'
-                - '43-iterate': 'javascript/training/07-object/43-iterate.md'
-                - '44-json': 'javascript/training/07-object/44-json.md'
-                - '45-copy': 'javascript/training/07-object/45-copy.md'
-            - 08-function:
-                - '46-expression': 'javascript/training/08-function/46-expression.md'
-            - 11-dom:
-                - '81-css-with-webpack': 'javascript/training/11-dom/81-css-with-webpack.md'
-            - 13-project-todo:
-                - '92-initialization': 'javascript/training/13-project-todo/92-initialization.md'
-            - 14-asynchronous-browser:
-                - '102-polyfill-webpack': 'javascript/training/14-asynchronous-browser/102-polyfill-webpack.md'
-            - 16-project-blog:
-                - '115-introduction': 'javascript/training/16-project-blog/115-introduction.md'
-                - '116-multipages-webpack': 'javascript/training/16-project-blog/116-multipages-webpack.md'
-                - '117-assets-webpack': 'javascript/training/16-project-blog/117-assets-webpack.md'
-                - '118-styles-setup': 'javascript/training/16-project-blog/118-styles-setup.md'
-                - '119-layout-setup': 'javascript/training/16-project-blog/119-layout-setup.md'
-                - '120-header-footer-setup': 'javascript/training/16-project-blog/120-header-footer-setup.md'
-                - '121-form-create-article': 'javascript/training/16-project-blog/121-form-create-article.md'
-                - '122-form-javascript': 'javascript/training/16-project-blog/122-form-javascript.md'
-                - '123-send-article': 'javascript/training/16-project-blog/123-send-article.md'
-                - '124-articles-list': 'javascript/training/16-project-blog/124-articles-list.md'
-                - '125-articles-list-display': 'javascript/training/16-project-blog/125-articles-list-display.md'
-                - '126-delete-article': 'javascript/training/16-project-blog/126-delete-article.md'
-                - '127-responsive-project': 'javascript/training/16-project-blog/127-responsive-project.md'
-                - 'aws-01-setup': 'javascript/training/16-project-blog/aws-01-setup.md'
-                - 'aws-02-create-item': 'javascript/training/16-project-blog/aws-02-create-item.md'
-                - 'aws-03-list-item': 'javascript/training/16-project-blog/aws-03-list-item.md'
-                - 'aws-04-delete-item': 'javascript/training/16-project-blog/aws-04-delete-item.md'
-                - 'debug': 'javascript/training/16-project-blog/debug.md'
-                - 'git-branch': 'javascript/training/16-project-blog/git-branch.md'
-            - 19-project-blog-p2:
-                - '137-introduction': 'javascript/training/19-project-blog-p2/137-introduction.md'
-                - '138-edit-article': 'javascript/training/19-project-blog-p2/138-edit-article.md'
-                - '139-menu-categories-setup': 'javascript/training/19-project-blog-p2/139-menu-categories-setup.md'
-                - '140-menu-categories-dynamic': 'javascript/training/19-project-blog-p2/140-menu-categories-dynamic.md'
-                - '141-category-filter': 'javascript/training/19-project-blog-p2/141-category-filter.md'
-                - '142-sort-by-date': 'javascript/training/19-project-blog-p2/142-sort-by-date.md'
-                - '143-modal-setup': 'javascript/training/19-project-blog-p2/143-modal-setup.md'
-                - '144-modal-logic': 'javascript/training/19-project-blog-p2/144-modal-logic.md'
-                - 'aws-05-get-item': 'javascript/training/19-project-blog-p2/aws-05-get-item.md'
-                - 'aws-06-update-item': 'javascript/training/19-project-blog-p2/aws-06-update-item.md'
-                - 'aws-07-sort-api': 'javascript/training/19-project-blog-p2/aws-07-sort-api.md'
-            - 22-error-management:
-                - '162-debugger-devtools': 'javascript/training/22-error-management/162-debugger-devtools.md'
-                - '163-debugger-vscode': 'javascript/training/22-error-management/163-debugger-vscode.md'
-    - JMeter:
-        - 'JMeter - 01 - Misc': 'jmeter/1-jmeter-misc.md'
-    - Kafka:
-        - 'Kafka - 01 - Misc': 'kafka/1-kafka-misc.md'
-    - Linux:
-        - 'Linux - 00 - Debug': 'linux/0-linux-debug.md'
-        - 'Linux - 01 - Misc': 'linux/1-linux-misc.md'
-        - 'Linux - 02 - Network': 'linux/2-linux-network.md'
-    - Microsoft:
-        - Windows:
-            - 'Windows - 01 - Misc': 'microsoft/windows/1-windows-misc.md'
-        - WSL:
-            - 'WSL - 01 - Misc': 'microsoft/wsl/1-wsl-misc.md'
-    - Misc:
-        - 'CRC': 'misc/crc.md'
-    - MkDocs:
-        - 'misc': 'mkdocs/misc.md'
-    - MongoDB:
-        - 'MongoDB - Misc': 'mongodb/mongodb.md'
-    - OKR:
-        - 'OKR - Rédaction': 'okrmethodology/redaction.md'
-    - Postman:
-        - 'misc': 'postman/misc.md'
-    - React:
-        - 'misc': 'react/misc.md'
-        - training:
-            - 01-introduction:
-                - '05-install-environnement': 'react/training/01-introduction/05-install-environnement.md'
-            - 02-create-application:
-                - '07-use-create-react-app': 'react/training/02-create-application/07-use-create-react-app.md'
-            - 05-project1-part1:
-                - '24-setup-header-footer': 'react/training/05-project1-part1/24-setup-header-footer.md'
-            - 06-conditional-rendering-and-list:
-                - '27-introduction-and-emmet': 'react/training/06-conditional-rendering-and-list/27-introduction-and-emmet.md'
-            - 10-hooks-for-ref:
-                - '57-useref-and-dom': 'react/training/10-hooks-for-ref/57-useref-and-dom.md'
-    - Redis:
-        - 'Redis - 01 - Misc': 'redis/1-redis-misc.md'
-    - Telematics:
-        - Teltonika:
-            - 'misc': 'telematics/teltonika/misc.md'
-    - Theory:
-        - 'misc': 'theory/misc.md'
-    - Tool:
-        - 'AutoHotkey': 'tool/autohotkey.md'
-    - VS Code:
-        - 'VS Code - Misc': 'vscode/vscode.md'
-    - Web Design:
-        - 'misc': 'webdesign/misc.md'
-        - 'figma': 'webdesign/figma.md'
-    - Webstorm:
-        - 'misc': 'webstorm/misc.md'
-
+  - Home: "index.md"
+  - Android Studio:
+      - "Android Studio - Flutter": "androidstudio/flutter.md"
+  - AWS:
+      - Amplify:
+          - Auth:
+              - "pre sign-up": "aws/amplify/auth/pre sign-up.md"
+          - Msc:
+              - "setup": "aws/amplify/msc/setup.md"
+              - "sign-up-in-out": "aws/amplify/msc/sign-up-in-out.md"
+      - Msc:
+          - "csv-mail-to-bi": "aws/msc/csv-mail-to-bi.md"
+  - Confluence:
+      - "misc": "confluence/misc.md"
+  - Docker:
+      - "Docker - 01 - Misc": "docker/1-docker-misc.md"
+      - "Docker - 02 - Basis": "docker/2-docker-basis.md"
+      - "Docker - 03 - Docker File": "docker/3-docker-dockerfile.md"
+      - "Docker - 04 - Docker Hub": "docker/4-docker-dockerhub.md"
+      - "Docker - 05 - Node Server": "docker/5-docker-nodeserver.md"
+      - "Docker - 06 - Data Persistence": "docker/6-docker-datapersistence.md"
+      - "Docker - 07 - Network": "docker/7-docker-network.md"
+      - "Compose - 08 - Use": "docker/8-compose-use.md"
+      - "Compose - 09 - Dockerfile": "docker/9-compose-dockerfile.md"
+      - "Compose - 10 - Services": "docker/10-compose-services.md"
+      - "Compose - 11 - Production": "docker/11-compose-production.md"
+  - ELK:
+      - ElasticSearch:
+          - "ElasticSearch - Misc": "elk/elasticsearch/elasticsearch.md"
+      - Kibana:
+          - "Kibana - Misc": "elk/kibana/0-kibana.md"
+          - "Kibana - Alert": "elk/kibana/1-alert.md"
+  - Git:
+      - "misc": "git/misc.md"
+  - Google:
+      - Chrome:
+          - "0-misc": "google/chrome/0-misc.md"
+          - "1-devtool": "google/chrome/1-devtool.md"
+          - "2-shortcut": "google/chrome//2-shortcut.md"
+  - IntelliJ:
+      - "IntelliJ - 01 - Misc": "intellij/1-intellij-misc.md"
+      - "IntelliJ - 02 - WSL": "intellij/2-intellij-wsl.md"
+  - Java:
+      - test:
+          - "mock": "java/test/mock.md"
+  - JavaScript:
+      - "misc": "javascript/misc.md"
+      - training:
+          - 02-environment:
+              - "06-install-environnement": "javascript/training/02-environment/06-install-environnement.md"
+              - "08-install-babel": "javascript/training/02-environment/08-install-babel.md"
+              - "09-javascript-in-html": "javascript/training/02-environment/09-javascript-in-html.md"
+              - "10-webpack": "javascript/training/02-environment/10-webpack.md"
+              - "11-console": "javascript/training/02-environment/11-console.md"
+          - 03-basis:
+              - "12-intro-and-var": "javascript/training/03-basis/12-intro-and-var.md"
+              - "13-let-and-const": "javascript/training/03-basis/13-let-and-const.md"
+              - "14-hoisting": "javascript/training/03-basis/14-hoisting.md"
+              - "15-type": "javascript/training/03-basis/15-type.md"
+              - "16-operator-1": "javascript/training/03-basis/16-operator-1.md"
+              - "17-coercion": "javascript/training/03-basis/17-coercion.md"
+              - "18-operator-2": "javascript/training/03-basis/18-operator-2.md"
+              - "19-value-and-reference": "javascript/training/03-basis/19-value-and-reference.md"
+          - 04-control:
+              - "20-condition": "javascript/training/04-control/20-condition.md"
+              - "21-ternary-operator": "javascript/training/04-control/21-ternary-operator.md"
+              - "22-switch": "javascript/training/04-control/22-switch.md"
+              - "23-for": "javascript/training/04-control/23-for.md"
+              - "24-while": "javascript/training/04-control/24-while.md"
+          - 05-number:
+              - "25-introduction": "javascript/training/05-number/25-introduction.md"
+              - "26-decimal": "javascript/training/05-number/26-decimal.md"
+              - "27-global-method": "javascript/training/05-number/27-global-method.md"
+              - "28-number-method": "javascript/training/05-number/28-number-method.md"
+              - "29-math-object": "javascript/training/05-number/29-math-object.md"
+          - 06-string:
+              - "30-introduction": "javascript/training/06-string/30-introduction.md"
+              - "31-template-literal": "javascript/training/06-string/31-template-literal.md"
+              - "32-index-length": "javascript/training/06-string/32-index-length.md"
+              - "33-method": "javascript/training/06-string/33-method.md"
+              - "34-regex": "javascript/training/06-string/34-regex.md"
+          - 07-object:
+              - "35-introduction": "javascript/training/07-object/35-introduction.md"
+              - "36-property": "javascript/training/07-object/36-property.md"
+              - "37-syntax-shortcut": "javascript/training/07-object/37-syntax-shortcut.md"
+              - "38-decomposition": "javascript/training/07-object/38-decomposition.md"
+              - "39-test-existence": "javascript/training/07-object/39-test-existence.md"
+              - "40-discard-property": "javascript/training/07-object/40-discard-property.md"
+              - "41-merge": "javascript/training/07-object/41-merge.md"
+              - "42-compare": "javascript/training/07-object/42-compare.md"
+              - "43-iterate": "javascript/training/07-object/43-iterate.md"
+              - "44-json": "javascript/training/07-object/44-json.md"
+              - "45-copy": "javascript/training/07-object/45-copy.md"
+          - 08-function:
+              - "46-expression": "javascript/training/08-function/46-expression.md"
+          - 11-dom:
+              - "81-css-with-webpack": "javascript/training/11-dom/81-css-with-webpack.md"
+          - 13-project-todo:
+              - "92-initialization": "javascript/training/13-project-todo/92-initialization.md"
+          - 14-asynchronous-browser:
+              - "102-polyfill-webpack": "javascript/training/14-asynchronous-browser/102-polyfill-webpack.md"
+          - 16-project-blog:
+              - "115-introduction": "javascript/training/16-project-blog/115-introduction.md"
+              - "116-multipages-webpack": "javascript/training/16-project-blog/116-multipages-webpack.md"
+              - "117-assets-webpack": "javascript/training/16-project-blog/117-assets-webpack.md"
+              - "118-styles-setup": "javascript/training/16-project-blog/118-styles-setup.md"
+              - "119-layout-setup": "javascript/training/16-project-blog/119-layout-setup.md"
+              - "120-header-footer-setup": "javascript/training/16-project-blog/120-header-footer-setup.md"
+              - "121-form-create-article": "javascript/training/16-project-blog/121-form-create-article.md"
+              - "122-form-javascript": "javascript/training/16-project-blog/122-form-javascript.md"
+              - "123-send-article": "javascript/training/16-project-blog/123-send-article.md"
+              - "124-articles-list": "javascript/training/16-project-blog/124-articles-list.md"
+              - "125-articles-list-display": "javascript/training/16-project-blog/125-articles-list-display.md"
+              - "126-delete-article": "javascript/training/16-project-blog/126-delete-article.md"
+              - "127-responsive-project": "javascript/training/16-project-blog/127-responsive-project.md"
+              - "aws-01-setup": "javascript/training/16-project-blog/aws-01-setup.md"
+              - "aws-02-create-item": "javascript/training/16-project-blog/aws-02-create-item.md"
+              - "aws-03-list-item": "javascript/training/16-project-blog/aws-03-list-item.md"
+              - "aws-04-delete-item": "javascript/training/16-project-blog/aws-04-delete-item.md"
+              - "debug": "javascript/training/16-project-blog/debug.md"
+              - "git-branch": "javascript/training/16-project-blog/git-branch.md"
+          - 19-project-blog-p2:
+              - "137-introduction": "javascript/training/19-project-blog-p2/137-introduction.md"
+              - "138-edit-article": "javascript/training/19-project-blog-p2/138-edit-article.md"
+              - "139-menu-categories-setup": "javascript/training/19-project-blog-p2/139-menu-categories-setup.md"
+              - "140-menu-categories-dynamic": "javascript/training/19-project-blog-p2/140-menu-categories-dynamic.md"
+              - "141-category-filter": "javascript/training/19-project-blog-p2/141-category-filter.md"
+              - "142-sort-by-date": "javascript/training/19-project-blog-p2/142-sort-by-date.md"
+              - "143-modal-setup": "javascript/training/19-project-blog-p2/143-modal-setup.md"
+              - "144-modal-logic": "javascript/training/19-project-blog-p2/144-modal-logic.md"
+              - "aws-05-get-item": "javascript/training/19-project-blog-p2/aws-05-get-item.md"
+              - "aws-06-update-item": "javascript/training/19-project-blog-p2/aws-06-update-item.md"
+              - "aws-07-sort-api": "javascript/training/19-project-blog-p2/aws-07-sort-api.md"
+          - 22-error-management:
+              - "162-debugger-devtools": "javascript/training/22-error-management/162-debugger-devtools.md"
+              - "163-debugger-vscode": "javascript/training/22-error-management/163-debugger-vscode.md"
+  - JMeter:
+      - "JMeter - 01 - Misc": "jmeter/1-jmeter-misc.md"
+  - Kafka:
+      - "Kafka - 01 - Misc": "kafka/1-kafka-misc.md"
+  - Linux:
+      - "Linux - 00 - Debug": "linux/0-linux-debug.md"
+      - "Linux - 01 - Misc": "linux/1-linux-misc.md"
+      - "Linux - 02 - Network": "linux/2-linux-network.md"
+  - Method:
+      - Agile Methodology:
+          - "Agile Methodology - 01 - Misc": "method/agilemethodology/1-agilemethodology-misc.md"
+      - OKR:
+          - "OKR - Rédaction": "method/okrmethodology/redaction.md"
+      - Work:
+          - "Concentration au travail": "method/work/Concentration au travail.md"
+  - Microsoft:
+      - Windows:
+          - "Windows - 01 - Misc": "microsoft/windows/1-windows-misc.md"
+      - WSL:
+          - "WSL - 01 - Misc": "microsoft/wsl/1-wsl-misc.md"
+  - Misc:
+      - "CRC": "misc/crc.md"
+  - MkDocs:
+      - "misc": "mkdocs/misc.md"
+  - MongoDB:
+      - "MongoDB - Misc": "mongodb/mongodb.md"
+  - Postman:
+      - "misc": "postman/misc.md"
+  - React:
+      - "misc": "react/misc.md"
+      - training:
+          - 01-introduction:
+              - "05-install-environnement": "react/training/01-introduction/05-install-environnement.md"
+          - 02-create-application:
+              - "07-use-create-react-app": "react/training/02-create-application/07-use-create-react-app.md"
+          - 05-project1-part1:
+              - "24-setup-header-footer": "react/training/05-project1-part1/24-setup-header-footer.md"
+          - 06-conditional-rendering-and-list:
+              - "27-introduction-and-emmet": "react/training/06-conditional-rendering-and-list/27-introduction-and-emmet.md"
+          - 10-hooks-for-ref:
+              - "57-useref-and-dom": "react/training/10-hooks-for-ref/57-useref-and-dom.md"
+  - Redis:
+      - "Redis - 01 - Misc": "redis/1-redis-misc.md"
+  - Telematics:
+      - Teltonika:
+          - "misc": "telematics/teltonika/misc.md"
+  - Theory:
+      - "misc": "theory/misc.md"
+  - Tool:
+      - "AutoHotkey": "tool/autohotkey.md"
+  - VS Code:
+      - "VS Code - Misc": "vscode/vscode.md"
+  - Web Design:
+      - "misc": "webdesign/misc.md"
+      - "figma": "webdesign/figma.md"
+  - Webstorm:
+      - "misc": "webstorm/misc.md"
 # $ mkdocs build
 # $ mkdocs gh-deploy
