@@ -1033,3 +1033,18 @@ F8000016CA38C301
 ```
 
 ---
+
+## env
+
+`env` is used to print environment variables.
+
+Without any argument : print out a list of all environment variables:
+
+```console
+env
+SHELL=/bin/bash
+WSL_DISTRO_NAME=Ubuntu-20.04
+..
+```
+
+---
