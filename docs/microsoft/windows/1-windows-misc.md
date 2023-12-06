@@ -62,6 +62,8 @@ Windows Power Shell in admin mode:
 Restart-Service hns
 ```
 
+Maybe it will be necessary to do it twice!
+
 ---
 
 ## Path
