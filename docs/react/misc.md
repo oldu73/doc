@@ -10,8 +10,6 @@ Three essential React concepts:
 - props  
 - state
 
-[Other React topics](https://nextjs.org/learn/foundations/from-javascript-to-react/continue-learning-react).
-
 ---
 
 ## props useState
