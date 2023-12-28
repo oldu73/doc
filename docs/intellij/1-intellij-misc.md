@@ -113,3 +113,13 @@ Ctrl + Alt + I
 ```
 
 ---
+
+## Virtual space at file bottom
+
+Allow to scroll down after last line of the file.
+
+```txt
+Settings -> Editor -> Virtual Space -> Show virtual space at file bottom
+```
+
+---
