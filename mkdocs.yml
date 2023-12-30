@@ -21,6 +21,7 @@ nav:
           - Auth:
               - "pre sign-up": "aws/amplify/auth/pre sign-up.md"
           - Msc:
+              - "after modifying data model": "aws/amplify/msc/after modifying data model.md"
               - "setup": "aws/amplify/msc/setup.md"
               - "sign-up-in-out": "aws/amplify/msc/sign-up-in-out.md"
           - Sharedyn:
