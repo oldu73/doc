@@ -21,3 +21,11 @@ When changing page, by default logs are lost.
 To preserve them, in `Network` tab, click in `Preserve log` check box.
 
 ---
+
+## Console drawer
+
+To display console (log) drawer below current window:
+
+Chrome dev tools, 3 dots menu, Show console drawer
+
+---
