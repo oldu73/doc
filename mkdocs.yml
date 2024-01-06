@@ -26,6 +26,8 @@ nav:
               - "sign-up-in-out": "aws/amplify/msc/sign-up-in-out.md"
           - Sharedyn:
               - "setup": "aws/amplify/sharedyn/setup.md"
+      - GraphQL:
+          - "msc": "aws/graphql/msc.md"
       - Msc:
           - "csv-mail-to-bi": "aws/msc/csv-mail-to-bi.md"
   - Confluence:
