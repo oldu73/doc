@@ -251,3 +251,15 @@ ctrl + shift + f
 ```
 
 ---
+
+## Editor Font Size
+
+Click Settings at the bottom left.
+
+Click Settings.
+
+Search Font Size.
+
+Type in the Font size of your choice.
+
+---
