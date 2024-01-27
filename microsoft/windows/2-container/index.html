@@ -4272,12 +4272,27 @@
                 
 
 <h1 id="windows-02-container">Windows - 02 - Container</h1>
+<p>On Docker</p>
+<p>Ref. <a href="https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/run-your-first-container">Get started: Run your first Windows container</a></p>
 <hr />
 <h2 id="setup">Setup</h2>
-<p>Based on those <a href="https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce">instructions</a>.</p>
-<p>Install Oracle <a href="https://www.virtualbox.org/">Virtual Box</a>.</p>
-<p>Download download a copy of <a href="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022">Windows Server 2022 Evaluation</a>.</p>
-<p>Launch Virtual Box and install Windows Server in a new VM Image.</p>
+<p>Install and run <a href="https://www.docker.com/">Docker Desktop</a> for Windows (WSL2, requirements, etc.)</p>
+<p>Right click Docker whale icon in the system tray and switch to 'Windows containers...'</p>
+<p>Open a command prompt and type command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022</span>
+</code></pre></div>
+<p>Check that is image is there on local:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">docker images</span>
+</code></pre></div>
+<p>Run a Windows container:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">docker run -it mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe</span>
+</code></pre></div>
+<p>Inside container console:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">echo &quot;Hello, world!&quot; &gt; Hello.txt</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="go">type Hello.txt</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="go">exit</span>
+</code></pre></div>
+<p>There you go ;)</p>
 <hr />
 
               
