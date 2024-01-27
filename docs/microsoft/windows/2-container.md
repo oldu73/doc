@@ -1,15 +1,43 @@
 # Windows - 02 - Container
 
+On Docker
+
+Ref. [Get started: Run your first Windows container](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/run-your-first-container)
+
 ---
 
 ## Setup
 
-Based on those [instructions](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce).
+Install and run [Docker Desktop](https://www.docker.com/) for Windows (WSL2, requirements, etc.)
 
-Install Oracle [Virtual Box](https://www.virtualbox.org/).
+Right click Docker whale icon in the system tray and switch to 'Windows containers...'
 
-Download download a copy of [Windows Server 2022 Evaluation](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022).
+Open a command prompt and type command:
 
-Launch Virtual Box and install Windows Server in a new VM Image.
+```console
+docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
+```
+
+Check that is image is there on local:
+
+```console
+docker images
+```
+
+Run a Windows container:
+
+```console
+docker run -it mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe
+```
+
+Inside container console:
+
+```console
+echo "Hello, world!" > Hello.txt
+type Hello.txt
+exit
+```
+
+There you go ;)
 
 ---
