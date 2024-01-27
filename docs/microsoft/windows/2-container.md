@@ -41,3 +41,15 @@ exit
 There you go ;)
 
 ---
+
+## Windows Server
+
+Apparently it's a bit more complicated on Windows Server, but not tried yet.
+
+Here are some article references that treat this particular topic:
+
+- [Docker Containers on Windows Server 2022 101](https://www.dell.com/support/kbdoc/en-us/000201261/docker-containers-on-windows-server-2022-101)  
+- [Get started: Prep Windows for containers](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce#windows-server-1)  
+- [How to Configure and Run Docker on Windows Server](https://operavps.com/docs/configure-docker-on-windows-server/)
+
+---
