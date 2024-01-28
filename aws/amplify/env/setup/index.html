@@ -380,9 +380,82 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         setup
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-react-project" class="md-nav__link">
+    Initialize React project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-main-env" class="md-nav__link">
+    AWS, main env
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-first-step" class="md-nav__link">
+    Git, first step
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    GitHub
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-second-step" class="md-nav__link">
+    Git, second step
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-test-dev-env" class="md-nav__link">
+    AWS, test, dev env
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-commit-dev-and-test-env" class="md-nav__link">
+    Git commit dev and test env
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -4263,6 +4336,63 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-react-project" class="md-nav__link">
+    Initialize React project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-main-env" class="md-nav__link">
+    AWS, main env
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-first-step" class="md-nav__link">
+    Git, first step
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    GitHub
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-second-step" class="md-nav__link">
+    Git, second step
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-test-dev-env" class="md-nav__link">
+    AWS, test, dev env
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-commit-dev-and-test-env" class="md-nav__link">
+    Git commit dev and test env
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4275,9 +4405,86 @@
                 
 
 <h1 id="setup-amplify-env">setup amplify env</h1>
-<p>prod / test / dev</p>
+<p>Setup main (prod) / test / dev environnement for an AWS Amplify - React - project:</p>
+<ul>
+<li>main = production environnement.  </li>
+<li>test = environnement to share with stakeholder for testing, before going to prod.  </li>
+<li>dev = environnement to develop on feature branches.</li>
+</ul>
+<p>Ref:</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/amplify/latest/userguide/team-workflows-with-amplify-cli-backend-environments.html">Team workflows with Amplify backend environments</a>  </li>
+<li><a href="https://docs.aws.amazon.com/amplify/latest/userguide/access-control.html">Restricting access to branches</a></li>
+</ul>
+<p>Sandbox, github project <a href="https://github.com/oldu73/awsenvtest001">awsenvtest001</a></p>
 <hr />
-<p>...</p>
+<h2 id="initialize-react-project">Initialize React project</h2>
+<p>In terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">npx create-react-app app1</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="go">cd app1</span>
+</code></pre></div>
+<hr />
+<h2 id="aws-main-env">AWS, main env</h2>
+<p>In terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">amplify init</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="go">? Enter a name for the project app1</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="go">The following configuration will be applied:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="go">? Initialize the project with the above configuration? No</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="go">? Enter a name for the environment main</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="go">? Choose your default editor: IntelliJ IDEA</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="go">√ Choose the type of app that you&#39;re building · javascript</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="go">Please tell us about your project</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="go">? What javascript framework are you using react</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="go">? Source Directory Path:  src</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="go">? Distribution Directory Path: build</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="go">? Build Command:  npm.cmd run-script build</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="go">? Start Command: npm.cmd run-script start</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="go">Using default provider  awscloudformation</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="go">? Select the authentication method you want to use: AWS profile</span>
+</code></pre></div>
+<hr />
+<h2 id="git-first-step">Git, first step</h2>
+<p>Open project in your IDE, if using 'IntelliJ' like IDE (e.g. WebStorm) add './idea' folder to '.gitignore' file.</p>
+<p>In terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">git config user.email &quot;john@doe.com&quot;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="go">git config user.name &quot;John Doe&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="go">git add .</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="go">git commit -m &quot;initial commit&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="github">GitHub</h2>
+<p>Now go to your github account and create a new repository, e.g. "app1".</p>
+<hr />
+<h2 id="git-second-step">Git, second step</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">git branch -M main</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="go">git remote add origin https://github.com/oldu73/app1.git</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="go">git push -u origin main</span>
+</code></pre></div>
+<hr />
+<h2 id="aws-test-dev-env">AWS, test, dev env</h2>
+<p>In terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">amplify env add</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="go"> ? Do you want to use an existing environment? (Y/n): n</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="go"> ? Enter a name for the environment: test</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="go">...</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="go">amplify push</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="go">amplify env add</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="go"> ? Do you want to use an existing environment? (Y/n): n</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="go"> ? Enter a name for the environment: dev</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="go">...</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="go">amplify push</span>
+</code></pre></div>
+<hr />
+<h2 id="git-commit-dev-and-test-env">Git commit dev and test env</h2>
+<p>In a terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">git add .</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="go">git commit -m &quot;added dev, and test environments&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="go">git push origin main</span>
+</code></pre></div>
+<hr />
 
               
             </article>
