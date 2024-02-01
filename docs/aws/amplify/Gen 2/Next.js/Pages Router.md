@@ -35,11 +35,19 @@ Hit `Ctrl + c` in command prompt window to stop dev server and open project in I
 
 [sandbox CLI commands](https://docs.amplify.aws/gen2/reference/cli-commands/)
 
-Run the following command::
+Run the following commands in two terminals:
+
+```console
+npm run dev
+```
+
+And:
 
 ```console
 npx amplify sandbox
 ```
+
+Hit `Ctrl + c` in sandbox terminal to stop, you may choose to keep it for further usage.
 
 .. [wipp](https://docs.amplify.aws/gen2/start/quickstart/nextjs-pages-router/)
 
