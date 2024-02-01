@@ -9,7 +9,8 @@ Setup main (prod) / test / dev environnement for an AWS Amplify - React - projec
 Ref:
 
 - [Team workflows with Amplify backend environments](https://docs.aws.amazon.com/amplify/latest/userguide/team-workflows-with-amplify-cli-backend-environments.html)  
-- [Restricting access to branches](https://docs.aws.amazon.com/amplify/latest/userguide/access-control.html)
+- [Restricting access to branches](https://docs.aws.amazon.com/amplify/latest/userguide/access-control.html)  
+- [Sandbox environments](https://docs.amplify.aws/javascript/tools/cli/teams/sandbox/)
 
 Sandbox, github project [awsenvtest001](https://github.com/oldu73/awsenvtest001)
 
