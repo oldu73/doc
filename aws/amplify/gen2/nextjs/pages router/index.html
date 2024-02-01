@@ -57,6 +57,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#pages-router" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -447,10 +452,50 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          pages router
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         pages router
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    setup
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -4325,15 +4370,72 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    setup
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
 
-  <h1>pages router</h1>
-
-
+<h1 id="pages-router">pages router</h1>
+<p>Ref. <a href="https://docs.amplify.aws/gen2/start/quickstart/nextjs-pages-router/">Next.js Pages Router</a></p>
+<hr />
+<h2 id="prerequisites">prerequisites</h2>
+<p>install:</p>
+<ul>
+<li>Node.js v18.17 or later  </li>
+<li>npm v9 or later  </li>
+<li>git v2.14.1 or later  </li>
+<li>AWS account</li>
+</ul>
+<h2 id="setup">setup</h2>
+<p>create project:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">npm create next-app@14 -- next-amplify-gen2 --typescript --eslint --app --no-src-dir --no-tailwind --import-alias &#39;@/*&#39;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="go">cd next-amplify-gen2</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="go">npm create amplify@latest</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="go">? Where should we create your project? (.) # press enter</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="go">npm run dev</span>
+</code></pre></div>
+<hr />
 
               
             </article>
