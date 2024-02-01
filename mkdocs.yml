@@ -22,6 +22,9 @@ nav:
               - "pre sign-up": "aws/amplify/auth/pre sign-up.md"
           - Env:
               - "setup": "aws/amplify/env/setup.md"
+          - Gen 2:
+              - Next.js:
+                  - "Pages Router": "aws/amplify/Gen 2/Next.js/Pages Router.md"
           - Msc:
               - "after modifying data model": "aws/amplify/msc/after modifying data model.md"
               - "setup": "aws/amplify/msc/setup.md"
