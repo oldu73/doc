@@ -186,6 +186,8 @@ nav:
       - "misc": "mkdocs/misc.md"
   - MongoDB:
       - "MongoDB - Misc": "mongodb/mongodb.md"
+  - Next.js:
+      - "Next.js - Misc": "nextjs/misc.md"
   - Postman:
       - "misc": "postman/misc.md"
   - React:
