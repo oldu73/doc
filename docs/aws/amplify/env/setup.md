@@ -115,3 +115,91 @@ git push origin main
 ```
 
 ---
+
+## Amplify environment commands
+
+Current:
+
+```console
+amplify status
+
+    Current Environment: dev
+    
+┌──────────┬───────────────┬───────────┬─────────────────┐
+│ Category │ Resource name │ Operation │ Provider plugin │
+└──────────┴───────────────┴───────────┴─────────────────┘
+```
+
+List:
+
+```console
+amplify list env
+
+| Environments |
+| ------------ |
+| main         |
+| test         |
+| *dev         |
+```
+
+Delete:
+
+```console
+amplify env remove dev
+```
+
+---
+
+## Hosting environments
+
+Switch to `Hosting environments` tab in AWS Amplify and connect corresponding git branch to environments.
+
+In the build settings screen, pick an existing backend environment to set up continuous deployment with the main branches.
+
+Grant the service role to Amplify. Choose Save and deploy.
+
+After the build completes you will get branches deployments available at https://<dev, test, main>.appid.amplifyapp.com.
+
+---
+
+## Password protect
+
+[Protect deployed environments with password](https://docs.aws.amazon.com/amplify/latest/userguide/access-control.html)
+
+---
+
+## Feature branch
+
+From dev:
+
+```console
+git checkout -b dev-<feature name>
+amplify env checkout dev
+amplify add api
+...
+amplify push
+```
+
+After you finish working on the feature, commit your code, create a pull request to review internally:
+
+```console
+git commit -m '<change description>'
+git push origin dev-<feature name>
+```
+
+To preview what the changes will look like, go to the Amplify console and connect your feature branch. Note: If you have the AWS CLI installed on your system (Not the Amplify CLI), you can connect a branch directly from your terminal. You can find your appid by going to App settings > General > AppARN: arn:aws:amplify:<region>:<region>:apps/<appid>.
+
+Maybe you should specify region like `--region us-east-1`:
+
+```console
+aws amplify create-branch --app-id <appid> --branch-name <branchname>
+aws amplify start-job --app-id <appid> --branch-name <branchname> --job-type RELEASE
+```
+
+Check deployment status in aws amplify app web page and also backend name auto generated.
+
+Once feature is OK, merge feature branch and then delete aws amplify branch.
+
+!be careful, the auto-generated backend is not automatically deleted following the command above, so you have to do it manually!
+
+---
