@@ -453,6 +453,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#amplify-environment-commands" class="md-nav__link">
+    Amplify environment commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hosting-environments" class="md-nav__link">
+    Hosting environments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#password-protect" class="md-nav__link">
+    Password protect
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-branch" class="md-nav__link">
+    Feature branch
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4519,6 +4547,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#amplify-environment-commands" class="md-nav__link">
+    Amplify environment commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hosting-environments" class="md-nav__link">
+    Hosting environments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#password-protect" class="md-nav__link">
+    Password protect
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-branch" class="md-nav__link">
+    Feature branch
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4613,6 +4669,59 @@
 <a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="go">git commit -m &quot;added dev, and test environments&quot;</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="go">git push origin main</span>
 </code></pre></div>
+<hr />
+<h2 id="amplify-environment-commands">Amplify environment commands</h2>
+<p>Current:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">amplify status</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="go">    Current Environment: dev</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="go">┌──────────┬───────────────┬───────────┬─────────────────┐</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="go">│ Category │ Resource name │ Operation │ Provider plugin │</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="go">└──────────┴───────────────┴───────────┴─────────────────┘</span>
+</code></pre></div>
+<p>List:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">amplify list env</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="go">| Environments |</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="go">| ------------ |</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="go">| main         |</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="go">| test         |</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="go">| *dev         |</span>
+</code></pre></div>
+<p>Delete:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">amplify env remove dev</span>
+</code></pre></div>
+<hr />
+<h2 id="hosting-environments">Hosting environments</h2>
+<p>Switch to <code>Hosting environments</code> tab in AWS Amplify and connect corresponding git branch to environments.</p>
+<p>In the build settings screen, pick an existing backend environment to set up continuous deployment with the main branches.</p>
+<p>Grant the service role to Amplify. Choose Save and deploy.</p>
+<p>After the build completes you will get branches deployments available at https://<dev, test, main>.appid.amplifyapp.com.</p>
+<hr />
+<h2 id="password-protect">Password protect</h2>
+<p><a href="https://docs.aws.amazon.com/amplify/latest/userguide/access-control.html">Protect deployed environments with password</a></p>
+<hr />
+<h2 id="feature-branch">Feature branch</h2>
+<p>From dev:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">git checkout -b dev-&lt;feature name&gt;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="go">amplify env checkout dev</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="go">amplify add api</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="go">...</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="go">amplify push</span>
+</code></pre></div>
+<p>After you finish working on the feature, commit your code, create a pull request to review internally:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">git commit -m &#39;&lt;change description&gt;&#39;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="go">git push origin dev-&lt;feature name&gt;</span>
+</code></pre></div>
+<p>To preview what the changes will look like, go to the Amplify console and connect your feature branch. Note: If you have the AWS CLI installed on your system (Not the Amplify CLI), you can connect a branch directly from your terminal. You can find your appid by going to App settings &gt; General &gt; AppARN: arn:aws:amplify:<region>:<region>:apps/<appid>.</p>
+<p>Maybe you should specify region like <code>--region us-east-1</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="go">aws amplify create-branch --app-id &lt;appid&gt; --branch-name &lt;branchname&gt;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="go">aws amplify start-job --app-id &lt;appid&gt; --branch-name &lt;branchname&gt; --job-type RELEASE</span>
+</code></pre></div>
+<p>Check deployment status in aws amplify app web page and also backend name auto generated.</p>
+<p>Once feature is OK, merge feature branch and then delete aws amplify branch.</p>
+<p>!be careful, the auto-generated backend is not automatically deleted following the command above, so you have to do it manually!</p>
 <hr />
 
               
