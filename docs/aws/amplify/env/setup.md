@@ -122,24 +122,12 @@ Current:
 
 ```console
 amplify status
-
-    Current Environment: dev
-    
-┌──────────┬───────────────┬───────────┬─────────────────┐
-│ Category │ Resource name │ Operation │ Provider plugin │
-└──────────┴───────────────┴───────────┴─────────────────┘
 ```
 
 List:
 
 ```console
 amplify list env
-
-| Environments |
-| ------------ |
-| main         |
-| test         |
-| *dev         |
 ```
 
 Delete:
@@ -158,7 +146,7 @@ In the build settings screen, pick an existing backend environment to set up con
 
 Grant the service role to Amplify. Choose Save and deploy.
 
-After the build completes you will get branches deployments available at https://<dev, test, main>.appid.amplifyapp.com.
+After the build completes you will get branches deployments available at https:// `dev` or `test` or `main` .appid.amplifyapp.com.
 
 ---
 
