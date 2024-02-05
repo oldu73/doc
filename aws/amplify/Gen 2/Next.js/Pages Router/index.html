@@ -4491,22 +4491,20 @@
 </ul>
 <h2 id="setup">setup</h2>
 <p>create project:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">npm create next-app@14 -- next-amplify-gen2 --typescript --eslint --app --no-src-dir --no-tailwind --import-alias &#39;@/*&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">npm create next-app@14 -- next-amplify-gen2 --typescript --eslint --no-app --no-src-dir --no-tailwind --import-alias &#39;@/*&#39;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="go">cd next-amplify-gen2</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="go">npm create amplify@latest</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="go">? Where should we create your project? (.) # press enter</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="go">npm run dev</span>
 </code></pre></div>
 <p>Open <a href="http://localhost:3000/">localhost:3000</a> in a browser to check server is running.</p>
+<p>!It's failing, but no worry, let's go on further and let's see ;)</p>
 <p>Hit <code>Ctrl + c</code> in command prompt window to stop dev server and open project in IDE.</p>
 <hr />
 <h2 id="sandbox">sandbox</h2>
 <p><a href="https://docs.amplify.aws/gen2/reference/cli-commands/">sandbox CLI commands</a></p>
-<p>Run the following commands in two terminals:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">npm run dev</span>
-</code></pre></div>
-<p>And:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">npx amplify sandbox</span>
+<p>In terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">npx amplify sandbox</span>
 </code></pre></div>
 <p>Hit <code>Ctrl + c</code> in sandbox terminal to stop, you may choose to keep it for further usage.</p>
 <p>.. <a href="https://docs.amplify.aws/gen2/start/quickstart/nextjs-pages-router/">wipp</a></p>
