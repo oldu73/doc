@@ -18,7 +18,7 @@ install:
 create project:
 
 ```console
-npm create next-app@14 -- next-amplify-gen2 --typescript --eslint --app --no-src-dir --no-tailwind --import-alias '@/*'
+npm create next-app@14 -- next-amplify-gen2 --typescript --eslint --no-app --no-src-dir --no-tailwind --import-alias '@/*'
 cd next-amplify-gen2
 npm create amplify@latest
 ? Where should we create your project? (.) # press enter
@@ -26,6 +26,8 @@ npm run dev
 ```
 
 Open [localhost:3000](http://localhost:3000/) in a browser to check server is running.
+
+!It's failing, but no worry, let's go on further and let's see ;)
 
 Hit `Ctrl + c` in command prompt window to stop dev server and open project in IDE.
 
@@ -35,13 +37,7 @@ Hit `Ctrl + c` in command prompt window to stop dev server and open project in I
 
 [sandbox CLI commands](https://docs.amplify.aws/gen2/reference/cli-commands/)
 
-Run the following commands in two terminals:
-
-```console
-npm run dev
-```
-
-And:
+In terminal:
 
 ```console
 npx amplify sandbox
