@@ -24,7 +24,7 @@ npm run dev
 
 ---
 
-## first route
+## First route
 
 In app folder create a `hello` folder and in it a `route.js` with content:
 
@@ -38,7 +38,7 @@ Test it: [localhost:3000/hello](http://localhost:3000/hello)
 
 ---
 
-## second route
+## Second route
 
 In app folder create a `dashboard` folder and in it a `page.js` with content:
 
