@@ -25,3 +25,13 @@ Follow [installation](https://www.jetbrains.com/help/webstorm/prettier.html) ins
 [Create a React+TypeScript project with the create-react-app scaffolding tool](https://www.jetbrains.com/webstorm/guide/tutorials/react_typescript_tdd/project_setup/).
 
 ---
+
+## Surround with
+
+Surround code with, after selecting fragment:
+
+```txt
+Press Ctrl + Alt + T or go to Code | Surround With in the main menu.
+```
+
+---
