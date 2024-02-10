@@ -125,7 +125,7 @@ export default function ConfigureAmplifyClientSide() {
 }
 ```
 
-Update `app/layout.tsx` to import and render \<ConfigureAmplifyClientSide />. This client component will configure Amplify for client pages in our application:
+Update `app/layout.tsx` to import and render `ConfigureAmplifyClientSide`. This client component will configure Amplify for client pages in our application:
 
 ```tsx
 // app/layout.tsx
