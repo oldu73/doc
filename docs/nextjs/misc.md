@@ -2,6 +2,20 @@
 
 ---
 
+## Which kind of Next to choose?
+
+Pages router = old  
+App router = new
+
+App router client VS server components then depends on usage.
+
+Which Next.js to choose?:
+
+- [App Router vs Pages Router](https://nextjs.org/docs#:~:text=the%20Installation%20guide.-,App%20Router%20vs%20Pages%20Router,-Next.js%20has)  
+- [Client VS Server Components](https://nextjs.org/docs/app/building-your-application/rendering)
+
+---
+
 ## Setup new project
 
 ```console

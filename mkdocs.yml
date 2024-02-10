@@ -25,8 +25,10 @@ nav:
           - Gen 2:
               - Next.js:
                   - "Pages Router": "aws/amplify/Gen 2/Next.js/Pages Router.md"
+                  - "App Router Client Components": "aws/amplify/Gen 2/Next.js/App Router Client Components.md"
           - Msc:
               - "after modifying data model": "aws/amplify/msc/after modifying data model.md"
+              - "github": "aws/amplify/msc/github.md"
               - "setup": "aws/amplify/msc/setup.md"
               - "sign-up-in-out": "aws/amplify/msc/sign-up-in-out.md"
           - Sharedyn:
