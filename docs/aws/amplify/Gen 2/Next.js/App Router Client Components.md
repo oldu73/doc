@@ -473,6 +473,8 @@ Give access to `AWS Amplify` application to this private repository:
 7. Under *Advanced settings*, navigate to *Build Image* and enter `amplify:al2023`. The Amplify Amazon Linux 2023 build image supports Node.js versions 18 and 20 at build time.  
 8. Review all of your settings to ensure everything is set up correctly. Choose *Save and deploy* to deploy your web app.
 
+If deployed project isn't password protected as it should be, browse to your app -> hosting -> access control and protect branch with `username` and `password`.
+
 ### Manage fullstack branch
 
 The new Amplify console gives you a central place to manage your branches, hosting settings, CI/CD builds, and backend resources.
