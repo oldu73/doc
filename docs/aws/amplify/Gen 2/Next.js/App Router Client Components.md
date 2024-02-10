@@ -4,7 +4,7 @@ Ref. [Next.js App Router (Client Components)](https://docs.amplify.aws/gen2/star
 
 ---
 
-## prerequisites
+## Prerequisites
 
 install:
 
@@ -13,7 +13,7 @@ install:
 - git v2.14.1 or later  
 - AWS account
 
-## setup
+## Setup
 
 create project:
 
@@ -35,7 +35,7 @@ Add `.idea` folder to `.gitignore` file in case of using JetBrains IDE like WebS
 
 ---
 
-## sandbox
+## Sandbox
 
 [sandbox CLI commands](https://docs.amplify.aws/gen2/reference/cli-commands/)
 
