@@ -547,6 +547,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#view-list-of-to-do-items" class="md-nav__link">
+    View list of to-do items
+  </a>
+  
+    <nav class="md-nav" aria-label="View list of to-do items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-to-do-item" class="md-nav__link">
+    Create a new to-do item
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminate-dev-server" class="md-nav__link">
+    Terminate dev server
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4587,6 +4614,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#view-list-of-to-do-items" class="md-nav__link">
+    View list of to-do items
+  </a>
+  
+    <nav class="md-nav" aria-label="View list of to-do items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-to-do-item" class="md-nav__link">
+    Create a new to-do item
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminate-dev-server" class="md-nav__link">
+    Terminate dev server
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4748,10 +4802,195 @@
 <a id="__codelineno-7-27" name="__codelineno-7-27"></a>
 <a id="__codelineno-7-28" name="__codelineno-7-28"></a>export default withAuthenticator(App);
 </code></pre></div>
-<p>Run your application with <code>npm run dev</code> and navigate to <a href="http://localhost:3000">localhost:3000</a>. You should now see the authenticator, which is already configured and ready for your first sign-up! Create a new user account, confirm the account through email, and then sign in.</p>
+<p>Run your application with <code>npm run dev</code> and navigate to <a href="http://localhost:3000">localhost:3000</a>.</p>
+<p>You should now see the authenticator.</p>
+<p>Create a new user account, confirm the account through email, and then sign in.</p>
 <p>We also have added a logout button.</p>
+<h2 id="view-list-of-to-do-items">View list of to-do items</h2>
+<p>Now, let's display data on our app's frontend.</p>
+<p>In the <code>components</code> directory create a <code>TodoList.tsx</code> file with following content:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>// components/TodoList.tsx
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>&quot;use client&quot;;
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>import { useState, useEffect } from &quot;react&quot;;
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>import { generateClient } from &quot;aws-amplify/data&quot;;
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>import type { Schema } from &quot;../../amplify/data/resource&quot;;
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>// generate your data client using the Schema from your backend
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a>const client = generateClient&lt;Schema&gt;();
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a>export default function TodoList() {
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a>    const [todos, setTodos] = useState&lt;Schema[&quot;Todo&quot;][]&gt;([]);
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a>    async function listTodos() {
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a>        // fetch all todos
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a>        const { data } = await client.models.Todo.list();
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a>        setTodos(data);
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a>    }
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a>
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a>    useEffect(() =&gt; {
+<a id="__codelineno-8-21" name="__codelineno-8-21"></a>        listTodos();
+<a id="__codelineno-8-22" name="__codelineno-8-22"></a>    }, []);
+<a id="__codelineno-8-23" name="__codelineno-8-23"></a>
+<a id="__codelineno-8-24" name="__codelineno-8-24"></a>    return (
+<a id="__codelineno-8-25" name="__codelineno-8-25"></a>        &lt;div&gt;
+<a id="__codelineno-8-26" name="__codelineno-8-26"></a>            &lt;h1&gt;Todos&lt;/h1&gt;
+<a id="__codelineno-8-27" name="__codelineno-8-27"></a>            &lt;ul&gt;
+<a id="__codelineno-8-28" name="__codelineno-8-28"></a>                {todos.map((todo) =&gt; (
+<a id="__codelineno-8-29" name="__codelineno-8-29"></a>                    &lt;li key={todo.id}&gt;{todo.content}&lt;/li&gt;
+<a id="__codelineno-8-30" name="__codelineno-8-30"></a>                ))}
+<a id="__codelineno-8-31" name="__codelineno-8-31"></a>            &lt;/ul&gt;
+<a id="__codelineno-8-32" name="__codelineno-8-32"></a>        &lt;/div&gt;
+<a id="__codelineno-8-33" name="__codelineno-8-33"></a>    );
+<a id="__codelineno-8-34" name="__codelineno-8-34"></a>}
+</code></pre></div>
+<p>In <code>app/page.tsx</code>, import components/TodoList and render it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>// app/page.tsx
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>&quot;use client&quot;;
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>import {signOut} from &#39;aws-amplify/auth&#39;;
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>import {withAuthenticator} from &quot;@aws-amplify/ui-react&quot;;
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a>import &quot;@aws-amplify/ui-react/styles.css&quot;;
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a>import TodoList from &quot;./components/TodoList&quot;;
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a>function App() {
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a>    async function handleSignOut() {
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a>        try {
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a>            await signOut({global: true});
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a>        } catch (error) {
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a>            console.log(&#39;error signing out: &#39;, error);
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a>        }
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a>    }
+<a id="__codelineno-9-18" name="__codelineno-9-18"></a>
+<a id="__codelineno-9-19" name="__codelineno-9-19"></a>    return (
+<a id="__codelineno-9-20" name="__codelineno-9-20"></a>        &lt;&gt;
+<a id="__codelineno-9-21" name="__codelineno-9-21"></a>            &lt;h1&gt;Hello, Amplify 👋&lt;/h1&gt;
+<a id="__codelineno-9-22" name="__codelineno-9-22"></a>
+<a id="__codelineno-9-23" name="__codelineno-9-23"></a>            {/* Add a logout button */}
+<a id="__codelineno-9-24" name="__codelineno-9-24"></a>            &lt;button onClick={handleSignOut}&gt;Logout&lt;/button&gt;
+<a id="__codelineno-9-25" name="__codelineno-9-25"></a>
+<a id="__codelineno-9-26" name="__codelineno-9-26"></a>            &lt;TodoList /&gt;
+<a id="__codelineno-9-27" name="__codelineno-9-27"></a>        &lt;/&gt;
+<a id="__codelineno-9-28" name="__codelineno-9-28"></a>    );
+<a id="__codelineno-9-29" name="__codelineno-9-29"></a>}
+<a id="__codelineno-9-30" name="__codelineno-9-30"></a>
+<a id="__codelineno-9-31" name="__codelineno-9-31"></a>export default withAuthenticator(App);
+</code></pre></div>
+<p>Once you save the file and navigate back to <a href="http://localhost:3000">localhost:3000</a>, you should see a blank page for an empty list of to-dos.</p>
+<h3 id="create-a-new-to-do-item">Create a new to-do item</h3>
+<p>Update the return statement of the <code>components/TodoList</code> component to have a button for creating a new to-do list item:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>// components/TodoList.tsx
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>&quot;use client&quot;;
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a>import { useState, useEffect } from &quot;react&quot;;
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>import { generateClient } from &quot;aws-amplify/data&quot;;
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a>import type { Schema } from &quot;../../amplify/data/resource&quot;;
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a>// generate your data client using the Schema from your backend
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a>const client = generateClient&lt;Schema&gt;();
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a>export default function TodoList() {
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a>    const [todos, setTodos] = useState&lt;Schema[&quot;Todo&quot;][]&gt;([]);
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a>    async function listTodos() {
+<a id="__codelineno-10-15" name="__codelineno-10-15"></a>        // fetch all todos
+<a id="__codelineno-10-16" name="__codelineno-10-16"></a>        const { data } = await client.models.Todo.list();
+<a id="__codelineno-10-17" name="__codelineno-10-17"></a>        setTodos(data);
+<a id="__codelineno-10-18" name="__codelineno-10-18"></a>    }
+<a id="__codelineno-10-19" name="__codelineno-10-19"></a>
+<a id="__codelineno-10-20" name="__codelineno-10-20"></a>    useEffect(() =&gt; {
+<a id="__codelineno-10-21" name="__codelineno-10-21"></a>        listTodos();
+<a id="__codelineno-10-22" name="__codelineno-10-22"></a>    }, []);
+<a id="__codelineno-10-23" name="__codelineno-10-23"></a>
+<a id="__codelineno-10-24" name="__codelineno-10-24"></a>    return (
+<a id="__codelineno-10-25" name="__codelineno-10-25"></a>        &lt;div&gt;
+<a id="__codelineno-10-26" name="__codelineno-10-26"></a>            &lt;h1&gt;Todos&lt;/h1&gt;
+<a id="__codelineno-10-27" name="__codelineno-10-27"></a>            &lt;button onClick={async () =&gt; {
+<a id="__codelineno-10-28" name="__codelineno-10-28"></a>                // create a new Todo with the following attributes
+<a id="__codelineno-10-29" name="__codelineno-10-29"></a>                const { errors, data: newTodo } = await client.models.Todo.create({
+<a id="__codelineno-10-30" name="__codelineno-10-30"></a>                    // prompt the user to enter the title
+<a id="__codelineno-10-31" name="__codelineno-10-31"></a>                    content: window.prompt(&quot;title&quot;),
+<a id="__codelineno-10-32" name="__codelineno-10-32"></a>                    done: false,
+<a id="__codelineno-10-33" name="__codelineno-10-33"></a>                    priority: &#39;medium&#39;
+<a id="__codelineno-10-34" name="__codelineno-10-34"></a>                })
+<a id="__codelineno-10-35" name="__codelineno-10-35"></a>                console.log(errors, newTodo);
+<a id="__codelineno-10-36" name="__codelineno-10-36"></a>            }}&gt;Create &lt;/button&gt;
+<a id="__codelineno-10-37" name="__codelineno-10-37"></a>
+<a id="__codelineno-10-38" name="__codelineno-10-38"></a>            &lt;ul&gt;
+<a id="__codelineno-10-39" name="__codelineno-10-39"></a>                {todos.map((todo) =&gt; (
+<a id="__codelineno-10-40" name="__codelineno-10-40"></a>                    &lt;li key={todo.id}&gt;{todo.content}&lt;/li&gt;
+<a id="__codelineno-10-41" name="__codelineno-10-41"></a>                ))}
+<a id="__codelineno-10-42" name="__codelineno-10-42"></a>            &lt;/ul&gt;
+<a id="__codelineno-10-43" name="__codelineno-10-43"></a>        &lt;/div&gt;
+<a id="__codelineno-10-44" name="__codelineno-10-44"></a>    );
+<a id="__codelineno-10-45" name="__codelineno-10-45"></a>}
+</code></pre></div>
+<p>Create a couple of to-dos, then refresh the page to see them.</p>
+<p>You can also subscribe to new to-dos in your <code>useEffect</code> to have them live reload on the page:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>// components/TodoList.tsx
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>&quot;use client&quot;;
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a>import {useState, useEffect} from &quot;react&quot;;
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>import {generateClient} from &quot;aws-amplify/data&quot;;
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>import type {Schema} from &quot;../../amplify/data/resource&quot;;
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>// generate your data client using the Schema from your backend
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a>const client = generateClient&lt;Schema&gt;();
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a>export default function TodoList() {
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a>    const [todos, setTodos] = useState&lt;Schema[&quot;Todo&quot;][]&gt;([]);
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a>    async function listTodos() {
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a>        // fetch all todos
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a>        const {data} = await client.models.Todo.list();
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a>        setTodos(data);
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a>    }
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a>
+<a id="__codelineno-11-20" name="__codelineno-11-20"></a>    useEffect(() =&gt; {
+<a id="__codelineno-11-21" name="__codelineno-11-21"></a>        listTodos();
+<a id="__codelineno-11-22" name="__codelineno-11-22"></a>    }, []);
+<a id="__codelineno-11-23" name="__codelineno-11-23"></a>
+<a id="__codelineno-11-24" name="__codelineno-11-24"></a>    useEffect(() =&gt; {
+<a id="__codelineno-11-25" name="__codelineno-11-25"></a>        const sub = client.models.Todo.observeQuery().subscribe(({items}) =&gt;
+<a id="__codelineno-11-26" name="__codelineno-11-26"></a>            setTodos([...items])
+<a id="__codelineno-11-27" name="__codelineno-11-27"></a>        );
+<a id="__codelineno-11-28" name="__codelineno-11-28"></a>
+<a id="__codelineno-11-29" name="__codelineno-11-29"></a>        return () =&gt; sub.unsubscribe();
+<a id="__codelineno-11-30" name="__codelineno-11-30"></a>    }, []);
+<a id="__codelineno-11-31" name="__codelineno-11-31"></a>
+<a id="__codelineno-11-32" name="__codelineno-11-32"></a>    return (
+<a id="__codelineno-11-33" name="__codelineno-11-33"></a>        &lt;div&gt;
+<a id="__codelineno-11-34" name="__codelineno-11-34"></a>            &lt;h1&gt;Todos&lt;/h1&gt;
+<a id="__codelineno-11-35" name="__codelineno-11-35"></a>            &lt;button onClick={async () =&gt; {
+<a id="__codelineno-11-36" name="__codelineno-11-36"></a>                // create a new Todo with the following attributes
+<a id="__codelineno-11-37" name="__codelineno-11-37"></a>                const {errors, data: newTodo} = await client.models.Todo.create({
+<a id="__codelineno-11-38" name="__codelineno-11-38"></a>                    // prompt the user to enter the title
+<a id="__codelineno-11-39" name="__codelineno-11-39"></a>                    content: window.prompt(&quot;title&quot;),
+<a id="__codelineno-11-40" name="__codelineno-11-40"></a>                    done: false,
+<a id="__codelineno-11-41" name="__codelineno-11-41"></a>                    priority: &#39;medium&#39;
+<a id="__codelineno-11-42" name="__codelineno-11-42"></a>                })
+<a id="__codelineno-11-43" name="__codelineno-11-43"></a>                console.log(errors, newTodo);
+<a id="__codelineno-11-44" name="__codelineno-11-44"></a>            }}&gt;Create
+<a id="__codelineno-11-45" name="__codelineno-11-45"></a>            &lt;/button&gt;
+<a id="__codelineno-11-46" name="__codelineno-11-46"></a>
+<a id="__codelineno-11-47" name="__codelineno-11-47"></a>            &lt;ul&gt;
+<a id="__codelineno-11-48" name="__codelineno-11-48"></a>                {todos.map((todo) =&gt; (
+<a id="__codelineno-11-49" name="__codelineno-11-49"></a>                    &lt;li key={todo.id}&gt;{todo.content}&lt;/li&gt;
+<a id="__codelineno-11-50" name="__codelineno-11-50"></a>                ))}
+<a id="__codelineno-11-51" name="__codelineno-11-51"></a>            &lt;/ul&gt;
+<a id="__codelineno-11-52" name="__codelineno-11-52"></a>        &lt;/div&gt;
+<a id="__codelineno-11-53" name="__codelineno-11-53"></a>    );
+<a id="__codelineno-11-54" name="__codelineno-11-54"></a>}
+</code></pre></div>
 <hr />
-<p>.. <a href="https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/#view-list-of-to-do-items">wipp</a></p>
+<h2 id="terminate-dev-server">Terminate dev server</h2>
+<p>Go to <code>localhost</code> in the browser to make sure you can now log in and create and list to-dos.</p>
+<p>You can end your development session by shutting down the frontend dev server and cloud sandbox.</p>
+<p>The sandbox prompts you to delete your backend resources.</p>
+<p>While you can retain your backend, we recommend deleting all resources so you can start clean again next time.</p>
+<hr />
+<p>.. <a href="https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/#deploy-and-host-a-fullstack-branch">wipp</a></p>
 <hr />
 <p>...</p>
 <hr />
