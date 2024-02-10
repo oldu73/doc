@@ -190,13 +190,223 @@ function App() {
 export default withAuthenticator(App);
 ```
 
-Run your application with `npm run dev` and navigate to [localhost:3000](http://localhost:3000). You should now see the authenticator, which is already configured and ready for your first sign-up! Create a new user account, confirm the account through email, and then sign in.
+Run your application with `npm run dev` and navigate to [localhost:3000](http://localhost:3000).
+
+You should now see the authenticator.
+
+Create a new user account, confirm the account through email, and then sign in.
 
 We also have added a logout button.
 
+## View list of to-do items
+
+Now, let's display data on our app's frontend.
+
+In the `components` directory create a `TodoList.tsx` file with following content:
+
+```tsx
+// components/TodoList.tsx
+"use client";
+
+import { useState, useEffect } from "react";
+import { generateClient } from "aws-amplify/data";
+import type { Schema } from "../../amplify/data/resource";
+
+// generate your data client using the Schema from your backend
+const client = generateClient<Schema>();
+
+export default function TodoList() {
+    const [todos, setTodos] = useState<Schema["Todo"][]>([]);
+
+    async function listTodos() {
+        // fetch all todos
+        const { data } = await client.models.Todo.list();
+        setTodos(data);
+    }
+
+    useEffect(() => {
+        listTodos();
+    }, []);
+
+    return (
+        <div>
+            <h1>Todos</h1>
+            <ul>
+                {todos.map((todo) => (
+                    <li key={todo.id}>{todo.content}</li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+```
+
+In `app/page.tsx`, import components/TodoList and render it:
+
+```tsx
+// app/page.tsx
+"use client";
+
+import {signOut} from 'aws-amplify/auth';
+import {withAuthenticator} from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
+import TodoList from "./components/TodoList";
+
+function App() {
+
+    async function handleSignOut() {
+        try {
+            await signOut({global: true});
+        } catch (error) {
+            console.log('error signing out: ', error);
+        }
+    }
+
+    return (
+        <>
+            <h1>Hello, Amplify 👋</h1>
+
+            {/* Add a logout button */}
+            <button onClick={handleSignOut}>Logout</button>
+
+            <TodoList />
+        </>
+    );
+}
+
+export default withAuthenticator(App);
+```
+
+Once you save the file and navigate back to [localhost:3000](http://localhost:3000), you should see a blank page for an empty list of to-dos.
+
+### Create a new to-do item
+
+Update the return statement of the `components/TodoList` component to have a button for creating a new to-do list item:
+
+```tsx
+// components/TodoList.tsx
+"use client";
+
+import { useState, useEffect } from "react";
+import { generateClient } from "aws-amplify/data";
+import type { Schema } from "../../amplify/data/resource";
+
+// generate your data client using the Schema from your backend
+const client = generateClient<Schema>();
+
+export default function TodoList() {
+    const [todos, setTodos] = useState<Schema["Todo"][]>([]);
+
+    async function listTodos() {
+        // fetch all todos
+        const { data } = await client.models.Todo.list();
+        setTodos(data);
+    }
+
+    useEffect(() => {
+        listTodos();
+    }, []);
+
+    return (
+        <div>
+            <h1>Todos</h1>
+            <button onClick={async () => {
+                // create a new Todo with the following attributes
+                const { errors, data: newTodo } = await client.models.Todo.create({
+                    // prompt the user to enter the title
+                    content: window.prompt("title"),
+                    done: false,
+                    priority: 'medium'
+                })
+                console.log(errors, newTodo);
+            }}>Create </button>
+
+            <ul>
+                {todos.map((todo) => (
+                    <li key={todo.id}>{todo.content}</li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+```
+
+Create a couple of to-dos, then refresh the page to see them.
+
+You can also subscribe to new to-dos in your `useEffect` to have them live reload on the page:
+
+```tsx
+// components/TodoList.tsx
+"use client";
+
+import {useState, useEffect} from "react";
+import {generateClient} from "aws-amplify/data";
+import type {Schema} from "../../amplify/data/resource";
+
+// generate your data client using the Schema from your backend
+const client = generateClient<Schema>();
+
+export default function TodoList() {
+    const [todos, setTodos] = useState<Schema["Todo"][]>([]);
+
+    async function listTodos() {
+        // fetch all todos
+        const {data} = await client.models.Todo.list();
+        setTodos(data);
+    }
+
+    useEffect(() => {
+        listTodos();
+    }, []);
+
+    useEffect(() => {
+        const sub = client.models.Todo.observeQuery().subscribe(({items}) =>
+            setTodos([...items])
+        );
+
+        return () => sub.unsubscribe();
+    }, []);
+
+    return (
+        <div>
+            <h1>Todos</h1>
+            <button onClick={async () => {
+                // create a new Todo with the following attributes
+                const {errors, data: newTodo} = await client.models.Todo.create({
+                    // prompt the user to enter the title
+                    content: window.prompt("title"),
+                    done: false,
+                    priority: 'medium'
+                })
+                console.log(errors, newTodo);
+            }}>Create
+            </button>
+
+            <ul>
+                {todos.map((todo) => (
+                    <li key={todo.id}>{todo.content}</li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+```
+
 ---
 
-.. [wipp](https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/#view-list-of-to-do-items)
+## Terminate dev server
+
+Go to `localhost` in the browser to make sure you can now log in and create and list to-dos.
+
+You can end your development session by shutting down the frontend dev server and cloud sandbox.
+
+The sandbox prompts you to delete your backend resources.
+
+While you can retain your backend, we recommend deleting all resources so you can start clean again next time.
+
+---
+
+.. [wipp](https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/#deploy-and-host-a-fullstack-branch)
 
 ---
 
