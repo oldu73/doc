@@ -4722,20 +4722,34 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>// app/page.tsx
 <a id="__codelineno-7-2" name="__codelineno-7-2"></a>&quot;use client&quot;;
 <a id="__codelineno-7-3" name="__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a>import { withAuthenticator } from &quot;@aws-amplify/ui-react&quot;;
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a>import &quot;@aws-amplify/ui-react/styles.css&quot;;
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a>
-<a id="__codelineno-7-7" name="__codelineno-7-7"></a>function App() {
-<a id="__codelineno-7-8" name="__codelineno-7-8"></a>  return (
-<a id="__codelineno-7-9" name="__codelineno-7-9"></a>      &lt;&gt;
-<a id="__codelineno-7-10" name="__codelineno-7-10"></a>        &lt;h1&gt;Hello, Amplify 👋&lt;/h1&gt;
-<a id="__codelineno-7-11" name="__codelineno-7-11"></a>      &lt;/&gt;
-<a id="__codelineno-7-12" name="__codelineno-7-12"></a>  );
-<a id="__codelineno-7-13" name="__codelineno-7-13"></a>}
-<a id="__codelineno-7-14" name="__codelineno-7-14"></a>
-<a id="__codelineno-7-15" name="__codelineno-7-15"></a>export default withAuthenticator(App);
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>import {signOut} from &#39;aws-amplify/auth&#39;;
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>import {withAuthenticator} from &quot;@aws-amplify/ui-react&quot;;
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>import &quot;@aws-amplify/ui-react/styles.css&quot;;
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>function App() {
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a>    async function handleSignOut() {
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a>        try {
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a>            await signOut({global: true});
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a>        } catch (error) {
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a>            console.log(&#39;error signing out: &#39;, error);
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a>        }
+<a id="__codelineno-7-16" name="__codelineno-7-16"></a>    }
+<a id="__codelineno-7-17" name="__codelineno-7-17"></a>
+<a id="__codelineno-7-18" name="__codelineno-7-18"></a>    return (
+<a id="__codelineno-7-19" name="__codelineno-7-19"></a>        &lt;&gt;
+<a id="__codelineno-7-20" name="__codelineno-7-20"></a>            &lt;h1&gt;Hello, Amplify 👋&lt;/h1&gt;
+<a id="__codelineno-7-21" name="__codelineno-7-21"></a>
+<a id="__codelineno-7-22" name="__codelineno-7-22"></a>            {/* Add a logout button */}
+<a id="__codelineno-7-23" name="__codelineno-7-23"></a>            &lt;button onClick={handleSignOut}&gt;Logout&lt;/button&gt;
+<a id="__codelineno-7-24" name="__codelineno-7-24"></a>        &lt;/&gt;
+<a id="__codelineno-7-25" name="__codelineno-7-25"></a>    );
+<a id="__codelineno-7-26" name="__codelineno-7-26"></a>}
+<a id="__codelineno-7-27" name="__codelineno-7-27"></a>
+<a id="__codelineno-7-28" name="__codelineno-7-28"></a>export default withAuthenticator(App);
 </code></pre></div>
 <p>Run your application with <code>npm run dev</code> and navigate to <a href="http://localhost:3000">localhost:3000</a>. You should now see the authenticator, which is already configured and ready for your first sign-up! Create a new user account, confirm the account through email, and then sign in.</p>
+<p>We also have added a logout button.</p>
 <hr />
 <p>.. <a href="https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/#view-list-of-to-do-items">wipp</a></p>
 <hr />
