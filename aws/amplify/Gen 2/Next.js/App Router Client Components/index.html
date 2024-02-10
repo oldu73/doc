@@ -500,6 +500,53 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#build-a-backend" class="md-nav__link">
+    Build a backend
+  </a>
+  
+    <nav class="md-nav" aria-label="Build a backend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-data" class="md-nav__link">
+    Add data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-authentication" class="md-nav__link">
+    Add authentication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-ui" class="md-nav__link">
+    Build UI
+  </a>
+  
+    <nav class="md-nav" aria-label="Build UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-a-login-form" class="md-nav__link">
+    Add a login form
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4493,6 +4540,53 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#build-a-backend" class="md-nav__link">
+    Build a backend
+  </a>
+  
+    <nav class="md-nav" aria-label="Build a backend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-data" class="md-nav__link">
+    Add data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-authentication" class="md-nav__link">
+    Add authentication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-ui" class="md-nav__link">
+    Build UI
+  </a>
+  
+    <nav class="md-nav" aria-label="Build UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-a-login-form" class="md-nav__link">
+    Add a login form
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4537,7 +4631,113 @@
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="go">npx amplify sandbox</span>
 </code></pre></div>
 <p>Hit <code>Ctrl + c</code> in sandbox terminal to stop, you may choose to keep it for further usage.</p>
-<p>.. <a href="https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/#build-a-backend">wipp</a></p>
+<hr />
+<h2 id="build-a-backend">Build a backend</h2>
+<h3 id="add-data">Add data</h3>
+<p>File <code>/amplify/data/resource.ts</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">import</span> <span class="p">{</span> <span class="kr">type</span> <span class="nx">ClientSchema</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">defineData</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@aws-amplify/backend&#39;</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kd">const</span> <span class="nx">schema</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">schema</span><span class="p">({</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>  <span class="nx">Todo</span>: <span class="kt">a</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>    <span class="p">.</span><span class="nx">model</span><span class="p">({</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>      <span class="nx">content</span>: <span class="kt">a.string</span><span class="p">(),</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>      <span class="nx">done</span>: <span class="kt">a.boolean</span><span class="p">(),</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>      <span class="nx">priority</span>: <span class="kt">a.enum</span><span class="p">([</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">])</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="p">})</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>      <span class="p">.</span><span class="nx">authorization</span><span class="p">([</span><span class="nx">a</span><span class="p">.</span><span class="nx">allow</span><span class="p">.</span><span class="nx">owner</span><span class="p">()]),</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="p">});</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="k">export</span> <span class="kr">type</span> <span class="nx">Schema</span> <span class="o">=</span> <span class="nx">ClientSchema</span><span class="o">&lt;</span><span class="ow">typeof</span> <span class="nx">schema</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="k">export</span> <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">defineData</span><span class="p">({</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>    <span class="nx">schema</span><span class="p">,</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>    <span class="nx">authorizationModes</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>        <span class="nx">defaultAuthorizationMode</span><span class="o">:</span> <span class="s1">&#39;userPool&#39;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>    <span class="p">}</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="p">});</span>
+</code></pre></div>
+<h3 id="add-authentication">Add authentication</h3>
+<p>File <code>amplify/auth/resource.ts</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">import</span> <span class="p">{</span> <span class="nx">defineAuth</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@aws-amplify/backend&#39;</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="k">export</span> <span class="kd">const</span> <span class="nx">auth</span> <span class="o">=</span> <span class="nx">defineAuth</span><span class="p">({</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>  <span class="nx">loginWith</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>    <span class="nx">email</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>      <span class="nx">verificationEmailSubject</span><span class="o">:</span> <span class="s1">&#39;Welcome! Verify your email!&#39;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>    <span class="p">}</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>  <span class="p">},</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>  <span class="nx">userAttributes</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>  <span class="p">},</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="build-ui">Build UI</h2>
+<h3 id="add-a-login-form">Add a login form</h3>
+<p>First, install the Amplify UI component library:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">npm install @aws-amplify/ui-react</span>
+</code></pre></div>
+<p>If do not exist, create a <code>components</code> folder and root application folder <code>app</code> and create/modify <code>ConfigureAmplify.tsx</code> with following content:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>// components/ConfigureAmplify.tsx
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>&quot;use client&quot;;
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>import config from &quot;../../amplifyconfiguration.json&quot;;
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>import { Amplify } from &quot;aws-amplify&quot;;
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>Amplify.configure(config, { ssr: true });
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>export default function ConfigureAmplifyClientSide() {
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>    return null;
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>}
+</code></pre></div>
+<p>Update <code>app/layout.tsx</code> to import and render \<ConfigureAmplifyClientSide />. This client component will configure Amplify for client pages in our application:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>// app/layout.tsx
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>import ConfigureAmplifyClientSide from &quot;./components/ConfigureAmplify&quot;;
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>import type { Metadata } from &quot;next&quot;;
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>import { Inter } from &quot;next/font/google&quot;;
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>import &quot;./globals.css&quot;;
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>const inter = Inter({ subsets: [&quot;latin&quot;] });
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>export const metadata: Metadata = {
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>  title: &quot;Create Next App&quot;,
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a>  description: &quot;Generated by create next app&quot;,
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a>};
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>export default function RootLayout({
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a>                                     children,
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a>                                   }: {
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a>  children: React.ReactNode;
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a>}) {
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a>  return (
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a>      &lt;html lang=&quot;en&quot;&gt;
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a>      &lt;body className={inter.className}&gt;
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a>      &lt;ConfigureAmplifyClientSide /&gt;
+<a id="__codelineno-6-23" name="__codelineno-6-23"></a>      {children}
+<a id="__codelineno-6-24" name="__codelineno-6-24"></a>      &lt;/body&gt;
+<a id="__codelineno-6-25" name="__codelineno-6-25"></a>      &lt;/html&gt;
+<a id="__codelineno-6-26" name="__codelineno-6-26"></a>  );
+<a id="__codelineno-6-27" name="__codelineno-6-27"></a>}
+</code></pre></div>
+<p>In <code>app/page.tsx</code>, update with the following code which import Amplify UI and wraps your App in the withAuthenticator function:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>// app/page.tsx
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>&quot;use client&quot;;
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>import { withAuthenticator } from &quot;@aws-amplify/ui-react&quot;;
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>import &quot;@aws-amplify/ui-react/styles.css&quot;;
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>function App() {
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>  return (
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a>      &lt;&gt;
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a>        &lt;h1&gt;Hello, Amplify 👋&lt;/h1&gt;
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a>      &lt;/&gt;
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a>  );
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a>}
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a>export default withAuthenticator(App);
+</code></pre></div>
+<p>Run your application with <code>npm run dev</code> and navigate to <a href="http://localhost:3000">localhost:3000</a>. You should now see the authenticator, which is already configured and ready for your first sign-up! Create a new user account, confirm the account through email, and then sign in.</p>
+<hr />
+<p>.. <a href="https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/#view-list-of-to-do-items">wipp</a></p>
 <hr />
 <p>...</p>
 <hr />
