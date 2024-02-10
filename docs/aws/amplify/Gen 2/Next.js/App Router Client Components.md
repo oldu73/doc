@@ -163,21 +163,36 @@ In `app/page.tsx`, update with the following code which import Amplify UI and wr
 // app/page.tsx
 "use client";
 
-import { withAuthenticator } from "@aws-amplify/ui-react";
+import {signOut} from 'aws-amplify/auth';
+import {withAuthenticator} from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 
 function App() {
-  return (
-      <>
-        <h1>Hello, Amplify 👋</h1>
-      </>
-  );
+
+    async function handleSignOut() {
+        try {
+            await signOut({global: true});
+        } catch (error) {
+            console.log('error signing out: ', error);
+        }
+    }
+
+    return (
+        <>
+            <h1>Hello, Amplify 👋</h1>
+            
+            {/* Add a logout button */}
+            <button onClick={handleSignOut}>Logout</button>
+        </>
+    );
 }
 
 export default withAuthenticator(App);
 ```
 
 Run your application with `npm run dev` and navigate to [localhost:3000](http://localhost:3000). You should now see the authenticator, which is already configured and ready for your first sign-up! Create a new user account, confirm the account through email, and then sign in.
+
+We also have added a logout button.
 
 ---
 
