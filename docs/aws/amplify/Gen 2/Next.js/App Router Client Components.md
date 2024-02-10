@@ -417,6 +417,8 @@ Amplify offers a fully managed hosting service with CI/CD built in, making it ea
 
 **In Gen 2, every Git branch in your repository maps 1:1 to a fullstack branch in Amplify.**
 
+In `Repository settings`, set up `Branch autodetection` to `ON`, `Branch autodetection access control` to `Restricted` and auto build, to achieve automatic fullstack environments set up and deploy that match git branches.
+
 ### Create remote Git repository
 
 In local, check your git user basic parameters, name and email.
