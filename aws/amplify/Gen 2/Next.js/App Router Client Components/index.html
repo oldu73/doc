@@ -574,6 +574,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#deploy-and-host-a-fullstack-branch" class="md-nav__link">
+    Deploy and host a fullstack branch
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy and host a fullstack branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-remote-git-repository" class="md-nav__link">
+    Create remote Git repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-branch-in-the-amplify-console" class="md-nav__link">
+    Connect branch in the Amplify console
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manage-fullstack-branch" class="md-nav__link">
+    Manage fullstack branch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4641,6 +4675,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#deploy-and-host-a-fullstack-branch" class="md-nav__link">
+    Deploy and host a fullstack branch
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploy and host a fullstack branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-remote-git-repository" class="md-nav__link">
+    Create remote Git repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-branch-in-the-amplify-console" class="md-nav__link">
+    Connect branch in the Amplify console
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manage-fullstack-branch" class="md-nav__link">
+    Manage fullstack branch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4655,7 +4723,11 @@
                 
 
 <h1 id="app-router-client-components">App Router Client Components</h1>
-<p>Ref. <a href="https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/">Next.js App Router (Client Components)</a></p>
+<p>Ref:</p>
+<ul>
+<li><a href="https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/">Next.js App Router (Client Components)</a>  </li>
+<li><a href="https://github.com/oldu73/next-amplify-gen2">GitHub repo next-amplify-gen2</a></li>
+</ul>
 <hr />
 <h2 id="prerequisites">Prerequisites</h2>
 <p>install:</p>
@@ -4990,15 +5062,53 @@
 <p>The sandbox prompts you to delete your backend resources.</p>
 <p>While you can retain your backend, we recommend deleting all resources so you can start clean again next time.</p>
 <hr />
-<p>.. <a href="https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/#deploy-and-host-a-fullstack-branch">wipp</a></p>
-<hr />
-<p>...</p>
-<hr />
-<p>Deploy amplify gen 2 be aware of !Next.js 14 apps require a minimum node version of 18.17 at build time.</p>
-<p>Under Advanced settings, navigate to Build Image and enter <code>amplify:al2023</code>.<br />
-The Amplify Amazon Linux 2023 build image supports Node.js versions 18 and 20 at build time.<br />
-You can specify the Node.js version during your build via live package updates or nvm.<br />
-Amplify Hosting will automatically deploy your compute runtime to match the Node.js version used at build time.</p>
+<h2 id="deploy-and-host-a-fullstack-branch">Deploy and host a fullstack branch</h2>
+<p>Now that your app is working, let's deploy it to a shared fullstack branch so you can share the project with your team.</p>
+<p>Amplify offers a fully managed hosting service with CI/CD built in, making it easy to set up production and staging environments with Git branches.</p>
+<p><strong>In Gen 2, every Git branch in your repository maps 1:1 to a fullstack branch in Amplify.</strong></p>
+<h3 id="create-remote-git-repository">Create remote Git repository</h3>
+<p>In local, check your git user basic parameters, name and email.</p>
+<p>Check:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="go">git config user.email</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="go">git config user.name</span>
+</code></pre></div>
+<p>Set:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="go">git config user.email &quot;john@doe.com&quot;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="go">git config user.name &quot;John Doe&quot;</span>
+</code></pre></div>
+<p>If you'r using a JetBrains IDE like WebStorm, add <code>.idea</code> folder to <code>.gitignore</code> file.</p>
+<p>Git add all and initial commit:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="go">git add .</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="go">git commit -m &quot;initial commit&quot;</span>
+</code></pre></div>
+<p>Create remote, <strong>private</strong> repository on GitHub.</p>
+<p>Follow instruction in <code>…or push an existing repository from the command line</code> section:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="go">git remote add origin https://github.com/&lt;user name&gt;/&lt;project name&gt;.git</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="go">git branch -M main</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="go">git push -u origin main</span>
+</code></pre></div>
+<p>Give access to <code>AWS Amplify</code> application to this private repository:</p>
+<ul>
+<li>Click on user icon top right.  </li>
+<li>Settings  </li>
+<li>Applications  </li>
+<li>Click on <code>Configure</code> button for e.g. <code>AWS Amplify (us-east-1)</code>.  </li>
+<li>Add desired repository in list of selected repositories in <code>Repository access</code> section.</li>
+</ul>
+<h3 id="connect-branch-in-the-amplify-console">Connect branch in the Amplify console</h3>
+<ol>
+<li>Log in to the <a href="https://aws.amazon.com/fr/console/">AWS console</a> and navigate to your preferred AWS Region, to <code>AWS Amplify</code> service.  </li>
+<li>Click on <em>Try Amplify Gen 2</em> preview banner.  </li>
+<li>Choose <em>Option 2: Start with an existing app</em>.  </li>
+<li>Click on <em>GitHub</em>, then click <code>Next</code>.  </li>
+<li>Select repository and branch, then click <code>Next</code>.  </li>
+<li>Set a user and password after checking <code>Password protect my site</code>.  </li>
+<li>Under <em>Advanced settings</em>, navigate to <em>Build Image</em> and enter <code>amplify:al2023</code>. The Amplify Amazon Linux 2023 build image supports Node.js versions 18 and 20 at build time.  </li>
+<li>Review all of your settings to ensure everything is set up correctly. Choose <em>Save and deploy</em> to deploy your web app.</li>
+</ol>
+<h3 id="manage-fullstack-branch">Manage fullstack branch</h3>
+<p>The new Amplify console gives you a central place to manage your branches, hosting settings, CI/CD builds, and backend resources.</p>
+<p>Even though you can access backend resources directly from AWS service consoles, the Amplify console offers built-in user and data administration.</p>
 <hr />
 
               
