@@ -1,6 +1,9 @@
 # App Router Client Components
 
-Ref. [Next.js App Router (Client Components)](https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/)
+Ref:
+
+- [Next.js App Router (Client Components)](https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/)  
+- [GitHub repo next-amplify-gen2](https://github.com/oldu73/next-amplify-gen2)
 
 ---
 
@@ -406,19 +409,74 @@ While you can retain your backend, we recommend deleting all resources so you ca
 
 ---
 
-.. [wipp](https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/#deploy-and-host-a-fullstack-branch)
+## Deploy and host a fullstack branch
 
----
+Now that your app is working, let's deploy it to a shared fullstack branch so you can share the project with your team.
 
-...
+Amplify offers a fully managed hosting service with CI/CD built in, making it easy to set up production and staging environments with Git branches.
 
----
+**In Gen 2, every Git branch in your repository maps 1:1 to a fullstack branch in Amplify.**
 
-Deploy amplify gen 2 be aware of !Next.js 14 apps require a minimum node version of 18.17 at build time.
+### Create remote Git repository
 
-Under Advanced settings, navigate to Build Image and enter `amplify:al2023`.  
-The Amplify Amazon Linux 2023 build image supports Node.js versions 18 and 20 at build time.  
-You can specify the Node.js version during your build via live package updates or nvm.  
-Amplify Hosting will automatically deploy your compute runtime to match the Node.js version used at build time.
+In local, check your git user basic parameters, name and email.
+
+Check:
+
+```console
+git config user.email
+git config user.name
+```
+
+Set:
+
+```console
+git config user.email "john@doe.com"
+git config user.name "John Doe"
+```
+
+If you'r using a JetBrains IDE like WebStorm, add `.idea` folder to `.gitignore` file.
+
+Git add all and initial commit:
+
+```console
+git add .
+git commit -m "initial commit"
+```
+
+Create remote, **private** repository on GitHub.
+
+Follow instruction in `…or push an existing repository from the command line` section:
+
+```console
+git remote add origin https://github.com/<user name>/<project name>.git
+git branch -M main
+git push -u origin main
+```
+
+Give access to `AWS Amplify` application to this private repository:
+
+- Click on user icon top right.  
+- Settings  
+- Applications  
+- Click on `Configure` button for e.g. `AWS Amplify (us-east-1)`.  
+- Add desired repository in list of selected repositories in `Repository access` section.
+
+### Connect branch in the Amplify console
+
+1. Log in to the [AWS console](https://aws.amazon.com/fr/console/) and navigate to your preferred AWS Region, to `AWS Amplify` service.  
+2. Click on *Try Amplify Gen 2* preview banner.  
+3. Choose *Option 2: Start with an existing app*.  
+4. Click on *GitHub*, then click `Next`.  
+5. Select repository and branch, then click `Next`.  
+6. Set a user and password after checking `Password protect my site`.  
+7. Under *Advanced settings*, navigate to *Build Image* and enter `amplify:al2023`. The Amplify Amazon Linux 2023 build image supports Node.js versions 18 and 20 at build time.  
+8. Review all of your settings to ensure everything is set up correctly. Choose *Save and deploy* to deploy your web app.
+
+### Manage fullstack branch
+
+The new Amplify console gives you a central place to manage your branches, hosting settings, CI/CD builds, and backend resources.
+
+Even though you can access backend resources directly from AWS service consoles, the Amplify console offers built-in user and data administration.
 
 ---
