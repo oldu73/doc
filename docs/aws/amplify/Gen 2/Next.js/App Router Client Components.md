@@ -489,7 +489,7 @@ Under application in Amplify click on `Deployed` branch link and then `Deployed 
 
 Filter out by `userpool` keyword to retrieve associated `Cognito UserPool`.
 
-Filter out by `datasource` keyword to retrieve associated `AWS AppSync DataSource` then in bread crumb menu browse one level higher to retrieve link to associated `DynamoDB` table link.
+Filter out by `datasource` keyword to retrieve associated `AWS AppSync DataSource` then in bread crumb menu browse one level higher to retrieve link to associated `DynamoDB` table.
 
 ---
 
