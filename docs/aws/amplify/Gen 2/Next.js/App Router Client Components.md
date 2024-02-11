@@ -483,4 +483,18 @@ The new Amplify console gives you a central place to manage your branches, hosti
 
 Even though you can access backend resources directly from AWS service consoles, the Amplify console offers built-in user and data administration.
 
+### Deployed backend resources
+
+Under application in Amplify click on `Deployed` branch link and then `Deployed backend resources` tab.
+
+Filter out by `userpool` keyword to retrieve associated `Cognito UserPool`.
+
+Filter out by `datasource` keyword to retrieve associated `AWS AppSync DataSource` then in bread crumb menu browse one level higher to retrieve link to associated `DynamoDB` table link.
+
+---
+
+## Managed sandboxes
+
+Under application in Amplify Overview you may observe deployed sandboxes and manage them by clicking on `Manage sandboxes` button.
+
 ---
