@@ -112,7 +112,7 @@ First, install the Amplify UI component library:
 npm install @aws-amplify/ui-react
 ```
 
-If do not exist, create a `components` folder and root application folder `app` and create/modify `ConfigureAmplify.tsx` with following content:
+If do not exist, create a `components` folder in root application folder `app` and create/modify `ConfigureAmplify.tsx` with following content:
 
 ```tsx
 // components/ConfigureAmplify.tsx
