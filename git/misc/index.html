@@ -446,20 +446,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../aws/amplify/Gen%202/Next.js/Pages%20Router/" class="md-nav__link">
-        Pages Router
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -1209,6 +1195,19 @@
   <a href="#configuration" class="md-nav__link">
     Configuration
   </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-unset" class="md-nav__link">
+    Global unset
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4656,6 +4655,19 @@
     Configuration
   </a>
   
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-unset" class="md-nav__link">
+    Global unset
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4823,36 +4835,39 @@
 <a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="go">or</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="go">git config --edit</span>
 </code></pre></div>
+<h3 id="global-unset">Global unset</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">git config --global --unset user.email</span>
+</code></pre></div>
 <hr />
 <h2 id="cache-token">Cache token</h2>
 <p>to cache token (use token instead of password) (for 15 minutes, by default).</p>
 <p>SRC: <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">github</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">git config credential.helper cache</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">git config credential.helper cache</span>
 </code></pre></div>
 <p>or for 1 hour</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">git config credential.helper &#39;cache --timeout=3600&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">git config credential.helper &#39;cache --timeout=3600&#39;</span>
 </code></pre></div>
 <hr />
 <h2 id="ssh-to-https">SSH To HTTPS</h2>
 <p>Change remote URL from SSH To HTTPS.</p>
 <p><a href="https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories">Source</a></p>
 <p>Check existing remote:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">git remote -v</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">git remote -v</span>
 </code></pre></div>
 <p>Change your remote's URL from SSH to HTTPS with the git remote set-url command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">git remote set-url origin https://github.com/USERNAME/REPOSITORY.git</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">git remote set-url origin https://github.com/USERNAME/REPOSITORY.git</span>
 </code></pre></div>
 <hr />
 <h2 id="many-github-accounts">Many GitHub accounts</h2>
 <p>How to manage credentials for many different GitHub accounts.</p>
 <p><a href="https://stackoverflow.com/questions/25845963/git-credential-helper-update-password">Source</a></p>
 <p>Configure credentials to use the full repository path:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="go">git config --global credential.useHttpPath true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">git config --global credential.useHttpPath true</span>
 </code></pre></div>
 <hr />
 <h2 id="remove-tracked-folder">Remove tracked folder</h2>
 <p>For files folder previously tracked and then added to .gitignore:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">git rm -r --cached &lt;folder&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="go">git rm -r --cached &lt;folder&gt;</span>
 </code></pre></div>
 <hr />
 <h2 id="checkout-remote-branch">Checkout remote branch</h2>
@@ -4881,16 +4896,16 @@
 <hr />
 <h2 id="undo-remote-changes">Undo remote change(s)</h2>
 <p>Warning! To use only if you are working alone in repository!</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="go">git reset --hard HEAD~&lt;number of commit(s) before&gt;</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="go">git push --force</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="go">git reset --hard HEAD~&lt;number of commit(s) before&gt;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="go">git push --force</span>
 </code></pre></div>
 <p>Undo undo</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="go">git pull</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="go">git pull</span>
 </code></pre></div>
 <hr />
 <h2 id="check-current-remotes">Check Current Remotes</h2>
 <p>To see the list of remote repositories associated with your local repository, you can use the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="go">git remote -v</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="go">git remote -v</span>
 </code></pre></div>
 <hr />
 
