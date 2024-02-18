@@ -99,3 +99,13 @@ Windows + Alt + H
 Hit `ctrl + shift + p` and search for `split`.
 
 ---
+
+## Gif pause play
+
+How to pause play of an animated gif:
+
+- Right click on gif file  
+- Open with an another application  
+- Choose `Windows media player` from the list
+
+---
