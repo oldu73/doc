@@ -3,7 +3,6 @@
 Ref:
 
 - [Next.js App Router (Client Components)](https://docs.amplify.aws/gen2/start/quickstart/nextjs-app-router-client-components/)  
-- [GitHub repo next-amplify-gen2](https://github.com/oldu73/next-amplify-gen2)
 
 ---
 

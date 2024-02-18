@@ -57,6 +57,12 @@ or
 git config --edit
 ```
 
+### Global unset
+
+```console
+git config --global --unset user.email
+```
+
 ***
 
 ## Cache token
