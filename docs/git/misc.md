@@ -59,6 +59,8 @@ git config --edit
 
 ### Global unset
 
+Remove the line matching the key from config file, e.g. for `user.email`:
+
 ```console
 git config --global --unset user.email
 ```
