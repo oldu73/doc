@@ -27,6 +27,7 @@ nav:
                   - "App Router Client Components": "aws/amplify/Gen 2/Next.js/App Router Client Components.md"
               - "msc": "aws/amplify/Gen 2/msc.md"
           - Msc:
+              - "cli": "aws/amplify/msc/cli.md"
               - "after modifying data model": "aws/amplify/msc/after modifying data model.md"
               - "github": "aws/amplify/msc/github.md"
               - "setup": "aws/amplify/msc/setup.md"
@@ -36,6 +37,7 @@ nav:
       - GraphQL:
           - "msc": "aws/graphql/msc.md"
       - Msc:
+          - "cli": "aws/msc/cli.md"
           - "csv-mail-to-bi": "aws/msc/csv-mail-to-bi.md"
   - Confluence:
       - "misc": "confluence/misc.md"
