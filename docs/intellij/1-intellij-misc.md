@@ -123,3 +123,16 @@ Settings -> Editor -> Virtual Space -> Show virtual space at file bottom
 ```
 
 ---
+
+## Jump to matching braces
+
+```
+Ctrl+[
+Ctrl+]
+```
+
+File | Settings | Keymap. Click on the Filter/Funnel icon (the one next to the Bin icon) -- now you can search 'caret'.
+
+Troubleshooting problems with keyboard shortcuts, [does the keystroke reach the IDE?](https://www.jetbrains.com/help/idea/keyboard-shortcuts-troubleshooting.html#does-the-keystroke-reach-the-ide)
+
+---
