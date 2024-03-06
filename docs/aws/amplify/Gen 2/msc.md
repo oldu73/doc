@@ -6,7 +6,7 @@
 
 Set up `IAM` user to be used in CLI.
 
-[aws gen2 doc](https://docs.amplify.aws/gen2/start/account-setup/)
+[aws amplify gen 2 doc - Set up your AWS account](https://docs.amplify.aws/gen2/start/account-setup/)
 
 ---
 
