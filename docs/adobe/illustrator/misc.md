@@ -1,8 +1,8 @@
-# illustrator misc
+# Illustrator Misc
 
 ---
 
-## split compound path
+## Split compound path
 
 Choose Object > Compound Path > Release
 
