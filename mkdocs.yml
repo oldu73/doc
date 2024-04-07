@@ -14,6 +14,9 @@ markdown_extensions:
 
 nav:
   - Home: "index.md"
+  - Adobe:
+      - Illustrator:
+          - "misc": "adobe/illustrator/misc.md"
   - Android Studio:
       - "Android Studio - Flutter": "androidstudio/flutter.md"
   - AWS:
