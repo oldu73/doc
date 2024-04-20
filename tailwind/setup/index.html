@@ -4227,8 +4227,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basic" class="md-nav__link">
-    Basic
+  <a href="#create-first-folder" class="md-nav__link">
+    Create first folder
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-with-npm" class="md-nav__link">
+    Initialize with npm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-tailwind-css-cli" class="md-nav__link">
+    Install Tailwind CSS CLI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-tailwind-css" class="md-nav__link">
+    Initialize Tailwind CSS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-templates-path" class="md-nav__link">
+    Setup templates path
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-tailwind-directives-in-css-file" class="md-nav__link">
+    Add Tailwind directives in CSS file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-build-process-of-tailwind-cli" class="md-nav__link">
+    Start build process of Tailwind CLI
   </a>
   
 </li>
@@ -4610,8 +4652,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basic" class="md-nav__link">
-    Basic
+  <a href="#create-first-folder" class="md-nav__link">
+    Create first folder
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-with-npm" class="md-nav__link">
+    Initialize with npm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-tailwind-css-cli" class="md-nav__link">
+    Install Tailwind CSS CLI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-tailwind-css" class="md-nav__link">
+    Initialize Tailwind CSS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-templates-path" class="md-nav__link">
+    Setup templates path
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-tailwind-directives-in-css-file" class="md-nav__link">
+    Add Tailwind directives in CSS file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-build-process-of-tailwind-cli" class="md-nav__link">
+    Start build process of Tailwind CLI
   </a>
   
 </li>
@@ -4632,12 +4716,102 @@
 <h1 id="setup">Setup</h1>
 <p>Setting up VS Code environment to work with Tailwind.</p>
 <hr />
-<h2 id="basic">Basic</h2>
+<h2 id="create-first-folder">Create first folder</h2>
 <p>Create a <code>tailwind</code> folder for your project and open it with <code>VS Code</code>.</p>
 <p>Create a <code>src</code> folder in it.</p>
 <p>Create <code>style.css</code> and <code>index.html</code> files in <code>src</code> folder.</p>
+<p>index.html:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">&lt;!doctype html&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>  <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-3xl font-bold underline&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    Hello Tailwind !
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>  <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="initialize-with-npm">Initialize with npm</h2>
+<p>Open a terminal from VS Code in <code>tailwind</code> folder and initialize <code>package.json</code> file by typing following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">npm init -y</span>
+</code></pre></div>
+<hr />
+<h2 id="install-tailwind-css-cli">Install Tailwind CSS CLI</h2>
+<p>Install <code>Tailwind CSS</code> with npm (-D option = development dependency):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">npm install -D tailwindcss</span>
+</code></pre></div>
+<hr />
+<h2 id="initialize-tailwind-css">Initialize Tailwind CSS</h2>
+<p>Always in terminal, initialize <code>Tailwind</code> configuration file with following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">npx tailwindcss init</span>
+</code></pre></div>
+<p>This create a file <code>tailwind.config.js</code>.</p>
+<hr />
+<h2 id="setup-templates-path">Setup templates path</h2>
+<p>In tailwind configuration file, tailwind.config.js:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cm">/** @type {import(&#39;tailwindcss&#39;).Config} */</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>  <span class="nx">content</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;./src/**/*.{html,js}&quot;</span><span class="p">],</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>  <span class="nx">theme</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>    <span class="nx">extend</span><span class="o">:</span> <span class="p">{},</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>  <span class="p">},</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[],</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="add-tailwind-directives-in-css-file">Add Tailwind directives in CSS file</h2>
+<p>src\style.css:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p">@</span><span class="k">tailwind</span> <span class="nt">base</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="p">@</span><span class="k">tailwind</span> <span class="nt">components</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="p">@</span><span class="k">tailwind</span> <span class="nt">utilities</span><span class="p">;</span>
+</code></pre></div>
+<hr />
+<h2 id="start-build-process-of-tailwind-cli">Start build process of Tailwind CLI</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">npx tailwindcss -i ./src/style.css -o ./src/output.css --watch</span>
+</code></pre></div>
+<p>This build CSS and scan for modifications.</p>
+<p>Create a <code>npm start</code> script in <code>package.json</code> with this command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;tailwind&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>  <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>  <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>  <span class="nt">&quot;main&quot;</span><span class="p">:</span> <span class="s2">&quot;index.js&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>  <span class="nt">&quot;scripts&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="s2">&quot;npx tailwindcss -i ./src/style.css -o ./src/output.css --watch&quot;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>  <span class="p">},</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a>  <span class="nt">&quot;keywords&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a>  <span class="nt">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a>  <span class="nt">&quot;license&quot;</span><span class="p">:</span> <span class="s2">&quot;ISC&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a>  <span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a>    <span class="nt">&quot;tailwindcss&quot;</span><span class="p">:</span> <span class="s2">&quot;^3.4.1&quot;</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a>  <span class="p">}</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<p>Use Tailwind in HTML</p>
+<p>Include generated <code>CSS</code> in <code>index.html</code> file by adding <code>&lt;link href="./output.css" rel="stylesheet" /&gt;</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="cp">&lt;!doctype html&gt;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;./output.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a>  <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-3xl font-bold underline&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>    Hello Tailwind !
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a>  <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<hr />
+<p>Open <code>index.html</code> file by double clicking on it from file explorer to open it in a browser and seeing the result.</p>
 <p>..</p>
-<p><a href="https://dyma.fr/developer/list/v2/chapters/core/659d7db381e610279ed48dc6/65a93c47539de24cb0d92a70/lesson">Mise en place de l'environnement</a></p>
+<p><a href="https://dyma.fr/developer/list/v2/chapters/core/659d7db381e610279ed48dc6/659ea3e881e610279ed4a387/lesson">Configuration des extensions VS Code</a></p>
 <hr />
 
               
