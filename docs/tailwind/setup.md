@@ -122,7 +122,7 @@ Create a `npm start` script in `package.json` with this command:
 
 ---
 
-Use Tailwind in HTML
+## Use Tailwind in HTML
 
 Include generated `CSS` in `index.html` file by adding `<link href="./output.css" rel="stylesheet" />`:
 
@@ -142,12 +142,46 @@ Include generated `CSS` in `index.html` file by adding `<link href="./output.css
 </html>
 ```
 
+Open `index.html` file by double clicking on it from file explorer to open it in a browser and seeing the result.
+
 ---
 
-Open `index.html` file by double clicking on it from file explorer to open it in a browser and seeing the result.
+## Tailwind CSS IntelliSense
+
+In `VS Code` browse to `Extension` tab and search/install for extension `Tailwind CSS IntelliSense`.
+
+Create a `.vscode` folder and a file `settings.json` in it, with following content:
+
+```json
+{
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "*.scss": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  }
+}
+```
+
+---
+
+## Prettier
+
+In `VS Code` browse to `Extension` tab and search/install for extension `Prettier`.
+
+In `VS Code` browse to `File` menu then `Preferences` then `Settings`. Search `format on save` and tick the box.
+
+Always in `VS Code` and always in `Settings` search for `Default Formatter` and in dropdown list select `Prettier - Code Formatter esbenp.prettier-vscode`.
+
+..
+
+---
 
 ..
 
 [Configuration des extensions VS Code](https://dyma.fr/developer/list/v2/chapters/core/659d7db381e610279ed48dc6/659ea3e881e610279ed4a387/lesson)
 
 ---
+
+!! Install error lens as well
