@@ -174,14 +174,54 @@ In `VS Code` browse to `File` menu then `Preferences` then `Settings`. Search `f
 
 Always in `VS Code` and always in `Settings` search for `Default Formatter` and in dropdown list select `Prettier - Code Formatter esbenp.prettier-vscode`.
 
-..
+---
+
+## Prettier plugin tailwindcss
+
+Install official `Tailwind` plugin for `Prettier`:
+
+```console
+npm install -D prettier prettier-plugin-tailwindcss
+```
+
+At same level than `tailwind.config.js` file (project's root level), create a `prettier.config.js` file with following content:
+
+```js
+module.exports = {
+  plugins: ['prettier-plugin-tailwindcss'],
+}
+```
+
+It automatically put Tailwind's utility class in recommended order, at save.
 
 ---
 
-..
+## Material Icon Theme
 
-[Configuration des extensions VS Code](https://dyma.fr/developer/list/v2/chapters/core/659d7db381e610279ed48dc6/659ea3e881e610279ed4a387/lesson)
+In extension tab search for `Material Icon Theme` plugin and install it.
+
+It display icons in relation with file extensions, in VS code.
 
 ---
 
-!! Install error lens as well
+## Error Lens
+
+In extension tab search for `Error Lens` plugin and install it.
+
+It indicates (highlighted text) error directly on (after text/code, if there's some) cursor line.
+
+---
+
+## Live Server
+
+In extension tab search for `Live Server` plugin and install it.
+
+It's a minimal local development server that alow hot reloading page, at save.
+
+Ideal, when without any framework (React, Vue, Angular).
+
+Then right click in html file, e.g. `index.html` click on `Open with Live Server` to render it in a browser.
+
+When saving changes, You may observe live hot reload in the browser.
+
+---
