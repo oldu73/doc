@@ -1,6 +1,6 @@
 # Setup
 
-Setting up VS Code environment to work with Tailwind.
+Setting up VS Code environment to work with Tailwind CSS.
 
 ---
 
