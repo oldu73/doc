@@ -263,3 +263,9 @@ Search Font Size.
 Type in the Font size of your choice.
 
 ---
+
+## Run Task
+
+To run `npm` scripts from `package.json` file, click in main central search field of `VS Code` and select `Run Task`.
+
+---
