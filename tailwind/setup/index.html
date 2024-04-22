@@ -4296,6 +4296,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#prettier-plugin-tailwindcss" class="md-nav__link">
+    Prettier plugin tailwindcss
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#material-icon-theme" class="md-nav__link">
+    Material Icon Theme
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-lens" class="md-nav__link">
+    Error Lens
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#live-server" class="md-nav__link">
+    Live Server
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4742,6 +4770,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#prettier-plugin-tailwindcss" class="md-nav__link">
+    Prettier plugin tailwindcss
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#material-icon-theme" class="md-nav__link">
+    Material Icon Theme
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-lens" class="md-nav__link">
+    Error Lens
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#live-server" class="md-nav__link">
+    Live Server
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4870,12 +4926,33 @@
 <p>In <code>VS Code</code> browse to <code>Extension</code> tab and search/install for extension <code>Prettier</code>.</p>
 <p>In <code>VS Code</code> browse to <code>File</code> menu then <code>Preferences</code> then <code>Settings</code>. Search <code>format on save</code> and tick the box.</p>
 <p>Always in <code>VS Code</code> and always in <code>Settings</code> search for <code>Default Formatter</code> and in dropdown list select <code>Prettier - Code Formatter esbenp.prettier-vscode</code>.</p>
-<p>..</p>
 <hr />
-<p>..</p>
-<p><a href="https://dyma.fr/developer/list/v2/chapters/core/659d7db381e610279ed48dc6/659ea3e881e610279ed4a387/lesson">Configuration des extensions VS Code</a></p>
+<h2 id="prettier-plugin-tailwindcss">Prettier plugin tailwindcss</h2>
+<p>Install official <code>Tailwind</code> plugin for <code>Prettier</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">npm install -D prettier prettier-plugin-tailwindcss</span>
+</code></pre></div>
+<p>At same level than <code>tailwind.config.js</code> file (project's root level), create a <code>prettier.config.js</code> file with following content:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;prettier-plugin-tailwindcss&#39;</span><span class="p">],</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>It automatically put Tailwind's utility class in recommended order, at save.</p>
 <hr />
-<p>!! Install error lens as well</p>
+<h2 id="material-icon-theme">Material Icon Theme</h2>
+<p>In extension tab search for <code>Material Icon Theme</code> plugin and install it.</p>
+<p>It display icons in relation with file extensions, in VS code.</p>
+<hr />
+<h2 id="error-lens">Error Lens</h2>
+<p>In extension tab search for <code>Error Lens</code> plugin and install it.</p>
+<p>It indicates (highlighted text) error directly on (after text/code, if there's some) cursor line.</p>
+<hr />
+<h2 id="live-server">Live Server</h2>
+<p>In extension tab search for <code>Live Server</code> plugin and install it.</p>
+<p>It's a minimal local development server that alow hot reloading page, at save.</p>
+<p>Ideal, when without any framework (React, Vue, Angular).</p>
+<p>Then right click in html file, e.g. <code>index.html</code> click on <code>Open with Live Server</code> to render it in a browser.</p>
+<p>When saving changes, You may observe live hot reload in the browser.</p>
+<hr />
 
               
             </article>
