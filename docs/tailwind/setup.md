@@ -208,7 +208,7 @@ It display icons in relation with file extensions, in VS code.
 
 In extension tab search for `Error Lens` plugin and install it.
 
-It indicates (highlighted text) error directly on (after text/code, if there's some) cursor line.
+It indicates (highlighted text) error, directly in line.
 
 ---
 
