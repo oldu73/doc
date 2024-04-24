@@ -55,6 +55,10 @@ Keyboard
 
 ## Comment code
 
+Slash from the numeric keypad!!
+
+Or..
+
 Comment code block
 
 ```text
