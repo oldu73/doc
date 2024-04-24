@@ -55,7 +55,7 @@ Keyboard
 
 ## Comment code
 
-Slash from the numeric keypad!!
+**Slash** from the numeric keypad!
 
 Or..
 
