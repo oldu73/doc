@@ -213,7 +213,8 @@ nav:
   - Redis:
       - "Redis - 01 - Misc": "redis/1-redis-misc.md"
   - Tailwind CSS:
-      - "Setup VS Code environment": "tailwind/setup.md"
+      - "Misc": "tailwindcss/misc.md"
+      - "Setup VS Code environment": "tailwindcss/setup.md"
   - Telematics:
       - Teltonika:
           - "misc": "telematics/teltonika/misc.md"
