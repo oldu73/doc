@@ -109,3 +109,9 @@ How to pause play of an animated gif:
 - Choose `Windows multi media player` from the list
 
 ---
+
+## VPN Sophos
+
+Edit configuration to add new remote IP address by opening a notepad in admin mode, then browsing for `*.ovpn` file in `C:\Program Files (x86)\Sophos\Sophos SSL VPN Client\config` folder and adding new remote address on top of the list of the already present ones.
+
+---
