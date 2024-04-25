@@ -114,8 +114,8 @@ How to pause play of an animated gif:
 
 Add new remote IP address.
 
-Edit configuration to add new remote IP address by opening a notepad in admin mode, then browsing for `*.ovpn` file in `C:\Program Files (x86)\Sophos\Sophos SSL VPN Client\config` folder.
+Edit configuration to add new remote IP address by opening a notepad in admin mode, browse for `.ovpn` configuration file in `C:\Program Files (x86)\Sophos\Sophos SSL VPN Client\config` folder.
 
-Then, add new remote address on top of the list of the already present ones, save, restart Sophos and that's it.
+Add new remote address on top of the list of the already present ones, save, restart Sophos client.
 
 ---
