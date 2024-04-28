@@ -273,3 +273,9 @@ Type in the Font size of your choice.
 To run `npm` scripts from `package.json` file, click in main central search field of `VS Code` and select `Run Task`.
 
 ---
+
+## Word Wrap
+
+Preferences - Settings - search for 'word wrap' - set it to 'on' and column to '80'.
+
+---
