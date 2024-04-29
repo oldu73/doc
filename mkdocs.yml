@@ -216,6 +216,7 @@ nav:
       - "Misc": "tailwindcss/misc.md"
       - "Setup VS Code environment": "tailwindcss/setup.md"
       - "Font": "tailwindcss/font.md"
+      - "Flex": "tailwindcss/flex.md"
   - Telematics:
       - Teltonika:
           - "misc": "telematics/teltonika/misc.md"
