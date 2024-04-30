@@ -17,8 +17,6 @@ nav:
   - Adobe:
       - Illustrator:
           - "Misc": "adobe/illustrator/misc.md"
-  - Android Studio:
-      - "Android Studio - Flutter": "androidstudio/flutter.md"
   - AWS:
       - Amplify:
           - Auth:
@@ -70,6 +68,8 @@ nav:
           - "1-devtool": "google/chrome/1-devtool.md"
           - "2-shortcut": "google/chrome//2-shortcut.md"
   - IDE:
+      - Android Studio:
+          - "Android Studio - Flutter": "IDE/androidstudio/flutter.md"
       - IntelliJ:
           - "IntelliJ - 01 - Misc": "IDE/intellij/1-intellij-misc.md"
           - "IntelliJ - 02 - WSL": "IDE/intellij/2-intellij-wsl.md"
