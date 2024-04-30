@@ -136,3 +136,13 @@ File | Settings | Keymap. Click on the Filter/Funnel icon (the one next to the B
 Troubleshooting problems with keyboard shortcuts, [does the keystroke reach the IDE?](https://www.jetbrains.com/help/idea/keyboard-shortcuts-troubleshooting.html#does-the-keystroke-reach-the-ide)
 
 ---
+
+## Cherry-Pick
+
+From a commit.
+
+Switch to main branch, checkout a new one, right-click on commit in history and select 'Cherry-Pick', push.
+
+[Cherry pick a commit to a different branch in any JetBrains IDE](https://www.youtube.com/watch?v=SkcvWURJkWQ)
+
+---
