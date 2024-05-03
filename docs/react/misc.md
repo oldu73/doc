@@ -12,6 +12,20 @@ Three essential React concepts:
 
 ---
 
+## New Project
+
+Setup a new `React` project:
+
+```console
+npx create-react-app myapp
+
+cd myapp
+
+npm start
+```
+
+---
+
 ## props useState
 
 In children component, use one liner `export default function...` syntax at declaration instead of `export` in a separate statement.
