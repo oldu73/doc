@@ -9,7 +9,7 @@ Main principle:
 - justify = main axis content  
 - content = secondary axis content  
 - items = secondary axis items  
-- self =  = secondary axis items
+- self = secondary axis items
 
 ```html
 <!doctype html>
