@@ -44,6 +44,12 @@ E.g. of folder where Kafka may reside on a Linux machine:
 /usr/local/kafka
 ```
 
+Or find it with:
+
+```console
+find / -name kafka-server-start.sh
+```
+
 ---
 
 ## Notes
