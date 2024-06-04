@@ -69,3 +69,12 @@ export default function DashboardPage() {
 Test it: [localhost:3000/dashboard](http://localhost:3000/dashboard)
 
 ---
+
+## Debug
+
+Debug in VS Code:
+
+- [documentation explains how debug Next.js](https://nextjs.org/docs/pages/building-your-application/configuring/debugging)  
+- [How to Debug Next.js 13 and React in VS Code](https://www.youtube.com/watch?v=bqk3Rnsr5gU)
+
+---
