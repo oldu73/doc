@@ -1,0 +1,4834 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.0.3">
+    
+    
+      
+        <title>animate - Doc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.62128196.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../..":"../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#animate" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Doc" class="md-header__button md-logo" aria-label="Doc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Doc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              animate
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Doc" class="md-nav__button md-logo" aria-label="Doc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Doc
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Adobe
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Adobe" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Adobe
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          Illustrator
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Illustrator" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Illustrator
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adobe/illustrator/misc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          AWS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="AWS" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          AWS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Amplify
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Amplify" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Amplify
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_1" type="checkbox" id="__nav_3_1_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_1">
+          Auth
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Auth" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          Auth
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/amplify/auth/pre%20sign-up/" class="md-nav__link">
+        pre sign-up
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" type="checkbox" id="__nav_3_1_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_2">
+          Env
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Env" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Env
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/amplify/env/setup/" class="md-nav__link">
+        setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_3" type="checkbox" id="__nav_3_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_3">
+          Gen 2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Gen 2" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Gen 2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_3_1" type="checkbox" id="__nav_3_1_3_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_3_1">
+          Next.js
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Next.js" data-md-level="4">
+        <label class="md-nav__title" for="__nav_3_1_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Next.js
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/amplify/Gen%202/Next.js/App%20Router%20Client%20Components/" class="md-nav__link">
+        App Router Client Components
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/amplify/Gen%202/msc/" class="md-nav__link">
+        msc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_4" type="checkbox" id="__nav_3_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_4">
+          Msc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Msc" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Msc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/amplify/msc/cli/" class="md-nav__link">
+        cli
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/amplify/msc/after%20modifying%20data%20model/" class="md-nav__link">
+        after modifying data model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/amplify/msc/github/" class="md-nav__link">
+        github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/amplify/msc/setup/" class="md-nav__link">
+        setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/amplify/msc/sign-up-in-out/" class="md-nav__link">
+        sign-up-in-out
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_5" type="checkbox" id="__nav_3_1_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_5">
+          Sharedyn
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Sharedyn" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_5">
+          <span class="md-nav__icon md-icon"></span>
+          Sharedyn
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/amplify/sharedyn/setup/" class="md-nav__link">
+        setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          GraphQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="GraphQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          GraphQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/graphql/msc/" class="md-nav__link">
+        msc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Msc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Msc" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Msc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/msc/cli/" class="md-nav__link">
+        cli
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws/msc/csv-mail-to-bi/" class="md-nav__link">
+        csv-mail-to-bi
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Confluence
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Confluence" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Confluence
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../confluence/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Docker
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/1-docker-misc/" class="md-nav__link">
+        Docker - 01 - Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/2-docker-basis/" class="md-nav__link">
+        Docker - 02 - Basis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/3-docker-dockerfile/" class="md-nav__link">
+        Docker - 03 - Docker File
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/4-docker-dockerhub/" class="md-nav__link">
+        Docker - 04 - Docker Hub
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/5-docker-nodeserver/" class="md-nav__link">
+        Docker - 05 - Node Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/6-docker-datapersistence/" class="md-nav__link">
+        Docker - 06 - Data Persistence
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/7-docker-network/" class="md-nav__link">
+        Docker - 07 - Network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/8-compose-use/" class="md-nav__link">
+        Compose - 08 - Use
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/9-compose-dockerfile/" class="md-nav__link">
+        Compose - 09 - Dockerfile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/10-compose-services/" class="md-nav__link">
+        Compose - 10 - Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/11-compose-production/" class="md-nav__link">
+        Compose - 11 - Production
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          ELK
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ELK" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          ELK
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" type="checkbox" id="__nav_6_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_1">
+          ElasticSearch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ElasticSearch" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          ElasticSearch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elk/elasticsearch/elasticsearch/" class="md-nav__link">
+        ElasticSearch - Misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" type="checkbox" id="__nav_6_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2">
+          Kibana
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kibana" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Kibana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elk/kibana/0-kibana/" class="md-nav__link">
+        Kibana - Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elk/kibana/1-alert/" class="md-nav__link">
+        Kibana - Alert
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Google
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Google" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Google
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_1" type="checkbox" id="__nav_8_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_1">
+          Chrome
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chrome" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_1">
+          <span class="md-nav__icon md-icon"></span>
+          Chrome
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../google/chrome/0-misc/" class="md-nav__link">
+        0-misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../google/chrome/1-devtool/" class="md-nav__link">
+        1-devtool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../google/chrome/2-shortcut/" class="md-nav__link">
+        2-shortcut
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          IDE
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="IDE" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          IDE
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_1" type="checkbox" id="__nav_9_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9_1">
+          Android Studio
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Android Studio" data-md-level="2">
+        <label class="md-nav__title" for="__nav_9_1">
+          <span class="md-nav__icon md-icon"></span>
+          Android Studio
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IDE/androidstudio/flutter/" class="md-nav__link">
+        Android Studio - Flutter
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_2" type="checkbox" id="__nav_9_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9_2">
+          IntelliJ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="IntelliJ" data-md-level="2">
+        <label class="md-nav__title" for="__nav_9_2">
+          <span class="md-nav__icon md-icon"></span>
+          IntelliJ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IDE/intellij/1-intellij-misc/" class="md-nav__link">
+        IntelliJ - 01 - Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IDE/intellij/2-intellij-wsl/" class="md-nav__link">
+        IntelliJ - 02 - WSL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_3" type="checkbox" id="__nav_9_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9_3">
+          VS Code
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="VS Code" data-md-level="2">
+        <label class="md-nav__title" for="__nav_9_3">
+          <span class="md-nav__icon md-icon"></span>
+          VS Code
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IDE/vscode/vscode/" class="md-nav__link">
+        VS Code - Misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_4" type="checkbox" id="__nav_9_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9_4">
+          Webstorm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Webstorm" data-md-level="2">
+        <label class="md-nav__title" for="__nav_9_4">
+          <span class="md-nav__icon md-icon"></span>
+          Webstorm
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../IDE/webstorm/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Java
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_1" type="checkbox" id="__nav_10_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10_1">
+          test
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="test" data-md-level="2">
+        <label class="md-nav__title" for="__nav_10_1">
+          <span class="md-nav__icon md-icon"></span>
+          test
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/test/mock/" class="md-nav__link">
+        mock
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          JavaScript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="JavaScript" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          JavaScript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2" type="checkbox" id="__nav_11_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2">
+          training
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="training" data-md-level="2">
+        <label class="md-nav__title" for="__nav_11_2">
+          <span class="md-nav__icon md-icon"></span>
+          training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2_1" type="checkbox" id="__nav_11_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2_1">
+          02-environment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="02-environment" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          02-environment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/02-environment/06-install-environnement/" class="md-nav__link">
+        06-install-environnement
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/02-environment/08-install-babel/" class="md-nav__link">
+        08-install-babel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/02-environment/09-javascript-in-html/" class="md-nav__link">
+        09-javascript-in-html
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/02-environment/10-webpack/" class="md-nav__link">
+        10-webpack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/02-environment/11-console/" class="md-nav__link">
+        11-console
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2_2" type="checkbox" id="__nav_11_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2_2">
+          03-basis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="03-basis" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          03-basis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/03-basis/12-intro-and-var/" class="md-nav__link">
+        12-intro-and-var
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/03-basis/13-let-and-const/" class="md-nav__link">
+        13-let-and-const
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/03-basis/14-hoisting/" class="md-nav__link">
+        14-hoisting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/03-basis/15-type/" class="md-nav__link">
+        15-type
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/03-basis/16-operator-1/" class="md-nav__link">
+        16-operator-1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/03-basis/17-coercion/" class="md-nav__link">
+        17-coercion
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/03-basis/18-operator-2/" class="md-nav__link">
+        18-operator-2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/03-basis/19-value-and-reference/" class="md-nav__link">
+        19-value-and-reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2_3" type="checkbox" id="__nav_11_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2_3">
+          04-control
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="04-control" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          04-control
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/04-control/20-condition/" class="md-nav__link">
+        20-condition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/04-control/21-ternary-operator/" class="md-nav__link">
+        21-ternary-operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/04-control/22-switch/" class="md-nav__link">
+        22-switch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/04-control/23-for/" class="md-nav__link">
+        23-for
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/04-control/24-while/" class="md-nav__link">
+        24-while
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2_4" type="checkbox" id="__nav_11_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2_4">
+          05-number
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="05-number" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          05-number
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/05-number/25-introduction/" class="md-nav__link">
+        25-introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/05-number/26-decimal/" class="md-nav__link">
+        26-decimal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/05-number/27-global-method/" class="md-nav__link">
+        27-global-method
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/05-number/28-number-method/" class="md-nav__link">
+        28-number-method
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/05-number/29-math-object/" class="md-nav__link">
+        29-math-object
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2_5" type="checkbox" id="__nav_11_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2_5">
+          06-string
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="06-string" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          06-string
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/06-string/30-introduction/" class="md-nav__link">
+        30-introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/06-string/31-template-literal/" class="md-nav__link">
+        31-template-literal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/06-string/32-index-length/" class="md-nav__link">
+        32-index-length
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/06-string/33-method/" class="md-nav__link">
+        33-method
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/06-string/34-regex/" class="md-nav__link">
+        34-regex
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2_6" type="checkbox" id="__nav_11_2_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2_6">
+          07-object
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="07-object" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          07-object
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/07-object/35-introduction/" class="md-nav__link">
+        35-introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/07-object/36-property/" class="md-nav__link">
+        36-property
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/07-object/37-syntax-shortcut/" class="md-nav__link">
+        37-syntax-shortcut
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/07-object/38-decomposition/" class="md-nav__link">
+        38-decomposition
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/07-object/39-test-existence/" class="md-nav__link">
+        39-test-existence
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/07-object/40-discard-property/" class="md-nav__link">
+        40-discard-property
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/07-object/41-merge/" class="md-nav__link">
+        41-merge
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/07-object/42-compare/" class="md-nav__link">
+        42-compare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/07-object/43-iterate/" class="md-nav__link">
+        43-iterate
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/07-object/44-json/" class="md-nav__link">
+        44-json
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/07-object/45-copy/" class="md-nav__link">
+        45-copy
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2_7" type="checkbox" id="__nav_11_2_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2_7">
+          08-function
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="08-function" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          08-function
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/08-function/46-expression/" class="md-nav__link">
+        46-expression
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2_8" type="checkbox" id="__nav_11_2_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2_8">
+          11-dom
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="11-dom" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          11-dom
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/11-dom/81-css-with-webpack/" class="md-nav__link">
+        81-css-with-webpack
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2_9" type="checkbox" id="__nav_11_2_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2_9">
+          13-project-todo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="13-project-todo" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          13-project-todo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/13-project-todo/92-initialization/" class="md-nav__link">
+        92-initialization
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2_10" type="checkbox" id="__nav_11_2_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2_10">
+          14-asynchronous-browser
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="14-asynchronous-browser" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          14-asynchronous-browser
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/14-asynchronous-browser/102-polyfill-webpack/" class="md-nav__link">
+        102-polyfill-webpack
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2_11" type="checkbox" id="__nav_11_2_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2_11">
+          16-project-blog
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="16-project-blog" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          16-project-blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/115-introduction/" class="md-nav__link">
+        115-introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/116-multipages-webpack/" class="md-nav__link">
+        116-multipages-webpack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/117-assets-webpack/" class="md-nav__link">
+        117-assets-webpack
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/118-styles-setup/" class="md-nav__link">
+        118-styles-setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/119-layout-setup/" class="md-nav__link">
+        119-layout-setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/120-header-footer-setup/" class="md-nav__link">
+        120-header-footer-setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/121-form-create-article/" class="md-nav__link">
+        121-form-create-article
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/122-form-javascript/" class="md-nav__link">
+        122-form-javascript
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/123-send-article/" class="md-nav__link">
+        123-send-article
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/124-articles-list/" class="md-nav__link">
+        124-articles-list
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/125-articles-list-display/" class="md-nav__link">
+        125-articles-list-display
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/126-delete-article/" class="md-nav__link">
+        126-delete-article
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/127-responsive-project/" class="md-nav__link">
+        127-responsive-project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/aws-01-setup/" class="md-nav__link">
+        aws-01-setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/aws-02-create-item/" class="md-nav__link">
+        aws-02-create-item
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/aws-03-list-item/" class="md-nav__link">
+        aws-03-list-item
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/aws-04-delete-item/" class="md-nav__link">
+        aws-04-delete-item
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/debug/" class="md-nav__link">
+        debug
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/16-project-blog/git-branch/" class="md-nav__link">
+        git-branch
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2_12" type="checkbox" id="__nav_11_2_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2_12">
+          19-project-blog-p2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="19-project-blog-p2" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          19-project-blog-p2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/19-project-blog-p2/137-introduction/" class="md-nav__link">
+        137-introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/19-project-blog-p2/138-edit-article/" class="md-nav__link">
+        138-edit-article
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/19-project-blog-p2/139-menu-categories-setup/" class="md-nav__link">
+        139-menu-categories-setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/19-project-blog-p2/140-menu-categories-dynamic/" class="md-nav__link">
+        140-menu-categories-dynamic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/19-project-blog-p2/141-category-filter/" class="md-nav__link">
+        141-category-filter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/19-project-blog-p2/142-sort-by-date/" class="md-nav__link">
+        142-sort-by-date
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/19-project-blog-p2/143-modal-setup/" class="md-nav__link">
+        143-modal-setup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/19-project-blog-p2/144-modal-logic/" class="md-nav__link">
+        144-modal-logic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/19-project-blog-p2/aws-05-get-item/" class="md-nav__link">
+        aws-05-get-item
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/19-project-blog-p2/aws-06-update-item/" class="md-nav__link">
+        aws-06-update-item
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/19-project-blog-p2/aws-07-sort-api/" class="md-nav__link">
+        aws-07-sort-api
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2_13" type="checkbox" id="__nav_11_2_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2_13">
+          22-error-management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="22-error-management" data-md-level="3">
+        <label class="md-nav__title" for="__nav_11_2_13">
+          <span class="md-nav__icon md-icon"></span>
+          22-error-management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/22-error-management/162-debugger-devtools/" class="md-nav__link">
+        162-debugger-devtools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/training/22-error-management/163-debugger-vscode/" class="md-nav__link">
+        163-debugger-vscode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          JMeter
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="JMeter" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          JMeter
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../jmeter/1-jmeter-misc/" class="md-nav__link">
+        JMeter - 01 - Misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          Kafka
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Kafka" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          Kafka
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kafka/1-kafka-misc/" class="md-nav__link">
+        Kafka - 01 - Misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_14">
+          Linear
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linear" data-md-level="1">
+        <label class="md-nav__title" for="__nav_14">
+          <span class="md-nav__icon md-icon"></span>
+          Linear
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linear/misc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_15">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/0-linux-debug/" class="md-nav__link">
+        Linux - 00 - Debug
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/1-linux-misc/" class="md-nav__link">
+        Linux - 01 - Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/2-linux-network/" class="md-nav__link">
+        Linux - 02 - Network
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16" type="checkbox" id="__nav_16" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_16">
+          Method
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Method" data-md-level="1">
+        <label class="md-nav__title" for="__nav_16">
+          <span class="md-nav__icon md-icon"></span>
+          Method
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16_1" type="checkbox" id="__nav_16_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_16_1">
+          Agile Methodology
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Agile Methodology" data-md-level="2">
+        <label class="md-nav__title" for="__nav_16_1">
+          <span class="md-nav__icon md-icon"></span>
+          Agile Methodology
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../method/agilemethodology/1-agilemethodology-misc/" class="md-nav__link">
+        Agile Methodology - 01 - Misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16_2" type="checkbox" id="__nav_16_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_16_2">
+          OKR
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OKR" data-md-level="2">
+        <label class="md-nav__title" for="__nav_16_2">
+          <span class="md-nav__icon md-icon"></span>
+          OKR
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../method/okrmethodology/redaction/" class="md-nav__link">
+        OKR - Rédaction
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_16_3" type="checkbox" id="__nav_16_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_16_3">
+          Work
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Work" data-md-level="2">
+        <label class="md-nav__title" for="__nav_16_3">
+          <span class="md-nav__icon md-icon"></span>
+          Work
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../method/work/Concentration%20au%20travail/" class="md-nav__link">
+        Concentration au travail
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_17">
+          Microsoft
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Microsoft" data-md-level="1">
+        <label class="md-nav__title" for="__nav_17">
+          <span class="md-nav__icon md-icon"></span>
+          Microsoft
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17_1" type="checkbox" id="__nav_17_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_17_1">
+          Windows
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Windows" data-md-level="2">
+        <label class="md-nav__title" for="__nav_17_1">
+          <span class="md-nav__icon md-icon"></span>
+          Windows
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microsoft/windows/1-windows-misc/" class="md-nav__link">
+        Windows - 01 - Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microsoft/windows/2-container/" class="md-nav__link">
+        Windows - 02 - Container
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17_2" type="checkbox" id="__nav_17_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_17_2">
+          WSL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="WSL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_17_2">
+          <span class="md-nav__icon md-icon"></span>
+          WSL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microsoft/wsl/1-wsl-misc/" class="md-nav__link">
+        WSL - 01 - Misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_18">
+          Misc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Misc" data-md-level="1">
+        <label class="md-nav__title" for="__nav_18">
+          <span class="md-nav__icon md-icon"></span>
+          Misc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/crc/" class="md-nav__link">
+        CRC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_19" type="checkbox" id="__nav_19" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_19">
+          MkDocs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MkDocs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_19">
+          <span class="md-nav__icon md-icon"></span>
+          MkDocs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mkdocs/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_20" type="checkbox" id="__nav_20" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_20">
+          MongoDB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MongoDB" data-md-level="1">
+        <label class="md-nav__title" for="__nav_20">
+          <span class="md-nav__icon md-icon"></span>
+          MongoDB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mongodb/mongodb/" class="md-nav__link">
+        MongoDB - Misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_21" type="checkbox" id="__nav_21" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_21">
+          Next.js
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Next.js" data-md-level="1">
+        <label class="md-nav__title" for="__nav_21">
+          <span class="md-nav__icon md-icon"></span>
+          Next.js
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nextjs/misc/" class="md-nav__link">
+        Next.js - Misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_22" type="checkbox" id="__nav_22" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_22">
+          Postman
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Postman" data-md-level="1">
+        <label class="md-nav__title" for="__nav_22">
+          <span class="md-nav__icon md-icon"></span>
+          Postman
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../postman/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23" type="checkbox" id="__nav_23" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_23">
+          React
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="React" data-md-level="1">
+        <label class="md-nav__title" for="__nav_23">
+          <span class="md-nav__icon md-icon"></span>
+          React
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23_2" type="checkbox" id="__nav_23_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_23_2">
+          training
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="training" data-md-level="2">
+        <label class="md-nav__title" for="__nav_23_2">
+          <span class="md-nav__icon md-icon"></span>
+          training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23_2_1" type="checkbox" id="__nav_23_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_23_2_1">
+          01-introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="01-introduction" data-md-level="3">
+        <label class="md-nav__title" for="__nav_23_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          01-introduction
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react/training/01-introduction/05-install-environnement/" class="md-nav__link">
+        05-install-environnement
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23_2_2" type="checkbox" id="__nav_23_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_23_2_2">
+          02-create-application
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="02-create-application" data-md-level="3">
+        <label class="md-nav__title" for="__nav_23_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          02-create-application
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react/training/02-create-application/07-use-create-react-app/" class="md-nav__link">
+        07-use-create-react-app
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23_2_3" type="checkbox" id="__nav_23_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_23_2_3">
+          05-project1-part1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="05-project1-part1" data-md-level="3">
+        <label class="md-nav__title" for="__nav_23_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          05-project1-part1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react/training/05-project1-part1/24-setup-header-footer/" class="md-nav__link">
+        24-setup-header-footer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23_2_4" type="checkbox" id="__nav_23_2_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_23_2_4">
+          06-conditional-rendering-and-list
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="06-conditional-rendering-and-list" data-md-level="3">
+        <label class="md-nav__title" for="__nav_23_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          06-conditional-rendering-and-list
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react/training/06-conditional-rendering-and-list/27-introduction-and-emmet/" class="md-nav__link">
+        27-introduction-and-emmet
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_23_2_5" type="checkbox" id="__nav_23_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_23_2_5">
+          10-hooks-for-ref
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="10-hooks-for-ref" data-md-level="3">
+        <label class="md-nav__title" for="__nav_23_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          10-hooks-for-ref
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react/training/10-hooks-for-ref/57-useref-and-dom/" class="md-nav__link">
+        57-useref-and-dom
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_24" type="checkbox" id="__nav_24" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_24">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_24">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../redis/1-redis-misc/" class="md-nav__link">
+        Redis - 01 - Misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_25" type="checkbox" id="__nav_25" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_25">
+          Tailwind CSS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tailwind CSS" data-md-level="1">
+        <label class="md-nav__title" for="__nav_25">
+          <span class="md-nav__icon md-icon"></span>
+          Tailwind CSS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../misc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        Setup VS Code environment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../font/" class="md-nav__link">
+        Font
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flex/" class="md-nav__link">
+        Flex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic%20layout/" class="md-nav__link">
+        Basic Layout
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_26" type="checkbox" id="__nav_26" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_26">
+          Telematics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Telematics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_26">
+          <span class="md-nav__icon md-icon"></span>
+          Telematics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_26_1" type="checkbox" id="__nav_26_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_26_1">
+          Teltonika
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Teltonika" data-md-level="2">
+        <label class="md-nav__title" for="__nav_26_1">
+          <span class="md-nav__icon md-icon"></span>
+          Teltonika
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../telematics/teltonika/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_27" type="checkbox" id="__nav_27" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_27">
+          Theory
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Theory" data-md-level="1">
+        <label class="md-nav__title" for="__nav_27">
+          <span class="md-nav__icon md-icon"></span>
+          Theory
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../theory/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_28" type="checkbox" id="__nav_28" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_28">
+          Tool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tool" data-md-level="1">
+        <label class="md-nav__title" for="__nav_28">
+          <span class="md-nav__icon md-icon"></span>
+          Tool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tool/autohotkey/" class="md-nav__link">
+        AutoHotkey
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_29" type="checkbox" id="__nav_29" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_29">
+          Web Design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Web Design" data-md-level="1">
+        <label class="md-nav__title" for="__nav_29">
+          <span class="md-nav__icon md-icon"></span>
+          Web Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webdesign/misc/" class="md-nav__link">
+        misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webdesign/figma/" class="md-nav__link">
+        figma
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="animate">animate</h1>
+<hr />
+<p>Below some samples to illustrate animate with either, SVG, Bootstrap or Heroicons:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="p">&lt;</span><span class="nt">meta</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>      <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>      <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="s">    initial-scale=1.0&quot;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="p">/&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;./output.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="p">&lt;</span><span class="nt">link</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>      <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>      <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css&quot;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="p">/&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>  <span class="p">&lt;</span><span class="nt">body</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;min-h-screen p-8&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;flex w-1/2 flex-col gap-y-10&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>      <span class="p">&lt;</span><span class="nt">button</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>        <span class="na">class</span><span class="o">=</span><span class="s">&quot;rounded bg-sky-500 px-4 py-2 text-white hover:shadow-xl hover:shadow-green-500&quot;</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>      <span class="p">&gt;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;flex&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>          <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bi bi-arrow-clockwise mr-2 animate-spin&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a>          &#39;animate-spin&#39; bootstrap CDN icon in div flex
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>      <span class="p">&lt;</span><span class="nt">button</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a>        <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a>        <span class="na">class</span><span class="o">=</span><span class="s">&quot;flex rounded bg-sky-500 px-4 py-2 text-white hover:shadow-xl hover:shadow-green-500&quot;</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>        <span class="na">disabled</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a>      <span class="p">&gt;</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a>        <span class="p">&lt;</span><span class="nt">svg</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a>          <span class="na">class</span><span class="o">=</span><span class="s">&quot;... mr-3 h-5 w-5 animate-spin&quot;</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>          <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a>          <span class="na">width</span><span class="o">=</span><span class="s">&quot;16&quot;</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>          <span class="na">height</span><span class="o">=</span><span class="s">&quot;16&quot;</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a>          <span class="na">fill</span><span class="o">=</span><span class="s">&quot;currentColor&quot;</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>          <span class="na">class</span><span class="o">=</span><span class="s">&quot;bi bi-arrow-clockwise&quot;</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>          <span class="na">viewBox</span><span class="o">=</span><span class="s">&quot;0 0 16 16&quot;</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a>        <span class="p">&gt;</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a>          <span class="p">&lt;</span><span class="nt">path</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>            <span class="na">fill-rule</span><span class="o">=</span><span class="s">&quot;evenodd&quot;</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>            <span class="na">d</span><span class="o">=</span><span class="s">&quot;M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z&quot;</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a>          <span class="p">/&gt;</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a>          <span class="p">&lt;</span><span class="nt">path</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>            <span class="na">d</span><span class="o">=</span><span class="s">&quot;M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466&quot;</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>          <span class="p">/&gt;</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>        <span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a>        &#39;animate-spin&#39; bootstrap SVG icon direct in index.html
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>      <span class="p">&lt;</span><span class="nt">button</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a>        <span class="na">class</span><span class="o">=</span><span class="s">&quot;rounded bg-sky-500 px-4 py-2 text-white hover:shadow-xl hover:shadow-green-500&quot;</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>      <span class="p">&gt;</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;flex gap-2&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>          <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./icon/arrow-path.svg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;w-5 animate-spin&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a>          <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>&#39;animate-spin&#39; heroicons SVG img icon from external file<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>      <span class="p">&lt;</span><span class="nt">button</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>        <span class="na">class</span><span class="o">=</span><span class="s">&quot;relative rounded bg-sky-500 px-4 py-2 text-white hover:shadow-xl hover:shadow-green-500&quot;</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>      <span class="p">&gt;</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bi bi-circle-fill absolute -top-2 right-0 animate-ping&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>        &#39;animate-ping&#39; bootstrap CDN icon
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>      <span class="p">&lt;</span><span class="nt">button</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a>        <span class="na">class</span><span class="o">=</span><span class="s">&quot;animate-pulse rounded bg-sky-500 px-4 py-2 text-white hover:shadow-xl hover:shadow-green-500&quot;</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a>      <span class="p">&gt;</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a>        &#39;animate-pulse&#39;
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a>      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a>      <span class="p">&lt;</span><span class="nt">button</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a>        <span class="na">class</span><span class="o">=</span><span class="s">&quot;rounded bg-sky-500 px-4 py-2 text-white hover:shadow-xl hover:shadow-green-500&quot;</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a>      <span class="p">&gt;</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a>        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>&#39;animate-bounce&#39; bootstrap CDN icon<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a>      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a>      <span class="p">&lt;</span><span class="nt">i</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a>        <span class="na">class</span><span class="o">=</span><span class="s">&quot;bi bi-arrow-down -top-2 right-0 animate-bounce text-sky-500&quot;</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a>      <span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<hr />
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.01824240.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e0abf5b0.min.js"></script>
+      
+    
+  </body>
+</html>
