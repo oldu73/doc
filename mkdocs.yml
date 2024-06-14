@@ -35,6 +35,8 @@ nav:
               - "sign-up-in-out": "aws/amplify/msc/sign-up-in-out.md"
           - Sharedyn:
               - "setup": "aws/amplify/sharedyn/setup.md"
+      - DynamoDB:
+          - "msc": "aws/dynamodb/msc.md"
       - GraphQL:
           - "msc": "aws/graphql/msc.md"
       - Msc:
