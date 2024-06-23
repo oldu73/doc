@@ -29,3 +29,9 @@ To display console (log) drawer below current window:
 Chrome dev tools, 3 dots menu, Show console drawer
 
 ---
+
+## More design information
+
+DevTools Layout tab, select 'Show track sizes', 'Show area names', 'Extended grid lines' and 'Grid overlays' to get more design related information displayed in "debug" (DevTools mode).
+
+---
