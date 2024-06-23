@@ -279,3 +279,13 @@ To run `npm` scripts from `package.json` file, click in main central search fiel
 Preferences - Settings - search for 'word wrap' - set it to 'on' and column to '80'.
 
 ---
+
+## Select all current
+
+Select all what's currently selected:
+
+```txt
+ctrl + shift + l
+```
+
+---
