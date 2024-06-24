@@ -26,7 +26,7 @@ Click on 'Export' to get all of your slate variant to import in your tailwind co
     },
 ```
 
-Now, in your project open file 'tailwind.config.js' and paste above code as follow:
+Now, in your project open file `tailwind.config.js` and paste above code as follow:
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -61,5 +61,11 @@ Now this new color is available in your design class, e.g.:
 ```html
 <ul class="text-slate-gray-700">
 ```
+
+---
+
+## Tip
+
+In `extend` section of file `tailwind.config.js`, hit `ctrl + space` to get list of extendable properties.
 
 ---
