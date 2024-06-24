@@ -229,6 +229,7 @@ nav:
       - "Flex": "tailwindcss/flex.md"
       - "Basic Layout": "tailwindcss/basic layout.md"
       - "Animate": "tailwindcss/animate.md"
+      - "Theme": "tailwindcss/theme.md"
   - Telematics:
       - Teltonika:
           - "misc": "telematics/teltonika/misc.md"
