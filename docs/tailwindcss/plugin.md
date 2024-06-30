@@ -12,3 +12,29 @@ Official Tailwind CSS plugins:
 - **container-queries** provides utilities for container queries [tailwindcss-container-queries](https://github.com/tailwindlabs/tailwindcss-container-queries)
 
 ---
+
+## Install
+
+```console
+npm i -D @tailwindcss/typography @tailwindcss/forms @tailwindcss/aspect-ratio @tailwindcss/container-queries
+```
+
+tailwind.config.js:
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{html, js}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/container-queries"),
+  ],
+};
+```
+
+---
