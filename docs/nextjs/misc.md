@@ -78,3 +78,31 @@ Debug in VS Code:
 - [How to Debug Next.js 13 and React in VS Code](https://www.youtube.com/watch?v=bqk3Rnsr5gU)
 
 ---
+
+## Component Hierarchy
+
+Component Hierarchy (Simplified):
+
+- layout.js  
+- template.js  
+- error.js  
+- loading.js  
+- not-found.js  
+- page.js
+
+```html
+<Layout>
+  <Template>
+    <ErrorBoundary fallback={<Error />}>
+      <Suspense fallback={<Loading />}>
+        <ErrorBoundary fallback={<NotFound />}>
+          <Page />
+        </ErrorBoundary>
+      </Suspense>
+    </ErrorBoundary>
+  </Template>
+</Layout>;
+
+```
+
+---
