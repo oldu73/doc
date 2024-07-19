@@ -4022,6 +4022,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#component-hierarchy" class="md-nav__link">
+    Component Hierarchy
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4909,6 +4916,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#component-hierarchy" class="md-nav__link">
+    Component Hierarchy
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4975,6 +4989,29 @@ App router = new</p>
 <li><a href="https://nextjs.org/docs/pages/building-your-application/configuring/debugging">documentation explains how debug Next.js</a>  </li>
 <li><a href="https://www.youtube.com/watch?v=bqk3Rnsr5gU">How to Debug Next.js 13 and React in VS Code</a></li>
 </ul>
+<hr />
+<h2 id="component-hierarchy">Component Hierarchy</h2>
+<p>Component Hierarchy (Simplified):</p>
+<ul>
+<li>layout.js  </li>
+<li>template.js  </li>
+<li>error.js  </li>
+<li>loading.js  </li>
+<li>not-found.js  </li>
+<li>page.js</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">Layout</span><span class="p">&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>  <span class="p">&lt;</span><span class="nt">Template</span><span class="p">&gt;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="p">&lt;</span><span class="nt">ErrorBoundary</span> <span class="na">fallback</span><span class="o">=</span><span class="s">{&lt;Error</span> <span class="p">/&gt;</span>}&gt;
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>      <span class="p">&lt;</span><span class="nt">Suspense</span> <span class="na">fallback</span><span class="o">=</span><span class="s">{&lt;Loading</span> <span class="p">/&gt;</span>}&gt;
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>        <span class="p">&lt;</span><span class="nt">ErrorBoundary</span> <span class="na">fallback</span><span class="o">=</span><span class="s">{&lt;NotFound</span> <span class="p">/&gt;</span>}&gt;
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>          <span class="p">&lt;</span><span class="nt">Page</span> <span class="p">/&gt;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>        <span class="p">&lt;/</span><span class="nt">ErrorBoundary</span><span class="p">&gt;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>      <span class="p">&lt;/</span><span class="nt">Suspense</span><span class="p">&gt;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>    <span class="p">&lt;/</span><span class="nt">ErrorBoundary</span><span class="p">&gt;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>  <span class="p">&lt;/</span><span class="nt">Template</span><span class="p">&gt;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="p">&lt;/</span><span class="nt">Layout</span><span class="p">&gt;</span>;
+</code></pre></div>
 <hr />
 
               
