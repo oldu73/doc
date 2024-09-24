@@ -3601,6 +3601,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#live-monitor-of-running-java-process" class="md-nav__link">
+    Live Monitor of running java process
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5141,6 +5148,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#live-monitor-of-running-java-process" class="md-nav__link">
+    Live Monitor of running java process
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5296,6 +5310,16 @@
 <p>To make it works:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="go">tail -f ---disable-inotify file</span>
 </code></pre></div>
+<hr />
+<h2 id="live-monitor-of-running-java-process">Live Monitor of running java process</h2>
+<p>To view in real time the Java processes running on your machine, you can use the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="go">watch -n 1 &quot;ps aux | grep java | grep -v grep&quot;</span>
+</code></pre></div>
+<p>Explanation:</p>
+<p><code>ps aux</code> : List all running processes.
+<code>grep java</code> : Filter to show only processes containing "java".
+<code>grep -v grep</code> : Exclude the line that contains the search command itself.
+<code>watch -n 1</code> : Run the command every second for a live update.</p>
 <hr />
 
               
