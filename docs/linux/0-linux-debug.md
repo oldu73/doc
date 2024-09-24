@@ -254,3 +254,20 @@ tail -f ---disable-inotify file
 ```
 
 ***
+
+## Live Monitor of running java process
+
+To view in real time the Java processes running on your machine, you can use the following command:
+
+```console
+watch -n 1 "ps aux | grep java | grep -v grep"
+```
+
+Explanation:
+
+`ps aux` : List all running processes.
+`grep java` : Filter to show only processes containing "java".
+`grep -v grep` : Exclude the line that contains the search command itself.
+`watch -n 1` : Run the command every second for a live update.
+
+***
