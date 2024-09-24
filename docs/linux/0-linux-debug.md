@@ -265,9 +265,9 @@ watch -n 1 "ps aux | grep java | grep -v grep"
 
 Explanation:
 
-`ps aux` : List all running processes.
-`grep java` : Filter to show only processes containing "java".
-`grep -v grep` : Exclude the line that contains the search command itself.
+`ps aux` : List all running processes.  
+`grep java` : Filter to show only processes containing "java".  
+`grep -v grep` : Exclude the line that contains the search command itself.  
 `watch -n 1` : Run the command every second for a live update.
 
 ***
