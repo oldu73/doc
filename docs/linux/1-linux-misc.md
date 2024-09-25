@@ -1048,3 +1048,21 @@ WSL_DISTRO_NAME=Ubuntu-20.04
 ```
 
 ---
+
+## Command substitution
+
+```console
+$( ... )
+```
+
+It allows you to execute a command inside `$( ... )` and use its output in another command. The shell replaces the expression within the parentheses with the result of the executed command.
+
+Examples:
+
+```console
+echo "The file is: $(ls | grep misc | tail -1)"
+
+zgrep -E '<id>.*pattern=<#>' "$(ls | grep misc | tail -1)" | wc -l
+```
+
+---
