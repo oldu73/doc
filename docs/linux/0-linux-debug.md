@@ -271,3 +271,13 @@ Explanation:
 `watch -n 1` : Run the command every second for a live update.
 
 ***
+
+## run.log
+
+`run.log` is a log file name that is often used arbitrarily to record the execution events of an application. There is no specific standard for this file, and its location and contents depend entirely on the context in which it is generated.
+
+```console
+less /var/log/run.log
+```
+
+***
