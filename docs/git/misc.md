@@ -203,3 +203,19 @@ git remote -v
 ```
 
 ***
+
+## Find branch name
+
+```console
+git branch --list "*<searched text>*"
+```
+
+***
+
+## Show diff
+
+```console
+git diff
+```
+
+***
