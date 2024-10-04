@@ -219,3 +219,11 @@ git diff
 ```
 
 ***
+
+## Show current branch
+
+```console
+git branch --show-current
+```
+
+***
