@@ -8,9 +8,9 @@ To set shortcut to switch from editing area (above) and terminal area (below):
 
 Hit `ctrl+shift+p`and search for `key` and select `Preferences: Open Keyboard Shortcuts`.
 
-Search for `focus terminal` then edit `Focus on Terminal View`, command = terminal.focus, shortcut = `ctrl+1`.
+Search for `focus active` then edit `Focus Active Editor Group`, command = workbench.action.focusActiveEditorGroup, shortcut = `ctrl+1`.
 
-Search for `focus active` then edit `Focus Active Editor Group`, command = workbench.action.focusActiveEditorGroup, shortcut = `ctrl+2`.
+Search for `focus terminal` then edit `Focus on Terminal View`, command = terminal.focus, shortcut = `ctrl+2`.
 
 ---
 
