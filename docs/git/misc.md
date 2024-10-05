@@ -290,3 +290,11 @@ git checkout -b feature-branch v1.0.0
 This creates a new branch called `feature-branch` based on the `v1.0.0 tag`.
 
 ***
+
+## See which files were changed in last commit
+
+```bash
+git log -1 --stat
+```
+
+***
