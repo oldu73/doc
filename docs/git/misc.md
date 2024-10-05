@@ -227,3 +227,66 @@ git branch --show-current
 ```
 
 ***
+
+## Git Fork Workflow
+
+### 1. Fork a Repository
+
+Forking a repository on GitHub creates a copy of the original repository in your own GitHub account, allowing you to work on it independently.
+
+1. Go to the original repository on GitHub.
+2. Click the **Fork** button (upper-right corner).
+3. A copy of the repository will be created under your GitHub account.
+
+### 2. Add `upstream` to Your Fork
+
+After forking the repository, you can link it back to the original repository by adding an `upstream` remote. This will allow you to pull in new changes from the original repo.
+
+```bash
+# Add the original repository as a new remote called 'upstream'
+git remote add upstream <original-repo-URL>
+```
+
+You can check your remotes with:
+
+```bash
+git remote -v
+```
+
+***
+
+## Fetch Tags from the Original Repo
+
+To get all tags from the original repository (upstream of forked repo), you need to fetch them. This will bring all tags from the original repo into your local copy.
+
+```bash
+# Fetch all tags from the upstream repository
+git fetch upstream --tags
+```
+
+You can list all the tags with:
+
+```bash
+git tag
+```
+
+***
+
+## Checkout a New Branch from a Tag
+
+If you want to start working from a specific tag, you can create a new branch based on that tag.
+
+```bash
+# Create a new branch based on a specific tag
+git checkout -b <new-branch-name> <tag-name>
+```
+
+For example:
+
+```bash
+git checkout -b feature-branch v1.0.0
+```
+
+This creates a new branch called `feature-branch` based on the `v1.0.0 tag`.
+
+***
