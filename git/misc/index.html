@@ -1471,6 +1471,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#git-fork-workflow" class="md-nav__link">
+    Git Fork Workflow
+  </a>
+  
+    <nav class="md-nav" aria-label="Git Fork Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fork-a-repository" class="md-nav__link">
+    1. Fork a Repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-add-upstream-to-your-fork" class="md-nav__link">
+    2. Add upstream to Your Fork
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fetch-tags-from-the-original-repo" class="md-nav__link">
+    Fetch Tags from the Original Repo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkout-a-new-branch-from-a-tag" class="md-nav__link">
+    Checkout a New Branch from a Tag
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5237,6 +5278,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#git-fork-workflow" class="md-nav__link">
+    Git Fork Workflow
+  </a>
+  
+    <nav class="md-nav" aria-label="Git Fork Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fork-a-repository" class="md-nav__link">
+    1. Fork a Repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-add-upstream-to-your-fork" class="md-nav__link">
+    2. Add upstream to Your Fork
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fetch-tags-from-the-original-repo" class="md-nav__link">
+    Fetch Tags from the Original Repo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkout-a-new-branch-from-a-tag" class="md-nav__link">
+    Checkout a New Branch from a Tag
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5370,6 +5452,42 @@
 <h2 id="show-current-branch">Show current branch</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="go">git branch --show-current</span>
 </code></pre></div>
+<hr />
+<h2 id="git-fork-workflow">Git Fork Workflow</h2>
+<h3 id="1-fork-a-repository">1. Fork a Repository</h3>
+<p>Forking a repository on GitHub creates a copy of the original repository in your own GitHub account, allowing you to work on it independently.</p>
+<ol>
+<li>Go to the original repository on GitHub.</li>
+<li>Click the <strong>Fork</strong> button (upper-right corner).</li>
+<li>A copy of the repository will be created under your GitHub account.</li>
+</ol>
+<h3 id="2-add-upstream-to-your-fork">2. Add <code>upstream</code> to Your Fork</h3>
+<p>After forking the repository, you can link it back to the original repository by adding an <code>upstream</code> remote. This will allow you to pull in new changes from the original repo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="c1"># Add the original repository as a new remote called &#39;upstream&#39;</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>git remote add upstream &lt;original-repo-URL&gt;
+</code></pre></div>
+<p>You can check your remotes with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>git remote -v
+</code></pre></div>
+<hr />
+<h2 id="fetch-tags-from-the-original-repo">Fetch Tags from the Original Repo</h2>
+<p>To get all tags from the original repository (upstream of forked repo), you need to fetch them. This will bring all tags from the original repo into your local copy.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="c1"># Fetch all tags from the upstream repository</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a>git fetch upstream --tags
+</code></pre></div>
+<p>You can list all the tags with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a>git tag
+</code></pre></div>
+<hr />
+<h2 id="checkout-a-new-branch-from-a-tag">Checkout a New Branch from a Tag</h2>
+<p>If you want to start working from a specific tag, you can create a new branch based on that tag.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="c1"># Create a new branch based on a specific tag</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a>git checkout -b &lt;new-branch-name&gt; &lt;tag-name&gt;
+</code></pre></div>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a>git checkout -b feature-branch v1.0.0
+</code></pre></div>
+<p>This creates a new branch called <code>feature-branch</code> based on the <code>v1.0.0 tag</code>.</p>
 <hr />
 
               
