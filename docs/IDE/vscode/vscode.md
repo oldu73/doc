@@ -4,13 +4,13 @@
 
 ## Switch windows
 
-To switch from editing area (above) and terminal area (below):
+To set shortcut to switch from editing area (above) and terminal area (below):
 
-Ctrl + arrow up/down
+Hit `ctrl+shift+p`and search for `key` and select `Preferences: Open Keyboard Shortcuts`
 
-To switch from same area type windows (edit/terminal):
+Search for `focus terminal` then edit `Focus on Terminal View`, command = terminal.focus, shortcut = `ctrl+1`
 
-Alt + arrow left/right
+Search for `focus active` then edit `Focus Active Editor Group`, command = workbench.action.focusActiveEditorGroup, shortcut = `ctrl+2`
 
 ---
 
