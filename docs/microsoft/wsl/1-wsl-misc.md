@@ -21,3 +21,13 @@ From Windows explorer address bar (path), type in:
 ```
 
 ***
+
+## Copy result of command in clipboard
+
+Add pipe + clip.exe to command (be aware that there might be a "return" character in the result):
+
+```console
+echo Hello, world! | clip.exe
+```
+
+***

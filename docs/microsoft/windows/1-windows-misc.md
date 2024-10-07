@@ -119,3 +119,13 @@ Edit configuration to add new remote IP address by opening a notepad in admin mo
 Add new remote address on top of the list of the already present ones, save, restart Sophos client.
 
 ---
+
+## Copy result of command in clipboard
+
+Add pipe + clip to command (be aware that there might be a "return" character in the result):
+
+```console
+echo Hello, world! | clip
+```
+
+---
