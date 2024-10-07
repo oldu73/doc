@@ -3797,6 +3797,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#copy-result-of-command-in-clipboard" class="md-nav__link">
+    Copy result of command in clipboard
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4855,6 +4862,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#copy-result-of-command-in-clipboard" class="md-nav__link">
+    Copy result of command in clipboard
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4878,6 +4892,11 @@
 </code></pre></div>
 <p>From Windows explorer address bar (path), type in:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>\\wsl$
+</code></pre></div>
+<hr />
+<h2 id="copy-result-of-command-in-clipboard">Copy result of command in clipboard</h2>
+<p>Add pipe + clip.exe to command (be aware that there might be a "return" character in the result):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">echo Hello, world! | clip.exe</span>
 </code></pre></div>
 <hr />
 
