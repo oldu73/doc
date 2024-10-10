@@ -198,3 +198,21 @@ To interpolate data points for the gaps, you can use the `Interpolate` option in
 In summary, TSVB gaps occur when there is no data available for a particular time period. You can choose to fill the gaps with a specific value or interpolate the data points to create a smooth chart.
 
 ---
+
+## Double display
+
+Custom `Double` number representation.
+
+By default, some decimals may appear missing (rounding) even though in reality they are stored correctly in Elasticsearch.
+
+[SRC: Numeral Formatting](https://www.elastic.co/guide/en/kibana/7.17/numeral.html)
+
+In Kibana:
+
+- Browse to `Stack Management` - `Index patterns` click on your index.  
+- Edit your field, enable `Set format`, choose `Number`.  
+- To notice if you let mouse over the field in preview pan, you already may observe raw value (no rounding) stored in Elasticsearch.  
+- Enter numeral pattern, e.g. `0.######` click on save.  
+- Browse back to `Discover` window and their you may observe new numeral format applied on displayed field.
+
+---
