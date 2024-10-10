@@ -1288,6 +1288,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#double-display" class="md-nav__link">
+    Double display
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5007,6 +5014,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#double-display" class="md-nav__link">
+    Double display
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5154,6 +5168,19 @@
 <p>To fill the gaps with a specific value, you can use the <code>default</code> option in the <code>Model</code> tab of the visualization editor. This option sets a default value for the data points in the gaps.</p>
 <p>To interpolate data points for the gaps, you can use the <code>Interpolate</code> option in the <code>Model</code> tab. This option calculates a value for the missing data points by estimating the value based on the surrounding data points. This creates a smooth chart without any gaps.</p>
 <p>In summary, TSVB gaps occur when there is no data available for a particular time period. You can choose to fill the gaps with a specific value or interpolate the data points to create a smooth chart.</p>
+<hr />
+<h2 id="double-display">Double display</h2>
+<p>Custom <code>Double</code> number representation.</p>
+<p>By default, some decimals may appear missing (rounding) even though in reality they are stored correctly in Elasticsearch.</p>
+<p><a href="https://www.elastic.co/guide/en/kibana/7.17/numeral.html">SRC: Numeral Formatting</a></p>
+<p>In Kibana:</p>
+<ul>
+<li>Browse to <code>Stack Management</code> - <code>Index patterns</code> click on your index.  </li>
+<li>Edit your field, enable <code>Set format</code>, choose <code>Number</code>.  </li>
+<li>To notice if you let mouse over the field in preview pan, you already may observe raw value (no rounding) stored in Elasticsearch.  </li>
+<li>Enter numeral pattern, e.g. <code>0.######</code> click on save.  </li>
+<li>Browse back to <code>Discover</code> window and their you may observe new numeral format applied on displayed field.</li>
+</ul>
 <hr />
 
               
