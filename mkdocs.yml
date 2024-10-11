@@ -204,6 +204,7 @@ nav:
       - "MongoDB - Misc": "mongodb/mongodb.md"
   - Next.js:
       - "Next.js - Misc": "nextjs/misc.md"
+      - "Next.js - Prisma": "nextjs/prisma.md"
   - Postman:
       - "misc": "postman/misc.md"
   - React:
