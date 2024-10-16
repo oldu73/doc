@@ -223,7 +223,7 @@ watch -d 'ls -laS'
 
 ***
 
-## Filter java stack trace in log
+## Filter Java stack trace in log
 
 ### Quick
 
@@ -255,7 +255,7 @@ tail -f ---disable-inotify file
 
 ***
 
-## Live Monitor of running java process
+## Live Monitor of running Java process
 
 To view in real time the Java processes running on your machine, you can use the following command:
 
