@@ -281,3 +281,13 @@ less /var/log/run.log
 ```
 
 ***
+
+## Catch files in transit
+
+For files that are not intended to remain in a directory for a long time (produced/consumed/deleted by misc. processes), to intercept them and display their contents, in an open console, execute following command (and let it run.. and be patient..):
+
+```console
+while true; do find . -type f -newerct "2 seconds ago" | while read file; do echo "[$(date)] $file:"; cat "$file"; done; sleep 2; done
+```
+
+***
