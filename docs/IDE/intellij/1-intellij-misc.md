@@ -146,3 +146,9 @@ Switch to main branch, checkout a new one, right-click on commit in history and 
 [Cherry pick a commit to a different branch in any JetBrains IDE](https://www.youtube.com/watch?v=SkcvWURJkWQ)
 
 ---
+
+## Retrieve changes before git commit push
+
+Right-click on commit, select "Reset Current Branch to Here..." then choose `Soft`.
+
+---
