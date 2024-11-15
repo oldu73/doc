@@ -1066,3 +1066,29 @@ zgrep -E '<id>.*pattern=<#>' "$(ls | grep misc | tail -1)" | wc -l
 ```
 
 ---
+
+## less
+
+Display a file.
+
+With +F option, follow the end of file while growing (like tail -f):
+
+```console
+less +F *.log
+```
+
+---
+
+## tail
+
+Display end of file.
+
+To display follow, multiple files at a time each file has to be mentioned (e.g. *.log do not work).
+
+To display follow 2 logs file and having file name from which it comes (grep in between do not work):
+
+```console
+tail -f debug.log error.log | awk '{ print FILENAME ": " $0 }' FILENAME=-
+```
+
+---
