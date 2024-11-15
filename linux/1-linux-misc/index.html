@@ -3921,6 +3921,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#less" class="md-nav__link">
+    less
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tail" class="md-nav__link">
+    tail
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5767,6 +5781,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#less" class="md-nav__link">
+    less
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tail" class="md-nav__link">
+    tail
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6488,6 +6516,19 @@ Here we want to have file name, cat content and separate result with a new line<
 <div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1"></a><span class="go">echo &quot;The file is: $(ls | grep misc | tail -1)&quot;</span>
 <a id="__codelineno-86-2" name="__codelineno-86-2"></a>
 <a id="__codelineno-86-3" name="__codelineno-86-3"></a><span class="go">zgrep -E &#39;&lt;id&gt;.*pattern=&lt;#&gt;&#39; &quot;$(ls | grep misc | tail -1)&quot; | wc -l</span>
+</code></pre></div>
+<hr />
+<h2 id="less">less</h2>
+<p>Display a file.</p>
+<p>With +F option, follow the end of file while growing (like tail -f):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-87-1" name="__codelineno-87-1"></a><span class="go">less +F *.log</span>
+</code></pre></div>
+<hr />
+<h2 id="tail">tail</h2>
+<p>Display end of file.</p>
+<p>To display follow, multiple files at a time each file has to be mentioned (e.g. *.log do not work).</p>
+<p>To display follow 2 logs file and having file name from which it comes (grep in between do not work):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-88-1" name="__codelineno-88-1"></a><span class="go">tail -f debug.log error.log | awk &#39;{ print FILENAME &quot;: &quot; $0 }&#39; FILENAME=-</span>
 </code></pre></div>
 <hr />
 
