@@ -3935,6 +3935,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#rename-file" class="md-nav__link">
+    rename file
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5795,6 +5802,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#rename-file" class="md-nav__link">
+    rename file
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6529,6 +6543,20 @@ Here we want to have file name, cat content and separate result with a new line<
 <p>To display follow, multiple files at a time each file has to be mentioned (e.g. *.log do not work).</p>
 <p>To display follow 2 logs file and having file name from which it comes (grep in between do not work):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-88-1" name="__codelineno-88-1"></a><span class="go">tail -f debug.log error.log | awk &#39;{ print FILENAME &quot;: &quot; $0 }&#39; FILENAME=-</span>
+</code></pre></div>
+<hr />
+<h2 id="rename-file">rename file</h2>
+<p>Rename file by replacing pattern with <code>rename 's/aa/bb/' *</code>, e.g.:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-89-1" name="__codelineno-89-1"></a><span class="go">sudo apt install rename</span>
+<a id="__codelineno-89-2" name="__codelineno-89-2"></a><span class="go">ll</span>
+<a id="__codelineno-89-3" name="__codelineno-89-3"></a><span class="go">123-aa-123.txt</span>
+<a id="__codelineno-89-4" name="__codelineno-89-4"></a><span class="go">456-aa-456.txt</span>
+<a id="__codelineno-89-5" name="__codelineno-89-5"></a><span class="go">789-aa-789.txt</span>
+<a id="__codelineno-89-6" name="__codelineno-89-6"></a><span class="go">rename &#39;s/aa/bb/&#39; *</span>
+<a id="__codelineno-89-7" name="__codelineno-89-7"></a><span class="go">ll</span>
+<a id="__codelineno-89-8" name="__codelineno-89-8"></a><span class="go">123-bb-123.txt</span>
+<a id="__codelineno-89-9" name="__codelineno-89-9"></a><span class="go">456-bb-456.txt</span>
+<a id="__codelineno-89-10" name="__codelineno-89-10"></a><span class="go">789-bb-789.txt</span>
 </code></pre></div>
 <hr />
 
