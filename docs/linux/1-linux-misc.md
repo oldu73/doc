@@ -1092,3 +1092,22 @@ tail -f debug.log error.log | awk '{ print FILENAME ": " $0 }' FILENAME=-
 ```
 
 ---
+
+## rename file
+
+Rename file by replacing pattern 'aa' by 'bb' with `rename 's/aa/bb/' *`, e.g.:
+
+```console
+sudo apt install rename
+ll
+123-aa-123.txt
+456-aa-456.txt
+789-aa-789.txt
+rename 's/aa/bb/' *
+ll
+123-bb-123.txt
+456-bb-456.txt
+789-bb-789.txt
+```
+
+---
