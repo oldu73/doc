@@ -198,6 +198,7 @@ nav:
           - "WSL - 01 - Misc": "microsoft/wsl/1-wsl-misc.md"
   - Misc:
       - "CRC": "misc/crc.md"
+      - "network": "misc/network.md"
       - "terminal com": "misc/terminalcom.md"
   - MkDocs:
       - "misc": "mkdocs/misc.md"
