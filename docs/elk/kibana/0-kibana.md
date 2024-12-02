@@ -219,7 +219,7 @@ In Kibana:
 
 ## KQL filter
 
-In visualization, to filter particular filtered matching documents against all, the tricks is to set 2 filters one with '*' and the other one with desired matching pattern, e.g.:
+In visualization, to filter documents against all, the tricks is to set 2 filters one with '*' and the other one with desired matching pattern, e.g.:
 
 ```txt
 : *
