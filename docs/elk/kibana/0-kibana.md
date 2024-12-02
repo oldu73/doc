@@ -216,3 +216,14 @@ In Kibana:
 - Browse back to `Discover` window and their you may observe new numeral format applied on displayed field.
 
 ---
+
+## KQL filter
+
+In visualization, to filter particular filtered matching documents against all, the tricks is to set 2 filters one with '*' and the other one with desired matching pattern, e.g.:
+
+```txt
+: *
+: <field 1>: <content 1> AND NOT <field 2>: <content 2>
+```
+
+---
