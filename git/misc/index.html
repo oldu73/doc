@@ -1519,6 +1519,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#list-all-own-commit-since-a-date" class="md-nav__link">
+    List all own commit since a date
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5422,6 +5429,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#list-all-own-commit-since-a-date" class="md-nav__link">
+    List all own commit since a date
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5594,6 +5608,14 @@
 <hr />
 <h2 id="see-which-files-were-changed-in-last-commit">See which files were changed in last commit</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a>git log -1 --stat
+</code></pre></div>
+<hr />
+<h2 id="list-all-own-commit-since-a-date">List all own commit since a date</h2>
+<p>Get user name:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="go">git config user.name</span>
+</code></pre></div>
+<p>Git logs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="go">git log --author=&quot;&lt;user.name&gt;&quot; --after=&quot;YYYY-MM-DDTHH:MM:SS&quot; --pretty=format:&quot;%h%x09%an%x09%ad%x09%s&quot;</span>
 </code></pre></div>
 <hr />
 
