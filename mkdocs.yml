@@ -191,6 +191,8 @@ nav:
       - Work:
           - "Concentration au travail": "method/work/Concentration au travail.md"
   - Microsoft:
+      - Office:
+          - "Excel": "microsoft/office/excel.md"
       - Windows:
           - "Windows - 01 - Misc": "microsoft/windows/1-windows-misc.md"
           - "Windows - 02 - Container": "microsoft/windows/2-container.md"
