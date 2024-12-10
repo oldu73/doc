@@ -298,3 +298,19 @@ git log -1 --stat
 ```
 
 ***
+
+## List all own commits since a date
+
+Get user name:
+
+```console
+git config user.name
+```
+
+Git logs:
+
+```console
+git log --author="<user.name>" --after="YYYY-MM-DDTHH:MM:SS" --pretty=format:"%h%x09%an%x09%ad%x09%s"
+```
+
+***
