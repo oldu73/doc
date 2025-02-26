@@ -152,3 +152,22 @@ Switch to main branch, checkout a new one, right-click on commit in history and 
 Right-click on commit, select "Reset Current Branch to Here..." then choose `Soft`.
 
 ---
+
+## Navigate to end/begin block
+
+To navigate to the end or beginning of a code block:
+
+```txt
+ctrl + shift + m
+```
+
+---
+
+## Bookmark number
+
+bookmark number:
+
+- set "ctrl + shift + # (with number on top of keyboard)"  
+- navigate to "ctrl + # (with number on top of keyboard)"
+
+---
