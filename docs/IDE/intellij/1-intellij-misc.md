@@ -165,7 +165,7 @@ ctrl + shift + m
 
 ## Bookmark number
 
-bookmark number:
+Set bookmark numbers and navigate to them:
 
 - set "ctrl + shift + # (with number on top of keyboard)"  
 - navigate to "ctrl + # (with number on top of keyboard)"
