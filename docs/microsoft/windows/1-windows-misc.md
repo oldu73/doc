@@ -129,3 +129,13 @@ echo Hello, world! | clip
 ```
 
 ---
+
+## Move window with key
+
+Sometimes due to a video or other problem, it's useful to be able to move a dialog/window using the keyboard as the outsides may be off of the screen:
+
+```txt
+ALT + SPACE BAR + M
+```
+
+---
