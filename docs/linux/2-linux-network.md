@@ -208,3 +208,11 @@ socat TCP4-LISTEN:81,fork,reuseaddr TCP4:TCP4:192.168.1.10:80
 This example listens on port 81, accepts connections, and forwards the connections to port 80 on the remote host.
 
 ---
+
+## hostname
+
+The hostname command in Linux is used to display or set the system's hostname. It can be used to view the current hostname or to temporarily change it. For persistent changes, the hostnamectl command or editing the /etc/hostname file are recommended.
+
+To display the current hostname, simply type `hostname` in the terminal and press Enter.
+
+---
