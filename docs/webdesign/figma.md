@@ -43,3 +43,19 @@ Zoom to fit `Shift+1`
 Shift + 2
 
 ---
+
+## auto layout
+
+### padding
+
+`Ctrl+click` on padding value to change left/right/top/down values at once
+
+### alignment
+
+double click on blue selected alignment mode to auto space (Gap)
+
+### no auto layout
+
+to have an "object" belonging to an auto layout frame but not following the auto layout behavior (alignment rules), hold `s` key while dropping the object in the frame
+
+---
