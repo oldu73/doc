@@ -320,7 +320,7 @@ git log --author="<user.name>" --after="YYYY-MM-DDTHH:MM:SS" --pretty=format:"%h
 Count the number of different lines between 2 branches:
 
 ```console
-git diff <ref branch name> <feature branch> --shortstat
+git diff <ref branch name> <feature branch name> --shortstat
 ```
 
 ***
