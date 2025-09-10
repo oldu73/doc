@@ -141,3 +141,17 @@ ALT + SPACE BAR + select 'Move' menu
 Then move window with arrow keys.
 
 ---
+
+## Microsoft PowerToys
+
+Install it from Microsoft Store.
+
+### Color Picker
+
+Shortcut to pick a color anywhere on the screen:
+
+```txt
+Win+Shift+C
+```
+
+---
