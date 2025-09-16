@@ -60,7 +60,7 @@ to have an "object" belonging to an auto layout frame but not following the auto
 
 ---
 
-## open Overlay
+## open overlay
 
 In Figma, when you create a prototype with the "Open overlay" interaction, you need to pay attention to the position of the overlay object.
 
