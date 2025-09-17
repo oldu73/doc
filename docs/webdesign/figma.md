@@ -95,3 +95,25 @@ M6 15c-.83 0-1.58.34-2.12.88C2.7 17.06 2 22 2 22s4.94-.7 6.12-1.88A2.996 2.996 0
 ```
 
 ---
+
+## horizontal scroll
+
+To scroll horizontally `Shift + mouse scroll wheel`.
+
+---
+
+## direct select nested things
+
+To avoid having to double-click a lot until you reach the level of the nested thing to select, press the `Ctrl` key and on hover, the selectable item becomes highlighted, then click on it.
+
+---
+
+## paste to replace
+
+To paste to replace:
+
+1. Select and copy an object using the keyboard shortcut: `Ctrl+c`.  
+2. Select the objects you'd like to replace with the copied object.  
+3. Right-click your selection and click `Paste to replace` from the menu. You can also use the keyboard shortcut: `Ctrl+Shift+r`.
+
+---
