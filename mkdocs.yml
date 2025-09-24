@@ -17,6 +17,9 @@ nav:
   - Adobe:
       - Illustrator:
           - "Misc": "adobe/illustrator/misc.md"
+  - Autodesk:
+      - Fusion 360:
+          - "Misc": "autodesk/fusion360/misc.md"
   - AWS:
       - Amplify:
           - Auth:
