@@ -151,7 +151,7 @@ Install it from Microsoft Store.
 Shortcut to pick a color anywhere on the screen:
 
 ```txt
-Win+Shift+C
+Win + Shift + C
 ```
 
 ### Find my mouse
@@ -159,7 +159,15 @@ Win+Shift+C
 In PowerToys, pressing Ctrl twice activates the "Find my mouse" utility, which places a spotlight on your cursor to help you locate it. This feature is part of the Mouse Utilities in PowerToys and can be customized, though double-tapping the Ctrl key is the default action to trigger the spotlight effect:
 
 ```txt
-Ctrl+Ctrl
+Ctrl + Ctrl
+```
+
+### Measure screen pixels
+
+Shortcut to measure pixels on the screen:
+
+```txt
+Win + Ctrl + Shift + M
 ```
 
 ---
