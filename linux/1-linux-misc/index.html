@@ -4023,6 +4023,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#find-longest-line-in-a-file" class="md-nav__link">
+    find longest line in a file
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5965,6 +5972,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#find-longest-line-in-a-file" class="md-nav__link">
+    find longest line in a file
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6713,6 +6727,10 @@ Here we want to have file name, cat content and separate result with a new line<
 <a id="__codelineno-89-8" name="__codelineno-89-8"></a><span class="go">123-bb-123.txt</span>
 <a id="__codelineno-89-9" name="__codelineno-89-9"></a><span class="go">456-bb-456.txt</span>
 <a id="__codelineno-89-10" name="__codelineno-89-10"></a><span class="go">789-bb-789.txt</span>
+</code></pre></div>
+<hr />
+<h2 id="find-longest-line-in-a-file">find longest line in a file</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-90-1" name="__codelineno-90-1"></a><span class="go">awk &#39;length &gt; max { max = length; longest = $0 } END { print longest }&#39; &lt;file.log&gt;</span>
 </code></pre></div>
 <hr />
 
