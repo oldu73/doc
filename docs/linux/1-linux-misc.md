@@ -1111,3 +1111,11 @@ ll
 ```
 
 ---
+
+## find longest line in a file
+
+```console
+awk 'length > max { max = length; longest = $0 } END { print longest }' <file.log>
+```
+
+---
