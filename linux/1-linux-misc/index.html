@@ -4007,6 +4007,26 @@
     less
   </a>
   
+    <nav class="md-nav" aria-label="less">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-a-file" class="md-nav__link">
+    Display a file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    Search
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -5956,6 +5976,26 @@
     less
   </a>
   
+    <nav class="md-nav" aria-label="less">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-a-file" class="md-nav__link">
+    Display a file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    Search
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -6703,10 +6743,14 @@ Here we want to have file name, cat content and separate result with a new line<
 </code></pre></div>
 <hr />
 <h2 id="less">less</h2>
-<p>Display a file.</p>
+<h3 id="display-a-file">Display a file</h3>
 <p>With +F option, follow the end of file while growing (like tail -f):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-87-1" name="__codelineno-87-1"></a><span class="go">less +F *.log</span>
 </code></pre></div>
+<h3 id="search">Search</h3>
+<p>Once in less, type <code>home</code> then <code>/</code> followed by searched pattern to search from beginning of file.</p>
+<p>Once in less, type <code>end</code> then <code>?</code> followed by searched pattern to search from end of file.</p>
+<p>Then <code>n</code> to browse to next occurrence, <code>N</code> to browse to previous occurrence.</p>
 <hr />
 <h2 id="tail">tail</h2>
 <p>Display end of file.</p>
