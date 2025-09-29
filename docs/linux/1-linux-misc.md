@@ -1069,13 +1069,21 @@ zgrep -E '<id>.*pattern=<#>' "$(ls | grep misc | tail -1)" | wc -l
 
 ## less
 
-Display a file.
+### Display a file
 
 With +F option, follow the end of file while growing (like tail -f):
 
 ```console
 less +F *.log
 ```
+
+### Search
+
+Once in less, type `home` then `/` followed by searched pattern to search from beginning of file.
+
+Once in less, type `end` then `?` followed by searched pattern to search from end of file.
+
+Then `n` to browse to next occurrence, `N` to browse to previous occurrence.
 
 ---
 
