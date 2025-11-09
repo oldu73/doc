@@ -154,6 +154,8 @@ Shortcut to pick a color anywhere on the screen:
 Win + Shift + C
 ```
 
+Scroll to zoom area for sampling color.
+
 ### Find my mouse
 
 In PowerToys, pressing Ctrl twice activates the "Find my mouse" utility, which places a spotlight on your cursor to help you locate it. This feature is part of the Mouse Utilities in PowerToys and can be customized, though double-tapping the Ctrl key is the default action to trigger the spotlight effect:
