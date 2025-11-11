@@ -5223,16 +5223,11 @@
 it <strong>does not support full regular expressions (regex)</strong>.</p>
 <h3 id="1-logical-operators-supported">1. Logical Operators Supported</h3>
 <p>You can use basic Boolean operators in the search bar:</p>
-<p>Example                                 Effect</p>
-<p><code>from:olivier AND subject:invoice</code>      Emails sent by <em>Olivier</em>
-                                          <strong>and</strong> containing <em>invoice</em> in
-                                          the subject</p>
-<p><code>from:olivier OR from:pierre</code>           Emails from <em>Olivier</em> <strong>or</strong>
-                                          <em>Pierre</em></p>
-<p><code>subject:(report OR summary)</code>           Subject contains <em>report</em>
-                                          <strong>or</strong> <em>summary</em></p>
-<p><code>NOT from:newsletter</code>                   Excludes emails from
-                                          <em>newsletter</em></p>
+<p>Example / Effect</p>
+<p><code>from:olivier AND subject:invoice</code> / Emails sent by <em>Olivier</em> <strong>and</strong> containing <em>invoice</em> in the subject</p>
+<p><code>from:olivier OR from:pierre</code> / Emails from <em>Olivier</em> <strong>or</strong> <em>Pierre</em></p>
+<p><code>subject:(report OR summary)</code> / Subject contains <em>report</em> <strong>or</strong> <em>summary</em></p>
+<p><code>NOT from:newsletter</code> / Excludes emails from <em>newsletter</em></p>
 <blockquote>
 <p>Operators must be written in <strong>uppercase</strong> (<code>AND</code>, <code>OR</code>, <code>NOT</code>)\
 Parentheses <code>()</code> can also be used for grouping expressions.</p>
@@ -5240,30 +5235,27 @@ Parentheses <code>()</code> can also be used for grouping expressions.</p>
 <h3 id="2-searchable-fields">2. Searchable Fields</h3>
 <p>You can combine operators with <strong>specific search fields</strong>:</p>
 <ul>
-<li><code>from:</code> → sender\</li>
-<li><code>to:</code> → recipient\</li>
-<li><code>subject:</code> → email subject\</li>
-<li><code>body:</code> → message content\</li>
-<li><code>hasattachment:yes</code> → messages with attachments\</li>
+<li><code>from:</code> → sender  </li>
+<li><code>to:</code> → recipient  </li>
+<li><code>subject:</code> → email subject  </li>
+<li><code>body:</code> → message content  </li>
+<li><code>hasattachment:yes</code> → messages with attachments  </li>
 <li><code>received:&gt;=01/11/2025</code> → received since a specific date</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>(from:olivier OR from:pierre) AND subject:(&quot;monthly report&quot;) AND hasattachment:yes
 </code></pre></div>
 <h3 id="3-regular-expressions-regex-not-supported">3. Regular Expressions (Regex) -- Not Supported ❌</h3>
-<p>Outlook <strong>does not support regex patterns</strong> such as
-<code>subject:/invoice\s+\d+/</code>.</p>
+<p>Outlook <strong>does not support regex patterns</strong> such as <code>subject:/invoice\s+\d+/</code>.</p>
 <p>Instead, you can use <strong>wildcards</strong> for partial matches:</p>
-<p>Example              Matches</p>
-<p><code>subject:invoice*</code>   Finds <em>invoice</em>, <em>invoices</em>, <em>invoice123</em>, etc.
-  <code>from:o?ivier</code>       Matches <em>olivier</em> and <em>omivier</em>, for example</p>
+<p>Example / Matches</p>
+<p><code>subject:invoice*</code> / Finds <em>invoice</em>, <em>invoices</em>, <em>invoice123</em>, etc.</p>
+<p><code>from:o?ivier</code> / Matches <em>olivier</em> and <em>omivier</em>, for example</p>
 <h3 id="4-pro-tips">4. Pro Tips</h3>
 <p>For <strong>more advanced searches</strong> (regex, automation, etc.), you can:</p>
 <ul>
-<li>Export or index your emails and use <strong>Python</strong> or <strong>PowerShell
-    scripts</strong>\</li>
-<li>Use <strong>Microsoft 365 Search API</strong>, which provides more flexible query
-    capabilities</li>
+<li>Export or index your emails and use <strong>Python</strong> or <strong>PowerShell scripts</strong>  </li>
+<li>Use <strong>Microsoft 365 Search API</strong>, which provides more flexible query capabilities</li>
 </ul>
 <hr />
 
