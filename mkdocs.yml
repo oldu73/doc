@@ -200,6 +200,7 @@ nav:
   - Microsoft:
       - Office:
           - "Excel": "microsoft/office/excel.md"
+          - "Outlook": "microsoft/office/outlook.md"
       - Windows:
           - "Windows - 01 - Misc": "microsoft/windows/1-windows-misc.md"
           - "Windows - 02 - Container": "microsoft/windows/2-container.md"
