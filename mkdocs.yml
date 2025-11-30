@@ -77,9 +77,10 @@ nav:
   - IDE:
       - Android Studio:
           - "Android Studio - Flutter": "IDE/androidstudio/flutter.md"
-      - IntelliJ:
-          - "IntelliJ - 01 - Misc": "IDE/intellij/1-intellij-misc.md"
-          - "IntelliJ - 02 - WSL": "IDE/intellij/2-intellij-wsl.md"
+      - JetBrains:
+          - "misc - 00": "IDE/jetbrains/0-misc.md"
+          - "IntelliJ - 01 - Misc": "IDE/jetbrains/1-intellij-misc.md"
+          - "IntelliJ - 02 - WSL": "IDE/jetbrains/2-intellij-wsl.md"
       - VS Code:
           - "VS Code - Misc": "IDE/vscode/vscode.md"
       - Webstorm:
