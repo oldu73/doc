@@ -75,17 +75,14 @@ nav:
           - "1-devtool": "google/chrome/1-devtool.md"
           - "2-shortcut": "google/chrome//2-shortcut.md"
   - IDE:
-      - Android Studio:
-          - "Android Studio - Flutter": "IDE/androidstudio/flutter.md"
-      - IntelliJ:
-          - "IntelliJ - 01 - Misc": "IDE/intellij/1-intellij-misc.md"
-          - "IntelliJ - 02 - WSL": "IDE/intellij/2-intellij-wsl.md"
       - JetBrains:
-          - "misc - 00": "IDE/jetbrains/0-misc.md"
+          - "Android Studio - Flutter": "IDE/jetbrains/androidstudio-flutter.md"
+          - "IntelliJ - Misc": "IDE/jetbrains/intellij-misc.md"
+          - "IntelliJ - WSL": "IDE/jetbrains/intellij-wsl.md"
+          - "misc": "IDE/jetbrains/misc.md"
+          - "Webstorm - Misc": "IDE/jetbrains/webstorm-misc.md"
       - VS Code:
-          - "VS Code - Misc": "IDE/vscode/vscode.md"
-      - Webstorm:
-          - "misc": "IDE/webstorm/misc.md"
+          - "VS Code - Misc": "IDE/vs-code/vs-code-misc.md"
   - Java:
       - test:
           - "mock": "java/test/mock.md"

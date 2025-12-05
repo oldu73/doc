@@ -1,4 +1,4 @@
-# VS Code
+# vs code misc
 
 ---
 

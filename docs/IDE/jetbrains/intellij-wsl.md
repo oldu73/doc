@@ -1,4 +1,4 @@
-# IntelliJ - 02 - WSL
+# intellij wsl
 
 IntelliJ integration with a project hosted in a WSL2 native folder (not /mnt/c)
 
