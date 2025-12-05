@@ -363,7 +363,7 @@ $ docker run --name server --network mynet -d -p 80:80 node-server
 
 ## Host
 
-C.f. [Bridge section](##bridge) for initial setup.
+C.f. [Bridge section](#bridge) for initial setup.
 
 Reset 'app.js' to
 ```javascript
