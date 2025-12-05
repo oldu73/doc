@@ -28,3 +28,11 @@ Select “Show Diff in Editor Tab”.
 The diff will return to the standard editor tab display mode.
 
 ---
+
+## Live template
+
+Allow to type a short word + tab to be replaced by a text template.
+
+Hamburger menu - Settings... - Editor - Live Templates - + button to add a new custom one.
+
+---
