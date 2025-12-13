@@ -73,7 +73,8 @@ nav:
       - Chrome:
           - "0-misc": "google/chrome/0-misc.md"
           - "1-devtool": "google/chrome/1-devtool.md"
-          - "2-shortcut": "google/chrome//2-shortcut.md"
+          - "2-shortcut": "google/chrome/2-shortcut.md"
+          - "3-bookmark": "google/chrome/3-bookmark.md"
   - IDE:
       - JetBrains:
           - "IntelliJ - Misc": "IDE/jetbrains/intellij-misc.md"
