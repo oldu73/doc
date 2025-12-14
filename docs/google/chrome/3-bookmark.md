@@ -15,7 +15,7 @@ Close Chrome completely
 
 Go to:
 
-C:\Users\<username>\AppData\Local\Google\Chrome\User Data\Default\
+`C:\Users\<username>\AppData\Local\Google\Chrome\User Data\Default\`
 
 Delete Bookmarks
 
