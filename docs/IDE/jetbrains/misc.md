@@ -36,3 +36,19 @@ Allow to type a short word + tab to be replaced by a text template.
 Hamburger menu - Settings... - Editor - Live Templates - + button to add a new custom one.
 
 ---
+
+## Problems View Scope Limitation
+
+The Problems tool window automatically runs a full project inspection as soon as it is opened or refreshed.
+
+Although a scope selector briefly appears, it disappears almost immediately because the IDE restarts a global analysis.
+
+Chosen Solution, Use manual code inspection via:
+
+```txt
+Code → Inspect Code…
+```
+
+This action opens a dialog where the inspection scope can be explicitly selected.
+
+---
