@@ -227,3 +227,15 @@ In visualization, to filter documents against all, the trick is to set 2 filters
 ```
 
 ---
+
+## Timestamp filter
+
+Data between 2 timestamps but not after an hour.
+
+In filter bar, is between `2026-01-01T00:00:00.000+01:00` to `2026-01-26T23:59:59.000+01:00`, and KQL filter:
+
+```txt
+timestamp < now/d+6h
+```
+
+---
