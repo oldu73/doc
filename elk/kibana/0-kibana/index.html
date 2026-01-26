@@ -2409,6 +2409,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#timestamp-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timestamp filter
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -9333,6 +9344,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#timestamp-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timestamp filter
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -9502,6 +9524,12 @@
 <p>In visualization, to filter documents against all, the trick is to set 2 filters one with '*' and the other one with desired matching pattern, e.g.:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>: *
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>: &lt;field 1&gt;: &lt;content 1&gt; AND NOT &lt;field 2&gt;: &lt;content 2&gt;
+</code></pre></div>
+<hr />
+<h2 id="timestamp-filter">Timestamp filter</h2>
+<p>Data between 2 timestamps but not after an hour.</p>
+<p>In filter bar, is between <code>2026-01-01T00:00:00.000+01:00</code> to <code>2026-01-26T23:59:59.000+01:00</code>, and KQL filter:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>timestamp &lt; now/d+6h
 </code></pre></div>
 <hr />
 
