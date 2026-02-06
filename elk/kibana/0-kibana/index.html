@@ -2420,6 +2420,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#localization-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Localization "filter"
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -9355,6 +9366,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#localization-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Localization "filter"
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -9530,6 +9552,76 @@
 <p>Data between 2 timestamps but not after an hour.</p>
 <p>In filter bar, is between <code>2026-01-01T00:00:00.000+01:00</code> to <code>2026-01-26T23:59:59.000+01:00</code>, and KQL filter:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>timestamp &lt; now/d+6h
+</code></pre></div>
+<hr />
+<h2 id="localization-filter">Localization "filter"</h2>
+<p>E.g. of documents in an index that have exactly the same coordinates (&gt;50x) among a period.</p>
+<p>In Kibana - Dev Tools:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>GET &lt;index&gt;/_search
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>{
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>  &quot;size&quot;: 0,
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>  &quot;track_total_hits&quot;: true,
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>  &quot;query&quot;: {
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    &quot;bool&quot;: {
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>      &quot;filter&quot;: [
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        { &quot;term&quot;: { &quot;&lt;field1&gt;&quot;: &quot;&lt;content1&gt;&quot; } },
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>        { &quot;term&quot;: { &quot;&lt;field2&gt;&quot;: &quot;&lt;content2&gt;&quot; } },
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>        {
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>          &quot;range&quot;: {
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>            &quot;timestamp&quot;: {
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>              &quot;gte&quot;: &quot;2026-02-01T00:00:00.000Z&quot;,
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>              &quot;lt&quot;:  &quot;2026-02-05T00:00:00.000Z&quot;
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>            }
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>          }
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>        }
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>      ]
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>    }
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>  },
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>  &quot;runtime_mappings&quot;: {
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>    &quot;coord_key&quot;: {
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>      &quot;type&quot;: &quot;keyword&quot;,
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>      &quot;script&quot;: {
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>        &quot;source&quot;: &quot;&quot;&quot;
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>          if (!doc[&#39;location&#39;].empty) {
+<a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>            emit(doc[&#39;location&#39;].lon + &quot;,&quot; + doc[&#39;location&#39;].lat);
+<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a>          }
+<a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>        &quot;&quot;&quot;
+<a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a>      }
+<a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a>    }
+<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a>  },
+<a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a>  &quot;aggs&quot;: {
+<a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a>    &quot;by_coord&quot;: {
+<a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a>      &quot;terms&quot;: {
+<a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a>        &quot;field&quot;: &quot;coord_key&quot;,
+<a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a>        &quot;size&quot;: 2000,
+<a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a>        &quot;order&quot;: { &quot;_count&quot;: &quot;desc&quot; }
+<a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a>      },
+<a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a>      &quot;aggs&quot;: {
+<a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a>        &quot;only_coords_repeated&quot;: {
+<a id="__codelineno-13-42" name="__codelineno-13-42" href="#__codelineno-13-42"></a>          &quot;bucket_selector&quot;: {
+<a id="__codelineno-13-43" name="__codelineno-13-43" href="#__codelineno-13-43"></a>            &quot;buckets_path&quot;: { &quot;c&quot;: &quot;_count&quot; },
+<a id="__codelineno-13-44" name="__codelineno-13-44" href="#__codelineno-13-44"></a>            &quot;script&quot;: &quot;params.c &gt;= 50&quot;
+<a id="__codelineno-13-45" name="__codelineno-13-45" href="#__codelineno-13-45"></a>          }
+<a id="__codelineno-13-46" name="__codelineno-13-46" href="#__codelineno-13-46"></a>        },
+<a id="__codelineno-13-47" name="__codelineno-13-47" href="#__codelineno-13-47"></a>        &quot;by_doc&quot;: {
+<a id="__codelineno-13-48" name="__codelineno-13-48" href="#__codelineno-13-48"></a>          &quot;terms&quot;: {
+<a id="__codelineno-13-49" name="__codelineno-13-49" href="#__codelineno-13-49"></a>            &quot;field&quot;: &quot;&lt;docId&gt;&quot;,
+<a id="__codelineno-13-50" name="__codelineno-13-50" href="#__codelineno-13-50"></a>            &quot;size&quot;: 2000,
+<a id="__codelineno-13-51" name="__codelineno-13-51" href="#__codelineno-13-51"></a>            &quot;order&quot;: { &quot;_count&quot;: &quot;desc&quot; }
+<a id="__codelineno-13-52" name="__codelineno-13-52" href="#__codelineno-13-52"></a>          },
+<a id="__codelineno-13-53" name="__codelineno-13-53" href="#__codelineno-13-53"></a>          &quot;aggs&quot;: {
+<a id="__codelineno-13-54" name="__codelineno-13-54" href="#__codelineno-13-54"></a>            &quot;only_docs_repeated&quot;: {
+<a id="__codelineno-13-55" name="__codelineno-13-55" href="#__codelineno-13-55"></a>              &quot;bucket_selector&quot;: {
+<a id="__codelineno-13-56" name="__codelineno-13-56" href="#__codelineno-13-56"></a>                &quot;buckets_path&quot;: { &quot;c&quot;: &quot;_count&quot; },
+<a id="__codelineno-13-57" name="__codelineno-13-57" href="#__codelineno-13-57"></a>                &quot;script&quot;: &quot;params.c &gt;= 50&quot;
+<a id="__codelineno-13-58" name="__codelineno-13-58" href="#__codelineno-13-58"></a>              }
+<a id="__codelineno-13-59" name="__codelineno-13-59" href="#__codelineno-13-59"></a>            }
+<a id="__codelineno-13-60" name="__codelineno-13-60" href="#__codelineno-13-60"></a>          }
+<a id="__codelineno-13-61" name="__codelineno-13-61" href="#__codelineno-13-61"></a>        }
+<a id="__codelineno-13-62" name="__codelineno-13-62" href="#__codelineno-13-62"></a>      }
+<a id="__codelineno-13-63" name="__codelineno-13-63" href="#__codelineno-13-63"></a>    }
+<a id="__codelineno-13-64" name="__codelineno-13-64" href="#__codelineno-13-64"></a>  }
+<a id="__codelineno-13-65" name="__codelineno-13-65" href="#__codelineno-13-65"></a>}
 </code></pre></div>
 <hr />
 
