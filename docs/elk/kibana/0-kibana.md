@@ -239,3 +239,79 @@ timestamp < now/d+6h
 ```
 
 ---
+
+## Localization "filter"
+
+E.g. of documents in an index that have exactly the same coordinates (>50x) among a period.
+
+In Kibana - Dev Tools:
+
+```txt
+GET <index>/_search
+{
+  "size": 0,
+  "track_total_hits": true,
+  "query": {
+    "bool": {
+      "filter": [
+        { "term": { "<field1>": "<content1>" } },
+        { "term": { "<field2>": "<content2>" } },
+        {
+          "range": {
+            "timestamp": {
+              "gte": "2026-02-01T00:00:00.000Z",
+              "lt":  "2026-02-05T00:00:00.000Z"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "runtime_mappings": {
+    "coord_key": {
+      "type": "keyword",
+      "script": {
+        "source": """
+          if (!doc['location'].empty) {
+            emit(doc['location'].lon + "," + doc['location'].lat);
+          }
+        """
+      }
+    }
+  },
+  "aggs": {
+    "by_coord": {
+      "terms": {
+        "field": "coord_key",
+        "size": 2000,
+        "order": { "_count": "desc" }
+      },
+      "aggs": {
+        "only_coords_repeated": {
+          "bucket_selector": {
+            "buckets_path": { "c": "_count" },
+            "script": "params.c >= 50"
+          }
+        },
+        "by_doc": {
+          "terms": {
+            "field": "<docId>",
+            "size": 2000,
+            "order": { "_count": "desc" }
+          },
+          "aggs": {
+            "only_docs_repeated": {
+              "bucket_selector": {
+                "buckets_path": { "c": "_count" },
+                "script": "params.c >= 50"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+---
