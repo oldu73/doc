@@ -324,3 +324,16 @@ git diff <ref branch name> <feature branch name> --shortstat
 ```
 
 ***
+
+## Search a commit among branches
+
+Search for a commit among branches using its short hash:
+
+```console
+git fetch --all --prune
+git branch -a --contains <hash>
+```
+
+Note that if the <hash> is the one from the merge, it will not be present in the source branch!
+
+***
