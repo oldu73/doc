@@ -2769,6 +2769,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#search-a-commit-among-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search a commit among branches
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -9819,6 +9830,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#search-a-commit-among-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search a commit among branches
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -10009,6 +10031,13 @@
 <p>Count the number of different lines between 2 branches:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="go">git diff &lt;ref branch name&gt; &lt;feature branch name&gt; --shortstat</span>
 </code></pre></div>
+<hr />
+<h2 id="search-a-commit-among-branches">Search a commit among branches</h2>
+<p>Search for a commit among branches using its short hash:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="go">git fetch --all --prune</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="go">git branch -a --contains &lt;hash&gt;</span>
+</code></pre></div>
+<p>Note that if the <hash> is the one from the merge, it will not be present in the source branch!</p>
 <hr />
 
 
