@@ -334,6 +334,6 @@ git fetch --all --prune
 git branch -a --contains <hash>
 ```
 
-Note that if the <hash> is the one from the merge, it will not be present in the source branch!
+Note that if the `<hash>` is the one from the merge, it will not be present in the source branch!
 
 ***
