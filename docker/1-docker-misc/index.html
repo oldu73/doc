@@ -1816,6 +1816,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#re-up-a-single-service-back-end-without-restarting-the-full-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Re-up a Single Service (Back-end) Without Restarting the Full Stack
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -9133,6 +9144,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#re-up-a-single-service-back-end-without-restarting-the-full-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Re-up a Single Service (Back-end) Without Restarting the Full Stack
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -9211,6 +9233,15 @@
 </code></pre></div>
 <p>Docker container size:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="go">docker ps --size</span>
+</code></pre></div>
+<hr />
+<h2 id="re-up-a-single-service-back-end-without-restarting-the-full-stack">Re-up a Single Service (Back-end) Without Restarting the Full Stack</h2>
+<p>Rebuild and restart a specific Docker Compose service (e.g., back-end)\
+without impacting the rest of the running stack.</p>
+<p>This is useful in development when: - Backend code changes -
+Dependencies are updated - The Dockerfile is modified - You want to
+refresh only one service:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build<span class="w"> </span>--force-recreate<span class="w"> </span>service
 </code></pre></div>
 <hr />
 
