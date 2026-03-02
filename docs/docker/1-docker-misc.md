@@ -95,3 +95,18 @@ docker ps --size
 ```
 
 ***
+
+## Re-up a Single Service (Back-end) Without Restarting the Full Stack
+
+Rebuild and restart a specific Docker Compose service (e.g., back-end)\
+without impacting the rest of the running stack.
+
+This is useful in development when: - Backend code changes -
+Dependencies are updated - The Dockerfile is modified - You want to
+refresh only one service:
+
+``` bash
+docker compose up -d --build --force-recreate service
+```
+
+***
