@@ -228,7 +228,7 @@ In visualization, to filter documents against all, the trick is to set 2 filters
 
 ---
 
-## Timestamp filter
+## Timestamp "filter"
 
 Data between 2 timestamps but not after an hour.
 
@@ -236,6 +236,74 @@ In filter bar, is between `2026-01-01T00:00:00.000+01:00` to `2026-01-26T23:59:5
 
 ```txt
 timestamp < now/d+6h
+```
+
+### Device VS server timestamps
+
+This query searches an Elasticsearch index for documents matching a given device type, event type, and timestamp date range. It then uses a Painless script to keep only documents where `<GATEWAY_DATE_FIELD>` is more than `<THRESHOLD_HOURS>` hours later than `<TIMESTAMP_FIELD>` (time difference computed in milliseconds). Finally, it aggregates the remaining documents by `<GROUP_BY_FIELD>` (e.g., device ID) and returns only buckets with at least `<MIN_OCCURRENCES>` occurrences:
+
+```txt
+GET <INDEX_NAME>/_search
+{
+  "size": 0,
+  "track_total_hits": true,
+  "query": {
+    "bool": {
+      "filter": [
+        { "term": { "<DEVICE_TYPE_FIELD>": "<DEVICE_TYPE_VALUE>" } },
+        { "term": { "<EVENT_FIELD>": "<EVENT_VALUE>" } },
+        {
+          "range": {
+            "<TIMESTAMP_FIELD>": {
+              "gte": "<START_ISO8601_UTC>",
+              "lt":  "<END_ISO8601_UTC>"
+            }
+          }
+        }
+      ],
+      "must": [
+        {
+          "script": {
+            "script": {
+              "lang": "painless",
+              "params": {
+                "thresholdHours": <THRESHOLD_HOURS>
+              },
+              "source": """
+                if (doc['<TIMESTAMP_FIELD>'].empty || doc['<GATEWAY_DATE_FIELD>'].empty) return false;
+
+                long ts = doc['<TIMESTAMP_FIELD>'].value.toInstant().toEpochMilli();
+                long gw = doc['<GATEWAY_DATE_FIELD>'].value.toInstant().toEpochMilli();
+
+                long millisPerHour = 60L * 60L * 1000L;
+                long thresholdMs = millisPerHour * (long) params.thresholdHours;
+
+                return (gw - ts) > thresholdMs;
+              """
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "by_entity": {
+      "terms": {
+        "field": "<GROUP_BY_FIELD>",
+        "size": <MAX_BUCKETS>,
+        "order": { "_count": "desc" }
+      },
+      "aggs": {
+        "only_repeated": {
+          "bucket_selector": {
+            "buckets_path": { "c": "_count" },
+            "script": "params.c >= <MIN_OCCURRENCES>"
+          }
+        }
+      }
+    }
+  }
+}
 ```
 
 ---
