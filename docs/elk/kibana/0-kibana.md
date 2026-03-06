@@ -383,3 +383,152 @@ GET <index>/_search
 ```
 
 ---
+
+## Detecting Mixed Real‑Time and Delayed Location Transmissions (Elasticsearch / Kibana Dev Tools)
+
+### Description
+
+This query identifies devices that have reported locations from the **same geographic area** but with **very different transmission delays**.
+
+It filters events within a given time range and then groups them by **device** and **approximate location** (using a geospatial grid).
+
+For each location, the query separates events into two categories:
+
+- **Near real‑time transmissions** (delay ≤ `<OK_DELAY_MS>`)
+- **Significantly delayed transmissions** (delay ≥ `<LATE_DELAY_MS>`)
+
+Only locations where **both behaviors occur for the same device** are kept.
+
+This helps detect devices that sometimes transmit data immediately and sometimes transmit the same type of data with large delays from the same area, which may indicate:
+
+- intermittent connectivity
+- network buffering
+- device communication issues
+- transmission retries after connectivity loss
+
+### Generic / Placeholder Query
+
+```json
+GET <INDEX_NAME>/_search
+{
+  "size": 0,
+  "track_total_hits": true,
+  "query": {
+    "bool": {
+      "filter": [
+        { "term":  { "<DEVICE_TYPE_FIELD>": "<DEVICE_TYPE_VALUE>" } },
+        { "term":  { "<EVENT_FIELD>": "<EVENT_VALUE>" } },
+        {
+          "range": {
+            "<TIMESTAMP_FIELD>": {
+              "gte": "<START_TIMESTAMP_ISO>",
+              "lt":  "<END_TIMESTAMP_ISO>"
+            }
+          }
+        }
+      ],
+      "must": [
+        {
+          "script": {
+            "script": {
+              "lang": "painless",
+              "params": {
+                "okMs": <OK_DELAY_MS>,
+                "lateMs": <LATE_DELAY_MS>
+              },
+              "source": """
+                if (doc['<TIMESTAMP_FIELD>'].empty || doc['<GATEWAY_TIMESTAMP_FIELD>'].empty) return false;
+                long ts = doc['<TIMESTAMP_FIELD>'].value.toInstant().toEpochMilli();
+                long gw = doc['<GATEWAY_TIMESTAMP_FIELD>'].value.toInstant().toEpochMilli();
+                long d = gw - ts;
+                return d <= params.okMs || d >= params.lateMs;
+              """
+            }
+          }
+        }
+      ]
+    }
+  },
+  "runtime_mappings": {
+    "delay_ms": {
+      "type": "long",
+      "script": {
+        "source": """
+          if (doc['<TIMESTAMP_FIELD>'].empty || doc['<GATEWAY_TIMESTAMP_FIELD>'].empty) return;
+          emit(doc['<GATEWAY_TIMESTAMP_FIELD>'].value.toInstant().toEpochMilli()
+             - doc['<TIMESTAMP_FIELD>'].value.toInstant().toEpochMilli());
+        """
+      }
+    }
+  },
+  "aggs": {
+    "by_device": {
+      "terms": {
+        "field": "<DEVICE_ID_FIELD>",
+        "size": <MAX_DEVICE_BUCKETS>,
+        "shard_size": <SHARD_SIZE>,
+        "order": { "_count": "desc" }
+      },
+      "aggs": {
+        "by_area": {
+          "geotile_grid": {
+            "field": "<LOCATION_FIELD>",
+            "precision": <GEO_GRID_PRECISION>,
+            "size": <MAX_AREA_BUCKETS>
+          },
+          "aggs": {
+            "center": { "geo_centroid": { "field": "<LOCATION_FIELD>" } },
+
+            "ok_events": {
+              "filter": { "range": { "delay_ms": { "lte": <OK_DELAY_MS> } } }
+            },
+            "late_events": {
+              "filter": { "range": { "delay_ms": { "gte": <LATE_DELAY_MS> } } }
+            },
+
+            "keep_only_areas_with_both_behaviors": {
+              "bucket_selector": {
+                "buckets_path": {
+                  "ok": "ok_events._count",
+                  "late": "late_events._count"
+                },
+                "script": "params.ok > 0 && params.late > 0"
+              }
+            }
+          }
+        },
+
+        "keep_only_devices_with_matching_areas": {
+          "bucket_selector": {
+            "buckets_path": { "areas": "by_area._bucket_count" },
+            "script": "params.areas > 0"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Placeholder Explanation
+
+| Placeholder | Meaning |
+|---|---|
+| `<INDEX_NAME>` | Elasticsearch index containing telemetry/history events |
+| `<DEVICE_TYPE_FIELD>` | Field storing the device type |
+| `<DEVICE_TYPE_VALUE>` | Device type to analyze |
+| `<EVENT_FIELD>` | Field storing the event type |
+| `<EVENT_VALUE>` | Event type to filter |
+| `<TIMESTAMP_FIELD>` | Original event timestamp |
+| `<GATEWAY_TIMESTAMP_FIELD>` | Timestamp when the gateway received the event |
+| `<DEVICE_ID_FIELD>` | Unique device identifier |
+| `<LOCATION_FIELD>` | Geo-point field containing device coordinates |
+| `<START_TIMESTAMP_ISO>` / `<END_TIMESTAMP_ISO>` | Time window for analysis |
+| `<OK_DELAY_MS>` | Maximum delay considered near real-time |
+| `<LATE_DELAY_MS>` | Minimum delay considered significantly delayed |
+| `<GEO_GRID_PRECISION>` | Geospatial grid resolution used to group nearby coordinates |
+| `<MAX_DEVICE_BUCKETS>` | Maximum number of devices returned |
+| `<MAX_AREA_BUCKETS>` | Maximum number of geographic buckets per device |
+| `<SHARD_SIZE>` | Internal aggregation tuning parameter |
+
+---
