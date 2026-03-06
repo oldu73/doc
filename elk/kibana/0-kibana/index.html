@@ -2448,6 +2448,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#detecting-mixed-realtime-and-delayed-location-transmissions-elasticsearch-kibana-dev-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detecting Mixed Real‑Time and Delayed Location Transmissions (Elasticsearch / Kibana Dev Tools)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detecting Mixed Real‑Time and Delayed Location Transmissions (Elasticsearch / Kibana Dev Tools)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generic-placeholder-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generic / Placeholder Query
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#placeholder-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Placeholder Explanation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -9411,6 +9461,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#detecting-mixed-realtime-and-delayed-location-transmissions-elasticsearch-kibana-dev-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detecting Mixed Real‑Time and Delayed Location Transmissions (Elasticsearch / Kibana Dev Tools)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detecting Mixed Real‑Time and Delayed Location Transmissions (Elasticsearch / Kibana Dev Tools)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Description
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generic-placeholder-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generic / Placeholder Query
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#placeholder-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Placeholder Explanation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -9721,6 +9821,200 @@
 <a id="__codelineno-14-64" name="__codelineno-14-64" href="#__codelineno-14-64"></a>  }
 <a id="__codelineno-14-65" name="__codelineno-14-65" href="#__codelineno-14-65"></a>}
 </code></pre></div>
+<hr />
+<h2 id="detecting-mixed-realtime-and-delayed-location-transmissions-elasticsearch-kibana-dev-tools">Detecting Mixed Real‑Time and Delayed Location Transmissions (Elasticsearch / Kibana Dev Tools)</h2>
+<h3 id="description">Description</h3>
+<p>This query identifies devices that have reported locations from the <strong>same geographic area</strong> but with <strong>very different transmission delays</strong>.</p>
+<p>It filters events within a given time range and then groups them by <strong>device</strong> and <strong>approximate location</strong> (using a geospatial grid).</p>
+<p>For each location, the query separates events into two categories:</p>
+<ul>
+<li><strong>Near real‑time transmissions</strong> (delay ≤ <code>&lt;OK_DELAY_MS&gt;</code>)</li>
+<li><strong>Significantly delayed transmissions</strong> (delay ≥ <code>&lt;LATE_DELAY_MS&gt;</code>)</li>
+</ul>
+<p>Only locations where <strong>both behaviors occur for the same device</strong> are kept.</p>
+<p>This helps detect devices that sometimes transmit data immediately and sometimes transmit the same type of data with large delays from the same area, which may indicate:</p>
+<ul>
+<li>intermittent connectivity</li>
+<li>network buffering</li>
+<li>device communication issues</li>
+<li>transmission retries after connectivity loss</li>
+</ul>
+<h3 id="generic-placeholder-query">Generic / Placeholder Query</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="err">GET</span><span class="w"> </span><span class="err">&lt;INDEX_NAME&gt;/_search</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="p">{</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span><span class="nt">&quot;track_total_hits&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="nt">&quot;bool&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">      </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;term&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;&lt;DEVICE_TYPE_FIELD&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;DEVICE_TYPE_VALUE&gt;&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;term&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;&lt;EVENT_FIELD&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;EVENT_VALUE&gt;&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">          </span><span class="nt">&quot;range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">            </span><span class="nt">&quot;&lt;TIMESTAMP_FIELD&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">              </span><span class="nt">&quot;gte&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;START_TIMESTAMP_ISO&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">              </span><span class="nt">&quot;lt&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;&lt;END_TIMESTAMP_ISO&gt;&quot;</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">          </span><span class="p">}</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">      </span><span class="p">],</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">      </span><span class="nt">&quot;must&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">          </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="w">            </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="w">              </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;painless&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="w">              </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="w">                </span><span class="nt">&quot;okMs&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;OK_DELAY_MS&gt;</span><span class="p">,</span>
+<a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a><span class="w">                </span><span class="nt">&quot;lateMs&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;LATE_DELAY_MS&gt;</span>
+<a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a><span class="w">              </span><span class="p">},</span>
+<a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="w">              </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a><span class="s2">                if (doc[&#39;&lt;TIMESTAMP_FIELD&gt;&#39;].empty || doc[&#39;&lt;GATEWAY_TIMESTAMP_FIELD&gt;&#39;].empty) return false;</span>
+<a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a><span class="s2">                long ts = doc[&#39;&lt;TIMESTAMP_FIELD&gt;&#39;].value.toInstant().toEpochMilli();</span>
+<a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a><span class="s2">                long gw = doc[&#39;&lt;GATEWAY_TIMESTAMP_FIELD&gt;&#39;].value.toInstant().toEpochMilli();</span>
+<a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a><span class="s2">                long d = gw - ts;</span>
+<a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a><span class="s2">                return d &lt;= params.okMs || d &gt;= params.lateMs;</span>
+<a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a><span class="s2">              &quot;&quot;&quot;</span>
+<a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a><span class="w">          </span><span class="p">}</span>
+<a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a><span class="w">      </span><span class="p">]</span>
+<a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-40" name="__codelineno-15-40" href="#__codelineno-15-40"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-15-41" name="__codelineno-15-41" href="#__codelineno-15-41"></a><span class="w">  </span><span class="nt">&quot;runtime_mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-42" name="__codelineno-15-42" href="#__codelineno-15-42"></a><span class="w">    </span><span class="nt">&quot;delay_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-43" name="__codelineno-15-43" href="#__codelineno-15-43"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;long&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-44" name="__codelineno-15-44" href="#__codelineno-15-44"></a><span class="w">      </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-45" name="__codelineno-15-45" href="#__codelineno-15-45"></a><span class="w">        </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;&quot;</span>
+<a id="__codelineno-15-46" name="__codelineno-15-46" href="#__codelineno-15-46"></a><span class="s2">          if (doc[&#39;&lt;TIMESTAMP_FIELD&gt;&#39;].empty || doc[&#39;&lt;GATEWAY_TIMESTAMP_FIELD&gt;&#39;].empty) return;</span>
+<a id="__codelineno-15-47" name="__codelineno-15-47" href="#__codelineno-15-47"></a><span class="s2">          emit(doc[&#39;&lt;GATEWAY_TIMESTAMP_FIELD&gt;&#39;].value.toInstant().toEpochMilli()</span>
+<a id="__codelineno-15-48" name="__codelineno-15-48" href="#__codelineno-15-48"></a><span class="s2">             - doc[&#39;&lt;TIMESTAMP_FIELD&gt;&#39;].value.toInstant().toEpochMilli());</span>
+<a id="__codelineno-15-49" name="__codelineno-15-49" href="#__codelineno-15-49"></a><span class="s2">        &quot;&quot;&quot;</span>
+<a id="__codelineno-15-50" name="__codelineno-15-50" href="#__codelineno-15-50"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-15-51" name="__codelineno-15-51" href="#__codelineno-15-51"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-52" name="__codelineno-15-52" href="#__codelineno-15-52"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-15-53" name="__codelineno-15-53" href="#__codelineno-15-53"></a><span class="w">  </span><span class="nt">&quot;aggs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-54" name="__codelineno-15-54" href="#__codelineno-15-54"></a><span class="w">    </span><span class="nt">&quot;by_device&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-55" name="__codelineno-15-55" href="#__codelineno-15-55"></a><span class="w">      </span><span class="nt">&quot;terms&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-56" name="__codelineno-15-56" href="#__codelineno-15-56"></a><span class="w">        </span><span class="nt">&quot;field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;DEVICE_ID_FIELD&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-57" name="__codelineno-15-57" href="#__codelineno-15-57"></a><span class="w">        </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;MAX_DEVICE_BUCKETS&gt;</span><span class="p">,</span>
+<a id="__codelineno-15-58" name="__codelineno-15-58" href="#__codelineno-15-58"></a><span class="w">        </span><span class="nt">&quot;shard_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;SHARD_SIZE&gt;</span><span class="p">,</span>
+<a id="__codelineno-15-59" name="__codelineno-15-59" href="#__codelineno-15-59"></a><span class="w">        </span><span class="nt">&quot;order&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;desc&quot;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-15-60" name="__codelineno-15-60" href="#__codelineno-15-60"></a><span class="w">      </span><span class="p">},</span>
+<a id="__codelineno-15-61" name="__codelineno-15-61" href="#__codelineno-15-61"></a><span class="w">      </span><span class="nt">&quot;aggs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-62" name="__codelineno-15-62" href="#__codelineno-15-62"></a><span class="w">        </span><span class="nt">&quot;by_area&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-63" name="__codelineno-15-63" href="#__codelineno-15-63"></a><span class="w">          </span><span class="nt">&quot;geotile_grid&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-64" name="__codelineno-15-64" href="#__codelineno-15-64"></a><span class="w">            </span><span class="nt">&quot;field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;LOCATION_FIELD&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-65" name="__codelineno-15-65" href="#__codelineno-15-65"></a><span class="w">            </span><span class="nt">&quot;precision&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;GEO_GRID_PRECISION&gt;</span><span class="p">,</span>
+<a id="__codelineno-15-66" name="__codelineno-15-66" href="#__codelineno-15-66"></a><span class="w">            </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;MAX_AREA_BUCKETS&gt;</span>
+<a id="__codelineno-15-67" name="__codelineno-15-67" href="#__codelineno-15-67"></a><span class="w">          </span><span class="p">},</span>
+<a id="__codelineno-15-68" name="__codelineno-15-68" href="#__codelineno-15-68"></a><span class="w">          </span><span class="nt">&quot;aggs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-69" name="__codelineno-15-69" href="#__codelineno-15-69"></a><span class="w">            </span><span class="nt">&quot;center&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;geo_centroid&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;LOCATION_FIELD&gt;&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-15-70" name="__codelineno-15-70" href="#__codelineno-15-70"></a>
+<a id="__codelineno-15-71" name="__codelineno-15-71" href="#__codelineno-15-71"></a><span class="w">            </span><span class="nt">&quot;ok_events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-72" name="__codelineno-15-72" href="#__codelineno-15-72"></a><span class="w">              </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;delay_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;lte&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;OK_DELAY_MS&gt;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-15-73" name="__codelineno-15-73" href="#__codelineno-15-73"></a><span class="w">            </span><span class="p">},</span>
+<a id="__codelineno-15-74" name="__codelineno-15-74" href="#__codelineno-15-74"></a><span class="w">            </span><span class="nt">&quot;late_events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-75" name="__codelineno-15-75" href="#__codelineno-15-75"></a><span class="w">              </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;delay_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;gte&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;LATE_DELAY_MS&gt;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-15-76" name="__codelineno-15-76" href="#__codelineno-15-76"></a><span class="w">            </span><span class="p">},</span>
+<a id="__codelineno-15-77" name="__codelineno-15-77" href="#__codelineno-15-77"></a>
+<a id="__codelineno-15-78" name="__codelineno-15-78" href="#__codelineno-15-78"></a><span class="w">            </span><span class="nt">&quot;keep_only_areas_with_both_behaviors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-79" name="__codelineno-15-79" href="#__codelineno-15-79"></a><span class="w">              </span><span class="nt">&quot;bucket_selector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-80" name="__codelineno-15-80" href="#__codelineno-15-80"></a><span class="w">                </span><span class="nt">&quot;buckets_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-81" name="__codelineno-15-81" href="#__codelineno-15-81"></a><span class="w">                  </span><span class="nt">&quot;ok&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok_events._count&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-82" name="__codelineno-15-82" href="#__codelineno-15-82"></a><span class="w">                  </span><span class="nt">&quot;late&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;late_events._count&quot;</span>
+<a id="__codelineno-15-83" name="__codelineno-15-83" href="#__codelineno-15-83"></a><span class="w">                </span><span class="p">},</span>
+<a id="__codelineno-15-84" name="__codelineno-15-84" href="#__codelineno-15-84"></a><span class="w">                </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;params.ok &gt; 0 &amp;&amp; params.late &gt; 0&quot;</span>
+<a id="__codelineno-15-85" name="__codelineno-15-85" href="#__codelineno-15-85"></a><span class="w">              </span><span class="p">}</span>
+<a id="__codelineno-15-86" name="__codelineno-15-86" href="#__codelineno-15-86"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-15-87" name="__codelineno-15-87" href="#__codelineno-15-87"></a><span class="w">          </span><span class="p">}</span>
+<a id="__codelineno-15-88" name="__codelineno-15-88" href="#__codelineno-15-88"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-15-89" name="__codelineno-15-89" href="#__codelineno-15-89"></a>
+<a id="__codelineno-15-90" name="__codelineno-15-90" href="#__codelineno-15-90"></a><span class="w">        </span><span class="nt">&quot;keep_only_devices_with_matching_areas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-91" name="__codelineno-15-91" href="#__codelineno-15-91"></a><span class="w">          </span><span class="nt">&quot;bucket_selector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-92" name="__codelineno-15-92" href="#__codelineno-15-92"></a><span class="w">            </span><span class="nt">&quot;buckets_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;areas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;by_area._bucket_count&quot;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-15-93" name="__codelineno-15-93" href="#__codelineno-15-93"></a><span class="w">            </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;params.areas &gt; 0&quot;</span>
+<a id="__codelineno-15-94" name="__codelineno-15-94" href="#__codelineno-15-94"></a><span class="w">          </span><span class="p">}</span>
+<a id="__codelineno-15-95" name="__codelineno-15-95" href="#__codelineno-15-95"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-15-96" name="__codelineno-15-96" href="#__codelineno-15-96"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-15-97" name="__codelineno-15-97" href="#__codelineno-15-97"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-98" name="__codelineno-15-98" href="#__codelineno-15-98"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-15-99" name="__codelineno-15-99" href="#__codelineno-15-99"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="placeholder-explanation">Placeholder Explanation</h3>
+<table>
+<thead>
+<tr>
+<th>Placeholder</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;INDEX_NAME&gt;</code></td>
+<td>Elasticsearch index containing telemetry/history events</td>
+</tr>
+<tr>
+<td><code>&lt;DEVICE_TYPE_FIELD&gt;</code></td>
+<td>Field storing the device type</td>
+</tr>
+<tr>
+<td><code>&lt;DEVICE_TYPE_VALUE&gt;</code></td>
+<td>Device type to analyze</td>
+</tr>
+<tr>
+<td><code>&lt;EVENT_FIELD&gt;</code></td>
+<td>Field storing the event type</td>
+</tr>
+<tr>
+<td><code>&lt;EVENT_VALUE&gt;</code></td>
+<td>Event type to filter</td>
+</tr>
+<tr>
+<td><code>&lt;TIMESTAMP_FIELD&gt;</code></td>
+<td>Original event timestamp</td>
+</tr>
+<tr>
+<td><code>&lt;GATEWAY_TIMESTAMP_FIELD&gt;</code></td>
+<td>Timestamp when the gateway received the event</td>
+</tr>
+<tr>
+<td><code>&lt;DEVICE_ID_FIELD&gt;</code></td>
+<td>Unique device identifier</td>
+</tr>
+<tr>
+<td><code>&lt;LOCATION_FIELD&gt;</code></td>
+<td>Geo-point field containing device coordinates</td>
+</tr>
+<tr>
+<td><code>&lt;START_TIMESTAMP_ISO&gt;</code> / <code>&lt;END_TIMESTAMP_ISO&gt;</code></td>
+<td>Time window for analysis</td>
+</tr>
+<tr>
+<td><code>&lt;OK_DELAY_MS&gt;</code></td>
+<td>Maximum delay considered near real-time</td>
+</tr>
+<tr>
+<td><code>&lt;LATE_DELAY_MS&gt;</code></td>
+<td>Minimum delay considered significantly delayed</td>
+</tr>
+<tr>
+<td><code>&lt;GEO_GRID_PRECISION&gt;</code></td>
+<td>Geospatial grid resolution used to group nearby coordinates</td>
+</tr>
+<tr>
+<td><code>&lt;MAX_DEVICE_BUCKETS&gt;</code></td>
+<td>Maximum number of devices returned</td>
+</tr>
+<tr>
+<td><code>&lt;MAX_AREA_BUCKETS&gt;</code></td>
+<td>Maximum number of geographic buckets per device</td>
+</tr>
+<tr>
+<td><code>&lt;SHARD_SIZE&gt;</code></td>
+<td>Internal aggregation tuning parameter</td>
+</tr>
+</tbody>
+</table>
 <hr />
 
 
