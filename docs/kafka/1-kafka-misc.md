@@ -185,3 +185,31 @@ List all messages in a topic, from beginning:
 ```
 
 ---
+
+## UI
+
+[UI for Apache Kafka, project: - provectuslabs/kafka-ui](https://github.com/provectus/kafka-ui)
+
+Versatile, fast and lightweight web UI for managing Apache Kafka® clusters. Built by developers, for developers.
+
+This needs to be added to the docker-compose file of back-end stack, below the Kafka service:
+
+```yaml
+##################################################
+# Kafka UI
+kafka-ui:
+  depends_on:
+    kafka:
+      condition: service_healthy
+  container_name: kafka-ui
+  image: provectuslabs/kafka-ui:latest
+  environment:
+    KAFKA_CLUSTERS_0_NAME: local
+    KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka-2.4.1:9092
+  ports:
+    - "8081:8080"
+```
+
+And then, you can access it at address http://localhost:8081/
+
+---
