@@ -171,3 +171,13 @@ Set bookmark numbers and navigate to them:
 - navigate to "ctrl + # (with number on top of keyboard)"
 
 ---
+
+## Multi select text occurrences
+
+Select one piece of text, then:
+
+```txt
+ctrl + alt + shift + j
+```
+
+---
