@@ -50,7 +50,7 @@ nav:
   - Confluence:
       - "misc": "confluence/misc.md"
   - Docker:
-      - "Docker - 01 - Misc": "docker/1-docker-misc.md"
+      - "Docker and Compose - 00 - Misc": "docker/0-docker-and-compose-misc.md"
       - "Docker - 02 - Basis": "docker/2-docker-basis.md"
       - "Docker - 03 - Docker File": "docker/3-docker-dockerfile.md"
       - "Docker - 04 - Docker Hub": "docker/4-docker-dockerhub.md"
