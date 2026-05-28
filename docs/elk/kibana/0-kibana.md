@@ -532,3 +532,13 @@ GET <INDEX_NAME>/_search
 | `<SHARD_SIZE>` | Internal aggregation tuning parameter |
 
 ---
+
+### Get ES version
+
+Get ES version used in current cluster, in Dev Tools:
+
+```txt
+GET /
+```
+
+---
